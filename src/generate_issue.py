@@ -42,6 +42,7 @@ CATEGORIES = [
 PROVENANCE_ERRORS_KEY = "_provenanceErrors"
 RESEARCH_ATTEMPTS = 3
 ADAPTATION_ATTEMPTS = 2
+ADAPTATION_BATCH_SIZE = 2
 
 
 def _log(message: str) -> None:
@@ -360,7 +361,7 @@ def _call_openai(
     try:
         from openai import OpenAI
 
-        client = OpenAI(max_retries=0, timeout=300.0)
+        client = OpenAI(max_retries=2, timeout=300.0)
         parameters: dict[str, Any] = dict(
             model=model,
             input=[
@@ -770,59 +771,71 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
     if seeds is None:
         raise RuntimeError("Research produced no usable story briefs")
 
-    story_ids = [story.get("id", "") for story in seeds]
-    adaptation_schema = _adaptation_batch_schema(story_ids, levels, locales, image_locales)
-    adaptation_feedback: list[str] | None = None
-    new_stories: list[dict[str, Any]] | None = None
-    for attempt in range(ADAPTATION_ATTEMPTS):
-        attempt_number = attempt + 1
-        adaptation_batch = _call_openai(
-            os.environ["OPENAI_MODEL"],
-            instructions,
-            _adaptation_request(seeds, levels, locales, adaptation_feedback),
-            adaptation_schema,
-            use_web_search=False,
-            phase=f"Adaptation attempt {attempt_number}/{ADAPTATION_ATTEMPTS}",
-        )
-        adaptations = adaptation_batch.get("adaptations", [])
-        removed_units = _remove_empty_lexical_units(adaptations)
-        if removed_units:
-            _log(
-                f"Adaptation attempt {attempt_number}/{ADAPTATION_ATTEMPTS}: "
-                f"removed {removed_units} empty lexical unit(s)"
+    new_stories: list[dict[str, Any]] = []
+    adaptation_batches = [
+        seeds[index:index + ADAPTATION_BATCH_SIZE]
+        for index in range(0, len(seeds), ADAPTATION_BATCH_SIZE)
+    ]
+    for batch_index, batch_seeds in enumerate(adaptation_batches, start=1):
+        story_ids = [story.get("id", "") for story in batch_seeds]
+        adaptation_schema = _adaptation_batch_schema(story_ids, levels, locales, image_locales)
+        adaptation_feedback: list[str] | None = None
+        completed_batch: list[dict[str, Any]] | None = None
+        for attempt in range(ADAPTATION_ATTEMPTS):
+            attempt_number = attempt + 1
+            phase = (
+                f"Adaptation batch {batch_index}/{len(adaptation_batches)}, "
+                f"attempt {attempt_number}/{ADAPTATION_ATTEMPTS}"
             )
-        adaptation_ids = [item.get("id") for item in adaptations]
-        adaptation_map = {item.get("id"): item.get("levels", {}) for item in adaptations}
-        candidate_stories = [{**story, "levels": adaptation_map.get(story.get("id"), {})} for story in seeds]
-        candidate_issue = {
-            "schemaVersion": 1,
-            "date": target_date,
-            "generatedAt": datetime.now(UTC).replace(microsecond=0).isoformat(),
-            "availableLevels": level_ids,
-            "translationLocales": locales,
-            "stories": candidate_stories,
-        }
-        _log(
-            f"Adaptation attempt {attempt_number}/{ADAPTATION_ATTEMPTS}: "
-            f"validating {len(candidate_stories)} adapted stories"
-        )
-        candidate_errors = validate_issue(candidate_issue, site, levels, "generated batch")
-        if len(set(adaptation_ids)) != len(adaptation_ids) or set(adaptation_ids) != set(story_ids):
-            candidate_errors.append("adaptation phase must return every frozen story ID exactly once")
-        if not candidate_errors:
-            new_stories = candidate_stories
-            _log(f"Adaptation attempt {attempt_number}/{ADAPTATION_ATTEMPTS}: validation passed")
-            break
-        adaptation_feedback = candidate_errors[:20]
-        _log_validation_errors(
-            f"Adaptation attempt {attempt_number}/{ADAPTATION_ATTEMPTS}",
-            candidate_errors,
-        )
-        if attempt == ADAPTATION_ATTEMPTS - 1:
-            raise RuntimeError("Generated content failed validation:\n- " + _error_report(candidate_errors))
+            try:
+                adaptation_batch = _call_openai(
+                    os.environ["OPENAI_MODEL"],
+                    instructions,
+                    _adaptation_request(batch_seeds, levels, locales, adaptation_feedback),
+                    adaptation_schema,
+                    use_web_search=False,
+                    phase=phase,
+                )
+            except RuntimeError:
+                if attempt == ADAPTATION_ATTEMPTS - 1:
+                    raise
+                _log(f"{phase}: request failed; retrying only this batch")
+                continue
 
-    if new_stories is None:
-        raise RuntimeError("Generation produced no usable stories")
+            adaptations = adaptation_batch.get("adaptations", [])
+            removed_units = _remove_empty_lexical_units(adaptations)
+            if removed_units:
+                _log(f"{phase}: removed {removed_units} empty lexical unit(s)")
+            adaptation_ids = [item.get("id") for item in adaptations]
+            adaptation_map = {item.get("id"): item.get("levels", {}) for item in adaptations}
+            candidate_stories = [
+                {**story, "levels": adaptation_map.get(story.get("id"), {})}
+                for story in batch_seeds
+            ]
+            candidate_issue = {
+                "schemaVersion": 1,
+                "date": target_date,
+                "generatedAt": datetime.now(UTC).replace(microsecond=0).isoformat(),
+                "availableLevels": level_ids,
+                "translationLocales": locales,
+                "stories": candidate_stories,
+            }
+            _log(f"{phase}: validating {len(candidate_stories)} adapted stories")
+            candidate_errors = validate_issue(candidate_issue, site, levels, "generated batch")
+            if len(set(adaptation_ids)) != len(adaptation_ids) or set(adaptation_ids) != set(story_ids):
+                candidate_errors.append("adaptation phase must return every frozen story ID exactly once")
+            if not candidate_errors:
+                completed_batch = candidate_stories
+                _log(f"{phase}: validation passed")
+                break
+            adaptation_feedback = candidate_errors[:20]
+            _log_validation_errors(phase, candidate_errors)
+            if attempt == ADAPTATION_ATTEMPTS - 1:
+                raise RuntimeError("Generated content failed validation:\n- " + _error_report(candidate_errors))
+
+        if completed_batch is None:
+            raise RuntimeError(f"Adaptation batch {batch_index} produced no usable stories")
+        new_stories.extend(completed_batch)
 
     combined = list(existing["stories"]) + new_stories if existing else new_stories
     issue = {

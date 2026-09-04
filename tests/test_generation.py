@@ -55,7 +55,7 @@ class GenerationTests(unittest.TestCase):
         with patch.dict(sys.modules, {"openai": SimpleNamespace(OpenAI=openai)}):
             result = _call_openai("test-model", "instructions", "request", {})
         self.assertEqual(result[PROVENANCE_ERRORS_KEY], ["https://example.com/invented"])
-        openai.assert_called_once_with(max_retries=0, timeout=300.0)
+        openai.assert_called_once_with(max_retries=2, timeout=300.0)
 
     def test_redundant_sources_are_removed_when_a_unique_source_remains(self) -> None:
         stories = [
@@ -162,7 +162,7 @@ class GenerationTests(unittest.TestCase):
             self.assertTrue(all(unit["text"] for level in result["stories"][-1]["levels"].values() for unit in level["title"]))
             self.assertEqual(validate_repository(root), [])
 
-    def test_adaptation_retry_does_not_repeat_research(self) -> None:
+    def test_failed_adaptation_request_retries_without_research(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
             for directory in ("config", "i18n", "prompts", "content"):
@@ -177,7 +177,7 @@ class GenerationTests(unittest.TestCase):
             adaptation = {"id": new_story["id"], "levels": new_story["levels"]}
             call = Mock(side_effect=[
                 {"stories": [seed]},
-                {"adaptations": []},
+                RuntimeError("OpenAI generation failed (APIConnectionError)"),
                 {"adaptations": [adaptation]},
             ])
             with patch.dict(os.environ, {"OPENAI_MODEL": "test-model"}), patch(
@@ -187,8 +187,8 @@ class GenerationTests(unittest.TestCase):
                 result = generate(root, "2024-01-26", 1)
             self.assertEqual(call.call_count, 3)
             self.assertEqual(call.call_args_list[0].kwargs["phase"], "Research attempt 1/3")
-            self.assertEqual(call.call_args_list[1].kwargs["phase"], "Adaptation attempt 1/2")
-            self.assertEqual(call.call_args_list[2].kwargs["phase"], "Adaptation attempt 2/2")
+            self.assertEqual(call.call_args_list[1].kwargs["phase"], "Adaptation batch 1/1, attempt 1/2")
+            self.assertEqual(call.call_args_list[2].kwargs["phase"], "Adaptation batch 1/1, attempt 2/2")
             self.assertEqual(result["stories"][-1]["id"], "changed-train-platform")
 
     def test_append_keeps_an_old_issues_levels_after_config_expands(self) -> None:
