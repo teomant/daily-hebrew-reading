@@ -56,6 +56,8 @@
 
   function renderUnit(unit) {
     if (unit.type === "separator") return document.createTextNode(unit.text);
+    const translation = unit.translations?.[translationLocale];
+    if (typeof translation !== "string" || !translation.trim()) return document.createTextNode(unit.text);
     const button = document.createElement("button");
     button.type = "button";
     button.className = "lexeme";
@@ -166,7 +168,7 @@
     if (translationButton) {
       translationLocale = translationButton.dataset.translation;
       localStorage.setItem(keys.translation, translationLocale);
-      closePopover(); activateControls();
+      closePopover(); activateControls(); renderArticle();
       return;
     }
     const lexeme = event.target.closest(".lexeme");

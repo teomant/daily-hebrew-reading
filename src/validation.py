@@ -54,8 +54,6 @@ def _validate_units(
             translation = translations.get(locale)
             if not isinstance(translation, str):
                 errors.append(f"{unit_path}.translations.{locale}: expected a string")
-            elif unit_type != "separator" and not translation.strip():
-                errors.append(f"{unit_path}.translations.{locale}: translation is required")
 
 
 def validate_issue(

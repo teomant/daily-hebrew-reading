@@ -443,6 +443,34 @@ def _remove_empty_lexical_units(adaptations: list[dict[str, Any]]) -> int:
     return removed
 
 
+def _missing_translation_errors(stories: list[dict[str, Any]], locales: list[str]) -> list[str]:
+    errors: list[str] = []
+    for story_index, story in enumerate(stories):
+        for level_id, level in story.get("levels", {}).items():
+            groups = [("title", level.get("title")), ("teaser", level.get("teaser"))]
+            groups.extend(
+                (f"paragraphs[{index}]", paragraph)
+                for index, paragraph in enumerate(level.get("paragraphs", []))
+            )
+            for group_name, units in groups:
+                if not isinstance(units, list):
+                    continue
+                for unit_index, unit in enumerate(units):
+                    if not isinstance(unit, dict) or unit.get("type") == "separator":
+                        continue
+                    translations = unit.get("translations")
+                    if not isinstance(translations, dict):
+                        continue
+                    for locale in locales:
+                        value = translations.get(locale)
+                        if isinstance(value, str) and not value.strip():
+                            errors.append(
+                                f"generated batch.stories[{story_index}].levels.{level_id}."
+                                f"{group_name}[{unit_index}].translations.{locale}: translation is required"
+                            )
+    return errors
+
+
 def _remove_redundant_sources(
     stories: list[dict[str, Any]],
     existing: dict[str, Any] | None,
@@ -822,11 +850,21 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
             }
             _log(f"{phase}: validating {len(candidate_stories)} adapted stories")
             candidate_errors = validate_issue(candidate_issue, site, levels, "generated batch")
+            translation_errors = _missing_translation_errors(candidate_stories, locales)
+            candidate_errors.extend(translation_errors)
             if len(set(adaptation_ids)) != len(adaptation_ids) or set(adaptation_ids) != set(story_ids):
                 candidate_errors.append("adaptation phase must return every frozen story ID exactly once")
             if not candidate_errors:
                 completed_batch = candidate_stories
                 _log(f"{phase}: validation passed")
+                break
+            blocking_errors = [error for error in candidate_errors if error not in translation_errors]
+            if attempt == ADAPTATION_ATTEMPTS - 1 and translation_errors and not blocking_errors:
+                completed_batch = candidate_stories
+                _log(
+                    f"{phase}: accepted with {len(translation_errors)} untranslated value(s); "
+                    "their tooltips will be skipped"
+                )
                 break
             adaptation_feedback = candidate_errors[:20]
             _log_validation_errors(phase, candidate_errors)

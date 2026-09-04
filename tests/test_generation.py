@@ -191,6 +191,35 @@ class GenerationTests(unittest.TestCase):
             self.assertEqual(call.call_args_list[2].kwargs["phase"], "Adaptation batch 1/1, attempt 2/2")
             self.assertEqual(result["stories"][-1]["id"], "changed-train-platform")
 
+    def test_second_adaptation_accepts_empty_translation(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            for directory in ("config", "i18n", "prompts", "content"):
+                shutil.copytree(ROOT / directory, root / directory)
+            original = read_json(root / "content" / "2024-01-26.json")
+            new_story = copy.deepcopy(original["stories"][1])
+            new_story["id"] = new_story["slug"] = "changed-office-meeting"
+            new_story["brief"] = "A colleague asks to move a meeting and the team agrees on another time."
+            new_story["everydayMeta"]["domain"] = "work"
+            new_story["everydayMeta"]["scenario"] = "reschedule_office_meeting"
+            seed = {key: value for key, value in new_story.items() if key != "levels"}
+            levels = copy.deepcopy(new_story["levels"])
+            levels["alef"]["title"][0]["translations"]["ru"] = ""
+            adaptation = {"id": new_story["id"], "levels": levels}
+            call = Mock(side_effect=[
+                {"stories": [seed]},
+                {"adaptations": [copy.deepcopy(adaptation)]},
+                {"adaptations": [copy.deepcopy(adaptation)]},
+            ])
+            with patch.dict(os.environ, {"OPENAI_MODEL": "test-model"}), patch(
+                "src.generate_issue._call_openai",
+                call,
+            ):
+                result = generate(root, "2024-01-26", 1)
+            self.assertEqual(call.call_count, 3)
+            self.assertEqual(result["stories"][-1]["levels"]["alef"]["title"][0]["translations"]["ru"], "")
+            self.assertEqual(validate_repository(root), [])
+
     def test_append_keeps_an_old_issues_levels_after_config_expands(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)

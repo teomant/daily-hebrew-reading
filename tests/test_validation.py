@@ -17,6 +17,12 @@ class ValidationTests(unittest.TestCase):
         errors = validate_issue(issue, load_site_config(), load_level_config())
         self.assertTrue(any("missing ['en']" in error for error in errors), errors)
 
+    def test_empty_translation_is_allowed(self) -> None:
+        issue = copy.deepcopy(read_json(ROOT / "content" / "2024-01-26.json"))
+        issue["stories"][0]["levels"]["alef"]["title"][0]["translations"]["en"] = ""
+        errors = validate_issue(issue, load_site_config(), load_level_config())
+        self.assertEqual(errors, [])
+
     def test_sourced_story_may_have_no_source(self) -> None:
         issue = copy.deepcopy(read_json(ROOT / "content" / "2024-01-26.json"))
         issue["stories"][0]["sources"] = []

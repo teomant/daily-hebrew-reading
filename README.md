@@ -78,6 +78,8 @@ The OpenAI API is billed separately from ChatGPT Plus. The API uses the credits 
 
 Generation logs timestamp each research, adaptation, validation, and write phase, including elapsed API-call time and one validation error per line. Research has up to three attempts for invalid story data. Missing sources are allowed; duplicate or unverified source URLs and their dependent images are discarded without retrying research. Adaptation runs in two-story batches so long issues do not depend on one oversized API response; a failed request retries only its batch, and the factual briefs are not researched again.
 
+Empty lexical translations are retried once during adaptation. If the second attempt still contains only translation gaps, the batch is accepted: Hebrew remains visible and untranslated units are rendered without an interactive tooltip. Structural content errors still fail the workflow.
+
 The generation workflow commits with the GitHub Actions bot, then deploys the already validated build. The generated commit does not need to trigger a second workflow.
 
 ## Security
