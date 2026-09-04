@@ -12,6 +12,7 @@ from difflib import SequenceMatcher
 from pathlib import Path
 from time import monotonic
 from typing import Any
+from unicodedata import category as unicode_category
 
 from .common import (
     ROOT,
@@ -38,11 +39,72 @@ CATEGORIES = [
     "history",
     "everyday",
 ]
+PROVENANCE_ERRORS_KEY = "_provenanceErrors"
+RESEARCH_ATTEMPTS = 3
+ADAPTATION_ATTEMPTS = 2
 
 
 def _log(message: str) -> None:
     timestamp = datetime.now(UTC).strftime("%H:%M:%S UTC")
-    print(f"[{timestamp}] {message}", flush=True)
+    print(f"[{timestamp}] {_safe_log_text(message)}", flush=True)
+
+
+def _safe_log_text(value: object) -> str:
+    escaped: list[str] = []
+    for character in str(value):
+        codepoint = ord(character)
+        unsafe = unicode_category(character).startswith("C") or unicode_category(character) in {"Zl", "Zp"}
+        if not unsafe:
+            escaped.append(character)
+        elif codepoint <= 0xFF:
+            escaped.append(f"\\x{codepoint:02x}")
+        elif codepoint <= 0xFFFF:
+            escaped.append(f"\\u{codepoint:04x}")
+        else:
+            escaped.append(f"\\U{codepoint:08x}")
+    return "".join(escaped)
+
+
+def _error_report(errors: list[str]) -> str:
+    return "\n- ".join(_safe_log_text(error) for error in errors)
+
+
+def _log_validation_errors(phase: str, errors: list[str], limit: int = 20) -> None:
+    unique_errors = list(dict.fromkeys(errors))
+    _log(f"{phase}: validation failed with {len(unique_errors)} unique error(s)")
+    for error in unique_errors[:limit]:
+        print(f"  - {_safe_log_text(error)}", flush=True)
+    if len(unique_errors) > limit:
+        print(f"  - … and {len(unique_errors) - limit} more", flush=True)
+
+
+def _generated_external_urls(stories: list[dict[str, Any]]) -> set[str]:
+    urls = {
+        source["url"]
+        for story in stories
+        for source in story.get("sources", [])
+        if isinstance(source, dict) and isinstance(source.get("url"), str)
+    }
+    for story in stories:
+        image = story.get("image")
+        if not isinstance(image, dict):
+            continue
+        for field in ("url", "rightsUrl"):
+            if isinstance(image.get(field), str):
+                urls.add(image[field])
+    return urls
+
+
+def _retained_provenance_errors(
+    unverified_urls: list[str],
+    stories: list[dict[str, Any]],
+) -> list[str]:
+    retained_urls = {normalized_url(url) for url in _generated_external_urls(stories)}
+    return [
+        f"unverified source URL: {url}"
+        for url in unverified_urls
+        if normalized_url(url) in retained_urls
+    ]
 
 
 def _unit_schema(locales: list[str]) -> dict[str, Any]:
@@ -292,7 +354,7 @@ Existing issue exclusions and type counts:
 Recent EVERYDAY history to avoid:
 {json.dumps(recent_history, ensure_ascii=False, indent=2)}
 
-The story id and slug must be identical. Use null everydayMeta for sourced stories. Use null image when image provenance or embedding suitability is uncertain. Every separator unit must still contain translations with empty strings for every locale. Return no prose outside the schema.{retry}
+The story id and slug must be identical. Every sourced story must use distinct canonical content-page URLs; do not repeat a URL anywhere in the batch and do not use publisher homepages, section pages, generic latest pages, or liveblogs. Use null everydayMeta for sourced stories. Use null image when image provenance or embedding suitability is uncertain. Every separator unit must still contain translations with empty strings for every locale. Return no prose outside the schema.{retry}
 """.strip()
 
 
@@ -303,6 +365,7 @@ def _call_openai(
     schema: dict[str, Any],
     use_web_search: bool = True,
     phase: str = "OpenAI request",
+    collect_provenance_errors: bool = False,
 ) -> dict[str, Any]:
     started = monotonic()
     _log(f"{phase}: started with model {model}")
@@ -347,25 +410,15 @@ def _call_openai(
             )
             if action.get("url"):
                 consulted_urls.add(action["url"])
-        generated_urls = {
-            source["url"]
-            for story in result.get("stories", [])
-            for source in story.get("sources", [])
-        }
-        generated_urls.update(
-            story["image"]["rightsUrl"]
-            for story in result.get("stories", [])
-            if story.get("image")
-        )
-        generated_urls.update(
-            story["image"]["url"]
-            for story in result.get("stories", [])
-            if story.get("image")
-        )
+        generated_urls = _generated_external_urls(result.get("stories", []))
         normalized_consulted = {normalized_url(url) for url in consulted_urls}
         unverified = sorted(url for url in generated_urls if normalized_url(url) not in normalized_consulted)
         if use_web_search and unverified:
-            raise RuntimeError("model returned source URLs that were not present in its web-search results")
+            if collect_provenance_errors:
+                result[PROVENANCE_ERRORS_KEY] = unverified
+                _log(f"{phase}: provenance check found {len(unverified)} unverified URL(s)")
+            else:
+                raise RuntimeError("model returned source URLs that were not present in its web-search results")
         _log(f"{phase}: completed after {monotonic() - started:.1f}s")
         return result
     except Exception as exc:
@@ -404,6 +457,60 @@ def _remove_empty_lexical_units(adaptations: list[dict[str, Any]]) -> int:
     return removed
 
 
+def _remove_redundant_sources(
+    stories: list[dict[str, Any]],
+    existing: dict[str, Any] | None,
+) -> tuple[int, int]:
+    """Remove repeated source references when each story keeps a unique source."""
+    seen = {
+        normalized_url(source["url"])
+        for story in (existing["stories"] if existing else [])
+        for source in story.get("sources", [])
+        if isinstance(source, dict) and isinstance(source.get("url"), str)
+    }
+    removed_sources = 0
+    removed_images = 0
+    for story in stories:
+        sources = story.get("sources")
+        if not isinstance(sources, list):
+            continue
+        locally_unique: list[dict[str, Any]] = []
+        local_urls: set[str] = set()
+        for source in sources:
+            if not isinstance(source, dict) or not isinstance(source.get("url"), str):
+                locally_unique.append(source)
+                continue
+            source_url = normalized_url(source["url"])
+            if source_url in local_urls:
+                removed_sources += 1
+                continue
+            local_urls.add(source_url)
+            locally_unique.append(source)
+
+        globally_unique = [
+            source
+            for source in locally_unique
+            if not isinstance(source, dict)
+            or not isinstance(source.get("url"), str)
+            or normalized_url(source["url"]) not in seen
+        ]
+        kept = globally_unique if globally_unique else locally_unique
+        removed_sources += len(locally_unique) - len(kept)
+        story["sources"] = kept
+        kept_urls = {
+            normalized_url(source["url"])
+            for source in kept
+            if isinstance(source, dict) and isinstance(source.get("url"), str)
+        }
+        seen.update(kept_urls)
+        image = story.get("image")
+        if isinstance(image, dict) and isinstance(image.get("sourceUrl"), str):
+            if normalized_url(image["sourceUrl"]) not in kept_urls:
+                story["image"] = None
+                removed_images += 1
+    return removed_sources, removed_images
+
+
 def _adaptation_request(
     seeds: list[dict[str, Any]],
     levels: list[dict[str, Any]],
@@ -434,23 +541,21 @@ def _duplicate_errors(new_stories: list[dict[str, Any]], existing: dict[str, Any
     errors: list[str] = []
     old_stories = existing["stories"] if existing else []
     all_previous = list(old_stories)
-    known_slugs = {story["slug"] for story in old_stories}
-    known_urls = {normalized_url(source["url"]) for story in old_stories for source in story["sources"]}
+    existing_slugs = {story["slug"] for story in old_stories}
+    existing_urls = {normalized_url(source["url"]) for story in old_stories for source in story["sources"]}
     for story in new_stories:
-        if story["slug"] in known_slugs:
+        if story["slug"] in existing_slugs:
             errors.append(f"duplicate slug: {story['slug']}")
         for source in story["sources"]:
             source_url = normalized_url(source["url"])
-            if source_url in known_urls:
+            if source_url in existing_urls:
                 errors.append(f"duplicate source URL: {source['url']}")
-            known_urls.add(source_url)
         normalized_brief = _normalized(story["brief"])
         for previous in all_previous:
             score = SequenceMatcher(None, normalized_brief, _normalized(previous["brief"])).ratio()
             if score >= 0.82:
                 errors.append(f"near-duplicate story briefs: {story['slug']} and {previous['slug']}")
                 break
-        known_slugs.add(story["slug"])
         all_previous.append(story)
     return errors
 
@@ -583,7 +688,7 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
     if existing:
         existing_errors = validate_issue(existing, site, configured_levels, issue_path.name)
         if existing_errors:
-            raise RuntimeError("Existing issue is invalid; refusing to append:\n- " + "\n- ".join(existing_errors))
+            raise RuntimeError("Existing issue is invalid; refusing to append:\n- " + _error_report(existing_errors))
 
     level_ids = existing["availableLevels"] if existing else [item["id"] for item in configured_levels]
     levels = [item for item in configured_levels if item["id"] in level_ids]
@@ -605,7 +710,7 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
     research_feedback: list[str] | None = None
     seeds: list[dict[str, Any]] | None = None
 
-    for attempt in range(2):
+    for attempt in range(RESEARCH_ATTEMPTS):
         attempt_number = attempt + 1
         research_request = _generation_request(
             target_date,
@@ -625,11 +730,23 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
             instructions,
             research_request,
             seed_schema,
-            phase=f"Research attempt {attempt_number}/2",
+            phase=f"Research attempt {attempt_number}/{RESEARCH_ATTEMPTS}",
+            collect_provenance_errors=True,
         )
+        unverified_urls = seed_batch.pop(PROVENANCE_ERRORS_KEY, [])
         candidate_seeds = seed_batch.get("stories", [])
-        _log(f"Research attempt {attempt_number}/2: validating {len(candidate_seeds)} story briefs")
-        research_errors = _seed_errors(
+        removed_sources, removed_images = _remove_redundant_sources(candidate_seeds, existing)
+        if removed_sources or removed_images:
+            _log(
+                f"Research attempt {attempt_number}/{RESEARCH_ATTEMPTS}: removed "
+                f"{removed_sources} redundant source(s) and {removed_images} dependent image(s)"
+            )
+        provenance_errors = _retained_provenance_errors(unverified_urls, candidate_seeds)
+        _log(
+            f"Research attempt {attempt_number}/{RESEARCH_ATTEMPTS}: "
+            f"validating {len(candidate_seeds)} story briefs"
+        )
+        research_errors = [*provenance_errors, *_seed_errors(
             candidate_seeds,
             target_date,
             level_ids,
@@ -639,18 +756,21 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
             existing,
             minimum_count,
             maximum_count,
-        )
+        )]
         if research_errors:
-            research_feedback = research_errors[:20]
-            _log(
-                f"Research attempt {attempt_number}/2: validation failed with "
-                f"{len(research_errors)} error(s): {'; '.join(research_feedback)}"
+            research_feedback = list(dict.fromkeys(research_errors))[:20]
+            _log_validation_errors(
+                f"Research attempt {attempt_number}/{RESEARCH_ATTEMPTS}",
+                research_errors,
             )
-            if attempt == 1:
-                raise RuntimeError("Generated research failed validation:\n- " + "\n- ".join(research_errors))
+            if attempt == RESEARCH_ATTEMPTS - 1:
+                raise RuntimeError("Generated research failed validation:\n- " + _error_report(research_errors))
             continue
         seeds = candidate_seeds
-        _log(f"Research attempt {attempt_number}/2: validation passed; briefs are frozen")
+        _log(
+            f"Research attempt {attempt_number}/{RESEARCH_ATTEMPTS}: "
+            "validation passed; briefs are frozen"
+        )
         break
 
     if seeds is None:
@@ -660,7 +780,7 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
     adaptation_schema = _adaptation_batch_schema(story_ids, levels, locales, image_locales)
     adaptation_feedback: list[str] | None = None
     new_stories: list[dict[str, Any]] | None = None
-    for attempt in range(2):
+    for attempt in range(ADAPTATION_ATTEMPTS):
         attempt_number = attempt + 1
         adaptation_batch = _call_openai(
             os.environ["OPENAI_MODEL"],
@@ -668,12 +788,15 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
             _adaptation_request(seeds, levels, locales, adaptation_feedback),
             adaptation_schema,
             use_web_search=False,
-            phase=f"Adaptation attempt {attempt_number}/2",
+            phase=f"Adaptation attempt {attempt_number}/{ADAPTATION_ATTEMPTS}",
         )
         adaptations = adaptation_batch.get("adaptations", [])
         removed_units = _remove_empty_lexical_units(adaptations)
         if removed_units:
-            _log(f"Adaptation attempt {attempt_number}/2: removed {removed_units} empty lexical unit(s)")
+            _log(
+                f"Adaptation attempt {attempt_number}/{ADAPTATION_ATTEMPTS}: "
+                f"removed {removed_units} empty lexical unit(s)"
+            )
         adaptation_ids = [item.get("id") for item in adaptations]
         adaptation_map = {item.get("id"): item.get("levels", {}) for item in adaptations}
         candidate_stories = [{**story, "levels": adaptation_map.get(story.get("id"), {})} for story in seeds]
@@ -685,21 +808,24 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
             "translationLocales": locales,
             "stories": candidate_stories,
         }
-        _log(f"Adaptation attempt {attempt_number}/2: validating {len(candidate_stories)} adapted stories")
+        _log(
+            f"Adaptation attempt {attempt_number}/{ADAPTATION_ATTEMPTS}: "
+            f"validating {len(candidate_stories)} adapted stories"
+        )
         candidate_errors = validate_issue(candidate_issue, site, levels, "generated batch")
         if len(set(adaptation_ids)) != len(adaptation_ids) or set(adaptation_ids) != set(story_ids):
             candidate_errors.append("adaptation phase must return every frozen story ID exactly once")
         if not candidate_errors:
             new_stories = candidate_stories
-            _log(f"Adaptation attempt {attempt_number}/2: validation passed")
+            _log(f"Adaptation attempt {attempt_number}/{ADAPTATION_ATTEMPTS}: validation passed")
             break
         adaptation_feedback = candidate_errors[:20]
-        _log(
-            f"Adaptation attempt {attempt_number}/2: validation failed with "
-            f"{len(candidate_errors)} error(s): {'; '.join(adaptation_feedback)}"
+        _log_validation_errors(
+            f"Adaptation attempt {attempt_number}/{ADAPTATION_ATTEMPTS}",
+            candidate_errors,
         )
-        if attempt == 1:
-            raise RuntimeError("Generated content failed validation:\n- " + "\n- ".join(candidate_errors))
+        if attempt == ADAPTATION_ATTEMPTS - 1:
+            raise RuntimeError("Generated content failed validation:\n- " + _error_report(candidate_errors))
 
     if new_stories is None:
         raise RuntimeError("Generation produced no usable stories")
@@ -715,7 +841,7 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
     }
     errors = validate_issue(issue, site, configured_levels, issue_path.name)
     if errors:
-        raise RuntimeError("Combined issue failed validation:\n- " + "\n- ".join(errors))
+        raise RuntimeError("Combined issue failed validation:\n- " + _error_report(errors))
     _log(f"Combined issue validation passed with {len(issue['stories'])} total stories")
 
     next_history = _updated_history(history, new_stories, target_date)

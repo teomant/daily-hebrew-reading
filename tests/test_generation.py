@@ -12,11 +12,25 @@ from types import SimpleNamespace
 from unittest.mock import Mock, patch
 
 from src.common import ROOT, read_json
-from src.generate_issue import _call_openai, _transactional_write, generate
+from src.generate_issue import (
+    PROVENANCE_ERRORS_KEY,
+    _call_openai,
+    _remove_redundant_sources,
+    _retained_provenance_errors,
+    _safe_log_text,
+    _transactional_write,
+    generate,
+)
 from src.validation import validate_repository
 
 
 class GenerationTests(unittest.TestCase):
+    def test_log_text_escapes_control_characters(self) -> None:
+        self.assertEqual(
+            _safe_log_text("https://example.com/path\n::error::spoof\x1b\u2028\u202e"),
+            "https://example.com/path\\x0a::error::spoof\\x1b\\u2028\\u202e",
+        )
+
     def test_api_accepts_null_web_search_sources(self) -> None:
         output = {"stories": [{"sources": [{"url": "https://example.com/real"}]}]}
         response = SimpleNamespace(
@@ -43,6 +57,65 @@ class GenerationTests(unittest.TestCase):
             with self.assertRaisesRegex(RuntimeError, "OpenAI generation failed"):
                 _call_openai("test-model", "instructions", "request", {})
             openai.assert_called_once_with(max_retries=0, timeout=300.0)
+
+    def test_api_can_return_unverified_urls_as_research_feedback(self) -> None:
+        output = {"stories": [{"sources": [{"url": "https://example.com/invented"}]}]}
+        response = SimpleNamespace(
+            output_text=json.dumps(output),
+            model_dump=lambda: {"output": [{
+                "type": "web_search_call",
+                "action": {"sources": [{"url": "https://example.com/real"}]},
+            }]},
+        )
+        openai = Mock()
+        openai.return_value.responses.create.return_value = response
+        with patch.dict(sys.modules, {"openai": SimpleNamespace(OpenAI=openai)}):
+            result = _call_openai(
+                "test-model",
+                "instructions",
+                "request",
+                {},
+                collect_provenance_errors=True,
+            )
+        self.assertEqual(result[PROVENANCE_ERRORS_KEY], ["https://example.com/invented"])
+
+    def test_redundant_sources_are_removed_when_a_unique_source_remains(self) -> None:
+        stories = [
+            {
+                "sources": [
+                    {"url": "https://example.com/shared"},
+                    {"url": "https://example.com/shared/"},
+                ],
+                "image": None,
+            },
+            {
+                "sources": [
+                    {"url": "https://example.com/shared?utm_source=test"},
+                    {"url": "https://example.com/unique"},
+                ],
+                "image": {
+                    "sourceUrl": "https://example.com/shared",
+                    "url": "https://cdn.example.com/removed.jpg",
+                    "rightsUrl": "https://example.com/removed-rights",
+                },
+            },
+        ]
+        removed_sources, removed_images = _remove_redundant_sources(stories, None)
+        self.assertEqual((removed_sources, removed_images), (2, 1))
+        self.assertEqual([source["url"] for source in stories[0]["sources"]], ["https://example.com/shared"])
+        self.assertEqual([source["url"] for source in stories[1]["sources"]], ["https://example.com/unique"])
+        self.assertIsNone(stories[1]["image"])
+        self.assertEqual(
+            _retained_provenance_errors(
+                [
+                    "https://example.com/shared",
+                    "https://example.com/unique",
+                    "https://cdn.example.com/removed.jpg",
+                ],
+                stories,
+            ),
+            ["unverified source URL: https://example.com/shared", "unverified source URL: https://example.com/unique"],
+        )
 
     def test_api_image_url_must_come_from_web_search_results(self) -> None:
         output = {
@@ -142,7 +215,7 @@ class GenerationTests(unittest.TestCase):
             ):
                 result = generate(root, "2024-01-26", 1)
             self.assertEqual(call.call_count, 3)
-            self.assertEqual(call.call_args_list[0].kwargs["phase"], "Research attempt 1/2")
+            self.assertEqual(call.call_args_list[0].kwargs["phase"], "Research attempt 1/3")
             self.assertEqual(call.call_args_list[1].kwargs["phase"], "Adaptation attempt 1/2")
             self.assertEqual(call.call_args_list[2].kwargs["phase"], "Adaptation attempt 2/2")
             self.assertEqual(result["stories"][-1]["id"], "changed-train-platform")
@@ -180,16 +253,23 @@ class GenerationTests(unittest.TestCase):
             for directory in ("config", "i18n", "prompts", "content"):
                 shutil.copytree(ROOT / directory, root / directory)
             original = read_json(root / "content" / "2024-01-26.json")
-            new_story = copy.deepcopy(original["stories"][1])
-            new_story["id"] = new_story["slug"] = "changed-train-platform"
-            new_story["brief"] = "A commuter follows a changed platform announcement and reaches the train on time."
-            new_story["everydayMeta"]["domain"] = "public_transport"
-            new_story["everydayMeta"]["scenario"] = "changed_train_platform"
+            new_story = copy.deepcopy(original["stories"][0])
+            new_story["id"] = new_story["slug"] = "new-science-story"
+            new_story["brief"] = "Researchers published a new, independently sourced science result."
+            new_story["sources"] = [{
+                "publisher": "Example Science",
+                "title": "New science result",
+                "url": "https://example.com/unverified",
+            }]
+            new_story["image"] = None
             valid_seed = {key: value for key, value in new_story.items() if key != "levels"}
             invalid_seed = {**valid_seed, "slug": "Not a valid slug"}
             adaptation = {"id": new_story["id"], "levels": new_story["levels"]}
             call = Mock(side_effect=[
-                {"stories": [invalid_seed]},
+                {
+                    "stories": [invalid_seed],
+                    PROVENANCE_ERRORS_KEY: ["https://example.com/unverified"],
+                },
                 {"stories": [valid_seed]},
                 {"adaptations": [adaptation]},
             ])
@@ -199,7 +279,8 @@ class GenerationTests(unittest.TestCase):
             ):
                 result = generate(root, "2024-01-26", 1)
             self.assertEqual(call.call_count, 3)
-            self.assertEqual(result["stories"][-1]["id"], "changed-train-platform")
+            self.assertIn("unverified source URL", call.call_args_list[1].args[2])
+            self.assertEqual(result["stories"][-1]["id"], "new-science-story")
 
 
 if __name__ == "__main__":

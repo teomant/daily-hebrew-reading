@@ -21,4 +21,7 @@
 - Content validation, 15 unit tests, JavaScript syntax checking, static building, and desktop/mobile headless-browser checks passed after the changes.
 - Added timestamped generation diagnostics for research, adaptation, validation, retries, and transactional writes. Refactored retries so an adaptation error no longer repeats the expensive research phase.
 - Prevented the observed empty-title-unit failure through the Structured Outputs schema and prompt, plus a defensive normalization that removes only zero-length units while retaining meaningful whitespace separators.
-- Final verification passed content validation, 16 unit tests, JavaScript syntax checking, the production static build, and repository diff checks.
+- Routed unverified search URLs into visible research-validation feedback instead of aborting before the retry loop, added a third research-only attempt, removed redundant source references only when a story retains a unique source, and strengthened the prompt against homepages, section pages, generic latest pages, and liveblogs.
+- Reformatted validation diagnostics as one error per line for readable GitHub Actions logs.
+- Hardened generated-URL handling by rejecting URL whitespace/control characters and escaping control characters in logs and exception reports.
+- Final verification passed content validation, 20 unit tests, Python compilation, JavaScript syntax checking, workflow YAML parsing, the production static build, and repository diff checks.

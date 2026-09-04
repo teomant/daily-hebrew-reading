@@ -23,6 +23,14 @@ class ValidationTests(unittest.TestCase):
         errors = validate_issue(issue, load_site_config(), load_level_config())
         self.assertTrue(any("require at least one source" in error for error in errors), errors)
 
+    def test_source_url_with_control_characters_is_rejected(self) -> None:
+        for unsafe_suffix in ("\n::error::spoof", "\u0085spoof", "\u2028spoof", "\u202espoof"):
+            with self.subTest(unsafe_suffix=repr(unsafe_suffix)):
+                issue = copy.deepcopy(read_json(ROOT / "content" / "2024-01-26.json"))
+                issue["stories"][0]["sources"][0]["url"] += unsafe_suffix
+                errors = validate_issue(issue, load_site_config(), load_level_config())
+                self.assertTrue(any("expected a valid HTTPS URL" in error for error in errors), errors)
+
     def test_equivalent_source_urls_are_duplicates(self) -> None:
         for suffix in ("/", "?utm_source=duplicate-test"):
             with self.subTest(suffix=suffix):

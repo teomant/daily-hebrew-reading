@@ -3,6 +3,7 @@ from __future__ import annotations
 import re
 from pathlib import Path
 from typing import Any
+from unicodedata import category as unicode_category
 from urllib.parse import urlparse
 
 from .common import issue_minutes, normalized_url, read_json, units_text
@@ -15,6 +16,8 @@ UNIT_TYPES = {"word", "expression", "properNoun", "separator"}
 
 def _https_url(value: Any) -> bool:
     if not isinstance(value, str):
+        return False
+    if any(character.isspace() or unicode_category(character).startswith("C") for character in value):
         return False
     parsed = urlparse(value)
     return parsed.scheme == "https" and bool(parsed.netloc)
