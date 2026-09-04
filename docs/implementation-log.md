@@ -13,3 +13,9 @@
 - Applied the independent implementation review: image and rights URLs are checked against actual research results, research briefs are validated before adaptation, equivalent source URLs are deduplicated, the homepage renders the whole issue, and date/minute localization is delegated to browser internationalization for future locales.
 - Final verification passed content validation, 14 unit tests, Python compilation, JavaScript syntax checking, workflow YAML parsing, the production project-path build, and link checks. Headless Firefox checks covered the desktop homepage and a narrow mobile article page; the temporary server, builds, browser profiles, screenshots, and caches were removed afterward.
 - The post-fix independent confirmation review found no remaining issues or regressions.
+
+## 2026-09-05
+
+- Fixed the first live generation failure caused by OpenAI web-search actions returning `sources: null`; URL extraction now safely handles null or malformed search-result entries, with a regression test matching the observed response.
+- Improved readability without changing the selected Jerusalem Journal direction: enlarged small interface text and controls, strengthened Hebrew headings, and increased article body size and line spacing on desktop and mobile.
+- Content validation, 15 unit tests, JavaScript syntax checking, static building, and desktop/mobile headless-browser checks passed after the changes.

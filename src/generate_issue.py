@@ -324,13 +324,17 @@ def _call_openai(
         if not response.output_text:
             raise RuntimeError("model returned no structured output")
         result = json.loads(response.output_text)
-        response_data = response.model_dump()
+        response_data = response.model_dump() or {}
         consulted_urls: set[str] = set()
-        for item in response_data.get("output", []):
-            if item.get("type") != "web_search_call":
+        for item in response_data.get("output") or []:
+            if not isinstance(item, dict) or item.get("type") != "web_search_call":
                 continue
             action = item.get("action") or {}
-            consulted_urls.update(source["url"] for source in action.get("sources", []) if source.get("url"))
+            consulted_urls.update(
+                source["url"]
+                for source in action.get("sources") or []
+                if isinstance(source, dict) and source.get("url")
+            )
             if action.get("url"):
                 consulted_urls.add(action["url"])
         generated_urls = {

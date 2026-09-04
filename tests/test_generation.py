@@ -17,6 +17,20 @@ from src.validation import validate_repository
 
 
 class GenerationTests(unittest.TestCase):
+    def test_api_accepts_null_web_search_sources(self) -> None:
+        output = {"stories": [{"sources": [{"url": "https://example.com/real"}]}]}
+        response = SimpleNamespace(
+            output_text=json.dumps(output),
+            model_dump=lambda: {"output": [{
+                "type": "web_search_call",
+                "action": {"sources": None, "url": "https://example.com/real"},
+            }]},
+        )
+        openai = Mock()
+        openai.return_value.responses.create.return_value = response
+        with patch.dict(sys.modules, {"openai": SimpleNamespace(OpenAI=openai)}):
+            self.assertEqual(_call_openai("test-model", "instructions", "request", {}), output)
+
     def test_api_sources_must_come_from_web_search_results(self) -> None:
         output = {"stories": [{"sources": [{"url": "https://example.com/invented"}]}]}
         response = SimpleNamespace(
