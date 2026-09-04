@@ -104,6 +104,8 @@ class GenerationTests(unittest.TestCase):
             new_story["everydayMeta"]["domain"] = "public_transport"
             new_story["everydayMeta"]["scenario"] = "changed_train_platform"
             seed = {key: value for key, value in new_story.items() if key != "levels"}
+            for level in new_story["levels"].values():
+                level["title"].append({"text": "", "type": "separator", "translations": {"ru": "", "en": ""}})
             adaptation = {"id": new_story["id"], "levels": new_story["levels"]}
             with patch.dict(os.environ, {"OPENAI_MODEL": "test-model"}), patch(
                 "src.generate_issue._call_openai",
@@ -113,7 +115,37 @@ class GenerationTests(unittest.TestCase):
             self.assertEqual([story["id"] for story in result["stories"][:3]], [story["id"] for story in original["stories"]])
             self.assertEqual(result["stories"][-1]["id"], "changed-train-platform")
             self.assertEqual(len(result["stories"]), 4)
+            self.assertTrue(all(unit["text"] for level in result["stories"][-1]["levels"].values() for unit in level["title"]))
             self.assertEqual(validate_repository(root), [])
+
+    def test_adaptation_retry_does_not_repeat_research(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            for directory in ("config", "i18n", "prompts", "content"):
+                shutil.copytree(ROOT / directory, root / directory)
+            original = read_json(root / "content" / "2024-01-26.json")
+            new_story = copy.deepcopy(original["stories"][1])
+            new_story["id"] = new_story["slug"] = "changed-train-platform"
+            new_story["brief"] = "A commuter follows a platform change and reaches the train on time."
+            new_story["everydayMeta"]["domain"] = "public_transport"
+            new_story["everydayMeta"]["scenario"] = "changed_train_platform"
+            seed = {key: value for key, value in new_story.items() if key != "levels"}
+            adaptation = {"id": new_story["id"], "levels": new_story["levels"]}
+            call = Mock(side_effect=[
+                {"stories": [seed]},
+                {"adaptations": []},
+                {"adaptations": [adaptation]},
+            ])
+            with patch.dict(os.environ, {"OPENAI_MODEL": "test-model"}), patch(
+                "src.generate_issue._call_openai",
+                call,
+            ):
+                result = generate(root, "2024-01-26", 1)
+            self.assertEqual(call.call_count, 3)
+            self.assertEqual(call.call_args_list[0].kwargs["phase"], "Research attempt 1/2")
+            self.assertEqual(call.call_args_list[1].kwargs["phase"], "Adaptation attempt 1/2")
+            self.assertEqual(call.call_args_list[2].kwargs["phase"], "Adaptation attempt 2/2")
+            self.assertEqual(result["stories"][-1]["id"], "changed-train-platform")
 
     def test_append_keeps_an_old_issues_levels_after_config_expands(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:

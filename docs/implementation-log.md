@@ -19,3 +19,6 @@
 - Fixed the first live generation failure caused by OpenAI web-search actions returning `sources: null`; URL extraction now safely handles null or malformed search-result entries, with a regression test matching the observed response.
 - Improved readability without changing the selected Jerusalem Journal direction: enlarged small interface text and controls, strengthened Hebrew headings, and increased article body size and line spacing on desktop and mobile.
 - Content validation, 15 unit tests, JavaScript syntax checking, static building, and desktop/mobile headless-browser checks passed after the changes.
+- Added timestamped generation diagnostics for research, adaptation, validation, retries, and transactional writes. Refactored retries so an adaptation error no longer repeats the expensive research phase.
+- Prevented the observed empty-title-unit failure through the Structured Outputs schema and prompt, plus a defensive normalization that removes only zero-length units while retaining meaningful whitespace separators.
+- Final verification passed content validation, 16 unit tests, JavaScript syntax checking, the production static build, and repository diff checks.

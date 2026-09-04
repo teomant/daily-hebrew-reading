@@ -10,6 +10,7 @@ import tempfile
 from datetime import UTC, date, datetime, timedelta
 from difflib import SequenceMatcher
 from pathlib import Path
+from time import monotonic
 from typing import Any
 
 from .common import (
@@ -39,6 +40,11 @@ CATEGORIES = [
 ]
 
 
+def _log(message: str) -> None:
+    timestamp = datetime.now(UTC).strftime("%H:%M:%S UTC")
+    print(f"[{timestamp}] {message}", flush=True)
+
+
 def _unit_schema(locales: list[str]) -> dict[str, Any]:
     translations = {
         "type": "object",
@@ -49,7 +55,7 @@ def _unit_schema(locales: list[str]) -> dict[str, Any]:
     return {
         "type": "object",
         "properties": {
-            "text": {"type": "string"},
+            "text": {"type": "string", "pattern": ".+"},
             "type": {"type": "string", "enum": ["word", "expression", "properNoun", "separator"]},
             "translations": translations,
         },
@@ -296,7 +302,10 @@ def _call_openai(
     request: str,
     schema: dict[str, Any],
     use_web_search: bool = True,
+    phase: str = "OpenAI request",
 ) -> dict[str, Any]:
+    started = monotonic()
+    _log(f"{phase}: started with model {model}")
     try:
         from openai import OpenAI
 
@@ -321,6 +330,7 @@ def _call_openai(
             parameters["tools"] = [{"type": "web_search", "search_context_size": "medium"}]
             parameters["include"] = ["web_search_call.action.sources"]
         response = client.responses.create(**parameters)
+        _log(f"{phase}: response received after {monotonic() - started:.1f}s")
         if not response.output_text:
             raise RuntimeError("model returned no structured output")
         result = json.loads(response.output_text)
@@ -356,13 +366,42 @@ def _call_openai(
         unverified = sorted(url for url in generated_urls if normalized_url(url) not in normalized_consulted)
         if use_web_search and unverified:
             raise RuntimeError("model returned source URLs that were not present in its web-search results")
+        _log(f"{phase}: completed after {monotonic() - started:.1f}s")
         return result
     except Exception as exc:
+        _log(f"{phase}: failed after {monotonic() - started:.1f}s ({type(exc).__name__})")
         raise RuntimeError(f"OpenAI generation failed ({type(exc).__name__})") from exc
 
 
 def _normalized(value: str) -> str:
     return " ".join(re.findall(r"\w+", value.casefold()))
+
+
+def _remove_empty_lexical_units(adaptations: list[dict[str, Any]]) -> int:
+    """Drop zero-length units, which carry no text and are safe to omit."""
+    removed = 0
+    for adaptation in adaptations:
+        levels = adaptation.get("levels")
+        if not isinstance(levels, dict):
+            continue
+        for level in levels.values():
+            if not isinstance(level, dict):
+                continue
+            for field in ("title", "teaser"):
+                units = level.get(field)
+                if isinstance(units, list):
+                    filtered = [unit for unit in units if not isinstance(unit, dict) or unit.get("text") != ""]
+                    removed += len(units) - len(filtered)
+                    level[field] = filtered
+            paragraphs = level.get("paragraphs")
+            if isinstance(paragraphs, list):
+                for index, units in enumerate(paragraphs):
+                    if not isinstance(units, list):
+                        continue
+                    filtered = [unit for unit in units if not isinstance(unit, dict) or unit.get("text") != ""]
+                    removed += len(units) - len(filtered)
+                    paragraphs[index] = filtered
+    return removed
 
 
 def _adaptation_request(
@@ -558,10 +597,16 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
     instructions = _read_prompts(root)
     image_locales = list(dict.fromkeys([*site["interfaceLocales"], *locales]))
     seed_schema = _seed_batch_schema(minimum_count, maximum_count, levels, locales, image_locales)
-    feedback: list[str] | None = None
-    new_stories: list[dict[str, Any]] | None = None
+    mode = "append" if existing else "new issue"
+    _log(
+        f"Preparing {target_date} ({mode}); target {target_count} stories, "
+        f"allowed range {minimum_count}-{maximum_count}"
+    )
+    research_feedback: list[str] | None = None
+    seeds: list[dict[str, Any]] | None = None
 
     for attempt in range(2):
+        attempt_number = attempt + 1
         research_request = _generation_request(
             target_date,
             target_count,
@@ -572,13 +617,20 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
             locales,
             exclusions,
             recent,
-            feedback,
+            research_feedback,
         )
         research_request += "\n\nThis is the research and planning phase. Return only sourced/scenario metadata and concise frozen briefs; do not write level adaptations yet."
-        seed_batch = _call_openai(os.environ["OPENAI_MODEL"], instructions, research_request, seed_schema)
-        seeds = seed_batch.get("stories", [])
+        seed_batch = _call_openai(
+            os.environ["OPENAI_MODEL"],
+            instructions,
+            research_request,
+            seed_schema,
+            phase=f"Research attempt {attempt_number}/2",
+        )
+        candidate_seeds = seed_batch.get("stories", [])
+        _log(f"Research attempt {attempt_number}/2: validating {len(candidate_seeds)} story briefs")
         research_errors = _seed_errors(
-            seeds,
+            candidate_seeds,
             target_date,
             level_ids,
             locales,
@@ -589,20 +641,39 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
             maximum_count,
         )
         if research_errors:
-            feedback = research_errors[:20]
+            research_feedback = research_errors[:20]
+            _log(
+                f"Research attempt {attempt_number}/2: validation failed with "
+                f"{len(research_errors)} error(s): {'; '.join(research_feedback)}"
+            )
             if attempt == 1:
                 raise RuntimeError("Generated research failed validation:\n- " + "\n- ".join(research_errors))
             continue
-        story_ids = [story.get("id", "") for story in seeds]
-        adaptation_schema = _adaptation_batch_schema(story_ids, levels, locales, image_locales)
+        seeds = candidate_seeds
+        _log(f"Research attempt {attempt_number}/2: validation passed; briefs are frozen")
+        break
+
+    if seeds is None:
+        raise RuntimeError("Research produced no usable story briefs")
+
+    story_ids = [story.get("id", "") for story in seeds]
+    adaptation_schema = _adaptation_batch_schema(story_ids, levels, locales, image_locales)
+    adaptation_feedback: list[str] | None = None
+    new_stories: list[dict[str, Any]] | None = None
+    for attempt in range(2):
+        attempt_number = attempt + 1
         adaptation_batch = _call_openai(
             os.environ["OPENAI_MODEL"],
             instructions,
-            _adaptation_request(seeds, levels, locales, feedback),
+            _adaptation_request(seeds, levels, locales, adaptation_feedback),
             adaptation_schema,
             use_web_search=False,
+            phase=f"Adaptation attempt {attempt_number}/2",
         )
         adaptations = adaptation_batch.get("adaptations", [])
+        removed_units = _remove_empty_lexical_units(adaptations)
+        if removed_units:
+            _log(f"Adaptation attempt {attempt_number}/2: removed {removed_units} empty lexical unit(s)")
         adaptation_ids = [item.get("id") for item in adaptations]
         adaptation_map = {item.get("id"): item.get("levels", {}) for item in adaptations}
         candidate_stories = [{**story, "levels": adaptation_map.get(story.get("id"), {})} for story in seeds]
@@ -614,13 +685,19 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
             "translationLocales": locales,
             "stories": candidate_stories,
         }
+        _log(f"Adaptation attempt {attempt_number}/2: validating {len(candidate_stories)} adapted stories")
         candidate_errors = validate_issue(candidate_issue, site, levels, "generated batch")
         if len(set(adaptation_ids)) != len(adaptation_ids) or set(adaptation_ids) != set(story_ids):
             candidate_errors.append("adaptation phase must return every frozen story ID exactly once")
         if not candidate_errors:
             new_stories = candidate_stories
+            _log(f"Adaptation attempt {attempt_number}/2: validation passed")
             break
-        feedback = candidate_errors[:20]
+        adaptation_feedback = candidate_errors[:20]
+        _log(
+            f"Adaptation attempt {attempt_number}/2: validation failed with "
+            f"{len(candidate_errors)} error(s): {'; '.join(adaptation_feedback)}"
+        )
         if attempt == 1:
             raise RuntimeError("Generated content failed validation:\n- " + "\n- ".join(candidate_errors))
 
@@ -639,9 +716,11 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
     errors = validate_issue(issue, site, configured_levels, issue_path.name)
     if errors:
         raise RuntimeError("Combined issue failed validation:\n- " + "\n- ".join(errors))
+    _log(f"Combined issue validation passed with {len(issue['stories'])} total stories")
 
     next_history = _updated_history(history, new_stories, target_date)
     next_index = _build_index(content_dir, issue, site, configured_levels)
+    _log("Writing issue, index, and EVERYDAY history transactionally")
     _transactional_write(
         {
             issue_path: issue,
@@ -649,6 +728,7 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
             content_dir / "index.json": next_index,
         }
     )
+    _log("Content files updated successfully")
     return issue
 
 
