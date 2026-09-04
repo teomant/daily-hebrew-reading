@@ -6,8 +6,17 @@
       "storyId": "late-furniture-delivery",
       "domain": "delivery",
       "scenario": "late_furniture_delivery_and_reschedule",
-      "lexicalThemes": ["waiting", "asking for an estimate", "changing plans"],
-      "targetVocabulary": ["עדיין לא", "הבטיחו לי", "מתי בערך", "בסוף החלטתי"]
+      "lexicalThemes": [
+        "waiting",
+        "asking for an estimate",
+        "changing plans"
+      ],
+      "targetVocabulary": [
+        "עדיין לא",
+        "הבטיחו לי",
+        "מתי בערך",
+        "בסוף החלטתי"
+      ]
     }
   ]
 }
