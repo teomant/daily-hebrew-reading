@@ -281,6 +281,35 @@ def _recent_history(history: dict[str, Any], target: date, days: int) -> list[di
     return recent
 
 
+def _recent_issue_context(content_dir: Path, target: date, days: int) -> list[dict[str, Any]]:
+    issues: list[dict[str, Any]] = []
+    dated_paths: list[tuple[date, Path]] = []
+    cutoff = target - timedelta(days=days)
+    for path in content_dir.glob("????-??-??.json"):
+        try:
+            issue_date = date.fromisoformat(path.stem)
+        except ValueError:
+            continue
+        if cutoff <= issue_date < target:
+            dated_paths.append((issue_date, path))
+    for issue_date, path in sorted(dated_paths, reverse=True):
+        issue = read_json(path)
+        stories = []
+        for story in issue.get("stories", []):
+            if not isinstance(story, dict):
+                continue
+            stories.append(
+                {
+                    "id": story.get("id"),
+                    "type": story.get("type"),
+                    "category": story.get("category"),
+                    "brief": story.get("brief"),
+                }
+            )
+        issues.append({"date": issue_date.isoformat(), "stories": stories})
+    return issues
+
+
 def _existing_exclusions(issue: dict[str, Any] | None) -> dict[str, Any]:
     if not issue:
         return {"slugs": [], "sourceUrls": [], "briefs": [], "types": {}}
@@ -305,11 +334,12 @@ def _generation_request(
     locales: list[str],
     exclusions: dict[str, Any],
     recent_history: list[dict[str, Any]],
+    recent_issues: list[dict[str, Any]],
     feedback: list[str] | None = None,
 ) -> str:
     mode = (
         "This issue already exists. Produce only new stories to append. Preserve the existing issue outside this response. "
-        "Balance the existing type counts; normally do not add a second HISTORY story."
+        "The complete issue after appending must contain 3–5 EVERYDAY stories. Balance the existing type counts; normally do not add a second HISTORY story."
         if is_append
         else
         "Create the first complete issue for this date. Aim for 4 CURRENT stories, 4 EVERYDAY stories, and 2 HISTORY stories; "
@@ -343,6 +373,11 @@ Existing issue exclusions and type counts:
 
 Recent EVERYDAY history to avoid:
 {json.dumps(recent_history, ensure_ascii=False, indent=2)}
+
+Content from the previous {len(recent_issues)} available issue(s):
+{json.dumps(recent_issues, ensure_ascii=False, indent=2)}
+
+Do not repeat the same real event, historical subject, or everyday scenario from these previous issues. A genuine follow-up is allowed only when something materially changed and the new angle is clearly distinct.
 
 The story id and slug must be identical. Prefer distinct canonical content-page URLs for sourced stories; use an empty source list rather than an uncertain URL. Do not use publisher homepages, section pages, generic latest pages, or liveblogs. Use null everydayMeta for sourced stories. Use null image when image provenance or embedding suitability is uncertain. Every separator unit must still contain translations with empty strings for every locale. Return no prose outside the schema.{retry}
 """.strip()
@@ -610,6 +645,23 @@ def _seed_errors(
         errors.append("research phase returned duplicate story IDs")
     if not minimum_count <= len(seeds) <= maximum_count:
         errors.append(f"expected {minimum_count}–{maximum_count} research stories, got {len(seeds)}")
+    existing_everyday = sum(
+        story.get("type") == "everyday"
+        for story in (existing.get("stories", []) if existing else [])
+        if isinstance(story, dict)
+    )
+    generated_everyday = sum(
+        story.get("type") == "everyday"
+        for story in seeds
+        if isinstance(story, dict)
+    )
+    total_everyday = existing_everyday + generated_everyday
+    enforce_everyday_mix = existing is None or len(existing.get("stories", [])) >= int(site["minimumIssueStoryCount"])
+    if enforce_everyday_mix and not 3 <= total_everyday <= 5:
+        errors.append(
+            "issue requires 3–5 EVERYDAY (fully AI-generated) stories; "
+            f"existing {existing_everyday} + generated {generated_everyday} = {total_everyday}"
+        )
     if all(isinstance(story, dict) and isinstance(story.get("sources"), list) and isinstance(story.get("brief"), str) for story in seeds):
         errors.extend(_duplicate_errors(seeds, existing))
     return errors
@@ -720,6 +772,11 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
     maximum_count = additional_stories if existing else int(site["maximumIssueStoryCount"])
     exclusions = _existing_exclusions(existing)
     recent = _recent_history(history, target, int(site["everydayHistoryDays"]))
+    recent_issues = _recent_issue_context(
+        content_dir,
+        target,
+        int(site["recentIssueContextDays"]),
+    )
     instructions = _read_prompts(root)
     image_locales = list(dict.fromkeys([*site["interfaceLocales"], *locales]))
     seed_schema = _seed_batch_schema(minimum_count, maximum_count, levels, locales, image_locales)
@@ -743,6 +800,7 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
             locales,
             exclusions,
             recent,
+            recent_issues,
             research_feedback,
         )
         research_request += "\n\nThis is the research and planning phase. Return only sourced/scenario metadata and concise frozen briefs; do not write level adaptations yet."

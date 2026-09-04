@@ -10,5 +10,6 @@
   "minimumIssueStoryCount": 8,
   "maximumIssueStoryCount": 12,
   "defaultAppendStoryCount": 3,
+  "recentIssueContextDays": 3,
   "everydayHistoryDays": 30
 }

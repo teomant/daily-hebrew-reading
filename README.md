@@ -52,7 +52,7 @@ Generation validates a complete candidate before replacing any repository conten
 - `content/YYYY-MM-DD.json` — complete ordered issue.
 - `content/index.json` — dates, story counts, and estimated reading times.
 - `content/everyday-history.json` — scenario history used to reduce repetition.
-- `config/site.json` — base path, enabled locales, defaults, and flexible new-issue count range.
+- `config/site.json` — base path, enabled locales, defaults, flexible new-issue count range, and the three-day previous-issue context window.
 - `config/reading-levels.json` — ordered level IDs, labels, word guidance, and reading speeds.
 - `i18n/*.json` — interface dictionaries. Adding a locale requires a matching dictionary and adding its code to `site.json`.
 - `prompts/*.md` — editorial, everyday-scenario, and adaptation rules.

@@ -145,6 +145,8 @@ Alef may omit details and Bet may expand them, but central facts and events must
 
 Generated everyday stories must not repeat too frequently. Keep the history of EVERYDAY topics in Git. For recent stories, retain the date, domain, scenario, main lexical themes, and target vocabulary. Consider approximately the previous 30 days when generating a new issue.
 
+Every complete issue must contain 3–5 EVERYDAY stories. This range is enforced during research validation and stated explicitly in the editorial prompt. The research prompt also receives compact date/type/category/ID/brief summaries from all issues in the previous three calendar days so CURRENT events, HISTORY subjects, and EVERYDAY plots are not repeated on consecutive days.
+
 ## 12. EVERYDAY domains
 
 Example domains include supermarket, shopping, restaurant, café, food delivery, public transport, taxi, car, parking, petrol station, pharmacy, doctor, dentist, school, kindergarten, work, colleagues, customer support, phone call, WhatsApp, online shopping, delivery, returns, refunds, post office, package, bank, payment, credit card, apartment, rent, home repair, plumber, electrician, neighbours, weather, weekend plans, travel, hotel, airport, guests, cooking, cleaning, appointments, lateness, changed plans, lost or forgotten items, booking, queues, subscriptions, internet providers, mobile phones, home appliances, clothes, shoes, and family logistics. This list is extensible.

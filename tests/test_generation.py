@@ -7,6 +7,7 @@ import sys
 import tempfile
 import unittest
 import json
+from datetime import date
 from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import Mock, patch
@@ -16,7 +17,9 @@ from src.generate_issue import (
     PROVENANCE_ERRORS_KEY,
     _call_openai,
     _remove_redundant_sources,
+    _recent_issue_context,
     _safe_log_text,
+    _seed_errors,
     _transactional_write,
     generate,
 )
@@ -24,6 +27,51 @@ from src.validation import validate_repository
 
 
 class GenerationTests(unittest.TestCase):
+    def test_recent_issue_context_uses_only_previous_three_days(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            content_dir = Path(temporary)
+            for issue_date in ("2026-09-01", "2026-09-02", "2026-09-04", "2026-09-05"):
+                payload = {
+                    "stories": [{
+                        "id": f"story-{issue_date}",
+                        "type": "current",
+                        "category": "city",
+                        "brief": f"Brief for {issue_date}",
+                    }]
+                }
+                (content_dir / f"{issue_date}.json").write_text(json.dumps(payload), encoding="utf-8")
+            context = _recent_issue_context(content_dir, date.fromisoformat("2026-09-05"), 3)
+        self.assertEqual([item["date"] for item in context], ["2026-09-04", "2026-09-02"])
+
+    def test_new_issue_requires_three_to_five_everyday_stories(self) -> None:
+        site = read_json(ROOT / "config" / "site.json")
+        levels = read_json(ROOT / "config" / "reading-levels.json")["levels"]
+        seeds = [
+            {
+                "id": f"story-{index}",
+                "slug": f"story-{index}",
+                "type": "history" if index >= 8 else "current",
+                "category": "history" if index >= 8 else "city",
+                "brief": f"Distinct factual subject number {index}",
+                "everydayMeta": None,
+                "sources": [],
+                "image": None,
+            }
+            for index in range(10)
+        ]
+        errors = _seed_errors(
+            seeds,
+            "2026-09-05",
+            [level["id"] for level in levels],
+            site["translationLocales"],
+            site,
+            levels,
+            None,
+            8,
+            12,
+        )
+        self.assertTrue(any("requires 3–5 EVERYDAY" in error for error in errors), errors)
+
     def test_log_text_escapes_control_characters(self) -> None:
         self.assertEqual(
             _safe_log_text("https://example.com/path\n::error::spoof\x1b\u2028\u202e"),
