@@ -25,4 +25,5 @@
 - Reformatted validation diagnostics as one error per line for readable GitHub Actions logs.
 - Hardened generated-URL handling by rejecting URL whitespace/control characters and escaping control characters in logs and exception reports.
 - Simplified source handling by allowing source-free CURRENT/HISTORY stories and silently discarding duplicate or unverified URLs plus dependent images, so source quality alone does not trigger another paid research call.
-- Final verification passed content validation, 19 unit tests, Python compilation, JavaScript syntax checking, workflow YAML parsing, the production static build, and repository diff checks.
+- Made lexical rendering restore omitted spaces in both generated HTML and client-side level changes, switched all typography to system Arial, and stacked mobile story-card content so titles and metadata no longer compete for the same narrow row.
+- Final verification passed content validation, 20 unit tests, Python compilation, JavaScript syntax checking, workflow YAML parsing, and the production static build.

@@ -7,8 +7,8 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlparse
 
-from src.build_site import build, build_day, build_home
-from src.common import ROOT, load_level_config, load_locales, load_site_config, read_json
+from src.build_site import build, build_day, build_home, render_units
+from src.common import ROOT, load_level_config, load_locales, load_site_config, read_json, units_text
 
 
 class LinkCollector(HTMLParser):
@@ -24,6 +24,17 @@ class LinkCollector(HTMLParser):
 
 
 class BuildTests(unittest.TestCase):
+    def test_missing_separator_units_get_readable_spaces(self) -> None:
+        units = [
+            {"text": "בנק", "type": "word", "translations": {}},
+            {"text": "ישראל", "type": "properNoun", "translations": {}},
+            {"text": "מוריד", "type": "word", "translations": {}},
+            {"text": "ל", "type": "separator", "translations": {}},
+            {"text": "3.25%", "type": "word", "translations": {}},
+        ]
+        self.assertEqual(units_text(units), "בנק ישראל מוריד ל3.25%")
+        self.assertIn("</button> <button", render_units(units, interactive=True))
+
     def test_home_does_not_keep_image_column_without_an_image(self) -> None:
         issue = copy.deepcopy(read_json(ROOT / "content" / "2024-01-26.json"))
         issue["stories"][0]["image"] = None

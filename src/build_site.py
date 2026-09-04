@@ -18,6 +18,7 @@ from .common import (
     read_json,
     site_url,
     story_minutes,
+    units_need_space,
     units_text,
 )
 from .validation import validate_repository
@@ -52,7 +53,9 @@ def image_alt(image: dict[str, Any], locale: str) -> str:
 
 def render_units(units: list[dict[str, Any]], interactive: bool = False) -> str:
     rendered: list[str] = []
-    for unit in units:
+    for index, unit in enumerate(units):
+        if index and units_need_space(units[index - 1], unit):
+            rendered.append(" ")
         text = esc(unit["text"])
         if unit["type"] == "separator" or not interactive:
             rendered.append(text)

@@ -40,7 +40,35 @@ def load_locales(root: Path = ROOT) -> dict[str, dict[str, str]]:
 
 
 def units_text(units: Iterable[dict[str, Any]]) -> str:
-    return "".join(str(unit.get("text", "")) for unit in units)
+    unit_list = list(units)
+    parts: list[str] = []
+    for index, unit in enumerate(unit_list):
+        if index and units_need_space(unit_list[index - 1], unit):
+            parts.append(" ")
+        parts.append(str(unit.get("text", "")))
+    return "".join(parts)
+
+
+def units_need_space(previous: dict[str, Any], current: dict[str, Any]) -> bool:
+    """Restore readable spacing when generated lexical units omit space tokens."""
+    previous_text = str(previous.get("text", ""))
+    current_text = str(current.get("text", ""))
+    if not previous_text or not current_text or previous_text[-1].isspace() or current_text[0].isspace():
+        return False
+
+    no_space_punctuation = "-־–—/"
+    closing_punctuation = ".,!?;:%…)]}׳״'\""
+    opening_punctuation = "([{׳״'\""
+    if current_text[0] in closing_punctuation or current_text[0] in no_space_punctuation:
+        return False
+    if previous_text[-1] in opening_punctuation or previous_text[-1] in no_space_punctuation:
+        return False
+
+    if current.get("type") == "separator":
+        return current_text.isalpha()
+    if previous.get("type") == "separator" and previous_text.isalpha():
+        return False
+    return True
 
 
 def hebrew_word_count(level: dict[str, Any]) -> int:

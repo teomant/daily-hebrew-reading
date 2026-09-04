@@ -14,7 +14,20 @@
   let readingLevel = allowed(availableLevels, localStorage.getItem(keys.level), site.defaultReadingLevel);
 
   const copy = key => (locales[interfaceLocale] || {})[key] || key;
-  const textFor = units => units.map(unit => unit.text).join("");
+  const unitsNeedSpace = (previous, current) => {
+    const previousText = String(previous?.text || "");
+    const currentText = String(current?.text || "");
+    if (!previousText || !currentText || /\s$/u.test(previousText) || /^\s/u.test(currentText)) return false;
+    const noSpacePunctuation = "-־–—/";
+    const closingPunctuation = ".,!?;:%…)]}׳״'\"";
+    const openingPunctuation = "([{׳״'\"";
+    if (closingPunctuation.includes(currentText[0]) || noSpacePunctuation.includes(currentText[0])) return false;
+    if (openingPunctuation.includes(previousText.at(-1)) || noSpacePunctuation.includes(previousText.at(-1))) return false;
+    if (current.type === "separator") return /^\p{L}+$/u.test(currentText);
+    if (previous.type === "separator" && /^\p{L}+$/u.test(previousText)) return false;
+    return true;
+  };
+  const textFor = units => units.reduce((text, unit, index) => text + (index && unitsNeedSpace(units[index - 1], unit) ? " " : "") + unit.text, "");
   const levelInfo = id => levels.find(level => level.id === id) || levels[0];
   const wordCount = level => level.paragraphs.reduce((total, paragraph) => total + paragraph.reduce((sum, unit) => sum + (unit.type === "separator" ? 0 : Math.max(1, unit.text.trim().split(/\s+/).length)), 0), 0);
   const storyMinutes = story => Math.max(1, Math.ceil(wordCount(story.levels[readingLevel]) / levelInfo(readingLevel).learnerWordsPerMinute));
@@ -49,16 +62,25 @@
     return button;
   }
 
+  function renderUnits(units) {
+    const nodes = [];
+    units.forEach((unit, index) => {
+      if (index && unitsNeedSpace(units[index - 1], unit)) nodes.push(document.createTextNode(" "));
+      nodes.push(renderUnit(unit));
+    });
+    return nodes;
+  }
+
   function renderArticle() {
     if (page !== "article" || !issue) return;
     const story = issue.stories[payload.storyIndex];
     const content = story.levels[readingLevel];
-    document.querySelector("[data-article-title]").replaceChildren(...content.title.map(renderUnit));
-    document.querySelector("[data-article-teaser]").replaceChildren(...content.teaser.map(renderUnit));
+    document.querySelector("[data-article-title]").replaceChildren(...renderUnits(content.title));
+    document.querySelector("[data-article-teaser]").replaceChildren(...renderUnits(content.teaser));
     const articleBody = document.querySelector("[data-article-body]");
     articleBody.replaceChildren(...content.paragraphs.map(units => {
       const paragraph = document.createElement("p");
-      paragraph.append(...units.map(renderUnit));
+      paragraph.append(...renderUnits(units));
       return paragraph;
     }));
     document.querySelector("[data-article-minutes]").textContent = `${storyMinutes(story)} ${minuteWord(storyMinutes(story))}`;
