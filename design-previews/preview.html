@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hebrew Reading Magazine — Visual preview</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="preview-body" data-theme="editorial">
+  <header class="preview-toolbar">
+    <a class="toolbar-back" href="index.html" aria-label="Back to directions">← All directions</a>
+    <div class="toolbar-group theme-controls" aria-label="Theme">
+      <button type="button" data-theme-choice="editorial">01 Journal</button>
+      <button type="button" data-theme-choice="clear">02 Clear</button>
+      <button type="button" data-theme-choice="cafe">03 Café</button>
+      <button type="button" data-theme-choice="grid">04 Grid</button>
+    </div>
+    <div class="toolbar-group page-controls" aria-label="Page">
+      <button type="button" data-page-choice="home">Home</button>
+      <button type="button" data-page-choice="archive">Archive</button>
+      <button type="button" data-page-choice="day">Day</button>
+      <button type="button" data-page-choice="article">Article</button>
+    </div>
+    <div class="toolbar-group device-controls" aria-label="Viewport">
+      <button type="button" data-device-choice="desktop">Desktop</button>
+      <button type="button" data-device-choice="mobile">Mobile</button>
+    </div>
+  </header>
+
+  <div class="preview-stage" data-device="desktop">
+    <div class="site-shell">
+      <header class="site-header">
+        <a class="brand" href="#" data-open-page="home">
+          <span class="brand-mark">א</span>
+          <span class="brand-words"><strong class="brand-title">עברית היום</strong><small class="brand-tagline">короткие истории на живом иврите</small></span>
+        </a>
+        <nav class="site-nav" aria-label="Primary">
+          <a href="#" data-open-page="home">Сегодня</a>
+          <a href="#" data-open-page="archive">Архив</a>
+          <button class="locale-button" type="button">RU <span>⌄</span></button>
+        </nav>
+      </header>
+
+      <main class="mock-pages">
+        <section class="mock-page home-page" data-page="home">
+          <div class="home-kicker"><span>Ежедневный выпуск</span><time>4 сентября 2026</time></div>
+          <section class="home-hero">
+            <div class="hero-copy">
+              <p class="hero-overline">Сегодня · 10 материалов · около 25 минут</p>
+              <h1>Несколько хороших историй.<br><em>Нормальный современный иврит.</em></h1>
+              <p class="hero-summary">Читайте понемногу каждый день: свежие сюжеты, жизненные ситуации и одна история из прошлого.</p>
+              <div class="hero-actions">
+                <button class="primary-action" type="button" data-open-page="day">Начать выпуск <span>←</span></button>
+                <div class="level-shortcut" aria-label="Reading level"><span>Уровень</span><button>א</button><button class="active">א+</button><button>ב</button></div>
+              </div>
+            </div>
+            <figure class="hero-image">
+              <img src="assets/glacier.svg" alt="Sheep standing near a covered alpine glacier">
+              <figcaption>Фото к главной истории · источник</figcaption>
+            </figure>
+          </section>
+
+          <section class="home-list-section">
+            <header class="section-heading"><div><span>В сегодняшнем выпуске</span><h2>Истории на 20–30 минут</h2></div><button type="button" data-open-page="day">Все 10 →</button></header>
+            <div class="story-list">
+              <article class="story-row featured-row">
+                <span class="story-number">01</span><span class="story-kind">НАУКА · CURRENT</span>
+                <div><h3 dir="rtl">איך צמר של כבשים יכול לעזור לקרחונים?</h3><p dir="rtl">חוקרים בשווייץ בודקים דרך טבעית לשמור על הקרח בקיץ.</p></div><span class="story-time">3 мин</span>
+              </article>
+              <article class="story-row">
+                <span class="story-number">02</span><span class="story-kind">ЖИЗНЬ · EVERYDAY</span>
+                <div><h3 dir="rtl">המשלוח שלא הגיע בזמן</h3><p dir="rtl">כבר שתיים, אבל הנהג עדיין לא התקשר.</p></div><span class="story-time">2 мин</span>
+              </article>
+              <article class="story-row">
+                <span class="story-number">03</span><span class="story-kind">ТЕХНОЛОГИИ · CURRENT</span>
+                <div><h3 dir="rtl">הטלפון שמתקן תמונות ישנות</h3><p dir="rtl">כלי חדש עוזר למשפחות לראות שוב פרטים שנעלמו.</p></div><span class="story-time">3 мин</span>
+              </article>
+            </div>
+          </section>
+
+          <section class="home-bottom">
+            <div><span class="small-label">ИСТОРИЯ ДНЯ</span><h2 dir="rtl">המכונית שכולם חיכו לה — ולא קנו</h2><p>Как большая надежда Ford стала одним из самых известных провалов.</p></div>
+            <aside><span class="small-label">ПРОШЛЫЕ ВЫПУСКИ</span><button type="button" data-open-page="archive">3 сентября <b>9 историй</b></button><button type="button" data-open-page="archive">2 сентября <b>11 историй</b></button></aside>
+          </section>
+        </section>
+
+        <section class="mock-page archive-page" data-page="archive" hidden>
+          <header class="page-title-block"><p class="hero-overline">Читать дальше</p><h1>Архив выпусков</h1><p>Каждый день — короткая подборка живого современного иврита.</p></header>
+          <div class="archive-layout">
+            <div class="archive-years"><button class="active">2026</button><button>2025</button><button>2024</button></div>
+            <div class="archive-month">
+              <h2>Сентябрь <span>4 выпуска</span></h2>
+              <article class="issue-card current-issue"><time><b>04</b><span>сентября<br>пятница</span></time><div><h3>Сегодняшний выпуск</h3><p>10 материалов · около 25 минут</p><div class="issue-tags"><span>6 CURRENT</span><span>3 EVERYDAY</span><span>1 HISTORY</span></div></div><button type="button" data-open-page="day">Открыть →</button></article>
+              <article class="issue-card"><time><b>03</b><span>сентября<br>четверг</span></time><div><h3 dir="rtl">הרכבת שחזרה לעיר</h3><p>9 материалов · около 22 минут</p></div><button>Открыть →</button></article>
+              <article class="issue-card"><time><b>02</b><span>сентября<br>среда</span></time><div><h3 dir="rtl">למה כולם מחפשים את הכוס הזאת?</h3><p>11 материалов · около 28 минут</p></div><button>Открыть →</button></article>
+              <article class="issue-card"><time><b>01</b><span>сентября<br>вторник</span></time><div><h3 dir="rtl">יום ראשון בעבודה החדשה</h3><p>10 материалов · около 24 минут</p></div><button>Открыть →</button></article>
+            </div>
+          </div>
+        </section>
+
+        <section class="mock-page day-page" data-page="day" hidden>
+          <header class="day-heading">
+            <a href="#" data-open-page="archive">← Архив</a>
+            <div><p class="hero-overline">Ежедневный выпуск № 248</p><h1>4 сентября 2026</h1><p>10 материалов · около 25 минут</p></div>
+            <div class="day-level"><span>Тексты уровня</span><div><button>א</button><button class="active">א+</button><button>ב</button></div></div>
+          </header>
+          <div class="day-story-grid">
+            <article class="day-lead-card">
+              <img src="assets/glacier.svg" alt="Sheep near a glacier">
+              <div class="card-copy"><span class="story-kind">НАУКА · CURRENT</span><h2 dir="rtl">איך צמר של כבשים יכול לעזור לקרחונים?</h2><p dir="rtl">חוקרים בשווייץ בודקים אם חומר טבעי יכול להגן על הקרח בחודשי הקיץ.</p><footer><span>3 минуты</span><button type="button" data-open-page="article">Читать →</button></footer></div>
+            </article>
+            <article class="day-card"><span class="story-kind">ЖИЗНЬ · EVERYDAY</span><h2 dir="rtl">המשלוח שלא הגיע בזמן</h2><p dir="rtl">המשלוח היה אמור להגיע עד שתיים, אבל אף אחד לא התקשר.</p><footer><span>2 минуты</span><button>Читать →</button></footer></article>
+            <article class="day-card"><span class="story-kind">ТЕХНОЛОГИИ · CURRENT</span><h2 dir="rtl">הטלפון שמתקן תמונות ישנות</h2><p dir="rtl">כלי חדש מחזיר צבע ופרטים לתמונות משפחתיות.</p><footer><span>3 минуты</span><button>Читать →</button></footer></article>
+            <article class="day-card"><span class="story-kind">ГОРОД · CURRENT</span><h2 dir="rtl">הספרייה שנשארת פתוחה בלילה</h2><p dir="rtl">סטודנטים ביקשו מקום שקט ללמוד בו אחרי העבודה.</p><footer><span>2 минуты</span><button>Читать →</button></footer></article>
+            <article class="day-card"><span class="story-kind">ИСТОРИЯ · HISTORY</span><h2 dir="rtl">המכונית שכולם חיכו לה — ולא קנו</h2><p dir="rtl">פורד חשבה שהדגם החדש יהיה הצלחה גדולה.</p><footer><span>4 минуты</span><button>Читать →</button></footer></article>
+          </div>
+        </section>
+
+        <article class="mock-page article-page" data-page="article" hidden>
+          <div class="article-progress"><span style="width:30%"></span></div>
+          <header class="article-topline"><a href="#" data-open-page="day">← Выпуск за 4 сентября</a><span>1 из 10</span></header>
+          <div class="article-layout">
+            <aside class="article-tools">
+              <div><span>Уровень</span><button>א</button><button class="active">א+</button><button>ב</button></div>
+              <div><span>Перевод</span><button class="active">RU</button><button>EN</button></div>
+              <p>Нажмите на слово или выражение, чтобы увидеть перевод.</p>
+            </aside>
+            <div class="article-main">
+              <header class="article-heading"><span class="story-kind">НАУКА · CURRENT</span><h1 dir="rtl">איך צמר של כבשים יכול לעזור לקרחונים?</h1><p class="article-dek" dir="rtl">חוקרים בשווייץ בודקים אם חומר פשוט וטבעי יכול לעזור לשמור על הקרח גם בקיץ.</p><div class="article-meta"><span>4 сентября 2026</span><span>3 минуты</span><span>א+ · A1.2</span></div></header>
+              <figure class="article-image"><img src="assets/glacier.svg" alt="Sheep standing beside a protected glacier in the Alps"><figcaption>Иллюстрация к материалу · <a href="#">перейти к источнику</a></figcaption></figure>
+              <div class="hebrew-article" dir="rtl">
+                <p><button class="lexeme">בקיץ</button> <button class="lexeme">האחרון</button>, <button class="lexeme">חוקרים</button> <button class="lexeme">בשווייץ</button> <button class="lexeme">ניסו</button> <button class="lexeme active-lexeme">דרך חדשה<span class="word-popover" dir="ltr"><b>דרך חדשה</b><span>новый способ</span><small>выражение · RU</small></span></button> <button class="lexeme">לשמור</button> <button class="lexeme">על</button> <button class="lexeme">קרחון קטן</button> <button class="lexeme">בהרים</button>.</p>
+                <p><button class="lexeme">בדרך כלל</button> <button class="lexeme">מכסים</button> <button class="lexeme">את הקרח</button> <button class="lexeme">בחומר לבן</button>. <button class="lexeme">הפעם</button> <button class="lexeme">הם השתמשו</button> <button class="lexeme">בצמר כבשים</button>. <button class="lexeme">הצמר</button> <button class="lexeme">שומר</button> <button class="lexeme">על טמפרטורה נמוכה</button> <button class="lexeme">וגם</button> <button class="lexeme">מתפרק בטבע</button>.</p>
+                <p><button class="lexeme">בסופו של דבר</button>, <button class="lexeme">החוקרים רוצים לדעת</button> <button class="lexeme">אם הפתרון</button> <button class="lexeme">גם יעיל</button> <button class="lexeme">וגם משתלם</button>. <button class="lexeme">אם הניסוי יצליח</button>, <button class="lexeme">אולי</button> <button class="lexeme">ישתמשו בו</button> <button class="lexeme">במקומות נוספים</button>.</p>
+              </div>
+              <section class="source-box"><span class="small-label">ИСТОЧНИКИ</span><a href="#"><b>Swiss Alpine Research</b><span>Researchers test sheep wool as glacier cover ↗</span></a></section>
+              <nav class="article-pagination"><a class="disabled"><span>← Предыдущая</span><b>Начало выпуска</b></a><a href="#"><span>Следующая →</span><b dir="rtl">המשלוח שלא הגיע בזמן</b></a></nav>
+            </div>
+          </div>
+        </article>
+      </main>
+
+      <footer class="site-footer"><span>עברית היום</span><span>Новые истории каждый день в 06:00 UTC</span><a href="#" data-open-page="archive">Архив</a></footer>
+    </div>
+  </div>
+  <script src="preview.js"></script>
+</body>
+</html>

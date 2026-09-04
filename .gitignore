@@ -1,0 +1,28 @@
+# IDEs
+.idea/
+.vscode/
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+
+# Generated site and temporary files
+dist/
+build/
+*.tmp
+.browser-profile-*/
+dhr-*.png
+
+# Operating systems
+.DS_Store
+Thumbs.db

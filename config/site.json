@@ -1,0 +1,14 @@
+{
+  "siteName": "עברית היום",
+  "basePath": "/daily-hebrew-reading/",
+  "defaultInterfaceLocale": "ru",
+  "defaultTranslationLocale": "ru",
+  "defaultReadingLevel": "alef",
+  "interfaceLocales": ["ru", "en"],
+  "translationLocales": ["ru", "en"],
+  "defaultIssueStoryCount": 10,
+  "minimumIssueStoryCount": 8,
+  "maximumIssueStoryCount": 12,
+  "defaultAppendStoryCount": 3,
+  "everydayHistoryDays": 30
+}

@@ -1,0 +1,15 @@
+# Implementation log
+
+## 2026-09-04
+
+- Translated and recorded the supplied Russian product document in `docs/product-specification.md`; added confirmed decisions for 06:00 UTC generation, the project Pages base path, same-day append behavior, source-linked images, interface languages, and extensible levels/locales.
+- Researched the Alef/Alef Plus/Bet interpretation against Hebrew University Rothberg descriptors. Kept the requested short magazine bands and documented that Alef assumes readers can decode unpointed Hebrew.
+- Prepared four complete-page visual directions and recorded the owner's choice of Direction 1, “Jerusalem Journal.”
+- Added configuration-driven content contracts, validation, reading-time calculation, a two-phase OpenAI Responses API pipeline that freezes researched briefs before adaptation, search-grounded source/image-rights URLs, transactional content writes with rollback, flexible issue counts, duplicate checks, and 30-day EVERYDAY history context.
+- Added the selected static frontend with home/archive/day/article routes, locale and level persistence, lexical popovers, sources, optional remote images, responsive styling, and project-Page-safe URLs.
+- Added a dated sample issue with real NASA/JPL and Science Museum sources, all three initial levels, and RU/EN lexical translations.
+- Added daily/manual generation and push-only deployment workflows, basic unit tests, repository setup instructions, and `.gitignore` entries for `.idea/`, virtual environments, secrets, caches, and generated output.
+- Verification completed during implementation: content validation, Python compilation, JavaScript syntax check, static build, and unit tests. Final browser and review results are recorded in the handoff after the last pass.
+- Applied the independent implementation review: image and rights URLs are checked against actual research results, research briefs are validated before adaptation, equivalent source URLs are deduplicated, the homepage renders the whole issue, and date/minute localization is delegated to browser internationalization for future locales.
+- Final verification passed content validation, 14 unit tests, Python compilation, JavaScript syntax checking, workflow YAML parsing, the production project-path build, and link checks. Headless Firefox checks covered the desktop homepage and a narrow mobile article page; the temporary server, builds, browser profiles, screenshots, and caches were removed afterward.
+- The post-fix independent confirmation review found no remaining issues or regressions.

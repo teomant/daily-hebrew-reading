@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "items": [
+    {
+      "date": "2024-01-26",
+      "storyId": "late-furniture-delivery",
+      "domain": "delivery",
+      "scenario": "late_furniture_delivery_and_reschedule",
+      "lexicalThemes": ["waiting", "asking for an estimate", "changing plans"],
+      "targetVocabulary": ["עדיין לא", "הבטיחו לי", "מתי בערך", "בסוף החלטתי"]
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Sheep and an alpine glacier</title>
+  <desc id="desc">An editorial illustration of sheep near a white glacier in blue mountains.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#a9d9ea"/><stop offset="1" stop-color="#f4e7ca"/></linearGradient>
+    <linearGradient id="ice" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f8fbf7"/><stop offset="1" stop-color="#b9d9dc"/></linearGradient>
+  </defs>
+  <rect width="1200" height="760" fill="url(#sky)"/>
+  <circle cx="980" cy="142" r="76" fill="#f4b85f" opacity=".9"/>
+  <path d="M0 466 238 176l136 158 140-214 230 300 144-191 352 307v224H0Z" fill="#6b8792"/>
+  <path d="m0 501 238-325 54 183 82-25 140-214 58 245 172 55 144-191 64 240 248 67v224H0Z" fill="#2d5865" opacity=".72"/>
+  <path d="M260 760c100-286 203-351 323-354 132-3 203 103 319 354Z" fill="url(#ice)"/>
+  <path d="M388 695c46-189 102-238 178-243 85-5 133 57 211 243Z" fill="#fbfcf7" stroke="#c6d7d2" stroke-width="10"/>
+  <path d="M0 650c203-47 332-28 448 40 99 58 226 59 374 3 132-50 258-49 378-1v68H0Z" fill="#b5a96d"/>
+  <g transform="translate(182 548)">
+    <ellipse cx="86" cy="68" rx="83" ry="55" fill="#f4eee0"/>
+    <circle cx="157" cy="73" r="32" fill="#343b3b"/>
+    <path d="m145 46-12-38 31 30M172 47l23-29-5 42" fill="#343b3b"/>
+    <path d="M49 108v63M105 108v63" stroke="#343b3b" stroke-width="12"/>
+    <circle cx="166" cy="67" r="4" fill="#f5cb64"/>
+  </g>
+  <g transform="translate(875 590) scale(.72)">
+    <ellipse cx="86" cy="68" rx="83" ry="55" fill="#f4eee0"/>
+    <circle cx="157" cy="73" r="32" fill="#343b3b"/>
+    <path d="m145 46-12-38 31 30M172 47l23-29-5 42" fill="#343b3b"/>
+    <path d="M49 108v63M105 108v63" stroke="#343b3b" stroke-width="12"/>
+    <circle cx="166" cy="67" r="4" fill="#f5cb64"/>
+  </g>
+</svg>

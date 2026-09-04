@@ -1,0 +1,37 @@
+{
+  "levels": [
+    {
+      "id": "alef",
+      "label": "א",
+      "name": "Alef",
+      "approximateCefr": "A1.1",
+      "minimumWords": 80,
+      "targetWords": 100,
+      "maximumWords": 120,
+      "learnerWordsPerMinute": 45,
+      "guidance": "Write for an end-of-Alef learner who can decode unpointed Hebrew. Use short sentences, frequent vocabulary, a clear event sequence, and very few subordinate clauses. Keep the voice adult and natural."
+    },
+    {
+      "id": "alefPlus",
+      "label": "א+",
+      "name": "Alef Plus",
+      "approximateCefr": "A1.2",
+      "minimumWords": 120,
+      "targetWords": 145,
+      "maximumWords": 170,
+      "learnerWordsPerMinute": 55,
+      "guidance": "Write for advanced Alef. Use past tense, simple cause and effect, natural connectors, common fixed expressions, and limited subordinate clauses while keeping the story easy to follow."
+    },
+    {
+      "id": "bet",
+      "label": "ב",
+      "name": "Bet",
+      "approximateCefr": "A2",
+      "minimumWords": 160,
+      "targetWords": 195,
+      "maximumWords": 250,
+      "learnerWordsPerMinute": 65,
+      "guidance": "Write reasonably natural contemporary Hebrew with useful detail, causes, comparisons, reactions, and common colloquial constructions. Avoid dense journalistic syntax and specialist vocabulary."
+    }
+  ]
+}
