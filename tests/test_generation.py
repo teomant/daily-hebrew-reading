@@ -16,7 +16,6 @@ from src.generate_issue import (
     PROVENANCE_ERRORS_KEY,
     _call_openai,
     _remove_redundant_sources,
-    _retained_provenance_errors,
     _safe_log_text,
     _transactional_write,
     generate,
@@ -45,7 +44,7 @@ class GenerationTests(unittest.TestCase):
         with patch.dict(sys.modules, {"openai": SimpleNamespace(OpenAI=openai)}):
             self.assertEqual(_call_openai("test-model", "instructions", "request", {}), output)
 
-    def test_api_sources_must_come_from_web_search_results(self) -> None:
+    def test_api_marks_unverified_sources_for_discarding(self) -> None:
         output = {"stories": [{"sources": [{"url": "https://example.com/invented"}]}]}
         response = SimpleNamespace(
             output_text=json.dumps(output),
@@ -54,30 +53,9 @@ class GenerationTests(unittest.TestCase):
         openai = Mock()
         openai.return_value.responses.create.return_value = response
         with patch.dict(sys.modules, {"openai": SimpleNamespace(OpenAI=openai)}):
-            with self.assertRaisesRegex(RuntimeError, "OpenAI generation failed"):
-                _call_openai("test-model", "instructions", "request", {})
-            openai.assert_called_once_with(max_retries=0, timeout=300.0)
-
-    def test_api_can_return_unverified_urls_as_research_feedback(self) -> None:
-        output = {"stories": [{"sources": [{"url": "https://example.com/invented"}]}]}
-        response = SimpleNamespace(
-            output_text=json.dumps(output),
-            model_dump=lambda: {"output": [{
-                "type": "web_search_call",
-                "action": {"sources": [{"url": "https://example.com/real"}]},
-            }]},
-        )
-        openai = Mock()
-        openai.return_value.responses.create.return_value = response
-        with patch.dict(sys.modules, {"openai": SimpleNamespace(OpenAI=openai)}):
-            result = _call_openai(
-                "test-model",
-                "instructions",
-                "request",
-                {},
-                collect_provenance_errors=True,
-            )
+            result = _call_openai("test-model", "instructions", "request", {})
         self.assertEqual(result[PROVENANCE_ERRORS_KEY], ["https://example.com/invented"])
+        openai.assert_called_once_with(max_retries=0, timeout=300.0)
 
     def test_redundant_sources_are_removed_when_a_unique_source_remains(self) -> None:
         stories = [
@@ -100,24 +78,17 @@ class GenerationTests(unittest.TestCase):
                 },
             },
         ]
-        removed_sources, removed_images = _remove_redundant_sources(stories, None)
-        self.assertEqual((removed_sources, removed_images), (2, 1))
-        self.assertEqual([source["url"] for source in stories[0]["sources"]], ["https://example.com/shared"])
+        removed_sources, removed_images = _remove_redundant_sources(
+            stories,
+            None,
+            ["https://example.com/shared"],
+        )
+        self.assertEqual((removed_sources, removed_images), (3, 1))
+        self.assertEqual(stories[0]["sources"], [])
         self.assertEqual([source["url"] for source in stories[1]["sources"]], ["https://example.com/unique"])
         self.assertIsNone(stories[1]["image"])
-        self.assertEqual(
-            _retained_provenance_errors(
-                [
-                    "https://example.com/shared",
-                    "https://example.com/unique",
-                    "https://cdn.example.com/removed.jpg",
-                ],
-                stories,
-            ),
-            ["unverified source URL: https://example.com/shared", "unverified source URL: https://example.com/unique"],
-        )
 
-    def test_api_image_url_must_come_from_web_search_results(self) -> None:
+    def test_api_marks_unverified_image_for_discarding(self) -> None:
         output = {
             "stories": [{
                 "sources": [{"url": "https://example.com/article"}],
@@ -137,8 +108,8 @@ class GenerationTests(unittest.TestCase):
         openai = Mock()
         openai.return_value.responses.create.return_value = response
         with patch.dict(sys.modules, {"openai": SimpleNamespace(OpenAI=openai)}):
-            with self.assertRaisesRegex(RuntimeError, "OpenAI generation failed"):
-                _call_openai("test-model", "instructions", "request", {})
+            result = _call_openai("test-model", "instructions", "request", {})
+        self.assertEqual(result[PROVENANCE_ERRORS_KEY], ["https://cdn.example.com/unverified.jpg"])
 
     def test_transaction_rolls_back_if_promotion_fails(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
@@ -279,7 +250,7 @@ class GenerationTests(unittest.TestCase):
             ):
                 result = generate(root, "2024-01-26", 1)
             self.assertEqual(call.call_count, 3)
-            self.assertIn("unverified source URL", call.call_args_list[1].args[2])
+            self.assertIn("expected lowercase ASCII kebab-case", call.call_args_list[1].args[2])
             self.assertEqual(result["stories"][-1]["id"], "new-science-story")
 
 

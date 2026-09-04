@@ -95,18 +95,6 @@ def _generated_external_urls(stories: list[dict[str, Any]]) -> set[str]:
     return urls
 
 
-def _retained_provenance_errors(
-    unverified_urls: list[str],
-    stories: list[dict[str, Any]],
-) -> list[str]:
-    retained_urls = {normalized_url(url) for url in _generated_external_urls(stories)}
-    return [
-        f"unverified source URL: {url}"
-        for url in unverified_urls
-        if normalized_url(url) in retained_urls
-    ]
-
-
 def _unit_schema(locales: list[str]) -> dict[str, Any]:
     translations = {
         "type": "object",
@@ -354,7 +342,7 @@ Existing issue exclusions and type counts:
 Recent EVERYDAY history to avoid:
 {json.dumps(recent_history, ensure_ascii=False, indent=2)}
 
-The story id and slug must be identical. Every sourced story must use distinct canonical content-page URLs; do not repeat a URL anywhere in the batch and do not use publisher homepages, section pages, generic latest pages, or liveblogs. Use null everydayMeta for sourced stories. Use null image when image provenance or embedding suitability is uncertain. Every separator unit must still contain translations with empty strings for every locale. Return no prose outside the schema.{retry}
+The story id and slug must be identical. Prefer distinct canonical content-page URLs for sourced stories; use an empty source list rather than an uncertain URL. Do not use publisher homepages, section pages, generic latest pages, or liveblogs. Use null everydayMeta for sourced stories. Use null image when image provenance or embedding suitability is uncertain. Every separator unit must still contain translations with empty strings for every locale. Return no prose outside the schema.{retry}
 """.strip()
 
 
@@ -365,7 +353,6 @@ def _call_openai(
     schema: dict[str, Any],
     use_web_search: bool = True,
     phase: str = "OpenAI request",
-    collect_provenance_errors: bool = False,
 ) -> dict[str, Any]:
     started = monotonic()
     _log(f"{phase}: started with model {model}")
@@ -414,11 +401,8 @@ def _call_openai(
         normalized_consulted = {normalized_url(url) for url in consulted_urls}
         unverified = sorted(url for url in generated_urls if normalized_url(url) not in normalized_consulted)
         if use_web_search and unverified:
-            if collect_provenance_errors:
-                result[PROVENANCE_ERRORS_KEY] = unverified
-                _log(f"{phase}: provenance check found {len(unverified)} unverified URL(s)")
-            else:
-                raise RuntimeError("model returned source URLs that were not present in its web-search results")
+            result[PROVENANCE_ERRORS_KEY] = unverified
+            _log(f"{phase}: will discard {len(unverified)} unverified URL(s)")
         _log(f"{phase}: completed after {monotonic() - started:.1f}s")
         return result
     except Exception as exc:
@@ -460,14 +444,16 @@ def _remove_empty_lexical_units(adaptations: list[dict[str, Any]]) -> int:
 def _remove_redundant_sources(
     stories: list[dict[str, Any]],
     existing: dict[str, Any] | None,
+    unverified_urls: list[str] | None = None,
 ) -> tuple[int, int]:
-    """Remove repeated source references when each story keeps a unique source."""
+    """Discard unverified and repeated sources, allowing an empty source list."""
     seen = {
         normalized_url(source["url"])
         for story in (existing["stories"] if existing else [])
         for source in story.get("sources", [])
         if isinstance(source, dict) and isinstance(source.get("url"), str)
     }
+    unverified = {normalized_url(url) for url in (unverified_urls or [])}
     removed_sources = 0
     removed_images = 0
     for story in stories:
@@ -481,7 +467,7 @@ def _remove_redundant_sources(
                 locally_unique.append(source)
                 continue
             source_url = normalized_url(source["url"])
-            if source_url in local_urls:
+            if source_url in unverified or source_url in local_urls:
                 removed_sources += 1
                 continue
             local_urls.add(source_url)
@@ -494,7 +480,7 @@ def _remove_redundant_sources(
             or not isinstance(source.get("url"), str)
             or normalized_url(source["url"]) not in seen
         ]
-        kept = globally_unique if globally_unique else locally_unique
+        kept = globally_unique
         removed_sources += len(locally_unique) - len(kept)
         story["sources"] = kept
         kept_urls = {
@@ -504,8 +490,13 @@ def _remove_redundant_sources(
         }
         seen.update(kept_urls)
         image = story.get("image")
-        if isinstance(image, dict) and isinstance(image.get("sourceUrl"), str):
-            if normalized_url(image["sourceUrl"]) not in kept_urls:
+        if isinstance(image, dict):
+            image_urls = {
+                normalized_url(image[field])
+                for field in ("url", "sourceUrl", "rightsUrl")
+                if isinstance(image.get(field), str)
+            }
+            if image_urls & unverified or normalized_url(str(image.get("sourceUrl", ""))) not in kept_urls:
                 story["image"] = None
                 removed_images += 1
     return removed_sources, removed_images
@@ -731,22 +722,24 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
             research_request,
             seed_schema,
             phase=f"Research attempt {attempt_number}/{RESEARCH_ATTEMPTS}",
-            collect_provenance_errors=True,
         )
         unverified_urls = seed_batch.pop(PROVENANCE_ERRORS_KEY, [])
         candidate_seeds = seed_batch.get("stories", [])
-        removed_sources, removed_images = _remove_redundant_sources(candidate_seeds, existing)
+        removed_sources, removed_images = _remove_redundant_sources(
+            candidate_seeds,
+            existing,
+            unverified_urls,
+        )
         if removed_sources or removed_images:
             _log(
                 f"Research attempt {attempt_number}/{RESEARCH_ATTEMPTS}: removed "
-                f"{removed_sources} redundant source(s) and {removed_images} dependent image(s)"
+                f"{removed_sources} unusable source(s) and {removed_images} dependent image(s)"
             )
-        provenance_errors = _retained_provenance_errors(unverified_urls, candidate_seeds)
         _log(
             f"Research attempt {attempt_number}/{RESEARCH_ATTEMPTS}: "
             f"validating {len(candidate_seeds)} story briefs"
         )
-        research_errors = [*provenance_errors, *_seed_errors(
+        research_errors = _seed_errors(
             candidate_seeds,
             target_date,
             level_ids,
@@ -756,7 +749,7 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
             existing,
             minimum_count,
             maximum_count,
-        )]
+        )
         if research_errors:
             research_feedback = list(dict.fromkeys(research_errors))[:20]
             _log_validation_errors(

@@ -72,7 +72,7 @@ A real historical story, normally one per issue. It may be an “on this day” 
 
 It must be a story rather than a bare date. “The Edsel was introduced on 4 September 1957” is insufficient. A useful article would explain that Ford invested heavily in a new model, expected and advertised a major success, but buyers reacted very differently from the company's expectations.
 
-HISTORY must have real sources. If no interesting event fits a particular date, do not force an uninteresting date connection.
+HISTORY should use real sources when a trustworthy canonical URL is available. If no interesting event fits a particular date, do not force an uninteresting date connection.
 
 ## 3. Preferred CURRENT topics
 
@@ -197,7 +197,7 @@ The page for a date is that issue's table of contents. It shows the date, story 
 
 ## 22. Article page
 
-An article page contains a link back to the issue, date, category, title, reading time, level selector (`א`, `א+`, `ב`), translation-language selector (`RU`, `EN`), interface-language selector (`RU`, `EN`), text with lexical popovers, sources for CURRENT and HISTORY, and previous/next article navigation.
+An article page contains a link back to the issue, date, category, title, reading time, level selector (`א`, `א+`, `ב`), translation-language selector (`RU`, `EN`), interface-language selector (`RU`, `EN`), text with lexical popovers, available sources for CURRENT and HISTORY, and previous/next article navigation.
 
 Persist the selected level, translation language, and interface language between pages using `localStorage` for the MVP. Translation language and interface language are separate preferences.
 
@@ -207,7 +207,7 @@ Show approximate reading time for each article and issue. A simple calculation b
 
 ## 24. Sources and external images
 
-CURRENT and HISTORY require real sources. Store publisher, title, and URL. EVERYDAY has no sources. Never create fictional links or present an EVERYDAY story as news. The content type must be explicit in stored data.
+CURRENT and HISTORY should store real publisher, title, and URL data when trustworthy canonical links are available. Missing, duplicate, or unverified links are discarded and an empty source list is allowed; source problems must not block an otherwise valid issue. EVERYDAY has no sources. Never create fictional links or present an EVERYDAY story as news. The content type must be explicit in stored data.
 
 A CURRENT or HISTORY story may also have one optional image linked directly from one of its original source articles. Store the HTTPS image URL, the source article URL, publisher or credit, localized alt text, and an HTTPS usage-rights/policy URL with a short factual label. The generator may return an image only when the image, source, and policy URLs all appear in its actual web-research results; otherwise it returns no image. The card and article page may display it with source attribution and links to the original article and usage policy. Do not download or commit third-party images for the MVP. If the URL is missing, rejected, or later stops loading, render the story normally without an image or broken layout. Images are optional and must only be used when the applicable source and usage rights allow embedding; generation must not invent ownership or licensing information. EVERYDAY stories do not automatically receive sourced images.
 
@@ -229,7 +229,7 @@ i18n/
   ru.json
 ```
 
-A daily JSON file contains its date, available reading-level IDs, available translation-locale codes, and ordered stories. Each story contains its type, category, sources when required, an optional sourced-image object, its configured level variants, teaser, title, paragraphs, lexical annotations, and EVERYDAY metadata when applicable. `index.json` lists available dates. `everyday-history.json` supports diversity checks. Site configuration declares defaults and enabled locales; the reading-level configuration defines ordered adaptation bands; locale dictionaries contain interface copy.
+A daily JSON file contains its date, available reading-level IDs, available translation-locale codes, and ordered stories. Each story contains its type, category, a source list that may be empty, an optional sourced-image object, its configured level variants, teaser, title, paragraphs, lexical annotations, and EVERYDAY metadata when applicable. `index.json` lists available dates. `everyday-history.json` supports diversity checks. Site configuration declares defaults and enabled locales; the reading-level configuration defines ordered adaptation bands; locale dictionaries contain interface copy.
 
 ## 26. Illustrative story shape
 
@@ -316,7 +316,7 @@ Before publishing generated content, validate at least:
 - every level declared by the issue;
 - non-empty text;
 - required translations for lexical units;
-- sources for CURRENT and HISTORY;
+- valid source metadata when a story has sources;
 - domain and scenario for EVERYDAY;
 - no duplicate slugs or duplicate source stories;
 - optional image metadata uses safe HTTPS URLs, refers to one of the story's source articles, includes an independently researched usage-rights/policy URL and factual rights label, and contains attribution plus alt text for the issue's translation locales.

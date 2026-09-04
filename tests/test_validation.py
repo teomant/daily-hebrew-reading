@@ -17,11 +17,12 @@ class ValidationTests(unittest.TestCase):
         errors = validate_issue(issue, load_site_config(), load_level_config())
         self.assertTrue(any("missing ['en']" in error for error in errors), errors)
 
-    def test_sourced_story_requires_real_source(self) -> None:
+    def test_sourced_story_may_have_no_source(self) -> None:
         issue = copy.deepcopy(read_json(ROOT / "content" / "2024-01-26.json"))
         issue["stories"][0]["sources"] = []
+        issue["stories"][0]["image"] = None
         errors = validate_issue(issue, load_site_config(), load_level_config())
-        self.assertTrue(any("require at least one source" in error for error in errors), errors)
+        self.assertEqual(errors, [])
 
     def test_source_url_with_control_characters_is_rejected(self) -> None:
         for unsafe_suffix in ("\n::error::spoof", "\u0085spoof", "\u2028spoof", "\u202espoof"):

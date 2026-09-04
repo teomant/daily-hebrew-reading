@@ -124,8 +124,6 @@ def validate_issue(
         if not isinstance(sources, list):
             errors.append(f"{story_path}.sources: expected a list")
             sources = []
-        if story_type in {"current", "history"} and not sources:
-            errors.append(f"{story_path}.sources: sourced stories require at least one source")
         if story_type == "everyday" and sources:
             errors.append(f"{story_path}.sources: EVERYDAY stories cannot have sources")
         source_urls: set[str] = set()

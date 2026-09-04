@@ -76,7 +76,7 @@ The OpenAI API is billed separately from ChatGPT Plus. The API uses the credits 
 - Leave `date` blank to use the current UTC date. Enter an existing date to append rather than replace. `additional_stories` controls the append size; it is ignored for a new full issue.
 - **Validate and deploy site** runs on an ordinary push to `master` and never calls OpenAI.
 
-Generation logs timestamp each research, adaptation, validation, and write phase, including elapsed API-call time and one validation error per line. Research has up to three attempts for invalid or unverified sources. If research is valid but an adaptation fails validation, only adaptation is retried; the verified factual briefs are not researched again. Repeated source references are removed only when the affected story still retains its own unique source; unverified URLs are never accepted.
+Generation logs timestamp each research, adaptation, validation, and write phase, including elapsed API-call time and one validation error per line. Research has up to three attempts for invalid story data. Missing sources are allowed; duplicate or unverified source URLs and their dependent images are discarded without retrying research. If research is otherwise valid but an adaptation fails validation, only adaptation is retried; the factual briefs are not researched again.
 
 The generation workflow commits with the GitHub Actions bot, then deploys the already validated build. The generated commit does not need to trigger a second workflow.
 

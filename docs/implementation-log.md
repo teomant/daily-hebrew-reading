@@ -24,4 +24,5 @@
 - Routed unverified search URLs into visible research-validation feedback instead of aborting before the retry loop, added a third research-only attempt, removed redundant source references only when a story retains a unique source, and strengthened the prompt against homepages, section pages, generic latest pages, and liveblogs.
 - Reformatted validation diagnostics as one error per line for readable GitHub Actions logs.
 - Hardened generated-URL handling by rejecting URL whitespace/control characters and escaping control characters in logs and exception reports.
-- Final verification passed content validation, 20 unit tests, Python compilation, JavaScript syntax checking, workflow YAML parsing, the production static build, and repository diff checks.
+- Simplified source handling by allowing source-free CURRENT/HISTORY stories and silently discarding duplicate or unverified URLs plus dependent images, so source quality alone does not trigger another paid research call.
+- Final verification passed content validation, 19 unit tests, Python compilation, JavaScript syntax checking, workflow YAML parsing, the production static build, and repository diff checks.
