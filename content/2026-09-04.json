@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "date": "2026-09-04",
-  "generatedAt": "2026-09-04T22:18:05+00:00",
+  "generatedAt": "2026-09-04T22:27:08+00:00",
   "availableLevels": [
     "alef",
     "alefPlus",
@@ -13875,6 +13875,2890 @@
                 "translations": {
                   "ru": "правильно",
                   "en": "properly"
+                }
+              },
+              {
+                "text": ".",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              }
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "new-water-backup-plan",
+      "slug": "new-water-backup-plan",
+      "type": "current",
+      "category": "science",
+      "brief": "After a recent shutdown of several desalination plants, Israeli water experts say the country should rebuild backup sources such as wells, natural buffers, and conservation instead of relying almost entirely on coastal desalination. The report says desalination now supplies about 80% of Israel's municipal drinking water, and officials have already restarted some stations while others remain closed.",
+      "everydayMeta": null,
+      "sources": [],
+      "image": null,
+      "levels": {
+        "alef": {
+          "title": [
+            {
+              "text": "תוכנית",
+              "type": "word",
+              "translations": {
+                "ru": "план",
+                "en": "plan"
+              }
+            },
+            {
+              "text": " ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "מים",
+              "type": "word",
+              "translations": {
+                "ru": "воды",
+                "en": "water"
+              }
+            },
+            {
+              "text": " ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "חדשה",
+              "type": "word",
+              "translations": {
+                "ru": "новая",
+                "en": "new"
+              }
+            }
+          ],
+          "teaser": [
+            {
+              "text": "אחרי",
+              "type": "word",
+              "translations": {
+                "ru": "после",
+                "en": "after"
+              }
+            },
+            {
+              "text": " ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "עצירה",
+              "type": "word",
+              "translations": {
+                "ru": "остановки",
+                "en": "shutdown"
+              }
+            },
+            {
+              "text": " ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "של",
+              "type": "word",
+              "translations": {
+                "ru": "из",
+                "en": "of"
+              }
+            },
+            {
+              "text": " ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "כמה",
+              "type": "word",
+              "translations": {
+                "ru": "нескольких",
+                "en": "several"
+              }
+            },
+            {
+              "text": " ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "מתקני",
+              "type": "word",
+              "translations": {
+                "ru": "заводов",
+                "en": "plants"
+              }
+            },
+            {
+              "text": " ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "מים",
+              "type": "word",
+              "translations": {
+                "ru": "воды",
+                "en": "water"
+              }
+            },
+            {
+              "text": " ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "מציעים",
+              "type": "word",
+              "translations": {
+                "ru": "предлагают",
+                "en": "suggest"
+              }
+            },
+            {
+              "text": " ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "להוסיף",
+              "type": "word",
+              "translations": {
+                "ru": "добавить",
+                "en": "add"
+              }
+            },
+            {
+              "text": " ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "מקורות",
+              "type": "word",
+              "translations": {
+                "ru": "источники",
+                "en": "sources"
+              }
+            },
+            {
+              "text": " ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "גיבוי",
+              "type": "word",
+              "translations": {
+                "ru": "резервные",
+                "en": "backup"
+              }
+            },
+            {
+              "text": " ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "למים",
+              "type": "word",
+              "translations": {
+                "ru": "для воды",
+                "en": "for water"
+              }
+            }
+          ],
+          "paragraphs": [
+            [
+              {
+                "text": "אחרי",
+                "type": "word",
+                "translations": {
+                  "ru": "после",
+                  "en": "after"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "עצירה",
+                "type": "word",
+                "translations": {
+                  "ru": "остановки",
+                  "en": "shutdown"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "של",
+                "type": "word",
+                "translations": {
+                  "ru": "из",
+                  "en": "of"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "כמה",
+                "type": "word",
+                "translations": {
+                  "ru": "нескольких",
+                  "en": "several"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "מתקני",
+                "type": "word",
+                "translations": {
+                  "ru": "заводов",
+                  "en": "plants"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "מים",
+                "type": "word",
+                "translations": {
+                  "ru": "воды",
+                  "en": "water"
+                }
+              },
+              {
+                "text": ",",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "מומחי",
+                "type": "word",
+                "translations": {
+                  "ru": "эксперты",
+                  "en": "experts"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "מים",
+                "type": "word",
+                "translations": {
+                  "ru": "воды",
+                  "en": "water"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "בישראל",
+                "type": "properNoun",
+                "translations": {
+                  "ru": "в Израиле",
+                  "en": "in Israel"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "אומרים",
+                "type": "word",
+                "translations": {
+                  "ru": "говорят",
+                  "en": "say"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "שצריך",
+                "type": "expression",
+                "translations": {
+                  "ru": "что нужно",
+                  "en": "that it is necessary to"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "לבנות",
+                "type": "word",
+                "translations": {
+                  "ru": "строить",
+                  "en": "build"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "עוד",
+                "type": "word",
+                "translations": {
+                  "ru": "ещё",
+                  "en": "more"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "גיבוי",
+                "type": "word",
+                "translations": {
+                  "ru": "резервные",
+                  "en": "backup"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "למים",
+                "type": "word",
+                "translations": {
+                  "ru": "для воды",
+                  "en": "for water"
+                }
+              }
+            ],
+            [
+              {
+                "text": "הם",
+                "type": "word",
+                "translations": {
+                  "ru": "они",
+                  "en": "they"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "אומרים",
+                "type": "word",
+                "translations": {
+                  "ru": "говорят",
+                  "en": "say"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "שלא",
+                "type": "expression",
+                "translations": {
+                  "ru": "что не",
+                  "en": "that not"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "כדאי",
+                "type": "word",
+                "translations": {
+                  "ru": "стоит",
+                  "en": "worth"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "להישען",
+                "type": "word",
+                "translations": {
+                  "ru": "полагаться",
+                  "en": "rely"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "כמעט",
+                "type": "word",
+                "translations": {
+                  "ru": "почти",
+                  "en": "almost"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "רק",
+                "type": "word",
+                "translations": {
+                  "ru": "только",
+                  "en": "only"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "על",
+                "type": "word",
+                "translations": {
+                  "ru": "на",
+                  "en": "on"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "התפלה",
+                "type": "word",
+                "translations": {
+                  "ru": "опреснение",
+                  "en": "desalination"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "מול",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "החוף",
+                "type": "word",
+                "translations": {
+                  "ru": "побережья",
+                  "en": "the coast"
+                }
+              }
+            ],
+            [
+              {
+                "text": "לפי",
+                "type": "word",
+                "translations": {
+                  "ru": "по",
+                  "en": "according to"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "הדוח",
+                "type": "word",
+                "translations": {
+                  "ru": "отчёту",
+                  "en": "report"
+                }
+              },
+              {
+                "text": ",",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "התפלה",
+                "type": "word",
+                "translations": {
+                  "ru": "опреснение",
+                  "en": "desalination"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "מספקת",
+                "type": "word",
+                "translations": {
+                  "ru": "обеспечивает",
+                  "en": "supplies"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "כיום",
+                "type": "word",
+                "translations": {
+                  "ru": "сегодня",
+                  "en": "today"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "כ־80%",
+                "type": "expression",
+                "translations": {
+                  "ru": "около 80%",
+                  "en": "about 80%"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "ממי",
+                "type": "word",
+                "translations": {
+                  "ru": "из воды",
+                  "en": "of the water"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "השתייה",
+                "type": "word",
+                "translations": {
+                  "ru": "для питья",
+                  "en": "for drinking"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "העירוניים",
+                "type": "word",
+                "translations": {
+                  "ru": "городских",
+                  "en": "municipal"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "בישראל",
+                "type": "properNoun",
+                "translations": {
+                  "ru": "в Израиле",
+                  "en": "in Israel"
+                }
+              }
+            ],
+            [
+              {
+                "text": "במקביל",
+                "type": "word",
+                "translations": {
+                  "ru": "параллельно",
+                  "en": "at the same time"
+                }
+              },
+              {
+                "text": ",",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "כמה",
+                "type": "word",
+                "translations": {
+                  "ru": "несколько",
+                  "en": "some"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "תחנות",
+                "type": "word",
+                "translations": {
+                  "ru": "станций",
+                  "en": "stations"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "כבר",
+                "type": "word",
+                "translations": {
+                  "ru": "уже",
+                  "en": "already"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "חזרו",
+                "type": "word",
+                "translations": {
+                  "ru": "вернулись к работе",
+                  "en": "restarted"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "לעבוד",
+                "type": "word",
+                "translations": {
+                  "ru": "работать",
+                  "en": "work"
+                }
+              },
+              {
+                "text": ",",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "אבל",
+                "type": "word",
+                "translations": {
+                  "ru": "но",
+                  "en": "but"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "אחרות",
+                "type": "word",
+                "translations": {
+                  "ru": "другие",
+                  "en": "others"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "עדיין",
+                "type": "word",
+                "translations": {
+                  "ru": "всё ещё",
+                  "en": "still"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "סגורות",
+                "type": "word",
+                "translations": {
+                  "ru": "закрыты",
+                  "en": "closed"
+                }
+              }
+            ]
+          ]
+        },
+        "alefPlus": {
+          "title": [
+            {
+              "text": "חושבים",
+              "type": "word",
+              "translations": {
+                "ru": "думают",
+                "en": "think"
+              }
+            },
+            {
+              "text": " ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "על",
+              "type": "word",
+              "translations": {
+                "ru": "о",
+                "en": "about"
+              }
+            },
+            {
+              "text": " ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "תוכנית",
+              "type": "word",
+              "translations": {
+                "ru": "плане",
+                "en": "plan"
+              }
+            },
+            {
+              "text": " ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "מים",
+              "type": "word",
+              "translations": {
+                "ru": "воды",
+                "en": "water"
+              }
+            },
+            {
+              "text": " ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "חדשה",
+              "type": "word",
+              "translations": {
+                "ru": "новой",
+                "en": "new"
+              }
+            }
+          ],
+          "teaser": [
+            {
+              "text": "אחרי",
+              "type": "word",
+              "translations": {
+                "ru": "после",
+                "en": "after"
+              }
+            },
+            {
+              "text": " ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "שכמה",
+              "type": "word",
+              "translations": {
+                "ru": "когда несколько",
+                "en": "when several"
+              }
+            },
+            {
+              "text": " ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "מתקני",
+              "type": "word",
+              "translations": {
+                "ru": "заводов",
+                "en": "plants"
+              }
+            },
+            {
+              "text": " ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "מים",
+              "type": "word",
+              "translations": {
+                "ru": "воды",
+                "en": "water"
+              }
+            },
+            {
+              "text": " ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "נעצרו",
+              "type": "word",
+              "translations": {
+                "ru": "остановились",
+                "en": "shut down"
+              }
+            },
+            {
+              "text": ",",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "מציעים",
+              "type": "word",
+              "translations": {
+                "ru": "предлагают",
+                "en": "suggest"
+              }
+            },
+            {
+              "text": " ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "לישראל",
+              "type": "properNoun",
+              "translations": {
+                "ru": "Израилю",
+                "en": "Israel"
+              }
+            },
+            {
+              "text": " ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "מקורות",
+              "type": "word",
+              "translations": {
+                "ru": "источники",
+                "en": "sources"
+              }
+            },
+            {
+              "text": " ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "גיבוי",
+              "type": "word",
+              "translations": {
+                "ru": "резервные",
+                "en": "backup"
+              }
+            },
+            {
+              "text": " ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "למים",
+              "type": "word",
+              "translations": {
+                "ru": "для воды",
+                "en": "for water"
+              }
+            }
+          ],
+          "paragraphs": [
+            [
+              {
+                "text": "אחרי",
+                "type": "word",
+                "translations": {
+                  "ru": "после",
+                  "en": "after"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "שכמה",
+                "type": "word",
+                "translations": {
+                  "ru": "когда несколько",
+                  "en": "several"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "מתקני",
+                "type": "word",
+                "translations": {
+                  "ru": "заводов",
+                  "en": "plants"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "התפלה",
+                "type": "word",
+                "translations": {
+                  "ru": "опреснения",
+                  "en": "desalination"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "נעצרו",
+                "type": "word",
+                "translations": {
+                  "ru": "остановились",
+                  "en": "shut down"
+                }
+              },
+              {
+                "text": ",",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "מומחי",
+                "type": "word",
+                "translations": {
+                  "ru": "эксперты",
+                  "en": "experts"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "מים",
+                "type": "word",
+                "translations": {
+                  "ru": "воды",
+                  "en": "water"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "אומרים",
+                "type": "word",
+                "translations": {
+                  "ru": "говорят",
+                  "en": "say"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "שישראל",
+                "type": "properNoun",
+                "translations": {
+                  "ru": "что Израилю",
+                  "en": "that Israel"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "צריכה",
+                "type": "word",
+                "translations": {
+                  "ru": "нужно",
+                  "en": "needs"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "לבנות",
+                "type": "word",
+                "translations": {
+                  "ru": "строить",
+                  "en": "build"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "עוד",
+                "type": "word",
+                "translations": {
+                  "ru": "ещё",
+                  "en": "more"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "מקורות",
+                "type": "word",
+                "translations": {
+                  "ru": "источники",
+                  "en": "sources"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "גיבוי",
+                "type": "word",
+                "translations": {
+                  "ru": "резервные",
+                  "en": "backup"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "למים",
+                "type": "word",
+                "translations": {
+                  "ru": "для воды",
+                  "en": "for water"
+                }
+              }
+            ],
+            [
+              {
+                "text": "הם",
+                "type": "word",
+                "translations": {
+                  "ru": "они",
+                  "en": "they"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "כוללים",
+                "type": "word",
+                "translations": {
+                  "ru": "включают",
+                  "en": "include"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "בארות",
+                "type": "word",
+                "translations": {
+                  "ru": "колодцы",
+                  "en": "wells"
+                }
+              },
+              {
+                "text": ",",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "מחסומים",
+                "type": "word",
+                "translations": {
+                  "ru": "буферы",
+                  "en": "buffers"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "טבעיים",
+                "type": "word",
+                "translations": {
+                  "ru": "природные",
+                  "en": "natural"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "ויותר",
+                "type": "word",
+                "translations": {
+                  "ru": "и больше",
+                  "en": "and more"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "חיסכון",
+                "type": "word",
+                "translations": {
+                  "ru": "экономию",
+                  "en": "conservation"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "במים",
+                "type": "word",
+                "translations": {
+                  "ru": "воды",
+                  "en": "of water"
+                }
+              }
+            ],
+            [
+              {
+                "text": "לפי",
+                "type": "word",
+                "translations": {
+                  "ru": "по",
+                  "en": "according to"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "הדוח",
+                "type": "word",
+                "translations": {
+                  "ru": "отчёту",
+                  "en": "report"
+                }
+              },
+              {
+                "text": ",",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "התפלה",
+                "type": "word",
+                "translations": {
+                  "ru": "опреснение",
+                  "en": "desalination"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "מספקת",
+                "type": "word",
+                "translations": {
+                  "ru": "обеспечивает",
+                  "en": "supplies"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "כיום",
+                "type": "word",
+                "translations": {
+                  "ru": "сегодня",
+                  "en": "today"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "כ־80%",
+                "type": "expression",
+                "translations": {
+                  "ru": "около 80%",
+                  "en": "about 80%"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "ממי",
+                "type": "word",
+                "translations": {
+                  "ru": "из воды",
+                  "en": "of the water"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "השתייה",
+                "type": "word",
+                "translations": {
+                  "ru": "для питья",
+                  "en": "for drinking"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "העירוניים",
+                "type": "word",
+                "translations": {
+                  "ru": "городских",
+                  "en": "municipal"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "בישראל",
+                "type": "properNoun",
+                "translations": {
+                  "ru": "в Израиле",
+                  "en": "in Israel"
+                }
+              }
+            ],
+            [
+              {
+                "text": "בינתיים",
+                "type": "word",
+                "translations": {
+                  "ru": "тем временем",
+                  "en": "for now"
+                }
+              },
+              {
+                "text": ",",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "חלק",
+                "type": "word",
+                "translations": {
+                  "ru": "часть",
+                  "en": "some"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "מהתחנות",
+                "type": "word",
+                "translations": {
+                  "ru": "станций",
+                  "en": "stations"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "כבר",
+                "type": "word",
+                "translations": {
+                  "ru": "уже",
+                  "en": "already"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "חזרו",
+                "type": "word",
+                "translations": {
+                  "ru": "вернулись",
+                  "en": "restarted"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "לעבוד",
+                "type": "word",
+                "translations": {
+                  "ru": "работать",
+                  "en": "work"
+                }
+              },
+              {
+                "text": ",",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "ואחרות",
+                "type": "word",
+                "translations": {
+                  "ru": "а другие",
+                  "en": "and others"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "עדיין",
+                "type": "word",
+                "translations": {
+                  "ru": "всё ещё",
+                  "en": "still"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "סגורות",
+                "type": "word",
+                "translations": {
+                  "ru": "закрыты",
+                  "en": "closed"
+                }
+              }
+            ]
+          ]
+        },
+        "bet": {
+          "title": [
+            {
+              "text": "לחשוב",
+              "type": "word",
+              "translations": {
+                "ru": "думать",
+                "en": "think"
+              }
+            },
+            {
+              "text": " ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "מחדש",
+              "type": "word",
+              "translations": {
+                "ru": "заново",
+                "en": "again"
+              }
+            },
+            {
+              "text": " ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "על",
+              "type": "word",
+              "translations": {
+                "ru": "о",
+                "en": "about"
+              }
+            },
+            {
+              "text": " ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "מים",
+              "type": "word",
+              "translations": {
+                "ru": "воде",
+                "en": "water"
+              }
+            },
+            {
+              "text": " ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "בישראל",
+              "type": "properNoun",
+              "translations": {
+                "ru": "в Израиле",
+                "en": "in Israel"
+              }
+            }
+          ],
+          "teaser": [
+            {
+              "text": "אחרי",
+              "type": "word",
+              "translations": {
+                "ru": "после",
+                "en": "after"
+              }
+            },
+            {
+              "text": " ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "שכמה",
+              "type": "word",
+              "translations": {
+                "ru": "когда несколько",
+                "en": "when several"
+              }
+            },
+            {
+              "text": " ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "מתקני",
+              "type": "word",
+              "translations": {
+                "ru": "заводов",
+                "en": "plants"
+              }
+            },
+            {
+              "text": " ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "התפלה",
+              "type": "word",
+              "translations": {
+                "ru": "опреснения",
+                "en": "desalination"
+              }
+            },
+            {
+              "text": " ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "נעצרו",
+              "type": "word",
+              "translations": {
+                "ru": "остановились",
+                "en": "shut down"
+              }
+            },
+            {
+              "text": ",",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "מומחי",
+              "type": "word",
+              "translations": {
+                "ru": "эксперты",
+                "en": "experts"
+              }
+            },
+            {
+              "text": " ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "מים",
+              "type": "word",
+              "translations": {
+                "ru": "воды",
+                "en": "water"
+              }
+            },
+            {
+              "text": " ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "אומרים",
+              "type": "word",
+              "translations": {
+                "ru": "говорят",
+                "en": "say"
+              }
+            },
+            {
+              "text": " ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "שצריך",
+              "type": "expression",
+              "translations": {
+                "ru": "что нужно",
+                "en": "that it is necessary to"
+              }
+            },
+            {
+              "text": " ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "יותר",
+              "type": "word",
+              "translations": {
+                "ru": "больше",
+                "en": "more"
+              }
+            },
+            {
+              "text": " ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "גיבוי",
+              "type": "word",
+              "translations": {
+                "ru": "резервных мер",
+                "en": "backup"
+              }
+            },
+            {
+              "text": " ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "ולא",
+              "type": "word",
+              "translations": {
+                "ru": "и не",
+                "en": "and not"
+              }
+            },
+            {
+              "text": " ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "להישען",
+              "type": "word",
+              "translations": {
+                "ru": "полагаться",
+                "en": "rely"
+              }
+            },
+            {
+              "text": " ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "כמעט",
+              "type": "word",
+              "translations": {
+                "ru": "почти",
+                "en": "almost"
+              }
+            },
+            {
+              "text": " ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "רק",
+              "type": "word",
+              "translations": {
+                "ru": "только",
+                "en": "only"
+              }
+            },
+            {
+              "text": " ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "על",
+              "type": "word",
+              "translations": {
+                "ru": "на",
+                "en": "on"
+              }
+            },
+            {
+              "text": " ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "התפלה",
+              "type": "word",
+              "translations": {
+                "ru": "опреснение",
+                "en": "desalination"
+              }
+            },
+            {
+              "text": " ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "בחוף",
+              "type": "word",
+              "translations": {
+                "ru": "на побережье",
+                "en": "along the coast"
+              }
+            }
+          ],
+          "paragraphs": [
+            [
+              {
+                "text": "אחרי",
+                "type": "word",
+                "translations": {
+                  "ru": "после",
+                  "en": "after"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "שכמה",
+                "type": "word",
+                "translations": {
+                  "ru": "когда несколько",
+                  "en": "when several"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "מתקני",
+                "type": "word",
+                "translations": {
+                  "ru": "заводов",
+                  "en": "plants"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "התפלה",
+                "type": "word",
+                "translations": {
+                  "ru": "опреснения",
+                  "en": "desalination"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "נעצרו",
+                "type": "word",
+                "translations": {
+                  "ru": "остановились",
+                  "en": "shut down"
+                }
+              },
+              {
+                "text": ",",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "מומחי",
+                "type": "word",
+                "translations": {
+                  "ru": "эксперты",
+                  "en": "experts"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "מים",
+                "type": "word",
+                "translations": {
+                  "ru": "воды",
+                  "en": "water"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "בישראל",
+                "type": "properNoun",
+                "translations": {
+                  "ru": "в Израиле",
+                  "en": "in Israel"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "אומרים",
+                "type": "word",
+                "translations": {
+                  "ru": "говорят",
+                  "en": "say"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "שצריך",
+                "type": "expression",
+                "translations": {
+                  "ru": "что нужно",
+                  "en": "that it is necessary to"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "לבנות",
+                "type": "word",
+                "translations": {
+                  "ru": "строить",
+                  "en": "build"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "מערכת",
+                "type": "word",
+                "translations": {
+                  "ru": "систему",
+                  "en": "system"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "חזקה",
+                "type": "word",
+                "translations": {
+                  "ru": "надёжную",
+                  "en": "strong"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "יותר",
+                "type": "word",
+                "translations": {
+                  "ru": "более",
+                  "en": "more"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "לגיבוי",
+                "type": "word",
+                "translations": {
+                  "ru": "для резерва",
+                  "en": "as backup"
+                }
+              }
+            ],
+            [
+              {
+                "text": "הם",
+                "type": "word",
+                "translations": {
+                  "ru": "они",
+                  "en": "they"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "אומרים",
+                "type": "word",
+                "translations": {
+                  "ru": "говорят",
+                  "en": "say"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "שלא",
+                "type": "expression",
+                "translations": {
+                  "ru": "что не",
+                  "en": "that not"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "כדאי",
+                "type": "word",
+                "translations": {
+                  "ru": "стоит",
+                  "en": "worth"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "להישען",
+                "type": "word",
+                "translations": {
+                  "ru": "полагаться",
+                  "en": "rely"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "כמעט",
+                "type": "word",
+                "translations": {
+                  "ru": "почти",
+                  "en": "almost"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "רק",
+                "type": "word",
+                "translations": {
+                  "ru": "только",
+                  "en": "only"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "על",
+                "type": "word",
+                "translations": {
+                  "ru": "на",
+                  "en": "on"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "התפלה",
+                "type": "word",
+                "translations": {
+                  "ru": "опреснение",
+                  "en": "desalination"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "של",
+                "type": "word",
+                "translations": {
+                  "ru": "на",
+                  "en": "of"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "החוף",
+                "type": "word",
+                "translations": {
+                  "ru": "побережья",
+                  "en": "the coast"
+                }
+              }
+            ],
+            [
+              {
+                "text": "לפי",
+                "type": "word",
+                "translations": {
+                  "ru": "по",
+                  "en": "according to"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "הדוח",
+                "type": "word",
+                "translations": {
+                  "ru": "отчёту",
+                  "en": "report"
+                }
+              },
+              {
+                "text": ",",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "התפלה",
+                "type": "word",
+                "translations": {
+                  "ru": "опреснение",
+                  "en": "desalination"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "מספקת",
+                "type": "word",
+                "translations": {
+                  "ru": "обеспечивает",
+                  "en": "supplies"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "כיום",
+                "type": "word",
+                "translations": {
+                  "ru": "сегодня",
+                  "en": "today"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "כ־80%",
+                "type": "expression",
+                "translations": {
+                  "ru": "около 80%",
+                  "en": "about 80%"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "ממי",
+                "type": "word",
+                "translations": {
+                  "ru": "из воды",
+                  "en": "of the water"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "השתייה",
+                "type": "word",
+                "translations": {
+                  "ru": "для питья",
+                  "en": "for drinking"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "העירוניים",
+                "type": "word",
+                "translations": {
+                  "ru": "городских",
+                  "en": "municipal"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "בישראל",
+                "type": "properNoun",
+                "translations": {
+                  "ru": "в Израиле",
+                  "en": "in Israel"
+                }
+              }
+            ],
+            [
+              {
+                "text": "במקביל",
+                "type": "word",
+                "translations": {
+                  "ru": "параллельно",
+                  "en": "at the same time"
+                }
+              },
+              {
+                "text": ",",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "חלק",
+                "type": "word",
+                "translations": {
+                  "ru": "часть",
+                  "en": "some"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "מהתחנות",
+                "type": "word",
+                "translations": {
+                  "ru": "станций",
+                  "en": "stations"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "כבר",
+                "type": "word",
+                "translations": {
+                  "ru": "уже",
+                  "en": "already"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "חזרו",
+                "type": "word",
+                "translations": {
+                  "ru": "вернулись",
+                  "en": "restarted"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "לעבוד",
+                "type": "word",
+                "translations": {
+                  "ru": "работать",
+                  "en": "work"
+                }
+              },
+              {
+                "text": ",",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "ואחרות",
+                "type": "word",
+                "translations": {
+                  "ru": "а другие",
+                  "en": "and others"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "עדיין",
+                "type": "word",
+                "translations": {
+                  "ru": "всё ещё",
+                  "en": "still"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "סגורות",
+                "type": "word",
+                "translations": {
+                  "ru": "закрыты",
+                  "en": "closed"
                 }
               },
               {
