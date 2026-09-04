@@ -9,10 +9,10 @@
   "nav.backToIssue": "Back to issue",
   "home.dailyIssue": "Daily issue",
   "home.heroTitle": "A few good stories. Normal contemporary Hebrew.",
-  "home.heroSummary": "Read a little every day: fresh stories, real-life situations, and one story from the past.",
+  "home.heroSummary": "Fill your commute with local stories, real-life situations, and history in useful contemporary Hebrew.",
   "home.startIssue": "Start the issue",
   "home.inIssue": "In today’s issue",
-  "home.storiesForTime": "Stories for 20–30 minutes",
+  "home.storiesForTime": "Stories for 40–50 minutes",
   "home.allStories": "All stories",
   "home.previousIssues": "Previous issues",
   "archive.title": "Issue archive",
@@ -50,5 +50,6 @@
   "type.current": "CURRENT",
   "type.everyday": "EVERYDAY",
   "type.history": "HISTORY",
+  "type.aiGenerated": "FULLY AI-GENERATED",
   "footer.schedule": "New stories every day at 06:00 UTC"
 }

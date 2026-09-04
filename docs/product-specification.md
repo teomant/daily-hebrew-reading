@@ -4,7 +4,7 @@ Status: approved product requirements, translated from the Russian specification
 
 This document describes a fully working MVP of a static website for daily reading in modern spoken Hebrew. The product is for learners who want to read contemporary, natural Hebrew regularly but are not yet ready for books or difficult newspaper articles.
 
-The core idea is to give the reader a small daily issue containing 20–30 minutes of short, interesting material and realistic everyday stories. This is neither a conventional news site nor a textbook. News supplies interesting stories and new vocabulary; everyday texts systematically cover language people need in real life.
+The core idea is to give the reader a daily issue containing roughly 40–50 minutes of interesting local/current material, relatable history, and realistic everyday stories. This is neither a conventional news site nor a textbook. News and history supply interesting stories and new vocabulary; everyday texts systematically cover language people need in real life.
 
 The primary product principle is to select and create material according to what is interesting to read and useful for learning contemporary Hebrew, not according to what is considered the day's most important news.
 
@@ -12,13 +12,13 @@ The primary product principle is to select and create material according to what
 
 A new issue is generated automatically every day. A typical issue contains:
 
-- 5–7 real, recent stories;
-- 3–4 purpose-written everyday stories;
-- 1 historical story.
+- 3–5 real, recent stories, normally 4;
+- 3–5 purpose-written everyday stories, normally 4;
+- 1–2 historical stories, normally 2.
 
 This normally produces 9–11 stories, but the count is deliberately flexible. If there are too few good CURRENT stories, publish fewer of them and add a strong EVERYDAY story. If there are many genuinely strong stories, the issue may be slightly larger. Never fill a quota with weak material.
 
-The target reading time is approximately 20–30 minutes. Prefer a larger number of short articles over a few long ones.
+The target reading time is approximately 40–50 learner minutes, enough for a typical commute. Articles should normally contain 4–5 developed paragraphs rather than collapsing a story into three sentences.
 
 ## 2. Content types
 
@@ -68,7 +68,7 @@ These stories should expose readers to useful constructions such as:
 
 ### HISTORY
 
-A real historical story, normally one per issue. It may be an “on this day” item, an event that occurred around the current date in a previous year, or a story from Israeli history, world history, science, technology, transport, culture, food, business, a famous success or failure, an invention, or another unusual event.
+A real historical story, normally two per issue. Prefer stories about Israeli places, institutions, customs, approaching holidays, and past events still visible in ordinary local life. It may also be an “on this day” item, an event that occurred around the current date in a previous year, or a broader story from Israeli history, world history, science, technology, transport, culture, food, business, a famous success or failure, an invention, or another unusual event.
 
 It must be a story rather than a bare date. “The Edsel was introduced on 4 September 1957” is insufficient. A useful article would explain that Ford invested heavily in a new model, expected and advertised a major success, but buyers reacted very differently from the company's expectations.
 
@@ -111,15 +111,15 @@ Reading levels are configuration-driven, ordered definitions with stable IDs, di
 
 ### Alef — א
 
-Approximately 80–120 words, with modest flexibility. This targets a learner near the end of beginner Alef/A1.1 who can already decode Hebrew text, not an absolute beginner learning the alphabet. Use short sentences, simple structure, frequent vocabulary, few complex subordinate clauses, and a clear sequence of events. The result is simple adult Hebrew, not children's prose.
+Approximately 155–205 words, targeting about 180. This targets a learner near the end of beginner Alef/A1.1 who can already decode Hebrew text, not an absolute beginner learning the alphabet. Use four short paragraphs, short sentences, simple structure, frequent vocabulary, few complex subordinate clauses, and a clear sequence of events. The result is simple adult Hebrew, not children's prose.
 
 ### Alef Plus — א+
 
-Approximately 120–170 words, corresponding approximately to advanced Alef/A1.2. It may use more past tense, cause and effect, natural connectors, simple subordinate clauses, more fixed expressions, and somewhat richer vocabulary.
+Approximately 190–250 words, targeting about 220, corresponding approximately to advanced Alef/A1.2. Use 4–5 paragraphs. It may use more past tense, cause and effect, natural connectors, simple subordinate clauses, more fixed expressions, and somewhat richer vocabulary.
 
 ### Bet — ב
 
-Approximately 160–220 words, occasionally up to 250 when the story genuinely requires it, corresponding approximately to Bet/A2. This is reasonably natural contemporary Hebrew and may include more detail, causes, comparisons, reactions, and conversational constructions, including common colloquial expressions, without becoming dense newspaper prose.
+Approximately 235–305 words, targeting about 270, corresponding approximately to Bet/A2. Use 4–5 developed paragraphs. This is reasonably natural contemporary Hebrew and may include more detail, causes, comparisons, reactions, and conversational constructions, including common colloquial expressions, without becoming dense newspaper prose.
 
 ## 8. Do not pad articles
 
@@ -203,7 +203,7 @@ Persist the selected level, translation language, and interface language between
 
 ## 23. Reading time
 
-Show approximate reading time for each article and issue. A simple calculation based on Hebrew word count and level is sufficient. It should reflect that a learner reads more slowly than a native speaker and provide useful estimates such as 2 minutes, 3 minutes, or approximately 24 minutes for the whole issue.
+Show approximate reading time for each article and issue. A simple calculation based on Hebrew word count and level is sufficient. It should reflect that a learner reads more slowly than a native speaker and target approximately 40–50 minutes for the whole issue.
 
 ## 24. Sources and external images
 
@@ -259,11 +259,11 @@ CURRENT and HISTORY use real sources rather than EVERYDAY metadata.
 
 ## 27. CURRENT generation
 
-Find more candidates than the issue needs, filter out politics and unsuitable topics, evaluate Language Value, select the best 5–7, and create a factual brief. Research/selection and adaptation are separate model phases: the first phase uses web search and freezes sourced/scenario metadata and briefs; the second receives those records as immutable input and may return only level adaptations keyed by the same story IDs. Do not select a collection of top headlines by default.
+Find more candidates than the issue needs, filter out politics and unsuitable topics, evaluate practical spoken-language value, and select 3–5, normally 4. At least half should be Israeli or locally relevant when good material exists. Reject remote disasters, rescue missions, specialist science, and technology stories without direct relevance to ordinary life. Research/selection and adaptation are separate model phases: the first phase uses web search and freezes sourced/scenario metadata and briefs; the second receives those records as immutable input and may return only level adaptations keyed by the same story IDs. Do not select a collection of top headlines by default.
 
 ## 28. EVERYDAY generation
 
-Read the recent everyday-history data, identify what has been used, propose several new scenarios, remove overly similar ideas, select 3–4, create scenario briefs, and adapt them into the issue's configured levels.
+Read the recent everyday-history data, identify what has been used, propose several new scenarios, remove overly similar ideas, select 3–5, normally 4, create scenario briefs, and adapt them into the issue's configured levels. Prioritize reusable interaction with colleagues, managers, customers, neighbors, friends, strangers, and service workers. Mark every EVERYDAY story visibly as fully AI-generated in the selected interface language.
 
 ## 29. HISTORY generation
 
@@ -329,7 +329,7 @@ Include a sample issue so the frontend can be tested without an OpenAI API key. 
 
 ## 38. User experience
 
-The product should feel like a small daily magazine. A day page might show a date, “10 stories · about 25 minutes,” a level selector, and concise cards such as a science story about whether sheep's wool can help glaciers or an everyday story about a delayed delivery. Opening a story should provide a calm reading experience followed by a simple move to the next story.
+The product should feel like a small daily magazine for a full commute. A day page might show a date, “10 stories · about 45 minutes,” a level selector, and concise cards for locally relevant CURRENT, practical EVERYDAY, and relatable HISTORY stories. Opening a story should provide a calm reading experience followed by a simple move to the next story.
 
 ## 39. Product philosophy
 

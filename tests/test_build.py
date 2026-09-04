@@ -52,6 +52,11 @@ class BuildTests(unittest.TestCase):
         rendered = build_home(issue, read_json(ROOT / "content" / "index.json"), load_site_config(), load_level_config(), load_locales())
         self.assertIn('data-story-index="5"', rendered)
 
+    def test_everyday_story_is_disclosed_as_ai_generated(self) -> None:
+        issue = read_json(ROOT / "content" / "2024-01-26.json")
+        rendered = build_home(issue, read_json(ROOT / "content" / "index.json"), load_site_config(), load_level_config(), load_locales())
+        self.assertIn("ПОЛНОСТЬЮ СОЗДАНО ИИ", rendered)
+
     def test_old_issue_builds_when_a_new_level_becomes_default(self) -> None:
         issue = read_json(ROOT / "content" / "2024-01-26.json")
         site = {**load_site_config(), "defaultReadingLevel": "gimel"}

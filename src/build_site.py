@@ -124,7 +124,8 @@ def level_controls(issue: dict[str, Any], levels: list[dict[str, Any]], label_ke
 
 
 def story_kind(story: dict[str, Any], copy: dict[str, str]) -> str:
-    return f"{copy.get('category.' + story['category'], story['category'])} · {copy['type.' + story['type']]}"
+    label = f"{copy.get('category.' + story['category'], story['category'])} · {copy['type.' + story['type']]}"
+    return f"{label} · {copy['type.aiGenerated']}" if story["type"] == "everyday" else label
 
 
 def story_card(story: dict[str, Any], index: int, issue: dict[str, Any], site: dict[str, Any], levels: list[dict[str, Any]], copy: dict[str, str], lead: bool = False) -> str:

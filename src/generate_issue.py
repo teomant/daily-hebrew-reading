@@ -131,7 +131,8 @@ def _story_batch_schema(
             "paragraphs": {
                 "type": "array",
                 "items": unit_list,
-                "minItems": 1,
+                "minItems": 4,
+                "maxItems": 5,
             },
         },
         "required": ["title", "teaser", "paragraphs"],
@@ -310,8 +311,8 @@ def _generation_request(
         "Balance the existing type counts; normally do not add a second HISTORY story."
         if is_append
         else
-        "Create the first complete issue for this date. Aim for 5–7 CURRENT stories, 3–4 EVERYDAY stories, and one HISTORY story, "
-        "but favor quality over a rigid quota."
+        "Create the first complete issue for this date. Aim for 4 CURRENT stories, 4 EVERYDAY stories, and 2 HISTORY stories; "
+        "allow 3–5 CURRENT, 3–5 EVERYDAY, and 1–2 HISTORY when quality requires it. Favor practical spoken-life value over a rigid quota."
     )
     level_payload = [
         {
@@ -329,7 +330,7 @@ Target publication date: {target_date}
 Story count: aim for {target_count}; return between {minimum_count} and {maximum_count}. Never add a weak or padded story only to reach the target.
 Mode: {mode}
 
-Use web search for every CURRENT and HISTORY story. Prefer sources published today or within the previous several days for CURRENT. Verify facts before adapting. Never reuse any excluded story, URL, or substantially similar topic.
+Use web search for every CURRENT and HISTORY story. Prefer Israeli local and regional sources, then broader Israeli sources; use international stories only when their everyday-language value is stronger. Prefer sources published today or within the previous several days for CURRENT. Verify facts before adapting. Give every brief enough concrete situation, interaction, and outcome detail to support 4–5 developed paragraphs at the configured article lengths without invention. Never reuse any excluded story, URL, or substantially similar topic.
 
 Configured reading levels:
 {json.dumps(level_payload, ensure_ascii=False, indent=2)}

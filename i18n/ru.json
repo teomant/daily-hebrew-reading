@@ -9,10 +9,10 @@
   "nav.backToIssue": "Назад к выпуску",
   "home.dailyIssue": "Ежедневный выпуск",
   "home.heroTitle": "Несколько хороших историй. Нормальный современный иврит.",
-  "home.heroSummary": "Читайте понемногу каждый день: свежие сюжеты, жизненные ситуации и одна история из прошлого.",
+  "home.heroSummary": "Заполните дорогу на работу местными историями, жизненными ситуациями и историей на полезном современном иврите.",
   "home.startIssue": "Начать выпуск",
   "home.inIssue": "В сегодняшнем выпуске",
-  "home.storiesForTime": "Истории на 20–30 минут",
+  "home.storiesForTime": "Истории на 40–50 минут",
   "home.allStories": "Все материалы",
   "home.previousIssues": "Прошлые выпуски",
   "archive.title": "Архив выпусков",
@@ -50,5 +50,6 @@
   "type.current": "CURRENT",
   "type.everyday": "EVERYDAY",
   "type.history": "HISTORY",
+  "type.aiGenerated": "ПОЛНОСТЬЮ СОЗДАНО ИИ",
   "footer.schedule": "Новые истории каждый день в 06:00 UTC"
 }

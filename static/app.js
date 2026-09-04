@@ -38,7 +38,10 @@
     return locales[interfaceLocale][key] || locales[interfaceLocale]["meta.minutesMany"];
   };
   const formatDate = value => new Intl.DateTimeFormat(interfaceLocale, {day:"numeric", month:"long", year:"numeric", timeZone:"UTC"}).format(new Date(`${value}T00:00:00Z`));
-  const kind = story => `${copy(`category.${story.category}`)} · ${copy(`type.${story.type}`)}`;
+  const kind = story => {
+    const label = `${copy(`category.${story.category}`)} · ${copy(`type.${story.type}`)}`;
+    return story.type === "everyday" ? `${label} · ${copy("type.aiGenerated")}` : label;
+  };
 
   function activateControls() {
     document.querySelectorAll("[data-level]").forEach(button => {
