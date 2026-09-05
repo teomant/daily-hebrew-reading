@@ -20,6 +20,7 @@ from src.generate_issue import (
     _remove_redundant_sources,
     _recent_issue_context,
     _safe_log_text,
+    _segmentation_batch_schema,
     _seed_errors,
     _transactional_write,
     generate,
@@ -76,6 +77,12 @@ def _translations(story: dict) -> dict:
 
 
 class GenerationTests(unittest.TestCase):
+    def test_segmentation_schema_is_an_object(self) -> None:
+        levels = read_json(ROOT / "config" / "reading-levels.json")["levels"]
+        schema = _segmentation_batch_schema(["story-one"], levels)
+        self.assertEqual(schema["type"], "object")
+        self.assertIn("adaptations", schema["properties"])
+
     def test_recent_issue_context_uses_only_previous_three_days(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             content_dir = Path(temporary)

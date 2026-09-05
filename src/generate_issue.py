@@ -281,8 +281,6 @@ def _prose_batch_schema(
         "required": ["adaptations"],
         "additionalProperties": False,
     }
-
-
 def _segmentation_batch_schema(
     story_ids: list[str],
     levels: list[dict[str, Any]],
@@ -325,6 +323,19 @@ def _segmentation_batch_schema(
             "levels": level_map,
         },
         "required": ["id", "levels"],
+        "additionalProperties": False,
+    }
+    return {
+        "type": "object",
+        "properties": {
+            "adaptations": {
+                "type": "array",
+                "items": adaptation,
+                "minItems": len(story_ids),
+                "maxItems": len(story_ids),
+            }
+        },
+        "required": ["adaptations"],
         "additionalProperties": False,
     }
 
@@ -382,19 +393,6 @@ def _translation_batch_schema(
             }
         },
         "required": ["translations"],
-        "additionalProperties": False,
-    }
-    return {
-        "type": "object",
-        "properties": {
-            "adaptations": {
-                "type": "array",
-                "items": adaptation,
-                "minItems": len(story_ids),
-                "maxItems": len(story_ids),
-            }
-        },
-        "required": ["adaptations"],
         "additionalProperties": False,
     }
 
