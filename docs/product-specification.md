@@ -137,7 +137,7 @@ The MVP does not need niqqud. Consequently, even the Alef band assumes the reade
 
 Do not generate level adaptations independently in ways that introduce different facts. The initial Alef, Alef Plus, and Bet versions—and any future configured versions—must share one brief.
 
-For CURRENT and HISTORY, the pipeline is: sources → factual brief → plain Hebrew level adaptations → lexical segmentation → contextual translation. For EVERYDAY, it is: scenario brief → plain Hebrew level adaptations → lexical segmentation → contextual translation. Segmentation is instructed to preserve the approved Hebrew, while translation returns only translation maps and cannot rewrite it.
+For CURRENT and HISTORY, the pipeline is: sources → factual brief → level adaptation with lexical units and contextual translations. For EVERYDAY, it is: scenario brief → level adaptation with lexical units and contextual translations. Within adaptation, Hebrew prose is written and proofread before it is segmented.
 
 Alef may omit details and Bet may expand them, but central facts and events must remain consistent.
 
@@ -277,7 +277,7 @@ Language adaptation must not freely invent details for real stories. A factual b
 
 ## 31. OpenAI API
 
-Use the OpenAI API for research and selection, factual and scenario briefs, level adaptation, lexical segmentation, and Russian and English translations. Use the current official SDK and a modern API. A normal issue uses separate structured responses for research, plain-Hebrew adaptation, segmentation, and translation. Translation receives the full prose for context but returns only translation maps aligned to frozen units.
+Use the OpenAI API for research and selection, factual and scenario briefs, level adaptation, lexical segmentation, and Russian and English translations. Use the current official SDK and a modern API. A normal issue uses one web-enabled research response followed by one structured adaptation response per small story batch.
 
 Configure the model through `OPENAI_MODEL` and supply the key through `OPENAI_API_KEY`. Store the key only in a GitHub Actions secret or runtime environment. It must never enter Git, frontend assets, JSON content, HTML output, logs, or error messages.
 

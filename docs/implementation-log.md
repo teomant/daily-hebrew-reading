@@ -32,5 +32,5 @@
 - Made empty lexical translations non-fatal after the second adaptation attempt. The Hebrew unit is retained, untranslated units have no tooltip in the selected language, and structural validation failures remain blocking.
 - Required 3–5 EVERYDAY stories in both the research prompt and research validation. Added compact summaries from the previous three calendar days to the research prompt to reduce repeated current events, history subjects, and everyday plots across issues.
 - Moved the daily GitHub Actions schedule from 06:00 UTC to 01:15 UTC and updated the site footer and repository documentation.
-- Split language work into plain-Hebrew, segmentation, and contextual translation passes. Segmentation is instructed to preserve the prose but no longer fails on small model changes; translations may be empty for genuinely untranslatable units and must cover at least 75% of meaningful units per level and locale.
+- Kept language work in one inexpensive adaptation pass per story batch: the model is instructed to write and proofread Hebrew before segmenting and translating it. Translations may be empty for genuinely untranslatable units and must cover at least 75% per level and locale.
 - Final verification passed content validation, 20 unit tests, Python compilation, JavaScript syntax checking, workflow YAML parsing, and the production static build.

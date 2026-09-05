@@ -11,7 +11,7 @@ The repository contains a complete sample issue, so the site can be built and te
 - Persisted reading level, translation language, and interface language preferences.
 - Keyboard, hover, and tap translation popovers.
 - Source links and optional externally hosted, attributed source images with graceful failure.
-- Four-stage OpenAI Responses API generation: research freezes briefs, plain Hebrew prose is written and frozen, lexical units are segmented without changing it, and a final call translates those frozen units in sentence context.
+- Two-stage OpenAI Responses API generation: research freezes briefs, then one adaptation call writes and proofreads Hebrew before adding lexical units and contextual translations.
 - Safe same-day append behavior; existing stories are preserved and duplicates are rejected.
 - Content validation, tests, daily/manual GitHub Actions, and GitHub Pages deployment.
 
@@ -76,9 +76,9 @@ The OpenAI API is billed separately from ChatGPT Plus. The API uses the credits 
 - Leave `date` blank to use the current UTC date. Enter an existing date to append rather than replace. `additional_stories` controls the append size; it is ignored for a new full issue.
 - **Validate and deploy site** runs on an ordinary push to `master` and never calls OpenAI.
 
-Generation logs timestamp each research, Hebrew-prose, segmentation, translation, validation, and write phase, including elapsed API-call time and one validation error per line. Research has up to three attempts for invalid story data. Missing sources are allowed; duplicate or unverified source URLs and their dependent images are discarded without retrying research. Later phases run in two-story batches; a failed request retries only its batch, and factual briefs are not researched again.
+Generation logs timestamp each research, adaptation, validation, and write phase. Research has up to three attempts. Adaptation runs in two-story batches; a failed request retries only its batch without repeating research.
 
-Segmentation is instructed to preserve the Hebrew, but small model changes do not fail or retry the issue. A separate call translates every meaningful unit using the full sentence as context. Individual empty translations are allowed, but every story level must reach at least 75% coverage in each configured translation language.
+The adaptation prompt tells the model to finish and proofread the Hebrew before segmenting it, then translate every meaningful unit using the full sentence as context. Individual empty translations are allowed, but each story level must reach at least 75% coverage per language.
 
 The generation workflow commits with the GitHub Actions bot, then deploys the already validated build. The generated commit does not need to trigger a second workflow.
 

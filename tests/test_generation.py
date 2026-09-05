@@ -12,14 +12,13 @@ from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import Mock, patch
 
-from src.common import ROOT, read_json, units_text
+from src.common import ROOT, read_json
 from src.generate_issue import (
     PROVENANCE_ERRORS_KEY,
     _call_openai,
     _remove_redundant_sources,
     _recent_issue_context,
     _safe_log_text,
-    _segmentation_batch_schema,
     _seed_errors,
     _transactional_write,
     generate,
@@ -27,61 +26,7 @@ from src.generate_issue import (
 from src.validation import validate_repository
 
 
-def _plain_adaptation(story: dict) -> dict:
-    return {
-        "id": story["id"],
-        "levels": {
-            level_id: {
-                "title": units_text(level["title"]),
-                "teaser": units_text(level["teaser"]),
-                "paragraphs": [units_text(paragraph) for paragraph in level["paragraphs"]],
-            }
-            for level_id, level in story["levels"].items()
-        },
-    }
-
-
-def _segmentation(story: dict) -> dict:
-    return {
-        "id": story["id"],
-        "levels": {
-            level_id: {
-                "title": [{"text": unit["text"], "type": unit["type"]} for unit in level["title"]],
-                "teaser": [{"text": unit["text"], "type": unit["type"]} for unit in level["teaser"]],
-                "paragraphs": [
-                    [{"text": unit["text"], "type": unit["type"]} for unit in paragraph]
-                    for paragraph in level["paragraphs"]
-                ],
-            }
-            for level_id, level in story["levels"].items()
-        },
-    }
-
-
-def _translations(story: dict) -> dict:
-    return {
-        "id": story["id"],
-        "levels": {
-            level_id: {
-                "title": [unit["translations"] for unit in level["title"]],
-                "teaser": [unit["translations"] for unit in level["teaser"]],
-                "paragraphs": [
-                    [unit["translations"] for unit in paragraph]
-                    for paragraph in level["paragraphs"]
-                ],
-            }
-            for level_id, level in story["levels"].items()
-        },
-    }
-
-
 class GenerationTests(unittest.TestCase):
-    def test_segmentation_schema_is_an_object(self) -> None:
-        levels = read_json(ROOT / "config" / "reading-levels.json")["levels"]
-        schema = _segmentation_batch_schema(["story-one"], levels)
-        self.assertEqual(schema["type"], "object")
-        self.assertIn("adaptations", schema["properties"])
-
     def test_recent_issue_context_uses_only_previous_three_days(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             content_dir = Path(temporary)
@@ -251,17 +196,12 @@ class GenerationTests(unittest.TestCase):
             new_story["everydayMeta"]["domain"] = "public_transport"
             new_story["everydayMeta"]["scenario"] = "changed_train_platform"
             seed = {key: value for key, value in new_story.items() if key != "levels"}
-            prose = _plain_adaptation(new_story)
-            segmentation = _segmentation(new_story)
-            translations = _translations(new_story)
+            for level in new_story["levels"].values():
+                level["title"].append({"text": "", "type": "separator", "translations": {"ru": "", "en": ""}})
+            adaptation = {"id": new_story["id"], "levels": new_story["levels"]}
             with patch.dict(os.environ, {"OPENAI_MODEL": "test-model"}), patch(
                 "src.generate_issue._call_openai",
-                side_effect=[
-                    {"stories": [seed]},
-                    {"adaptations": [prose]},
-                    {"adaptations": [segmentation]},
-                    {"translations": [translations]},
-                ],
+                side_effect=[{"stories": [seed]}, {"adaptations": [adaptation]}],
             ):
                 result = generate(root, "2024-01-26", 1)
             self.assertEqual([story["id"] for story in result["stories"][:3]], [story["id"] for story in original["stories"]])
@@ -282,30 +222,24 @@ class GenerationTests(unittest.TestCase):
             new_story["everydayMeta"]["domain"] = "public_transport"
             new_story["everydayMeta"]["scenario"] = "changed_train_platform"
             seed = {key: value for key, value in new_story.items() if key != "levels"}
-            prose = _plain_adaptation(new_story)
-            segmentation = _segmentation(new_story)
-            translations = _translations(new_story)
+            adaptation = {"id": new_story["id"], "levels": new_story["levels"]}
             call = Mock(side_effect=[
                 {"stories": [seed]},
                 RuntimeError("OpenAI generation failed (APIConnectionError)"),
-                {"adaptations": [prose]},
-                {"adaptations": [segmentation]},
-                {"translations": [translations]},
+                {"adaptations": [adaptation]},
             ])
             with patch.dict(os.environ, {"OPENAI_MODEL": "test-model"}), patch(
                 "src.generate_issue._call_openai",
                 call,
             ):
                 result = generate(root, "2024-01-26", 1)
-            self.assertEqual(call.call_count, 5)
+            self.assertEqual(call.call_count, 3)
             self.assertEqual(call.call_args_list[0].kwargs["phase"], "Research attempt 1/3")
-            self.assertEqual(call.call_args_list[1].kwargs["phase"], "Hebrew prose batch 1/1, attempt 1/2")
-            self.assertEqual(call.call_args_list[2].kwargs["phase"], "Hebrew prose batch 1/1, attempt 2/2")
-            self.assertEqual(call.call_args_list[3].kwargs["phase"], "Segmentation batch 1/1, attempt 1/2")
-            self.assertEqual(call.call_args_list[4].kwargs["phase"], "Translation batch 1/1, attempt 1/2")
+            self.assertEqual(call.call_args_list[1].kwargs["phase"], "Adaptation batch 1/1, attempt 1/2")
+            self.assertEqual(call.call_args_list[2].kwargs["phase"], "Adaptation batch 1/1, attempt 2/2")
             self.assertEqual(result["stories"][-1]["id"], "changed-train-platform")
 
-    def test_annotation_accepts_partial_translation_above_coverage_threshold(self) -> None:
+    def test_adaptation_accepts_empty_translation_above_coverage_threshold(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
             for directory in ("config", "i18n", "prompts", "content"):
@@ -319,22 +253,18 @@ class GenerationTests(unittest.TestCase):
             seed = {key: value for key, value in new_story.items() if key != "levels"}
             levels = copy.deepcopy(new_story["levels"])
             levels["alef"]["title"][0]["translations"]["ru"] = ""
-            prose = _plain_adaptation(new_story)
-            segmentation = _segmentation(new_story)
-            translated_story = {**new_story, "levels": levels}
-            translations = _translations(translated_story)
+            adaptation = {"id": new_story["id"], "levels": levels}
             call = Mock(side_effect=[
                 {"stories": [seed]},
-                {"adaptations": [prose]},
-                {"adaptations": [segmentation]},
-                {"translations": [translations]},
+                {"adaptations": [copy.deepcopy(adaptation)]},
+                {"adaptations": [copy.deepcopy(adaptation)]},
             ])
             with patch.dict(os.environ, {"OPENAI_MODEL": "test-model"}), patch(
                 "src.generate_issue._call_openai",
                 call,
             ):
                 result = generate(root, "2024-01-26", 1)
-            self.assertEqual(call.call_count, 4)
+            self.assertEqual(call.call_count, 2)
             self.assertEqual(result["stories"][-1]["levels"]["alef"]["title"][0]["translations"]["ru"], "")
             self.assertEqual(validate_repository(root), [])
 
@@ -356,17 +286,10 @@ class GenerationTests(unittest.TestCase):
             new_story["everydayMeta"]["domain"] = "pharmacy"
             new_story["everydayMeta"]["scenario"] = "collect_before_closing"
             seed = {key: value for key, value in new_story.items() if key != "levels"}
-            prose = _plain_adaptation(new_story)
-            segmentation = _segmentation(new_story)
-            translations = _translations(new_story)
+            adaptation = {"id": new_story["id"], "levels": new_story["levels"]}
             with patch.dict(os.environ, {"OPENAI_MODEL": "test-model"}), patch(
                 "src.generate_issue._call_openai",
-                side_effect=[
-                    {"stories": [seed]},
-                    {"adaptations": [prose]},
-                    {"adaptations": [segmentation]},
-                    {"translations": [translations]},
-                ],
+                side_effect=[{"stories": [seed]}, {"adaptations": [adaptation]}],
             ):
                 result = generate(root, "2024-01-26", 1)
             self.assertEqual(result["availableLevels"], ["alef", "alefPlus", "bet"])
@@ -389,27 +312,24 @@ class GenerationTests(unittest.TestCase):
             new_story["image"] = None
             valid_seed = {key: value for key, value in new_story.items() if key != "levels"}
             invalid_seed = {**valid_seed, "slug": "Not a valid slug"}
-            prose = _plain_adaptation(new_story)
-            segmentation = _segmentation(new_story)
-            translations = _translations(new_story)
+            adaptation = {"id": new_story["id"], "levels": new_story["levels"]}
             call = Mock(side_effect=[
                 {
                     "stories": [invalid_seed],
                     PROVENANCE_ERRORS_KEY: ["https://example.com/unverified"],
                 },
                 {"stories": [valid_seed]},
-                {"adaptations": [prose]},
-                {"adaptations": [segmentation]},
-                {"translations": [translations]},
+                {"adaptations": [adaptation]},
             ])
             with patch.dict(os.environ, {"OPENAI_MODEL": "test-model"}), patch(
                 "src.generate_issue._call_openai",
                 call,
             ):
                 result = generate(root, "2024-01-26", 1)
-            self.assertEqual(call.call_count, 5)
+            self.assertEqual(call.call_count, 3)
             self.assertIn("expected lowercase ASCII kebab-case", call.call_args_list[1].args[2])
             self.assertEqual(result["stories"][-1]["id"], "new-science-story")
+
 
 if __name__ == "__main__":
     unittest.main()
