@@ -17,6 +17,75 @@
         "מתי בערך",
         "בסוף החלטתי"
       ]
+    },
+    {
+      "date": "2026-09-05",
+      "storyId": "supermarket-basket-and-school-snacks",
+      "domain": "shopping",
+      "scenario": "school_week_supermarket_budget",
+      "lexicalThemes": [
+        "shopping",
+        "prices",
+        "school routines",
+        "food",
+        "budget"
+      ],
+      "targetVocabulary": [
+        "סל קניות",
+        "יקר",
+        "לשתף",
+        "ויתרתי",
+        "בקופה",
+        "ארוחת עשר",
+        "חסר",
+        "להחליף"
+      ]
+    },
+    {
+      "date": "2026-09-05",
+      "storyId": "bus-delay-and-a-change-of-plan",
+      "domain": "transport",
+      "scenario": "late_bus_meeting_change_of_plan",
+      "lexicalThemes": [
+        "public transport",
+        "lateness",
+        "messaging",
+        "plans",
+        "waiting"
+      ],
+      "targetVocabulary": [
+        "באוטובוס",
+        "איחור",
+        "כבר בדרך",
+        "עוד מעט",
+        "לחכות",
+        "להודיע",
+        "בערך",
+        "אין בעיה"
+      ]
+    },
+    {
+      "date": "2026-09-05",
+      "storyId": "apartment-repair-leak-and-building-manager",
+      "domain": "housing",
+      "scenario": "apartment_leak_superintendent_call",
+      "lexicalThemes": [
+        "housing",
+        "repairs",
+        "complaints",
+        "coordination",
+        "building management"
+      ],
+      "targetVocabulary": [
+        "נזילה",
+        "להזמין איש מקצוע",
+        "ועד בית",
+        "לתקן",
+        "דירה",
+        "נשאר",
+        "להתעכב",
+        "אין לי זמן"
+      ]
     }
   ]
 }
