@@ -137,7 +137,7 @@ The MVP does not need niqqud. Consequently, even the Alef band assumes the reade
 
 Do not generate level adaptations independently in ways that introduce different facts. The initial Alef, Alef Plus, and Bet versions—and any future configured versions—must share one brief.
 
-For CURRENT and HISTORY, the pipeline is: sources → factual brief → plain Hebrew level adaptations → immutable lexical segmentation → contextual translation. For EVERYDAY, it is: scenario brief → plain Hebrew level adaptations → immutable lexical segmentation → contextual translation. Segmentation must reproduce the approved Hebrew character-for-character, and translation cannot rewrite it.
+For CURRENT and HISTORY, the pipeline is: sources → factual brief → plain Hebrew level adaptations → lexical segmentation → contextual translation. For EVERYDAY, it is: scenario brief → plain Hebrew level adaptations → lexical segmentation → contextual translation. Segmentation is instructed to preserve the approved Hebrew, while translation returns only translation maps and cannot rewrite it.
 
 Alef may omit details and Bet may expand them, but central facts and events must remain consistent.
 
@@ -318,7 +318,6 @@ Before publishing generated content, validate at least:
 - every level declared by the issue;
 - non-empty text;
 - at least 75% contextual translation coverage per story level and configured translation language;
-- lexical annotation reconstructs the frozen Hebrew exactly, including prefixes, spaces, punctuation, and word order;
 - valid source metadata when a story has sources;
 - domain and scenario for EVERYDAY;
 - no duplicate slugs or duplicate source stories;

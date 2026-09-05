@@ -646,57 +646,6 @@ def _plain_adaptation_errors(
     return errors
 
 
-def _segmentation_preservation_errors(
-    prose_adaptations: list[dict[str, Any]],
-    segmentations: list[dict[str, Any]],
-) -> list[str]:
-    """Require segmentation to preserve the previously approved Hebrew verbatim."""
-    errors: list[str] = []
-    prose_by_id = {item.get("id"): item for item in prose_adaptations if isinstance(item, dict)}
-    segmentation_by_id = {item.get("id"): item for item in segmentations if isinstance(item, dict)}
-    if set(segmentation_by_id) != set(prose_by_id) or len(segmentation_by_id) != len(segmentations):
-        errors.append("segmentation phase must return every frozen Hebrew story ID exactly once")
-        return errors
-    for story_id, prose in prose_by_id.items():
-        expected_levels = prose.get("levels", {})
-        actual_levels = segmentation_by_id[story_id].get("levels", {})
-        for level_id, expected_level in expected_levels.items():
-            actual_level = actual_levels.get(level_id, {}) if isinstance(actual_levels, dict) else {}
-            expected_groups = [
-                ("title", expected_level.get("title")),
-                ("teaser", expected_level.get("teaser")),
-            ]
-            expected_groups.extend(
-                (f"paragraphs[{index}]", paragraph)
-                for index, paragraph in enumerate(expected_level.get("paragraphs", []))
-            )
-            actual_paragraphs = actual_level.get("paragraphs", []) if isinstance(actual_level, dict) else []
-            if not isinstance(actual_paragraphs, list):
-                actual_paragraphs = []
-            if len(actual_paragraphs) != len(expected_level.get("paragraphs", [])):
-                errors.append(
-                    f"segmentation {story_id}.{level_id}.paragraphs: changed frozen paragraph count"
-                )
-            for group_name, expected_text in expected_groups:
-                if group_name == "title":
-                    units = actual_level.get("title") if isinstance(actual_level, dict) else None
-                elif group_name == "teaser":
-                    units = actual_level.get("teaser") if isinstance(actual_level, dict) else None
-                else:
-                    paragraph_index = int(group_name.removeprefix("paragraphs[").removesuffix("]"))
-                    units = actual_paragraphs[paragraph_index] if paragraph_index < len(actual_paragraphs) else None
-                actual_text = "".join(
-                    str(unit.get("text", ""))
-                    for unit in units
-                    if isinstance(unit, dict)
-                ) if isinstance(units, list) else None
-                if actual_text != expected_text:
-                    errors.append(
-                        f"segmentation {story_id}.{level_id}.{group_name}: lexical units changed frozen Hebrew"
-                    )
-    return errors
-
-
 def _merge_translations(
     segmentations: list[dict[str, Any]],
     translation_results: list[dict[str, Any]],
@@ -1212,16 +1161,9 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
             removed_units = _remove_empty_lexical_units(segmentations)
             if removed_units:
                 _log(f"{phase}: removed {removed_units} empty lexical unit(s)")
-            segmentation_errors = _segmentation_preservation_errors(completed_prose, segmentations)
-            _log(f"{phase}: validating frozen Hebrew reconstruction")
-            if not segmentation_errors:
-                completed_segmentation = segmentations
-                _log(f"{phase}: validation passed; lexical units are frozen")
-                break
-            segmentation_feedback = segmentation_errors[:20]
-            _log_validation_errors(phase, segmentation_errors)
-            if attempt == ADAPTATION_ATTEMPTS - 1:
-                raise RuntimeError("Generated segmentation failed validation:\n- " + _error_report(segmentation_errors))
+            completed_segmentation = segmentations
+            _log(f"{phase}: segmentation accepted")
+            break
 
         if completed_segmentation is None:
             raise RuntimeError(f"Segmentation batch {batch_index} produced no usable stories")

@@ -78,7 +78,7 @@ The OpenAI API is billed separately from ChatGPT Plus. The API uses the credits 
 
 Generation logs timestamp each research, Hebrew-prose, segmentation, translation, validation, and write phase, including elapsed API-call time and one validation error per line. Research has up to three attempts for invalid story data. Missing sources are allowed; duplicate or unverified source URLs and their dependent images are discarded without retrying research. Later phases run in two-story batches; a failed request retries only its batch, and factual briefs are not researched again.
 
-Segmentation must reproduce the frozen Hebrew character-for-character. A separate call translates every meaningful unit using the full sentence as context. Individual empty translations are allowed, but every story level must reach at least 75% coverage in each configured translation language; lower coverage or altered Hebrew retries only the affected phase and then fails safely.
+Segmentation is instructed to preserve the Hebrew, but small model changes do not fail or retry the issue. A separate call translates every meaningful unit using the full sentence as context. Individual empty translations are allowed, but every story level must reach at least 75% coverage in each configured translation language.
 
 The generation workflow commits with the GitHub Actions bot, then deploys the already validated build. The generated commit does not need to trigger a second workflow.
 

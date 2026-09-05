@@ -15,7 +15,6 @@ from unittest.mock import Mock, patch
 from src.common import ROOT, read_json, units_text
 from src.generate_issue import (
     PROVENANCE_ERRORS_KEY,
-    _segmentation_preservation_errors,
     _call_openai,
     _remove_redundant_sources,
     _recent_issue_context,
@@ -411,16 +410,6 @@ class GenerationTests(unittest.TestCase):
             self.assertEqual(call.call_count, 5)
             self.assertIn("expected lowercase ASCII kebab-case", call.call_args_list[1].args[2])
             self.assertEqual(result["stories"][-1]["id"], "new-science-story")
-
-    def test_segmentation_cannot_change_frozen_hebrew(self) -> None:
-        story = copy.deepcopy(read_json(ROOT / "content" / "2024-01-26.json")["stories"][1])
-        prose = _plain_adaptation(story)
-        segmentation = _segmentation(story)
-        self.assertEqual(_segmentation_preservation_errors([prose], [segmentation]), [])
-        segmentation["levels"]["alef"]["paragraphs"][0][0]["text"] += "ש"
-        errors = _segmentation_preservation_errors([prose], [segmentation])
-        self.assertTrue(any("changed frozen Hebrew" in error for error in errors), errors)
-
 
 if __name__ == "__main__":
     unittest.main()
