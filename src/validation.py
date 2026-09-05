@@ -12,6 +12,7 @@ from .common import issue_minutes, normalized_url, read_json, units_text
 SLUG_PATTERN = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 STORY_TYPES = {"current", "everyday", "history"}
 UNIT_TYPES = {"word", "expression", "properNoun", "separator"}
+MIN_TRANSLATION_COVERAGE = 0.75
 
 
 def _https_url(value: Any) -> bool:
@@ -54,6 +55,41 @@ def _validate_units(
             translation = translations.get(locale)
             if not isinstance(translation, str):
                 errors.append(f"{unit_path}.translations.{locale}: expected a string")
+
+
+def _validate_translation_coverage(
+    level: dict[str, Any],
+    path: str,
+    locales: list[str],
+    errors: list[str],
+) -> None:
+    paragraphs = level.get("paragraphs")
+    groups = [level.get("title"), level.get("teaser")]
+    if isinstance(paragraphs, list):
+        groups.extend(paragraphs)
+    meaningful = [
+        unit
+        for units in groups
+        if isinstance(units, list)
+        for unit in units
+        if isinstance(unit, dict) and unit.get("type") != "separator"
+    ]
+    if not meaningful:
+        return
+    for locale in locales:
+        translated = sum(
+            1
+            for unit in meaningful
+            if isinstance(unit.get("translations"), dict)
+            and isinstance(unit["translations"].get(locale), str)
+            and bool(unit["translations"][locale].strip())
+        )
+        coverage = translated / len(meaningful)
+        if coverage < MIN_TRANSLATION_COVERAGE:
+            errors.append(
+                f"{path}.translations.{locale}: {coverage:.0%} coverage; "
+                f"expected at least {MIN_TRANSLATION_COVERAGE:.0%}"
+            )
 
 
 def validate_issue(
@@ -208,6 +244,7 @@ def validate_issue(
                     _validate_units(paragraph, f"{level_path}.paragraphs[{paragraph_index}]", locales, errors)
                 if not any(units_text(paragraph).strip() for paragraph in paragraphs if isinstance(paragraph, list)):
                     errors.append(f"{level_path}.paragraphs: text is empty")
+            _validate_translation_coverage(level, level_path, locales, errors)
     return errors
 
 

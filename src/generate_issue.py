@@ -229,14 +229,36 @@ def _seed_batch_schema(
     return schema
 
 
-def _adaptation_batch_schema(
+def _plain_level_schema() -> dict[str, Any]:
+    text = {"type": "string", "minLength": 1}
+    return {
+        "type": "object",
+        "properties": {
+            "title": text,
+            "teaser": text,
+            "paragraphs": {
+                "type": "array",
+                "items": text,
+                "minItems": 4,
+                "maxItems": 5,
+            },
+        },
+        "required": ["title", "teaser", "paragraphs"],
+        "additionalProperties": False,
+    }
+
+
+def _prose_batch_schema(
     story_ids: list[str],
     levels: list[dict[str, Any]],
-    locales: list[str],
-    image_locales: list[str],
 ) -> dict[str, Any]:
-    full = _story_batch_schema(1, 1, levels, locales, image_locales)
-    level_map = full["properties"]["stories"]["items"]["properties"]["levels"]
+    level = _plain_level_schema()
+    level_map = {
+        "type": "object",
+        "properties": {item["id"]: level for item in levels},
+        "required": [item["id"] for item in levels],
+        "additionalProperties": False,
+    }
     adaptation = {
         "type": "object",
         "properties": {
@@ -244,6 +266,122 @@ def _adaptation_batch_schema(
             "levels": level_map,
         },
         "required": ["id", "levels"],
+        "additionalProperties": False,
+    }
+    return {
+        "type": "object",
+        "properties": {
+            "adaptations": {
+                "type": "array",
+                "items": adaptation,
+                "minItems": len(story_ids),
+                "maxItems": len(story_ids),
+            }
+        },
+        "required": ["adaptations"],
+        "additionalProperties": False,
+    }
+
+
+def _segmentation_batch_schema(
+    story_ids: list[str],
+    levels: list[dict[str, Any]],
+) -> dict[str, Any]:
+    unit = {
+        "type": "object",
+        "properties": {
+            "text": {"type": "string", "pattern": ".+"},
+            "type": {"type": "string", "enum": ["word", "expression", "properNoun", "separator"]},
+        },
+        "required": ["text", "type"],
+        "additionalProperties": False,
+    }
+    unit_list = {"type": "array", "items": unit, "minItems": 1}
+    level = {
+        "type": "object",
+        "properties": {
+            "title": unit_list,
+            "teaser": unit_list,
+            "paragraphs": {
+                "type": "array",
+                "items": unit_list,
+                "minItems": 4,
+                "maxItems": 5,
+            },
+        },
+        "required": ["title", "teaser", "paragraphs"],
+        "additionalProperties": False,
+    }
+    level_map = {
+        "type": "object",
+        "properties": {item["id"]: level for item in levels},
+        "required": [item["id"] for item in levels],
+        "additionalProperties": False,
+    }
+    adaptation = {
+        "type": "object",
+        "properties": {
+            "id": {"type": "string", "enum": story_ids},
+            "levels": level_map,
+        },
+        "required": ["id", "levels"],
+        "additionalProperties": False,
+    }
+
+
+def _translation_batch_schema(
+    story_ids: list[str],
+    levels: list[dict[str, Any]],
+    locales: list[str],
+) -> dict[str, Any]:
+    translations = {
+        "type": "object",
+        "properties": {locale: {"type": "string"} for locale in locales},
+        "required": locales,
+        "additionalProperties": False,
+    }
+    translation_list = {"type": "array", "items": translations, "minItems": 1}
+    level = {
+        "type": "object",
+        "properties": {
+            "title": translation_list,
+            "teaser": translation_list,
+            "paragraphs": {
+                "type": "array",
+                "items": translation_list,
+                "minItems": 4,
+                "maxItems": 5,
+            },
+        },
+        "required": ["title", "teaser", "paragraphs"],
+        "additionalProperties": False,
+    }
+    level_map = {
+        "type": "object",
+        "properties": {item["id"]: level for item in levels},
+        "required": [item["id"] for item in levels],
+        "additionalProperties": False,
+    }
+    translation = {
+        "type": "object",
+        "properties": {
+            "id": {"type": "string", "enum": story_ids},
+            "levels": level_map,
+        },
+        "required": ["id", "levels"],
+        "additionalProperties": False,
+    }
+    return {
+        "type": "object",
+        "properties": {
+            "translations": {
+                "type": "array",
+                "items": translation,
+                "minItems": len(story_ids),
+                "maxItems": len(story_ids),
+            }
+        },
+        "required": ["translations"],
         "additionalProperties": False,
     }
     return {
@@ -379,7 +517,7 @@ Content from the previous {len(recent_issues)} available issue(s):
 
 Do not repeat the same real event, historical subject, or everyday scenario from these previous issues. A genuine follow-up is allowed only when something materially changed and the new angle is clearly distinct.
 
-The story id and slug must be identical. Prefer distinct canonical content-page URLs for sourced stories; use an empty source list rather than an uncertain URL. Do not use publisher homepages, section pages, generic latest pages, or liveblogs. Use null everydayMeta for sourced stories. Use null image when image provenance or embedding suitability is uncertain. Every separator unit must still contain translations with empty strings for every locale. Return no prose outside the schema.{retry}
+The story id and slug must be identical. Prefer distinct canonical content-page URLs for sourced stories; use an empty source list rather than an uncertain URL. Do not use publisher homepages, section pages, generic latest pages, or liveblogs. Use null everydayMeta for sourced stories. Use null image when image provenance or embedding suitability is uncertain. Return no prose outside the schema.{retry}
 """.strip()
 
 
@@ -478,32 +616,138 @@ def _remove_empty_lexical_units(adaptations: list[dict[str, Any]]) -> int:
     return removed
 
 
-def _missing_translation_errors(stories: list[dict[str, Any]], locales: list[str]) -> list[str]:
+def _plain_adaptation_errors(
+    adaptations: list[dict[str, Any]],
+    story_ids: list[str],
+    level_ids: list[str],
+) -> list[str]:
     errors: list[str] = []
-    for story_index, story in enumerate(stories):
+    adaptation_ids = [item.get("id") for item in adaptations if isinstance(item, dict)]
+    if len(set(adaptation_ids)) != len(adaptation_ids) or set(adaptation_ids) != set(story_ids):
+        errors.append("Hebrew prose phase must return every frozen story ID exactly once")
+    for adaptation_index, adaptation in enumerate(adaptations):
+        levels = adaptation.get("levels") if isinstance(adaptation, dict) else None
+        if not isinstance(levels, dict) or set(levels) != set(level_ids):
+            errors.append(f"Hebrew prose adaptations[{adaptation_index}].levels must exactly match configured levels")
+            continue
+        for level_id in level_ids:
+            level = levels.get(level_id)
+            path = f"Hebrew prose adaptations[{adaptation_index}].levels.{level_id}"
+            if not isinstance(level, dict):
+                errors.append(f"{path}: expected an object")
+                continue
+            for field in ("title", "teaser"):
+                value = level.get(field)
+                if not isinstance(value, str) or not value.strip():
+                    errors.append(f"{path}.{field}: expected non-empty Hebrew text")
+            paragraphs = level.get("paragraphs")
+            if not isinstance(paragraphs, list) or not paragraphs:
+                errors.append(f"{path}.paragraphs: expected non-empty paragraphs")
+            elif any(not isinstance(paragraph, str) or not paragraph.strip() for paragraph in paragraphs):
+                errors.append(f"{path}.paragraphs: every paragraph must contain Hebrew text")
+    return errors
+
+
+def _segmentation_preservation_errors(
+    prose_adaptations: list[dict[str, Any]],
+    segmentations: list[dict[str, Any]],
+) -> list[str]:
+    """Require segmentation to preserve the previously approved Hebrew verbatim."""
+    errors: list[str] = []
+    prose_by_id = {item.get("id"): item for item in prose_adaptations if isinstance(item, dict)}
+    segmentation_by_id = {item.get("id"): item for item in segmentations if isinstance(item, dict)}
+    if set(segmentation_by_id) != set(prose_by_id) or len(segmentation_by_id) != len(segmentations):
+        errors.append("segmentation phase must return every frozen Hebrew story ID exactly once")
+        return errors
+    for story_id, prose in prose_by_id.items():
+        expected_levels = prose.get("levels", {})
+        actual_levels = segmentation_by_id[story_id].get("levels", {})
+        for level_id, expected_level in expected_levels.items():
+            actual_level = actual_levels.get(level_id, {}) if isinstance(actual_levels, dict) else {}
+            expected_groups = [
+                ("title", expected_level.get("title")),
+                ("teaser", expected_level.get("teaser")),
+            ]
+            expected_groups.extend(
+                (f"paragraphs[{index}]", paragraph)
+                for index, paragraph in enumerate(expected_level.get("paragraphs", []))
+            )
+            actual_paragraphs = actual_level.get("paragraphs", []) if isinstance(actual_level, dict) else []
+            if not isinstance(actual_paragraphs, list):
+                actual_paragraphs = []
+            if len(actual_paragraphs) != len(expected_level.get("paragraphs", [])):
+                errors.append(
+                    f"segmentation {story_id}.{level_id}.paragraphs: changed frozen paragraph count"
+                )
+            for group_name, expected_text in expected_groups:
+                if group_name == "title":
+                    units = actual_level.get("title") if isinstance(actual_level, dict) else None
+                elif group_name == "teaser":
+                    units = actual_level.get("teaser") if isinstance(actual_level, dict) else None
+                else:
+                    paragraph_index = int(group_name.removeprefix("paragraphs[").removesuffix("]"))
+                    units = actual_paragraphs[paragraph_index] if paragraph_index < len(actual_paragraphs) else None
+                actual_text = "".join(
+                    str(unit.get("text", ""))
+                    for unit in units
+                    if isinstance(unit, dict)
+                ) if isinstance(units, list) else None
+                if actual_text != expected_text:
+                    errors.append(
+                        f"segmentation {story_id}.{level_id}.{group_name}: lexical units changed frozen Hebrew"
+                    )
+    return errors
+
+
+def _merge_translations(
+    segmentations: list[dict[str, Any]],
+    translation_results: list[dict[str, Any]],
+    locales: list[str],
+) -> tuple[list[dict[str, Any]], list[str]]:
+    """Attach translation maps by position without letting translation alter Hebrew."""
+    errors: list[str] = []
+    merged = copy.deepcopy(segmentations)
+    translations_by_id = {
+        item.get("id"): item for item in translation_results if isinstance(item, dict)
+    }
+    segmentation_ids = [item.get("id") for item in segmentations if isinstance(item, dict)]
+    if set(translations_by_id) != set(segmentation_ids) or len(translations_by_id) != len(translation_results):
+        return merged, ["translation phase must return every segmented story ID exactly once"]
+
+    for story in merged:
+        story_id = story.get("id")
+        translated_levels = translations_by_id[story_id].get("levels", {})
         for level_id, level in story.get("levels", {}).items():
+            translated_level = translated_levels.get(level_id, {}) if isinstance(translated_levels, dict) else {}
             groups = [("title", level.get("title")), ("teaser", level.get("teaser"))]
             groups.extend(
                 (f"paragraphs[{index}]", paragraph)
                 for index, paragraph in enumerate(level.get("paragraphs", []))
             )
+            translated_paragraphs = translated_level.get("paragraphs", []) if isinstance(translated_level, dict) else []
+            if not isinstance(translated_paragraphs, list):
+                translated_paragraphs = []
             for group_name, units in groups:
-                if not isinstance(units, list):
+                if group_name == "title":
+                    maps = translated_level.get("title") if isinstance(translated_level, dict) else None
+                elif group_name == "teaser":
+                    maps = translated_level.get("teaser") if isinstance(translated_level, dict) else None
+                else:
+                    paragraph_index = int(group_name.removeprefix("paragraphs[").removesuffix("]"))
+                    maps = translated_paragraphs[paragraph_index] if paragraph_index < len(translated_paragraphs) else None
+                if not isinstance(units, list) or not isinstance(maps, list) or len(maps) != len(units):
+                    errors.append(
+                        f"translation {story_id}.{level_id}.{group_name}: must align with every lexical unit"
+                    )
                     continue
-                for unit_index, unit in enumerate(units):
-                    if not isinstance(unit, dict) or unit.get("type") == "separator":
-                        continue
-                    translations = unit.get("translations")
-                    if not isinstance(translations, dict):
-                        continue
-                    for locale in locales:
-                        value = translations.get(locale)
-                        if isinstance(value, str) and not value.strip():
-                            errors.append(
-                                f"generated batch.stories[{story_index}].levels.{level_id}."
-                                f"{group_name}[{unit_index}].translations.{locale}: translation is required"
-                            )
-    return errors
+                for unit, translations in zip(units, maps, strict=True):
+                    if unit.get("type") == "separator":
+                        unit["translations"] = {locale: "" for locale in locales}
+                    elif isinstance(translations, dict):
+                        unit["translations"] = translations
+                    else:
+                        unit["translations"] = {}
+    return merged, errors
 
 
 def _remove_redundant_sources(
@@ -567,10 +811,9 @@ def _remove_redundant_sources(
     return removed_sources, removed_images
 
 
-def _adaptation_request(
+def _prose_request(
     seeds: list[dict[str, Any]],
     levels: list[dict[str, Any]],
-    locales: list[str],
     feedback: list[str] | None,
 ) -> str:
     level_payload = [
@@ -579,16 +822,56 @@ def _adaptation_request(
     ]
     retry = f"\nCorrect these validation problems from the previous adaptation: {json.dumps(feedback, ensure_ascii=False)}" if feedback else ""
     return f"""
-This is the adaptation phase. The story metadata and briefs below are frozen results of a completed research phase.
-Create title, teaser, paragraphs, lexical segmentation, and translations for every listed story and level. Do not change, extend, or infer beyond a brief. Do not add facts to reach a word target. Return each story ID exactly once and no other IDs.
+This is the Hebrew prose phase. The story metadata and briefs below are frozen results of a completed research phase.
+Write only the final Hebrew title, teaser, and paragraphs for every listed story and level. Do not segment or translate the text in this phase. Do not change, extend, or infer beyond a brief. Do not add facts to reach a word target. Return each story ID exactly once and no other IDs.
+
+Before returning, read each Hebrew version as continuous prose and correct grammar, punctuation, word order, agreement, and unnatural translated phrasing. Hebrew prefixes such as ו, ה, ב, כ, ל, מ, and ש belong before and attached to the word they modify; never detach, reverse, or invent them. Avoid literal calques such as לדבר על האם; use natural Hebrew such as לדבר על השאלה אם. The Hebrew must sound like something a contemporary Israeli adult would naturally say or write. Prefer a shorter correct sentence over a longer awkward one.
 
 Configured reading levels:
 {json.dumps(level_payload, ensure_ascii=False, indent=2)}
 
-Required translation locales: {json.dumps(locales)}
-
 Frozen story briefs and metadata:
 {json.dumps(seeds, ensure_ascii=False, indent=2)}
+{retry}
+""".strip()
+
+
+def _segmentation_request(
+    prose_adaptations: list[dict[str, Any]],
+    feedback: list[str] | None,
+) -> str:
+    retry = f"\nCorrect these validation problems from the previous segmentation: {json.dumps(feedback, ensure_ascii=False)}" if feedback else ""
+    return f"""
+This is the lexical segmentation phase. The Hebrew prose below is final and frozen.
+Do not edit, correct, reorder, normalize, add, or remove any Hebrew character. Only split the existing strings into lexical units. For every title, teaser, and paragraph, concatenating the returned unit `text` values must reproduce the input string character-for-character.
+
+Keep Hebrew attached prefixes such as ו, ה, ב, כ, ל, מ, and ש attached exactly as they appear in the frozen prose. Keep meaningful multi-word expressions together when useful. Put every space and punctuation mark in separator units. Do not rely on the renderer to invent spaces.
+
+Frozen Hebrew prose:
+{json.dumps(prose_adaptations, ensure_ascii=False, indent=2)}
+{retry}
+""".strip()
+
+
+def _translation_request(
+    prose_adaptations: list[dict[str, Any]],
+    segmentations: list[dict[str, Any]],
+    locales: list[str],
+    feedback: list[str] | None,
+) -> str:
+    retry = f"\nCorrect these validation problems from the previous translation: {json.dumps(feedback, ensure_ascii=False)}" if feedback else ""
+    return f"""
+This is the translation phase. The Hebrew prose and its lexical segmentation below are final and frozen. Return only one translation object for every lexical unit, in exactly the same story, level, field, paragraph, and unit order. Do not return or rewrite Hebrew text.
+
+Translate every meaningful unit in each requested language whenever a useful contextual translation exists. Read the complete sentence and paragraph before translating each unit. Translate what the unit means and does in that sentence—including attached prefixes, tense, reference, agreement, and idiomatic role—not its isolated dictionary form. A meaningful unit may have an empty translation only when it genuinely has no useful direct translation in context; never stop because enough other units have been translated, and never invent a misleading translation merely to fill the field. Return empty strings for separator positions.
+
+Required translation locales: {json.dumps(locales)}
+
+Full frozen Hebrew prose for context:
+{json.dumps(prose_adaptations, ensure_ascii=False, indent=2)}
+
+Frozen lexical segmentation to translate:
+{json.dumps(segmentations, ensure_ascii=False, indent=2)}
 {retry}
 """.strip()
 
@@ -864,21 +1147,21 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
     ]
     for batch_index, batch_seeds in enumerate(adaptation_batches, start=1):
         story_ids = [story.get("id", "") for story in batch_seeds]
-        adaptation_schema = _adaptation_batch_schema(story_ids, levels, locales, image_locales)
-        adaptation_feedback: list[str] | None = None
-        completed_batch: list[dict[str, Any]] | None = None
+        prose_schema = _prose_batch_schema(story_ids, levels)
+        prose_feedback: list[str] | None = None
+        completed_prose: list[dict[str, Any]] | None = None
         for attempt in range(ADAPTATION_ATTEMPTS):
             attempt_number = attempt + 1
             phase = (
-                f"Adaptation batch {batch_index}/{len(adaptation_batches)}, "
+                f"Hebrew prose batch {batch_index}/{len(adaptation_batches)}, "
                 f"attempt {attempt_number}/{ADAPTATION_ATTEMPTS}"
             )
             try:
-                adaptation_batch = _call_openai(
+                prose_batch = _call_openai(
                     os.environ["OPENAI_MODEL"],
                     instructions,
-                    _adaptation_request(batch_seeds, levels, locales, adaptation_feedback),
-                    adaptation_schema,
+                    _prose_request(batch_seeds, levels, prose_feedback),
+                    prose_schema,
                     use_web_search=False,
                     phase=phase,
                 )
@@ -888,14 +1171,100 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
                 _log(f"{phase}: request failed; retrying only this batch")
                 continue
 
-            adaptations = adaptation_batch.get("adaptations", [])
-            removed_units = _remove_empty_lexical_units(adaptations)
+            prose_adaptations = prose_batch.get("adaptations", [])
+            prose_errors = _plain_adaptation_errors(prose_adaptations, story_ids, level_ids)
+            _log(f"{phase}: validating {len(prose_adaptations)} Hebrew adaptations")
+            if not prose_errors:
+                completed_prose = prose_adaptations
+                _log(f"{phase}: validation passed; Hebrew prose is frozen")
+                break
+            prose_feedback = prose_errors[:20]
+            _log_validation_errors(phase, prose_errors)
+            if attempt == ADAPTATION_ATTEMPTS - 1:
+                raise RuntimeError("Generated Hebrew prose failed validation:\n- " + _error_report(prose_errors))
+
+        if completed_prose is None:
+            raise RuntimeError(f"Hebrew prose batch {batch_index} produced no usable stories")
+
+        segmentation_schema = _segmentation_batch_schema(story_ids, levels)
+        segmentation_feedback: list[str] | None = None
+        completed_segmentation: list[dict[str, Any]] | None = None
+        for attempt in range(ADAPTATION_ATTEMPTS):
+            attempt_number = attempt + 1
+            phase = (
+                f"Segmentation batch {batch_index}/{len(adaptation_batches)}, "
+                f"attempt {attempt_number}/{ADAPTATION_ATTEMPTS}"
+            )
+            try:
+                segmentation_batch = _call_openai(
+                    os.environ["OPENAI_MODEL"],
+                    instructions,
+                    _segmentation_request(completed_prose, segmentation_feedback),
+                    segmentation_schema,
+                    use_web_search=False,
+                    phase=phase,
+                )
+            except RuntimeError:
+                if attempt == ADAPTATION_ATTEMPTS - 1:
+                    raise
+                _log(f"{phase}: request failed; retrying only this batch")
+                continue
+
+            segmentations = segmentation_batch.get("adaptations", [])
+            removed_units = _remove_empty_lexical_units(segmentations)
             if removed_units:
                 _log(f"{phase}: removed {removed_units} empty lexical unit(s)")
-            adaptation_ids = [item.get("id") for item in adaptations]
-            adaptation_map = {item.get("id"): item.get("levels", {}) for item in adaptations}
+            segmentation_errors = _segmentation_preservation_errors(completed_prose, segmentations)
+            _log(f"{phase}: validating frozen Hebrew reconstruction")
+            if not segmentation_errors:
+                completed_segmentation = segmentations
+                _log(f"{phase}: validation passed; lexical units are frozen")
+                break
+            segmentation_feedback = segmentation_errors[:20]
+            _log_validation_errors(phase, segmentation_errors)
+            if attempt == ADAPTATION_ATTEMPTS - 1:
+                raise RuntimeError("Generated segmentation failed validation:\n- " + _error_report(segmentation_errors))
+
+        if completed_segmentation is None:
+            raise RuntimeError(f"Segmentation batch {batch_index} produced no usable stories")
+
+        translation_schema = _translation_batch_schema(story_ids, levels, locales)
+        translation_feedback: list[str] | None = None
+        completed_batch: list[dict[str, Any]] | None = None
+        for attempt in range(ADAPTATION_ATTEMPTS):
+            attempt_number = attempt + 1
+            phase = (
+                f"Translation batch {batch_index}/{len(adaptation_batches)}, "
+                f"attempt {attempt_number}/{ADAPTATION_ATTEMPTS}"
+            )
+            try:
+                translation_batch = _call_openai(
+                    os.environ["OPENAI_MODEL"],
+                    instructions,
+                    _translation_request(
+                        completed_prose,
+                        completed_segmentation,
+                        locales,
+                        translation_feedback,
+                    ),
+                    translation_schema,
+                    use_web_search=False,
+                    phase=phase,
+                )
+            except RuntimeError:
+                if attempt == ADAPTATION_ATTEMPTS - 1:
+                    raise
+                _log(f"{phase}: request failed; retrying only this batch")
+                continue
+
+            annotations, candidate_errors = _merge_translations(
+                completed_segmentation,
+                translation_batch.get("translations", []),
+                locales,
+            )
+            annotation_map = {item.get("id"): item.get("levels", {}) for item in annotations}
             candidate_stories = [
-                {**story, "levels": adaptation_map.get(story.get("id"), {})}
+                {**story, "levels": annotation_map.get(story.get("id"), {})}
                 for story in batch_seeds
             ]
             candidate_issue = {
@@ -906,31 +1275,19 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
                 "translationLocales": locales,
                 "stories": candidate_stories,
             }
-            _log(f"{phase}: validating {len(candidate_stories)} adapted stories")
-            candidate_errors = validate_issue(candidate_issue, site, levels, "generated batch")
-            translation_errors = _missing_translation_errors(candidate_stories, locales)
-            candidate_errors.extend(translation_errors)
-            if len(set(adaptation_ids)) != len(adaptation_ids) or set(adaptation_ids) != set(story_ids):
-                candidate_errors.append("adaptation phase must return every frozen story ID exactly once")
+            _log(f"{phase}: validating {len(candidate_stories)} translated stories")
+            candidate_errors.extend(validate_issue(candidate_issue, site, levels, "generated batch"))
             if not candidate_errors:
                 completed_batch = candidate_stories
                 _log(f"{phase}: validation passed")
                 break
-            blocking_errors = [error for error in candidate_errors if error not in translation_errors]
-            if attempt == ADAPTATION_ATTEMPTS - 1 and translation_errors and not blocking_errors:
-                completed_batch = candidate_stories
-                _log(
-                    f"{phase}: accepted with {len(translation_errors)} untranslated value(s); "
-                    "their tooltips will be skipped"
-                )
-                break
-            adaptation_feedback = candidate_errors[:20]
+            translation_feedback = candidate_errors[:20]
             _log_validation_errors(phase, candidate_errors)
             if attempt == ADAPTATION_ATTEMPTS - 1:
                 raise RuntimeError("Generated content failed validation:\n- " + _error_report(candidate_errors))
 
         if completed_batch is None:
-            raise RuntimeError(f"Adaptation batch {batch_index} produced no usable stories")
+            raise RuntimeError(f"Translation batch {batch_index} produced no usable stories")
         new_stories.extend(completed_batch)
 
     combined = list(existing["stories"]) + new_stories if existing else new_stories

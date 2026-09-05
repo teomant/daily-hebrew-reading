@@ -23,6 +23,16 @@ class ValidationTests(unittest.TestCase):
         errors = validate_issue(issue, load_site_config(), load_level_config())
         self.assertEqual(errors, [])
 
+    def test_translation_coverage_below_seventy_five_percent_is_rejected(self) -> None:
+        issue = copy.deepcopy(read_json(ROOT / "content" / "2024-01-26.json"))
+        level = issue["stories"][0]["levels"]["alef"]
+        for units in [level["title"], level["teaser"], *level["paragraphs"]]:
+            for unit in units:
+                if unit["type"] != "separator":
+                    unit["translations"]["en"] = ""
+        errors = validate_issue(issue, load_site_config(), load_level_config())
+        self.assertTrue(any("expected at least 75%" in error for error in errors), errors)
+
     def test_sourced_story_may_have_no_source(self) -> None:
         issue = copy.deepcopy(read_json(ROOT / "content" / "2024-01-26.json"))
         issue["stories"][0]["sources"] = []

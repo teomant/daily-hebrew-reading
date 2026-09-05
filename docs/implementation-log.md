@@ -5,7 +5,7 @@
 - Translated and recorded the supplied Russian product document in `docs/product-specification.md`; added confirmed decisions for daily UTC generation, the project Pages base path, same-day append behavior, source-linked images, interface languages, and extensible levels/locales.
 - Researched the Alef/Alef Plus/Bet interpretation against Hebrew University Rothberg descriptors. Kept the requested short magazine bands and documented that Alef assumes readers can decode unpointed Hebrew.
 - Prepared four complete-page visual directions and recorded the owner's choice of Direction 1, “Jerusalem Journal.”
-- Added configuration-driven content contracts, validation, reading-time calculation, a two-phase OpenAI Responses API pipeline that freezes researched briefs before adaptation, search-grounded source/image-rights URLs, transactional content writes with rollback, flexible issue counts, duplicate checks, and 30-day EVERYDAY history context.
+- Added configuration-driven content contracts, validation, reading-time calculation, an OpenAI Responses API pipeline that freezes researched briefs before adaptation, search-grounded source/image-rights URLs, transactional content writes with rollback, flexible issue counts, duplicate checks, and 30-day EVERYDAY history context.
 - Added the selected static frontend with home/archive/day/article routes, locale and level persistence, lexical popovers, sources, optional remote images, responsive styling, and project-Page-safe URLs.
 - Added a dated sample issue with real NASA/JPL and Science Museum sources, all three initial levels, and RU/EN lexical translations.
 - Added daily/manual generation and push-only deployment workflows, basic unit tests, repository setup instructions, and `.gitignore` entries for `.idea/`, virtual environments, secrets, caches, and generated output.
@@ -32,4 +32,5 @@
 - Made empty lexical translations non-fatal after the second adaptation attempt. The Hebrew unit is retained, untranslated units have no tooltip in the selected language, and structural validation failures remain blocking.
 - Required 3–5 EVERYDAY stories in both the research prompt and research validation. Added compact summaries from the previous three calendar days to the research prompt to reduce repeated current events, history subjects, and everyday plots across issues.
 - Moved the daily GitHub Actions schedule from 06:00 UTC to 01:15 UTC and updated the site footer and repository documentation.
+- Split language work into plain-Hebrew, immutable segmentation, and contextual translation passes. Hebrew is checked character-for-character before lexical units are accepted; translations may be empty for genuinely untranslatable units and must cover at least 75% of meaningful units per level and locale.
 - Final verification passed content validation, 20 unit tests, Python compilation, JavaScript syntax checking, workflow YAML parsing, and the production static build.

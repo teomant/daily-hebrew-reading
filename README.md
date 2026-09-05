@@ -11,7 +11,7 @@ The repository contains a complete sample issue, so the site can be built and te
 - Persisted reading level, translation language, and interface language preferences.
 - Keyboard, hover, and tap translation popovers.
 - Source links and optional externally hosted, attributed source images with graceful failure.
-- Two-phase OpenAI Responses API generation: web research freezes briefs/source metadata, then a separate strict-output adaptation creates the configured levels.
+- Four-stage OpenAI Responses API generation: research freezes briefs, plain Hebrew prose is written and frozen, lexical units are segmented without changing it, and a final call translates those frozen units in sentence context.
 - Safe same-day append behavior; existing stories are preserved and duplicates are rejected.
 - Content validation, tests, daily/manual GitHub Actions, and GitHub Pages deployment.
 
@@ -57,7 +57,7 @@ Generation validates a complete candidate before replacing any repository conten
 - `i18n/*.json` — interface dictionaries. Adding a locale requires a matching dictionary and adding its code to `site.json`.
 - `prompts/*.md` — editorial, everyday-scenario, and adaptation rules.
 
-Old issues list their own available levels/locales and remain readable when new ones are configured later. The validator rejects missing adaptations or translations within an issue.
+Old issues list their own available levels/locales and remain readable when new ones are configured later. The validator rejects missing adaptations and requires at least 75% contextual translation coverage per story level and language; individual units may remain untranslated when no useful direct translation exists.
 
 ## GitHub setup
 
@@ -76,9 +76,9 @@ The OpenAI API is billed separately from ChatGPT Plus. The API uses the credits 
 - Leave `date` blank to use the current UTC date. Enter an existing date to append rather than replace. `additional_stories` controls the append size; it is ignored for a new full issue.
 - **Validate and deploy site** runs on an ordinary push to `master` and never calls OpenAI.
 
-Generation logs timestamp each research, adaptation, validation, and write phase, including elapsed API-call time and one validation error per line. Research has up to three attempts for invalid story data. Missing sources are allowed; duplicate or unverified source URLs and their dependent images are discarded without retrying research. Adaptation runs in two-story batches so long issues do not depend on one oversized API response; a failed request retries only its batch, and the factual briefs are not researched again.
+Generation logs timestamp each research, Hebrew-prose, segmentation, translation, validation, and write phase, including elapsed API-call time and one validation error per line. Research has up to three attempts for invalid story data. Missing sources are allowed; duplicate or unverified source URLs and their dependent images are discarded without retrying research. Later phases run in two-story batches; a failed request retries only its batch, and factual briefs are not researched again.
 
-Empty lexical translations are retried once during adaptation. If the second attempt still contains only translation gaps, the batch is accepted: Hebrew remains visible and untranslated units are rendered without an interactive tooltip. Structural content errors still fail the workflow.
+Segmentation must reproduce the frozen Hebrew character-for-character. A separate call translates every meaningful unit using the full sentence as context. Individual empty translations are allowed, but every story level must reach at least 75% coverage in each configured translation language; lower coverage or altered Hebrew retries only the affected phase and then fails safely.
 
 The generation workflow commits with the GitHub Actions bot, then deploys the already validated build. The generated commit does not need to trigger a second workflow.
 

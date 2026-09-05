@@ -137,7 +137,7 @@ The MVP does not need niqqud. Consequently, even the Alef band assumes the reade
 
 Do not generate level adaptations independently in ways that introduce different facts. The initial Alef, Alef Plus, and Bet versions—and any future configured versions—must share one brief.
 
-For CURRENT and HISTORY, the pipeline is: sources → factual brief → all configured level adaptations. For EVERYDAY, it is: scenario brief → all configured level adaptations.
+For CURRENT and HISTORY, the pipeline is: sources → factual brief → plain Hebrew level adaptations → immutable lexical segmentation → contextual translation. For EVERYDAY, it is: scenario brief → plain Hebrew level adaptations → immutable lexical segmentation → contextual translation. Segmentation must reproduce the approved Hebrew character-for-character, and translation cannot rewrite it.
 
 Alef may omit details and Bet may expand them, but central facts and events must remain consistent.
 
@@ -173,7 +173,7 @@ For example, מזג אוויר is one unit translated as “погода” in R
 
 ## 17. Translation coverage
 
-Almost all main Hebrew text must be interactive so a reader can select nearly any unfamiliar word or expression. For each meaningful lexical unit, store the Hebrew text, a translation map keyed by stable locale code, and its type. The initial translation locales are `ru` and `en`, but content rendering and validation must use each issue's configured translation locales rather than fixed Russian and English fields.
+Almost all main Hebrew text must be interactive so a reader can select nearly any unfamiliar word or expression. For each meaningful lexical unit, store the Hebrew text, a translation map keyed by stable locale code, and its type. The initial translation locales are `ru` and `en`, but content rendering and validation must use each issue's configured translation locales rather than fixed Russian and English fields. The model should attempt every meaningful unit and translate it according to its meaning and grammatical role in the complete sentence, not as an isolated dictionary entry. An individual translation may be empty when no useful direct translation exists, but each story level must have at least 75% coverage in every configured translation language.
 
 The MVP needs these types: `word`, `expression`, `properNoun`, and `separator`. Separators need no translation.
 
@@ -261,7 +261,7 @@ CURRENT and HISTORY use real sources rather than EVERYDAY metadata.
 
 ## 27. CURRENT generation
 
-Find more candidates than the issue needs, filter out politics and unsuitable topics, evaluate practical spoken-language value, and select 3–5, normally 4. At least half should be Israeli or locally relevant when good material exists. Reject remote disasters, rescue missions, specialist science, and technology stories without direct relevance to ordinary life. Research/selection and adaptation are separate model phases: the first phase uses web search and freezes sourced/scenario metadata and briefs; the second receives those records as immutable input and may return only level adaptations keyed by the same story IDs. Do not select a collection of top headlines by default.
+Find more candidates than the issue needs, filter out politics and unsuitable topics, evaluate practical spoken-language value, and select 3–5, normally 4. At least half should be Israeli or locally relevant when good material exists. Reject remote disasters, rescue missions, specialist science, and technology stories without direct relevance to ordinary life. Research, Hebrew adaptation, and annotation are separate model stages: research uses web search and freezes sourced/scenario metadata and briefs; adaptation receives those records as immutable input and returns plain Hebrew levels; annotation then segments and translates that frozen Hebrew without editing it. Do not select a collection of top headlines by default.
 
 ## 28. EVERYDAY generation
 
@@ -277,7 +277,7 @@ Language adaptation must not freely invent details for real stories. A factual b
 
 ## 31. OpenAI API
 
-Use the OpenAI API for research and selection, factual and scenario briefs, level adaptation, lexical annotation, and Russian and English translations. Use the current official SDK and a modern API. A normal issue uses a web-enabled structured research response followed by a separate structured adaptation response, so level prose cannot rewrite the frozen brief or source metadata.
+Use the OpenAI API for research and selection, factual and scenario briefs, level adaptation, lexical segmentation, and Russian and English translations. Use the current official SDK and a modern API. A normal issue uses separate structured responses for research, plain-Hebrew adaptation, segmentation, and translation. Translation receives the full prose for context but returns only translation maps aligned to frozen units.
 
 Configure the model through `OPENAI_MODEL` and supply the key through `OPENAI_API_KEY`. Store the key only in a GitHub Actions secret or runtime environment. It must never enter Git, frontend assets, JSON content, HTML output, logs, or error messages.
 
@@ -317,7 +317,8 @@ Before publishing generated content, validate at least:
 - an ID and slug for every story;
 - every level declared by the issue;
 - non-empty text;
-- required translations for lexical units;
+- at least 75% contextual translation coverage per story level and configured translation language;
+- lexical annotation reconstructs the frozen Hebrew exactly, including prefixes, spaces, punctuation, and word order;
 - valid source metadata when a story has sources;
 - domain and scenario for EVERYDAY;
 - no duplicate slugs or duplicate source stories;
