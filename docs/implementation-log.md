@@ -2,7 +2,7 @@
 
 ## 2026-09-04
 
-- Translated and recorded the supplied Russian product document in `docs/product-specification.md`; added confirmed decisions for 06:00 UTC generation, the project Pages base path, same-day append behavior, source-linked images, interface languages, and extensible levels/locales.
+- Translated and recorded the supplied Russian product document in `docs/product-specification.md`; added confirmed decisions for daily UTC generation, the project Pages base path, same-day append behavior, source-linked images, interface languages, and extensible levels/locales.
 - Researched the Alef/Alef Plus/Bet interpretation against Hebrew University Rothberg descriptors. Kept the requested short magazine bands and documented that Alef assumes readers can decode unpointed Hebrew.
 - Prepared four complete-page visual directions and recorded the owner's choice of Direction 1, “Jerusalem Journal.”
 - Added configuration-driven content contracts, validation, reading-time calculation, a two-phase OpenAI Responses API pipeline that freezes researched briefs before adaptation, search-grounded source/image-rights URLs, transactional content writes with rollback, flexible issue counts, duplicate checks, and 30-day EVERYDAY history context.
@@ -31,4 +31,5 @@
 - Split long adaptation output into independently validated two-story batches and enabled SDK connection retries. A dropped API connection now retries only the affected batch instead of losing one oversized all-story adaptation response.
 - Made empty lexical translations non-fatal after the second adaptation attempt. The Hebrew unit is retained, untranslated units have no tooltip in the selected language, and structural validation failures remain blocking.
 - Required 3–5 EVERYDAY stories in both the research prompt and research validation. Added compact summaries from the previous three calendar days to the research prompt to reduce repeated current events, history subjects, and everyday plots across issues.
+- Moved the daily GitHub Actions schedule from 06:00 UTC to 01:15 UTC and updated the site footer and repository documentation.
 - Final verification passed content validation, 20 unit tests, Python compilation, JavaScript syntax checking, workflow YAML parsing, and the production static build.

@@ -2,7 +2,7 @@ name: Generate daily issue
 
 on:
   schedule:
-    - cron: "0 6 * * *"
+    - cron: "15 1 * * *"
   workflow_dispatch:
     inputs:
       date:

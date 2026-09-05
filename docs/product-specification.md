@@ -293,7 +293,7 @@ Keep editorial rules separate from application code. At minimum, maintain three 
 
 ## 33. Automation
 
-A GitHub Actions workflow runs daily at 06:00 UTC. It generates a complete issue, validates it, updates EVERYDAY history, writes the JSON, commits and pushes the content, builds the site, and deploys GitHub Pages. It must also support manual execution through `workflow_dispatch`, exposed in the repository's Actions tab as a **Run workflow** button.
+A GitHub Actions workflow runs daily at 01:15 UTC. It generates a complete issue, validates it, updates EVERYDAY history, writes the JSON, commits and pushes the content, builds the site, and deploys GitHub Pages. It must also support manual execution through `workflow_dispatch`, exposed in the repository's Actions tab as a **Run workflow** button.
 
 The manual run accepts an optional target date, resolved as the current UTC date when omitted, and a requested number of additional stories, defaulting to 3. When no issue exists for the target date, generation creates the normal complete issue. When an issue already exists, generation preserves every existing story and appends the requested new stories instead of replacing the file. It recalculates issue metadata and navigation, updates EVERYDAY history, validates the combined issue, and only then commits it.
 
