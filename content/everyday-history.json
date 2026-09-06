@@ -155,6 +155,78 @@
         "להתעכב",
         "אין לי זמן"
       ]
+    },
+    {
+      "date": "2026-09-06",
+      "storyId": "pharmacy-prescription-delay",
+      "domain": "health",
+      "scenario": "pharmacy_prescription_not_ready",
+      "lexicalThemes": [
+        "medicine and prescriptions",
+        "waiting and delays",
+        "small purchases",
+        "phone messages",
+        "running an errand"
+      ],
+      "targetVocabulary": [
+        "מרשם",
+        "בית מרקחת",
+        "עוד מעט",
+        "עדיין לא",
+        "להתקשר",
+        "לחכות",
+        "לאסוף",
+        "חסר",
+        "לחזור"
+      ]
+    },
+    {
+      "date": "2026-09-06",
+      "storyId": "neighbor-parking-spot-arrangement",
+      "domain": "housing",
+      "scenario": "shared_parking_spot_arrangement",
+      "lexicalThemes": [
+        "parking and building life",
+        "neighbors and agreements",
+        "messaging group chat",
+        "temporary solutions",
+        "polite clarification"
+      ],
+      "targetVocabulary": [
+        "חניה",
+        "מקום שמור",
+        "שכן",
+        "בערב",
+        "בינתיים",
+        "הודעה",
+        "הקבוצה",
+        "להסכים",
+        "פתרון"
+      ]
+    },
+    {
+      "date": "2026-09-06",
+      "storyId": "small-cafe-table-and-takeaway-order",
+      "domain": "food_service",
+      "scenario": "cafe_table_vs_takeaway",
+      "lexicalThemes": [
+        "ordering food and drinks",
+        "seating and waiting",
+        "polite requests",
+        "simple decisions",
+        "cafes and takeout"
+      ],
+      "targetVocabulary": [
+        "שולחן",
+        "פנוי",
+        "להזמין",
+        "לשבת",
+        "טייק אווי",
+        "תפריט",
+        "קפה",
+        "בכיף",
+        "בסוף"
+      ]
     }
   ]
 }

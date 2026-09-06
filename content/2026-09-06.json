@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "date": "2026-09-06",
-  "generatedAt": "2026-09-06T04:57:06+00:00",
+  "generatedAt": "2026-09-06T19:03:37+00:00",
   "availableLevels": [
     "alef",
     "alefPlus",
@@ -29834,6 +29834,3985 @@
                 "translations": {
                   "ru": "",
                   "en": ""
+                }
+              }
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "pharmacy-prescription-delay",
+      "slug": "pharmacy-prescription-delay",
+      "type": "everyday",
+      "category": "everyday",
+      "brief": "A person goes to the pharmacy to pick up a prescription, but the medicine is not ready yet. The pharmacist checks the computer, says there is still a delay, and offers to call when it arrives. The person decides to wait a little, buys one small item, and leaves a message that they will come back later.",
+      "everydayMeta": {
+        "domain": "health",
+        "scenario": "pharmacy_prescription_not_ready",
+        "lexicalThemes": [
+          "medicine and prescriptions",
+          "waiting and delays",
+          "small purchases",
+          "phone messages",
+          "running an errand"
+        ],
+        "targetVocabulary": [
+          "מרשם",
+          "בית מרקחת",
+          "עוד מעט",
+          "עדיין לא",
+          "להתקשר",
+          "לחכות",
+          "לאסוף",
+          "חסר",
+          "לחזור"
+        ]
+      },
+      "sources": [],
+      "image": null,
+      "levels": {
+        "alef": {
+          "title": [
+            {
+              "text": "המרשם",
+              "type": "word",
+              "translations": {
+                "ru": "рецепт",
+                "en": "prescription"
+              }
+            }
+          ],
+          "teaser": [
+            {
+              "text": "הוא הגיע לבית המרקחת, אבל התרופה עדיין לא הייתה מוכנה.",
+              "type": "expression",
+              "translations": {
+                "ru": "Он пришёл в аптеку, но лекарство ещё не было готово.",
+                "en": "He came to the pharmacy, but the medicine was not ready yet."
+              }
+            }
+          ],
+          "paragraphs": [
+            [
+              {
+                "text": "הוא הלך לבית המרקחת עם",
+                "type": "expression",
+                "translations": {
+                  "ru": "Он пошёл в аптеку с",
+                  "en": "He went to the pharmacy with"
+                }
+              },
+              {
+                "text": "מרשם",
+                "type": "word",
+                "translations": {
+                  "ru": "рецептом",
+                  "en": "a prescription"
+                }
+              },
+              {
+                "text": "ביד.",
+                "type": "expression",
+                "translations": {
+                  "ru": "в руках.",
+                  "en": "in hand."
+                }
+              }
+            ],
+            [
+              {
+                "text": "הוא ביקש לאסוף",
+                "type": "expression",
+                "translations": {
+                  "ru": "Он попросил забрать",
+                  "en": "He asked to pick up"
+                }
+              },
+              {
+                "text": "את התרופה",
+                "type": "expression",
+                "translations": {
+                  "ru": "лекарство",
+                  "en": "the medicine"
+                }
+              },
+              {
+                "text": "אבל",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "הפקידה",
+                "type": "word",
+                "translations": {
+                  "ru": "сотрудница",
+                  "en": "the clerk"
+                }
+              },
+              {
+                "text": "אמרה שהיא",
+                "type": "expression",
+                "translations": {
+                  "ru": "сказала, что она",
+                  "en": "said that it"
+                }
+              },
+              {
+                "text": "עדיין לא",
+                "type": "expression",
+                "translations": {
+                  "ru": "ещё не",
+                  "en": "was still not"
+                }
+              },
+              {
+                "text": "מוכנה.",
+                "type": "word",
+                "translations": {
+                  "ru": "готова.",
+                  "en": "ready."
+                }
+              }
+            ],
+            [
+              {
+                "text": "היא בדקה במחשב",
+                "type": "expression",
+                "translations": {
+                  "ru": "Она проверила в компьютере",
+                  "en": "She checked in the computer"
+                }
+              },
+              {
+                "text": "ואמרה שיש",
+                "type": "expression",
+                "translations": {
+                  "ru": "и сказала, что есть",
+                  "en": "and said that there is"
+                }
+              },
+              {
+                "text": "עוד מעט",
+                "type": "expression",
+                "translations": {
+                  "ru": "ещё немного",
+                  "en": "a little more"
+                }
+              },
+              {
+                "text": "עיכוב.",
+                "type": "word",
+                "translations": {
+                  "ru": "задержка.",
+                  "en": "delay."
+                }
+              }
+            ],
+            [
+              {
+                "text": "הוא חיכה",
+                "type": "word",
+                "translations": {
+                  "ru": "Он подождал",
+                  "en": "He waited"
+                }
+              },
+              {
+                "text": "קצת",
+                "type": "word",
+                "translations": {
+                  "ru": "немного",
+                  "en": "a little"
+                }
+              },
+              {
+                "text": "וקנה",
+                "type": "word",
+                "translations": {
+                  "ru": "и купил",
+                  "en": "and bought"
+                }
+              },
+              {
+                "text": "פריט קטן",
+                "type": "expression",
+                "translations": {
+                  "ru": "одну маленькую вещь",
+                  "en": "one small item"
+                }
+              },
+              {
+                "text": "בדרך.",
+                "type": "expression",
+                "translations": {
+                  "ru": "по пути.",
+                  "en": "along the way."
+                }
+              },
+              {
+                "text": "אחר כך",
+                "type": "expression",
+                "translations": {
+                  "ru": "Потом",
+                  "en": "After that"
+                }
+              },
+              {
+                "text": "הוא השאיר",
+                "type": "expression",
+                "translations": {
+                  "ru": "он оставил",
+                  "en": "he left"
+                }
+              },
+              {
+                "text": "הודעה",
+                "type": "word",
+                "translations": {
+                  "ru": "сообщение",
+                  "en": "a message"
+                }
+              },
+              {
+                "text": "שיחזור",
+                "type": "expression",
+                "translations": {
+                  "ru": "что вернётся",
+                  "en": "that he would come back"
+                }
+              },
+              {
+                "text": "אחר כך.",
+                "type": "expression",
+                "translations": {
+                  "ru": "позже.",
+                  "en": "later."
+                }
+              }
+            ]
+          ]
+        },
+        "alefPlus": {
+          "title": [
+            {
+              "text": "המרשם",
+              "type": "word",
+              "translations": {
+                "ru": "рецепт",
+                "en": "prescription"
+              }
+            }
+          ],
+          "teaser": [
+            {
+              "text": "בבית המרקחת אמרו לו שהתרופה עדיין לא הגיעה, אז הוא חיכה קצת וקנה משהו קטן.",
+              "type": "expression",
+              "translations": {
+                "ru": "В аптеке ему сказали, что лекарство ещё не пришло, поэтому он немного подождал и купил что-то маленькое.",
+                "en": "At the pharmacy they told him the medicine had not arrived yet, so he waited a little and bought something small."
+              }
+            }
+          ],
+          "paragraphs": [
+            [
+              {
+                "text": "הוא הגיע לבית המרקחת",
+                "type": "expression",
+                "translations": {
+                  "ru": "Он пришёл в аптеку",
+                  "en": "He arrived at the pharmacy"
+                }
+              },
+              {
+                "text": "עם המרשם",
+                "type": "expression",
+                "translations": {
+                  "ru": "с рецептом",
+                  "en": "with the prescription"
+                }
+              },
+              {
+                "text": "ושאל אם",
+                "type": "expression",
+                "translations": {
+                  "ru": "и спросил, можно ли",
+                  "en": "and asked whether"
+                }
+              },
+              {
+                "text": "אפשר לאסוף",
+                "type": "expression",
+                "translations": {
+                  "ru": "забрать",
+                  "en": "pick up"
+                }
+              },
+              {
+                "text": "את התרופה.",
+                "type": "expression",
+                "translations": {
+                  "ru": "лекарство.",
+                  "en": "the medicine."
+                }
+              }
+            ],
+            [
+              {
+                "text": "הפקידה בדקה",
+                "type": "word",
+                "translations": {
+                  "ru": "Сотрудница проверила",
+                  "en": "The clerk checked"
+                }
+              },
+              {
+                "text": "את המחשב",
+                "type": "expression",
+                "translations": {
+                  "ru": "компьютер",
+                  "en": "the computer"
+                }
+              },
+              {
+                "text": "ואמרה שהתרופה",
+                "type": "expression",
+                "translations": {
+                  "ru": "и сказала, что лекарство",
+                  "en": "and said that the medicine"
+                }
+              },
+              {
+                "text": "עדיין לא",
+                "type": "expression",
+                "translations": {
+                  "ru": "ещё не",
+                  "en": "still had not"
+                }
+              },
+              {
+                "text": "מוכנה.",
+                "type": "word",
+                "translations": {
+                  "ru": "готова.",
+                  "en": "is ready."
+                }
+              }
+            ],
+            [
+              {
+                "text": "היא אמרה שיש",
+                "type": "expression",
+                "translations": {
+                  "ru": "Она сказала, что есть",
+                  "en": "She said that there is"
+                }
+              },
+              {
+                "text": "עוד מעט",
+                "type": "expression",
+                "translations": {
+                  "ru": "ещё небольшой",
+                  "en": "a little more"
+                }
+              },
+              {
+                "text": "עיכוב",
+                "type": "word",
+                "translations": {
+                  "ru": "задержка",
+                  "en": "delay"
+                }
+              },
+              {
+                "text": "והציעה",
+                "type": "word",
+                "translations": {
+                  "ru": "и предложила",
+                  "en": "and offered"
+                }
+              },
+              {
+                "text": "להתקשר",
+                "type": "word",
+                "translations": {
+                  "ru": "позвонить",
+                  "en": "to call"
+                }
+              },
+              {
+                "text": "כשהיא תגיע.",
+                "type": "expression",
+                "translations": {
+                  "ru": "когда она придёт.",
+                  "en": "when it arrives."
+                }
+              }
+            ],
+            [
+              {
+                "text": "הוא החליט",
+                "type": "expression",
+                "translations": {
+                  "ru": "Он решил",
+                  "en": "He decided"
+                }
+              },
+              {
+                "text": "לחכות",
+                "type": "word",
+                "translations": {
+                  "ru": "подождать",
+                  "en": "to wait"
+                }
+              },
+              {
+                "text": "קצת",
+                "type": "word",
+                "translations": {
+                  "ru": "немного",
+                  "en": "a little"
+                }
+              },
+              {
+                "text": "ובינתיים",
+                "type": "word",
+                "translations": {
+                  "ru": "а тем временем",
+                  "en": "and in the meantime"
+                }
+              },
+              {
+                "text": "קנה",
+                "type": "word",
+                "translations": {
+                  "ru": "купил",
+                  "en": "bought"
+                }
+              },
+              {
+                "text": "פריט קטן.",
+                "type": "expression",
+                "translations": {
+                  "ru": "одну маленькую вещь.",
+                  "en": "a small item."
+                }
+              },
+              {
+                "text": "לפני שיצא",
+                "type": "expression",
+                "translations": {
+                  "ru": "Перед тем как уйти",
+                  "en": "Before he left"
+                }
+              },
+              {
+                "text": "הוא השאיר",
+                "type": "expression",
+                "translations": {
+                  "ru": "он оставил",
+                  "en": "he left"
+                }
+              },
+              {
+                "text": "הודעה",
+                "type": "word",
+                "translations": {
+                  "ru": "сообщение",
+                  "en": "a message"
+                }
+              },
+              {
+                "text": "שיחזור",
+                "type": "expression",
+                "translations": {
+                  "ru": "что вернётся",
+                  "en": "that he would come back"
+                }
+              },
+              {
+                "text": "אחר כך.",
+                "type": "expression",
+                "translations": {
+                  "ru": "позже.",
+                  "en": "later."
+                }
+              }
+            ]
+          ]
+        },
+        "bet": {
+          "title": [
+            {
+              "text": "המרשם",
+              "type": "word",
+              "translations": {
+                "ru": "рецепт",
+                "en": "prescription"
+              }
+            }
+          ],
+          "teaser": [
+            {
+              "text": "הוא הלך לאסוף מרשם, גילה שהתרופה עדיין לא הגיעה, ובסוף חזר אחר כך.",
+              "type": "expression",
+              "translations": {
+                "ru": "Он пошёл забрать рецепт, узнал, что лекарство ещё не пришло, и в конце вернулся позже.",
+                "en": "He went to pick up a prescription, found out the medicine had not arrived yet, and in the end came back later."
+              }
+            }
+          ],
+          "paragraphs": [
+            [
+              {
+                "text": "הוא נכנס לבית המרקחת",
+                "type": "expression",
+                "translations": {
+                  "ru": "Он зашёл в аптеку",
+                  "en": "He went into the pharmacy"
+                }
+              },
+              {
+                "text": "עם המרשם",
+                "type": "expression",
+                "translations": {
+                  "ru": "с рецептом",
+                  "en": "with the prescription"
+                }
+              },
+              {
+                "text": "וביקש לאסוף",
+                "type": "expression",
+                "translations": {
+                  "ru": "и попросил забрать",
+                  "en": "and asked to pick up"
+                }
+              },
+              {
+                "text": "את התרופה.",
+                "type": "expression",
+                "translations": {
+                  "ru": "лекарство.",
+                  "en": "the medicine."
+                }
+              }
+            ],
+            [
+              {
+                "text": "הפקידה בדקה",
+                "type": "word",
+                "translations": {
+                  "ru": "Сотрудница проверила",
+                  "en": "The clerk checked"
+                }
+              },
+              {
+                "text": "במחשב",
+                "type": "expression",
+                "translations": {
+                  "ru": "в компьютере",
+                  "en": "in the computer"
+                }
+              },
+              {
+                "text": "ואמרה שהתרופה",
+                "type": "expression",
+                "translations": {
+                  "ru": "и сказала, что лекарство",
+                  "en": "and said that the medicine"
+                }
+              },
+              {
+                "text": "עדיין לא",
+                "type": "expression",
+                "translations": {
+                  "ru": "ещё не",
+                  "en": "still had not"
+                }
+              },
+              {
+                "text": "מוכנה.",
+                "type": "word",
+                "translations": {
+                  "ru": "готова.",
+                  "en": "is ready."
+                }
+              },
+              {
+                "text": "לפי מה שהיא אמרה",
+                "type": "expression",
+                "translations": {
+                  "ru": "Судя по тому, что она сказала",
+                  "en": "According to what she said"
+                }
+              },
+              {
+                "text": "יש",
+                "type": "word",
+                "translations": {
+                  "ru": "есть",
+                  "en": "there is"
+                }
+              },
+              {
+                "text": "עוד מעט",
+                "type": "expression",
+                "translations": {
+                  "ru": "ещё небольшой",
+                  "en": "a little more"
+                }
+              },
+              {
+                "text": "עיכוב.",
+                "type": "word",
+                "translations": {
+                  "ru": "задержка.",
+                  "en": "delay."
+                }
+              }
+            ],
+            [
+              {
+                "text": "היא הציעה",
+                "type": "word",
+                "translations": {
+                  "ru": "Она предложила",
+                  "en": "She offered"
+                }
+              },
+              {
+                "text": "להתקשר",
+                "type": "word",
+                "translations": {
+                  "ru": "позвонить",
+                  "en": "to call"
+                }
+              },
+              {
+                "text": "כשזה יגיע",
+                "type": "expression",
+                "translations": {
+                  "ru": "когда это придёт",
+                  "en": "when it arrives"
+                }
+              },
+              {
+                "text": "ואמרה שהוא",
+                "type": "expression",
+                "translations": {
+                  "ru": "и сказала, что он",
+                  "en": "and said that he"
+                }
+              },
+              {
+                "text": "לא צריך",
+                "type": "expression",
+                "translations": {
+                  "ru": "не должен",
+                  "en": "does not need to"
+                }
+              },
+              {
+                "text": "להישאר",
+                "type": "word",
+                "translations": {
+                  "ru": "оставаться",
+                  "en": "stay"
+                }
+              },
+              {
+                "text": "יותר מדי זמן.",
+                "type": "expression",
+                "translations": {
+                  "ru": "слишком долго.",
+                  "en": "too long."
+                }
+              }
+            ],
+            [
+              {
+                "text": "הוא החליט",
+                "type": "expression",
+                "translations": {
+                  "ru": "Он решил",
+                  "en": "He decided"
+                }
+              },
+              {
+                "text": "לחכות",
+                "type": "word",
+                "translations": {
+                  "ru": "подождать",
+                  "en": "to wait"
+                }
+              },
+              {
+                "text": "קצת",
+                "type": "word",
+                "translations": {
+                  "ru": "немного",
+                  "en": "a little"
+                }
+              },
+              {
+                "text": "במקום",
+                "type": "word",
+                "translations": {
+                  "ru": "вместо",
+                  "en": "instead"
+                }
+              },
+              {
+                "text": "לנסוע",
+                "type": "word",
+                "translations": {
+                  "ru": "ехать",
+                  "en": "to go"
+                }
+              },
+              {
+                "text": "ולחזור",
+                "type": "word",
+                "translations": {
+                  "ru": "и вернуться",
+                  "en": "and come back"
+                }
+              },
+              {
+                "text": "אחר כך.",
+                "type": "expression",
+                "translations": {
+                  "ru": "потом.",
+                  "en": "later."
+                }
+              },
+              {
+                "text": "בזמן הזה",
+                "type": "expression",
+                "translations": {
+                  "ru": "За это время",
+                  "en": "In the meantime"
+                }
+              },
+              {
+                "text": "הוא קנה",
+                "type": "expression",
+                "translations": {
+                  "ru": "он купил",
+                  "en": "he bought"
+                }
+              },
+              {
+                "text": "פריט קטן",
+                "type": "expression",
+                "translations": {
+                  "ru": "одну маленькую вещь",
+                  "en": "a small item"
+                }
+              },
+              {
+                "text": "ושלם",
+                "type": "word",
+                "translations": {
+                  "ru": "и заплатил",
+                  "en": "and paid"
+                }
+              },
+              {
+                "text": "בקלות.",
+                "type": "expression",
+                "translations": {
+                  "ru": "без проблем.",
+                  "en": "easily."
+                }
+              }
+            ],
+            [
+              {
+                "text": "לפני שיצא",
+                "type": "expression",
+                "translations": {
+                  "ru": "Перед тем как уйти",
+                  "en": "Before he left"
+                }
+              },
+              {
+                "text": "הוא השאיר",
+                "type": "expression",
+                "translations": {
+                  "ru": "он оставил",
+                  "en": "he left"
+                }
+              },
+              {
+                "text": "הודעה",
+                "type": "word",
+                "translations": {
+                  "ru": "сообщение",
+                  "en": "a message"
+                }
+              },
+              {
+                "text": "שיחזור",
+                "type": "expression",
+                "translations": {
+                  "ru": "что он вернётся",
+                  "en": "that he would come back"
+                }
+              },
+              {
+                "text": "אחר כך.",
+                "type": "expression",
+                "translations": {
+                  "ru": "позже.",
+                  "en": "later."
+                }
+              },
+              {
+                "text": "כך היה",
+                "type": "expression",
+                "translations": {
+                  "ru": "Так было",
+                  "en": "That way"
+                }
+              },
+              {
+                "text": "קל יותר",
+                "type": "expression",
+                "translations": {
+                  "ru": "проще",
+                  "en": "easier"
+                }
+              },
+              {
+                "text": "לאסוף",
+                "type": "word",
+                "translations": {
+                  "ru": "забрать",
+                  "en": "to pick up"
+                }
+              },
+              {
+                "text": "את התרופה",
+                "type": "expression",
+                "translations": {
+                  "ru": "лекарство",
+                  "en": "the medicine"
+                }
+              },
+              {
+                "text": "בלי לבזבז",
+                "type": "expression",
+                "translations": {
+                  "ru": "без того, чтобы тратить",
+                  "en": "without wasting"
+                }
+              },
+              {
+                "text": "עוד זמן.",
+                "type": "expression",
+                "translations": {
+                  "ru": "ещё времени.",
+                  "en": "more time."
+                }
+              }
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "neighbor-parking-spot-arrangement",
+      "slug": "neighbor-parking-spot-arrangement",
+      "type": "dialog",
+      "category": "everyday",
+      "brief": "Two neighbors talk in the building parking lot after one of them keeps finding the same car in their assigned spot. They check the hours, agree on a temporary arrangement for the evening, and decide to leave a note for the building group chat so there will be less confusion next time.",
+      "everydayMeta": {
+        "domain": "housing",
+        "scenario": "shared_parking_spot_arrangement",
+        "lexicalThemes": [
+          "parking and building life",
+          "neighbors and agreements",
+          "messaging group chat",
+          "temporary solutions",
+          "polite clarification"
+        ],
+        "targetVocabulary": [
+          "חניה",
+          "מקום שמור",
+          "שכן",
+          "בערב",
+          "בינתיים",
+          "הודעה",
+          "הקבוצה",
+          "להסכים",
+          "פתרון"
+        ]
+      },
+      "sources": [],
+      "image": null,
+      "levels": {
+        "alef": {
+          "title": [
+            {
+              "text": "המקום השמור",
+              "type": "expression",
+              "translations": {
+                "ru": "зарезервированное место",
+                "en": "the reserved spot"
+              }
+            }
+          ],
+          "teaser": [
+            {
+              "text": "שני שכנים דיברו על אותה חניה והסכימו על פתרון לערב.",
+              "type": "expression",
+              "translations": {
+                "ru": "Два соседа поговорили об одном и том же парковочном месте и договорились о решении на вечер.",
+                "en": "Two neighbors talked about the same parking spot and agreed on a solution for the evening."
+              }
+            }
+          ],
+          "paragraphs": [
+            [
+              {
+                "text": "נועה",
+                "type": "properNoun",
+                "translations": {
+                  "ru": "Ноа",
+                  "en": "Noa"
+                }
+              },
+              {
+                "text": "ראתה שוב",
+                "type": "expression",
+                "translations": {
+                  "ru": "снова увидела",
+                  "en": "saw again"
+                }
+              },
+              {
+                "text": "את אותה",
+                "type": "expression",
+                "translations": {
+                  "ru": "ту же",
+                  "en": "the same"
+                }
+              },
+              {
+                "text": "מכונית",
+                "type": "word",
+                "translations": {
+                  "ru": "машину",
+                  "en": "car"
+                }
+              },
+              {
+                "text": "בחניה שלה.",
+                "type": "expression",
+                "translations": {
+                  "ru": "на её парковочном месте.",
+                  "en": "in her parking spot."
+                }
+              }
+            ],
+            [
+              {
+                "text": "היא פגשה את",
+                "type": "expression",
+                "translations": {
+                  "ru": "Она встретила",
+                  "en": "She met"
+                }
+              },
+              {
+                "text": "שכן",
+                "type": "word",
+                "translations": {
+                  "ru": "соседа",
+                  "en": "a neighbor"
+                }
+              },
+              {
+                "text": "במקום",
+                "type": "word",
+                "translations": {
+                  "ru": "в месте",
+                  "en": "in the spot"
+                }
+              },
+              {
+                "text": "ושאלה מתי",
+                "type": "expression",
+                "translations": {
+                  "ru": "и спросила, когда",
+                  "en": "and asked when"
+                }
+              },
+              {
+                "text": "המכונית",
+                "type": "word",
+                "translations": {
+                  "ru": "машина",
+                  "en": "the car"
+                }
+              },
+              {
+                "text": "עומדת לזוז.",
+                "type": "expression",
+                "translations": {
+                  "ru": "собирается уехать.",
+                  "en": "was going to move."
+                }
+              }
+            ],
+            [
+              {
+                "text": "הם בדקו",
+                "type": "word",
+                "translations": {
+                  "ru": "Они проверили",
+                  "en": "They checked"
+                }
+              },
+              {
+                "text": "את השעות",
+                "type": "expression",
+                "translations": {
+                  "ru": "часы",
+                  "en": "the hours"
+                }
+              },
+              {
+                "text": "והבינו",
+                "type": "word",
+                "translations": {
+                  "ru": "и поняли",
+                  "en": "and understood"
+                }
+              },
+              {
+                "text": "שזה רק",
+                "type": "expression",
+                "translations": {
+                  "ru": "что это только",
+                  "en": "that this was only"
+                }
+              },
+              {
+                "text": "לערב.",
+                "type": "word",
+                "translations": {
+                  "ru": "на вечер.",
+                  "en": "for the evening."
+                }
+              },
+              {
+                "text": "אז הם",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "הסכימו",
+                "type": "word",
+                "translations": {
+                  "ru": "согласились",
+                  "en": "agreed"
+                }
+              },
+              {
+                "text": "על פתרון",
+                "type": "expression",
+                "translations": {
+                  "ru": "на решение",
+                  "en": "on a solution"
+                }
+              },
+              {
+                "text": "בינתיים.",
+                "type": "expression",
+                "translations": {
+                  "ru": "пока что.",
+                  "en": "for now."
+                }
+              }
+            ],
+            [
+              {
+                "text": "בסוף",
+                "type": "word",
+                "translations": {
+                  "ru": "В конце",
+                  "en": "In the end"
+                }
+              },
+              {
+                "text": "הם החליטו",
+                "type": "expression",
+                "translations": {
+                  "ru": "они решили",
+                  "en": "they decided"
+                }
+              },
+              {
+                "text": "לכתוב",
+                "type": "word",
+                "translations": {
+                  "ru": "написать",
+                  "en": "to write"
+                }
+              },
+              {
+                "text": "הודעה",
+                "type": "word",
+                "translations": {
+                  "ru": "сообщение",
+                  "en": "a message"
+                }
+              },
+              {
+                "text": "לקבוצה",
+                "type": "expression",
+                "translations": {
+                  "ru": "в группу",
+                  "en": "to the group"
+                }
+              },
+              {
+                "text": "בבניין",
+                "type": "expression",
+                "translations": {
+                  "ru": "в доме",
+                  "en": "in the building"
+                }
+              },
+              {
+                "text": "כדי שיהיה",
+                "type": "expression",
+                "translations": {
+                  "ru": "чтобы было",
+                  "en": "so there would be"
+                }
+              },
+              {
+                "text": "פחות",
+                "type": "word",
+                "translations": {
+                  "ru": "меньше",
+                  "en": "less"
+                }
+              },
+              {
+                "text": "בלבול",
+                "type": "word",
+                "translations": {
+                  "ru": "путаницы",
+                  "en": "confusion"
+                }
+              },
+              {
+                "text": "בפעם הבאה.",
+                "type": "expression",
+                "translations": {
+                  "ru": "в следующий раз.",
+                  "en": "next time."
+                }
+              }
+            ]
+          ]
+        },
+        "alefPlus": {
+          "title": [
+            {
+              "text": "המקום השמור",
+              "type": "expression",
+              "translations": {
+                "ru": "зарезервированное место",
+                "en": "the reserved spot"
+              }
+            }
+          ],
+          "teaser": [
+            {
+              "text": "שני שכנים גילו שוב אותה מכונית במקום השמור, ואז קבעו פתרון זמני לערב.",
+              "type": "expression",
+              "translations": {
+                "ru": "Два соседа снова обнаружили ту же машину на зарезервированном месте, а потом договорились о временном решении на вечер.",
+                "en": "Two neighbors again found the same car in the reserved spot, and then they agreed on a temporary solution for the evening."
+              }
+            }
+          ],
+          "paragraphs": [
+            [
+              {
+                "text": "נועה",
+                "type": "properNoun",
+                "translations": {
+                  "ru": "Ноа",
+                  "en": "Noa"
+                }
+              },
+              {
+                "text": "ירדה לחניה",
+                "type": "expression",
+                "translations": {
+                  "ru": "спустилась на парковку",
+                  "en": "went down to the parking lot"
+                }
+              },
+              {
+                "text": "וראתה שוב",
+                "type": "expression",
+                "translations": {
+                  "ru": "и снова увидела",
+                  "en": "and saw again"
+                }
+              },
+              {
+                "text": "את אותה מכונית",
+                "type": "expression",
+                "translations": {
+                  "ru": "ту же машину",
+                  "en": "the same car"
+                }
+              },
+              {
+                "text": "במקום השמור שלה.",
+                "type": "expression",
+                "translations": {
+                  "ru": "на её зарезервированном месте.",
+                  "en": "in her reserved spot."
+                }
+              }
+            ],
+            [
+              {
+                "text": "היא פגשה",
+                "type": "word",
+                "translations": {
+                  "ru": "Она встретила",
+                  "en": "She met"
+                }
+              },
+              {
+                "text": "את השכן",
+                "type": "expression",
+                "translations": {
+                  "ru": "соседа",
+                  "en": "the neighbor"
+                }
+              },
+              {
+                "text": "ושאלה",
+                "type": "word",
+                "translations": {
+                  "ru": "и спросила",
+                  "en": "and asked"
+                }
+              },
+              {
+                "text": "מתי בערך",
+                "type": "expression",
+                "translations": {
+                  "ru": "примерно когда",
+                  "en": "about when"
+                }
+              },
+              {
+                "text": "המכונית",
+                "type": "word",
+                "translations": {
+                  "ru": "машина",
+                  "en": "the car"
+                }
+              },
+              {
+                "text": "אמורה לזוז.",
+                "type": "expression",
+                "translations": {
+                  "ru": "должна уехать.",
+                  "en": "was supposed to move."
+                }
+              }
+            ],
+            [
+              {
+                "text": "הם בדקו",
+                "type": "word",
+                "translations": {
+                  "ru": "Они проверили",
+                  "en": "They checked"
+                }
+              },
+              {
+                "text": "את השעות",
+                "type": "expression",
+                "translations": {
+                  "ru": "часы",
+                  "en": "the hours"
+                }
+              },
+              {
+                "text": "והבינו",
+                "type": "word",
+                "translations": {
+                  "ru": "и поняли",
+                  "en": "and understood"
+                }
+              },
+              {
+                "text": "שזה רק",
+                "type": "expression",
+                "translations": {
+                  "ru": "что это только",
+                  "en": "that this was only"
+                }
+              },
+              {
+                "text": "לערב.",
+                "type": "word",
+                "translations": {
+                  "ru": "на вечер",
+                  "en": "for the evening"
+                }
+              },
+              {
+                "text": "לכן הם",
+                "type": "expression",
+                "translations": {
+                  "ru": "поэтому они",
+                  "en": "so they"
+                }
+              },
+              {
+                "text": "הסכימו",
+                "type": "word",
+                "translations": {
+                  "ru": "согласились",
+                  "en": "agreed"
+                }
+              },
+              {
+                "text": "על פתרון",
+                "type": "expression",
+                "translations": {
+                  "ru": "на решение",
+                  "en": "on a solution"
+                }
+              },
+              {
+                "text": "בינתיים.",
+                "type": "expression",
+                "translations": {
+                  "ru": "на время.",
+                  "en": "for the meantime."
+                }
+              }
+            ],
+            [
+              {
+                "text": "בסוף",
+                "type": "word",
+                "translations": {
+                  "ru": "В конце",
+                  "en": "In the end"
+                }
+              },
+              {
+                "text": "הם החליטו",
+                "type": "expression",
+                "translations": {
+                  "ru": "они решили",
+                  "en": "they decided"
+                }
+              },
+              {
+                "text": "להשאיר",
+                "type": "expression",
+                "translations": {
+                  "ru": "оставить",
+                  "en": "to leave"
+                }
+              },
+              {
+                "text": "הודעה",
+                "type": "word",
+                "translations": {
+                  "ru": "сообщение",
+                  "en": "a message"
+                }
+              },
+              {
+                "text": "לקבוצה",
+                "type": "expression",
+                "translations": {
+                  "ru": "в группу",
+                  "en": "to the group"
+                }
+              },
+              {
+                "text": "של הבניין",
+                "type": "expression",
+                "translations": {
+                  "ru": "дома",
+                  "en": "of the building"
+                }
+              },
+              {
+                "text": "כדי שיהיה",
+                "type": "expression",
+                "translations": {
+                  "ru": "чтобы было",
+                  "en": "so there would be"
+                }
+              },
+              {
+                "text": "פחות",
+                "type": "word",
+                "translations": {
+                  "ru": "меньше",
+                  "en": "less"
+                }
+              },
+              {
+                "text": "בלבול",
+                "type": "word",
+                "translations": {
+                  "ru": "путаницы",
+                  "en": "confusion"
+                }
+              },
+              {
+                "text": "בפעם הבאה.",
+                "type": "expression",
+                "translations": {
+                  "ru": "в следующий раз.",
+                  "en": "next time."
+                }
+              }
+            ]
+          ]
+        },
+        "bet": {
+          "title": [
+            {
+              "text": "המקום השמור",
+              "type": "expression",
+              "translations": {
+                "ru": "зарезервированное место",
+                "en": "the reserved spot"
+              }
+            }
+          ],
+          "teaser": [
+            {
+              "text": "שני שכנים בדקו חניה, הסכימו על פתרון לערב, והחליטו לכתוב הודעה לקבוצה של הבניין.",
+              "type": "expression",
+              "translations": {
+                "ru": "Два соседа проверили парковку, договорились о решении на вечер и решили написать сообщение в групповом чате дома.",
+                "en": "Two neighbors checked the parking, agreed on a solution for the evening, and decided to write a message to the building group chat."
+              }
+            }
+          ],
+          "paragraphs": [
+            [
+              {
+                "text": "נועה",
+                "type": "properNoun",
+                "translations": {
+                  "ru": "Ноа",
+                  "en": "Noa"
+                }
+              },
+              {
+                "text": "ירדה לחניה",
+                "type": "expression",
+                "translations": {
+                  "ru": "спустилась на парковку",
+                  "en": "went down to the parking lot"
+                }
+              },
+              {
+                "text": "ושוב ראתה",
+                "type": "expression",
+                "translations": {
+                  "ru": "и снова увидела",
+                  "en": "and again saw"
+                }
+              },
+              {
+                "text": "את אותה מכונית",
+                "type": "expression",
+                "translations": {
+                  "ru": "ту же машину",
+                  "en": "the same car"
+                }
+              },
+              {
+                "text": "במקום השמור שלה.",
+                "type": "expression",
+                "translations": {
+                  "ru": "на её зарезервированном месте.",
+                  "en": "in her reserved spot."
+                }
+              }
+            ],
+            [
+              {
+                "text": "היא פגשה",
+                "type": "word",
+                "translations": {
+                  "ru": "Она встретила",
+                  "en": "She met"
+                }
+              },
+              {
+                "text": "את השכן",
+                "type": "expression",
+                "translations": {
+                  "ru": "соседа",
+                  "en": "the neighbor"
+                }
+              },
+              {
+                "text": "ושאלה",
+                "type": "word",
+                "translations": {
+                  "ru": "и спросила",
+                  "en": "and asked"
+                }
+              },
+              {
+                "text": "מתי בערך",
+                "type": "expression",
+                "translations": {
+                  "ru": "примерно когда",
+                  "en": "about when"
+                }
+              },
+              {
+                "text": "המכונית",
+                "type": "word",
+                "translations": {
+                  "ru": "машина",
+                  "en": "the car"
+                }
+              },
+              {
+                "text": "אמורה לזוז.",
+                "type": "expression",
+                "translations": {
+                  "ru": "должна уехать.",
+                  "en": "was supposed to move."
+                }
+              },
+              {
+                "text": "הוא בדק",
+                "type": "expression",
+                "translations": {
+                  "ru": "Он проверил",
+                  "en": "He checked"
+                }
+              },
+              {
+                "text": "את השעות",
+                "type": "expression",
+                "translations": {
+                  "ru": "время",
+                  "en": "the hours"
+                }
+              },
+              {
+                "text": "ואמר שזה",
+                "type": "expression",
+                "translations": {
+                  "ru": "и сказал, что это",
+                  "en": "and said that it was"
+                }
+              },
+              {
+                "text": "רק לערב.",
+                "type": "expression",
+                "translations": {
+                  "ru": "только на вечер.",
+                  "en": "only for the evening."
+                }
+              }
+            ],
+            [
+              {
+                "text": "אחרי זה",
+                "type": "expression",
+                "translations": {
+                  "ru": "После этого",
+                  "en": "After that"
+                }
+              },
+              {
+                "text": "הם הסכימו",
+                "type": "word",
+                "translations": {
+                  "ru": "они согласились",
+                  "en": "they agreed"
+                }
+              },
+              {
+                "text": "על פתרון",
+                "type": "expression",
+                "translations": {
+                  "ru": "на решение",
+                  "en": "on a solution"
+                }
+              },
+              {
+                "text": "בינתיים.",
+                "type": "expression",
+                "translations": {
+                  "ru": "временно.",
+                  "en": "for now."
+                }
+              },
+              {
+                "text": "הם לא",
+                "type": "expression",
+                "translations": {
+                  "ru": "Они не",
+                  "en": "They did not"
+                }
+              },
+              {
+                "text": "רצו",
+                "type": "word",
+                "translations": {
+                  "ru": "хотели",
+                  "en": "want"
+                }
+              },
+              {
+                "text": "לעשות",
+                "type": "word",
+                "translations": {
+                  "ru": "делать",
+                  "en": "make"
+                }
+              },
+              {
+                "text": "מזה עניין.",
+                "type": "expression",
+                "translations": {
+                  "ru": "из этого проблему.",
+                  "en": "make a fuss about it."
+                }
+              }
+            ],
+            [
+              {
+                "text": "בסוף",
+                "type": "word",
+                "translations": {
+                  "ru": "В конце",
+                  "en": "In the end"
+                }
+              },
+              {
+                "text": "הם החליטו",
+                "type": "expression",
+                "translations": {
+                  "ru": "они решили",
+                  "en": "they decided"
+                }
+              },
+              {
+                "text": "להשאיר",
+                "type": "expression",
+                "translations": {
+                  "ru": "оставить",
+                  "en": "to leave"
+                }
+              },
+              {
+                "text": "הודעה",
+                "type": "word",
+                "translations": {
+                  "ru": "сообщение",
+                  "en": "a message"
+                }
+              },
+              {
+                "text": "לקבוצה",
+                "type": "expression",
+                "translations": {
+                  "ru": "в группу",
+                  "en": "to the group"
+                }
+              },
+              {
+                "text": "של הבניין",
+                "type": "expression",
+                "translations": {
+                  "ru": "дома",
+                  "en": "of the building"
+                }
+              },
+              {
+                "text": "כדי שיהיה",
+                "type": "expression",
+                "translations": {
+                  "ru": "чтобы было",
+                  "en": "so there would be"
+                }
+              },
+              {
+                "text": "פחות",
+                "type": "word",
+                "translations": {
+                  "ru": "меньше",
+                  "en": "less"
+                }
+              },
+              {
+                "text": "בלבול",
+                "type": "word",
+                "translations": {
+                  "ru": "путаницы",
+                  "en": "confusion"
+                }
+              },
+              {
+                "text": "בפעם הבאה.",
+                "type": "expression",
+                "translations": {
+                  "ru": "в следующий раз.",
+                  "en": "next time."
+                }
+              }
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "small-cafe-table-and-takeaway-order",
+      "slug": "small-cafe-table-and-takeaway-order",
+      "type": "dialog",
+      "category": "food",
+      "brief": "At a café, one person asks whether a table is free while the other wants to take the order to go. The waiter explains what is available, the two people choose a simple order, and in the end they sit down for a short break instead of leaving immediately.",
+      "everydayMeta": {
+        "domain": "food_service",
+        "scenario": "cafe_table_vs_takeaway",
+        "lexicalThemes": [
+          "ordering food and drinks",
+          "seating and waiting",
+          "polite requests",
+          "simple decisions",
+          "cafes and takeout"
+        ],
+        "targetVocabulary": [
+          "שולחן",
+          "פנוי",
+          "להזמין",
+          "לשבת",
+          "טייק אווי",
+          "תפריט",
+          "קפה",
+          "בכיף",
+          "בסוף"
+        ]
+      },
+      "sources": [],
+      "image": null,
+      "levels": {
+        "alef": {
+          "title": [
+            {
+              "text": "שולחן פנוי בבית קפה",
+              "type": "expression",
+              "translations": {
+                "ru": "Свободный столик в кафе",
+                "en": "A free table at a café"
+              }
+            }
+          ],
+          "teaser": [
+            {
+              "text": "שני אנשים נכנסים לבית קפה, שואלים על שולחן, ובסוף יושבים קצת במקום לקחת טייק אווי.",
+              "type": "expression",
+              "translations": {
+                "ru": "Двое заходят в кафе, спрашивают о столике и в конце садятся ненадолго вместо того, чтобы взять еду с собой.",
+                "en": "Two people walk into a café, ask about a table, and in the end sit for a bit instead of taking takeaway."
+              }
+            }
+          ],
+          "paragraphs": [
+            [
+              {
+                "text": "נועה",
+                "type": "properNoun",
+                "translations": {
+                  "ru": "Ноа",
+                  "en": "Noa"
+                }
+              },
+              {
+                "text": ": ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "שלום,",
+                "type": "word",
+                "translations": {
+                  "ru": "Здравствуйте",
+                  "en": "Hi"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "יש",
+                "type": "word",
+                "translations": {
+                  "ru": "есть",
+                  "en": "is there"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "שולחן",
+                "type": "word",
+                "translations": {
+                  "ru": "столик",
+                  "en": "table"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "פנוי",
+                "type": "word",
+                "translations": {
+                  "ru": "свободный",
+                  "en": "free"
+                }
+              },
+              {
+                "text": "?",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "דני",
+                "type": "properNoun",
+                "translations": {
+                  "ru": "Дани",
+                  "en": "Dani"
+                }
+              },
+              {
+                "text": ": ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "כן,",
+                "type": "word",
+                "translations": {
+                  "ru": "да",
+                  "en": "yes"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "יש",
+                "type": "word",
+                "translations": {
+                  "ru": "есть",
+                  "en": "there is"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "אחד",
+                "type": "word",
+                "translations": {
+                  "ru": "один",
+                  "en": "one"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "פה.",
+                "type": "word",
+                "translations": {
+                  "ru": "здесь.",
+                  "en": "here."
+                }
+              }
+            ],
+            [
+              {
+                "text": "נועה",
+                "type": "properNoun",
+                "translations": {
+                  "ru": "Ноа",
+                  "en": "Noa"
+                }
+              },
+              {
+                "text": ": ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "רציתי",
+                "type": "word",
+                "translations": {
+                  "ru": "я хотела",
+                  "en": "I wanted"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "לקחת",
+                "type": "word",
+                "translations": {
+                  "ru": "взять",
+                  "en": "to take"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "קפה",
+                "type": "word",
+                "translations": {
+                  "ru": "кофе",
+                  "en": "coffee"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "לטייק",
+                "type": "word",
+                "translations": {
+                  "ru": "на вынос",
+                  "en": "takeaway"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "אווי.",
+                "type": "word",
+                "translations": {
+                  "ru": "—",
+                  "en": "—"
+                }
+              }
+            ],
+            [
+              {
+                "text": "דני",
+                "type": "properNoun",
+                "translations": {
+                  "ru": "Дани",
+                  "en": "Dani"
+                }
+              },
+              {
+                "text": ": ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "בכיף,",
+                "type": "expression",
+                "translations": {
+                  "ru": "с удовольствием",
+                  "en": "sure"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "אבל",
+                "type": "word",
+                "translations": {
+                  "ru": "но",
+                  "en": "but"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "כרגע",
+                "type": "word",
+                "translations": {
+                  "ru": "сейчас",
+                  "en": "right now"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "יש",
+                "type": "word",
+                "translations": {
+                  "ru": "есть",
+                  "en": "there is"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "מקום",
+                "type": "word",
+                "translations": {
+                  "ru": "место",
+                  "en": "space"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "רק",
+                "type": "word",
+                "translations": {
+                  "ru": "только",
+                  "en": "only"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "לשבת.",
+                "type": "word",
+                "translations": {
+                  "ru": "посидеть.",
+                  "en": "to sit."
+                }
+              }
+            ],
+            [
+              {
+                "text": "נועה",
+                "type": "properNoun",
+                "translations": {
+                  "ru": "Ноа",
+                  "en": "Noa"
+                }
+              },
+              {
+                "text": ": ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "אז",
+                "type": "word",
+                "translations": {
+                  "ru": "тогда",
+                  "en": "then"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "נשב",
+                "type": "word",
+                "translations": {
+                  "ru": "посидим",
+                  "en": "we'll sit"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "קצת.",
+                "type": "word",
+                "translations": {
+                  "ru": "немного.",
+                  "en": "a little."
+                }
+              }
+            ],
+            [
+              {
+                "text": "דני",
+                "type": "properNoun",
+                "translations": {
+                  "ru": "Дани",
+                  "en": "Dani"
+                }
+              },
+              {
+                "text": ": ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "כן,",
+                "type": "word",
+                "translations": {
+                  "ru": "да",
+                  "en": "yes"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "בסוף",
+                "type": "word",
+                "translations": {
+                  "ru": "в конце концов",
+                  "en": "in the end"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "זה",
+                "type": "word",
+                "translations": {
+                  "ru": "это",
+                  "en": "it"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "יותר",
+                "type": "word",
+                "translations": {
+                  "ru": "больше",
+                  "en": "more"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "נעים.",
+                "type": "word",
+                "translations": {
+                  "ru": "приятно.",
+                  "en": "pleasant."
+                }
+              }
+            ]
+          ]
+        },
+        "alefPlus": {
+          "title": [
+            {
+              "text": "שולחן פנוי בבית קפה",
+              "type": "expression",
+              "translations": {
+                "ru": "Свободный столик в кафе",
+                "en": "A free table at a café"
+              }
+            }
+          ],
+          "teaser": [
+            {
+              "text": "שני אנשים נכנסים לבית קפה, מבררים אם יש שולחן, ובסוף מחליטים לשבת במקום לקחת את ההזמנה לדרך.",
+              "type": "expression",
+              "translations": {
+                "ru": "Двое заходят в кафе, уточняют, есть ли столик, и в конце решают посидеть вместо того, чтобы взять заказ с собой.",
+                "en": "Two people walk into a café, check whether there is a table, and in the end decide to sit instead of taking the order to go."
+              }
+            }
+          ],
+          "paragraphs": [
+            [
+              {
+                "text": "נועה",
+                "type": "properNoun",
+                "translations": {
+                  "ru": "Ноа",
+                  "en": "Noa"
+                }
+              },
+              {
+                "text": ": ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "שלום,",
+                "type": "word",
+                "translations": {
+                  "ru": "здравствуйте",
+                  "en": "hi"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "יש",
+                "type": "word",
+                "translations": {
+                  "ru": "есть",
+                  "en": "is there"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "אולי",
+                "type": "word",
+                "translations": {
+                  "ru": "может быть",
+                  "en": "maybe"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "שולחן",
+                "type": "word",
+                "translations": {
+                  "ru": "столик",
+                  "en": "table"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "פנוי",
+                "type": "word",
+                "translations": {
+                  "ru": "свободный",
+                  "en": "free"
+                }
+              },
+              {
+                "text": "?",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "דני",
+                "type": "properNoun",
+                "translations": {
+                  "ru": "Дани",
+                  "en": "Dani"
+                }
+              },
+              {
+                "text": ": ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "כן,",
+                "type": "word",
+                "translations": {
+                  "ru": "да",
+                  "en": "yes"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "יש",
+                "type": "word",
+                "translations": {
+                  "ru": "есть",
+                  "en": "there is"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "אחד",
+                "type": "word",
+                "translations": {
+                  "ru": "один",
+                  "en": "one"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "פה.",
+                "type": "word",
+                "translations": {
+                  "ru": "здесь.",
+                  "en": "here."
+                }
+              }
+            ],
+            [
+              {
+                "text": "נועה",
+                "type": "properNoun",
+                "translations": {
+                  "ru": "Ноа",
+                  "en": "Noa"
+                }
+              },
+              {
+                "text": ": ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "רציתי",
+                "type": "word",
+                "translations": {
+                  "ru": "я хотела",
+                  "en": "I wanted"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "רק",
+                "type": "word",
+                "translations": {
+                  "ru": "только",
+                  "en": "just"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "לקחת",
+                "type": "word",
+                "translations": {
+                  "ru": "взять",
+                  "en": "to take"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "קפה",
+                "type": "word",
+                "translations": {
+                  "ru": "кофе",
+                  "en": "coffee"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "לטייק",
+                "type": "word",
+                "translations": {
+                  "ru": "на вынос",
+                  "en": "to go"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "אווי.",
+                "type": "word",
+                "translations": {
+                  "ru": "—",
+                  "en": "—"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "יש",
+                "type": "word",
+                "translations": {
+                  "ru": "есть",
+                  "en": "there is"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "גם",
+                "type": "word",
+                "translations": {
+                  "ru": "также",
+                  "en": "also"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "תפריט",
+                "type": "word",
+                "translations": {
+                  "ru": "меню",
+                  "en": "menu"
+                }
+              },
+              {
+                "text": "?",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              }
+            ],
+            [
+              {
+                "text": "דני",
+                "type": "properNoun",
+                "translations": {
+                  "ru": "Дани",
+                  "en": "Dani"
+                }
+              },
+              {
+                "text": ": ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "כן,",
+                "type": "word",
+                "translations": {
+                  "ru": "да",
+                  "en": "yes"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "בטח.",
+                "type": "word",
+                "translations": {
+                  "ru": "конечно.",
+                  "en": "of course."
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "כרגע",
+                "type": "word",
+                "translations": {
+                  "ru": "сейчас",
+                  "en": "right now"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "יש",
+                "type": "word",
+                "translations": {
+                  "ru": "есть",
+                  "en": "there is"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "מקום",
+                "type": "word",
+                "translations": {
+                  "ru": "место",
+                  "en": "space"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "רק",
+                "type": "word",
+                "translations": {
+                  "ru": "только",
+                  "en": "only"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "לשבת,",
+                "type": "word",
+                "translations": {
+                  "ru": "чтобы посидеть",
+                  "en": "to sit"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "לא",
+                "type": "word",
+                "translations": {
+                  "ru": "не",
+                  "en": "not"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "לטייק",
+                "type": "word",
+                "translations": {
+                  "ru": "на вынос",
+                  "en": "for takeaway"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "אווי.",
+                "type": "word",
+                "translations": {
+                  "ru": "—",
+                  "en": "—"
+                }
+              }
+            ],
+            [
+              {
+                "text": "נועה",
+                "type": "properNoun",
+                "translations": {
+                  "ru": "Ноа",
+                  "en": "Noa"
+                }
+              },
+              {
+                "text": ": ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "זה",
+                "type": "word",
+                "translations": {
+                  "ru": "это",
+                  "en": "that"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "בסדר,",
+                "type": "word",
+                "translations": {
+                  "ru": "нормально",
+                  "en": "okay"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "נשב",
+                "type": "word",
+                "translations": {
+                  "ru": "посидим",
+                  "en": "we'll sit"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "קצת.",
+                "type": "word",
+                "translations": {
+                  "ru": "немного.",
+                  "en": "a bit."
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "אני",
+                "type": "word",
+                "translations": {
+                  "ru": "я",
+                  "en": "I"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "איקח",
+                "type": "word",
+                "translations": {
+                  "ru": "возьму",
+                  "en": "will take"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "קפה",
+                "type": "word",
+                "translations": {
+                  "ru": "кофе",
+                  "en": "coffee"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "קטן.",
+                "type": "word",
+                "translations": {
+                  "ru": "маленький",
+                  "en": "small"
+                }
+              }
+            ],
+            [
+              {
+                "text": "דני",
+                "type": "properNoun",
+                "translations": {
+                  "ru": "Дани",
+                  "en": "Dani"
+                }
+              },
+              {
+                "text": ": ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "בכיף.",
+                "type": "expression",
+                "translations": {
+                  "ru": "с удовольствием.",
+                  "en": "sure."
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "בסוף",
+                "type": "word",
+                "translations": {
+                  "ru": "в конце концов",
+                  "en": "in the end"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "זה",
+                "type": "word",
+                "translations": {
+                  "ru": "это",
+                  "en": "it"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "יותר",
+                "type": "word",
+                "translations": {
+                  "ru": "более",
+                  "en": "more"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "נוח",
+                "type": "word",
+                "translations": {
+                  "ru": "удобно",
+                  "en": "comfortable"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "ככה.",
+                "type": "word",
+                "translations": {
+                  "ru": "так.",
+                  "en": "like this."
+                }
+              }
+            ]
+          ]
+        },
+        "bet": {
+          "title": [
+            {
+              "text": "שולחן פנוי בבית קפה",
+              "type": "expression",
+              "translations": {
+                "ru": "Свободный столик в кафе",
+                "en": "A free table at a café"
+              }
+            }
+          ],
+          "teaser": [
+            {
+              "text": "בבית קפה קטן, לקוח שואל על שולחן, רוצה לקחת משהו לטייק אווי, ובסוף שני האנשים נשארים לשבת קצת.",
+              "type": "expression",
+              "translations": {
+                "ru": "В маленьком кафе клиент спрашивает о столике, хочет взять что-нибудь на вынос, и в конце двое остаются посидеть немного.",
+                "en": "At a small café, a customer asks about a table, wants to take something to go, and in the end the two people stay to sit for a while."
+              }
+            }
+          ],
+          "paragraphs": [
+            [
+              {
+                "text": "נועה",
+                "type": "properNoun",
+                "translations": {
+                  "ru": "Ноа",
+                  "en": "Noa"
+                }
+              },
+              {
+                "text": ": ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "שלום,",
+                "type": "word",
+                "translations": {
+                  "ru": "здравствуйте",
+                  "en": "hi"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "יש",
+                "type": "word",
+                "translations": {
+                  "ru": "есть",
+                  "en": "is there"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "אולי",
+                "type": "word",
+                "translations": {
+                  "ru": "может быть",
+                  "en": "maybe"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "שולחן",
+                "type": "word",
+                "translations": {
+                  "ru": "столик",
+                  "en": "table"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "פנוי",
+                "type": "word",
+                "translations": {
+                  "ru": "свободный",
+                  "en": "free"
+                }
+              },
+              {
+                "text": "?",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "דני",
+                "type": "properNoun",
+                "translations": {
+                  "ru": "Дани",
+                  "en": "Dani"
+                }
+              },
+              {
+                "text": ": ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "כן,",
+                "type": "word",
+                "translations": {
+                  "ru": "да",
+                  "en": "yes"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "יש",
+                "type": "word",
+                "translations": {
+                  "ru": "есть",
+                  "en": "there is"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "אחד",
+                "type": "word",
+                "translations": {
+                  "ru": "один",
+                  "en": "one"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "פה.",
+                "type": "word",
+                "translations": {
+                  "ru": "здесь.",
+                  "en": "here."
+                }
+              }
+            ],
+            [
+              {
+                "text": "נועה",
+                "type": "properNoun",
+                "translations": {
+                  "ru": "Ноа",
+                  "en": "Noa"
+                }
+              },
+              {
+                "text": ": ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "רציתי",
+                "type": "word",
+                "translations": {
+                  "ru": "я хотела",
+                  "en": "I wanted"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "רק",
+                "type": "word",
+                "translations": {
+                  "ru": "только",
+                  "en": "just"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "לקחת",
+                "type": "word",
+                "translations": {
+                  "ru": "взять",
+                  "en": "to take"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "קפה",
+                "type": "word",
+                "translations": {
+                  "ru": "кофе",
+                  "en": "coffee"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "לטייק",
+                "type": "word",
+                "translations": {
+                  "ru": "на вынос",
+                  "en": "to go"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "אווי,",
+                "type": "word",
+                "translations": {
+                  "ru": "—",
+                  "en": "—"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "אבל",
+                "type": "word",
+                "translations": {
+                  "ru": "но",
+                  "en": "but"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "אם",
+                "type": "word",
+                "translations": {
+                  "ru": "если",
+                  "en": "if"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "אפשר",
+                "type": "word",
+                "translations": {
+                  "ru": "можно",
+                  "en": "possible"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "גם",
+                "type": "word",
+                "translations": {
+                  "ru": "также",
+                  "en": "also"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "תפריט",
+                "type": "word",
+                "translations": {
+                  "ru": "меню",
+                  "en": "menu"
+                }
+              },
+              {
+                "text": "?",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              }
+            ],
+            [
+              {
+                "text": "דני",
+                "type": "properNoun",
+                "translations": {
+                  "ru": "Дани",
+                  "en": "Dani"
+                }
+              },
+              {
+                "text": ": ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "בטח.",
+                "type": "word",
+                "translations": {
+                  "ru": "конечно.",
+                  "en": "of course."
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "כרגע",
+                "type": "word",
+                "translations": {
+                  "ru": "сейчас",
+                  "en": "right now"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "יש",
+                "type": "word",
+                "translations": {
+                  "ru": "есть",
+                  "en": "there is"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "מקום",
+                "type": "word",
+                "translations": {
+                  "ru": "место",
+                  "en": "space"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "רק",
+                "type": "word",
+                "translations": {
+                  "ru": "только",
+                  "en": "only"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "לשבת,",
+                "type": "word",
+                "translations": {
+                  "ru": "чтобы посидеть",
+                  "en": "to sit"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "ולא",
+                "type": "word",
+                "translations": {
+                  "ru": "и не",
+                  "en": "and not"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "לטייק",
+                "type": "word",
+                "translations": {
+                  "ru": "на вынос",
+                  "en": "for takeaway"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "אווי.",
+                "type": "word",
+                "translations": {
+                  "ru": "—",
+                  "en": "—"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "יש",
+                "type": "word",
+                "translations": {
+                  "ru": "есть",
+                  "en": "there is"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "גם",
+                "type": "word",
+                "translations": {
+                  "ru": "также",
+                  "en": "also"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "קפה",
+                "type": "word",
+                "translations": {
+                  "ru": "кофе",
+                  "en": "coffee"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "רגיל",
+                "type": "word",
+                "translations": {
+                  "ru": "обычный",
+                  "en": "regular"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "וקפה",
+                "type": "word",
+                "translations": {
+                  "ru": "и кофе",
+                  "en": "and coffee"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "קטן.",
+                "type": "word",
+                "translations": {
+                  "ru": "маленький.",
+                  "en": "small."
+                }
+              }
+            ],
+            [
+              {
+                "text": "נועה",
+                "type": "properNoun",
+                "translations": {
+                  "ru": "Ноа",
+                  "en": "Noa"
+                }
+              },
+              {
+                "text": ": ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "אז",
+                "type": "word",
+                "translations": {
+                  "ru": "тогда",
+                  "en": "then"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "ניקח",
+                "type": "word",
+                "translations": {
+                  "ru": "возьмём",
+                  "en": "we'll take"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "שניים",
+                "type": "word",
+                "translations": {
+                  "ru": "два",
+                  "en": "two"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "קטנים.",
+                "type": "word",
+                "translations": {
+                  "ru": "маленьких.",
+                  "en": "small."
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "זה",
+                "type": "word",
+                "translations": {
+                  "ru": "это",
+                  "en": "it"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "מספיק",
+                "type": "word",
+                "translations": {
+                  "ru": "достаточно",
+                  "en": "enough"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "להפסקה",
+                "type": "word",
+                "translations": {
+                  "ru": "для перерыва",
+                  "en": "for a break"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "קצרה.",
+                "type": "word",
+                "translations": {
+                  "ru": "короткой.",
+                  "en": "short."
+                }
+              }
+            ],
+            [
+              {
+                "text": "דני",
+                "type": "properNoun",
+                "translations": {
+                  "ru": "Дани",
+                  "en": "Dani"
+                }
+              },
+              {
+                "text": ": ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "בכיף.",
+                "type": "expression",
+                "translations": {
+                  "ru": "с удовольствием.",
+                  "en": "sure."
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "בסוף",
+                "type": "word",
+                "translations": {
+                  "ru": "в конце концов",
+                  "en": "in the end"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "נשב",
+                "type": "word",
+                "translations": {
+                  "ru": "посидим",
+                  "en": "we'll sit"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "קצת",
+                "type": "word",
+                "translations": {
+                  "ru": "немного",
+                  "en": "a little"
+                }
+              },
+              {
+                "text": " ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "כאן.",
+                "type": "word",
+                "translations": {
+                  "ru": "здесь.",
+                  "en": "here."
                 }
               }
             ]
