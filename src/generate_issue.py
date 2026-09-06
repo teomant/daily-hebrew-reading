@@ -20,7 +20,7 @@ from .common import (
     normalized_url,
     read_json,
 )
-from .validation import briefs_are_near_duplicates, validate_issue
+from .validation import briefs_are_near_duplicates, slugs_are_near_duplicates, validate_issue
 
 
 CATEGORIES = [
@@ -275,7 +275,14 @@ def _recent_history(history: dict[str, Any], target: date, days: int) -> list[di
         except (KeyError, TypeError, ValueError):
             continue
         if cutoff <= item_date <= target:
-            recent.append(item)
+            recent.append(
+                {
+                    "date": item.get("date"),
+                    "storyId": item.get("storyId"),
+                    "domain": item.get("domain"),
+                    "scenario": item.get("scenario"),
+                }
+            )
     return recent
 
 
@@ -299,9 +306,12 @@ def _recent_issue_context(content_dir: Path, target: date, days: int) -> list[di
             stories.append(
                 {
                     "id": story.get("id"),
-                    "type": story.get("type"),
-                    "category": story.get("category"),
                     "brief": story.get("brief"),
+                    "sourceUrls": [
+                        normalized_url(source["url"])
+                        for source in story.get("sources", [])
+                        if isinstance(source, dict) and isinstance(source.get("url"), str)
+                    ],
                 }
             )
         issues.append({"date": issue_date.isoformat(), "stories": stories})
@@ -310,15 +320,16 @@ def _recent_issue_context(content_dir: Path, target: date, days: int) -> list[di
 
 def _existing_exclusions(issue: dict[str, Any] | None) -> dict[str, Any]:
     if not issue:
-        return {"slugs": [], "sourceUrls": [], "briefs": [], "types": {}}
-    type_counts: dict[str, int] = {}
-    for story in issue["stories"]:
-        type_counts[story["type"]] = type_counts.get(story["type"], 0) + 1
+        return {"stories": []}
     return {
-        "slugs": [story["slug"] for story in issue["stories"]],
-        "sourceUrls": [normalized_url(source["url"]) for story in issue["stories"] for source in story["sources"]],
-        "briefs": [story["brief"] for story in issue["stories"]],
-        "types": type_counts,
+        "stories": [
+            {
+                "id": story["id"],
+                "brief": story["brief"],
+                "sourceUrls": [normalized_url(source["url"]) for source in story["sources"]],
+            }
+            for story in issue["stories"]
+        ],
     }
 
 
@@ -355,6 +366,12 @@ def _generation_request(
         for item in levels
     ]
     retry = f"\nPrevious attempt failed validation. Correct these problems: {json.dumps(feedback, ensure_ascii=False)}" if feedback else ""
+    forbidden_stories = list(exclusions.get("stories", []))
+    forbidden_stories.extend(
+        story
+        for issue in recent_issues
+        for story in issue.get("stories", [])
+    )
     return f"""
 Target publication date: {target_date}
 Story count: aim for {target_count}; return between {minimum_count} and {maximum_count}. Never add a weak or padded story only to reach the target.
@@ -367,18 +384,17 @@ Configured reading levels:
 
 Required translation locales: {json.dumps(locales)}
 
-Existing issue exclusions and type counts:
-{json.dumps(exclusions, ensure_ascii=False, indent=2)}
+FORBIDDEN STORY RECORDS FROM THE EXISTING ISSUE AND PREVIOUS ISSUES:
+{json.dumps(forbidden_stories, ensure_ascii=False, indent=2)}
+
+Before returning any candidate, compare its underlying subject, brief, slug, and every source URL against every forbidden record above. Reject the candidate when it describes the same real event, historical subject, everyday scenario, or dialogue situation—even when it uses another language, publisher, URL, headline, wording, angle, or added detail. Write every internal `brief` in English so deterministic validation can compare it with stored briefs.
 
 Recent EVERYDAY and DIALOG scenario history to avoid:
 {json.dumps(recent_history, ensure_ascii=False, indent=2)}
 
-Content from the previous {len(recent_issues)} available issue(s):
-{json.dumps(recent_issues, ensure_ascii=False, indent=2)}
+A genuine follow-up to a forbidden story is allowed only when something materially changed; state that change clearly in the English brief.
 
-Do not repeat the same real event, historical subject, everyday scenario, or dialogue situation from these previous issues. A genuine follow-up is allowed only when something materially changed and the new angle is clearly distinct.
-
-The story id and slug must be identical. Prefer distinct canonical content-page URLs for sourced stories; use an empty source list rather than an uncertain URL. Do not use publisher homepages, section pages, generic latest pages, or liveblogs. Use null everydayMeta for sourced stories; EVERYDAY and DIALOG use scenario metadata and have no sources or image. Use null image when image provenance or embedding suitability is uncertain. Every separator unit must still contain translations with empty strings for every locale. Return no prose outside the schema.{retry}
+The story id and slug must be identical. Prefer distinct canonical content-page URLs for sourced stories; use an empty source list rather than an uncertain URL. Do not use publisher homepages, section pages, generic latest pages, or liveblogs. Use null everydayMeta for sourced stories; EVERYDAY and DIALOG use scenario metadata and have no sources or image. Use null image when image provenance or embedding suitability is uncertain. Return no prose outside the schema.{retry}
 """.strip()
 
 
@@ -569,6 +585,13 @@ def _duplicate_errors(new_stories: list[dict[str, Any]], existing: dict[str, Any
     for story in new_stories:
         if story["slug"] in existing_slugs:
             errors.append(f"duplicate slug: {story['slug']}")
+        else:
+            similar_slug = next(
+                (slug for slug in existing_slugs if slugs_are_near_duplicates(story["slug"], slug)),
+                None,
+            )
+            if similar_slug:
+                errors.append(f"near-duplicate story slugs: {story['slug']} and {similar_slug}")
         for source in story["sources"]:
             source_url = normalized_url(source["url"])
             if source_url in existing_urls:

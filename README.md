@@ -81,7 +81,7 @@ Generation logs timestamp each research, adaptation, validation, and write phase
 
 The generation workflow runs repository validation and unit tests before calling OpenAI, so code or fixture failures stop without API spend. After generation it validates the changed content again and builds the exact site that will be committed and deployed.
 
-The adaptation prompt tells the model to finish and proofread the Hebrew before segmenting it, then translate every meaningful unit using the full sentence as context. Individual empty translations are allowed, but each story level must reach at least 75% coverage per language.
+The adaptation prompt tells the model to finish and proofread the Hebrew before segmenting it, then translate larger meaningful phrases where practical using the full sentence as context. Ordinary spaces are restored locally instead of being represented by verbose JSON separator objects. Individual empty translations are allowed, but each story level must reach at least 75% coverage per language.
 
 The generation workflow commits with the GitHub Actions bot, then deploys the already validated build. The generated commit does not need to trigger a second workflow.
 

@@ -16,7 +16,10 @@ from src.common import ROOT, read_json
 from src.generate_issue import (
     PROVENANCE_ERRORS_KEY,
     _call_openai,
+    _existing_exclusions,
+    _generation_request,
     _remove_redundant_sources,
+    _recent_history,
     _recent_issue_context,
     _safe_log_text,
     _seed_errors,
@@ -38,11 +41,69 @@ class GenerationTests(unittest.TestCase):
                         "type": "current",
                         "category": "city",
                         "brief": f"Brief for {issue_date}",
+                        "sources": [{"url": f"https://example.com/{issue_date}"}],
                     }]
                 }
                 (content_dir / f"{issue_date}.json").write_text(json.dumps(payload), encoding="utf-8")
             context = _recent_issue_context(content_dir, date.fromisoformat("2026-09-05"), 3)
         self.assertEqual([item["date"] for item in context], ["2026-09-04", "2026-09-02"])
+        self.assertEqual(context[0]["stories"][0]["sourceUrls"], ["https://example.com/2026-09-04"])
+
+    def test_research_request_sends_existing_and_previous_briefs_and_urls_to_llm(self) -> None:
+        existing = read_json(ROOT / "content" / "2026-09-06.json")
+        exclusions = _existing_exclusions(existing)
+        self.assertEqual(set(exclusions), {"stories"})
+        self.assertEqual(set(exclusions["stories"][0]), {"id", "brief", "sourceUrls"})
+        previous = [{
+            "date": "2026-09-05",
+            "stories": [{
+                "id": "previous-story",
+                "type": "current",
+                "category": "city",
+                "brief": "A previous story that must not be repeated.",
+                "sourceUrls": ["https://example.com/previous-story"],
+            }],
+        }]
+        request = _generation_request(
+            "2026-09-06",
+            3,
+            3,
+            3,
+            True,
+            [],
+            ["ru", "en"],
+            exclusions,
+            [],
+            previous,
+        )
+        self.assertIn("FORBIDDEN STORY RECORDS", request)
+        self.assertIn(existing["stories"][0]["brief"], request)
+        self.assertIn(existing["stories"][0]["sources"][0]["url"], request)
+        self.assertIn("A previous story that must not be repeated.", request)
+        self.assertIn("https://example.com/previous-story", request)
+        self.assertIn("another language, publisher, URL, headline, wording, angle", request)
+
+    def test_recent_scenario_history_is_compact_for_prompt_context(self) -> None:
+        history = {
+            "items": [{
+                "date": "2026-09-05",
+                "storyId": "late-delivery",
+                "domain": "delivery",
+                "scenario": "late_delivery",
+                "lexicalThemes": ["waiting", "complaints"],
+                "targetVocabulary": ["עדיין לא", "מתי בערך"],
+            }],
+        }
+        recent = _recent_history(history, date.fromisoformat("2026-09-06"), 30)
+        self.assertEqual(
+            recent,
+            [{
+                "date": "2026-09-05",
+                "storyId": "late-delivery",
+                "domain": "delivery",
+                "scenario": "late_delivery",
+            }],
+        )
 
     def test_new_issue_requires_three_everyday_and_three_dialog_stories(self) -> None:
         site = read_json(ROOT / "config" / "site.json")

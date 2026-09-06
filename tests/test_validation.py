@@ -86,6 +86,22 @@ class ValidationTests(unittest.TestCase):
         errors = validate_issue(issue, load_site_config(), load_level_config())
         self.assertTrue(any("near-duplicate story topic" in error for error in errors), errors)
 
+    def test_hebrew_internal_brief_is_rejected(self) -> None:
+        issue = copy.deepcopy(read_json(ROOT / "content" / "2024-01-26.json"))
+        issue["stories"][0]["brief"] = "זהו תקציר פנימי בעברית שלא ניתן להשוות לתקצירים באנגלית."
+        errors = validate_issue(issue, load_site_config(), load_level_config())
+        self.assertTrue(any("internal brief must be written in English" in error for error in errors), errors)
+
+    def test_near_duplicate_story_slug_is_rejected(self) -> None:
+        issue = copy.deepcopy(read_json(ROOT / "content" / "2024-01-26.json"))
+        original = issue["stories"][0]
+        original["id"] = original["slug"] = "whatsapp-school-contact-rules"
+        duplicate = copy.deepcopy(issue["stories"][1])
+        duplicate["id"] = duplicate["slug"] = "whatsapp-teacher-contact-rules"
+        issue["stories"].append(duplicate)
+        errors = validate_issue(issue, load_site_config(), load_level_config())
+        self.assertTrue(any("near-duplicate story ID" in error for error in errors), errors)
+
 
 if __name__ == "__main__":
     unittest.main()

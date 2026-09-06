@@ -182,7 +182,7 @@ For example, מזג אוויר is one unit translated as “погода” in R
 
 Almost all main Hebrew text must be interactive so a reader can select nearly any unfamiliar word or expression. For each meaningful lexical unit, store the Hebrew text, a translation map keyed by stable locale code, and its type. The initial translation locales are `ru` and `en`, but content rendering and validation must use each issue's configured translation locales rather than fixed Russian and English fields. The model should attempt every meaningful unit and translate it according to its meaning and grammatical role in the complete sentence, not as an isolated dictionary entry. An individual translation may be empty when no useful direct translation exists, but each story level must have at least 75% coverage in every configured translation language.
 
-The MVP needs these types: `word`, `expression`, `properNoun`, and `separator`. Separators need no translation.
+The MVP needs these types: `word`, `expression`, `properNoun`, and `separator`. Prefer multi-word expressions and short meaningful chunks when they remain useful translation targets. Ordinary single spaces between meaningful units may be omitted from JSON and reconstructed by the renderer; separators are reserved for punctuation or whitespace whose exact placement matters and need no translation.
 
 The MVP does not need roots, binyanim, conjugation, transliteration, niqqud, word frequency, or grammatical analysis.
 
@@ -238,7 +238,7 @@ i18n/
   ru.json
 ```
 
-A daily JSON file contains its date, available reading-level IDs, available translation-locale codes, and ordered stories. Each story contains its type, category, a source list that may be empty, an optional sourced-image object, its configured level variants, teaser, title, paragraphs, lexical annotations, and scenario metadata for EVERYDAY and DIALOG. `index.json` lists available dates. `everyday-history.json` supports diversity checks for both generated types. Site configuration declares defaults and enabled locales; the reading-level configuration defines ordered adaptation bands; locale dictionaries contain interface copy.
+A daily JSON file contains its date, available reading-level IDs, available translation-locale codes, and ordered stories. Each story contains its type, category, an English internal brief used for duplicate comparison, a source list that may be empty, an optional sourced-image object, its configured level variants, teaser, title, paragraphs, lexical annotations, and scenario metadata for EVERYDAY and DIALOG. `index.json` lists available dates. `everyday-history.json` supports diversity checks for both generated types. Site configuration declares defaults and enabled locales; the reading-level configuration defines ordered adaptation bands; locale dictionaries contain interface copy.
 
 ## 26. Illustrative story shape
 
@@ -309,7 +309,7 @@ A GitHub Actions workflow runs daily at 01:15 UTC. Before calling OpenAI, it val
 
 The manual run accepts an optional target date, resolved as the current UTC date when omitted, and a requested number of additional stories, defaulting to 3. When no issue exists for the target date, generation creates the normal complete issue. When an issue already exists, generation preserves every existing story and appends the requested new stories instead of replacing the file. Append batches may use any content-type mix justified by quality and variety; the fixed new-issue counts do not apply. It recalculates issue metadata and navigation, updates generated-scenario history, validates the combined issue, and only then commits it.
 
-Append generation must use existing slugs, source URLs, story topics, and recent EVERYDAY and DIALOG scenarios as exclusions. It must reject duplicate or near-duplicate additions. Generation runs are serialized so simultaneous scheduled or manual invocations cannot race and overwrite one another. A failed append leaves the existing issue unchanged.
+Append generation must send the research LLM explicit forbidden-story records for the existing issue and recent issues, including IDs, English briefs, and normalized source URLs. The LLM must compare candidates semantically and reject the same subject even when the language, publisher, URL, headline, wording, angle, or detail differs. Python validation additionally rejects non-English internal briefs and duplicate or near-duplicate slugs, briefs, and source URLs. Generation runs are serialized so simultaneous scheduled or manual invocations cannot race and overwrite one another. A failed append leaves the existing issue unchanged.
 
 The repository's default branch is `master`. An ordinary push to `master` does not generate an issue; it only validates, builds, and deploys the existing content. Generation commits also target `master`.
 

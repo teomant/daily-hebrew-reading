@@ -47,6 +47,18 @@ def briefs_are_near_duplicates(first: str, second: str) -> bool:
     return len(shared) >= 8 and overlap >= 0.70 and jaccard >= 0.45
 
 
+def slugs_are_near_duplicates(first: str, second: str) -> bool:
+    """Catch rewritten IDs that still name the same subject."""
+    first_tokens = {token for token in first.casefold().split("-") if token and not token.isdigit()}
+    second_tokens = {token for token in second.casefold().split("-") if token and not token.isdigit()}
+    if not first_tokens or not second_tokens:
+        return False
+    shared = first_tokens & second_tokens
+    overlap = len(shared) / min(len(first_tokens), len(second_tokens))
+    jaccard = len(shared) / len(first_tokens | second_tokens)
+    return len(shared) >= 3 and overlap >= 0.75 and jaccard >= 0.45
+
+
 def _https_url(value: Any) -> bool:
     if not isinstance(value, str):
         return False
@@ -175,6 +187,12 @@ def validate_issue(
         elif slug in seen_slugs:
             errors.append(f"{story_path}.slug: duplicate {slug}")
         else:
+            similar_slug = next(
+                (previous for previous in seen_slugs if slugs_are_near_duplicates(slug, previous)),
+                None,
+            )
+            if similar_slug:
+                errors.append(f"{story_path}.slug: near-duplicate story ID of {similar_slug}")
             seen_slugs.add(slug)
         if story_id != slug:
             errors.append(f"{story_path}.id: must equal slug")
@@ -188,6 +206,9 @@ def validate_issue(
         if not isinstance(brief, str) or not brief.strip():
             errors.append(f"{story_path}.brief: expected a non-empty brief")
         else:
+            latin_letters = len(re.findall(r"[A-Za-z]", brief))
+            if latin_letters < 20:
+                errors.append(f"{story_path}.brief: internal brief must be written in English")
             for previous_index, previous_brief, previous_slug in seen_briefs:
                 if briefs_are_near_duplicates(brief, previous_brief):
                     errors.append(
