@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "date": "2026-09-06",
-  "generatedAt": "2026-09-06T04:57:06+00:00",
+  "generatedAt": "2026-09-06T05:58:13+00:00",
   "availableLevels": [
     "alef",
     "alefPlus",
@@ -29834,6 +29834,6989 @@
                 "translations": {
                   "ru": "",
                   "en": ""
+                }
+              }
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "water-use-caution-after-desalination-shutdowns",
+      "slug": "water-use-caution-after-desalination-shutdowns",
+      "type": "current",
+      "category": "consumer",
+      "brief": "Several desalination plants in Israel were shut down after murky seawater raised turbidity, and authorities asked residents to save water and reduce irrigation until the system stabilized. Home supply is supposed to continue, so the everyday question is what can wait a little: showers, laundry, gardens, and other nonessential use.",
+      "everydayMeta": null,
+      "sources": [
+        {
+          "publisher": "Globes",
+          "title": "Water supply hit as 5 desalination plants shut down",
+          "url": "https://en.globes.co.il/en/article-water-supply-hit-as-five-desalination-plants-shut-down-1001554129"
+        }
+      ],
+      "image": null,
+      "levels": {
+        "alef": {
+          "title": [
+            {
+              "text": "לשמור ",
+              "type": "word",
+              "translations": {
+                "ru": "беречь",
+                "en": "save"
+              }
+            },
+            {
+              "text": "על ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "המים",
+              "type": "word",
+              "translations": {
+                "ru": "воду",
+                "en": "the water"
+              }
+            }
+          ],
+          "teaser": [
+            {
+              "text": "בישראל ",
+              "type": "properNoun",
+              "translations": {
+                "ru": "в Израиле",
+                "en": "in Israel"
+              }
+            },
+            {
+              "text": "ביקשו ",
+              "type": "word",
+              "translations": {
+                "ru": "попросили",
+                "en": "asked"
+              }
+            },
+            {
+              "text": "לחסוך ",
+              "type": "word",
+              "translations": {
+                "ru": "экономить",
+                "en": "save"
+              }
+            },
+            {
+              "text": "במים",
+              "type": "word",
+              "translations": {
+                "ru": "воду",
+                "en": "water"
+              }
+            }
+          ],
+          "paragraphs": [
+            [
+              {
+                "text": "כמה ",
+                "type": "word",
+                "translations": {
+                  "ru": "несколько",
+                  "en": "a few"
+                }
+              },
+              {
+                "text": "תחנות ",
+                "type": "word",
+                "translations": {
+                  "ru": "станций",
+                  "en": "plants"
+                }
+              },
+              {
+                "text": "התפלה ",
+                "type": "word",
+                "translations": {
+                  "ru": "опреснения",
+                  "en": "desalination"
+                }
+              },
+              {
+                "text": "בישראל ",
+                "type": "properNoun",
+                "translations": {
+                  "ru": "в Израиле",
+                  "en": "in Israel"
+                }
+              },
+              {
+                "text": "נסגרו ",
+                "type": "word",
+                "translations": {
+                  "ru": "были закрыты",
+                  "en": "were shut down"
+                }
+              },
+              {
+                "text": "לזמן ",
+                "type": "word",
+                "translations": {
+                  "ru": "на время",
+                  "en": "for a while"
+                }
+              },
+              {
+                "text": "קצר.",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "המים ",
+                "type": "word",
+                "translations": {
+                  "ru": "вода",
+                  "en": "the water"
+                }
+              },
+              {
+                "text": "בים ",
+                "type": "word",
+                "translations": {
+                  "ru": "в море",
+                  "en": "in the sea"
+                }
+              },
+              {
+                "text": "היו ",
+                "type": "word",
+                "translations": {
+                  "ru": "были",
+                  "en": "were"
+                }
+              },
+              {
+                "text": "עכורים,",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "והמערכת ",
+                "type": "word",
+                "translations": {
+                  "ru": "и система",
+                  "en": "and the system"
+                }
+              },
+              {
+                "text": "הייתה ",
+                "type": "word",
+                "translations": {
+                  "ru": "была",
+                  "en": "was"
+                }
+              },
+              {
+                "text": "צריכה ",
+                "type": "word",
+                "translations": {
+                  "ru": "должна была",
+                  "en": "needed to"
+                }
+              },
+              {
+                "text": "להתייצב.",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              }
+            ],
+            [
+              {
+                "text": "לכן ",
+                "type": "word",
+                "translations": {
+                  "ru": "поэтому",
+                  "en": "so"
+                }
+              },
+              {
+                "text": "ביקשו ",
+                "type": "word",
+                "translations": {
+                  "ru": "попросили",
+                  "en": "asked"
+                }
+              },
+              {
+                "text": "מהתושבים ",
+                "type": "word",
+                "translations": {
+                  "ru": "у жителей",
+                  "en": "residents"
+                }
+              },
+              {
+                "text": "לחסוך ",
+                "type": "word",
+                "translations": {
+                  "ru": "экономить",
+                  "en": "save"
+                }
+              },
+              {
+                "text": "במים.",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "לא ",
+                "type": "word",
+                "translations": {
+                  "ru": "не",
+                  "en": "do not"
+                }
+              },
+              {
+                "text": "אמרו ",
+                "type": "word",
+                "translations": {
+                  "ru": "сказали",
+                  "en": "said"
+                }
+              },
+              {
+                "text": "שאין ",
+                "type": "word",
+                "translations": {
+                  "ru": "что нет",
+                  "en": "that there is no"
+                }
+              },
+              {
+                "text": "מים ",
+                "type": "word",
+                "translations": {
+                  "ru": "воды",
+                  "en": "water"
+                }
+              },
+              {
+                "text": "בבית,",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "אבל ",
+                "type": "word",
+                "translations": {
+                  "ru": "но",
+                  "en": "but"
+                }
+              },
+              {
+                "text": "כן ",
+                "type": "word",
+                "translations": {
+                  "ru": "да",
+                  "en": "yes"
+                }
+              },
+              {
+                "text": "ביקשו ",
+                "type": "word",
+                "translations": {
+                  "ru": "попросили",
+                  "en": "asked"
+                }
+              },
+              {
+                "text": "לחשוב ",
+                "type": "word",
+                "translations": {
+                  "ru": "подумать",
+                  "en": "to think"
+                }
+              },
+              {
+                "text": "מה ",
+                "type": "word",
+                "translations": {
+                  "ru": "что",
+                  "en": "what"
+                }
+              },
+              {
+                "text": "אפשר ",
+                "type": "word",
+                "translations": {
+                  "ru": "можно",
+                  "en": "can"
+                }
+              },
+              {
+                "text": "לדחות.",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              }
+            ],
+            [
+              {
+                "text": "מקלחת ",
+                "type": "word",
+                "translations": {
+                  "ru": "душ",
+                  "en": "a shower"
+                }
+              },
+              {
+                "text": "קצרה ",
+                "type": "word",
+                "translations": {
+                  "ru": "короткая",
+                  "en": "short"
+                }
+              },
+              {
+                "text": "הייתה ",
+                "type": "word",
+                "translations": {
+                  "ru": "была",
+                  "en": "was"
+                }
+              },
+              {
+                "text": "בסדר,",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "אבל ",
+                "type": "word",
+                "translations": {
+                  "ru": "но",
+                  "en": "but"
+                }
+              },
+              {
+                "text": "כביסה ",
+                "type": "word",
+                "translations": {
+                  "ru": "стирка",
+                  "en": "laundry"
+                }
+              },
+              {
+                "text": "אפשר ",
+                "type": "word",
+                "translations": {
+                  "ru": "можно",
+                  "en": "can"
+                }
+              },
+              {
+                "text": "לדחות ",
+                "type": "word",
+                "translations": {
+                  "ru": "отложить",
+                  "en": "postpone"
+                }
+              },
+              {
+                "text": "עוד ",
+                "type": "word",
+                "translations": {
+                  "ru": "ещё",
+                  "en": "a little"
+                }
+              },
+              {
+                "text": "קצת.",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "גם ",
+                "type": "word",
+                "translations": {
+                  "ru": "также",
+                  "en": "also"
+                }
+              },
+              {
+                "text": "השקיה ",
+                "type": "word",
+                "translations": {
+                  "ru": "полив",
+                  "en": "watering"
+                }
+              },
+              {
+                "text": "של ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "הגינה ",
+                "type": "word",
+                "translations": {
+                  "ru": "сада",
+                  "en": "the garden"
+                }
+              },
+              {
+                "text": "הייתה ",
+                "type": "word",
+                "translations": {
+                  "ru": "была",
+                  "en": "was"
+                }
+              },
+              {
+                "text": "משהו ",
+                "type": "word",
+                "translations": {
+                  "ru": "чем-то",
+                  "en": "something"
+                }
+              },
+              {
+                "text": "שעדיף ",
+                "type": "word",
+                "translations": {
+                  "ru": "что лучше",
+                  "en": "that it is better"
+                }
+              },
+              {
+                "text": "לחכות ",
+                "type": "word",
+                "translations": {
+                  "ru": "подождать",
+                  "en": "to wait"
+                }
+              },
+              {
+                "text": "איתו.",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              }
+            ],
+            [
+              {
+                "text": "בסך ",
+                "type": "word",
+                "translations": {
+                  "ru": "в общем",
+                  "en": "in total"
+                }
+              },
+              {
+                "text": "הכול ",
+                "type": "word",
+                "translations": {
+                  "ru": "всё",
+                  "en": "all"
+                }
+              },
+              {
+                "text": "הבית ",
+                "type": "word",
+                "translations": {
+                  "ru": "дом",
+                  "en": "the house"
+                }
+              },
+              {
+                "text": "המשיך ",
+                "type": "word",
+                "translations": {
+                  "ru": "продолжал",
+                  "en": "kept"
+                }
+              },
+              {
+                "text": "לתפקד.",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "האנשים ",
+                "type": "word",
+                "translations": {
+                  "ru": "люди",
+                  "en": "the people"
+                }
+              },
+              {
+                "text": "פשוט ",
+                "type": "word",
+                "translations": {
+                  "ru": "просто",
+                  "en": "just"
+                }
+              },
+              {
+                "text": "ניסו ",
+                "type": "word",
+                "translations": {
+                  "ru": "пытались",
+                  "en": "tried"
+                }
+              },
+              {
+                "text": "להשתמש ",
+                "type": "word",
+                "translations": {
+                  "ru": "использовать",
+                  "en": "use"
+                }
+              },
+              {
+                "text": "פחות ",
+                "type": "word",
+                "translations": {
+                  "ru": "меньше",
+                  "en": "less"
+                }
+              },
+              {
+                "text": "במים ",
+                "type": "word",
+                "translations": {
+                  "ru": "воды",
+                  "en": "water"
+                }
+              },
+              {
+                "text": "עד ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "שהמצב ",
+                "type": "word",
+                "translations": {
+                  "ru": "пока ситуация",
+                  "en": "until the situation"
+                }
+              },
+              {
+                "text": "יתייצב.",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              }
+            ]
+          ]
+        },
+        "alefPlus": {
+          "title": [
+            {
+              "text": "לבקש ",
+              "type": "word",
+              "translations": {
+                "ru": "просить",
+                "en": "ask"
+              }
+            },
+            {
+              "text": "לחסוך ",
+              "type": "word",
+              "translations": {
+                "ru": "экономить",
+                "en": "save"
+              }
+            },
+            {
+              "text": "במים",
+              "type": "word",
+              "translations": {
+                "ru": "воду",
+                "en": "water"
+              }
+            }
+          ],
+          "teaser": [
+            {
+              "text": "אחרי ",
+              "type": "word",
+              "translations": {
+                "ru": "после",
+                "en": "after"
+              }
+            },
+            {
+              "text": "שכמה ",
+              "type": "word",
+              "translations": {
+                "ru": "несколько",
+                "en": "a few"
+              }
+            },
+            {
+              "text": "תחנות ",
+              "type": "word",
+              "translations": {
+                "ru": "станций",
+                "en": "plants"
+              }
+            },
+            {
+              "text": "התפלה ",
+              "type": "word",
+              "translations": {
+                "ru": "опреснения",
+                "en": "desalination"
+              }
+            },
+            {
+              "text": "נסגרו, ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "ביקשו ",
+              "type": "word",
+              "translations": {
+                "ru": "попросили",
+                "en": "asked"
+              }
+            },
+            {
+              "text": "מהציבור ",
+              "type": "word",
+              "translations": {
+                "ru": "у населения",
+                "en": "the public"
+              }
+            },
+            {
+              "text": "להוריד ",
+              "type": "word",
+              "translations": {
+                "ru": "снизить",
+                "en": "reduce"
+              }
+            },
+            {
+              "text": "את ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "השימוש ",
+              "type": "word",
+              "translations": {
+                "ru": "использование",
+                "en": "use"
+              }
+            },
+            {
+              "text": "במים.",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            }
+          ],
+          "paragraphs": [
+            [
+              {
+                "text": "כמה ",
+                "type": "word",
+                "translations": {
+                  "ru": "несколько",
+                  "en": "a few"
+                }
+              },
+              {
+                "text": "תחנות ",
+                "type": "word",
+                "translations": {
+                  "ru": "станций",
+                  "en": "plants"
+                }
+              },
+              {
+                "text": "התפלה ",
+                "type": "word",
+                "translations": {
+                  "ru": "опреснения",
+                  "en": "desalination"
+                }
+              },
+              {
+                "text": "בישראל ",
+                "type": "properNoun",
+                "translations": {
+                  "ru": "в Израиле",
+                  "en": "in Israel"
+                }
+              },
+              {
+                "text": "נסגרו ",
+                "type": "word",
+                "translations": {
+                  "ru": "были закрыты",
+                  "en": "were shut down"
+                }
+              },
+              {
+                "text": "אחרי ",
+                "type": "word",
+                "translations": {
+                  "ru": "после",
+                  "en": "after"
+                }
+              },
+              {
+                "text": "שמי ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "הים ",
+                "type": "word",
+                "translations": {
+                  "ru": "моря",
+                  "en": "sea"
+                }
+              },
+              {
+                "text": "נעשו ",
+                "type": "word",
+                "translations": {
+                  "ru": "стали",
+                  "en": "became"
+                }
+              },
+              {
+                "text": "עכורים.",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "בגלל ",
+                "type": "word",
+                "translations": {
+                  "ru": "из-за",
+                  "en": "because of"
+                }
+              },
+              {
+                "text": "זה ",
+                "type": "word",
+                "translations": {
+                  "ru": "этого",
+                  "en": "this"
+                }
+              },
+              {
+                "text": "נדרשה ",
+                "type": "word",
+                "translations": {
+                  "ru": "потребовалась",
+                  "en": "was needed"
+                }
+              },
+              {
+                "text": "זהירות ",
+                "type": "word",
+                "translations": {
+                  "ru": "осторожность",
+                  "en": "caution"
+                }
+              },
+              {
+                "text": "עד ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "שהמערכת ",
+                "type": "word",
+                "translations": {
+                  "ru": "пока система",
+                  "en": "until the system"
+                }
+              },
+              {
+                "text": "תתייצב.",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              }
+            ],
+            [
+              {
+                "text": "ההודעה ",
+                "type": "word",
+                "translations": {
+                  "ru": "сообщение",
+                  "en": "the notice"
+                }
+              },
+              {
+                "text": "הייתה ",
+                "type": "word",
+                "translations": {
+                  "ru": "было",
+                  "en": "was"
+                }
+              },
+              {
+                "text": "פשוטה:",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "לחסוך ",
+                "type": "word",
+                "translations": {
+                  "ru": "экономить",
+                  "en": "save"
+                }
+              },
+              {
+                "text": "במים ",
+                "type": "word",
+                "translations": {
+                  "ru": "воду",
+                  "en": "water"
+                }
+              },
+              {
+                "text": "ולצמצם ",
+                "type": "word",
+                "translations": {
+                  "ru": "и сократить",
+                  "en": "and reduce"
+                }
+              },
+              {
+                "text": "השקיה.",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "לא ",
+                "type": "word",
+                "translations": {
+                  "ru": "не",
+                  "en": "not"
+                }
+              },
+              {
+                "text": "אמרו ",
+                "type": "word",
+                "translations": {
+                  "ru": "сказали",
+                  "en": "said"
+                }
+              },
+              {
+                "text": "שאין ",
+                "type": "word",
+                "translations": {
+                  "ru": "что нет",
+                  "en": "that there is no"
+                }
+              },
+              {
+                "text": "מים ",
+                "type": "word",
+                "translations": {
+                  "ru": "воды",
+                  "en": "water"
+                }
+              },
+              {
+                "text": "בברז,",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "אלא ",
+                "type": "word",
+                "translations": {
+                  "ru": "а",
+                  "en": "but rather"
+                }
+              },
+              {
+                "text": "שכדאי ",
+                "type": "word",
+                "translations": {
+                  "ru": "что стоит",
+                  "en": "that it is worth"
+                }
+              },
+              {
+                "text": "לדחות ",
+                "type": "word",
+                "translations": {
+                  "ru": "отложить",
+                  "en": "postpone"
+                }
+              },
+              {
+                "text": "כל ",
+                "type": "word",
+                "translations": {
+                  "ru": "всё",
+                  "en": "any"
+                }
+              },
+              {
+                "text": "מה ",
+                "type": "word",
+                "translations": {
+                  "ru": "что",
+                  "en": "that"
+                }
+              },
+              {
+                "text": "שלא ",
+                "type": "word",
+                "translations": {
+                  "ru": "что не",
+                  "en": "that is not"
+                }
+              },
+              {
+                "text": "דחוף.",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              }
+            ],
+            [
+              {
+                "text": "מי ",
+                "type": "word",
+                "translations": {
+                  "ru": "кто",
+                  "en": "who"
+                }
+              },
+              {
+                "text": "שיכול ",
+                "type": "word",
+                "translations": {
+                  "ru": "может",
+                  "en": "can"
+                }
+              },
+              {
+                "text": "היה ",
+                "type": "word",
+                "translations": {
+                  "ru": "было",
+                  "en": "could"
+                }
+              },
+              {
+                "text": "להתקלח ",
+                "type": "word",
+                "translations": {
+                  "ru": "помыться",
+                  "en": "shower"
+                }
+              },
+              {
+                "text": "קצר ",
+                "type": "word",
+                "translations": {
+                  "ru": "коротко",
+                  "en": "briefly"
+                }
+              },
+              {
+                "text": "עשה ",
+                "type": "word",
+                "translations": {
+                  "ru": "сделал",
+                  "en": "took"
+                }
+              },
+              {
+                "text": "את ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "זה.",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "מי ",
+                "type": "word",
+                "translations": {
+                  "ru": "кто",
+                  "en": "who"
+                }
+              },
+              {
+                "text": "שהייתה ",
+                "type": "word",
+                "translations": {
+                  "ru": "была",
+                  "en": "was"
+                }
+              },
+              {
+                "text": "לו ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "כביסה ",
+                "type": "word",
+                "translations": {
+                  "ru": "стирка",
+                  "en": "laundry"
+                }
+              },
+              {
+                "text": "לא ",
+                "type": "word",
+                "translations": {
+                  "ru": "не",
+                  "en": "did not"
+                }
+              },
+              {
+                "text": "דחופה ",
+                "type": "word",
+                "translations": {
+                  "ru": "срочная",
+                  "en": "urgent"
+                }
+              },
+              {
+                "text": "המתין ",
+                "type": "word",
+                "translations": {
+                  "ru": "подождал",
+                  "en": "waited"
+                }
+              },
+              {
+                "text": "עוד ",
+                "type": "word",
+                "translations": {
+                  "ru": "ещё",
+                  "en": "a bit"
+                }
+              },
+              {
+                "text": "קצת.",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              }
+            ],
+            [
+              {
+                "text": "גם ",
+                "type": "word",
+                "translations": {
+                  "ru": "также",
+                  "en": "also"
+                }
+              },
+              {
+                "text": "את ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "הגינה ",
+                "type": "word",
+                "translations": {
+                  "ru": "сад",
+                  "en": "the garden"
+                }
+              },
+              {
+                "text": "היה ",
+                "type": "word",
+                "translations": {
+                  "ru": "было",
+                  "en": "was"
+                }
+              },
+              {
+                "text": "אפשר ",
+                "type": "word",
+                "translations": {
+                  "ru": "можно",
+                  "en": "possible"
+                }
+              },
+              {
+                "text": "להשאיר ",
+                "type": "word",
+                "translations": {
+                  "ru": "оставить",
+                  "en": "leave"
+                }
+              },
+              {
+                "text": "קצת ",
+                "type": "word",
+                "translations": {
+                  "ru": "немного",
+                  "en": "a little"
+                }
+              },
+              {
+                "text": "יותר ",
+                "type": "word",
+                "translations": {
+                  "ru": "более",
+                  "en": "more"
+                }
+              },
+              {
+                "text": "יבשה.",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "בסופו ",
+                "type": "word",
+                "translations": {
+                  "ru": "в конце",
+                  "en": "in the end"
+                }
+              },
+              {
+                "text": "של ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "דבר ",
+                "type": "word",
+                "translations": {
+                  "ru": "дело",
+                  "en": "the matter"
+                }
+              },
+              {
+                "text": "המסר ",
+                "type": "word",
+                "translations": {
+                  "ru": "сообщение",
+                  "en": "the message"
+                }
+              },
+              {
+                "text": "היה ",
+                "type": "word",
+                "translations": {
+                  "ru": "был",
+                  "en": "was"
+                }
+              },
+              {
+                "text": "מעשי ",
+                "type": "word",
+                "translations": {
+                  "ru": "практичным",
+                  "en": "practical"
+                }
+              },
+              {
+                "text": ":",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "להשתמש ",
+                "type": "word",
+                "translations": {
+                  "ru": "использовать",
+                  "en": "use"
+                }
+              },
+              {
+                "text": "במה ",
+                "type": "word",
+                "translations": {
+                  "ru": "тем",
+                  "en": "what"
+                }
+              },
+              {
+                "text": "שצריך,",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "ולחכות ",
+                "type": "word",
+                "translations": {
+                  "ru": "и подождать",
+                  "en": "and wait"
+                }
+              },
+              {
+                "text": "עם ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "השאר.",
+                "type": "word",
+                "translations": {
+                  "ru": "остальным",
+                  "en": "the rest"
+                }
+              }
+            ]
+          ]
+        },
+        "bet": {
+          "title": [
+            {
+              "text": "לחסוך ",
+              "type": "word",
+              "translations": {
+                "ru": "экономить",
+                "en": "save"
+              }
+            },
+            {
+              "text": "במים ",
+              "type": "word",
+              "translations": {
+                "ru": "воду",
+                "en": "water"
+              }
+            },
+            {
+              "text": "עד ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "שהמערכת ",
+              "type": "word",
+              "translations": {
+                "ru": "пока система",
+                "en": "until the system"
+              }
+            },
+            {
+              "text": "תתייצב",
+              "type": "word",
+              "translations": {
+                "ru": "стабилизируется",
+                "en": "stabilizes"
+              }
+            }
+          ],
+          "teaser": [
+            {
+              "text": "אחרי ",
+              "type": "word",
+              "translations": {
+                "ru": "после",
+                "en": "after"
+              }
+            },
+            {
+              "text": "שכמה ",
+              "type": "word",
+              "translations": {
+                "ru": "несколько",
+                "en": "a few"
+              }
+            },
+            {
+              "text": "תחנות ",
+              "type": "word",
+              "translations": {
+                "ru": "станций",
+                "en": "plants"
+              }
+            },
+            {
+              "text": "התפלה ",
+              "type": "word",
+              "translations": {
+                "ru": "опреснения",
+                "en": "desalination"
+              }
+            },
+            {
+              "text": "בישראל ",
+              "type": "properNoun",
+              "translations": {
+                "ru": "в Израиле",
+                "en": "in Israel"
+              }
+            },
+            {
+              "text": "הושבתו, ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "ביקשו ",
+              "type": "word",
+              "translations": {
+                "ru": "попросили",
+                "en": "asked"
+              }
+            },
+            {
+              "text": "מהציבור ",
+              "type": "word",
+              "translations": {
+                "ru": "у населения",
+                "en": "the public"
+              }
+            },
+            {
+              "text": "לחסוך ",
+              "type": "word",
+              "translations": {
+                "ru": "экономить",
+                "en": "save"
+              }
+            },
+            {
+              "text": "במים ",
+              "type": "word",
+              "translations": {
+                "ru": "воду",
+                "en": "water"
+              }
+            },
+            {
+              "text": "ולצמצם ",
+              "type": "word",
+              "translations": {
+                "ru": "и сократить",
+                "en": "and reduce"
+              }
+            },
+            {
+              "text": "השקיה.",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            }
+          ],
+          "paragraphs": [
+            [
+              {
+                "text": "כמה ",
+                "type": "word",
+                "translations": {
+                  "ru": "несколько",
+                  "en": "a few"
+                }
+              },
+              {
+                "text": "תחנות ",
+                "type": "word",
+                "translations": {
+                  "ru": "станций",
+                  "en": "plants"
+                }
+              },
+              {
+                "text": "התפלה ",
+                "type": "word",
+                "translations": {
+                  "ru": "опреснения",
+                  "en": "desalination"
+                }
+              },
+              {
+                "text": "בישראל ",
+                "type": "properNoun",
+                "translations": {
+                  "ru": "в Израиле",
+                  "en": "in Israel"
+                }
+              },
+              {
+                "text": "נסגרו ",
+                "type": "word",
+                "translations": {
+                  "ru": "были закрыты",
+                  "en": "were shut down"
+                }
+              },
+              {
+                "text": "אחרי ",
+                "type": "word",
+                "translations": {
+                  "ru": "после",
+                  "en": "after"
+                }
+              },
+              {
+                "text": "שמי ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "הים ",
+                "type": "word",
+                "translations": {
+                  "ru": "моря",
+                  "en": "sea"
+                }
+              },
+              {
+                "text": "הפכו ",
+                "type": "word",
+                "translations": {
+                  "ru": "стали",
+                  "en": "turned"
+                }
+              },
+              {
+                "text": "לעכורים.",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "העכירות ",
+                "type": "word",
+                "translations": {
+                  "ru": "мутность",
+                  "en": "turbidity"
+                }
+              },
+              {
+                "text": "הקשתה ",
+                "type": "word",
+                "translations": {
+                  "ru": "затруднила",
+                  "en": "made it hard"
+                }
+              },
+              {
+                "text": "על ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "העבודה ",
+                "type": "word",
+                "translations": {
+                  "ru": "работу",
+                  "en": "the work"
+                }
+              },
+              {
+                "text": "של ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "המתקנים,",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "ולכן ",
+                "type": "word",
+                "translations": {
+                  "ru": "и поэтому",
+                  "en": "and therefore"
+                }
+              },
+              {
+                "text": "נדרשה ",
+                "type": "word",
+                "translations": {
+                  "ru": "потребовалась",
+                  "en": "was needed"
+                }
+              },
+              {
+                "text": "זהירות ",
+                "type": "word",
+                "translations": {
+                  "ru": "осторожность",
+                  "en": "caution"
+                }
+              },
+              {
+                "text": "עד ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "שהמערכת ",
+                "type": "word",
+                "translations": {
+                  "ru": "пока система",
+                  "en": "until the system"
+                }
+              },
+              {
+                "text": "תחזור ",
+                "type": "word",
+                "translations": {
+                  "ru": "вернётся",
+                  "en": "returns"
+                }
+              },
+              {
+                "text": "לפעולה ",
+                "type": "word",
+                "translations": {
+                  "ru": "к работе",
+                  "en": "to operation"
+                }
+              },
+              {
+                "text": "רגילה.",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              }
+            ],
+            [
+              {
+                "text": "המסר ",
+                "type": "word",
+                "translations": {
+                  "ru": "сообщение",
+                  "en": "the message"
+                }
+              },
+              {
+                "text": "שנשלח ",
+                "type": "word",
+                "translations": {
+                  "ru": "которое было отправлено",
+                  "en": "that was sent"
+                }
+              },
+              {
+                "text": "לציבור ",
+                "type": "word",
+                "translations": {
+                  "ru": "общественности",
+                  "en": "to the public"
+                }
+              },
+              {
+                "text": "לא ",
+                "type": "word",
+                "translations": {
+                  "ru": "не",
+                  "en": "wasn't"
+                }
+              },
+              {
+                "text": "דיבר ",
+                "type": "word",
+                "translations": {
+                  "ru": "говорил",
+                  "en": "said"
+                }
+              },
+              {
+                "text": "על ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "מחסור ",
+                "type": "word",
+                "translations": {
+                  "ru": "дефицит",
+                  "en": "shortage"
+                }
+              },
+              {
+                "text": "בבית,",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "אלא ",
+                "type": "word",
+                "translations": {
+                  "ru": "а",
+                  "en": "rather"
+                }
+              },
+              {
+                "text": "על ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "צורך ",
+                "type": "word",
+                "translations": {
+                  "ru": "необходимость",
+                  "en": "need"
+                }
+              },
+              {
+                "text": "להשתמש ",
+                "type": "word",
+                "translations": {
+                  "ru": "использовать",
+                  "en": "use"
+                }
+              },
+              {
+                "text": "במים ",
+                "type": "word",
+                "translations": {
+                  "ru": "воду",
+                  "en": "water"
+                }
+              },
+              {
+                "text": "בצורה ",
+                "type": "word",
+                "translations": {
+                  "ru": "в форме",
+                  "en": "in a"
+                }
+              },
+              {
+                "text": "חכמה ",
+                "type": "word",
+                "translations": {
+                  "ru": "разумная",
+                  "en": "smart"
+                }
+              },
+              {
+                "text": "יותר.",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "ביקשו ",
+                "type": "word",
+                "translations": {
+                  "ru": "попросили",
+                  "en": "asked"
+                }
+              },
+              {
+                "text": "להוריד ",
+                "type": "word",
+                "translations": {
+                  "ru": "снизить",
+                  "en": "reduce"
+                }
+              },
+              {
+                "text": "השקיה ",
+                "type": "word",
+                "translations": {
+                  "ru": "полив",
+                  "en": "watering"
+                }
+              },
+              {
+                "text": "ולחשוב ",
+                "type": "word",
+                "translations": {
+                  "ru": "и подумать",
+                  "en": "and think"
+                }
+              },
+              {
+                "text": "פעמיים ",
+                "type": "word",
+                "translations": {
+                  "ru": "дважды",
+                  "en": "twice"
+                }
+              },
+              {
+                "text": "על ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "כל ",
+                "type": "word",
+                "translations": {
+                  "ru": "каждую",
+                  "en": "every"
+                }
+              },
+              {
+                "text": "שימוש ",
+                "type": "word",
+                "translations": {
+                  "ru": "использование",
+                  "en": "use"
+                }
+              },
+              {
+                "text": "לא ",
+                "type": "word",
+                "translations": {
+                  "ru": "не",
+                  "en": "not"
+                }
+              },
+              {
+                "text": "דחוף.",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              }
+            ],
+            [
+              {
+                "text": "זה ",
+                "type": "word",
+                "translations": {
+                  "ru": "это",
+                  "en": "this"
+                }
+              },
+              {
+                "text": "השפיע ",
+                "type": "word",
+                "translations": {
+                  "ru": "повлияло",
+                  "en": "affected"
+                }
+              },
+              {
+                "text": "בעיקר ",
+                "type": "word",
+                "translations": {
+                  "ru": "в основном",
+                  "en": "mainly"
+                }
+              },
+              {
+                "text": "על ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "דברים ",
+                "type": "word",
+                "translations": {
+                  "ru": "вещи",
+                  "en": "things"
+                }
+              },
+              {
+                "text": "שאפשר ",
+                "type": "word",
+                "translations": {
+                  "ru": "которые можно",
+                  "en": "that can"
+                }
+              },
+              {
+                "text": "לדחות,",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "כמו ",
+                "type": "word",
+                "translations": {
+                  "ru": "например",
+                  "en": "like"
+                }
+              },
+              {
+                "text": "כביסה ",
+                "type": "word",
+                "translations": {
+                  "ru": "стирка",
+                  "en": "laundry"
+                }
+              },
+              {
+                "text": "או ",
+                "type": "word",
+                "translations": {
+                  "ru": "или",
+                  "en": "or"
+                }
+              },
+              {
+                "text": "השקיה ",
+                "type": "word",
+                "translations": {
+                  "ru": "полив",
+                  "en": "watering"
+                }
+              },
+              {
+                "text": "של ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "גינה.",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "מקלחת ",
+                "type": "word",
+                "translations": {
+                  "ru": "душ",
+                  "en": "a shower"
+                }
+              },
+              {
+                "text": "קצרה ",
+                "type": "word",
+                "translations": {
+                  "ru": "короткая",
+                  "en": "short"
+                }
+              },
+              {
+                "text": "הייתה ",
+                "type": "word",
+                "translations": {
+                  "ru": "была",
+                  "en": "was"
+                }
+              },
+              {
+                "text": "בסדר,",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "אבל ",
+                "type": "word",
+                "translations": {
+                  "ru": "но",
+                  "en": "but"
+                }
+              },
+              {
+                "text": "מי ",
+                "type": "word",
+                "translations": {
+                  "ru": "кто",
+                  "en": "who"
+                }
+              },
+              {
+                "text": "שלא ",
+                "type": "word",
+                "translations": {
+                  "ru": "не",
+                  "en": "did not"
+                }
+              },
+              {
+                "text": "היה ",
+                "type": "word",
+                "translations": {
+                  "ru": "было",
+                  "en": "have"
+                }
+              },
+              {
+                "text": "חייב ",
+                "type": "word",
+                "translations": {
+                  "ru": "обязан",
+                  "en": "have to"
+                }
+              },
+              {
+                "text": "להפעיל ",
+                "type": "word",
+                "translations": {
+                  "ru": "включать",
+                  "en": "run"
+                }
+              },
+              {
+                "text": "מכונה ",
+                "type": "word",
+                "translations": {
+                  "ru": "машину",
+                  "en": "a machine"
+                }
+              },
+              {
+                "text": "או ",
+                "type": "word",
+                "translations": {
+                  "ru": "или",
+                  "en": "or"
+                }
+              },
+              {
+                "text": "להשקות,",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "פשוט ",
+                "type": "word",
+                "translations": {
+                  "ru": "просто",
+                  "en": "just"
+                }
+              },
+              {
+                "text": "חיכה.",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              }
+            ],
+            [
+              {
+                "text": "בסופו ",
+                "type": "word",
+                "translations": {
+                  "ru": "в конце",
+                  "en": "in the end"
+                }
+              },
+              {
+                "text": "של ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "דבר ",
+                "type": "word",
+                "translations": {
+                  "ru": "дело",
+                  "en": "the matter"
+                }
+              },
+              {
+                "text": "הבית ",
+                "type": "word",
+                "translations": {
+                  "ru": "дом",
+                  "en": "the home"
+                }
+              },
+              {
+                "text": "המשיך ",
+                "type": "word",
+                "translations": {
+                  "ru": "продолжал",
+                  "en": "kept"
+                }
+              },
+              {
+                "text": "לתפקד,",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "והשגרה ",
+                "type": "word",
+                "translations": {
+                  "ru": "и рутина",
+                  "en": "and the routine"
+                }
+              },
+              {
+                "text": "לא ",
+                "type": "word",
+                "translations": {
+                  "ru": "не",
+                  "en": "did not"
+                }
+              },
+              {
+                "text": "נשברה.",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "אבל ",
+                "type": "word",
+                "translations": {
+                  "ru": "но",
+                  "en": "but"
+                }
+              },
+              {
+                "text": "ההודעה ",
+                "type": "word",
+                "translations": {
+                  "ru": "сообщение",
+                  "en": "the message"
+                }
+              },
+              {
+                "text": "הזכירה ",
+                "type": "word",
+                "translations": {
+                  "ru": "напомнило",
+                  "en": "reminded"
+                }
+              },
+              {
+                "text": "לכולם ",
+                "type": "word",
+                "translations": {
+                  "ru": "всем",
+                  "en": "everyone"
+                }
+              },
+              {
+                "text": "שגם ",
+                "type": "word",
+                "translations": {
+                  "ru": "что тоже",
+                  "en": "that even"
+                }
+              },
+              {
+                "text": "מים ",
+                "type": "word",
+                "translations": {
+                  "ru": "вода",
+                  "en": "water"
+                }
+              },
+              {
+                "text": "צריך ",
+                "type": "word",
+                "translations": {
+                  "ru": "нужно",
+                  "en": "need"
+                }
+              },
+              {
+                "text": "לנהל ",
+                "type": "word",
+                "translations": {
+                  "ru": "расходовать",
+                  "en": "manage"
+                }
+              },
+              {
+                "text": "בחכמה,",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "עד ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "שהמצב ",
+                "type": "word",
+                "translations": {
+                  "ru": "пока ситуация",
+                  "en": "until the situation"
+                }
+              },
+              {
+                "text": "יתאזן.",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              }
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "mahane-yehuda-renovation-without-closing-shops",
+      "slug": "mahane-yehuda-renovation-without-closing-shops",
+      "type": "current",
+      "category": "food",
+      "brief": "Jerusalem’s Mahane Yehuda market is set for a major street-by-street infrastructure revamp, with work planned so businesses can keep operating during the renovation. The practical angle is the everyday life of shopkeepers, deliveries, repairs, and the effort to modernize a busy market without losing its character.",
+      "everydayMeta": null,
+      "sources": [],
+      "image": null,
+      "levels": {
+        "alef": {
+          "title": [
+            {
+              "text": "שיפוץ ",
+              "type": "word",
+              "translations": {
+                "ru": "ремонт",
+                "en": "renovation"
+              }
+            },
+            {
+              "text": "בשוק ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "מחנה ",
+              "type": "properNoun",
+              "translations": {
+                "ru": "Махане",
+                "en": "Mahane"
+              }
+            },
+            {
+              "text": "יהודה",
+              "type": "properNoun",
+              "translations": {
+                "ru": "Йехуда",
+                "en": "Yehuda"
+              }
+            }
+          ],
+          "teaser": [
+            {
+              "text": "בשוק ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "מחנה ",
+              "type": "properNoun",
+              "translations": {
+                "ru": "Махане",
+                "en": "Mahane"
+              }
+            },
+            {
+              "text": "יהודה ",
+              "type": "properNoun",
+              "translations": {
+                "ru": "Йехуда",
+                "en": "Yehuda"
+              }
+            },
+            {
+              "text": "רוצים ",
+              "type": "word",
+              "translations": {
+                "ru": "хотят",
+                "en": "want"
+              }
+            },
+            {
+              "text": "לשפץ ",
+              "type": "word",
+              "translations": {
+                "ru": "отремонтировать",
+                "en": "renovate"
+              }
+            },
+            {
+              "text": "בלי ",
+              "type": "word",
+              "translations": {
+                "ru": "без",
+                "en": "without"
+              }
+            },
+            {
+              "text": "לסגור ",
+              "type": "word",
+              "translations": {
+                "ru": "закрывать",
+                "en": "closing"
+              }
+            },
+            {
+              "text": "את ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "החנויות.",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            }
+          ],
+          "paragraphs": [
+            [
+              {
+                "text": "בשוק ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "מחנה ",
+                "type": "properNoun",
+                "translations": {
+                  "ru": "Махане",
+                  "en": "Mahane"
+                }
+              },
+              {
+                "text": "יהודה ",
+                "type": "properNoun",
+                "translations": {
+                  "ru": "Йехуда",
+                  "en": "Yehuda"
+                }
+              },
+              {
+                "text": "בירושלים ",
+                "type": "properNoun",
+                "translations": {
+                  "ru": "в Иерусалиме",
+                  "en": "in Jerusalem"
+                }
+              },
+              {
+                "text": "מתכננים ",
+                "type": "word",
+                "translations": {
+                  "ru": "планируют",
+                  "en": "are planning"
+                }
+              },
+              {
+                "text": "שיפוץ ",
+                "type": "word",
+                "translations": {
+                  "ru": "ремонт",
+                  "en": "renovation"
+                }
+              },
+              {
+                "text": "גדול.",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "יעבדו ",
+                "type": "word",
+                "translations": {
+                  "ru": "будут работать",
+                  "en": "will work"
+                }
+              },
+              {
+                "text": "רחוב ",
+                "type": "word",
+                "translations": {
+                  "ru": "улица",
+                  "en": "street"
+                }
+              },
+              {
+                "text": "אחרי ",
+                "type": "word",
+                "translations": {
+                  "ru": "за",
+                  "en": "after"
+                }
+              },
+              {
+                "text": "רחוב,",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "אבל ",
+                "type": "word",
+                "translations": {
+                  "ru": "но",
+                  "en": "but"
+                }
+              },
+              {
+                "text": "רוצים ",
+                "type": "word",
+                "translations": {
+                  "ru": "хотят",
+                  "en": "want"
+                }
+              },
+              {
+                "text": "שהעסקים ",
+                "type": "word",
+                "translations": {
+                  "ru": "чтобы businesses",
+                  "en": "businesses"
+                }
+              },
+              {
+                "text": "ימשיכו ",
+                "type": "word",
+                "translations": {
+                  "ru": "продолжат",
+                  "en": "keep"
+                }
+              },
+              {
+                "text": "לעבוד.",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              }
+            ],
+            [
+              {
+                "text": "זה ",
+                "type": "word",
+                "translations": {
+                  "ru": "это",
+                  "en": "this"
+                }
+              },
+              {
+                "text": "אומר ",
+                "type": "word",
+                "translations": {
+                  "ru": "значит",
+                  "en": "means"
+                }
+              },
+              {
+                "text": "של ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "בעלי ",
+                "type": "word",
+                "translations": {
+                  "ru": "владельцы",
+                  "en": "owners"
+                }
+              },
+              {
+                "text": "הדוכנים ",
+                "type": "word",
+                "translations": {
+                  "ru": "лавок",
+                  "en": "stalls"
+                }
+              },
+              {
+                "text": "יצטרכו ",
+                "type": "word",
+                "translations": {
+                  "ru": "будут должны",
+                  "en": "will have to"
+                }
+              },
+              {
+                "text": "להסתדר ",
+                "type": "word",
+                "translations": {
+                  "ru": "приспосабливаться",
+                  "en": "manage"
+                }
+              },
+              {
+                "text": "עם ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "עבודות ",
+                "type": "word",
+                "translations": {
+                  "ru": "работы",
+                  "en": "work"
+                }
+              },
+              {
+                "text": "וקצת ",
+                "type": "word",
+                "translations": {
+                  "ru": "и немного",
+                  "en": "and a little"
+                }
+              },
+              {
+                "text": "רעש.",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "גם ",
+                "type": "word",
+                "translations": {
+                  "ru": "также",
+                  "en": "also"
+                }
+              },
+              {
+                "text": "הספקים ",
+                "type": "word",
+                "translations": {
+                  "ru": "поставщики",
+                  "en": "suppliers"
+                }
+              },
+              {
+                "text": "יצטרכו ",
+                "type": "word",
+                "translations": {
+                  "ru": "будут должны",
+                  "en": "will need to"
+                }
+              },
+              {
+                "text": "לתכנן ",
+                "type": "word",
+                "translations": {
+                  "ru": "планировать",
+                  "en": "plan"
+                }
+              },
+              {
+                "text": "משלוחים ",
+                "type": "word",
+                "translations": {
+                  "ru": "доставки",
+                  "en": "deliveries"
+                }
+              },
+              {
+                "text": "בקפידה.",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              }
+            ],
+            [
+              {
+                "text": "בדרך ",
+                "type": "word",
+                "translations": {
+                  "ru": "по пути",
+                  "en": "along the way"
+                }
+              },
+              {
+                "text": "כלל ",
+                "type": "word",
+                "translations": {
+                  "ru": "обычно",
+                  "en": "usually"
+                }
+              },
+              {
+                "text": "שוק ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "כזה ",
+                "type": "word",
+                "translations": {
+                  "ru": "такой",
+                  "en": "like this"
+                }
+              },
+              {
+                "text": "לא ",
+                "type": "word",
+                "translations": {
+                  "ru": "не",
+                  "en": "does not"
+                }
+              },
+              {
+                "text": "נסגר ",
+                "type": "word",
+                "translations": {
+                  "ru": "закрывается",
+                  "en": "close"
+                }
+              },
+              {
+                "text": "לגמרי.",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "לכן ",
+                "type": "word",
+                "translations": {
+                  "ru": "поэтому",
+                  "en": "so"
+                }
+              },
+              {
+                "text": "הדיבור ",
+                "type": "word",
+                "translations": {
+                  "ru": "разговор",
+                  "en": "the talk"
+                }
+              },
+              {
+                "text": "הוא ",
+                "type": "word",
+                "translations": {
+                  "ru": "это",
+                  "en": "is"
+                }
+              },
+              {
+                "text": "על ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "איך ",
+                "type": "word",
+                "translations": {
+                  "ru": "как",
+                  "en": "how"
+                }
+              },
+              {
+                "text": "לשמור ",
+                "type": "word",
+                "translations": {
+                  "ru": "сохранить",
+                  "en": "keep"
+                }
+              },
+              {
+                "text": "על ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "העבודה ",
+                "type": "word",
+                "translations": {
+                  "ru": "работу",
+                  "en": "the work"
+                }
+              },
+              {
+                "text": "בזמן ",
+                "type": "word",
+                "translations": {
+                  "ru": "во время",
+                  "en": "during"
+                }
+              },
+              {
+                "text": "השיפוץ.",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              }
+            ],
+            [
+              {
+                "text": "המטרה ",
+                "type": "word",
+                "translations": {
+                  "ru": "цель",
+                  "en": "the goal"
+                }
+              },
+              {
+                "text": "היא ",
+                "type": "word",
+                "translations": {
+                  "ru": "состоит в том, что",
+                  "en": "is"
+                }
+              },
+              {
+                "text": "לחדש ",
+                "type": "word",
+                "translations": {
+                  "ru": "обновить",
+                  "en": "renew"
+                }
+              },
+              {
+                "text": "את ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "השוק ",
+                "type": "word",
+                "translations": {
+                  "ru": "рынок",
+                  "en": "the market"
+                }
+              },
+              {
+                "text": "בלי ",
+                "type": "word",
+                "translations": {
+                  "ru": "без",
+                  "en": "without"
+                }
+              },
+              {
+                "text": "לאבד ",
+                "type": "word",
+                "translations": {
+                  "ru": "потерять",
+                  "en": "losing"
+                }
+              },
+              {
+                "text": "את ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "האופי ",
+                "type": "word",
+                "translations": {
+                  "ru": "характер",
+                  "en": "character"
+                }
+              },
+              {
+                "text": "שלו.",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "כלומר, ",
+                "type": "word",
+                "translations": {
+                  "ru": "то есть",
+                  "en": "that is"
+                }
+              },
+              {
+                "text": "יהיו ",
+                "type": "word",
+                "translations": {
+                  "ru": "будут",
+                  "en": "there will be"
+                }
+              },
+              {
+                "text": "תיקונים ",
+                "type": "word",
+                "translations": {
+                  "ru": "ремонты",
+                  "en": "repairs"
+                }
+              },
+              {
+                "text": "ויותר ",
+                "type": "word",
+                "translations": {
+                  "ru": "и больше",
+                  "en": "more"
+                }
+              },
+              {
+                "text": "סדר,",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "אבל ",
+                "type": "word",
+                "translations": {
+                  "ru": "но",
+                  "en": "but"
+                }
+              },
+              {
+                "text": "עדיין ",
+                "type": "word",
+                "translations": {
+                  "ru": "всё ещё",
+                  "en": "still"
+                }
+              },
+              {
+                "text": "אפשר ",
+                "type": "word",
+                "translations": {
+                  "ru": "можно",
+                  "en": "can"
+                }
+              },
+              {
+                "text": "יהיה ",
+                "type": "word",
+                "translations": {
+                  "ru": "будет",
+                  "en": "will be"
+                }
+              },
+              {
+                "text": "לקנות ",
+                "type": "word",
+                "translations": {
+                  "ru": "покупать",
+                  "en": "buy"
+                }
+              },
+              {
+                "text": "ולאכול ",
+                "type": "word",
+                "translations": {
+                  "ru": "и есть",
+                  "en": "and eat"
+                }
+              },
+              {
+                "text": "כרגיל.",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              }
+            ]
+          ]
+        },
+        "alefPlus": {
+          "title": [
+            {
+              "text": "לשפץ ",
+              "type": "word",
+              "translations": {
+                "ru": "ремонтировать",
+                "en": "renovate"
+              }
+            },
+            {
+              "text": "את ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "מחנה ",
+              "type": "properNoun",
+              "translations": {
+                "ru": "Махане",
+                "en": "Mahane"
+              }
+            },
+            {
+              "text": "יהודה ",
+              "type": "properNoun",
+              "translations": {
+                "ru": "Йехуда",
+                "en": "Yehuda"
+              }
+            },
+            {
+              "text": "בלי ",
+              "type": "word",
+              "translations": {
+                "ru": "без",
+                "en": "without"
+              }
+            },
+            {
+              "text": "לסגור ",
+              "type": "word",
+              "translations": {
+                "ru": "закрывать",
+                "en": "closing"
+              }
+            },
+            {
+              "text": "חנויות",
+              "type": "word",
+              "translations": {
+                "ru": "магазины",
+                "en": "shops"
+              }
+            }
+          ],
+          "teaser": [
+            {
+              "text": "בירושלים ",
+              "type": "properNoun",
+              "translations": {
+                "ru": "в Иерусалиме",
+                "en": "in Jerusalem"
+              }
+            },
+            {
+              "text": "מתכננים ",
+              "type": "word",
+              "translations": {
+                "ru": "планируют",
+                "en": "are planning"
+              }
+            },
+            {
+              "text": "שיפוץ ",
+              "type": "word",
+              "translations": {
+                "ru": "ремонт",
+                "en": "a renovation"
+              }
+            },
+            {
+              "text": "גדול ",
+              "type": "word",
+              "translations": {
+                "ru": "большой",
+                "en": "major"
+              }
+            },
+            {
+              "text": "בשוק ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "מחנה ",
+              "type": "properNoun",
+              "translations": {
+                "ru": "Махане",
+                "en": "Mahane"
+              }
+            },
+            {
+              "text": "יהודה, ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "אבל ",
+              "type": "word",
+              "translations": {
+                "ru": "но",
+                "en": "but"
+              }
+            },
+            {
+              "text": "רוצים ",
+              "type": "word",
+              "translations": {
+                "ru": "хотят",
+                "en": "want"
+              }
+            },
+            {
+              "text": "שהעסקים ",
+              "type": "word",
+              "translations": {
+                "ru": "чтобы businesses",
+                "en": "businesses"
+              }
+            },
+            {
+              "text": "ימשיכו ",
+              "type": "word",
+              "translations": {
+                "ru": "продолжат",
+                "en": "keep"
+              }
+            },
+            {
+              "text": "לעבוד.",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            }
+          ],
+          "paragraphs": [
+            [
+              {
+                "text": "בשוק ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "מחנה ",
+                "type": "properNoun",
+                "translations": {
+                  "ru": "Махане",
+                  "en": "Mahane"
+                }
+              },
+              {
+                "text": "יהודה ",
+                "type": "properNoun",
+                "translations": {
+                  "ru": "Йехуда",
+                  "en": "Yehuda"
+                }
+              },
+              {
+                "text": "בירושלים ",
+                "type": "properNoun",
+                "translations": {
+                  "ru": "в Иерусалиме",
+                  "en": "in Jerusalem"
+                }
+              },
+              {
+                "text": "מתכננים ",
+                "type": "word",
+                "translations": {
+                  "ru": "планируют",
+                  "en": "are planning"
+                }
+              },
+              {
+                "text": "שיפוץ ",
+                "type": "word",
+                "translations": {
+                  "ru": "ремонт",
+                  "en": "a renovation"
+                }
+              },
+              {
+                "text": "גדול.",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "העבודה ",
+                "type": "word",
+                "translations": {
+                  "ru": "работа",
+                  "en": "the work"
+                }
+              },
+              {
+                "text": "תיעשה ",
+                "type": "word",
+                "translations": {
+                  "ru": "будет делаться",
+                  "en": "will be done"
+                }
+              },
+              {
+                "text": "רחוב ",
+                "type": "word",
+                "translations": {
+                  "ru": "улица",
+                  "en": "street"
+                }
+              },
+              {
+                "text": "אחרי ",
+                "type": "word",
+                "translations": {
+                  "ru": "за",
+                  "en": "after"
+                }
+              },
+              {
+                "text": "רחוב,",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "כדי ",
+                "type": "word",
+                "translations": {
+                  "ru": "чтобы",
+                  "en": "so that"
+                }
+              },
+              {
+                "text": "לעדכן ",
+                "type": "word",
+                "translations": {
+                  "ru": "обновить",
+                  "en": "update"
+                }
+              },
+              {
+                "text": "את ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "התשתיות.",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "עם ",
+                "type": "word",
+                "translations": {
+                  "ru": "с",
+                  "en": "with"
+                }
+              },
+              {
+                "text": "זה, ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "התכנון ",
+                "type": "word",
+                "translations": {
+                  "ru": "план",
+                  "en": "the planning"
+                }
+              },
+              {
+                "text": "הוא ",
+                "type": "word",
+                "translations": {
+                  "ru": "состоит в том, что",
+                  "en": "is"
+                }
+              },
+              {
+                "text": "לשמור ",
+                "type": "word",
+                "translations": {
+                  "ru": "сохранить",
+                  "en": "keep"
+                }
+              },
+              {
+                "text": "על ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "העסקים ",
+                "type": "word",
+                "translations": {
+                  "ru": "бизнесы",
+                  "en": "businesses"
+                }
+              },
+              {
+                "text": "בפעילות.",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              }
+            ],
+            [
+              {
+                "text": "זה ",
+                "type": "word",
+                "translations": {
+                  "ru": "это",
+                  "en": "this"
+                }
+              },
+              {
+                "text": "כלומר ",
+                "type": "word",
+                "translations": {
+                  "ru": "то есть",
+                  "en": "means"
+                }
+              },
+              {
+                "text": "שעובדים ",
+                "type": "word",
+                "translations": {
+                  "ru": "работники",
+                  "en": "workers"
+                }
+              },
+              {
+                "text": "ויודעים ",
+                "type": "word",
+                "translations": {
+                  "ru": "и знают",
+                  "en": "and know"
+                }
+              },
+              {
+                "text": "שיהיו ",
+                "type": "word",
+                "translations": {
+                  "ru": "что будут",
+                  "en": "that there will be"
+                }
+              },
+              {
+                "text": "רעש, ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "אבק ",
+                "type": "word",
+                "translations": {
+                  "ru": "пыль",
+                  "en": "dust"
+                }
+              },
+              {
+                "text": "ושינויים ",
+                "type": "word",
+                "translations": {
+                  "ru": "и изменения",
+                  "en": "and changes"
+                }
+              },
+              {
+                "text": "בדרך. ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "בעלי ",
+                "type": "word",
+                "translations": {
+                  "ru": "владельцы",
+                  "en": "owners"
+                }
+              },
+              {
+                "text": "הדוכנים ",
+                "type": "word",
+                "translations": {
+                  "ru": "лавок",
+                  "en": "stalls"
+                }
+              },
+              {
+                "text": "יצטרכו ",
+                "type": "word",
+                "translations": {
+                  "ru": "будут должны",
+                  "en": "will have to"
+                }
+              },
+              {
+                "text": "להסתדר ",
+                "type": "word",
+                "translations": {
+                  "ru": "справляться",
+                  "en": "cope"
+                }
+              },
+              {
+                "text": "עם ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "משלוחים ",
+                "type": "word",
+                "translations": {
+                  "ru": "доставками",
+                  "en": "deliveries"
+                }
+              },
+              {
+                "text": "ותיקונים ",
+                "type": "word",
+                "translations": {
+                  "ru": "и ремонтами",
+                  "en": "and repairs"
+                }
+              },
+              {
+                "text": "שלא ",
+                "type": "word",
+                "translations": {
+                  "ru": "которые не",
+                  "en": "that do not"
+                }
+              },
+              {
+                "text": "תמיד ",
+                "type": "word",
+                "translations": {
+                  "ru": "всегда",
+                  "en": "always"
+                }
+              },
+              {
+                "text": "נוחים.",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              }
+            ],
+            [
+              {
+                "text": "הכוונה ",
+                "type": "word",
+                "translations": {
+                  "ru": "намерение",
+                  "en": "the aim"
+                }
+              },
+              {
+                "text": "אינה ",
+                "type": "word",
+                "translations": {
+                  "ru": "не",
+                  "en": "is not"
+                }
+              },
+              {
+                "text": "לסגור ",
+                "type": "word",
+                "translations": {
+                  "ru": "закрыть",
+                  "en": "close"
+                }
+              },
+              {
+                "text": "את ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "השוק,",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "אלא ",
+                "type": "word",
+                "translations": {
+                  "ru": "а",
+                  "en": "but rather"
+                }
+              },
+              {
+                "text": "לעשות ",
+                "type": "word",
+                "translations": {
+                  "ru": "сделать",
+                  "en": "to do"
+                }
+              },
+              {
+                "text": "את ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "העבודה ",
+                "type": "word",
+                "translations": {
+                  "ru": "работу",
+                  "en": "the work"
+                }
+              },
+              {
+                "text": "בצורה ",
+                "type": "word",
+                "translations": {
+                  "ru": "в форме",
+                  "en": "in a"
+                }
+              },
+              {
+                "text": "שמאפשרת ",
+                "type": "word",
+                "translations": {
+                  "ru": "которая позволяет",
+                  "en": "that allows"
+                }
+              },
+              {
+                "text": "לעסקים ",
+                "type": "word",
+                "translations": {
+                  "ru": "бизнесам",
+                  "en": "businesses"
+                }
+              },
+              {
+                "text": "להמשיך.",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "במקום ",
+                "type": "word",
+                "translations": {
+                  "ru": "вместо",
+                  "en": "instead of"
+                }
+              },
+              {
+                "text": "עצירה ",
+                "type": "word",
+                "translations": {
+                  "ru": "остановки",
+                  "en": "a stop"
+                }
+              },
+              {
+                "text": "מוחלטת,",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "מדברים ",
+                "type": "word",
+                "translations": {
+                  "ru": "говорят",
+                  "en": "talk"
+                }
+              },
+              {
+                "text": "על ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "תיאום ",
+                "type": "word",
+                "translations": {
+                  "ru": "координация",
+                  "en": "coordination"
+                }
+              },
+              {
+                "text": "בין ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "בעלי ",
+                "type": "word",
+                "translations": {
+                  "ru": "владельцами",
+                  "en": "owners"
+                }
+              },
+              {
+                "text": "החנויות ",
+                "type": "word",
+                "translations": {
+                  "ru": "магазинов",
+                  "en": "of the shops"
+                }
+              },
+              {
+                "text": "לבין ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "הקבלנים.",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              }
+            ],
+            [
+              {
+                "text": "המטרה ",
+                "type": "word",
+                "translations": {
+                  "ru": "цель",
+                  "en": "the goal"
+                }
+              },
+              {
+                "text": "היא ",
+                "type": "word",
+                "translations": {
+                  "ru": "состоит в том, что",
+                  "en": "is"
+                }
+              },
+              {
+                "text": "גם ",
+                "type": "word",
+                "translations": {
+                  "ru": "также",
+                  "en": "also"
+                }
+              },
+              {
+                "text": "לשפר ",
+                "type": "word",
+                "translations": {
+                  "ru": "улучшить",
+                  "en": "improve"
+                }
+              },
+              {
+                "text": "את ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "התשתיות ",
+                "type": "word",
+                "translations": {
+                  "ru": "инфраструктуру",
+                  "en": "the infrastructure"
+                }
+              },
+              {
+                "text": "וגם ",
+                "type": "word",
+                "translations": {
+                  "ru": "и также",
+                  "en": "and also"
+                }
+              },
+              {
+                "text": "לשמור ",
+                "type": "word",
+                "translations": {
+                  "ru": "сохранить",
+                  "en": "preserve"
+                }
+              },
+              {
+                "text": "על ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "האופי ",
+                "type": "word",
+                "translations": {
+                  "ru": "характер",
+                  "en": "character"
+                }
+              },
+              {
+                "text": "של ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "השוק.",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "כלומר, ",
+                "type": "word",
+                "translations": {
+                  "ru": "то есть",
+                  "en": "that is"
+                }
+              },
+              {
+                "text": "יהיה ",
+                "type": "word",
+                "translations": {
+                  "ru": "будет",
+                  "en": "there will be"
+                }
+              },
+              {
+                "text": "יותר ",
+                "type": "word",
+                "translations": {
+                  "ru": "больше",
+                  "en": "more"
+                }
+              },
+              {
+                "text": "סדר ",
+                "type": "word",
+                "translations": {
+                  "ru": "порядок",
+                  "en": "order"
+                }
+              },
+              {
+                "text": "יותר ",
+                "type": "word",
+                "translations": {
+                  "ru": "больше",
+                  "en": "more"
+                }
+              },
+              {
+                "text": "נוח ",
+                "type": "word",
+                "translations": {
+                  "ru": "удобный",
+                  "en": "convenient"
+                }
+              },
+              {
+                "text": "לעבודה,",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "אבל ",
+                "type": "word",
+                "translations": {
+                  "ru": "но",
+                  "en": "but"
+                }
+              },
+              {
+                "text": "לא ",
+                "type": "word",
+                "translations": {
+                  "ru": "не",
+                  "en": "not"
+                }
+              },
+              {
+                "text": "רוצים ",
+                "type": "word",
+                "translations": {
+                  "ru": "хотят",
+                  "en": "want"
+                }
+              },
+              {
+                "text": "לאבד ",
+                "type": "word",
+                "translations": {
+                  "ru": "потерять",
+                  "en": "lose"
+                }
+              },
+              {
+                "text": "את ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "האווירה ",
+                "type": "word",
+                "translations": {
+                  "ru": "атмосферу",
+                  "en": "the atmosphere"
+                }
+              },
+              {
+                "text": "שלו.",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              }
+            ]
+          ]
+        },
+        "bet": {
+          "title": [
+            {
+              "text": "שיפוץ ",
+              "type": "word",
+              "translations": {
+                "ru": "ремонт",
+                "en": "renovation"
+              }
+            },
+            {
+              "text": "בלי ",
+              "type": "word",
+              "translations": {
+                "ru": "без",
+                "en": "without"
+              }
+            },
+            {
+              "text": "לסגור ",
+              "type": "word",
+              "translations": {
+                "ru": "закрывать",
+                "en": "closing"
+              }
+            },
+            {
+              "text": "את ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "השוק ",
+              "type": "word",
+              "translations": {
+                "ru": "рынок",
+                "en": "the market"
+              }
+            },
+            {
+              "text": "במחנה ",
+              "type": "properNoun",
+              "translations": {
+                "ru": "в Махане",
+                "en": "in Mahane"
+              }
+            },
+            {
+              "text": "יהודה",
+              "type": "properNoun",
+              "translations": {
+                "ru": "Йехуда",
+                "en": "Yehuda"
+              }
+            }
+          ],
+          "teaser": [
+            {
+              "text": "בירושלים ",
+              "type": "properNoun",
+              "translations": {
+                "ru": "в Иерусалиме",
+                "en": "in Jerusalem"
+              }
+            },
+            {
+              "text": "מתכננים ",
+              "type": "word",
+              "translations": {
+                "ru": "планируют",
+                "en": "are planning"
+              }
+            },
+            {
+              "text": "לחדש ",
+              "type": "word",
+              "translations": {
+                "ru": "обновить",
+                "en": "to renew"
+              }
+            },
+            {
+              "text": "את ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "מחנה ",
+              "type": "properNoun",
+              "translations": {
+                "ru": "Махане",
+                "en": "Mahane"
+              }
+            },
+            {
+              "text": "יהודה, ",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "אבל ",
+              "type": "word",
+              "translations": {
+                "ru": "но",
+                "en": "but"
+              }
+            },
+            {
+              "text": "רוצים ",
+              "type": "word",
+              "translations": {
+                "ru": "хотят",
+                "en": "want"
+              }
+            },
+            {
+              "text": "שהחנויות ",
+              "type": "word",
+              "translations": {
+                "ru": "чтобы магазины",
+                "en": "that the shops"
+              }
+            },
+            {
+              "text": "ימשיכו ",
+              "type": "word",
+              "translations": {
+                "ru": "продолжат",
+                "en": "will keep"
+              }
+            },
+            {
+              "text": "לעבוד.",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            }
+          ],
+          "paragraphs": [
+            [
+              {
+                "text": "בשוק ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "מחנה ",
+                "type": "properNoun",
+                "translations": {
+                  "ru": "Махане",
+                  "en": "Mahane"
+                }
+              },
+              {
+                "text": "יהודה ",
+                "type": "properNoun",
+                "translations": {
+                  "ru": "Йехуда",
+                  "en": "Yehuda"
+                }
+              },
+              {
+                "text": "בירושלים ",
+                "type": "properNoun",
+                "translations": {
+                  "ru": "в Иерусалиме",
+                  "en": "in Jerusalem"
+                }
+              },
+              {
+                "text": "מתכננים ",
+                "type": "word",
+                "translations": {
+                  "ru": "планируют",
+                  "en": "are planning"
+                }
+              },
+              {
+                "text": "שיפוץ ",
+                "type": "word",
+                "translations": {
+                  "ru": "ремонт",
+                  "en": "a renovation"
+                }
+              },
+              {
+                "text": "גדול.",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "העבודה ",
+                "type": "word",
+                "translations": {
+                  "ru": "работа",
+                  "en": "the work"
+                }
+              },
+              {
+                "text": "תתבצע ",
+                "type": "word",
+                "translations": {
+                  "ru": "будет проводиться",
+                  "en": "will take place"
+                }
+              },
+              {
+                "text": "רחוב ",
+                "type": "word",
+                "translations": {
+                  "ru": "улица",
+                  "en": "street"
+                }
+              },
+              {
+                "text": "אחרי ",
+                "type": "word",
+                "translations": {
+                  "ru": "за",
+                  "en": "after"
+                }
+              },
+              {
+                "text": "רחוב,",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "כדי ",
+                "type": "word",
+                "translations": {
+                  "ru": "чтобы",
+                  "en": "in order to"
+                }
+              },
+              {
+                "text": "לעדכן ",
+                "type": "word",
+                "translations": {
+                  "ru": "обновить",
+                  "en": "update"
+                }
+              },
+              {
+                "text": "את ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "התשתיות ",
+                "type": "word",
+                "translations": {
+                  "ru": "инфраструктуру",
+                  "en": "the infrastructure"
+                }
+              },
+              {
+                "text": "בלי ",
+                "type": "word",
+                "translations": {
+                  "ru": "без",
+                  "en": "without"
+                }
+              },
+              {
+                "text": "להפסיק ",
+                "type": "word",
+                "translations": {
+                  "ru": "останавливать",
+                  "en": "stopping"
+                }
+              },
+              {
+                "text": "את ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "הפעילות ",
+                "type": "word",
+                "translations": {
+                  "ru": "деятельность",
+                  "en": "the activity"
+                }
+              },
+              {
+                "text": "היומיומית.",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              }
+            ],
+            [
+              {
+                "text": "המשמעות ",
+                "type": "word",
+                "translations": {
+                  "ru": "значение",
+                  "en": "the meaning"
+                }
+              },
+              {
+                "text": "היא ",
+                "type": "word",
+                "translations": {
+                  "ru": "состоит в том, что",
+                  "en": "is"
+                }
+              },
+              {
+                "text": "שהשיפוץ ",
+                "type": "word",
+                "translations": {
+                  "ru": "ремонт",
+                  "en": "the renovation"
+                }
+              },
+              {
+                "text": "לא ",
+                "type": "word",
+                "translations": {
+                  "ru": "не",
+                  "en": "will not"
+                }
+              },
+              {
+                "text": "יהיה ",
+                "type": "word",
+                "translations": {
+                  "ru": "будет",
+                  "en": "be"
+                }
+              },
+              {
+                "text": "רק ",
+                "type": "word",
+                "translations": {
+                  "ru": "только",
+                  "en": "only"
+                }
+              },
+              {
+                "text": "ענייני.",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "בעלי ",
+                "type": "word",
+                "translations": {
+                  "ru": "владельцы",
+                  "en": "owners"
+                }
+              },
+              {
+                "text": "הדוכנים ",
+                "type": "word",
+                "translations": {
+                  "ru": "лавок",
+                  "en": "stalls"
+                }
+              },
+              {
+                "text": "יצטרכו ",
+                "type": "word",
+                "translations": {
+                  "ru": "будут должны",
+                  "en": "will have to"
+                }
+              },
+              {
+                "text": "להמשיך ",
+                "type": "word",
+                "translations": {
+                  "ru": "продолжать",
+                  "en": "continue"
+                }
+              },
+              {
+                "text": "לעבוד ",
+                "type": "word",
+                "translations": {
+                  "ru": "работать",
+                  "en": "work"
+                }
+              },
+              {
+                "text": "לצד ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "עבודות,",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "אבק ",
+                "type": "word",
+                "translations": {
+                  "ru": "пыль",
+                  "en": "dust"
+                }
+              },
+              {
+                "text": "ושינויים ",
+                "type": "word",
+                "translations": {
+                  "ru": "и изменения",
+                  "en": "and changes"
+                }
+              },
+              {
+                "text": "במעברים.",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "גם ",
+                "type": "word",
+                "translations": {
+                  "ru": "также",
+                  "en": "also"
+                }
+              },
+              {
+                "text": "הספקים ",
+                "type": "word",
+                "translations": {
+                  "ru": "поставщики",
+                  "en": "suppliers"
+                }
+              },
+              {
+                "text": "יצטרכו ",
+                "type": "word",
+                "translations": {
+                  "ru": "будут должны",
+                  "en": "will need to"
+                }
+              },
+              {
+                "text": "לתכנן ",
+                "type": "word",
+                "translations": {
+                  "ru": "планировать",
+                  "en": "plan"
+                }
+              },
+              {
+                "text": "משלוחים ",
+                "type": "word",
+                "translations": {
+                  "ru": "доставки",
+                  "en": "deliveries"
+                }
+              },
+              {
+                "text": "בצורה ",
+                "type": "word",
+                "translations": {
+                  "ru": "в форме",
+                  "en": "in a"
+                }
+              },
+              {
+                "text": "מסודרת.",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              }
+            ],
+            [
+              {
+                "text": "זה ",
+                "type": "word",
+                "translations": {
+                  "ru": "это",
+                  "en": "this"
+                }
+              },
+              {
+                "text": "יוצר ",
+                "type": "word",
+                "translations": {
+                  "ru": "создаёт",
+                  "en": "creates"
+                }
+              },
+              {
+                "text": "אתגר ",
+                "type": "word",
+                "translations": {
+                  "ru": "вызов",
+                  "en": "a challenge"
+                }
+              },
+              {
+                "text": "יומיומי ",
+                "type": "word",
+                "translations": {
+                  "ru": "повседневный",
+                  "en": "everyday"
+                }
+              },
+              {
+                "text": "מאוד:",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "איך ",
+                "type": "word",
+                "translations": {
+                  "ru": "как",
+                  "en": "how"
+                }
+              },
+              {
+                "text": "להביא ",
+                "type": "word",
+                "translations": {
+                  "ru": "привезти",
+                  "en": "bring"
+                }
+              },
+              {
+                "text": "סחורה,",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "איך ",
+                "type": "word",
+                "translations": {
+                  "ru": "как",
+                  "en": "how"
+                }
+              },
+              {
+                "text": "לתקן ",
+                "type": "word",
+                "translations": {
+                  "ru": "починить",
+                  "en": "fix"
+                }
+              },
+              {
+                "text": "מה ",
+                "type": "word",
+                "translations": {
+                  "ru": "что",
+                  "en": "what"
+                }
+              },
+              {
+                "text": "שצריך,",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "ואיך ",
+                "type": "word",
+                "translations": {
+                  "ru": "и как",
+                  "en": "and how"
+                }
+              },
+              {
+                "text": "לשמור ",
+                "type": "word",
+                "translations": {
+                  "ru": "сохранить",
+                  "en": "keep"
+                }
+              },
+              {
+                "text": "על ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "זרימה ",
+                "type": "word",
+                "translations": {
+                  "ru": "поток",
+                  "en": "flow"
+                }
+              },
+              {
+                "text": "רגילה ",
+                "type": "word",
+                "translations": {
+                  "ru": "обычный",
+                  "en": "normal"
+                }
+              },
+              {
+                "text": "של ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "קונים ",
+                "type": "word",
+                "translations": {
+                  "ru": "покупателей",
+                  "en": "customers"
+                }
+              },
+              {
+                "text": "ושל ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "עובדים.",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              }
+            ],
+            [
+              {
+                "text": "המטרה ",
+                "type": "word",
+                "translations": {
+                  "ru": "цель",
+                  "en": "the goal"
+                }
+              },
+              {
+                "text": "ברורה:",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "לחדש ",
+                "type": "word",
+                "translations": {
+                  "ru": "обновить",
+                  "en": "renew"
+                }
+              },
+              {
+                "text": "את ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "השוק ",
+                "type": "word",
+                "translations": {
+                  "ru": "рынок",
+                  "en": "the market"
+                }
+              },
+              {
+                "text": "ולשפר ",
+                "type": "word",
+                "translations": {
+                  "ru": "и улучшить",
+                  "en": "and improve"
+                }
+              },
+              {
+                "text": "את ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "התשתיות,",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "אבל ",
+                "type": "word",
+                "translations": {
+                  "ru": "но",
+                  "en": "but"
+                }
+              },
+              {
+                "text": "לא ",
+                "type": "word",
+                "translations": {
+                  "ru": "не",
+                  "en": "not"
+                }
+              },
+              {
+                "text": "לאבד ",
+                "type": "word",
+                "translations": {
+                  "ru": "потерять",
+                  "en": "lose"
+                }
+              },
+              {
+                "text": "את ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "האופי ",
+                "type": "word",
+                "translations": {
+                  "ru": "характер",
+                  "en": "character"
+                }
+              },
+              {
+                "text": "שלו.",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "לכן ",
+                "type": "word",
+                "translations": {
+                  "ru": "поэтому",
+                  "en": "so"
+                }
+              },
+              {
+                "text": "מדברים ",
+                "type": "word",
+                "translations": {
+                  "ru": "говорят",
+                  "en": "talk"
+                }
+              },
+              {
+                "text": "על ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "תיאום ",
+                "type": "word",
+                "translations": {
+                  "ru": "координацию",
+                  "en": "coordination"
+                }
+              },
+              {
+                "text": "מדויק ",
+                "type": "word",
+                "translations": {
+                  "ru": "точную",
+                  "en": "careful"
+                }
+              },
+              {
+                "text": "בין ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "הקבלנים ",
+                "type": "word",
+                "translations": {
+                  "ru": "подрядчиками",
+                  "en": "the contractors"
+                }
+              },
+              {
+                "text": "לבין ",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "בעלי ",
+                "type": "word",
+                "translations": {
+                  "ru": "владельцами",
+                  "en": "owners"
+                }
+              },
+              {
+                "text": "החנויות,",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "כדי ",
+                "type": "word",
+                "translations": {
+                  "ru": "чтобы",
+                  "en": "so that"
+                }
+              },
+              {
+                "text": "שכולם ",
+                "type": "word",
+                "translations": {
+                  "ru": "все",
+                  "en": "everyone"
+                }
+              },
+              {
+                "text": "יוכלו ",
+                "type": "word",
+                "translations": {
+                  "ru": "смогут",
+                  "en": "will be able to"
+                }
+              },
+              {
+                "text": "להמשיך ",
+                "type": "word",
+                "translations": {
+                  "ru": "продолжать",
+                  "en": "continue"
+                }
+              },
+              {
+                "text": "כמה ",
+                "type": "word",
+                "translations": {
+                  "ru": "сколько",
+                  "en": "as"
+                }
+              },
+              {
+                "text": "שיותר ",
+                "type": "word",
+                "translations": {
+                  "ru": "можно",
+                  "en": "much as possible"
+                }
+              },
+              {
+                "text": "כרגיל.",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              }
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "parents-message-teachers-at-set-hours",
+      "slug": "parents-message-teachers-at-set-hours",
+      "type": "current",
+      "category": "work",
+      "brief": "Israeli schools are moving toward clearer rules for how parents contact teachers, including set hours for messages and advance scheduling for fuller conversations. The everyday value is in the small friction of WhatsApp, phone calls, email, and trying to reach a teacher at the right time.",
+      "everydayMeta": null,
+      "sources": [
+        {
+          "publisher": "Ynet",
+          "title": "אסור לשלוח וואטסאפ למורה בערב: משרד החינוך מגדיר מחדש יחסי הורים-מורים",
+          "url": "https://www.ynet.co.il/yedioth/article/yokra14690367"
+        },
+        {
+          "publisher": "Ynet",
+          "title": "יפה בן דויד על התנהלות ההורים מול המורים: \"יוגדרו זמנים שבהם יוכלו להתקשר\"",
+          "url": "https://www.ynet.co.il/news/article/hkahupynzg"
+        }
+      ],
+      "image": null,
+      "levels": {
+        "alef": {
+          "title": [
+            {
+              "text": "שעות",
+              "type": "word",
+              "translations": {
+                "ru": "часы",
+                "en": "hours"
+              }
+            },
+            {
+              "text": " קבועות",
+              "type": "expression",
+              "translations": {
+                "ru": "фиксированные",
+                "en": "fixed"
+              }
+            },
+            {
+              "text": " ל",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "הורים",
+              "type": "word",
+              "translations": {
+                "ru": "родители",
+                "en": "parents"
+              }
+            },
+            {
+              "text": " ו",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "מורים",
+              "type": "word",
+              "translations": {
+                "ru": "учителя",
+                "en": "teachers"
+              }
+            }
+          ],
+          "teaser": [
+            {
+              "text": "ב",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "בית",
+              "type": "word",
+              "translations": {
+                "ru": "школа",
+                "en": "school"
+              }
+            },
+            {
+              "text": " הספר",
+              "type": "expression",
+              "translations": {
+                "ru": "школы",
+                "en": "school"
+              }
+            },
+            {
+              "text": " רוצים",
+              "type": "word",
+              "translations": {
+                "ru": "хотят",
+                "en": "want"
+              }
+            },
+            {
+              "text": " סדר",
+              "type": "word",
+              "translations": {
+                "ru": "порядок",
+                "en": "order"
+              }
+            },
+            {
+              "text": " חדש",
+              "type": "word",
+              "translations": {
+                "ru": "новый",
+                "en": "new"
+              }
+            },
+            {
+              "text": " ל",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "הודעות",
+              "type": "word",
+              "translations": {
+                "ru": "сообщения",
+                "en": "messages"
+              }
+            },
+            {
+              "text": " ל",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "מורים",
+              "type": "word",
+              "translations": {
+                "ru": "учителям",
+                "en": "teachers"
+              }
+            }
+          ],
+          "paragraphs": [
+            [
+              {
+                "text": "בהורים",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": " רבים",
+                "type": "word",
+                "translations": {
+                  "ru": "многие",
+                  "en": "many"
+                }
+              },
+              {
+                "text": " שולחים",
+                "type": "word",
+                "translations": {
+                  "ru": "отправляют",
+                  "en": "send"
+                }
+              },
+              {
+                "text": " הודעה",
+                "type": "word",
+                "translations": {
+                  "ru": "сообщение",
+                  "en": "message"
+                }
+              },
+              {
+                "text": " ל",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "מורה",
+                "type": "word",
+                "translations": {
+                  "ru": "учителю",
+                  "en": "teacher"
+                }
+              },
+              {
+                "text": " ב",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "וואטסאפ",
+                "type": "properNoun",
+                "translations": {
+                  "ru": "WhatsApp",
+                  "en": "WhatsApp"
+                }
+              },
+              {
+                "text": " בערב",
+                "type": "word",
+                "translations": {
+                  "ru": "вечером",
+                  "en": "in the evening"
+                }
+              },
+              {
+                "text": " או",
+                "type": "word",
+                "translations": {
+                  "ru": "или",
+                  "en": "or"
+                }
+              },
+              {
+                "text": " בשבת",
+                "type": "word",
+                "translations": {
+                  "ru": "в субботу",
+                  "en": "on Saturday"
+                }
+              }
+            ],
+            [
+              {
+                "text": "עכשיו",
+                "type": "word",
+                "translations": {
+                  "ru": "сейчас",
+                  "en": "now"
+                }
+              },
+              {
+                "text": " מדברים",
+                "type": "word",
+                "translations": {
+                  "ru": "говорят",
+                  "en": "talk"
+                }
+              },
+              {
+                "text": " על",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": " שעות",
+                "type": "word",
+                "translations": {
+                  "ru": "часы",
+                  "en": "hours"
+                }
+              },
+              {
+                "text": " קבועות",
+                "type": "expression",
+                "translations": {
+                  "ru": "фиксированные",
+                  "en": "fixed"
+                }
+              },
+              {
+                "text": " ל",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "הודעות",
+                "type": "word",
+                "translations": {
+                  "ru": "сообщений",
+                  "en": "messages"
+                }
+              },
+              {
+                "text": " ו",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "ל",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "שיחות",
+                "type": "word",
+                "translations": {
+                  "ru": "звонков",
+                  "en": "calls"
+                }
+              }
+            ],
+            [
+              {
+                "text": "אם",
+                "type": "word",
+                "translations": {
+                  "ru": "если",
+                  "en": "if"
+                }
+              },
+              {
+                "text": " יש",
+                "type": "word",
+                "translations": {
+                  "ru": "есть",
+                  "en": "there is"
+                }
+              },
+              {
+                "text": " שאלה",
+                "type": "word",
+                "translations": {
+                  "ru": "вопрос",
+                  "en": "a question"
+                }
+              },
+              {
+                "text": " קצרה",
+                "type": "word",
+                "translations": {
+                  "ru": "короткий",
+                  "en": "short"
+                }
+              },
+              {
+                "text": " ,",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "אפשר",
+                "type": "word",
+                "translations": {
+                  "ru": "можно",
+                  "en": "you can"
+                }
+              },
+              {
+                "text": " לשלוח",
+                "type": "word",
+                "translations": {
+                  "ru": "отправить",
+                  "en": "send"
+                }
+              },
+              {
+                "text": " הודעה",
+                "type": "word",
+                "translations": {
+                  "ru": "сообщение",
+                  "en": "a message"
+                }
+              },
+              {
+                "text": " .",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "ל",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "שיחה",
+                "type": "word",
+                "translations": {
+                  "ru": "разговор",
+                  "en": "conversation"
+                }
+              },
+              {
+                "text": " יותר",
+                "type": "word",
+                "translations": {
+                  "ru": "более",
+                  "en": "more"
+                }
+              },
+              {
+                "text": " ארוכה",
+                "type": "word",
+                "translations": {
+                  "ru": "долгая",
+                  "en": "long"
+                }
+              },
+              {
+                "text": " צריך",
+                "type": "word",
+                "translations": {
+                  "ru": "нужно",
+                  "en": "it is necessary"
+                }
+              },
+              {
+                "text": " לתאם",
+                "type": "word",
+                "translations": {
+                  "ru": "согласовать",
+                  "en": "arrange"
+                }
+              },
+              {
+                "text": " מראש",
+                "type": "word",
+                "translations": {
+                  "ru": "заранее",
+                  "en": "in advance"
+                }
+              }
+            ],
+            [
+              {
+                "text": "זה",
+                "type": "word",
+                "translations": {
+                  "ru": "это",
+                  "en": "this"
+                }
+              },
+              {
+                "text": " יכול",
+                "type": "word",
+                "translations": {
+                  "ru": "может",
+                  "en": "can"
+                }
+              },
+              {
+                "text": " להקל",
+                "type": "word",
+                "translations": {
+                  "ru": "облегчить",
+                  "en": "make easier"
+                }
+              },
+              {
+                "text": " על",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": " כולם",
+                "type": "word",
+                "translations": {
+                  "ru": "всех",
+                  "en": "everyone"
+                }
+              },
+              {
+                "text": " .",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "הורים",
+                "type": "word",
+                "translations": {
+                  "ru": "родители",
+                  "en": "parents"
+                }
+              },
+              {
+                "text": " לא",
+                "type": "word",
+                "translations": {
+                  "ru": "не",
+                  "en": "do not"
+                }
+              },
+              {
+                "text": " צריכים",
+                "type": "word",
+                "translations": {
+                  "ru": "нужно",
+                  "en": "need"
+                }
+              },
+              {
+                "text": " לחפש",
+                "type": "word",
+                "translations": {
+                  "ru": "искать",
+                  "en": "to look for"
+                }
+              },
+              {
+                "text": " תשובה",
+                "type": "word",
+                "translations": {
+                  "ru": "ответ",
+                  "en": "an answer"
+                }
+              },
+              {
+                "text": " בלילה",
+                "type": "word",
+                "translations": {
+                  "ru": "ночью",
+                  "en": "at night"
+                }
+              }
+            ]
+          ]
+        },
+        "alefPlus": {
+          "title": [
+            {
+              "text": "שעות",
+              "type": "word",
+              "translations": {
+                "ru": "часы",
+                "en": "hours"
+              }
+            },
+            {
+              "text": " קבועות",
+              "type": "expression",
+              "translations": {
+                "ru": "фиксированные",
+                "en": "fixed"
+              }
+            },
+            {
+              "text": " ל",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "פניות",
+              "type": "word",
+              "translations": {
+                "ru": "обращения",
+                "en": "messages"
+              }
+            },
+            {
+              "text": " ל",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "מורים",
+              "type": "word",
+              "translations": {
+                "ru": "учителям",
+                "en": "teachers"
+              }
+            }
+          ],
+          "teaser": [
+            {
+              "text": "בתי",
+              "type": "word",
+              "translations": {
+                "ru": "школы",
+                "en": "schools"
+              }
+            },
+            {
+              "text": " ספר",
+              "type": "word",
+              "translations": {
+                "ru": "школ",
+                "en": "school"
+              }
+            },
+            {
+              "text": " מדברים",
+              "type": "word",
+              "translations": {
+                "ru": "говорят",
+                "en": "are talking"
+              }
+            },
+            {
+              "text": " על",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": " שעות",
+              "type": "word",
+              "translations": {
+                "ru": "часы",
+                "en": "hours"
+              }
+            },
+            {
+              "text": " קבועות",
+              "type": "expression",
+              "translations": {
+                "ru": "фиксированные",
+                "en": "fixed"
+              }
+            },
+            {
+              "text": " ל",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "הודעות",
+              "type": "word",
+              "translations": {
+                "ru": "сообщения",
+                "en": "messages"
+              }
+            },
+            {
+              "text": " ו",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "שיחות",
+              "type": "word",
+              "translations": {
+                "ru": "звонки",
+                "en": "calls"
+              }
+            }
+          ],
+          "paragraphs": [
+            [
+              {
+                "text": "בשנים",
+                "type": "word",
+                "translations": {
+                  "ru": "в последние годы",
+                  "en": "in recent years"
+                }
+              },
+              {
+                "text": " האחרונות",
+                "type": "word",
+                "translations": {
+                  "ru": "последние",
+                  "en": "recent"
+                }
+              },
+              {
+                "text": " הרבה",
+                "type": "word",
+                "translations": {
+                  "ru": "много",
+                  "en": "many"
+                }
+              },
+              {
+                "text": " הורים",
+                "type": "word",
+                "translations": {
+                  "ru": "родителей",
+                  "en": "parents"
+                }
+              },
+              {
+                "text": " שולחים",
+                "type": "word",
+                "translations": {
+                  "ru": "отправляют",
+                  "en": "send"
+                }
+              },
+              {
+                "text": " למורה",
+                "type": "word",
+                "translations": {
+                  "ru": "учителю",
+                  "en": "to the teacher"
+                }
+              },
+              {
+                "text": " הודעה",
+                "type": "word",
+                "translations": {
+                  "ru": "сообщение",
+                  "en": "a message"
+                }
+              },
+              {
+                "text": " ב",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "וואטסאפ",
+                "type": "properNoun",
+                "translations": {
+                  "ru": "WhatsApp",
+                  "en": "WhatsApp"
+                }
+              },
+              {
+                "text": " גם",
+                "type": "word",
+                "translations": {
+                  "ru": "также",
+                  "en": "also"
+                }
+              },
+              {
+                "text": " בערב",
+                "type": "word",
+                "translations": {
+                  "ru": "вечером",
+                  "en": "in the evening"
+                }
+              },
+              {
+                "text": " או",
+                "type": "word",
+                "translations": {
+                  "ru": "или",
+                  "en": "or"
+                }
+              },
+              {
+                "text": " בשעות",
+                "type": "word",
+                "translations": {
+                  "ru": "в часы",
+                  "en": "at hours"
+                }
+              },
+              {
+                "text": " לא",
+                "type": "word",
+                "translations": {
+                  "ru": "не",
+                  "en": "not"
+                }
+              },
+              {
+                "text": " נוחות",
+                "type": "word",
+                "translations": {
+                  "ru": "удобные",
+                  "en": "convenient"
+                }
+              }
+            ],
+            [
+              {
+                "text": "עכשיו",
+                "type": "word",
+                "translations": {
+                  "ru": "сейчас",
+                  "en": "now"
+                }
+              },
+              {
+                "text": " מדברים",
+                "type": "word",
+                "translations": {
+                  "ru": "говорят",
+                  "en": "are talking"
+                }
+              },
+              {
+                "text": " על",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": " סדר",
+                "type": "word",
+                "translations": {
+                  "ru": "порядок",
+                  "en": "order"
+                }
+              },
+              {
+                "text": " ברור",
+                "type": "word",
+                "translations": {
+                  "ru": "ясный",
+                  "en": "clear"
+                }
+              },
+              {
+                "text": " יותר",
+                "type": "word",
+                "translations": {
+                  "ru": "более",
+                  "en": "more"
+                }
+              },
+              {
+                "text": " .",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "יוגדרו",
+                "type": "word",
+                "translations": {
+                  "ru": "будут определены",
+                  "en": "will be set"
+                }
+              },
+              {
+                "text": " שעות",
+                "type": "word",
+                "translations": {
+                  "ru": "часы",
+                  "en": "hours"
+                }
+              },
+              {
+                "text": " שבהן",
+                "type": "word",
+                "translations": {
+                  "ru": "когда",
+                  "en": "when"
+                }
+              },
+              {
+                "text": " אפשר",
+                "type": "word",
+                "translations": {
+                  "ru": "можно",
+                  "en": "it is possible"
+                }
+              },
+              {
+                "text": " לפנות",
+                "type": "word",
+                "translations": {
+                  "ru": "обращаться",
+                  "en": "contact"
+                }
+              },
+              {
+                "text": " ,",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "וגם",
+                "type": "word",
+                "translations": {
+                  "ru": "и также",
+                  "en": "and also"
+                }
+              },
+              {
+                "text": " פגישה",
+                "type": "word",
+                "translations": {
+                  "ru": "встреча",
+                  "en": "meeting"
+                }
+              },
+              {
+                "text": " ארוכה",
+                "type": "word",
+                "translations": {
+                  "ru": "долгая",
+                  "en": "long"
+                }
+              },
+              {
+                "text": " יותר",
+                "type": "word",
+                "translations": {
+                  "ru": "более",
+                  "en": "longer"
+                }
+              },
+              {
+                "text": " תתואם",
+                "type": "word",
+                "translations": {
+                  "ru": "будет согласована",
+                  "en": "will be arranged"
+                }
+              },
+              {
+                "text": " מראש",
+                "type": "word",
+                "translations": {
+                  "ru": "заранее",
+                  "en": "in advance"
+                }
+              }
+            ],
+            [
+              {
+                "text": "הרעיון",
+                "type": "word",
+                "translations": {
+                  "ru": "идея",
+                  "en": "the idea"
+                }
+              },
+              {
+                "text": " הוא",
+                "type": "word",
+                "translations": {
+                  "ru": "состоит в том",
+                  "en": "is"
+                }
+              },
+              {
+                "text": " לשמור",
+                "type": "word",
+                "translations": {
+                  "ru": "сохранить",
+                  "en": "to keep"
+                }
+              },
+              {
+                "text": " על",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": " קשר",
+                "type": "word",
+                "translations": {
+                  "ru": "связь",
+                  "en": "contact"
+                }
+              },
+              {
+                "text": " אבל",
+                "type": "word",
+                "translations": {
+                  "ru": "но",
+                  "en": "but"
+                }
+              },
+              {
+                "text": " בלי",
+                "type": "word",
+                "translations": {
+                  "ru": "без",
+                  "en": "without"
+                }
+              },
+              {
+                "text": " לחץ",
+                "type": "word",
+                "translations": {
+                  "ru": "давление",
+                  "en": "pressure"
+                }
+              },
+              {
+                "text": " .",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "הודעה",
+                "type": "word",
+                "translations": {
+                  "ru": "сообщение",
+                  "en": "a message"
+                }
+              },
+              {
+                "text": " קצרה",
+                "type": "word",
+                "translations": {
+                  "ru": "короткая",
+                  "en": "short"
+                }
+              },
+              {
+                "text": " יכולה",
+                "type": "word",
+                "translations": {
+                  "ru": "может",
+                  "en": "can"
+                }
+              },
+              {
+                "text": " להספיק",
+                "type": "word",
+                "translations": {
+                  "ru": "хватить",
+                  "en": "be enough"
+                }
+              },
+              {
+                "text": " ,",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "ואת",
+                "type": "word",
+                "translations": {
+                  "ru": "а",
+                  "en": "and the"
+                }
+              },
+              {
+                "text": " השיחה",
+                "type": "word",
+                "translations": {
+                  "ru": "разговор",
+                  "en": "conversation"
+                }
+              },
+              {
+                "text": " הארוכה",
+                "type": "word",
+                "translations": {
+                  "ru": "долгий",
+                  "en": "long"
+                }
+              },
+              {
+                "text": " שומרים",
+                "type": "word",
+                "translations": {
+                  "ru": "оставляют",
+                  "en": "save"
+                }
+              },
+              {
+                "text": " לזמן",
+                "type": "word",
+                "translations": {
+                  "ru": "на время",
+                  "en": "for a time"
+                }
+              },
+              {
+                "text": " מתאים",
+                "type": "word",
+                "translations": {
+                  "ru": "подходящее",
+                  "en": "suitable"
+                }
+              }
+            ],
+            [
+              {
+                "text": "ככה",
+                "type": "word",
+                "translations": {
+                  "ru": "так",
+                  "en": "that way"
+                }
+              },
+              {
+                "text": " ,",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "גם",
+                "type": "word",
+                "translations": {
+                  "ru": "и",
+                  "en": "also"
+                }
+              },
+              {
+                "text": " ההורים",
+                "type": "word",
+                "translations": {
+                  "ru": "родители",
+                  "en": "the parents"
+                }
+              },
+              {
+                "text": " וגם",
+                "type": "word",
+                "translations": {
+                  "ru": "и также",
+                  "en": "and also"
+                }
+              },
+              {
+                "text": " המורים",
+                "type": "word",
+                "translations": {
+                  "ru": "учителя",
+                  "en": "the teachers"
+                }
+              },
+              {
+                "text": " יכולים",
+                "type": "word",
+                "translations": {
+                  "ru": "могут",
+                  "en": "can"
+                }
+              },
+              {
+                "text": " לדעת",
+                "type": "word",
+                "translations": {
+                  "ru": "знать",
+                  "en": "know"
+                }
+              },
+              {
+                "text": " מתי",
+                "type": "word",
+                "translations": {
+                  "ru": "когда",
+                  "en": "when"
+                }
+              },
+              {
+                "text": " נוח",
+                "type": "word",
+                "translations": {
+                  "ru": "удобно",
+                  "en": "convenient"
+                }
+              },
+              {
+                "text": " יותר",
+                "type": "word",
+                "translations": {
+                  "ru": "более",
+                  "en": "more"
+                }
+              },
+              {
+                "text": " לדבר",
+                "type": "word",
+                "translations": {
+                  "ru": "говорить",
+                  "en": "to speak"
+                }
+              }
+            ]
+          ]
+        },
+        "bet": {
+          "title": [
+            {
+              "text": "שעות",
+              "type": "word",
+              "translations": {
+                "ru": "часы",
+                "en": "hours"
+              }
+            },
+            {
+              "text": " קבועות",
+              "type": "expression",
+              "translations": {
+                "ru": "фиксированные",
+                "en": "fixed"
+              }
+            },
+            {
+              "text": " לפניות",
+              "type": "word",
+              "translations": {
+                "ru": "для обращений",
+                "en": "for contacting"
+              }
+            },
+            {
+              "text": " למורים",
+              "type": "word",
+              "translations": {
+                "ru": "к учителям",
+                "en": "to teachers"
+              }
+            }
+          ],
+          "teaser": [
+            {
+              "text": "ב",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "בתי",
+              "type": "word",
+              "translations": {
+                "ru": "в школах",
+                "en": "in schools"
+              }
+            },
+            {
+              "text": " ספר",
+              "type": "word",
+              "translations": {
+                "ru": "школ",
+                "en": "schools"
+              }
+            },
+            {
+              "text": " מדברים",
+              "type": "word",
+              "translations": {
+                "ru": "говорят",
+                "en": "are talking"
+              }
+            },
+            {
+              "text": " על",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": " זמנים",
+              "type": "word",
+              "translations": {
+                "ru": "времена",
+                "en": "times"
+              }
+            },
+            {
+              "text": " קבועים",
+              "type": "expression",
+              "translations": {
+                "ru": "фиксированные",
+                "en": "fixed"
+              }
+            },
+            {
+              "text": " ל",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "וואטסאפ",
+              "type": "properNoun",
+              "translations": {
+                "ru": "WhatsApp",
+                "en": "WhatsApp"
+              }
+            },
+            {
+              "text": " ו",
+              "type": "separator",
+              "translations": {
+                "ru": "",
+                "en": ""
+              }
+            },
+            {
+              "text": "שיחות",
+              "type": "word",
+              "translations": {
+                "ru": "звонки",
+                "en": "calls"
+              }
+            }
+          ],
+          "paragraphs": [
+            [
+              {
+                "text": "במקומות",
+                "type": "word",
+                "translations": {
+                  "ru": "в местах",
+                  "en": "in places"
+                }
+              },
+              {
+                "text": " רבים",
+                "type": "word",
+                "translations": {
+                  "ru": "многих",
+                  "en": "many"
+                }
+              },
+              {
+                "text": " בישראל",
+                "type": "properNoun",
+                "translations": {
+                  "ru": "в Израиле",
+                  "en": "in Israel"
+                }
+              },
+              {
+                "text": " ,",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "הורים",
+                "type": "word",
+                "translations": {
+                  "ru": "родители",
+                  "en": "parents"
+                }
+              },
+              {
+                "text": " כותבים",
+                "type": "word",
+                "translations": {
+                  "ru": "пишут",
+                  "en": "write"
+                }
+              },
+              {
+                "text": " למורים",
+                "type": "word",
+                "translations": {
+                  "ru": "учителям",
+                  "en": "to teachers"
+                }
+              },
+              {
+                "text": " ב",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "וואטסאפ",
+                "type": "properNoun",
+                "translations": {
+                  "ru": "WhatsApp",
+                  "en": "WhatsApp"
+                }
+              },
+              {
+                "text": " גם",
+                "type": "word",
+                "translations": {
+                  "ru": "даже",
+                  "en": "even"
+                }
+              },
+              {
+                "text": " בערב",
+                "type": "word",
+                "translations": {
+                  "ru": "вечером",
+                  "en": "in the evening"
+                }
+              },
+              {
+                "text": " ,",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "ואז",
+                "type": "word",
+                "translations": {
+                  "ru": "а потом",
+                  "en": "and then"
+                }
+              },
+              {
+                "text": " לא",
+                "type": "word",
+                "translations": {
+                  "ru": "не",
+                  "en": "not"
+                }
+              },
+              {
+                "text": " תמיד",
+                "type": "word",
+                "translations": {
+                  "ru": "всегда",
+                  "en": "always"
+                }
+              },
+              {
+                "text": " ברור",
+                "type": "word",
+                "translations": {
+                  "ru": "ясно",
+                  "en": "clear"
+                }
+              },
+              {
+                "text": " מתי",
+                "type": "word",
+                "translations": {
+                  "ru": "когда",
+                  "en": "when"
+                }
+              },
+              {
+                "text": " המורה",
+                "type": "word",
+                "translations": {
+                  "ru": "учитель",
+                  "en": "the teacher"
+                }
+              },
+              {
+                "text": " יראה",
+                "type": "word",
+                "translations": {
+                  "ru": "увидит",
+                  "en": "will see"
+                }
+              },
+              {
+                "text": " את",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": " זה",
+                "type": "word",
+                "translations": {
+                  "ru": "это",
+                  "en": "it"
+                }
+              },
+              {
+                "text": " .",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              }
+            ],
+            [
+              {
+                "text": "עכשיו",
+                "type": "word",
+                "translations": {
+                  "ru": "сейчас",
+                  "en": "now"
+                }
+              },
+              {
+                "text": " מדברים",
+                "type": "word",
+                "translations": {
+                  "ru": "говорят",
+                  "en": "talk"
+                }
+              },
+              {
+                "text": " על",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": " כללים",
+                "type": "word",
+                "translations": {
+                  "ru": "правила",
+                  "en": "rules"
+                }
+              },
+              {
+                "text": " ברורים",
+                "type": "word",
+                "translations": {
+                  "ru": "ясные",
+                  "en": "clear"
+                }
+              },
+              {
+                "text": " יותר",
+                "type": "word",
+                "translations": {
+                  "ru": "более",
+                  "en": "more"
+                }
+              },
+              {
+                "text": " .",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "יהיו",
+                "type": "word",
+                "translations": {
+                  "ru": "будут",
+                  "en": "there will be"
+                }
+              },
+              {
+                "text": " שעות",
+                "type": "word",
+                "translations": {
+                  "ru": "часы",
+                  "en": "hours"
+                }
+              },
+              {
+                "text": " קבועות",
+                "type": "expression",
+                "translations": {
+                  "ru": "фиксированные",
+                  "en": "fixed"
+                }
+              },
+              {
+                "text": " ל",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "פניות",
+                "type": "word",
+                "translations": {
+                  "ru": "обращения",
+                  "en": "messages"
+                }
+              },
+              {
+                "text": " ,",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "וגם",
+                "type": "word",
+                "translations": {
+                  "ru": "и также",
+                  "en": "and also"
+                }
+              },
+              {
+                "text": " שיחה",
+                "type": "word",
+                "translations": {
+                  "ru": "разговор",
+                  "en": "a conversation"
+                }
+              },
+              {
+                "text": " ארוכה",
+                "type": "word",
+                "translations": {
+                  "ru": "долгая",
+                  "en": "long"
+                }
+              },
+              {
+                "text": " יותר",
+                "type": "word",
+                "translations": {
+                  "ru": "более",
+                  "en": "longer"
+                }
+              },
+              {
+                "text": " תתקיים",
+                "type": "word",
+                "translations": {
+                  "ru": "состоится",
+                  "en": "will take place"
+                }
+              },
+              {
+                "text": " רק",
+                "type": "word",
+                "translations": {
+                  "ru": "только",
+                  "en": "only"
+                }
+              },
+              {
+                "text": " אחרי",
+                "type": "word",
+                "translations": {
+                  "ru": "после",
+                  "en": "after"
+                }
+              },
+              {
+                "text": " תיאום",
+                "type": "word",
+                "translations": {
+                  "ru": "согласование",
+                  "en": "arranging"
+                }
+              },
+              {
+                "text": " מראש",
+                "type": "word",
+                "translations": {
+                  "ru": "заранее",
+                  "en": "in advance"
+                }
+              }
+            ],
+            [
+              {
+                "text": "הכוונה",
+                "type": "word",
+                "translations": {
+                  "ru": "смысл",
+                  "en": "the aim"
+                }
+              },
+              {
+                "text": " היא",
+                "type": "word",
+                "translations": {
+                  "ru": "состоит в том",
+                  "en": "is"
+                }
+              },
+              {
+                "text": " לא",
+                "type": "word",
+                "translations": {
+                  "ru": "не",
+                  "en": "not"
+                }
+              },
+              {
+                "text": " לנתק",
+                "type": "word",
+                "translations": {
+                  "ru": "разрывать",
+                  "en": "cut off"
+                }
+              },
+              {
+                "text": " את",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": " הקשר",
+                "type": "word",
+                "translations": {
+                  "ru": "связь",
+                  "en": "contact"
+                }
+              },
+              {
+                "text": " ,",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "אלא",
+                "type": "word",
+                "translations": {
+                  "ru": "а",
+                  "en": "but"
+                }
+              },
+              {
+                "text": " לעשות",
+                "type": "word",
+                "translations": {
+                  "ru": "сделать",
+                  "en": "to make"
+                }
+              },
+              {
+                "text": " אותו",
+                "type": "word",
+                "translations": {
+                  "ru": "его",
+                  "en": "it"
+                }
+              },
+              {
+                "text": " יותר",
+                "type": "word",
+                "translations": {
+                  "ru": "более",
+                  "en": "more"
+                }
+              },
+              {
+                "text": " מסודר",
+                "type": "word",
+                "translations": {
+                  "ru": "упорядоченным",
+                  "en": "organized"
+                }
+              }
+            ],
+            [
+              {
+                "text": "בשיחות",
+                "type": "word",
+                "translations": {
+                  "ru": "в разговорах",
+                  "en": "in conversations"
+                }
+              },
+              {
+                "text": " קצרות",
+                "type": "word",
+                "translations": {
+                  "ru": "коротких",
+                  "en": "short"
+                }
+              },
+              {
+                "text": " אפשר",
+                "type": "word",
+                "translations": {
+                  "ru": "можно",
+                  "en": "it is possible"
+                }
+              },
+              {
+                "text": " לשאול",
+                "type": "word",
+                "translations": {
+                  "ru": "спросить",
+                  "en": "ask"
+                }
+              },
+              {
+                "text": " שאלה",
+                "type": "word",
+                "translations": {
+                  "ru": "вопрос",
+                  "en": "a question"
+                }
+              },
+              {
+                "text": " ,",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "להעביר",
+                "type": "word",
+                "translations": {
+                  "ru": "передать",
+                  "en": "pass"
+                }
+              },
+              {
+                "text": " מידע",
+                "type": "word",
+                "translations": {
+                  "ru": "информацию",
+                  "en": "information"
+                }
+              },
+              {
+                "text": " או",
+                "type": "word",
+                "translations": {
+                  "ru": "или",
+                  "en": "or"
+                }
+              },
+              {
+                "text": " לעדכן",
+                "type": "word",
+                "translations": {
+                  "ru": "обновить",
+                  "en": "update"
+                }
+              },
+              {
+                "text": " על",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": " איחור",
+                "type": "word",
+                "translations": {
+                  "ru": "опоздание",
+                  "en": "delay"
+                }
+              },
+              {
+                "text": " .",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "אם",
+                "type": "word",
+                "translations": {
+                  "ru": "если",
+                  "en": "if"
+                }
+              },
+              {
+                "text": " צריך",
+                "type": "word",
+                "translations": {
+                  "ru": "нужно",
+                  "en": "need"
+                }
+              },
+              {
+                "text": " יותר",
+                "type": "word",
+                "translations": {
+                  "ru": "более",
+                  "en": "more"
+                }
+              },
+              {
+                "text": " זמן",
+                "type": "word",
+                "translations": {
+                  "ru": "время",
+                  "en": "time"
+                }
+              },
+              {
+                "text": " ,",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "קובעים",
+                "type": "word",
+                "translations": {
+                  "ru": "назначают",
+                  "en": "set"
+                }
+              },
+              {
+                "text": " מראש",
+                "type": "word",
+                "translations": {
+                  "ru": "заранее",
+                  "en": "in advance"
+                }
+              },
+              {
+                "text": " זמן",
+                "type": "word",
+                "translations": {
+                  "ru": "время",
+                  "en": "time"
+                }
+              },
+              {
+                "text": " מתאים",
+                "type": "word",
+                "translations": {
+                  "ru": "подходящее",
+                  "en": "suitable"
+                }
+              }
+            ],
+            [
+              {
+                "text": "כך",
+                "type": "word",
+                "translations": {
+                  "ru": "так",
+                  "en": "so"
+                }
+              },
+              {
+                "text": " כולם",
+                "type": "word",
+                "translations": {
+                  "ru": "все",
+                  "en": "everyone"
+                }
+              },
+              {
+                "text": " יודעים",
+                "type": "word",
+                "translations": {
+                  "ru": "знают",
+                  "en": "know"
+                }
+              },
+              {
+                "text": " למה",
+                "type": "word",
+                "translations": {
+                  "ru": "почему",
+                  "en": "why"
+                }
+              },
+              {
+                "text": " לצפות",
+                "type": "word",
+                "translations": {
+                  "ru": "ожидать",
+                  "en": "expect"
+                }
+              },
+              {
+                "text": " .",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "הורים",
+                "type": "word",
+                "translations": {
+                  "ru": "родителям",
+                  "en": "parents"
+                }
+              },
+              {
+                "text": " לא",
+                "type": "word",
+                "translations": {
+                  "ru": "не",
+                  "en": "do not"
+                }
+              },
+              {
+                "text": " צריכים",
+                "type": "word",
+                "translations": {
+                  "ru": "нужно",
+                  "en": "need"
+                }
+              },
+              {
+                "text": " לכתוב",
+                "type": "word",
+                "translations": {
+                  "ru": "писать",
+                  "en": "to write"
+                }
+              },
+              {
+                "text": " בלילה",
+                "type": "word",
+                "translations": {
+                  "ru": "ночью",
+                  "en": "at night"
+                }
+              },
+              {
+                "text": " ,",
+                "type": "separator",
+                "translations": {
+                  "ru": "",
+                  "en": ""
+                }
+              },
+              {
+                "text": "והמורים",
+                "type": "word",
+                "translations": {
+                  "ru": "а учителя",
+                  "en": "and the teachers"
+                }
+              },
+              {
+                "text": " יכולים",
+                "type": "word",
+                "translations": {
+                  "ru": "могут",
+                  "en": "can"
+                }
+              },
+              {
+                "text": " לענות",
+                "type": "word",
+                "translations": {
+                  "ru": "отвечать",
+                  "en": "answer"
+                }
+              },
+              {
+                "text": " בזמן",
+                "type": "word",
+                "translations": {
+                  "ru": "время",
+                  "en": "at a time"
+                }
+              },
+              {
+                "text": " שנוח",
+                "type": "word",
+                "translations": {
+                  "ru": "когда удобно",
+                  "en": "when it is convenient"
+                }
+              },
+              {
+                "text": " יותר",
+                "type": "word",
+                "translations": {
+                  "ru": "более",
+                  "en": "more"
+                }
+              },
+              {
+                "text": " לכולם",
+                "type": "word",
+                "translations": {
+                  "ru": "для всех",
+                  "en": "for everyone"
                 }
               }
             ]
