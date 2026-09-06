@@ -219,9 +219,12 @@ def _seed_batch_schema(
     levels: list[dict[str, Any]],
     locales: list[str],
     image_locales: list[str],
+    story_types: list[str] | None = None,
 ) -> dict[str, Any]:
     schema = copy.deepcopy(_story_batch_schema(minimum_count, maximum_count, levels, locales, image_locales))
     story = schema["properties"]["stories"]["items"]
+    if story_types is not None:
+        story["properties"]["type"]["enum"] = story_types
     story["properties"].pop("levels")
     story["required"].remove("levels")
     return schema
@@ -345,16 +348,38 @@ def _generation_request(
     recent_history: list[dict[str, Any]],
     recent_issues: list[dict[str, Any]],
     feedback: list[str] | None = None,
+    generated_only: bool = False,
 ) -> str:
-    mode = (
-        "This issue already exists. Produce only new stories to append. Preserve the existing issue outside this response. "
-        "The appended stories may use any content-type mix justified by quality and variety; the fixed new-issue type counts do not apply to append runs."
-        if is_append
-        else
-        "Create the first complete issue for this date with exactly 3 EVERYDAY stories and exactly 3 DIALOG stories. "
-        "Aim for 4 CURRENT stories and 2 HISTORY stories; allow 3–5 CURRENT and 1–2 HISTORY when quality requires it. "
-        "Favor practical spoken-life value over a rigid sourced-story quota."
-    )
+    if generated_only:
+        mode = (
+            "Previous candidates were rejected as duplicates. Produce only replacement stories for those rejected slots. "
+            "Every replacement must be either EVERYDAY or DIALOG, in any mix. Do not produce CURRENT or HISTORY stories."
+        )
+        research_scope = (
+            "Do not use web search. EVERYDAY and DIALOG are fully AI-generated scenarios: give them scenario metadata, "
+            "an empty source list, and no image."
+        )
+    elif is_append:
+        mode = (
+            "This issue already exists. Produce only new EVERYDAY or DIALOG stories to append, in any mix. "
+            "Do not produce CURRENT or HISTORY stories. Preserve the existing issue outside this response. "
+            "The fixed new-issue type counts do not apply to append runs."
+        )
+        research_scope = (
+            "Do not use web search. EVERYDAY and DIALOG are fully AI-generated scenarios: give them scenario metadata, "
+            "an empty source list, and no image."
+        )
+    else:
+        mode = (
+            "Create the first complete issue for this date. Aim for 4 CURRENT, 3 EVERYDAY, 3 DIALOG, and 2 HISTORY stories, "
+            "but these are targets rather than required counts. If a suitable unique CURRENT or HISTORY story cannot be found, "
+            "replace that slot with an EVERYDAY or DIALOG story instead of returning a duplicate or weak sourced story."
+        )
+        research_scope = (
+            "Use web search for every CURRENT and HISTORY story. Prefer Israeli local and regional sources, then broader "
+            "Israeli sources; use international stories only when their everyday-language value is stronger. Prefer sources "
+            "published today or within the previous several days for CURRENT. Verify facts before adapting."
+        )
     level_payload = [
         {
             "id": item["id"],
@@ -377,7 +402,7 @@ Target publication date: {target_date}
 Story count: aim for {target_count}; return between {minimum_count} and {maximum_count}. Never add a weak or padded story only to reach the target.
 Mode: {mode}
 
-Use web search for every CURRENT and HISTORY story. Prefer Israeli local and regional sources, then broader Israeli sources; use international stories only when their everyday-language value is stronger. Prefer sources published today or within the previous several days for CURRENT. Verify facts before adapting. Give every brief enough concrete situation, interaction, and outcome detail to support 4–5 developed paragraphs at the configured article lengths without invention. Never reuse any excluded story, URL, or substantially similar topic.
+{research_scope} Give every brief enough concrete situation, interaction, and outcome detail to support 4–5 developed paragraphs at the configured article lengths without invention. Never reuse any excluded story, URL, or substantially similar topic.
 
 Configured reading levels:
 {json.dumps(level_payload, ensure_ascii=False, indent=2)}
@@ -576,31 +601,50 @@ Frozen story briefs and metadata:
 """.strip()
 
 
-def _duplicate_errors(new_stories: list[dict[str, Any]], existing: dict[str, Any] | None) -> list[str]:
+def _duplicate_findings(
+    new_stories: list[dict[str, Any]],
+    existing: dict[str, Any] | None,
+) -> tuple[list[str], set[int]]:
     errors: list[str] = []
     old_stories = existing["stories"] if existing else []
     all_previous = list(old_stories)
-    existing_slugs = {story["slug"] for story in old_stories}
-    existing_urls = {normalized_url(source["url"]) for story in old_stories for source in story["sources"]}
-    for story in new_stories:
-        if story["slug"] in existing_slugs:
+    seen_slugs = {story["slug"] for story in old_stories}
+    seen_urls = {normalized_url(source["url"]) for story in old_stories for source in story["sources"]}
+    duplicate_indexes: set[int] = set()
+    for index, story in enumerate(new_stories):
+        story_is_duplicate = False
+        if story["slug"] in seen_slugs:
             errors.append(f"duplicate slug: {story['slug']}")
+            story_is_duplicate = True
         else:
             similar_slug = next(
-                (slug for slug in existing_slugs if slugs_are_near_duplicates(story["slug"], slug)),
+                (slug for slug in seen_slugs if slugs_are_near_duplicates(story["slug"], slug)),
                 None,
             )
             if similar_slug:
                 errors.append(f"near-duplicate story slugs: {story['slug']} and {similar_slug}")
+                story_is_duplicate = True
         for source in story["sources"]:
             source_url = normalized_url(source["url"])
-            if source_url in existing_urls:
+            if source_url in seen_urls:
                 errors.append(f"duplicate source URL: {source['url']}")
+                story_is_duplicate = True
         for previous in all_previous:
             if briefs_are_near_duplicates(story["brief"], previous["brief"]):
                 errors.append(f"near-duplicate story briefs: {story['slug']} and {previous['slug']}")
+                story_is_duplicate = True
                 break
+        if story_is_duplicate:
+            duplicate_indexes.add(index)
+            continue
         all_previous.append(story)
+        seen_slugs.add(story["slug"])
+        seen_urls.update(normalized_url(source["url"]) for source in story["sources"])
+    return errors, duplicate_indexes
+
+
+def _duplicate_errors(new_stories: list[dict[str, Any]], existing: dict[str, Any] | None) -> list[str]:
+    errors, _ = _duplicate_findings(new_stories, existing)
     return errors
 
 
@@ -633,21 +677,17 @@ def _seed_errors(
         errors.append("research phase returned duplicate story IDs")
     if not minimum_count <= len(seeds) <= maximum_count:
         errors.append(f"expected {minimum_count}–{maximum_count} research stories, got {len(seeds)}")
-    generated_counts = {
-        story_type: sum(
-            story.get("type") == story_type
+    if existing is not None:
+        invalid_append_types = sorted({
+            str(story.get("type"))
             for story in seeds
-            if isinstance(story, dict)
-        )
-        for story_type in ("everyday", "dialog")
-    }
-    if existing is None:
-        for story_type in ("everyday", "dialog"):
-            if generated_counts[story_type] != 3:
-                errors.append(
-                    f"new issue requires exactly 3 {story_type.upper()} stories; "
-                    f"generated {generated_counts[story_type]}"
-                )
+            if isinstance(story, dict) and story.get("type") not in {"everyday", "dialog"}
+        })
+        if invalid_append_types:
+            errors.append(
+                "append stories must be EVERYDAY or DIALOG; received "
+                + ", ".join(invalid_append_types)
+            )
     if all(isinstance(story, dict) and isinstance(story.get("sources"), list) and isinstance(story.get("brief"), str) for story in seeds):
         errors.extend(_duplicate_errors(seeds, existing))
     return errors
@@ -765,7 +805,6 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
     )
     instructions = _read_prompts(root)
     image_locales = list(dict.fromkeys([*site["interfaceLocales"], *locales]))
-    seed_schema = _seed_batch_schema(minimum_count, maximum_count, levels, locales, image_locales)
     mode = "append" if existing else "new issue"
     _log(
         f"Preparing {target_date} ({mode}); target {target_count} stories, "
@@ -773,21 +812,52 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
     )
     research_feedback: list[str] | None = None
     seeds: list[dict[str, Any]] | None = None
+    retained_seeds: list[dict[str, Any]] = []
+    replacement_count = 0
+    replacing_duplicates = False
 
     for attempt in range(RESEARCH_ATTEMPTS):
         attempt_number = attempt + 1
+        request_target = replacement_count if replacing_duplicates else target_count
+        request_minimum = request_target if replacing_duplicates else minimum_count
+        request_maximum = request_target if replacing_duplicates else maximum_count
+        request_exclusions = exclusions
+        if replacing_duplicates:
+            request_exclusions = {
+                "stories": [
+                    *exclusions.get("stories", []),
+                    *[
+                        {
+                            "id": story["id"],
+                            "brief": story["brief"],
+                            "sourceUrls": [normalized_url(source["url"]) for source in story["sources"]],
+                        }
+                        for story in retained_seeds
+                    ],
+                ]
+            }
+        allowed_story_types = ["everyday", "dialog"] if existing or replacing_duplicates else None
+        seed_schema = _seed_batch_schema(
+            request_minimum,
+            request_maximum,
+            levels,
+            locales,
+            image_locales,
+            allowed_story_types,
+        )
         research_request = _generation_request(
             target_date,
-            target_count,
-            minimum_count,
-            maximum_count,
+            request_target,
+            request_minimum,
+            request_maximum,
             existing is not None,
             levels,
             locales,
-            exclusions,
+            request_exclusions,
             recent,
             recent_issues,
             research_feedback,
+            replacing_duplicates,
         )
         research_request += "\n\nThis is the research and planning phase. Return only sourced/scenario metadata and concise frozen briefs; do not write level adaptations yet."
         seed_batch = _call_openai(
@@ -795,12 +865,13 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
             instructions,
             research_request,
             seed_schema,
+            use_web_search=existing is None and not replacing_duplicates,
             phase=f"Research attempt {attempt_number}/{RESEARCH_ATTEMPTS}",
         )
         unverified_urls = seed_batch.pop(PROVENANCE_ERRORS_KEY, [])
-        candidate_seeds = seed_batch.get("stories", [])
+        returned_seeds = seed_batch.get("stories", [])
         removed_sources, removed_images = _remove_redundant_sources(
-            candidate_seeds,
+            returned_seeds,
             existing,
             unverified_urls,
         )
@@ -809,6 +880,7 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
                 f"Research attempt {attempt_number}/{RESEARCH_ATTEMPTS}: removed "
                 f"{removed_sources} unusable source(s) and {removed_images} dependent image(s)"
             )
+        candidate_seeds = [*retained_seeds, *returned_seeds] if replacing_duplicates else returned_seeds
         _log(
             f"Research attempt {attempt_number}/{RESEARCH_ATTEMPTS}: "
             f"validating {len(candidate_seeds)} story briefs"
@@ -830,8 +902,47 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
                 f"Research attempt {attempt_number}/{RESEARCH_ATTEMPTS}",
                 research_errors,
             )
+            duplicate_errors, duplicate_indexes = _duplicate_findings(candidate_seeds, existing)
+            duplicate_only = bool(duplicate_indexes) and all(
+                "duplicate" in error.lower()
+                for error in research_errors
+            )
+            if duplicate_only and attempt < RESEARCH_ATTEMPTS - 1:
+                retained_seeds = [
+                    story
+                    for index, story in enumerate(candidate_seeds)
+                    if index not in duplicate_indexes
+                ]
+                replacement_count = len(duplicate_indexes)
+                replacing_duplicates = True
+                research_feedback = [
+                    *list(dict.fromkeys(duplicate_errors))[:19],
+                    f"Return exactly {replacement_count} AI replacement stories for the rejected duplicate slots.",
+                ]
+                _log(
+                    f"Research attempt {attempt_number}/{RESEARCH_ATTEMPTS}: keeping "
+                    f"{len(retained_seeds)} unique stories and replacing {replacement_count} duplicate(s) "
+                    "with EVERYDAY or DIALOG stories"
+                )
+                continue
+            if duplicate_only:
+                unique_seeds = [
+                    story
+                    for index, story in enumerate(candidate_seeds)
+                    if index not in duplicate_indexes
+                ]
+                if minimum_count <= len(unique_seeds) <= maximum_count:
+                    seeds = unique_seeds
+                    _log(
+                        f"Research attempt {attempt_number}/{RESEARCH_ATTEMPTS}: replacement still contained "
+                        f"duplicates; continuing with {len(unique_seeds)} unique stories within the allowed range"
+                    )
+                    break
             if attempt == RESEARCH_ATTEMPTS - 1:
                 raise RuntimeError("Generated research failed validation:\n- " + _error_report(research_errors))
+            retained_seeds = []
+            replacement_count = 0
+            replacing_duplicates = False
             continue
         seeds = candidate_seeds
         _log(

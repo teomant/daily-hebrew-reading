@@ -18,10 +18,12 @@ from src.generate_issue import (
     _call_openai,
     _existing_exclusions,
     _generation_request,
+    _duplicate_findings,
     _remove_redundant_sources,
     _recent_history,
     _recent_issue_context,
     _safe_log_text,
+    _seed_batch_schema,
     _seed_errors,
     _transactional_write,
     _updated_history,
@@ -82,6 +84,13 @@ class GenerationTests(unittest.TestCase):
         self.assertIn("A previous story that must not be repeated.", request)
         self.assertIn("https://example.com/previous-story", request)
         self.assertIn("another language, publisher, URL, headline, wording, angle", request)
+        self.assertIn("only new EVERYDAY or DIALOG stories", request)
+        self.assertIn("Do not use web search", request)
+
+    def test_append_seed_schema_only_accepts_everyday_or_dialog(self) -> None:
+        schema = _seed_batch_schema(3, 3, [], ["ru", "en"], ["ru", "en"], ["everyday", "dialog"])
+        story_types = schema["properties"]["stories"]["items"]["properties"]["type"]["enum"]
+        self.assertEqual(story_types, ["everyday", "dialog"])
 
     def test_recent_scenario_history_is_compact_for_prompt_context(self) -> None:
         history = {
@@ -105,21 +114,33 @@ class GenerationTests(unittest.TestCase):
             }],
         )
 
-    def test_new_issue_requires_three_everyday_and_three_dialog_stories(self) -> None:
+    def test_new_issue_does_not_require_fixed_story_type_counts(self) -> None:
         site = read_json(ROOT / "config" / "site.json")
         levels = read_json(ROOT / "config" / "reading-levels.json")["levels"]
+        briefs = [
+            "A city adds a late bus on a busy route.",
+            "A supermarket changes how reusable bags are sold.",
+            "A neighborhood library opens a tool-lending shelf.",
+            "A cafe introduces advance pickup for breakfast orders.",
+            "A local pool extends its evening opening hours.",
+            "A clinic introduces appointment reminders by text message.",
+            "A railway station changes its passenger pickup area.",
+            "A market offers a collection point for used batteries.",
+            "A community center opens registration for cooking classes.",
+            "A bus company adds clearer signs at a central stop.",
+        ]
         seeds = [
             {
                 "id": f"story-{index}",
                 "slug": f"story-{index}",
-                "type": "history" if index >= 8 else "current",
-                "category": "history" if index >= 8 else "city",
-                "brief": f"Distinct factual subject number {index}",
+                "type": "current",
+                "category": "city",
+                "brief": brief,
                 "everydayMeta": None,
                 "sources": [],
                 "image": None,
             }
-            for index in range(10)
+            for index, brief in enumerate(briefs)
         ]
         errors = _seed_errors(
             seeds,
@@ -132,10 +153,34 @@ class GenerationTests(unittest.TestCase):
             8,
             12,
         )
-        self.assertTrue(any("requires exactly 3 EVERYDAY" in error for error in errors), errors)
-        self.assertTrue(any("requires exactly 3 DIALOG" in error for error in errors), errors)
+        self.assertEqual(errors, [])
 
-    def test_new_issue_accepts_the_required_everyday_and_dialog_mix(self) -> None:
+    def test_duplicate_findings_identify_only_rejected_slots(self) -> None:
+        stories = [
+            {
+                "id": "unique-bus-change",
+                "slug": "unique-bus-change",
+                "brief": "A bus route adds a new evening stop near a neighborhood clinic.",
+                "sources": [],
+            },
+            {
+                "id": "unique-bus-change-details",
+                "slug": "unique-bus-change-details",
+                "brief": "A bus route adds a new evening stop near a neighborhood clinic.",
+                "sources": [],
+            },
+            {
+                "id": "different-cafe-order",
+                "slug": "different-cafe-order",
+                "brief": "A customer changes a cafe pickup time before leaving work.",
+                "sources": [],
+            },
+        ]
+        errors, indexes = _duplicate_findings(stories, None)
+        self.assertTrue(errors)
+        self.assertEqual(indexes, {1})
+
+    def test_new_issue_accepts_the_target_everyday_and_dialog_mix(self) -> None:
         site = read_json(ROOT / "config" / "site.json")
         levels = read_json(ROOT / "config" / "reading-levels.json")["levels"]
         story_types = ["current"] * 4 + ["everyday"] * 3 + ["dialog"] * 3 + ["history"] * 2
@@ -186,7 +231,7 @@ class GenerationTests(unittest.TestCase):
         )
         self.assertEqual(errors, [])
 
-    def test_full_issue_append_allows_any_story_type_mix(self) -> None:
+    def test_full_issue_append_allows_any_generated_story_type_mix(self) -> None:
         site = read_json(ROOT / "config" / "site.json")
         levels = read_json(ROOT / "config" / "reading-levels.json")["levels"]
         existing = read_json(ROOT / "content" / "2026-09-06.json")
@@ -196,15 +241,13 @@ class GenerationTests(unittest.TestCase):
             "A neighborhood opens a shaded place to wait for the bus.",
             "An old bakery sign is restored and returned to its original street.",
         ]
-        story_types = ["dialog", "current", "history"]
+        story_types = ["dialog", "everyday", "dialog"]
         seeds = []
         for index, (brief, story_type) in enumerate(zip(briefs, story_types, strict=True)):
             seed = {key: copy.deepcopy(value) for key, value in template.items() if key != "levels"}
             seed["id"] = seed["slug"] = f"append-story-{index}"
             seed["type"] = story_type
             seed["brief"] = brief
-            if story_type in {"current", "history"}:
-                seed["everydayMeta"] = None
             seeds.append(seed)
         errors = _seed_errors(
             seeds,
@@ -218,6 +261,21 @@ class GenerationTests(unittest.TestCase):
             3,
         )
         self.assertEqual(errors, [])
+
+        seeds[1]["type"] = "current"
+        seeds[1]["everydayMeta"] = None
+        errors = _seed_errors(
+            seeds,
+            existing["date"],
+            existing["availableLevels"],
+            existing["translationLocales"],
+            site,
+            levels,
+            existing,
+            3,
+            3,
+        )
+        self.assertTrue(any("append stories must be EVERYDAY or DIALOG" in error for error in errors), errors)
 
     def test_dialog_is_recorded_in_scenario_history(self) -> None:
         story = {
@@ -401,6 +459,50 @@ class GenerationTests(unittest.TestCase):
             self.assertTrue(all(unit["text"] for level in result["stories"][-1]["levels"].values() for unit in level["title"]))
             self.assertEqual(validate_repository(root), [])
 
+    def test_duplicate_seed_is_replaced_with_an_ai_story(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            for directory in ("config", "i18n", "prompts", "content"):
+                shutil.copytree(ROOT / directory, root / directory)
+            original = read_json(root / "content" / "2024-01-26.json")
+            duplicate_seed = {
+                key: copy.deepcopy(value)
+                for key, value in original["stories"][1].items()
+                if key != "levels"
+            }
+            replacement = copy.deepcopy(original["stories"][1])
+            replacement["id"] = replacement["slug"] = "changed-family-shopping-list"
+            replacement["brief"] = (
+                "Two relatives compare the shopping list, remove an unnecessary item, "
+                "and agree who will visit the supermarket."
+            )
+            replacement["type"] = "dialog"
+            replacement["everydayMeta"]["domain"] = "family"
+            replacement["everydayMeta"]["scenario"] = "revise_shared_shopping_list"
+            replacement_seed = {
+                key: copy.deepcopy(value)
+                for key, value in replacement.items()
+                if key != "levels"
+            }
+            adaptation = {"id": replacement["id"], "levels": replacement["levels"]}
+            call = Mock(side_effect=[
+                {"stories": [duplicate_seed]},
+                {"stories": [replacement_seed]},
+                {"adaptations": [adaptation]},
+            ])
+            with patch.dict(os.environ, {"OPENAI_MODEL": "test-model"}), patch(
+                "src.generate_issue._call_openai",
+                call,
+            ):
+                result = generate(root, "2024-01-26", 1)
+            self.assertEqual(call.call_count, 3)
+            self.assertIn("only replacement stories", call.call_args_list[1].args[2])
+            replacement_schema = call.call_args_list[1].args[3]
+            replacement_types = replacement_schema["properties"]["stories"]["items"]["properties"]["type"]["enum"]
+            self.assertEqual(replacement_types, ["everyday", "dialog"])
+            self.assertFalse(call.call_args_list[1].kwargs["use_web_search"])
+            self.assertEqual(result["stories"][-1]["id"], "changed-family-shopping-list")
+
     def test_failed_adaptation_request_retries_without_research(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
@@ -426,6 +528,7 @@ class GenerationTests(unittest.TestCase):
                 result = generate(root, "2024-01-26", 1)
             self.assertEqual(call.call_count, 3)
             self.assertEqual(call.call_args_list[0].kwargs["phase"], "Research attempt 1/3")
+            self.assertFalse(call.call_args_list[0].kwargs["use_web_search"])
             self.assertEqual(call.call_args_list[1].kwargs["phase"], "Adaptation batch 1/1, attempt 1/2")
             self.assertEqual(call.call_args_list[2].kwargs["phase"], "Adaptation batch 1/1, attempt 2/2")
             self.assertEqual(result["stories"][-1]["id"], "changed-train-platform")
@@ -492,23 +595,16 @@ class GenerationTests(unittest.TestCase):
             for directory in ("config", "i18n", "prompts", "content"):
                 shutil.copytree(ROOT / directory, root / directory)
             original = read_json(root / "content" / "2024-01-26.json")
-            new_story = copy.deepcopy(original["stories"][0])
-            new_story["id"] = new_story["slug"] = "new-science-story"
-            new_story["brief"] = "Researchers published a new, independently sourced science result."
-            new_story["sources"] = [{
-                "publisher": "Example Science",
-                "title": "New science result",
-                "url": "https://example.com/unverified",
-            }]
-            new_story["image"] = None
+            new_story = copy.deepcopy(original["stories"][1])
+            new_story["id"] = new_story["slug"] = "new-cafe-order"
+            new_story["brief"] = "A customer changes a cafe order before the staff starts preparing it."
+            new_story["everydayMeta"]["domain"] = "cafe"
+            new_story["everydayMeta"]["scenario"] = "change_order_before_preparation"
             valid_seed = {key: value for key, value in new_story.items() if key != "levels"}
             invalid_seed = {**valid_seed, "slug": "Not a valid slug"}
             adaptation = {"id": new_story["id"], "levels": new_story["levels"]}
             call = Mock(side_effect=[
-                {
-                    "stories": [invalid_seed],
-                    PROVENANCE_ERRORS_KEY: ["https://example.com/unverified"],
-                },
+                {"stories": [invalid_seed]},
                 {"stories": [valid_seed]},
                 {"adaptations": [adaptation]},
             ])
@@ -519,7 +615,7 @@ class GenerationTests(unittest.TestCase):
                 result = generate(root, "2024-01-26", 1)
             self.assertEqual(call.call_count, 3)
             self.assertIn("expected lowercase ASCII kebab-case", call.call_args_list[1].args[2])
-            self.assertEqual(result["stories"][-1]["id"], "new-science-story")
+            self.assertEqual(result["stories"][-1]["id"], "new-cafe-order")
 
 
 if __name__ == "__main__":

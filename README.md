@@ -12,8 +12,8 @@ The repository contains a complete sample issue, so the site can be built and te
 - Keyboard, hover, and tap translation popovers.
 - Source links and optional externally hosted, attributed source images with graceful failure.
 - Two-stage OpenAI Responses API generation: research freezes briefs, then one adaptation call writes and proofreads Hebrew before adding lexical units and contextual translations.
-- Three short, practical DIALOG conversations per new issue, written for family and everyday learning alongside three EVERYDAY stories.
-- Safe same-day append behavior; existing stories are preserved and duplicates are rejected.
+- A target of three short, practical DIALOG conversations and three EVERYDAY stories per new issue, with extra generated stories allowed when unique sourced material is unavailable.
+- Safe same-day append behavior; existing stories are preserved, duplicates are rejected, and new entries are only EVERYDAY or DIALOG in any mix.
 - Content validation, tests, daily/manual GitHub Actions, and GitHub Pages deployment.
 
 The full English product requirements are in [docs/product-specification.md](docs/product-specification.md). The earlier design choices remain available in [design-previews/README.md](design-previews/README.md).
@@ -40,7 +40,7 @@ export OPENAI_MODEL="gpt-5.4-mini"
 python -m src.generate_issue --date 2026-09-04
 ```
 
-If that date does not exist, the generator creates a normal full issue. If it already exists, it appends three stories by default:
+If that date does not exist, the generator creates a normal full issue. If it already exists, it appends three fully AI-generated EVERYDAY or DIALOG stories by default, in any mix and without web research:
 
 ```bash
 python -m src.generate_issue --date 2026-09-04 --additional-stories 2
@@ -74,7 +74,7 @@ The OpenAI API is billed separately from ChatGPT Plus. The API uses the credits 
 ## Running the workflows
 
 - **Generate daily issue** runs at `01:15 UTC` and can also be started from **Actions → Generate daily issue → Run workflow**.
-- Leave `date` blank to use the current UTC date. Enter an existing date to append rather than replace. `additional_stories` controls the append size; it is ignored for a new full issue.
+- Leave `date` blank to use the current UTC date. Enter an existing date to append rather than replace. Append runs generate only EVERYDAY or DIALOG stories, in any mix. `additional_stories` controls the append size; it is ignored for a new full issue.
 - **Validate and deploy site** runs on an ordinary push to `master` and never calls OpenAI.
 
 Generation logs timestamp each research, adaptation, validation, and write phase. Research has up to three attempts. Adaptation runs in two-story batches; a failed request retries only its batch without repeating research.
