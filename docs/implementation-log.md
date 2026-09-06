@@ -1,5 +1,15 @@
 # Implementation log
 
+## 2026-09-06
+
+- Removed three topic-duplicate CURRENT stories introduced by a second same-day generation run (desalination shutdowns, Mahane Yehuda renovation, and parent–teacher contact rules) and restored the issue index metadata to the cleaned 12-story issue.
+- Strengthened append validation with order-independent significant-word overlap in addition to the existing source, slug, and sequence checks, so substantially rephrased versions of an existing topic are rejected during research and by repository validation.
+- Fixed article rendering when generated lexical units carry leading or trailing whitespace inside clickable text. Server-rendered HTML and client-side level/translation rerenders now place boundary whitespace outside the button while preserving the unit's internal text and translations.
+- Added focused generation, validation, and rendering regression tests for both observed failures.
+- Added DIALOG as a minimal first-class generated story type for natural conversations useful to the learner and their family. New issues target 4 CURRENT, 3 EVERYDAY, 3 DIALOG, and 2 HISTORY entries; sourced-story counts remain flexible for a 10–13 story range.
+- Reused the existing scenario metadata, diversity history, level adaptations, lexical translations, cards, and article pages for DIALOG. Added RU/EN type labels, AI-generated disclosure, source/image restrictions, append balancing, dedicated prompt guidance, and focused tests without introducing a separate screenplay model or UI.
+- Verification passed repository content validation, 34 unit tests, Python compilation, JavaScript syntax checking, the production static build, and whitespace checks. Per owner direction, no local browser run or additional independent review was performed for the DIALOG change.
+
 ## 2026-09-04
 
 - Translated and recorded the supplied Russian product document in `docs/product-specification.md`; added confirmed decisions for daily UTC generation, the project Pages base path, same-day append behavior, source-linked images, interface languages, and extensible levels/locales.

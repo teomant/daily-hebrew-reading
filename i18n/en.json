@@ -49,6 +49,7 @@
   "category.everyday": "Everyday life",
   "type.current": "CURRENT",
   "type.everyday": "EVERYDAY",
+  "type.dialog": "DIALOG",
   "type.history": "HISTORY",
   "type.aiGenerated": "FULLY AI-GENERATED",
   "footer.schedule": "New stories every day at 01:15 UTC"

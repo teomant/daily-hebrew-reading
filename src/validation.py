@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import re
+from difflib import SequenceMatcher
 from pathlib import Path
 from typing import Any
 from unicodedata import category as unicode_category
@@ -10,9 +11,40 @@ from .common import issue_minutes, normalized_url, read_json, units_text
 
 
 SLUG_PATTERN = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
-STORY_TYPES = {"current", "everyday", "history"}
+STORY_TYPES = {"current", "everyday", "dialog", "history"}
 UNIT_TYPES = {"word", "expression", "properNoun", "separator"}
 MIN_TRANSLATION_COVERAGE = 0.75
+BRIEF_STOP_WORDS = {
+    "a", "an", "and", "are", "as", "at", "be", "because", "been", "but", "by",
+    "can", "could", "for", "from", "has", "have", "how", "in", "into", "is", "it",
+    "its", "may", "more", "new", "not", "of", "on", "or", "other", "out", "so",
+    "some", "than", "that", "the", "their", "them", "then", "there", "they", "this",
+    "to", "too", "up", "was", "were", "what", "when", "where", "which", "while",
+    "who", "why", "will", "with", "would",
+}
+
+
+def briefs_are_near_duplicates(first: str, second: str) -> bool:
+    """Detect the same story when a generated brief has been lightly rewritten."""
+    normalized_first = " ".join(re.findall(r"\w+", first.casefold()))
+    normalized_second = " ".join(re.findall(r"\w+", second.casefold()))
+    if SequenceMatcher(None, normalized_first, normalized_second).ratio() >= 0.82:
+        return True
+
+    first_tokens = {
+        token for token in normalized_first.split()
+        if len(token) > 2 and token not in BRIEF_STOP_WORDS
+    }
+    second_tokens = {
+        token for token in normalized_second.split()
+        if len(token) > 2 and token not in BRIEF_STOP_WORDS
+    }
+    if not first_tokens or not second_tokens:
+        return False
+    shared = first_tokens & second_tokens
+    overlap = len(shared) / min(len(first_tokens), len(second_tokens))
+    jaccard = len(shared) / len(first_tokens | second_tokens)
+    return len(shared) >= 8 and overlap >= 0.70 and jaccard >= 0.45
 
 
 def _https_url(value: Any) -> bool:
@@ -130,6 +162,7 @@ def validate_issue(
 
     seen_slugs: set[str] = set()
     seen_source_urls: set[str] = set()
+    seen_briefs: list[tuple[int, str, str]] = []
     for story_index, story in enumerate(stories):
         story_path = f"{label}.stories[{story_index}]"
         if not isinstance(story, dict):
@@ -151,15 +184,25 @@ def validate_issue(
             errors.append(f"{story_path}.type: unsupported story type")
         if not isinstance(story.get("category"), str) or not story["category"]:
             errors.append(f"{story_path}.category: expected a stable category key")
-        if not isinstance(story.get("brief"), str) or not story["brief"].strip():
+        brief = story.get("brief")
+        if not isinstance(brief, str) or not brief.strip():
             errors.append(f"{story_path}.brief: expected a non-empty brief")
+        else:
+            for previous_index, previous_brief, previous_slug in seen_briefs:
+                if briefs_are_near_duplicates(brief, previous_brief):
+                    errors.append(
+                        f"{story_path}.brief: near-duplicate story topic of "
+                        f"{label}.stories[{previous_index}] ({previous_slug})"
+                    )
+                    break
+            seen_briefs.append((story_index, brief, str(slug)))
 
         sources = story.get("sources")
         if not isinstance(sources, list):
             errors.append(f"{story_path}.sources: expected a list")
             sources = []
-        if story_type == "everyday" and sources:
-            errors.append(f"{story_path}.sources: EVERYDAY stories cannot have sources")
+        if story_type in {"everyday", "dialog"} and sources:
+            errors.append(f"{story_path}.sources: {story_type.upper()} stories cannot have sources")
         source_urls: set[str] = set()
         for source_index, source in enumerate(sources):
             source_path = f"{story_path}.sources[{source_index}]"
@@ -181,9 +224,9 @@ def validate_issue(
                     seen_source_urls.add(source_url)
 
         meta = story.get("everydayMeta")
-        if story_type == "everyday":
+        if story_type in {"everyday", "dialog"}:
             if not isinstance(meta, dict):
-                errors.append(f"{story_path}.everydayMeta: EVERYDAY metadata is required")
+                errors.append(f"{story_path}.everydayMeta: {story_type.upper()} scenario metadata is required")
             else:
                 for field in ("domain", "scenario"):
                     if not isinstance(meta.get(field), str) or not meta[field].strip():
@@ -192,12 +235,12 @@ def validate_issue(
                     if not isinstance(meta.get(field), list) or not meta[field]:
                         errors.append(f"{story_path}.everydayMeta.{field}: expected a non-empty list")
         elif meta is not None:
-            errors.append(f"{story_path}.everydayMeta: only EVERYDAY stories may have metadata")
+            errors.append(f"{story_path}.everydayMeta: only EVERYDAY and DIALOG stories may have metadata")
 
         image = story.get("image")
         if image is not None:
-            if story_type == "everyday":
-                errors.append(f"{story_path}.image: EVERYDAY stories cannot use sourced images")
+            if story_type in {"everyday", "dialog"}:
+                errors.append(f"{story_path}.image: {story_type.upper()} stories cannot use sourced images")
             elif not isinstance(image, dict):
                 errors.append(f"{story_path}.image: expected an object or null")
             else:
@@ -316,6 +359,6 @@ def validate_repository(root: Path) -> list[str]:
             for issue in issues.values():
                 for story in issue.get("stories", []):
                     history_key = (issue.get("date"), story.get("id"))
-                    if story.get("type") == "everyday" and history_key not in history_ids:
+                    if story.get("type") in {"everyday", "dialog"} and history_key not in history_ids:
                         errors.append(f"everyday-history.json: missing {story.get('id')}")
     return errors

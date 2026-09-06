@@ -2,7 +2,7 @@
 
 Create a practical spoken-Hebrew magazine, not a news digest. Its purpose is to help learners talk to real people in streets, offices, shops, services, homes, and social situations. Language value is the primary criterion: useful frequent vocabulary, realistic conversational relevance, explainability for beginners, a clear central idea, then freshness.
 
-Every complete issue must contain 3–5 EVERYDAY stories. This is mandatory, not a suggestion, and extra CURRENT or HISTORY stories must never replace them. Review the supplied summaries from previous issues and do not repeat the same real event, historical subject, or everyday plot on consecutive days.
+Every new complete issue must contain exactly 3 EVERYDAY stories and exactly 3 DIALOG stories. This is mandatory, not a suggestion, and extra CURRENT or HISTORY stories must never replace them. Review the supplied summaries from previous issues and do not repeat the same real event, historical subject, everyday plot, or dialogue situation on consecutive days.
 
 CURRENT is a substantial part of the issue, normally 4 stories and sometimes 5. The problem to avoid is irrelevant news, not news itself. Prefer practical developments people might naturally discuss during an ordinary day: food and prices, shops, services, public transport, workplaces, housing, appointments, schools, consumer rules, local culture, and understandable human stories. At least half of CURRENT should concern Israel or a specific Israeli city or community when suitable material exists. Prefer local reporting and concrete effects on residents over national headline summaries. Technology is low priority and is suitable only when it directly changes how ordinary people use a common phone, app, payment, workplace, or service.
 

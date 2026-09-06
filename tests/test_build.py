@@ -35,6 +35,17 @@ class BuildTests(unittest.TestCase):
         self.assertEqual(units_text(units), "בנק ישראל מוריד ל3.25%")
         self.assertIn("</button> <button", render_units(units, interactive=True))
 
+    def test_whitespace_inside_clickable_units_is_rendered_between_buttons(self) -> None:
+        units = [
+            {"text": "ירושלים ", "type": "properNoun", "translations": {"ru": "Иерусалим"}},
+            {"text": "מצילה ", "type": "word", "translations": {"ru": "спасает"}},
+            {"text": "אוכל", "type": "word", "translations": {"ru": "еду"}},
+        ]
+        rendered = render_units(units, interactive=True)
+        self.assertIn(">ירושלים</button> <button", rendered)
+        self.assertIn(">מצילה</button> <button", rendered)
+        self.assertNotIn(">ירושלים </button>", rendered)
+
     def test_home_does_not_keep_image_column_without_an_image(self) -> None:
         issue = copy.deepcopy(read_json(ROOT / "content" / "2024-01-26.json"))
         issue["stories"][0]["image"] = None
@@ -55,6 +66,13 @@ class BuildTests(unittest.TestCase):
     def test_everyday_story_is_disclosed_as_ai_generated(self) -> None:
         issue = read_json(ROOT / "content" / "2024-01-26.json")
         rendered = build_home(issue, read_json(ROOT / "content" / "index.json"), load_site_config(), load_level_config(), load_locales())
+        self.assertIn("ПОЛНОСТЬЮ СОЗДАНО ИИ", rendered)
+
+    def test_dialog_has_its_own_type_and_ai_disclosure(self) -> None:
+        issue = copy.deepcopy(read_json(ROOT / "content" / "2024-01-26.json"))
+        issue["stories"][1]["type"] = "dialog"
+        rendered = build_home(issue, read_json(ROOT / "content" / "index.json"), load_site_config(), load_level_config(), load_locales())
+        self.assertIn("DIALOG", rendered)
         self.assertIn("ПОЛНОСТЬЮ СОЗДАНО ИИ", rendered)
 
     def test_old_issue_builds_when_a_new_level_becomes_default(self) -> None:

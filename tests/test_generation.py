@@ -21,6 +21,7 @@ from src.generate_issue import (
     _safe_log_text,
     _seed_errors,
     _transactional_write,
+    _updated_history,
     generate,
 )
 from src.validation import validate_repository
@@ -43,7 +44,7 @@ class GenerationTests(unittest.TestCase):
             context = _recent_issue_context(content_dir, date.fromisoformat("2026-09-05"), 3)
         self.assertEqual([item["date"] for item in context], ["2026-09-04", "2026-09-02"])
 
-    def test_new_issue_requires_three_to_five_everyday_stories(self) -> None:
+    def test_new_issue_requires_three_everyday_and_three_dialog_stories(self) -> None:
         site = read_json(ROOT / "config" / "site.json")
         levels = read_json(ROOT / "config" / "reading-levels.json")["levels"]
         seeds = [
@@ -70,7 +71,148 @@ class GenerationTests(unittest.TestCase):
             8,
             12,
         )
-        self.assertTrue(any("requires 3–5 EVERYDAY" in error for error in errors), errors)
+        self.assertTrue(any("requires exactly 3 EVERYDAY" in error for error in errors), errors)
+        self.assertTrue(any("requires exactly 3 DIALOG" in error for error in errors), errors)
+
+    def test_new_issue_accepts_the_required_everyday_and_dialog_mix(self) -> None:
+        site = read_json(ROOT / "config" / "site.json")
+        levels = read_json(ROOT / "config" / "reading-levels.json")["levels"]
+        story_types = ["current"] * 4 + ["everyday"] * 3 + ["dialog"] * 3 + ["history"] * 2
+        briefs = [
+            "A city adds a late bus on a busy route.",
+            "A supermarket changes how reusable bags are sold.",
+            "A neighborhood library opens a tool-lending shelf.",
+            "A cafe introduces advance pickup for breakfast orders.",
+            "A parent replaces a missing item from a school bag.",
+            "A tenant arranges a convenient time for a repair visit.",
+            "A customer returns shoes that do not fit comfortably.",
+            "Two relatives decide what groceries to buy for dinner.",
+            "A couple agrees how to divide errands before guests arrive.",
+            "A child and parent clarify where to meet after school.",
+            "An old train station becomes a community building.",
+            "A familiar market street gets its modern name.",
+        ]
+        seeds = []
+        for index, (story_type, brief) in enumerate(zip(story_types, briefs, strict=True)):
+            generated = story_type in {"everyday", "dialog"}
+            seeds.append(
+                {
+                    "id": f"story-{index}",
+                    "slug": f"story-{index}",
+                    "type": story_type,
+                    "category": "everyday" if generated else "history" if story_type == "history" else "city",
+                    "brief": brief,
+                    "everydayMeta": {
+                        "domain": f"domain-{index}",
+                        "scenario": f"scenario_{index}",
+                        "lexicalThemes": ["plans"],
+                        "targetVocabulary": ["להחליט"],
+                    } if generated else None,
+                    "sources": [],
+                    "image": None,
+                }
+            )
+        errors = _seed_errors(
+            seeds,
+            "2026-09-07",
+            [level["id"] for level in levels],
+            site["translationLocales"],
+            site,
+            levels,
+            None,
+            10,
+            13,
+        )
+        self.assertEqual(errors, [])
+
+    def test_full_issue_append_fills_missing_dialogs_first(self) -> None:
+        site = read_json(ROOT / "config" / "site.json")
+        levels = read_json(ROOT / "config" / "reading-levels.json")["levels"]
+        existing = read_json(ROOT / "content" / "2026-09-06.json")
+        template = next(story for story in existing["stories"] if story["type"] == "everyday")
+        briefs = [
+            "Two siblings decide who will collect a package before the shop closes.",
+            "Parents agree what to cook after discovering an ingredient is missing.",
+            "A grandparent and child arrange where to meet after an afternoon class.",
+        ]
+        seeds = []
+        for index, brief in enumerate(briefs):
+            seed = {key: copy.deepcopy(value) for key, value in template.items() if key != "levels"}
+            seed["id"] = seed["slug"] = f"family-dialog-{index}"
+            seed["type"] = "dialog"
+            seed["brief"] = brief
+            seed["everydayMeta"]["scenario"] = f"family_dialog_{index}"
+            seeds.append(seed)
+        errors = _seed_errors(
+            seeds,
+            existing["date"],
+            existing["availableLevels"],
+            existing["translationLocales"],
+            site,
+            levels,
+            existing,
+            3,
+            3,
+        )
+        self.assertEqual(errors, [])
+
+        seeds[0]["type"] = "everyday"
+        errors = _seed_errors(
+            seeds,
+            existing["date"],
+            existing["availableLevels"],
+            existing["translationLocales"],
+            site,
+            levels,
+            existing,
+            3,
+            3,
+        )
+        self.assertTrue(any("append requires 3 DIALOG" in error for error in errors), errors)
+
+    def test_dialog_is_recorded_in_scenario_history(self) -> None:
+        story = {
+            "id": "family-dinner-dialog",
+            "type": "dialog",
+            "everydayMeta": {
+                "domain": "family",
+                "scenario": "choose_dinner",
+                "lexicalThemes": ["plans"],
+                "targetVocabulary": ["מה בא לך"],
+            },
+        }
+        history = _updated_history({"schemaVersion": 1, "items": []}, [story], "2026-09-07")
+        self.assertEqual(history["items"][0]["storyId"], "family-dinner-dialog")
+
+    def test_append_rejects_a_rephrased_existing_topic(self) -> None:
+        site = read_json(ROOT / "config" / "site.json")
+        levels = read_json(ROOT / "config" / "reading-levels.json")["levels"]
+        existing = copy.deepcopy(read_json(ROOT / "content" / "2024-01-26.json"))
+        existing["stories"][0]["brief"] = (
+            "Several desalination plants shut down after murky seawater raised turbidity, "
+            "while authorities asked residents to reduce irrigation and save water at home."
+        )
+        seed = copy.deepcopy(existing["stories"][0])
+        seed["id"] = seed["slug"] = "save-water-after-plant-shutdowns"
+        seed["brief"] = (
+            "Authorities asked residents to save water at home and reduce irrigation after "
+            "murky seawater raised turbidity and shut down several desalination plants."
+        )
+        seed["sources"] = []
+        seed["image"] = None
+        seed.pop("levels")
+        errors = _seed_errors(
+            [seed],
+            existing["date"],
+            existing["availableLevels"],
+            existing["translationLocales"],
+            site,
+            levels,
+            existing,
+            1,
+            1,
+        )
+        self.assertTrue(any("near-duplicate story" in error for error in errors), errors)
 
     def test_log_text_escapes_control_characters(self) -> None:
         self.assertEqual(

@@ -56,15 +56,27 @@ def render_units(units: list[dict[str, Any]], interactive: bool = False) -> str:
     for index, unit in enumerate(units):
         if index and units_need_space(units[index - 1], unit):
             rendered.append(" ")
-        text = esc(unit["text"])
+        raw_text = str(unit["text"])
+        text = esc(raw_text)
         if unit["type"] == "separator" or not interactive:
             rendered.append(text)
             continue
+        leading_length = len(raw_text) - len(raw_text.lstrip())
+        trailing_length = len(raw_text) - len(raw_text.rstrip())
+        core_end = len(raw_text) - trailing_length if trailing_length else len(raw_text)
+        leading = raw_text[:leading_length]
+        core = raw_text[leading_length:core_end]
+        trailing = raw_text[core_end:]
+        if not core:
+            rendered.append(text)
+            continue
         translations = esc(json.dumps(unit["translations"], ensure_ascii=False))
+        rendered.append(esc(leading))
         rendered.append(
             f'<button class="lexeme" type="button" data-unit-type="{esc(unit["type"])}" '
-            f'data-translations="{translations}">{text}</button>'
+            f'data-translations="{translations}">{esc(core)}</button>'
         )
+        rendered.append(esc(trailing))
     return "".join(rendered)
 
 
@@ -125,7 +137,7 @@ def level_controls(issue: dict[str, Any], levels: list[dict[str, Any]], label_ke
 
 def story_kind(story: dict[str, Any], copy: dict[str, str]) -> str:
     label = f"{copy.get('category.' + story['category'], story['category'])} · {copy['type.' + story['type']]}"
-    return f"{label} · {copy['type.aiGenerated']}" if story["type"] == "everyday" else label
+    return f"{label} · {copy['type.aiGenerated']}" if story["type"] in {"everyday", "dialog"} else label
 
 
 def story_card(story: dict[str, Any], index: int, issue: dict[str, Any], site: dict[str, Any], levels: list[dict[str, Any]], copy: dict[str, str], lead: bool = False) -> str:
@@ -178,7 +190,7 @@ def build_archive(index: dict[str, Any], issues: dict[str, dict[str, Any]], site
     cards = []
     for position, item in enumerate(index["dates"]):
         counts = Counter(story["type"] for story in issues[item["date"]]["stories"])
-        tags = "".join(f'<span data-type-count="{kind}" data-count="{counts[kind]}">{counts[kind]} {copy["type." + kind]}</span>' for kind in ("current", "everyday", "history") if counts[kind])
+        tags = "".join(f'<span data-type-count="{kind}" data-count="{counts[kind]}">{counts[kind]} {copy["type." + kind]}</span>' for kind in ("current", "everyday", "dialog", "history") if counts[kind])
         cards.append(f'''<article class="issue-card{' current-issue' if position == 0 else ''}"><time datetime="{esc(item['date'])}" data-date="{esc(item['date'])}">{esc(format_date(item['date'], site['defaultInterfaceLocale']))}</time><div><p>{item['storyCount']} <span data-i18n="meta.materials">{esc(copy['meta.materials'])}</span> · <span data-i18n="meta.about">{esc(copy['meta.about'])}</span> {item['readingMinutes']} <span data-minutes-word data-minutes="{item['readingMinutes']}">{esc(copy['meta.minutesMany'])}</span></p><div class="issue-tags">{tags}</div></div><a href="{esc(site_url(item['date'] + '/', site['basePath']))}" data-i18n="archive.open">{esc(copy['archive.open'])}</a></article>''')
     body = f'''<section class="page archive-page"><header class="page-title"><p class="overline" data-i18n="nav.archive">{esc(copy['nav.archive'])}</p><h1 data-i18n="archive.title">{esc(copy['archive.title'])}</h1><p data-i18n="archive.summary">{esc(copy['archive.summary'])}</p></header><div class="archive-list">{''.join(cards)}</div></section>'''
     return shell(title=copy["archive.title"], body=body, page="archive", site=site, levels=levels, locales=locales)

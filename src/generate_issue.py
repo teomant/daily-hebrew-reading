@@ -4,11 +4,9 @@ import argparse
 import copy
 import json
 import os
-import re
 import shutil
 import tempfile
 from datetime import UTC, date, datetime, timedelta
-from difflib import SequenceMatcher
 from pathlib import Path
 from time import monotonic
 from typing import Any
@@ -22,7 +20,7 @@ from .common import (
     normalized_url,
     read_json,
 )
-from .validation import validate_issue
+from .validation import briefs_are_near_duplicates, validate_issue
 
 
 CATEGORIES = [
@@ -189,7 +187,7 @@ def _story_batch_schema(
         "properties": {
             "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
             "slug": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
-            "type": {"type": "string", "enum": ["current", "everyday", "history"]},
+            "type": {"type": "string", "enum": ["current", "everyday", "dialog", "history"]},
             "category": {"type": "string", "enum": CATEGORIES},
             "brief": {"type": "string"},
             "everydayMeta": {"anyOf": [everyday_meta, {"type": "null"}]},
@@ -263,7 +261,7 @@ def _adaptation_batch_schema(
 
 def _read_prompts(root: Path) -> str:
     parts = []
-    for name in ("editorial.md", "everyday.md", "adaptation.md"):
+    for name in ("editorial.md", "everyday.md", "dialog.md", "adaptation.md"):
         parts.append((root / "prompts" / name).read_text(encoding="utf-8"))
     return "\n\n".join(parts)
 
@@ -339,11 +337,13 @@ def _generation_request(
 ) -> str:
     mode = (
         "This issue already exists. Produce only new stories to append. Preserve the existing issue outside this response. "
-        "The complete issue after appending must contain 3–5 EVERYDAY stories. Balance the existing type counts; normally do not add a second HISTORY story."
+        "Prioritize filling any deficit below 3 DIALOG stories, then any deficit below 3 EVERYDAY stories. "
+        "Do not add either type once its count has reached 3. Balance the remaining type counts; normally do not add a second HISTORY story."
         if is_append
         else
-        "Create the first complete issue for this date. Aim for 4 CURRENT stories, 4 EVERYDAY stories, and 2 HISTORY stories; "
-        "allow 3–5 CURRENT, 3–5 EVERYDAY, and 1–2 HISTORY when quality requires it. Favor practical spoken-life value over a rigid quota."
+        "Create the first complete issue for this date with exactly 3 EVERYDAY stories and exactly 3 DIALOG stories. "
+        "Aim for 4 CURRENT stories and 2 HISTORY stories; allow 3–5 CURRENT and 1–2 HISTORY when quality requires it. "
+        "Favor practical spoken-life value over a rigid sourced-story quota."
     )
     level_payload = [
         {
@@ -371,15 +371,15 @@ Required translation locales: {json.dumps(locales)}
 Existing issue exclusions and type counts:
 {json.dumps(exclusions, ensure_ascii=False, indent=2)}
 
-Recent EVERYDAY history to avoid:
+Recent EVERYDAY and DIALOG scenario history to avoid:
 {json.dumps(recent_history, ensure_ascii=False, indent=2)}
 
 Content from the previous {len(recent_issues)} available issue(s):
 {json.dumps(recent_issues, ensure_ascii=False, indent=2)}
 
-Do not repeat the same real event, historical subject, or everyday scenario from these previous issues. A genuine follow-up is allowed only when something materially changed and the new angle is clearly distinct.
+Do not repeat the same real event, historical subject, everyday scenario, or dialogue situation from these previous issues. A genuine follow-up is allowed only when something materially changed and the new angle is clearly distinct.
 
-The story id and slug must be identical. Prefer distinct canonical content-page URLs for sourced stories; use an empty source list rather than an uncertain URL. Do not use publisher homepages, section pages, generic latest pages, or liveblogs. Use null everydayMeta for sourced stories. Use null image when image provenance or embedding suitability is uncertain. Every separator unit must still contain translations with empty strings for every locale. Return no prose outside the schema.{retry}
+The story id and slug must be identical. Prefer distinct canonical content-page URLs for sourced stories; use an empty source list rather than an uncertain URL. Do not use publisher homepages, section pages, generic latest pages, or liveblogs. Use null everydayMeta for sourced stories; EVERYDAY and DIALOG use scenario metadata and have no sources or image. Use null image when image provenance or embedding suitability is uncertain. Every separator unit must still contain translations with empty strings for every locale. Return no prose outside the schema.{retry}
 """.strip()
 
 
@@ -445,10 +445,6 @@ def _call_openai(
     except Exception as exc:
         _log(f"{phase}: failed after {monotonic() - started:.1f}s ({type(exc).__name__})")
         raise RuntimeError(f"OpenAI generation failed ({type(exc).__name__})") from exc
-
-
-def _normalized(value: str) -> str:
-    return " ".join(re.findall(r"\w+", value.casefold()))
 
 
 def _remove_empty_lexical_units(adaptations: list[dict[str, Any]]) -> int:
@@ -578,10 +574,8 @@ def _duplicate_errors(new_stories: list[dict[str, Any]], existing: dict[str, Any
             source_url = normalized_url(source["url"])
             if source_url in existing_urls:
                 errors.append(f"duplicate source URL: {source['url']}")
-        normalized_brief = _normalized(story["brief"])
         for previous in all_previous:
-            score = SequenceMatcher(None, normalized_brief, _normalized(previous["brief"])).ratio()
-            if score >= 0.82:
+            if briefs_are_near_duplicates(story["brief"], previous["brief"]):
                 errors.append(f"near-duplicate story briefs: {story['slug']} and {previous['slug']}")
                 break
         all_previous.append(story)
@@ -617,23 +611,39 @@ def _seed_errors(
         errors.append("research phase returned duplicate story IDs")
     if not minimum_count <= len(seeds) <= maximum_count:
         errors.append(f"expected {minimum_count}–{maximum_count} research stories, got {len(seeds)}")
-    existing_everyday = sum(
-        story.get("type") == "everyday"
-        for story in (existing.get("stories", []) if existing else [])
-        if isinstance(story, dict)
-    )
-    generated_everyday = sum(
-        story.get("type") == "everyday"
-        for story in seeds
-        if isinstance(story, dict)
-    )
-    total_everyday = existing_everyday + generated_everyday
-    enforce_everyday_mix = existing is None or len(existing.get("stories", [])) >= int(site["minimumIssueStoryCount"])
-    if enforce_everyday_mix and not 3 <= total_everyday <= 5:
-        errors.append(
-            "issue requires 3–5 EVERYDAY (fully AI-generated) stories; "
-            f"existing {existing_everyday} + generated {generated_everyday} = {total_everyday}"
+    existing_counts = {
+        story_type: sum(
+            story.get("type") == story_type
+            for story in (existing.get("stories", []) if existing else [])
+            if isinstance(story, dict)
         )
+        for story_type in ("everyday", "dialog")
+    }
+    generated_counts = {
+        story_type: sum(
+            story.get("type") == story_type
+            for story in seeds
+            if isinstance(story, dict)
+        )
+        for story_type in ("everyday", "dialog")
+    }
+    if existing is None:
+        for story_type in ("everyday", "dialog"):
+            if generated_counts[story_type] != 3:
+                errors.append(
+                    f"new issue requires exactly 3 {story_type.upper()} stories; "
+                    f"generated {generated_counts[story_type]}"
+                )
+    elif len(existing.get("stories", [])) >= int(site["minimumIssueStoryCount"]):
+        remaining_slots = len(seeds)
+        for story_type in ("dialog", "everyday"):
+            expected = min(max(0, 3 - existing_counts[story_type]), remaining_slots)
+            if generated_counts[story_type] != expected:
+                errors.append(
+                    f"append requires {expected} {story_type.upper()} stories; "
+                    f"existing {existing_counts[story_type]}, generated {generated_counts[story_type]}"
+                )
+            remaining_slots -= expected
     if all(isinstance(story, dict) and isinstance(story.get("sources"), list) and isinstance(story.get("brief"), str) for story in seeds):
         errors.extend(_duplicate_errors(seeds, existing))
     return errors
@@ -668,7 +678,7 @@ def _build_index(
 def _updated_history(history: dict[str, Any], stories: list[dict[str, Any]], target_date: str) -> dict[str, Any]:
     items = list(history.get("items", []))
     for story in stories:
-        if story["type"] != "everyday":
+        if story["type"] not in {"everyday", "dialog"}:
             continue
         meta = story["everydayMeta"]
         items.append(
@@ -911,7 +921,7 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
 
     next_history = _updated_history(history, new_stories, target_date)
     next_index = _build_index(content_dir, issue, site, configured_levels)
-    _log("Writing issue, index, and EVERYDAY history transactionally")
+    _log("Writing issue, index, and generated-scenario history transactionally")
     _transactional_write(
         {
             issue_path: issue,

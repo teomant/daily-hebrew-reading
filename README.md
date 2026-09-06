@@ -1,6 +1,6 @@
 # עברית היום — Daily Hebrew Reading
 
-A static daily magazine for learners reading modern spoken Israeli Hebrew. Each issue combines sourced CURRENT stories, realistic EVERYDAY situations, and a sourced HISTORY story at configurable reading levels. Almost all Hebrew text is selectable for Russian or English translation.
+A static daily magazine for learners reading modern spoken Israeli Hebrew. Each new issue combines sourced CURRENT stories, realistic EVERYDAY situations, three natural DIALOG conversations, and sourced HISTORY stories at configurable reading levels. Almost all Hebrew text is selectable for Russian or English translation.
 
 The repository contains a complete sample issue, so the site can be built and tested without an OpenAI key. The production URL is expected to be `https://teomant.github.io/daily-hebrew-reading/`.
 
@@ -12,6 +12,7 @@ The repository contains a complete sample issue, so the site can be built and te
 - Keyboard, hover, and tap translation popovers.
 - Source links and optional externally hosted, attributed source images with graceful failure.
 - Two-stage OpenAI Responses API generation: research freezes briefs, then one adaptation call writes and proofreads Hebrew before adding lexical units and contextual translations.
+- Three short, practical DIALOG conversations per new issue, written for family and everyday learning alongside three EVERYDAY stories.
 - Safe same-day append behavior; existing stories are preserved and duplicates are rejected.
 - Content validation, tests, daily/manual GitHub Actions, and GitHub Pages deployment.
 
@@ -51,13 +52,13 @@ Generation validates a complete candidate before replacing any repository conten
 
 - `content/YYYY-MM-DD.json` — complete ordered issue.
 - `content/index.json` — dates, story counts, and estimated reading times.
-- `content/everyday-history.json` — scenario history used to reduce repetition.
+- `content/everyday-history.json` — EVERYDAY and DIALOG scenario history used to reduce repetition.
 - `config/site.json` — base path, enabled locales, defaults, flexible new-issue count range, and the three-day previous-issue context window.
 - `config/reading-levels.json` — ordered level IDs, labels, word guidance, and reading speeds.
 - `i18n/*.json` — interface dictionaries. Adding a locale requires a matching dictionary and adding its code to `site.json`.
 - `prompts/*.md` — editorial, everyday-scenario, and adaptation rules.
 
-Old issues list their own available levels/locales and remain readable when new ones are configured later. The validator rejects missing adaptations and requires at least 75% contextual translation coverage per story level and language; individual units may remain untranslated when no useful direct translation exists.
+Old issues list their own available levels/locales and remain readable when new levels, locales, or story types are configured later. The validator rejects missing adaptations and requires at least 75% contextual translation coverage per story level and language; individual units may remain untranslated when no useful direct translation exists.
 
 ## GitHub setup
 

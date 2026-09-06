@@ -4,7 +4,7 @@ Status: approved product requirements, translated from the Russian specification
 
 This document describes a fully working MVP of a static website for daily reading in modern spoken Hebrew. The product is for learners who want to read contemporary, natural Hebrew regularly but are not yet ready for books or difficult newspaper articles.
 
-The core idea is to give the reader a daily issue containing roughly 40–50 minutes of interesting local/current material, relatable history, and realistic everyday stories. This is neither a conventional news site nor a textbook. News and history supply interesting stories and new vocabulary; everyday texts systematically cover language people need in real life.
+The core idea is to give the reader a daily issue containing roughly 40–50 minutes of interesting local/current material, relatable history, realistic everyday stories, and natural dialogues. This is neither a conventional news site nor a textbook. News and history supply interesting stories and new vocabulary; everyday texts and dialogues systematically cover language people need with family and other people around them.
 
 The primary product principle is to select and create material according to what is interesting to read and useful for learning contemporary Hebrew, not according to what is considered the day's most important news.
 
@@ -13,16 +13,17 @@ The primary product principle is to select and create material according to what
 A new issue is generated automatically every day. A typical issue contains:
 
 - 3–5 real, recent stories, normally 4;
-- 3–5 purpose-written everyday stories, normally 4;
+- 3 purpose-written everyday stories;
+- 3 purpose-written dialogues;
 - 1–2 historical stories, normally 2.
 
-This normally produces 9–11 stories, but the count is deliberately flexible. If there are too few good CURRENT stories, publish fewer of them and add a strong EVERYDAY story. If there are many genuinely strong stories, the issue may be slightly larger. Never fill a quota with weak material.
+This normally produces 12 stories and may range from 10–13 as the number of sourced stories varies. Keep the three EVERYDAY and three DIALOG entries stable; never fill the flexible CURRENT or HISTORY allowance with weak material.
 
 The target reading time is approximately 40–50 learner minutes, enough for a typical commute. Articles should normally contain 4–5 developed paragraphs rather than collapsing a story into three sentences.
 
 ## 2. Content types
 
-The three content types are CURRENT, EVERYDAY, and HISTORY.
+The four content types are CURRENT, EVERYDAY, DIALOG, and HISTORY.
 
 ### CURRENT
 
@@ -65,6 +66,12 @@ These stories should expose readers to useful constructions such as:
 - נשאר — remained / is left;
 - נגמר — ran out / ended;
 - חסר — is missing / lacking.
+
+### DIALOG
+
+A specially generated short conversation for practical Hebrew learning. A new issue contains exactly three. Dialogues normally use two speakers in familiar family and daily-life situations such as making plans, meals, shopping, school, transport, appointments, errands, neighbors, and small problems at home.
+
+The exchange should sound like ordinary contemporary Israeli conversation, not a classroom exercise, interview, screenplay, or dramatic scene. Use short natural turns, questions, answers, clarifications, reactions, and a simple practical outcome. Avoid long speeches, artificial repetition, exaggerated slang, and vocabulary included only to demonstrate a rule. DIALOG uses the same scenario metadata and repetition history as EVERYDAY and has no external sources or images.
 
 ### HISTORY
 
@@ -137,17 +144,17 @@ The MVP does not need niqqud. Consequently, even the Alef band assumes the reade
 
 Do not generate level adaptations independently in ways that introduce different facts. The initial Alef, Alef Plus, and Bet versions—and any future configured versions—must share one brief.
 
-For CURRENT and HISTORY, the pipeline is: sources → factual brief → level adaptation with lexical units and contextual translations. For EVERYDAY, it is: scenario brief → level adaptation with lexical units and contextual translations. Within adaptation, Hebrew prose is written and proofread before it is segmented.
+For CURRENT and HISTORY, the pipeline is: sources → factual brief → level adaptation with lexical units and contextual translations. For EVERYDAY and DIALOG, it is: scenario brief → level adaptation with lexical units and contextual translations. Within adaptation, Hebrew prose is written and proofread before it is segmented.
 
 Alef may omit details and Bet may expand them, but central facts and events must remain consistent.
 
-## 11. EVERYDAY diversity history
+## 11. Generated-scenario diversity history
 
-Generated everyday stories must not repeat too frequently. Keep the history of EVERYDAY topics in Git. For recent stories, retain the date, domain, scenario, main lexical themes, and target vocabulary. Consider approximately the previous 30 days when generating a new issue.
+Generated everyday stories and dialogues must not repeat too frequently. Keep their scenario history in Git. For recent entries, retain the date, domain, scenario, main lexical themes, and target vocabulary. Consider approximately the previous 30 days when generating a new issue.
 
-Every complete issue must contain 3–5 EVERYDAY stories. This range is enforced during research validation and stated explicitly in the editorial prompt. The research prompt also receives compact date/type/category/ID/brief summaries from all issues in the previous three calendar days so CURRENT events, HISTORY subjects, and EVERYDAY plots are not repeated on consecutive days.
+Every new complete issue must contain exactly three EVERYDAY stories and exactly three DIALOG stories. These counts are enforced during research validation and stated explicitly in the prompts. The research prompt also receives compact date/type/category/ID/brief summaries from all issues in the previous three calendar days so CURRENT events, HISTORY subjects, EVERYDAY plots, and DIALOG situations are not repeated on consecutive days.
 
-## 12. EVERYDAY domains
+## 12. Generated-scenario domains
 
 Example domains include supermarket, shopping, restaurant, café, food delivery, public transport, taxi, car, parking, petrol station, pharmacy, doctor, dentist, school, kindergarten, work, colleagues, customer support, phone call, WhatsApp, online shopping, delivery, returns, refunds, post office, package, bank, payment, credit card, apartment, rent, home repair, plumber, electrician, neighbours, weather, weekend plans, travel, hotel, airport, guests, cooking, cleaning, appointments, lateness, changed plans, lost or forgotten items, booking, queues, subscriptions, internet providers, mobile phones, home appliances, clothes, shoes, and family logistics. This list is extensible.
 
@@ -161,7 +168,7 @@ As a soft guideline, avoid using the same principal domain several times in one 
 
 Frequent vocabulary does not need to be new every day; repetition is useful. Words such as להגיע, לחכות, לבחור, כדאי, לבדוק, להזמין, להשתמש, and לשלם may recur. Avoid repeating plots, not language.
 
-## 15. Everyday vocabulary planning
+## 15. Generated-scenario vocabulary planning
 
 EVERYDAY stories should gradually cover varied conversational vocabulary. One day may emphasize waiting, changing plans, requests, and replacement; another may emphasize comparison, payment, clarification, and mistakes. Do not build a complex curriculum system. Recent scenarios and lexical themes are enough.
 
@@ -199,7 +206,7 @@ The page for a date is that issue's table of contents. It shows the date, story 
 
 ## 22. Article page
 
-An article page contains a link back to the issue, date, category, title, reading time, level selector (`א`, `א+`, `ב`), translation-language selector (`RU`, `EN`), interface-language selector (`RU`, `EN`), text with lexical popovers, available sources for CURRENT and HISTORY, and previous/next article navigation.
+An article page contains a link back to the issue, date, category and content type, title, reading time, level selector (`א`, `א+`, `ב`), translation-language selector (`RU`, `EN`), interface-language selector (`RU`, `EN`), text with lexical popovers, available sources for CURRENT and HISTORY, and previous/next article navigation.
 
 Persist the selected level, translation language, and interface language between pages using `localStorage` for the MVP. Translation language and interface language are separate preferences.
 
@@ -209,9 +216,9 @@ Show approximate reading time for each article and issue. A simple calculation b
 
 ## 24. Sources and external images
 
-CURRENT and HISTORY should store real publisher, title, and URL data when trustworthy canonical links are available. Missing, duplicate, or unverified links are discarded and an empty source list is allowed; source problems must not block an otherwise valid issue. EVERYDAY has no sources. Never create fictional links or present an EVERYDAY story as news. The content type must be explicit in stored data.
+CURRENT and HISTORY should store real publisher, title, and URL data when trustworthy canonical links are available. Missing, duplicate, or unverified links are discarded and an empty source list is allowed; source problems must not block an otherwise valid issue. EVERYDAY and DIALOG have no sources. Never create fictional links or present generated scenarios as news. The content type must be explicit in stored data.
 
-A CURRENT or HISTORY story may also have one optional image linked directly from one of its original source articles. Store the HTTPS image URL, the source article URL, publisher or credit, localized alt text, and an HTTPS usage-rights/policy URL with a short factual label. The generator may return an image only when the image, source, and policy URLs all appear in its actual web-research results; otherwise it returns no image. The card and article page may display it with source attribution and links to the original article and usage policy. Do not download or commit third-party images for the MVP. If the URL is missing, rejected, or later stops loading, render the story normally without an image or broken layout. Images are optional and must only be used when the applicable source and usage rights allow embedding; generation must not invent ownership or licensing information. EVERYDAY stories do not automatically receive sourced images.
+A CURRENT or HISTORY story may also have one optional image linked directly from one of its original source articles. Store the HTTPS image URL, the source article URL, publisher or credit, localized alt text, and an HTTPS usage-rights/policy URL with a short factual label. The generator may return an image only when the image, source, and policy URLs all appear in its actual web-research results; otherwise it returns no image. The card and article page may display it with source attribution and links to the original article and usage policy. Do not download or commit third-party images for the MVP. If the URL is missing, rejected, or later stops loading, render the story normally without an image or broken layout. Images are optional and must only be used when the applicable source and usage rights allow embedding; generation must not invent ownership or licensing information. EVERYDAY and DIALOG do not use sourced images.
 
 ## 25. Content storage
 
@@ -231,7 +238,7 @@ i18n/
   ru.json
 ```
 
-A daily JSON file contains its date, available reading-level IDs, available translation-locale codes, and ordered stories. Each story contains its type, category, a source list that may be empty, an optional sourced-image object, its configured level variants, teaser, title, paragraphs, lexical annotations, and EVERYDAY metadata when applicable. `index.json` lists available dates. `everyday-history.json` supports diversity checks. Site configuration declares defaults and enabled locales; the reading-level configuration defines ordered adaptation bands; locale dictionaries contain interface copy.
+A daily JSON file contains its date, available reading-level IDs, available translation-locale codes, and ordered stories. Each story contains its type, category, a source list that may be empty, an optional sourced-image object, its configured level variants, teaser, title, paragraphs, lexical annotations, and scenario metadata for EVERYDAY and DIALOG. `index.json` lists available dates. `everyday-history.json` supports diversity checks for both generated types. Site configuration declares defaults and enabled locales; the reading-level configuration defines ordered adaptation bands; locale dictionaries contain interface copy.
 
 ## 26. Illustrative story shape
 
@@ -257,7 +264,7 @@ The precise schema may differ, but it must retain the meaning of the following s
 }
 ```
 
-CURRENT and HISTORY use real sources rather than EVERYDAY metadata.
+CURRENT and HISTORY use real sources rather than scenario metadata. DIALOG reuses `everydayMeta` so old issue files remain compatible without a schema migration.
 
 ## 27. CURRENT generation
 
@@ -265,17 +272,21 @@ Find more candidates than the issue needs, filter out politics and unsuitable to
 
 ## 28. EVERYDAY generation
 
-Read the recent everyday-history data, identify what has been used, propose several new scenarios, remove overly similar ideas, select 3–5, normally 4, create scenario briefs, and adapt them into the issue's configured levels. Prioritize reusable interaction with colleagues, managers, customers, neighbors, friends, strangers, and service workers. Mark every EVERYDAY story visibly as fully AI-generated in the selected interface language.
+Read the recent scenario-history data, identify what has been used, remove overly similar ideas, select exactly three EVERYDAY situations, create scenario briefs, and adapt them into the issue's configured levels. Prioritize reusable interaction with colleagues, managers, customers, neighbors, friends, strangers, and service workers. Mark every EVERYDAY story visibly as fully AI-generated in the selected interface language.
 
-## 29. HISTORY generation
+## 29. DIALOG generation
+
+Create exactly three short dialogues for each new issue. Use ordinary situations useful to a learner and their family, normally with two speakers and a few short alternating turns in each of the existing 4–5 content paragraphs. Keep the exchange natural, simple, and practical across all configured levels. Reuse the scenario history to avoid recently repeated situations, and mark every DIALOG visibly as fully AI-generated.
+
+## 30. HISTORY generation
 
 Find several potential historical stories and select the one that is most interesting, easiest to explain, and richest in useful language. Gather facts and sources before writing the adaptations.
 
-## 30. Facts and generation
+## 31. Facts and generation
 
 Language adaptation must not freely invent details for real stories. A factual brief must precede all CURRENT and HISTORY level versions. If evidence is limited, make the article shorter. Never hallucinate details to reach a length target.
 
-## 31. OpenAI API
+## 32. OpenAI API
 
 Use the OpenAI API for research and selection, factual and scenario briefs, level adaptation, lexical segmentation, and Russian and English translations. Use the current official SDK and a modern API. A normal issue uses one web-enabled research response followed by one structured adaptation response per small story batch.
 
@@ -283,33 +294,34 @@ Configure the model through `OPENAI_MODEL` and supply the key through `OPENAI_AP
 
 In the target repository, both values are configured in the GitHub Actions environment named `daily-hebrew-reading`: `OPENAI_API_KEY` is an environment secret and `OPENAI_MODEL` is an environment variable. The issue-generation job must explicitly declare that environment before reading either value.
 
-## 32. Prompts
+## 33. Prompts
 
-Keep editorial rules separate from application code. At minimum, maintain three instruction groups:
+Keep editorial rules separate from application code. Maintain four instruction groups:
 
 - **Editorial:** CURRENT research, Language Value, political exclusions, interest, and HISTORY selection.
 - **Everyday:** realistic situations, diversity, recent topics, and useful conversational vocabulary.
+- **Dialog:** short, natural family and daily-life conversations.
 - **Adaptation:** Alef, Alef Plus, Bet, modern spoken Hebrew, target lengths, lexical units, RU/EN translation, and no filler.
 
-## 33. Automation
+## 34. Automation
 
-A GitHub Actions workflow runs daily at 01:15 UTC. It generates a complete issue, validates it, updates EVERYDAY history, writes the JSON, commits and pushes the content, builds the site, and deploys GitHub Pages. It must also support manual execution through `workflow_dispatch`, exposed in the repository's Actions tab as a **Run workflow** button.
+A GitHub Actions workflow runs daily at 01:15 UTC. It generates a complete issue, validates it, updates generated-scenario history, writes the JSON, commits and pushes the content, builds the site, and deploys GitHub Pages. It must also support manual execution through `workflow_dispatch`, exposed in the repository's Actions tab as a **Run workflow** button.
 
 The manual run accepts an optional target date, resolved as the current UTC date when omitted, and a requested number of additional stories, defaulting to 3. When no issue exists for the target date, generation creates the normal complete issue. When an issue already exists, generation preserves every existing story and appends the requested new stories instead of replacing the file. It recalculates issue metadata and navigation, updates EVERYDAY history, validates the combined issue, and only then commits it.
 
-Append generation must use existing slugs, source URLs, story topics, and recent EVERYDAY scenarios as exclusions. It must reject duplicate or near-duplicate additions. Generation runs are serialized so simultaneous scheduled or manual invocations cannot race and overwrite one another. A failed append leaves the existing issue unchanged.
+Append generation must use existing slugs, source URLs, story topics, and recent EVERYDAY and DIALOG scenarios as exclusions. It must reject duplicate or near-duplicate additions. Generation runs are serialized so simultaneous scheduled or manual invocations cannot race and overwrite one another. A failed append leaves the existing issue unchanged.
 
 The repository's default branch is `master`. An ordinary push to `master` does not generate an issue; it only validates, builds, and deploys the existing content. Generation commits also target `master`.
 
-## 34. GitHub Pages
+## 35. GitHub Pages
 
 The target repository is `https://github.com/teomant/daily-hebrew-reading`, and the target project-site URL is `https://teomant.github.io/daily-hebrew-reading/`. Asset paths, content paths, links, and article URLs must all respect the `/daily-hebrew-reading/` base path.
 
-## 35. Technology constraints
+## 36. Technology constraints
 
 Keep the MVP simple. Prefer Python, HTML, CSS, vanilla JavaScript, JSON, GitHub Actions, and GitHub Pages. Do not add a database, backend, authentication, Docker, Kubernetes, Next.js, React, external hosting, or a CMS without a demonstrated need and explicit approval. The delivered site is entirely static.
 
-## 36. Reliability
+## 37. Reliability
 
 Before publishing generated content, validate at least:
 
@@ -319,31 +331,31 @@ Before publishing generated content, validate at least:
 - non-empty text;
 - at least 75% contextual translation coverage per story level and configured translation language;
 - valid source metadata when a story has sources;
-- domain and scenario for EVERYDAY;
+- domain and scenario for EVERYDAY and DIALOG;
 - no duplicate slugs or duplicate source stories;
 - optional image metadata uses safe HTTPS URLs, refers to one of the story's source articles, includes an independently researched usage-rights/policy URL and factual rights label, and contains attribution plus alt text for the issue's translation locales.
 
 If generation fails, do not publish a partial issue or damage earlier content. The existing site must remain available and the workflow must fail visibly.
 
-## 37. Sample content
+## 38. Sample content
 
-Include a sample issue so the frontend can be tested without an OpenAI API key. It must demonstrate CURRENT, EVERYDAY, HISTORY, the three initial configured levels, lexical popovers, a day page, and article pages. Do not present invented current news as factual reporting.
+Include sample issue content so the frontend can be tested without an OpenAI API key. Existing archived samples remain valid without DIALOG backfilling; newly generated issues use the four-type mix. Do not present invented current news as factual reporting.
 
-## 38. User experience
+## 39. User experience
 
-The product should feel like a small daily magazine for a full commute. A day page might show a date, “10 stories · about 45 minutes,” a level selector, and concise cards for locally relevant CURRENT, practical EVERYDAY, and relatable HISTORY stories. Opening a story should provide a calm reading experience followed by a simple move to the next story.
+The product should feel like a small daily magazine for a full commute. A day page shows the date, story count, approximate reading time, a level selector, and concise cards for locally relevant CURRENT, practical EVERYDAY, natural DIALOG, and relatable HISTORY entries. Opening one should provide a calm reading experience followed by a simple move to the next.
 
-## 39. Product philosophy
+## 40. Product philosophy
 
-The experience is a daily collection of short, interesting stories and real-life situations through which the reader gradually understands more normal contemporary Hebrew. Language value wins over news importance; natural contemporary Hebrew wins over newspaper style; a repetitive EVERYDAY story is replaced; weak CURRENT supply is balanced with stronger EVERYDAY material; and a text that would require filler is shortened.
+The experience is a daily collection of short, interesting stories, real-life situations, and ordinary conversations through which the reader gradually understands more normal contemporary Hebrew. Language value wins over news importance; natural contemporary Hebrew wins over newspaper style; repetitive generated situations are replaced; and a text that would require filler is shortened.
 
-## 40. Required MVP delivery
+## 41. Required MVP delivery
 
-Deliver a complete MVP containing daily generation and safe same-day appends; CURRENT research and selection; HISTORY research; EVERYDAY generation and repetition protection; the three initial configurable Hebrew levels; extensible interface and translation locales; lexical annotation; Russian and English translations; Git-based content storage; validation; optional externally linked source images; static-site building; home, archive/day, and separate article pages; level and locale switches; hover/tap translations; sources; previous/next navigation; GitHub Actions; GitHub Pages deployment; sample content; basic tests; and a README.
+Deliver a complete MVP containing daily generation and safe same-day appends; CURRENT research and selection; HISTORY research; EVERYDAY and DIALOG generation with repetition protection; the three initial configurable Hebrew levels; extensible interface and translation locales; lexical annotation; Russian and English translations; Git-based content storage; validation; optional externally linked source images; static-site building; home, archive/day, and separate article pages; level and locale switches; hover/tap translations; sources; previous/next navigation; GitHub Actions; GitHub Pages deployment; sample content; basic tests; and a README.
 
 After implementation, run tests, validate content, build the static site, inspect the principal pages, and fix discovered defects. The handoff report must state what was implemented, major decisions, successful checks, and manual GitHub configuration required from the repository owner.
 
-## 41. Visual design approval gate
+## 42. Visual design approval gate
 
 Before frontend implementation begins, prepare 3–4 distinct visual directions for owner review. Each direction must demonstrate the complete page family—home, archive, day, and article—as well as representative desktop and mobile states and the translation popover. The owner chooses a direction and may request adjustments; frontend work begins only after that approval.
 

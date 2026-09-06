@@ -6,9 +6,9 @@
   "defaultReadingLevel": "alef",
   "interfaceLocales": ["ru", "en"],
   "translationLocales": ["ru", "en"],
-  "defaultIssueStoryCount": 10,
-  "minimumIssueStoryCount": 8,
-  "maximumIssueStoryCount": 12,
+  "defaultIssueStoryCount": 12,
+  "minimumIssueStoryCount": 10,
+  "maximumIssueStoryCount": 13,
   "defaultAppendStoryCount": 3,
   "recentIssueContextDays": 3,
   "everydayHistoryDays": 30

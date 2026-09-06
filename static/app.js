@@ -40,7 +40,7 @@
   const formatDate = value => new Intl.DateTimeFormat(interfaceLocale, {day:"numeric", month:"long", year:"numeric", timeZone:"UTC"}).format(new Date(`${value}T00:00:00Z`));
   const kind = story => {
     const label = `${copy(`category.${story.category}`)} · ${copy(`type.${story.type}`)}`;
-    return story.type === "everyday" ? `${label} · ${copy("type.aiGenerated")}` : label;
+    return ["everyday", "dialog"].includes(story.type) ? `${label} · ${copy("type.aiGenerated")}` : label;
   };
 
   function activateControls() {
@@ -55,23 +55,30 @@
   }
 
   function renderUnit(unit) {
-    if (unit.type === "separator") return document.createTextNode(unit.text);
+    if (unit.type === "separator") return [document.createTextNode(unit.text)];
     const translation = unit.translations?.[translationLocale];
-    if (typeof translation !== "string" || !translation.trim()) return document.createTextNode(unit.text);
+    if (typeof translation !== "string" || !translation.trim()) return [document.createTextNode(unit.text)];
+    const match = /^(\s*)(.*?)(\s*)$/us.exec(String(unit.text));
+    const [, leading, core, trailing] = match;
+    if (!core) return [document.createTextNode(unit.text)];
     const button = document.createElement("button");
     button.type = "button";
     button.className = "lexeme";
-    button.textContent = unit.text;
+    button.textContent = core;
     button.dataset.unitType = unit.type;
     button.dataset.translations = JSON.stringify(unit.translations);
-    return button;
+    return [
+      ...(leading ? [document.createTextNode(leading)] : []),
+      button,
+      ...(trailing ? [document.createTextNode(trailing)] : []),
+    ];
   }
 
   function renderUnits(units) {
     const nodes = [];
     units.forEach((unit, index) => {
       if (index && unitsNeedSpace(units[index - 1], unit)) nodes.push(document.createTextNode(" "));
-      nodes.push(renderUnit(unit));
+      nodes.push(...renderUnit(unit));
     });
     return nodes;
   }
