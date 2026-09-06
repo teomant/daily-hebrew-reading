@@ -7,8 +7,9 @@
 - Fixed article rendering when generated lexical units carry leading or trailing whitespace inside clickable text. Server-rendered HTML and client-side level/translation rerenders now place boundary whitespace outside the button while preserving the unit's internal text and translations.
 - Added focused generation, validation, and rendering regression tests for both observed failures.
 - Added DIALOG as a minimal first-class generated story type for natural conversations useful to the learner and their family. New issues target 4 CURRENT, 3 EVERYDAY, 3 DIALOG, and 2 HISTORY entries; sourced-story counts remain flexible for a 10–13 story range.
-- Reused the existing scenario metadata, diversity history, level adaptations, lexical translations, cards, and article pages for DIALOG. Added RU/EN type labels, AI-generated disclosure, source/image restrictions, append balancing, dedicated prompt guidance, and focused tests without introducing a separate screenplay model or UI.
+- Reused the existing scenario metadata, diversity history, level adaptations, lexical translations, cards, and article pages for DIALOG. Added RU/EN type labels, AI-generated disclosure, source/image restrictions, dedicated prompt guidance, and focused tests without introducing a separate screenplay model or UI. Fixed new-issue counts apply only when creating a date; same-day append batches may contain any valid mix.
 - Verification passed repository content validation, 34 unit tests, Python compilation, JavaScript syntax checking, the production static build, and whitespace checks. Per owner direction, no local browser run or additional independent review was performed for the DIALOG change.
+- Corrected generation workflow ordering after a paid generation completed before a repository-test failure: validation and unit tests now run as a preflight before any OpenAI call, while generated content validation and the production build remain after generation.
 
 ## 2026-09-04
 

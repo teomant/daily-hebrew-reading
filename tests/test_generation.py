@@ -125,23 +125,25 @@ class GenerationTests(unittest.TestCase):
         )
         self.assertEqual(errors, [])
 
-    def test_full_issue_append_fills_missing_dialogs_first(self) -> None:
+    def test_full_issue_append_allows_any_story_type_mix(self) -> None:
         site = read_json(ROOT / "config" / "site.json")
         levels = read_json(ROOT / "config" / "reading-levels.json")["levels"]
         existing = read_json(ROOT / "content" / "2026-09-06.json")
         template = next(story for story in existing["stories"] if story["type"] == "everyday")
         briefs = [
             "Two siblings decide who will collect a package before the shop closes.",
-            "Parents agree what to cook after discovering an ingredient is missing.",
-            "A grandparent and child arrange where to meet after an afternoon class.",
+            "A neighborhood opens a shaded place to wait for the bus.",
+            "An old bakery sign is restored and returned to its original street.",
         ]
+        story_types = ["dialog", "current", "history"]
         seeds = []
-        for index, brief in enumerate(briefs):
+        for index, (brief, story_type) in enumerate(zip(briefs, story_types, strict=True)):
             seed = {key: copy.deepcopy(value) for key, value in template.items() if key != "levels"}
-            seed["id"] = seed["slug"] = f"family-dialog-{index}"
-            seed["type"] = "dialog"
+            seed["id"] = seed["slug"] = f"append-story-{index}"
+            seed["type"] = story_type
             seed["brief"] = brief
-            seed["everydayMeta"]["scenario"] = f"family_dialog_{index}"
+            if story_type in {"current", "history"}:
+                seed["everydayMeta"] = None
             seeds.append(seed)
         errors = _seed_errors(
             seeds,
@@ -155,20 +157,6 @@ class GenerationTests(unittest.TestCase):
             3,
         )
         self.assertEqual(errors, [])
-
-        seeds[0]["type"] = "everyday"
-        errors = _seed_errors(
-            seeds,
-            existing["date"],
-            existing["availableLevels"],
-            existing["translationLocales"],
-            site,
-            levels,
-            existing,
-            3,
-            3,
-        )
-        self.assertTrue(any("append requires 3 DIALOG" in error for error in errors), errors)
 
     def test_dialog_is_recorded_in_scenario_history(self) -> None:
         story = {

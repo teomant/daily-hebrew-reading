@@ -35,6 +35,10 @@ jobs:
           cache: pip
       - name: Install generation dependency
         run: python -m pip install -r requirements.txt
+      - name: Preflight validation and tests
+        run: |
+          python -m src.validate_content
+          python -m unittest discover -s tests -v
       - name: Generate or append stories
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
@@ -47,10 +51,9 @@ jobs:
           else
             python -m src.generate_issue --additional-stories "$ADDITIONAL_STORIES"
           fi
-      - name: Validate, test, and build
+      - name: Validate generated content and build
         run: |
           python -m src.validate_content
-          python -m unittest discover -s tests -v
           python -m src.build_site
       - name: Commit generated content
         env:

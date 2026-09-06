@@ -79,6 +79,8 @@ The OpenAI API is billed separately from ChatGPT Plus. The API uses the credits 
 
 Generation logs timestamp each research, adaptation, validation, and write phase. Research has up to three attempts. Adaptation runs in two-story batches; a failed request retries only its batch without repeating research.
 
+The generation workflow runs repository validation and unit tests before calling OpenAI, so code or fixture failures stop without API spend. After generation it validates the changed content again and builds the exact site that will be committed and deployed.
+
 The adaptation prompt tells the model to finish and proofread the Hebrew before segmenting it, then translate every meaningful unit using the full sentence as context. Individual empty translations are allowed, but each story level must reach at least 75% coverage per language.
 
 The generation workflow commits with the GitHub Actions bot, then deploys the already validated build. The generated commit does not need to trigger a second workflow.

@@ -337,8 +337,7 @@ def _generation_request(
 ) -> str:
     mode = (
         "This issue already exists. Produce only new stories to append. Preserve the existing issue outside this response. "
-        "Prioritize filling any deficit below 3 DIALOG stories, then any deficit below 3 EVERYDAY stories. "
-        "Do not add either type once its count has reached 3. Balance the remaining type counts; normally do not add a second HISTORY story."
+        "The appended stories may use any content-type mix justified by quality and variety; the fixed new-issue type counts do not apply to append runs."
         if is_append
         else
         "Create the first complete issue for this date with exactly 3 EVERYDAY stories and exactly 3 DIALOG stories. "
@@ -611,14 +610,6 @@ def _seed_errors(
         errors.append("research phase returned duplicate story IDs")
     if not minimum_count <= len(seeds) <= maximum_count:
         errors.append(f"expected {minimum_count}–{maximum_count} research stories, got {len(seeds)}")
-    existing_counts = {
-        story_type: sum(
-            story.get("type") == story_type
-            for story in (existing.get("stories", []) if existing else [])
-            if isinstance(story, dict)
-        )
-        for story_type in ("everyday", "dialog")
-    }
     generated_counts = {
         story_type: sum(
             story.get("type") == story_type
@@ -634,16 +625,6 @@ def _seed_errors(
                     f"new issue requires exactly 3 {story_type.upper()} stories; "
                     f"generated {generated_counts[story_type]}"
                 )
-    elif len(existing.get("stories", [])) >= int(site["minimumIssueStoryCount"]):
-        remaining_slots = len(seeds)
-        for story_type in ("dialog", "everyday"):
-            expected = min(max(0, 3 - existing_counts[story_type]), remaining_slots)
-            if generated_counts[story_type] != expected:
-                errors.append(
-                    f"append requires {expected} {story_type.upper()} stories; "
-                    f"existing {existing_counts[story_type]}, generated {generated_counts[story_type]}"
-                )
-            remaining_slots -= expected
     if all(isinstance(story, dict) and isinstance(story.get("sources"), list) and isinstance(story.get("brief"), str) for story in seeds):
         errors.extend(_duplicate_errors(seeds, existing))
     return errors
