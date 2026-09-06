@@ -69,9 +69,9 @@ These stories should expose readers to useful constructions such as:
 
 ### DIALOG
 
-A specially generated short conversation for practical Hebrew learning. A new issue contains exactly three. Dialogues normally use two speakers in familiar family and daily-life situations such as making plans, meals, shopping, school, transport, appointments, errands, neighbors, and small problems at home.
+A specially generated short conversation for practical Hebrew learning. A new issue normally aims for about three. Dialogues normally use two speakers in familiar family and daily-life situations such as making plans, meals, shopping, school, transport, appointments, errands, neighbors, and small problems at home.
 
-The exchange should sound like ordinary contemporary Israeli conversation, not a classroom exercise, interview, screenplay, or dramatic scene. Use short natural turns, questions, answers, clarifications, reactions, and a simple practical outcome. Avoid long speeches, artificial repetition, exaggerated slang, and vocabulary included only to demonstrate a rule. DIALOG uses the same scenario metadata and repetition history as EVERYDAY and has no external sources or images.
+The exchange should sound like ordinary contemporary Israeli conversation, not a classroom exercise, interview, screenplay, dramatic scene, or narrated story. Every paragraph at every reading level must contain direct speech labeled with consistent Hebrew speaker names and colons. Use short natural turns, questions, answers, clarifications, reactions, and a simple practical outcome. Do not describe the conversation in third-person prose; a mainly narrated result belongs to EVERYDAY. Avoid long speeches, artificial repetition, exaggerated slang, and vocabulary included only to demonstrate a rule. DIALOG uses the same scenario metadata and repetition history as EVERYDAY and has no external sources or images.
 
 ### HISTORY
 
