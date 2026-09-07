@@ -16,6 +16,12 @@
 - Removed mandatory per-type counts from new-issue validation while keeping the normal 4 CURRENT / 3 EVERYDAY / 3 DIALOG / 2 HISTORY mix as an editorial target. When research validation finds only duplicate errors, generation keeps the unique candidates and asks the LLM to replace only rejected slots with AI-generated EVERYDAY or DIALOG stories, using an AI-only schema and no web search for the replacement call. If the last replacement still duplicates another story, a new issue continues with the remaining unique stories whenever their total is still within the configured range.
 - Tightened DIALOG generation instructions after a generated parking story was written as narration. Future dialogues must use labeled Hebrew speaker turns in every paragraph and every level; mainly narrated scenarios must be classified as EVERYDAY. Existing published content was left unchanged at the owner's request.
 
+## 2026-09-07
+
+- Audited the generated issue and confirmed that 11 of 12 stories repeated the previous day, including four exact reused source URLs. The research LLM ignored the supplied forbidden records, while Python compared candidates only within the new batch because no same-day issue existed.
+- Strengthened the research prompt so previous stories are explicitly prohibited material, not examples to rewrite, and removed the recent-follow-up loophole. Python now checks candidate IDs/slugs, English briefs, and source URLs against compact records from recent issues before adaptation; detected repeats enter the existing AI-only replacement path.
+- Completely removed the generated `2026-09-07` issue, its index entry, and its six generated-scenario history records so the date can be regenerated cleanly.
+
 ## 2026-09-04
 
 - Translated and recorded the supplied Russian product document in `docs/product-specification.md`; added confirmed decisions for daily UTC generation, the project Pages base path, same-day append behavior, source-linked images, interface languages, and extensible levels/locales.

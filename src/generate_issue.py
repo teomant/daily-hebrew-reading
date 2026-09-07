@@ -402,6 +402,8 @@ Target publication date: {target_date}
 Story count: aim for {target_count}; return between {minimum_count} and {maximum_count}. Never add a weak or padded story only to reach the target.
 Mode: {mode}
 
+ABSOLUTE EXCLUSION RULE: the forbidden records below are prohibited output, not examples or candidate material. Do not copy, rewrite, translate, update, continue, rename, or add a date/year suffix to any forbidden story. Do not reuse any forbidden source URL. If there is any doubt that a candidate overlaps a forbidden subject or scenario, discard it and use a completely unrelated EVERYDAY or DIALOG scenario instead.
+
 {research_scope} Give every brief enough concrete situation, interaction, and outcome detail to support 4–5 developed paragraphs at the configured article lengths without invention. Never reuse any excluded story, URL, or substantially similar topic.
 
 Configured reading levels:
@@ -412,14 +414,14 @@ Required translation locales: {json.dumps(locales)}
 FORBIDDEN STORY RECORDS FROM THE EXISTING ISSUE AND PREVIOUS ISSUES:
 {json.dumps(forbidden_stories, ensure_ascii=False, indent=2)}
 
-Before returning any candidate, compare its underlying subject, brief, slug, and every source URL against every forbidden record above. Reject the candidate when it describes the same real event, historical subject, everyday scenario, or dialogue situation—even when it uses another language, publisher, URL, headline, wording, angle, or added detail. Write every internal `brief` in English so deterministic validation can compare it with stored briefs.
+Before returning any candidate, compare its underlying subject, brief, slug, and every source URL against every forbidden record above. Reject the candidate when it describes the same real event, historical subject, everyday scenario, or dialogue situation—even when it uses another language, publisher, URL, headline, wording, angle, added detail, later date, or year suffix. A different headline or a small update does not make it a new story. Write every internal `brief` in English so deterministic validation can compare it with stored briefs.
 
 Recent EVERYDAY and DIALOG scenario history to avoid:
 {json.dumps(recent_history, ensure_ascii=False, indent=2)}
 
-A genuine follow-up to a forbidden story is allowed only when something materially changed; state that change clearly in the English brief.
+Do not return a follow-up to a forbidden story in this issue. Choose a different subject or an AI-generated scenario instead.
 
-The story id and slug must be identical. Prefer distinct canonical content-page URLs for sourced stories; use an empty source list rather than an uncertain URL. Do not use publisher homepages, section pages, generic latest pages, or liveblogs. Use null everydayMeta for sourced stories; EVERYDAY and DIALOG use scenario metadata and have no sources or image. Use null image when image provenance or embedding suitability is uncertain. Return no prose outside the schema.{retry}
+The story id and slug must be identical. Prefer distinct canonical content-page URLs for sourced stories; use an empty source list rather than an uncertain URL. Do not use publisher homepages, section pages, generic latest pages, or liveblogs. Use null everydayMeta for sourced stories; EVERYDAY and DIALOG use scenario metadata and have no sources or image. Use null image when image provenance or embedding suitability is uncertain. Before finalizing, check every candidate against the forbidden IDs, briefs, and URLs one more time and replace every overlap with EVERYDAY or DIALOG. Return no prose outside the schema.{retry}
 """.strip()
 
 
@@ -604,12 +606,32 @@ Frozen story briefs and metadata:
 def _duplicate_findings(
     new_stories: list[dict[str, Any]],
     existing: dict[str, Any] | None,
+    recent_stories: list[dict[str, Any]] | None = None,
 ) -> tuple[list[str], set[int]]:
     errors: list[str] = []
-    old_stories = existing["stories"] if existing else []
+    old_stories = [
+        *(existing["stories"] if existing else []),
+        *(recent_stories or []),
+    ]
     all_previous = list(old_stories)
-    seen_slugs = {story["slug"] for story in old_stories}
-    seen_urls = {normalized_url(source["url"]) for story in old_stories for source in story["sources"]}
+    seen_slugs = {
+        str(story.get("slug") or story.get("id"))
+        for story in old_stories
+        if story.get("slug") or story.get("id")
+    }
+    seen_urls = {
+        normalized_url(url)
+        for story in old_stories
+        for url in [
+            *[
+                source.get("url")
+                for source in story.get("sources", [])
+                if isinstance(source, dict)
+            ],
+            *story.get("sourceUrls", []),
+        ]
+        if isinstance(url, str)
+    }
     duplicate_indexes: set[int] = set()
     for index, story in enumerate(new_stories):
         story_is_duplicate = False
@@ -630,8 +652,10 @@ def _duplicate_findings(
                 errors.append(f"duplicate source URL: {source['url']}")
                 story_is_duplicate = True
         for previous in all_previous:
-            if briefs_are_near_duplicates(story["brief"], previous["brief"]):
-                errors.append(f"near-duplicate story briefs: {story['slug']} and {previous['slug']}")
+            previous_brief = previous.get("brief")
+            if isinstance(previous_brief, str) and briefs_are_near_duplicates(story["brief"], previous_brief):
+                previous_slug = previous.get("slug") or previous.get("id") or "previous story"
+                errors.append(f"near-duplicate story briefs: {story['slug']} and {previous_slug}")
                 story_is_duplicate = True
                 break
         if story_is_duplicate:
@@ -643,8 +667,12 @@ def _duplicate_findings(
     return errors, duplicate_indexes
 
 
-def _duplicate_errors(new_stories: list[dict[str, Any]], existing: dict[str, Any] | None) -> list[str]:
-    errors, _ = _duplicate_findings(new_stories, existing)
+def _duplicate_errors(
+    new_stories: list[dict[str, Any]],
+    existing: dict[str, Any] | None,
+    recent_stories: list[dict[str, Any]] | None = None,
+) -> list[str]:
+    errors, _ = _duplicate_findings(new_stories, existing, recent_stories)
     return errors
 
 
@@ -658,6 +686,7 @@ def _seed_errors(
     existing: dict[str, Any] | None,
     minimum_count: int,
     maximum_count: int,
+    recent_stories: list[dict[str, Any]] | None = None,
 ) -> list[str]:
     """Validate frozen research metadata before paying for language adaptation."""
     seed_issue = {
@@ -689,7 +718,7 @@ def _seed_errors(
                 + ", ".join(invalid_append_types)
             )
     if all(isinstance(story, dict) and isinstance(story.get("sources"), list) and isinstance(story.get("brief"), str) for story in seeds):
-        errors.extend(_duplicate_errors(seeds, existing))
+        errors.extend(_duplicate_errors(seeds, existing, recent_stories))
     return errors
 
 
@@ -803,6 +832,11 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
         target,
         int(site["recentIssueContextDays"]),
     )
+    recent_story_records = [
+        story
+        for issue in recent_issues
+        for story in issue.get("stories", [])
+    ]
     instructions = _read_prompts(root)
     image_locales = list(dict.fromkeys([*site["interfaceLocales"], *locales]))
     mode = "append" if existing else "new issue"
@@ -895,6 +929,7 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
             existing,
             minimum_count,
             maximum_count,
+            recent_story_records,
         )
         if research_errors:
             research_feedback = list(dict.fromkeys(research_errors))[:20]
@@ -902,7 +937,11 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
                 f"Research attempt {attempt_number}/{RESEARCH_ATTEMPTS}",
                 research_errors,
             )
-            duplicate_errors, duplicate_indexes = _duplicate_findings(candidate_seeds, existing)
+            duplicate_errors, duplicate_indexes = _duplicate_findings(
+                candidate_seeds,
+                existing,
+                recent_story_records,
+            )
             duplicate_only = bool(duplicate_indexes) and all(
                 "duplicate" in error.lower()
                 for error in research_errors

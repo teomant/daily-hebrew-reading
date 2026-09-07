@@ -84,8 +84,41 @@ class GenerationTests(unittest.TestCase):
         self.assertIn("A previous story that must not be repeated.", request)
         self.assertIn("https://example.com/previous-story", request)
         self.assertIn("another language, publisher, URL, headline, wording, angle", request)
+        self.assertIn("prohibited output, not examples or candidate material", request)
+        self.assertIn("Do not return a follow-up", request)
+        self.assertIn("replace every overlap with EVERYDAY or DIALOG", request)
         self.assertIn("only new EVERYDAY or DIALOG stories", request)
         self.assertIn("Do not use web search", request)
+
+    def test_new_issue_rejects_a_previous_day_story_before_adaptation(self) -> None:
+        site = read_json(ROOT / "config" / "site.json")
+        levels = read_json(ROOT / "config" / "reading-levels.json")["levels"]
+        previous_story = read_json(ROOT / "content" / "2024-01-26.json")["stories"][0]
+        seed = {
+            key: copy.deepcopy(value)
+            for key, value in previous_story.items()
+            if key != "levels"
+        }
+        seed["id"] = seed["slug"] = "ingenuity-flight-story-with-new-date"
+        recent_stories = [{
+            "id": previous_story["id"],
+            "brief": previous_story["brief"],
+            "sourceUrls": [source["url"] for source in previous_story["sources"]],
+        }]
+        errors = _seed_errors(
+            [seed],
+            "2026-09-07",
+            [level["id"] for level in levels],
+            site["translationLocales"],
+            site,
+            levels,
+            None,
+            1,
+            1,
+            recent_stories,
+        )
+        self.assertTrue(any("duplicate source URL" in error for error in errors), errors)
+        self.assertTrue(any("near-duplicate story briefs" in error for error in errors), errors)
 
     def test_append_seed_schema_only_accepts_everyday_or_dialog(self) -> None:
         schema = _seed_batch_schema(3, 3, [], ["ru", "en"], ["ru", "en"], ["everyday", "dialog"])
