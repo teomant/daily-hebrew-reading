@@ -12,13 +12,15 @@ from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import Mock, patch
 
-from src.common import ROOT, read_json
+from src.common import ROOT, normalized_url, read_json
 from src.generate_issue import (
     PROVENANCE_ERRORS_KEY,
     _adaptation_batch_schema,
     _call_openai,
     _compact_story_record,
     _duplicate_findings,
+    _duplicate_review_findings,
+    _duplicate_review_schema,
     _existing_exclusions,
     _forbidden_story_records,
     _generated_planning_request,
@@ -29,6 +31,7 @@ from src.generate_issue import (
     _seed_batch_schema,
     _seed_errors,
     _sourced_discovery_request,
+    _sourced_duplicate_review_request,
     _transactional_write,
     _updated_history,
     generate,
@@ -37,6 +40,11 @@ from src.validation import validate_repository
 
 
 class GenerationTests(unittest.TestCase):
+    def test_amp_article_urls_normalize_to_the_canonical_article(self) -> None:
+        canonical = "https://www.timesofisrael.com/example-article/"
+        amp = "https://www.timesofisrael.com/example-article/amp/"
+        self.assertEqual(normalized_url(canonical), normalized_url(amp))
+
     def test_adaptation_schema_allows_one_line_per_dialog_turn(self) -> None:
         schema = _adaptation_batch_schema(
             ["family-dialog"],
@@ -144,6 +152,62 @@ class GenerationTests(unittest.TestCase):
         self.assertIn("archaeological layer", static_prompt)
         self.assertIn("continuing consequence", static_prompt)
         self.assertIn("expand both CURRENT and HISTORY discovery", static_prompt)
+
+    def test_llm_duplicate_review_requires_and_enforces_one_verdict_per_candidate(self) -> None:
+        candidates = [{
+            "id": "mahane-yehuda-infrastructure-revamp",
+            "slug": "mahane-yehuda-infrastructure-revamp",
+            "type": "current",
+            "brief": "Mahane Yehuda market will be renovated street by street.",
+            "sources": [{
+                "publisher": "Publisher",
+                "title": "Market renovation",
+                "url": "https://example.com/market-renovation",
+            }],
+        }, {
+            "id": "new-bus-route",
+            "slug": "new-bus-route",
+            "type": "current",
+            "brief": "A new bus route connects two towns.",
+            "sources": [],
+        }]
+        forbidden = [{
+            "id": "mahane-yehuda-market-modernizes",
+            "type": "current",
+            "brief": "Mahane Yehuda is receiving a gradual market revamp.",
+            "sourceUrls": ["https://example.com/older-market-story"],
+        }]
+        request = _sourced_duplicate_review_request(forbidden, [], candidates)
+        self.assertIn("same underlying story", request)
+        self.assertIn("mahane-yehuda-market-modernizes", request)
+        self.assertIn("mahane-yehuda-infrastructure-revamp", request)
+
+        schema = _duplicate_review_schema([story["id"] for story in candidates])
+        verdicts = schema["properties"]["verdicts"]
+        self.assertEqual(verdicts["minItems"], 2)
+        self.assertEqual(verdicts["maxItems"], 2)
+
+        duplicate_indexes, findings = _duplicate_review_findings({"verdicts": [{
+            "candidateId": "mahane-yehuda-infrastructure-revamp",
+            "isDuplicate": True,
+            "matchedStoryId": "mahane-yehuda-market-modernizes",
+            "reason": "same named market renovation project",
+        }, {
+            "candidateId": "new-bus-route",
+            "isDuplicate": False,
+            "matchedStoryId": None,
+            "reason": "different subject and event",
+        }]}, candidates)
+        self.assertEqual(duplicate_indexes, {0})
+        self.assertIn("same named market renovation project", findings[0])
+
+        with self.assertRaisesRegex(RuntimeError, "exactly once"):
+            _duplicate_review_findings({"verdicts": [{
+                "candidateId": "new-bus-route",
+                "isDuplicate": False,
+                "matchedStoryId": None,
+                "reason": "unique",
+            }]}, candidates)
 
     def test_generated_planning_forbids_exact_recent_scenarios(self) -> None:
         request = _generated_planning_request(
@@ -613,9 +677,17 @@ class GenerationTests(unittest.TestCase):
             generated = [seed for seed, _ in pairs[len(sourced_specs):]]
             adaptations = [adaptation for _, adaptation in pairs]
             duplicate_history = copy.deepcopy(sourced[-2])
+            unique_review = lambda stories: {"verdicts": [{
+                "candidateId": story["id"],
+                "isDuplicate": False,
+                "matchedStoryId": None,
+                "reason": "different subject and event",
+            } for story in stories]}
             call = Mock(side_effect=[
                 {"stories": [*sourced[:-1], duplicate_history]},
+                unique_review(sourced[:-1]),
                 {"stories": [sourced[-1]]},
+                unique_review([sourced[-1]]),
                 {"stories": generated},
                 {"adaptations": adaptations},
             ])
@@ -626,21 +698,26 @@ class GenerationTests(unittest.TestCase):
             ):
                 result = generate(root, "2026-09-10", 3)
 
-            self.assertEqual(call.call_count, 4)
+            self.assertEqual(call.call_count, 6)
             self.assertEqual(call.call_args_list[0].kwargs["phase"], "Sourced discovery attempt 1/2")
             self.assertTrue(call.call_args_list[0].kwargs["use_web_search"])
             self.assertIn("# Sourced discovery instructions", call.call_args_list[0].args[1])
             self.assertNotIn("# Everyday-story instructions", call.call_args_list[0].args[1])
-            self.assertEqual(call.call_args_list[1].kwargs["phase"], "Sourced discovery attempt 2/2")
-            self.assertTrue(call.call_args_list[1].kwargs["use_web_search"])
-            self.assertIn("RETRY FEEDBACK", call.call_args_list[1].args[2])
-            self.assertIn("ALREADY SELECTED SOURCED STORIES", call.call_args_list[1].args[2])
-            self.assertEqual(call.call_args_list[2].kwargs["phase"], "Generated planning attempt 1/3")
-            self.assertFalse(call.call_args_list[2].kwargs["use_web_search"])
-            self.assertNotIn("# Sourced discovery instructions", call.call_args_list[2].args[1])
-            self.assertIn("# Everyday-story instructions", call.call_args_list[2].args[1])
-            self.assertEqual(call.call_args_list[3].kwargs["phase"], "Adaptation batch 1/1, attempt 1/2")
-            self.assertIn("# Adaptation and annotation instructions", call.call_args_list[3].args[1])
+            self.assertEqual(call.call_args_list[1].kwargs["phase"], "Sourced discovery attempt 1/2 duplicate review")
+            self.assertFalse(call.call_args_list[1].kwargs["use_web_search"])
+            self.assertIn("# Sourced-story duplicate review", call.call_args_list[1].args[1])
+            self.assertEqual(call.call_args_list[2].kwargs["phase"], "Sourced discovery attempt 2/2")
+            self.assertTrue(call.call_args_list[2].kwargs["use_web_search"])
+            self.assertIn("RETRY FEEDBACK", call.call_args_list[2].args[2])
+            self.assertIn("ALREADY SELECTED SOURCED STORIES", call.call_args_list[2].args[2])
+            self.assertEqual(call.call_args_list[3].kwargs["phase"], "Sourced discovery attempt 2/2 duplicate review")
+            self.assertFalse(call.call_args_list[3].kwargs["use_web_search"])
+            self.assertEqual(call.call_args_list[4].kwargs["phase"], "Generated planning attempt 1/3")
+            self.assertFalse(call.call_args_list[4].kwargs["use_web_search"])
+            self.assertNotIn("# Sourced discovery instructions", call.call_args_list[4].args[1])
+            self.assertIn("# Everyday-story instructions", call.call_args_list[4].args[1])
+            self.assertEqual(call.call_args_list[5].kwargs["phase"], "Adaptation batch 1/1, attempt 1/2")
+            self.assertIn("# Adaptation and annotation instructions", call.call_args_list[5].args[1])
             self.assertEqual(len(result["stories"]), 12)
 
     def test_existing_day_appends_without_overwriting(self) -> None:
@@ -667,6 +744,68 @@ class GenerationTests(unittest.TestCase):
             self.assertEqual(result["stories"][-1]["id"], "changed-train-platform")
             self.assertEqual(len(result["stories"]), 4)
             self.assertTrue(all(unit["text"] for level in result["stories"][-1]["levels"].values() for unit in level["title"]))
+            self.assertEqual(validate_repository(root), [])
+
+    def test_failed_sourced_duplicate_review_discards_batch_without_failing_issue(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            for directory in ("config", "i18n", "prompts", "content"):
+                shutil.copytree(ROOT / directory, root / directory)
+            site_path = root / "config" / "site.json"
+            site = read_json(site_path)
+            site.update({
+                "defaultIssueStoryCount": 1,
+                "minimumIssueStoryCount": 1,
+                "maximumIssueStoryCount": 1,
+            })
+            site_path.write_text(json.dumps(site), encoding="utf-8")
+
+            issue = read_json(root / "content" / "2026-09-06.json")
+            sourced_template = next(story for story in issue["stories"] if story["type"] == "current")
+            sourced_seed = {
+                key: copy.deepcopy(value)
+                for key, value in sourced_template.items()
+                if key != "levels"
+            }
+            sourced_seed.update({
+                "id": "new-town-library-hours",
+                "slug": "new-town-library-hours",
+                "brief": "A town library extends its afternoon opening hours.",
+                "sources": [],
+                "image": None,
+            })
+
+            generated_template = next(story for story in issue["stories"] if story["type"] == "everyday")
+            generated_seed = {
+                key: copy.deepcopy(value)
+                for key, value in generated_template.items()
+                if key != "levels"
+            }
+            generated_seed.update({
+                "id": "family-chooses-balcony-chair",
+                "slug": "family-chooses-balcony-chair",
+                "brief": "Two relatives measure a balcony and choose where to put one new chair.",
+                "sources": [],
+                "image": None,
+            })
+            generated_seed["everydayMeta"]["scenario"] = "family_measures_balcony_for_chair"
+            adaptation = {"id": generated_seed["id"], "levels": generated_template["levels"]}
+            call = Mock(side_effect=[
+                {"stories": [sourced_seed]},
+                RuntimeError("duplicate review unavailable"),
+                RuntimeError("retry search unavailable"),
+                {"stories": [generated_seed]},
+                {"adaptations": [adaptation]},
+            ])
+            with patch.dict(os.environ, {"OPENAI_MODEL": "test-model"}), patch(
+                "src.generate_issue._call_openai",
+                call,
+            ):
+                result = generate(root, "2026-09-10", 3)
+
+            self.assertEqual(call.call_args_list[1].kwargs["phase"], "Sourced discovery attempt 1/2 duplicate review")
+            self.assertEqual(call.call_args_list[2].kwargs["phase"], "Sourced discovery attempt 2/2")
+            self.assertEqual([story["id"] for story in result["stories"]], [generated_seed["id"]])
             self.assertEqual(validate_repository(root), [])
 
     def test_duplicate_seed_is_replaced_with_an_ai_story(self) -> None:

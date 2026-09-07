@@ -277,6 +277,33 @@ def _adaptation_batch_schema(
     }
 
 
+def _duplicate_review_schema(candidate_ids: list[str]) -> dict[str, Any]:
+    verdict = {
+        "type": "object",
+        "properties": {
+            "candidateId": {"type": "string", "enum": candidate_ids},
+            "isDuplicate": {"type": "boolean"},
+            "matchedStoryId": {"anyOf": [{"type": "string"}, {"type": "null"}]},
+            "reason": {"type": "string"},
+        },
+        "required": ["candidateId", "isDuplicate", "matchedStoryId", "reason"],
+        "additionalProperties": False,
+    }
+    return {
+        "type": "object",
+        "properties": {
+            "verdicts": {
+                "type": "array",
+                "items": verdict,
+                "minItems": len(candidate_ids),
+                "maxItems": len(candidate_ids),
+            }
+        },
+        "required": ["verdicts"],
+        "additionalProperties": False,
+    }
+
+
 def _read_prompts(root: Path, names: tuple[str, ...]) -> str:
     return "\n\n".join(
         (root / "prompts" / name).read_text(encoding="utf-8")
@@ -437,6 +464,65 @@ ALREADY SELECTED SOURCED STORIES IN THIS RUN:
 OUTPUT CONTRACT
 Write every `brief` in English and include enough supported detail for later adaptation without inventing facts. The story id and slug must be identical. Use null `everydayMeta`. Prefer distinct canonical HTTPS content-page URLs; never use homepages, section pages, search pages, generic latest pages, or liveblogs. Use an empty source list rather than an uncertain URL. Use null image unless every provenance and rights requirement is verified. Return only schema-matching data and no prose.{retry_scope}{retry}
 """.strip()
+
+
+def _sourced_duplicate_review_request(
+    forbidden_stories: list[dict[str, Any]],
+    selected_stories: list[dict[str, Any]],
+    candidates: list[dict[str, Any]],
+) -> str:
+    return f"""
+Compare every candidate against every forbidden record, every already selected record, and earlier candidates in this batch. A candidate must be marked duplicate when it is the same underlying story even if its slug, wording, source, URL form, date, or angle differs.
+
+FORBIDDEN SOURCED STORIES FROM PREVIOUS DAYS:
+<forbidden_story_records>
+{json.dumps(forbidden_stories, ensure_ascii=False, indent=2)}
+</forbidden_story_records>
+
+ALREADY SELECTED SOURCED STORIES IN THIS RUN:
+<selected_story_records>
+{json.dumps(selected_stories, ensure_ascii=False, indent=2)}
+</selected_story_records>
+
+PROPOSED CANDIDATES IN ORDER:
+<candidate_story_records>
+{json.dumps([_compact_story_record(story) for story in candidates], ensure_ascii=False, indent=2)}
+</candidate_story_records>
+
+Return exactly one verdict per proposed candidate ID. For a unique candidate use false, null, and a short reason. For a duplicate use true, the matched record's ID, and a short explanation of the shared underlying story. Return only schema-matching data.
+""".strip()
+
+
+def _duplicate_review_findings(
+    review: dict[str, Any],
+    candidates: list[dict[str, Any]],
+) -> tuple[set[int], list[str]]:
+    candidate_ids = [story["id"] for story in candidates]
+    verdicts = review.get("verdicts")
+    if not isinstance(verdicts, list):
+        raise RuntimeError("duplicate review returned no verdict list")
+    reviewed_ids = [verdict.get("candidateId") for verdict in verdicts if isinstance(verdict, dict)]
+    if (
+        len(verdicts) != len(candidate_ids)
+        or len(reviewed_ids) != len(candidate_ids)
+        or set(reviewed_ids) != set(candidate_ids)
+    ):
+        raise RuntimeError("duplicate review did not classify every candidate exactly once")
+
+    indexes_by_id = {story_id: index for index, story_id in enumerate(candidate_ids)}
+    duplicate_indexes: set[int] = set()
+    findings: list[str] = []
+    for verdict in verdicts:
+        if not isinstance(verdict.get("isDuplicate"), bool):
+            raise RuntimeError("duplicate review returned an invalid verdict")
+        if not verdict["isDuplicate"]:
+            continue
+        candidate_id = verdict["candidateId"]
+        duplicate_indexes.add(indexes_by_id[candidate_id])
+        matched_id = verdict.get("matchedStoryId") or "another sourced story"
+        reason = verdict.get("reason") or "same underlying story"
+        findings.append(f"LLM duplicate review: {candidate_id} matches {matched_id}: {reason}")
+    return duplicate_indexes, findings
 
 
 def _generated_planning_request(
@@ -942,6 +1028,7 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
         story for story in recent_story_records if story.get("type") in {"everyday", "dialog"}
     ]
     sourced_instructions = _read_prompts(root, ("editorial.md",))
+    duplicate_review_instructions = _read_prompts(root, ("deduplication.md",))
     generated_instructions = _read_prompts(root, ("everyday.md", "dialog.md"))
     adaptation_instructions = _read_prompts(root, ("adaptation.md",))
     image_locales = list(dict.fromkeys([*site["interfaceLocales"], *locales]))
@@ -1062,6 +1149,50 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
                 )
             else:
                 sourced_feedback = None
+
+            if candidate_batch:
+                review_phase = f"{phase} duplicate review"
+                try:
+                    duplicate_review = _call_openai(
+                        os.environ["OPENAI_MODEL"],
+                        duplicate_review_instructions,
+                        _sourced_duplicate_review_request(
+                            forbidden_sourced,
+                            [_compact_story_record(story) for story in sourced_seeds],
+                            candidate_batch,
+                        ),
+                        _duplicate_review_schema([story["id"] for story in candidate_batch]),
+                        use_web_search=False,
+                        phase=review_phase,
+                    )
+                    reviewed_duplicate_indexes, reviewed_findings = _duplicate_review_findings(
+                        duplicate_review,
+                        candidate_batch,
+                    )
+                except (KeyError, TypeError, RuntimeError):
+                    sourced_feedback = [
+                        "The strict duplicate review failed, so none of the unreviewed candidates were retained. "
+                        "Continue searching for all remaining sourced slots."
+                    ]
+                    _log(f"{review_phase}: failed closed; discarded {len(candidate_batch)} unreviewed candidate(s)")
+                    continue
+                if reviewed_duplicate_indexes:
+                    candidate_batch = [
+                        story
+                        for index, story in enumerate(candidate_batch)
+                        if index not in reviewed_duplicate_indexes
+                    ]
+                    sourced_feedback = [
+                        *(sourced_feedback or []),
+                        *reviewed_findings[:19],
+                        "Continue web search for genuinely unrelated replacements.",
+                    ]
+                    _log(
+                        f"{review_phase}: rejected {len(reviewed_duplicate_indexes)} semantic duplicate(s); "
+                        f"retained {len(candidate_batch)} candidate(s)"
+                    )
+                else:
+                    _log(f"{review_phase}: all {len(candidate_batch)} candidate(s) are semantically unique")
 
             before_count = len(sourced_seeds)
             for story in candidate_batch:

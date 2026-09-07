@@ -102,6 +102,9 @@ def site_url(path: str, base_path: str) -> str:
 def normalized_url(value: str) -> str:
     """Normalize URL spelling for provenance and duplicate comparisons."""
     parsed = urlsplit(value)
+    path = parsed.path.rstrip("/")
+    if path.casefold().endswith("/amp"):
+        path = path[:-4].rstrip("/")
     tracking_keys = {
         "dclid",
         "fbclid",
@@ -122,7 +125,7 @@ def normalized_url(value: str) -> str:
         (
             parsed.scheme.casefold(),
             parsed.netloc.casefold(),
-            parsed.path.rstrip("/"),
+            path,
             query,
             "",
         )
