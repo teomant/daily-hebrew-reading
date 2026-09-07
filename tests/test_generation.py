@@ -83,12 +83,31 @@ class GenerationTests(unittest.TestCase):
         self.assertIn(existing["stories"][0]["sources"][0]["url"], request)
         self.assertIn("A previous story that must not be repeated.", request)
         self.assertIn("https://example.com/previous-story", request)
-        self.assertIn("another language, publisher, URL, headline, wording, angle", request)
-        self.assertIn("prohibited output, not examples or candidate material", request)
-        self.assertIn("Do not return a follow-up", request)
-        self.assertIn("replace every overlap with EVERYDAY or DIALOG", request)
+        self.assertIn("NOVELTY CONTRACT", request)
+        self.assertIn("same central entity or subject and the same underlying event", request)
+        self.assertIn("Merely sharing a domain or vocabulary is not enough", request)
+        self.assertIn("Do not copy, translate, update, continue, repair, rename, or rewrite it", request)
+        self.assertIn("used only for comparison", request)
         self.assertIn("only new EVERYDAY or DIALOG stories", request)
         self.assertIn("Do not use web search", request)
+
+    def test_new_issue_research_starts_from_date_not_forbidden_records(self) -> None:
+        request = _generation_request(
+            "2026-09-07",
+            12,
+            10,
+            13,
+            False,
+            [],
+            ["ru", "en"],
+            {"stories": []},
+            [],
+            [],
+        )
+        self.assertIn("Begin discovery from the target date", request)
+        self.assertIn("Do not use forbidden IDs, subjects, briefs, or URLs to formulate search queries", request)
+        self.assertIn("specific source page was consulted", request)
+        self.assertIn("passes the novelty contract", request)
 
     def test_new_issue_rejects_a_previous_day_story_before_adaptation(self) -> None:
         site = read_json(ROOT / "config" / "site.json")
@@ -371,8 +390,12 @@ class GenerationTests(unittest.TestCase):
         )
         openai = Mock()
         openai.return_value.responses.create.return_value = response
-        with patch.dict(sys.modules, {"openai": SimpleNamespace(OpenAI=openai)}):
+        with (
+            patch.dict(sys.modules, {"openai": SimpleNamespace(OpenAI=openai)}),
+            patch("src.generate_issue._log_prompt") as log_prompt,
+        ):
             self.assertEqual(_call_openai("test-model", "instructions", "request", {}), output)
+        log_prompt.assert_called_once_with("OpenAI request", "instructions", "request")
 
     def test_api_marks_unverified_sources_for_discarding(self) -> None:
         output = {"stories": [{"sources": [{"url": "https://example.com/invented"}]}]}
@@ -564,6 +587,14 @@ class GenerationTests(unittest.TestCase):
             self.assertFalse(call.call_args_list[0].kwargs["use_web_search"])
             self.assertEqual(call.call_args_list[1].kwargs["phase"], "Adaptation batch 1/1, attempt 1/2")
             self.assertEqual(call.call_args_list[2].kwargs["phase"], "Adaptation batch 1/1, attempt 2/2")
+            research_instructions = call.call_args_list[0].args[1]
+            adaptation_instructions = call.call_args_list[1].args[1]
+            self.assertIn("# Editorial instructions", research_instructions)
+            self.assertIn("# Everyday-story instructions", research_instructions)
+            self.assertIn("# Dialogue instructions", research_instructions)
+            self.assertNotIn("# Adaptation and annotation instructions", research_instructions)
+            self.assertIn("# Adaptation and annotation instructions", adaptation_instructions)
+            self.assertNotIn("# Editorial instructions", adaptation_instructions)
             self.assertEqual(result["stories"][-1]["id"], "changed-train-platform")
 
     def test_adaptation_accepts_empty_translation_above_coverage_threshold(self) -> None:

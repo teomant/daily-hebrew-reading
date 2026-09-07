@@ -21,6 +21,7 @@
 - Audited the generated issue and confirmed that 11 of 12 stories repeated the previous day, including four exact reused source URLs. The research LLM ignored the supplied forbidden records, while Python compared candidates only within the new batch because no same-day issue existed.
 - Strengthened the research prompt so previous stories are explicitly prohibited material, not examples to rewrite, and removed the recent-follow-up loophole. Python now checks candidate IDs/slugs, English briefs, and source URLs against compact records from recent issues before adaptation; detected repeats enter the existing AI-only replacement path.
 - Completely removed the generated `2026-09-07` issue, its index entry, and its six generated-scenario history records so the date can be regenerated cleanly.
+- Split discovery and adaptation into separate system prompt sets without changing models. Consolidated repeated exclusion warnings into one precise novelty contract, distinguished real duplicates from merely shared places/domains/vocabulary, prohibited deriving searches or scenarios from forbidden records, and defined when sourced research is complete. Dialogue discovery now plans a direct-speech-ready scenario while dialogue rendering stays in the adaptation prompt. Every OpenAI call logs its complete system and user prompt immediately before sending, with safe readable role and phase markers. Per owner direction, generation and local tests were not run; verification was limited to a short self-review and static diff checks.
 
 ## 2026-09-04
 

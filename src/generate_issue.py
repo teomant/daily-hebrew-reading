@@ -48,6 +48,16 @@ def _log(message: str) -> None:
     print(f"[{timestamp}] {_safe_log_text(message)}", flush=True)
 
 
+def _log_prompt(phase: str, instructions: str, request: str) -> None:
+    """Log the exact role messages safely while retaining readable line breaks."""
+    _log(f"{phase}: full LLM prompt follows")
+    for role, content in (("SYSTEM", instructions), ("USER", request)):
+        _log(f"{phase}: ----- {role} -----")
+        for line in content.split("\n"):
+            _log(f"{phase}: {line}")
+    _log(f"{phase}: ----- END PROMPT -----")
+
+
 def _safe_log_text(value: object) -> str:
     escaped: list[str] = []
     for character in str(value):
@@ -262,11 +272,11 @@ def _adaptation_batch_schema(
     }
 
 
-def _read_prompts(root: Path) -> str:
-    parts = []
-    for name in ("editorial.md", "everyday.md", "dialog.md", "adaptation.md"):
-        parts.append((root / "prompts" / name).read_text(encoding="utf-8"))
-    return "\n\n".join(parts)
+def _read_prompts(root: Path, names: tuple[str, ...]) -> str:
+    return "\n\n".join(
+        (root / "prompts" / name).read_text(encoding="utf-8")
+        for name in names
+    )
 
 
 def _recent_history(history: dict[str, Any], target: date, days: int) -> list[dict[str, Any]]:
@@ -359,6 +369,10 @@ def _generation_request(
             "Do not use web search. EVERYDAY and DIALOG are fully AI-generated scenarios: give them scenario metadata, "
             "an empty source list, and no image."
         )
+        discovery_contract = (
+            "Create every replacement from a fresh situation. Do not use a forbidden record as a template, starting point, "
+            "variation, or source of names and details."
+        )
     elif is_append:
         mode = (
             "This issue already exists. Produce only new EVERYDAY or DIALOG stories to append, in any mix. "
@@ -368,6 +382,10 @@ def _generation_request(
         research_scope = (
             "Do not use web search. EVERYDAY and DIALOG are fully AI-generated scenarios: give them scenario metadata, "
             "an empty source list, and no image."
+        )
+        discovery_contract = (
+            "Create every appended scenario independently. Do not use a forbidden record as a template, starting point, "
+            "variation, or source of names and details."
         )
     else:
         mode = (
@@ -380,13 +398,20 @@ def _generation_request(
             "Israeli sources; use international stories only when their everyday-language value is stronger. Prefer sources "
             "published today or within the previous several days for CURRENT. Verify facts before adapting."
         )
+        discovery_contract = (
+            "Begin discovery from the target date and the allowed editorial areas, not from the forbidden records. "
+            "Do not use forbidden IDs, subjects, briefs, or URLs to formulate search queries. Search across multiple unrelated "
+            "permitted areas. A CURRENT or HISTORY candidate is complete only when its specific source page was consulted, "
+            "its central subject and event are clear, its brief is supported by that source, and it passes the novelty contract. "
+            "If enough unique sourced stories cannot be found after reasonable search, fill the missing slots with unrelated "
+            "EVERYDAY or DIALOG scenarios."
+        )
     level_payload = [
         {
             "id": item["id"],
             "targetWords": item["targetWords"],
             "minimumWords": item["minimumWords"],
             "maximumWords": item["maximumWords"],
-            "guidance": item["guidance"],
         }
         for item in levels
     ]
@@ -402,26 +427,40 @@ Target publication date: {target_date}
 Story count: aim for {target_count}; return between {minimum_count} and {maximum_count}. Never add a weak or padded story only to reach the target.
 Mode: {mode}
 
-ABSOLUTE EXCLUSION RULE: the forbidden records below are prohibited output, not examples or candidate material. Do not copy, rewrite, translate, update, continue, rename, or add a date/year suffix to any forbidden story. Do not reuse any forbidden source URL. If there is any doubt that a candidate overlaps a forbidden subject or scenario, discard it and use a completely unrelated EVERYDAY or DIALOG scenario instead.
+DISCOVERY REQUIREMENTS
+{research_scope}
+{discovery_contract}
 
-{research_scope} Give every brief enough concrete situation, interaction, and outcome detail to support 4–5 developed paragraphs at the configured article lengths without invention. Never reuse any excluded story, URL, or substantially similar topic.
+Give every brief enough concrete situation, interaction, and outcome detail to support 4–5 developed paragraphs at the configured article lengths without invention.
 
 Configured reading levels:
 {json.dumps(level_payload, ensure_ascii=False, indent=2)}
 
 Required translation locales: {json.dumps(locales)}
 
-FORBIDDEN STORY RECORDS FROM THE EXISTING ISSUE AND PREVIOUS ISSUES:
-{json.dumps(forbidden_stories, ensure_ascii=False, indent=2)}
-
-Before returning any candidate, compare its underlying subject, brief, slug, and every source URL against every forbidden record above. Reject the candidate when it describes the same real event, historical subject, everyday scenario, or dialogue situation—even when it uses another language, publisher, URL, headline, wording, angle, added detail, later date, or year suffix. A different headline or a small update does not make it a new story. Write every internal `brief` in English so deterministic validation can compare it with stored briefs.
-
 Recent EVERYDAY and DIALOG scenario history to avoid:
 {json.dumps(recent_history, ensure_ascii=False, indent=2)}
 
-Do not return a follow-up to a forbidden story in this issue. Choose a different subject or an AI-generated scenario instead.
+NOVELTY CONTRACT
+The forbidden records below are previous stories used only for comparison. They are not examples, candidate material, or search suggestions.
 
-The story id and slug must be identical. Prefer distinct canonical content-page URLs for sourced stories; use an empty source list rather than an uncertain URL. Do not use publisher homepages, section pages, generic latest pages, or liveblogs. Use null everydayMeta for sourced stories; EVERYDAY and DIALOG use scenario metadata and have no sources or image. Use null image when image provenance or embedding suitability is uncertain. Before finalizing, check every candidate against the forbidden IDs, briefs, and URLs one more time and replace every overlap with EVERYDAY or DIALOG. Return no prose outside the schema.{retry}
+- A sourced candidate is a duplicate when it has the same central entity or subject and the same underlying event, action, announcement, change, project, or outcome as a forbidden record.
+- A HISTORY candidate is a duplicate when it tells the same specific historical story. Merely sharing a city, place, object, or institution is not enough when the historical event or subject is genuinely different.
+- An EVERYDAY or DIALOG candidate is a duplicate when its practical problem or goal, interaction, and resolution substantially match a forbidden scenario. Merely sharing a domain or vocabulary is not enough.
+- The same or equivalent source URL is always a duplicate. Another publisher, URL, headline, language, later publication date, angle, or minor follow-up does not make the same underlying event new.
+- A new slug, renamed people, changed wording, or cosmetic details never make a duplicate new.
+
+For every candidate, compare its underlying meaning—not only exact words—with every forbidden brief and URL. If it matches or uniqueness is uncertain, discard it completely. Do not copy, translate, update, continue, repair, rename, or rewrite it. Find or generate an unrelated replacement. Do not output the comparison process.
+
+FORBIDDEN STORY RECORDS FROM THE EXISTING ISSUE AND PREVIOUS ISSUES:
+<forbidden_story_records>
+{json.dumps(forbidden_stories, ensure_ascii=False, indent=2)}
+</forbidden_story_records>
+
+The records above are rejected history. Return only genuinely new candidates.
+
+OUTPUT CONTRACT
+Write every internal `brief` in English. The story id and slug must be identical. Prefer distinct canonical content-page URLs for sourced stories; use an empty source list rather than an uncertain URL. Do not use publisher homepages, section pages, generic latest pages, or liveblogs. Use null everydayMeta for sourced stories; EVERYDAY and DIALOG use scenario metadata and have no sources or image. Use null image when image provenance or embedding suitability is uncertain. Return only data matching the supplied schema and no prose.{retry}
 """.strip()
 
 
@@ -458,6 +497,7 @@ def _call_openai(
         if use_web_search:
             parameters["tools"] = [{"type": "web_search", "search_context_size": "medium"}]
             parameters["include"] = ["web_search_call.action.sources"]
+        _log_prompt(phase, instructions, request)
         response = client.responses.create(**parameters)
         _log(f"{phase}: response received after {monotonic() - started:.1f}s")
         if not response.output_text:
@@ -837,7 +877,11 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
         for issue in recent_issues
         for story in issue.get("stories", [])
     ]
-    instructions = _read_prompts(root)
+    research_instructions = _read_prompts(
+        root,
+        ("editorial.md", "everyday.md", "dialog.md"),
+    )
+    adaptation_instructions = _read_prompts(root, ("adaptation.md",))
     image_locales = list(dict.fromkeys([*site["interfaceLocales"], *locales]))
     mode = "append" if existing else "new issue"
     _log(
@@ -896,7 +940,7 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
         research_request += "\n\nThis is the research and planning phase. Return only sourced/scenario metadata and concise frozen briefs; do not write level adaptations yet."
         seed_batch = _call_openai(
             os.environ["OPENAI_MODEL"],
-            instructions,
+            research_instructions,
             research_request,
             seed_schema,
             use_web_search=existing is None and not replacing_duplicates,
@@ -1012,7 +1056,7 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
             try:
                 adaptation_batch = _call_openai(
                     os.environ["OPENAI_MODEL"],
-                    instructions,
+                    adaptation_instructions,
                     _adaptation_request(batch_seeds, levels, locales, adaptation_feedback),
                     adaptation_schema,
                     use_web_search=False,

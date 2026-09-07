@@ -77,11 +77,11 @@ The OpenAI API is billed separately from ChatGPT Plus. The API uses the credits 
 - Leave `date` blank to use the current UTC date. Enter an existing date to append rather than replace. Append runs generate only EVERYDAY or DIALOG stories, in any mix. `additional_stories` controls the append size; it is ignored for a new full issue.
 - **Validate and deploy site** runs on an ordinary push to `master` and never calls OpenAI.
 
-Generation logs timestamp each research, adaptation, validation, and write phase. Research has up to three attempts. Adaptation runs in two-story batches; a failed request retries only its batch without repeating research.
+Generation logs timestamp each research, adaptation, validation, and write phase. Immediately before each OpenAI call, it logs the complete phase-specific system and user prompts. Research has up to three attempts. Adaptation runs in two-story batches; a failed request retries only its batch without repeating research.
 
 The generation workflow runs repository validation and unit tests before calling OpenAI, so code or fixture failures stop without API spend. After generation it validates the changed content again and builds the exact site that will be committed and deployed.
 
-The adaptation prompt tells the model to finish and proofread the Hebrew before segmenting it, then translate larger meaningful phrases where practical using the full sentence as context. Ordinary spaces are restored locally instead of being represented by verbose JSON separator objects. Individual empty translations are allowed, but each story level must reach at least 75% coverage per language.
+Discovery receives only the editorial, everyday-scenario, and dialogue-planning prompts; adaptation receives only the Hebrew writing, dialogue rendering, segmentation, and translation prompt. The adaptation prompt tells the model to finish and proofread the Hebrew before segmenting it, then translate larger meaningful phrases where practical using the full sentence as context. Ordinary spaces are restored locally instead of being represented by verbose JSON separator objects. Individual empty translations are allowed, but each story level must reach at least 75% coverage per language.
 
 The generation workflow commits with the GitHub Actions bot, then deploys the already validated build. The generated commit does not need to trigger a second workflow.
 
