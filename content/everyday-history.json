@@ -227,6 +227,162 @@
         "בכיף",
         "בסוף"
       ]
+    },
+    {
+      "date": "2026-09-07",
+      "storyId": "doctor-followup-blood-test-results",
+      "domain": "health",
+      "scenario": "blood_test_followup_results_and_reschedule",
+      "lexicalThemes": [
+        "clinic phone call",
+        "test results",
+        "appointment timing",
+        "rescheduling",
+        "work schedule",
+        "polite clarification"
+      ],
+      "targetVocabulary": [
+        "תוצאות",
+        "בדיקה",
+        "תור",
+        "רשום",
+        "חסר",
+        "עוד מעט",
+        "בערך",
+        "לבדוק",
+        "לדחות",
+        "פנוי"
+      ]
+    },
+    {
+      "date": "2026-09-07",
+      "storyId": "office-printer-paper-and-meeting-notes",
+      "domain": "work",
+      "scenario": "office_printer_runs_out_before_meeting",
+      "lexicalThemes": [
+        "office tasks",
+        "printer problem",
+        "shared responsibility",
+        "time pressure",
+        "messaging colleagues",
+        "meeting preparation"
+      ],
+      "targetVocabulary": [
+        "מדפסת",
+        "נייר",
+        "ישיבה",
+        "להדפיס",
+        "הספקתי",
+        "עוד מעט",
+        "חסר",
+        "להחליף",
+        "בתור",
+        "לפני"
+      ]
+    },
+    {
+      "date": "2026-09-07",
+      "storyId": "neighbor-noise-and-evening-hours",
+      "domain": "everyday",
+      "scenario": "neighbor_noise_late_evening_agreement",
+      "lexicalThemes": [
+        "neighbors",
+        "noise complaint",
+        "apartment building",
+        "bedtime",
+        "polite disagreement",
+        "simple agreement"
+      ],
+      "targetVocabulary": [
+        "רעש",
+        "שקט",
+        "בערב",
+        "קירות",
+        "התארחו",
+        "לא שמתי לב",
+        "קצת",
+        "להודיע",
+        "להסכים",
+        "נעים"
+      ]
+    },
+    {
+      "date": "2026-09-07",
+      "storyId": "grocery-store-returned-item-and-price-check",
+      "domain": "consumer",
+      "scenario": "open_package_return_and_store_exchange",
+      "lexicalThemes": [
+        "returns",
+        "receipt",
+        "customer service",
+        "exchange",
+        "price comparison",
+        "shopping decisions"
+      ],
+      "targetVocabulary": [
+        "להחזיר",
+        "קבלה",
+        "להחליף",
+        "אריזה",
+        "פתוח",
+        "מחיר",
+        "אפשרי",
+        "לבדוק",
+        "שונה",
+        "משתלם"
+      ]
+    },
+    {
+      "date": "2026-09-07",
+      "storyId": "taxi-driver-wrong-address-and-short-correction",
+      "domain": "transport",
+      "scenario": "taxi_wrong_address_short_correction",
+      "lexicalThemes": [
+        "taxi ride",
+        "address clarification",
+        "phone map",
+        "directions",
+        "lateness",
+        "calm correction"
+      ],
+      "targetVocabulary": [
+        "כתובת",
+        "רחוב",
+        "לכוון",
+        "פנייה",
+        "כניסה",
+        "בערך",
+        "לאט",
+        "להסתובב",
+        "להספיק",
+        "טעות"
+      ]
+    },
+    {
+      "date": "2026-09-07",
+      "storyId": "bakery-ordered-wrong-bread-and-exchange",
+      "domain": "food",
+      "scenario": "bakery_wrong_bread_exchange_rush_mixup",
+      "lexicalThemes": [
+        "bakery",
+        "wrong order",
+        "exchange",
+        "apology",
+        "receipt-free correction",
+        "small mistake"
+      ],
+      "targetVocabulary": [
+        "לחם",
+        "מלא",
+        "לבן",
+        "קיבלתי",
+        "במקום",
+        "להחליף",
+        "סליחה",
+        "בלבול",
+        "מהיר",
+        "מוסיף"
+      ]
     }
   ]
 }
