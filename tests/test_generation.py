@@ -107,11 +107,40 @@ class GenerationTests(unittest.TestCase):
         self.assertIn("Begin discovery from the target date", request)
         self.assertIn("Do not use forbidden IDs, subjects, briefs, or URLs to formulate search queries", request)
         self.assertIn("inspect at least 12 distinct candidate articles", request)
-        self.assertIn("do not return it, do not count it toward the six sourced slots", request)
+        self.assertIn("at least 8 CURRENT candidates", request)
+        self.assertIn("at least 4 HISTORY candidates", request)
+        self.assertIn("Keep these as separate candidate pools", request)
+        self.assertIn("When at least 2 HISTORY candidates pass, return 2 HISTORY stories", request)
+        self.assertIn("HISTORY does not need any connection to the target date", request)
+        self.assertIn("do not return it, do not count it toward its candidate pool", request)
         self.assertIn("continue searching for another article", request)
         self.assertIn("specific source page was consulted", request)
         self.assertIn("passes the novelty contract", request)
-        self.assertIn("Return only the final unique stories, not the surplus candidate pool", request)
+        self.assertIn("Return only the final unique stories, not the surplus candidate pools", request)
+
+    def test_research_request_forbids_exact_recent_generated_scenarios(self) -> None:
+        request = _generation_request(
+            "2026-09-07",
+            12,
+            10,
+            13,
+            False,
+            [],
+            ["ru", "en"],
+            {"stories": []},
+            [{
+                "date": "2026-09-06",
+                "storyId": "pharmacy-prescription-delay",
+                "domain": "pharmacy",
+                "scenario": "pharmacy_prescription_not_ready",
+            }],
+            [],
+        )
+        self.assertIn("FORBIDDEN FOR NEW GENERATED STORIES", request)
+        self.assertIn("<forbidden_scenario_records>", request)
+        self.assertIn('"scenario": "pharmacy_prescription_not_ready"', request)
+        self.assertIn("An identical `scenario` value from the forbidden scenario records is always a duplicate", request)
+        self.assertIn("Changing the scenario name, people, setting details, or wording does not make", request)
 
     def test_new_issue_rejects_a_previous_day_story_before_adaptation(self) -> None:
         site = read_json(ROOT / "config" / "site.json")

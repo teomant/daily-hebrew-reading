@@ -390,8 +390,9 @@ def _generation_request(
     else:
         mode = (
             "Create the first complete issue for this date. Aim for 4 CURRENT, 3 EVERYDAY, 3 DIALOG, and 2 HISTORY stories, "
-            "but these are targets rather than required counts. If a suitable unique CURRENT or HISTORY story cannot be found, "
-            "replace that slot with an EVERYDAY or DIALOG story instead of returning a duplicate or weak sourced story."
+            "but these are targets rather than required counts. Research CURRENT and HISTORY as separate surplus candidate pools. "
+            "If a suitable unique CURRENT or HISTORY story still cannot be found after its required pool has been searched and "
+            "filtered, replace that slot with an EVERYDAY or DIALOG story instead of returning a duplicate or weak sourced story."
         )
         research_scope = (
             "Use web search for every CURRENT and HISTORY story. Prefer Israeli local and regional sources, then broader "
@@ -401,14 +402,18 @@ def _generation_request(
         discovery_contract = (
             "Begin discovery from the target date and the allowed editorial areas, not from the forbidden records. "
             "Do not use forbidden IDs, subjects, briefs, or URLs to formulate search queries. Search across multiple unrelated "
-            "permitted areas. Before choosing the final sourced stories, inspect at least 12 distinct candidate articles—roughly "
-            "twice the six normal CURRENT and HISTORY slots. A candidate article means a specific content page, not a search-result "
-            "snippet. Compare each candidate with the novelty contract. If it matches a forbidden record, do not return it, do not "
-            "count it toward the six sourced slots, and continue searching for another article. A CURRENT or HISTORY candidate is "
+            "permitted areas. Before choosing the final sourced stories, inspect at least 12 distinct candidate articles: at least "
+            "8 CURRENT candidates for the normal 4 CURRENT slots and at least 4 HISTORY candidates for the normal 2 HISTORY slots. "
+            "Keep these as separate candidate pools; a surplus in one does not satisfy the other. A candidate article means a "
+            "specific content page, not a search-result snippet. Compare each candidate with the novelty contract. If it matches "
+            "a forbidden record, do not return it, do not count it toward its candidate pool, and continue searching for another "
+            "article of that type. A CURRENT or HISTORY candidate is "
             "complete only when its specific source page was consulted, its central subject and event are clear, its brief is "
             "supported by that source, and it passes the novelty contract. Return only the final unique stories, not the surplus "
-            "candidate pool. Use unrelated EVERYDAY or DIALOG stories for missing sourced slots only after at least 12 distinct "
-            "candidate articles were inspected and fewer than six passed all requirements."
+            "candidate pools. When at least 2 HISTORY candidates pass, return 2 HISTORY stories rather than replacing them with "
+            "generated stories. HISTORY does not need any connection to the target date, current news, an anniversary, or the "
+            "season. Use unrelated EVERYDAY or DIALOG stories for missing "
+            "sourced slots only after both required candidate pools were inspected and fewer than six passed all requirements."
         )
     level_payload = [
         {
@@ -442,8 +447,10 @@ Configured reading levels:
 
 Required translation locales: {json.dumps(locales)}
 
-Recent EVERYDAY and DIALOG scenario history to avoid:
+RECENT EVERYDAY AND DIALOG SCENARIO RECORDS — FORBIDDEN FOR NEW GENERATED STORIES:
+<forbidden_scenario_records>
 {json.dumps(recent_history, ensure_ascii=False, indent=2)}
+</forbidden_scenario_records>
 
 NOVELTY CONTRACT
 The forbidden records below are previous stories used only for comparison. They are not examples, candidate material, or search suggestions.
@@ -451,10 +458,11 @@ The forbidden records below are previous stories used only for comparison. They 
 - A sourced candidate is a duplicate when it has the same central entity or subject and the same underlying event, action, announcement, change, project, or outcome as a forbidden record.
 - A HISTORY candidate is a duplicate when it tells the same specific historical story. Merely sharing a city, place, object, or institution is not enough when the historical event or subject is genuinely different.
 - An EVERYDAY or DIALOG candidate is a duplicate when its practical problem or goal, interaction, and resolution substantially match a forbidden scenario. Merely sharing a domain or vocabulary is not enough.
+- An identical `scenario` value from the forbidden scenario records is always a duplicate. Changing the scenario name, people, setting details, or wording does not make the same practical problem, interaction, and resolution new.
 - The same or equivalent source URL is always a duplicate. Another publisher, URL, headline, language, later publication date, angle, or minor follow-up does not make the same underlying event new.
 - A new slug, renamed people, changed wording, or cosmetic details never make a duplicate new.
 
-For every candidate, compare its underlying meaning—not only exact words—with every forbidden brief and URL. If it matches or uniqueness is uncertain, discard it completely. Do not copy, translate, update, continue, repair, rename, or rewrite it. Find or generate an unrelated replacement. Do not output the comparison process.
+For every candidate, compare its underlying meaning—not only exact words—with every forbidden brief, URL, and generated-scenario record. If it matches or uniqueness is uncertain, discard it completely. Do not copy, translate, update, continue, repair, rename, or rewrite it. Find or generate an unrelated replacement. Do not output the comparison process.
 
 FORBIDDEN STORY RECORDS FROM THE EXISTING ISSUE AND PREVIOUS ISSUES:
 <forbidden_story_records>

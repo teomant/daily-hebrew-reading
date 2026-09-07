@@ -6,4 +6,4 @@ Plan each dialogue as a normal conversation between Israelis, not a lesson, inte
 
 The English scenario brief must identify the speakers, their relationship when relevant, the practical situation, what they need to decide or solve, the important clarification or reaction, and the outcome. It must support direct speech rather than prose describing that people talked. If the idea is mainly narration, classify it as EVERYDAY rather than DIALOG.
 
-DIALOG stories use the same scenario metadata as EVERYDAY stories and have no sources or image. They must be visibly marked as fully AI-generated.
+DIALOG stories use the same scenario metadata as EVERYDAY stories and have no sources or image. Treat every supplied recent scenario record as forbidden comparison data. Never return an identical `scenario` value, and do not rename a recent scenario while keeping substantially the same practical problem or goal, interaction, and resolution. They must be visibly marked as fully AI-generated.
