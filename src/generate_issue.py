@@ -39,6 +39,7 @@ CATEGORIES = [
 ]
 PROVENANCE_ERRORS_KEY = "_provenanceErrors"
 SOURCED_DISCOVERY_ATTEMPTS = 2
+SOURCED_CANDIDATE_COUNT = 20
 GENERATED_PLANNING_ATTEMPTS = 3
 ADAPTATION_ATTEMPTS = 2
 ADAPTATION_BATCH_SIZE = 2
@@ -245,6 +246,57 @@ def _seed_batch_schema(
     return schema
 
 
+def _sourced_candidate_batch_schema(story_types: list[str]) -> dict[str, Any]:
+    source = {
+        "type": "object",
+        "properties": {
+            "publisher": {"type": "string"},
+            "title": {"type": "string"},
+            "url": {"type": "string"},
+        },
+        "required": ["publisher", "title", "url"],
+        "additionalProperties": False,
+    }
+    candidate = {
+        "type": "object",
+        "properties": {
+            "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+            "type": {"type": "string", "enum": story_types},
+            "category": {"type": "string", "enum": CATEGORIES},
+            "brief": {"type": "string"},
+            "sources": {"type": "array", "items": source, "minItems": 1},
+        },
+        "required": ["id", "type", "category", "brief", "sources"],
+        "additionalProperties": False,
+    }
+    return {
+        "type": "object",
+        "properties": {
+            "stories": {
+                "type": "array",
+                "items": candidate,
+                "minItems": SOURCED_CANDIDATE_COUNT,
+                "maxItems": SOURCED_CANDIDATE_COUNT,
+            }
+        },
+        "required": ["stories"],
+        "additionalProperties": False,
+    }
+
+
+def _sourced_candidate_to_seed(candidate: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "id": candidate.get("id"),
+        "slug": candidate.get("id"),
+        "type": candidate.get("type"),
+        "category": candidate.get("category"),
+        "brief": candidate.get("brief"),
+        "everydayMeta": None,
+        "sources": candidate.get("sources"),
+        "image": None,
+    }
+
+
 def _adaptation_batch_schema(
     story_ids: list[str],
     levels: list[dict[str, Any]],
@@ -421,10 +473,20 @@ def _sourced_discovery_request(
     selected_stories: list[dict[str, Any]],
     feedback: list[str] | None = None,
 ) -> str:
+    if current_count and history_count:
+        candidate_mix = "Return both types. Aim for roughly 12 CURRENT and 8 HISTORY candidates."
+    elif current_count:
+        candidate_mix = "Every candidate should be CURRENT because only CURRENT slots remain."
+    else:
+        candidate_mix = "Every candidate should be HISTORY because only HISTORY slots remain."
     retry_scope = (
-        "\nRETRY SEARCH EXPANSION\nThe Israel-focused first pass did not fill every sourced slot. "
-        "Broaden both CURRENT and HISTORY search to suitable stories from around the world. Israeli candidates are still "
-        "allowed, but do not limit this retry to Israel. Keep every editorial, source-quality, safety, and novelty rule."
+        "\nRETRY WORLDWIDE REPLACEMENT SEARCH\nThis is not another Israel-first pass. Start new searches across "
+        "the world for the remaining CURRENT and HISTORY slots. At least 15 of the 20 candidates should come from "
+        "outside Israel and should span at least six countries or regions. Search both international outlets and useful "
+        "local sources. Do not re-query, rename, translate, update, or find alternate coverage for any rejected or forbidden "
+        "story. For CURRENT, use practical events from the target date or previous several days. For HISTORY, use short, "
+        "concrete, relatable subjects from any period; no date connection is required. Israeli candidates remain allowed "
+        "only when they are genuinely new. Keep every editorial, source-quality, safety, and novelty rule."
         if feedback else ""
     )
     retry = (
@@ -434,15 +496,16 @@ def _sourced_discovery_request(
     )
     return f"""
 Target publication date: {target_date}
-Find up to {current_count} new CURRENT stories and up to {history_count} new HISTORY stories. Return fewer if trustworthy unique candidates cannot be found. Return only CURRENT and HISTORY metadata and factual briefs; do not write Hebrew adaptations.
+The issue still needs up to {current_count} CURRENT and up to {history_count} HISTORY stories. Return exactly {SOURCED_CANDIDATE_COUNT} distinct screening candidates even though fewer final slots remain. These are candidates for later deduplication and selection, not final stories. {candidate_mix}
+{retry_scope}{retry}
 
 SEARCH PROCESS
 - Use web search and begin from the target date and permitted editorial areas, never from the forbidden records.
 - For CURRENT, search Israeli reporting from the target date and previous several days. Search across the whole country and varied communities; do not default to Jerusalem or treat it as the center of every issue.
 - For HISTORY, first look for date-related Israeli facts when worthwhile, then search for unrelated short, interesting facts from anywhere in Israel. HISTORY does not need a connection to the target date or current news.
-- Search more candidates than requested: inspect about twice as many specific source pages in each pool. A rejected candidate does not count; continue searching for another candidate of that type.
+- Search substantially more than {SOURCED_CANDIDATE_COUNT} source pages. A rejected page does not count; continue searching for another candidate.
 - Do not formulate searches from forbidden IDs, briefs, subjects, or URLs. They are comparison data only.
-- Return only the final selected stories, not search notes or surplus candidates.
+- Return only compact screening candidates, not search notes or adaptations.
 
 NOVELTY CONTRACT
 - A CURRENT candidate is a duplicate when it has the same central entity or subject and the same underlying event, action, announcement, change, project, or outcome as a forbidden record or selected candidate. A later status report, continuing consequence, “still” update, new article, or changed statistic about that event is still a duplicate.
@@ -462,7 +525,7 @@ ALREADY SELECTED SOURCED STORIES IN THIS RUN:
 </selected_story_records>
 
 OUTPUT CONTRACT
-Write every `brief` in English and include enough supported detail for later adaptation without inventing facts. The story id and slug must be identical. Use null `everydayMeta`. Prefer distinct canonical HTTPS content-page URLs; never use homepages, section pages, search pages, generic latest pages, or liveblogs. Use an empty source list rather than an uncertain URL. Use null image unless every provenance and rights requirement is verified. Return only schema-matching data and no prose.{retry_scope}{retry}
+Return exactly {SOURCED_CANDIDATE_COUNT} records containing only `id`, `type`, `category`, `brief`, and `sources`. Write every `brief` in English with enough supported detail to identify the underlying story during deduplication. Give every candidate at least one distinct canonical HTTPS content-page source; never use homepages, section pages, search pages, generic latest pages, or liveblogs. Do not return Hebrew, level adaptations, scenario metadata, images, or prose outside the schema.
 """.strip()
 
 
@@ -1060,6 +1123,14 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
             request_target = current_remaining + history_remaining
             if request_target == 0:
                 break
+            requested_types = [
+                story_type
+                for story_type, remaining in (
+                    ("current", current_remaining),
+                    ("history", history_remaining),
+                )
+                if remaining
+            ]
             attempt_number = attempt + 1
             phase = f"Sourced discovery attempt {attempt_number}/{SOURCED_DISCOVERY_ATTEMPTS}"
             try:
@@ -1074,14 +1145,7 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
                         [_compact_story_record(story) for story in sourced_seeds],
                         sourced_feedback,
                     ),
-                    _seed_batch_schema(
-                        0,
-                        request_target,
-                        levels,
-                        locales,
-                        image_locales,
-                        ["current", "history"],
-                    ),
+                    _sourced_candidate_batch_schema(requested_types),
                     use_web_search=True,
                     phase=phase,
                 )
@@ -1090,7 +1154,12 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
                 _log(f"{phase}: request failed; continuing sourced discovery")
                 continue
             unverified_urls = seed_batch.pop(PROVENANCE_ERRORS_KEY, [])
-            returned_seeds = seed_batch.get("stories", [])
+            returned_candidates = seed_batch.get("stories", [])
+            returned_seeds = [
+                _sourced_candidate_to_seed(candidate)
+                for candidate in returned_candidates
+                if isinstance(candidate, dict)
+            ]
             removed_sources, removed_images = _remove_redundant_sources(
                 returned_seeds,
                 {"stories": sourced_seeds} if sourced_seeds else None,
@@ -1115,7 +1184,7 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
                 levels,
                 None,
                 0,
-                request_target,
+                SOURCED_CANDIDATE_COUNT,
                 validation_context,
                 {"current", "history"},
             )

@@ -30,6 +30,8 @@ from src.generate_issue import (
     _safe_log_text,
     _seed_batch_schema,
     _seed_errors,
+    _sourced_candidate_batch_schema,
+    _sourced_candidate_to_seed,
     _sourced_discovery_request,
     _sourced_duplicate_review_request,
     _transactional_write,
@@ -133,25 +135,48 @@ class GenerationTests(unittest.TestCase):
         )
         self.assertIn("begin from the target date", request)
         self.assertIn("Do not formulate searches from forbidden", request)
-        self.assertIn("Search more candidates than requested", request)
+        self.assertIn("exactly 20 distinct screening candidates", request)
+        self.assertIn("roughly 12 CURRENT and 8 HISTORY", request)
+        self.assertIn("Search substantially more than 20 source pages", request)
         self.assertIn("whole country", request)
         self.assertIn("do not default to Jerusalem", request)
         self.assertIn("HISTORY does not need a connection to the target date", request)
         self.assertIn("continue searching for another candidate", request)
         self.assertIn("continuing the search", request)
         self.assertIn("final rejection pass", request)
-        self.assertIn("RETRY SEARCH EXPANSION", request)
-        self.assertIn("stories from around the world", request)
-        self.assertIn("do not limit this retry to Israel", request)
+        self.assertIn("RETRY WORLDWIDE REPLACEMENT SEARCH", request)
+        self.assertIn("At least 15 of the 20 candidates", request)
+        self.assertIn("at least six countries or regions", request)
+        self.assertIn("Do not re-query, rename, translate, update", request)
 
         first_attempt = _sourced_discovery_request("2026-09-07", 4, 2, [], [])
-        self.assertNotIn("RETRY SEARCH EXPANSION", first_attempt)
+        self.assertNotIn("RETRY WORLDWIDE REPLACEMENT SEARCH", first_attempt)
+
+        schema = _sourced_candidate_batch_schema(["current", "history"])
+        stories = schema["properties"]["stories"]
+        self.assertEqual(stories["minItems"], 20)
+        self.assertEqual(stories["maxItems"], 20)
+        self.assertEqual(
+            set(stories["items"]["properties"]),
+            {"id", "type", "category", "brief", "sources"},
+        )
+        candidate = {
+            "id": "new-library-hours",
+            "type": "current",
+            "category": "culture",
+            "brief": "A town library extends its opening hours.",
+            "sources": [{"publisher": "Local", "title": "Longer hours", "url": "https://example.com/library"}],
+        }
+        seed = _sourced_candidate_to_seed(candidate)
+        self.assertEqual(seed["slug"], candidate["id"])
+        self.assertIsNone(seed["everydayMeta"])
+        self.assertIsNone(seed["image"])
 
         static_prompt = (ROOT / "prompts" / "editorial.md").read_text(encoding="utf-8")
         self.assertIn("strict recent-subject exclusion", static_prompt)
         self.assertIn("archaeological layer", static_prompt)
         self.assertIn("continuing consequence", static_prompt)
-        self.assertIn("expand both CURRENT and HISTORY discovery", static_prompt)
+        self.assertIn("worldwide replacement search", static_prompt)
 
     def test_llm_duplicate_review_requires_and_enforces_one_verdict_per_candidate(self) -> None:
         candidates = [{
@@ -694,6 +719,7 @@ class GenerationTests(unittest.TestCase):
             with (
                 patch.dict(os.environ, {"OPENAI_MODEL": "test-model"}),
                 patch("src.generate_issue.ADAPTATION_BATCH_SIZE", 12),
+                patch("src.generate_issue.SOURCED_CANDIDATE_COUNT", 12),
                 patch("src.generate_issue._call_openai", call),
             ):
                 result = generate(root, "2026-09-10", 3)
@@ -797,9 +823,10 @@ class GenerationTests(unittest.TestCase):
                 {"stories": [generated_seed]},
                 {"adaptations": [adaptation]},
             ])
-            with patch.dict(os.environ, {"OPENAI_MODEL": "test-model"}), patch(
-                "src.generate_issue._call_openai",
-                call,
+            with (
+                patch.dict(os.environ, {"OPENAI_MODEL": "test-model"}),
+                patch("src.generate_issue.SOURCED_CANDIDATE_COUNT", 1),
+                patch("src.generate_issue._call_openai", call),
             ):
                 result = generate(root, "2026-09-10", 3)
 

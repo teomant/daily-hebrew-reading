@@ -2,6 +2,8 @@
 
 ## 2026-09-07
 
+- Removed the latest 12-story `2026-09-07` issue, its index entry, and all 11 matching generated-scenario history records so the fixed 20-candidate discovery flow can be tested with a clean deployment generation.
+- Expanded each CURRENT/HISTORY web-search attempt to exactly 20 compact screening candidates before deduplication and final selection. The first pass aims for roughly 12 CURRENT and eight HISTORY candidates; a retry is explicitly a new worldwide replacement search with at least 15 non-Israeli candidates across six countries or regions, and forbids alternate coverage or renamed variants of rejected stories. Candidate responses omit adaptations, scenario metadata, and images.
 - Removed the regenerated 12-story `2026-09-07` issue, its index entry, and all seven matching generated-scenario history records so the binding sourced duplicate-review gate can be tested on a clean deployment run.
 - Made sourced novelty binding instead of prompt-only: after every successful CURRENT/HISTORY search response, a separate compact no-web LLM review must classify every candidate against recent sourced briefs, already selected briefs, and the candidate batch. Duplicate verdicts are removed before adaptation; incomplete or failed review coverage discards the unreviewed batch and falls back through search retry/generated filling without failing publication. Also canonicalized normal and `/amp` article URLs to the same duplicate key.
 - Removed the latest 12-story `2026-09-07` issue, its index entry, and all seven matching generated-scenario history records so the worldwide sourced-retry prompt can be tested through a clean deployment generation.
