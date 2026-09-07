@@ -227,6 +227,231 @@
         "בכיף",
         "בסוף"
       ]
+    },
+    {
+      "date": "2026-09-07",
+      "storyId": "school-rules-for-messaging-teachers",
+      "domain": "education",
+      "scenario": "school_messaging_hours_and_appointment",
+      "lexicalThemes": [
+        "WhatsApp",
+        "school communication",
+        "scheduling",
+        "polite requests",
+        "after-hours messages"
+      ],
+      "targetVocabulary": [
+        "אפשר לקבוע",
+        "אחרי השעה",
+        "להודיע מראש",
+        "קיבלתי",
+        "נוח לי"
+      ]
+    },
+    {
+      "date": "2026-09-07",
+      "storyId": "late-shift-cover-at-work",
+      "domain": "workplace",
+      "scenario": "shift_cover_for_late_colleague",
+      "lexicalThemes": [
+        "work shifts",
+        "schedule changes",
+        "overtime",
+        "covering for someone",
+        "staffing"
+      ],
+      "targetVocabulary": [
+        "משמרת",
+        "להישאר עוד קצת",
+        "להחליף",
+        "מתחיל מאוחר",
+        "זה יספיק"
+      ]
+    },
+    {
+      "date": "2026-09-07",
+      "storyId": "taxi-to-the-clinic-and-a-wrong-turn",
+      "domain": "transport",
+      "scenario": "taxi_wrong_turn_to_appointment",
+      "lexicalThemes": [
+        "directions",
+        "appointments",
+        "clarification",
+        "lateness",
+        "instructions"
+      ],
+      "targetVocabulary": [
+        "פנה ימינה",
+        "אני ממהר",
+        "הכתובת המדויקת",
+        "לא נורא",
+        "נגיע עוד מעט"
+      ]
+    },
+    {
+      "date": "2026-09-07",
+      "storyId": "mother-and-son-grocery-budget-for-lunches",
+      "domain": "shopping",
+      "scenario": "school_week_grocery_budget_with_teen",
+      "lexicalThemes": [
+        "supermarket",
+        "budget",
+        "prices",
+        "school lunches",
+        "choices"
+      ],
+      "targetVocabulary": [
+        "יקר מדי",
+        "נשאיר את זה",
+        "בערך",
+        "אפשר להחליף",
+        "זה מספיק"
+      ]
+    },
+    {
+      "date": "2026-09-07",
+      "storyId": "neighbor-at-the-building-entrance-with-a-package",
+      "domain": "housing",
+      "scenario": "building_entrance_package_and_elevator_delay",
+      "lexicalThemes": [
+        "neighbors",
+        "package delivery",
+        "elevator",
+        "building entrance",
+        "help"
+      ],
+      "targetVocabulary": [
+        "תן לי לעזור",
+        "שנייה אחת",
+        "להשאיר פה",
+        "לא לחסום",
+        "אין בעיה"
+      ]
+    },
+    {
+      "date": "2026-09-07",
+      "storyId": "bakery-rush-and-the-last-loaf",
+      "domain": "shopping",
+      "scenario": "end_of_day_bakery_stock_check",
+      "lexicalThemes": [
+        "bakery shopping",
+        "closing time",
+        "prices and quantity",
+        "Friday preparation",
+        "making a quick decision"
+      ],
+      "targetVocabulary": [
+        "מאפייה",
+        "אחרון",
+        "נשאר",
+        "מחיר",
+        "כיכר",
+        "לחמניות",
+        "חלות",
+        "בערב",
+        "סגור",
+        "לקחת"
+      ]
+    },
+    {
+      "date": "2026-09-07",
+      "storyId": "dentist-reception-and-a-new-appointment-time",
+      "domain": "health",
+      "scenario": "reschedule_dentist_reception_call",
+      "lexicalThemes": [
+        "appointments",
+        "polite rescheduling",
+        "time expressions",
+        "clinic reception",
+        "confirming plans"
+      ],
+      "targetVocabulary": [
+        "תור",
+        "לקבוע",
+        "לדחות",
+        "קבלה",
+        "מתאים",
+        "אחר הצהריים",
+        "להגיע",
+        "להספיק",
+        "לבדוק",
+        "לאשר"
+      ]
+    },
+    {
+      "date": "2026-09-07",
+      "storyId": "train-platform-change-and-a-missed-stop",
+      "domain": "transport",
+      "scenario": "train_platform_change_last_minute",
+      "lexicalThemes": [
+        "train station",
+        "platforms",
+        "announcements",
+        "asking for directions",
+        "being late"
+      ],
+      "targetVocabulary": [
+        "רציף",
+        "תחנה",
+        "רכבת",
+        "הודעה",
+        "שלט",
+        "לעבור",
+        "להספיק",
+        "להחמיץ",
+        "כיוון",
+        "תחנה הבאה"
+      ]
+    },
+    {
+      "date": "2026-09-07",
+      "storyId": "old-port-market-stall-history",
+      "domain": "history",
+      "scenario": "coastal_port_market_past_life",
+      "lexicalThemes": [
+        "market life",
+        "port activity",
+        "goods and loading",
+        "trade",
+        "city streets"
+      ],
+      "targetVocabulary": [
+        "נמל",
+        "שוק",
+        "דוכן",
+        "סחורה",
+        "להעמיס",
+        "להוריד",
+        "סוחר",
+        "סירה",
+        "מסחר",
+        "חוף"
+      ]
+    },
+    {
+      "date": "2026-09-07",
+      "storyId": "school-playground-gate-and-pickup-time",
+      "domain": "family_logistics",
+      "scenario": "school_gate_pickup_time_change",
+      "lexicalThemes": [
+        "school pickup",
+        "messages",
+        "time changes",
+        "waiting",
+        "coordination"
+      ],
+      "targetVocabulary": [
+        "שער",
+        "איסוף",
+        "לסיים",
+        "הודעה",
+        "לחכות",
+        "מוקדם",
+        "מאוחר",
+        "מורה",
+        "קבוצה",
+        "בסדר"
+      ]
     }
   ]
 }
