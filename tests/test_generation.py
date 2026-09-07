@@ -106,8 +106,12 @@ class GenerationTests(unittest.TestCase):
         )
         self.assertIn("Begin discovery from the target date", request)
         self.assertIn("Do not use forbidden IDs, subjects, briefs, or URLs to formulate search queries", request)
+        self.assertIn("inspect at least 12 distinct candidate articles", request)
+        self.assertIn("do not return it, do not count it toward the six sourced slots", request)
+        self.assertIn("continue searching for another article", request)
         self.assertIn("specific source page was consulted", request)
         self.assertIn("passes the novelty contract", request)
+        self.assertIn("Return only the final unique stories, not the surplus candidate pool", request)
 
     def test_new_issue_rejects_a_previous_day_story_before_adaptation(self) -> None:
         site = read_json(ROOT / "config" / "site.json")
@@ -595,6 +599,9 @@ class GenerationTests(unittest.TestCase):
             self.assertNotIn("# Adaptation and annotation instructions", research_instructions)
             self.assertIn("# Adaptation and annotation instructions", adaptation_instructions)
             self.assertNotIn("# Editorial instructions", adaptation_instructions)
+            self.assertIn("one to three Hebrew words", adaptation_instructions)
+            self.assertIn("Never put a complete sentence", adaptation_instructions)
+            self.assertIn("never emit forms such as `ב העיר`", adaptation_instructions)
             self.assertEqual(result["stories"][-1]["id"], "changed-train-platform")
 
     def test_adaptation_accepts_empty_translation_above_coverage_threshold(self) -> None:

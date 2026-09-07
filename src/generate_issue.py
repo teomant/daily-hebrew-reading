@@ -401,10 +401,14 @@ def _generation_request(
         discovery_contract = (
             "Begin discovery from the target date and the allowed editorial areas, not from the forbidden records. "
             "Do not use forbidden IDs, subjects, briefs, or URLs to formulate search queries. Search across multiple unrelated "
-            "permitted areas. A CURRENT or HISTORY candidate is complete only when its specific source page was consulted, "
-            "its central subject and event are clear, its brief is supported by that source, and it passes the novelty contract. "
-            "If enough unique sourced stories cannot be found after reasonable search, fill the missing slots with unrelated "
-            "EVERYDAY or DIALOG scenarios."
+            "permitted areas. Before choosing the final sourced stories, inspect at least 12 distinct candidate articles—roughly "
+            "twice the six normal CURRENT and HISTORY slots. A candidate article means a specific content page, not a search-result "
+            "snippet. Compare each candidate with the novelty contract. If it matches a forbidden record, do not return it, do not "
+            "count it toward the six sourced slots, and continue searching for another article. A CURRENT or HISTORY candidate is "
+            "complete only when its specific source page was consulted, its central subject and event are clear, its brief is "
+            "supported by that source, and it passes the novelty contract. Return only the final unique stories, not the surplus "
+            "candidate pool. Use unrelated EVERYDAY or DIALOG stories for missing sourced slots only after at least 12 distinct "
+            "candidate articles were inspected and fewer than six passed all requirements."
         )
     level_payload = [
         {
