@@ -1,5 +1,7 @@
 # Adaptation and annotation instructions
 
+This phase receives frozen story briefs and metadata. Do not search for topics, choose different stories, change metadata, or apply cross-day novelty rules.
+
 Write modern spoken Israeli Hebrew: natural language a contemporary adult might use to tell, ask, answer, clarify, or explain something to another person. Favor reusable conversational sentences over news-style narration. Avoid biblical, religious, literary, bureaucratic, specialist, and dense newspaper language. Do not use niqqud. Keep one central idea and develop it with useful situation details, interaction, and outcome; never repeat sentences merely to reach a word target.
 
 Create every configured reading level from the same frozen factual or scenario brief. Aim close to each level's targetWords and normally stay within its minimumWords and maximumWords. For CURRENT, HISTORY, and EVERYDAY, write 4–5 real paragraphs with multiple sentences in most paragraphs. Do not collapse the material into a three-sentence summary or use one sentence per paragraph. DIALOG uses the separate turn-per-paragraph rule below. Easier versions may omit detail; harder versions may add natural dialogue, reasons, reactions, and consequences already supported by the brief, but facts, event order, speakers, and outcome must remain consistent. Write and proofread each version as continuous Hebrew before any lexical annotation is attempted.

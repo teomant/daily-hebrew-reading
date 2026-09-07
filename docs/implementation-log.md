@@ -1,5 +1,11 @@
 # Implementation log
 
+## 2026-09-07
+
+- Removed the existing `2026-09-07` issue, its index entry, and all nine matching EVERYDAY/DIALOG history records so the date can be regenerated with the new three-stage flow.
+- Replaced the mixed research/planning request with three isolated stages. Web-enabled sourced discovery now handles only CURRENT and HISTORY, searches across Israel, retries duplicate or missing sourced candidates with another search, and allows both date-related and timeless Israeli history. A separate no-web planner then creates EVERYDAY and DIALOG briefs for the remaining target slots, and adaptation receives only frozen briefs plus Hebrew level, segmentation, and translation rules. Each phase receives only relevant recent records and also compares against stories already selected in the current run.
+- Kept retries stateless and compact instead of chaining `previous_response_id`: each retry includes retained records and exact validation feedback, avoiding billable irrelevant conversation history and rejected-output anchoring. Added Python rejection for exact repeated generated-scenario IDs, retained non-blocking type targets and total shortfall behavior, and kept complete phase-specific prompt logging for production debugging.
+
 ## 2026-09-06
 
 - Removed three topic-duplicate CURRENT stories introduced by a second same-day generation run (desalination shutdowns, Mahane Yehuda renovation, and parent–teacher contact rules) and restored the issue index metadata to the cleaned 12-story issue.

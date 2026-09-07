@@ -11,9 +11,9 @@ The repository contains a complete sample issue, so the site can be built and te
 - Persisted reading level, translation language, and interface language preferences.
 - Keyboard, hover, and tap translation popovers.
 - Source links and optional externally hosted, attributed source images with graceful failure.
-- Two-stage OpenAI Responses API generation: research freezes briefs, then one adaptation call writes and proofreads Hebrew before adding lexical units and contextual translations.
+- Three-stage OpenAI Responses API generation: web-enabled CURRENT/HISTORY discovery freezes factual briefs, separate EVERYDAY/DIALOG planning fills the remaining slots, then small adaptation batches write and proofread Hebrew before adding lexical units and contextual translations.
 - A target of three short, practical DIALOG conversations and three EVERYDAY stories per new issue, with each dialogue turn on its own line and extra generated stories allowed when unique sourced material is unavailable.
-- Separate surplus discovery pools for sourced stories: at least eight CURRENT candidates and four timeless Israeli HISTORY candidates are considered before selecting the normal four and two.
+- Separate surplus discovery pools for sourced stories from across Israel: CURRENT focuses on the target date and previous several days, while HISTORY may use date-related or timeless Israeli subjects. Duplicate sourced candidates trigger another web-search attempt before generated stories fill any remaining slots.
 - Safe same-day append behavior; existing stories are preserved, duplicates are rejected, and new entries are only EVERYDAY or DIALOG in any mix.
 - Content validation, tests, daily/manual GitHub Actions, and GitHub Pages deployment.
 
@@ -57,7 +57,7 @@ Generation validates a complete candidate before replacing any repository conten
 - `config/site.json` — base path, enabled locales, defaults, flexible new-issue count range, and the three-day previous-issue context window.
 - `config/reading-levels.json` — ordered level IDs, labels, word guidance, and reading speeds.
 - `i18n/*.json` — interface dictionaries. Adding a locale requires a matching dictionary and adding its code to `site.json`.
-- `prompts/*.md` — editorial, everyday-scenario, and adaptation rules.
+- `prompts/*.md` — sourced editorial, everyday, dialogue, and adaptation rules.
 
 Old issues list their own available levels/locales and remain readable when new levels, locales, or story types are configured later. The validator rejects missing adaptations and requires at least 75% contextual translation coverage per story level and language; individual units may remain untranslated when no useful direct translation exists.
 

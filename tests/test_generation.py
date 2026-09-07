@@ -17,15 +17,18 @@ from src.generate_issue import (
     PROVENANCE_ERRORS_KEY,
     _adaptation_batch_schema,
     _call_openai,
-    _existing_exclusions,
-    _generation_request,
+    _compact_story_record,
     _duplicate_findings,
+    _existing_exclusions,
+    _forbidden_story_records,
+    _generated_planning_request,
     _remove_redundant_sources,
     _recent_history,
     _recent_issue_context,
     _safe_log_text,
     _seed_batch_schema,
     _seed_errors,
+    _sourced_discovery_request,
     _transactional_write,
     _updated_history,
     generate,
@@ -72,84 +75,68 @@ class GenerationTests(unittest.TestCase):
             context = _recent_issue_context(content_dir, date.fromisoformat("2026-09-05"), 3)
         self.assertEqual([item["date"] for item in context], ["2026-09-04", "2026-09-02"])
         self.assertEqual(context[0]["stories"][0]["sourceUrls"], ["https://example.com/2026-09-04"])
+        self.assertEqual(context[0]["stories"][0]["type"], "current")
 
-    def test_research_request_sends_existing_and_previous_briefs_and_urls_to_llm(self) -> None:
+    def test_phase_prompts_receive_only_relevant_forbidden_records(self) -> None:
         existing = read_json(ROOT / "content" / "2026-09-06.json")
         exclusions = _existing_exclusions(existing)
         self.assertEqual(set(exclusions), {"stories"})
-        self.assertEqual(set(exclusions["stories"][0]), {"id", "brief", "sourceUrls"})
+        self.assertEqual(set(exclusions["stories"][0]), {"id", "type", "brief", "sourceUrls"})
         previous = [{
             "date": "2026-09-05",
             "stories": [{
                 "id": "previous-story",
                 "type": "current",
-                "category": "city",
                 "brief": "A previous story that must not be repeated.",
                 "sourceUrls": ["https://example.com/previous-story"],
+            }, {
+                "id": "previous-dialog",
+                "type": "dialog",
+                "brief": "Two relatives decide when to leave home.",
+                "sourceUrls": [],
             }],
         }]
-        request = _generation_request(
-            "2026-09-06",
-            3,
-            3,
-            3,
-            True,
-            [],
-            ["ru", "en"],
-            exclusions,
-            [],
-            previous,
-        )
-        self.assertIn("FORBIDDEN STORY RECORDS", request)
-        self.assertIn(existing["stories"][0]["brief"], request)
-        self.assertIn(existing["stories"][0]["sources"][0]["url"], request)
+        sourced = _forbidden_story_records(exclusions, previous, {"current", "history"})
+        generated = _forbidden_story_records(exclusions, previous, {"everyday", "dialog"})
+        self.assertTrue(all(record["type"] in {"current", "history"} for record in sourced))
+        self.assertTrue(all(record["type"] in {"everyday", "dialog"} for record in generated))
+
+        request = _sourced_discovery_request("2026-09-06", 4, 2, sourced, [])
+        self.assertIn("FORBIDDEN SOURCED STORIES", request)
         self.assertIn("A previous story that must not be repeated.", request)
         self.assertIn("https://example.com/previous-story", request)
         self.assertIn("NOVELTY CONTRACT", request)
         self.assertIn("same central entity or subject and the same underlying event", request)
-        self.assertIn("Merely sharing a domain or vocabulary is not enough", request)
-        self.assertIn("Do not copy, translate, update, continue, repair, rename, or rewrite it", request)
-        self.assertIn("used only for comparison", request)
-        self.assertIn("only new EVERYDAY or DIALOG stories", request)
-        self.assertIn("Do not use web search", request)
+        self.assertNotIn("previous-dialog", request)
+        self.assertNotIn("Configured reading levels", request)
+        self.assertNotIn("Required translation locales", request)
 
-    def test_new_issue_research_starts_from_date_not_forbidden_records(self) -> None:
-        request = _generation_request(
+    def test_sourced_discovery_searches_broadly_and_retries_with_web_search(self) -> None:
+        request = _sourced_discovery_request(
             "2026-09-07",
-            12,
-            10,
-            13,
-            False,
-            [],
-            ["ru", "en"],
-            {"stories": []},
+            4,
+            2,
             [],
             [],
+            ["duplicate source URL: https://example.com/old"],
         )
-        self.assertIn("Begin discovery from the target date", request)
-        self.assertIn("Do not use forbidden IDs, subjects, briefs, or URLs to formulate search queries", request)
-        self.assertIn("inspect at least 12 distinct candidate articles", request)
-        self.assertIn("at least 8 CURRENT candidates", request)
-        self.assertIn("at least 4 HISTORY candidates", request)
-        self.assertIn("Keep these as separate candidate pools", request)
-        self.assertIn("When at least 2 HISTORY candidates pass, return 2 HISTORY stories", request)
-        self.assertIn("HISTORY does not need any connection to the target date", request)
-        self.assertIn("do not return it, do not count it toward its candidate pool", request)
-        self.assertIn("continue searching for another article", request)
-        self.assertIn("specific source page was consulted", request)
-        self.assertIn("passes the novelty contract", request)
-        self.assertIn("Return only the final unique stories, not the surplus candidate pools", request)
+        self.assertIn("begin from the target date", request)
+        self.assertIn("Do not formulate searches from forbidden", request)
+        self.assertIn("Search more candidates than requested", request)
+        self.assertIn("whole country", request)
+        self.assertIn("do not default to Jerusalem", request)
+        self.assertIn("HISTORY does not need a connection to the target date", request)
+        self.assertIn("continue searching for another candidate", request)
+        self.assertIn("continuing the search", request)
 
-    def test_research_request_forbids_exact_recent_generated_scenarios(self) -> None:
-        request = _generation_request(
+    def test_generated_planning_forbids_exact_recent_scenarios(self) -> None:
+        request = _generated_planning_request(
             "2026-09-07",
-            12,
-            10,
-            13,
+            6,
+            3,
+            3,
             False,
             [],
-            ["ru", "en"],
-            {"stories": []},
             [{
                 "date": "2026-09-06",
                 "storyId": "pharmacy-prescription-delay",
@@ -158,11 +145,14 @@ class GenerationTests(unittest.TestCase):
             }],
             [],
         )
-        self.assertIn("FORBIDDEN FOR NEW GENERATED STORIES", request)
+        self.assertIn("only EVERYDAY and DIALOG", request)
+        self.assertIn("Do not use web search", request)
         self.assertIn("<forbidden_scenario_records>", request)
         self.assertIn('"scenario": "pharmacy_prescription_not_ready"', request)
-        self.assertIn("An identical `scenario` value from the forbidden scenario records is always a duplicate", request)
-        self.assertIn("Changing the scenario name, people, setting details, or wording does not make", request)
+        self.assertIn("An identical `scenario` value is always a duplicate", request)
+        self.assertIn("Changing its identifier, names, setting details, wording, or story type", request)
+        self.assertNotIn("canonical HTTPS", request)
+        self.assertNotIn("Configured reading levels", request)
 
     def test_new_issue_rejects_a_previous_day_story_before_adaptation(self) -> None:
         site = read_json(ROOT / "config" / "site.json")
@@ -220,6 +210,21 @@ class GenerationTests(unittest.TestCase):
                 "scenario": "late_delivery",
             }],
         )
+
+    def test_python_rejects_an_exact_recent_scenario(self) -> None:
+        story = copy.deepcopy(read_json(ROOT / "content" / "2024-01-26.json")["stories"][1])
+        story.pop("levels")
+        story["id"] = story["slug"] = "different-story-id"
+        story["brief"] = "A different-looking brief uses the same recent scenario identifier."
+        scenario = story["everydayMeta"]["scenario"]
+        errors, indexes = _duplicate_findings(
+            [story],
+            None,
+            [{"storyId": "old-story", "scenario": scenario}],
+        )
+        self.assertEqual(indexes, {0})
+        self.assertIn(f"duplicate generated scenario: {scenario}", errors)
+        self.assertEqual(_compact_story_record(story)["scenario"], scenario)
 
     def test_new_issue_does_not_require_fixed_story_type_counts(self) -> None:
         site = read_json(ROOT / "config" / "site.json")
@@ -355,6 +360,7 @@ class GenerationTests(unittest.TestCase):
             seed["id"] = seed["slug"] = f"append-story-{index}"
             seed["type"] = story_type
             seed["brief"] = brief
+            seed["everydayMeta"]["scenario"] = f"append_scenario_{index}"
             seeds.append(seed)
         errors = _seed_errors(
             seeds,
@@ -544,6 +550,83 @@ class GenerationTests(unittest.TestCase):
             self.assertEqual(first.read_bytes(), before[first])
             self.assertEqual(second.read_bytes(), before[second])
 
+    def test_new_issue_runs_three_isolated_prompt_stages(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            for directory in ("config", "i18n", "prompts", "content"):
+                shutil.copytree(ROOT / directory, root / directory)
+            sample = read_json(root / "content" / "2024-01-26.json")
+            templates = {story["type"]: story for story in sample["stories"]}
+            sourced_specs = [
+                ("coastal-evening-trains", "current", "A rail operator adds late evening trains on a coastal route after commuters request more options."),
+                ("northern-weekend-market", "current", "A northern town opens a weekend produce market where residents can buy directly from nearby farms."),
+                ("clinic-lab-hours", "current", "A health clinic extends walk-in laboratory hours so working patients can arrive after their shifts."),
+                ("reusable-produce-crates", "current", "Several supermarkets introduce reusable produce crates and explain the deposit return process to shoppers."),
+                ("postal-bus-route-history", "history", "An early postal bus route connected small communities and carried both letters and passengers."),
+                ("public-beach-showers-history", "history", "A coastal municipality installed its first public beach showers as bathing facilities became more organized."),
+            ]
+            generated_specs = [
+                ("neighbor-borrows-drill", "everyday", "A neighbor borrows a drill, agrees on a return time, and brings it back after finishing a shelf."),
+                ("family-chooses-picnic-food", "dialog", "Two relatives choose simple picnic food, clarify what is already at home, and divide the shopping."),
+                ("tailor-shortens-trousers", "everyday", "A customer asks a tailor to shorten trousers, checks the pickup day, and confirms the price."),
+                ("friends-change-walk-time", "dialog", "Two friends move their evening walk because one finishes work late and agree where to meet."),
+                ("office-mug-mixup", "everyday", "Two colleagues discover they took similar mugs, compare them, and exchange them with a laugh."),
+                ("parents-plan-library-stop", "dialog", "Two parents coordinate a library return, check closing time, and decide who will go with the children."),
+            ]
+
+            def make_seed(story_id: str, story_type: str, brief: str, index: int) -> tuple[dict, dict]:
+                template_type = story_type if story_type in templates else "everyday"
+                template = copy.deepcopy(templates[template_type])
+                seed = {key: value for key, value in template.items() if key != "levels"}
+                seed["id"] = seed["slug"] = story_id
+                seed["type"] = story_type
+                seed["brief"] = brief
+                seed["sources"] = []
+                seed["image"] = None
+                if story_type in {"current", "history"}:
+                    seed["everydayMeta"] = None
+                else:
+                    seed["everydayMeta"]["scenario"] = f"isolated_stage_scenario_{index}"
+                return seed, {"id": story_id, "levels": template["levels"]}
+
+            pairs = [
+                make_seed(story_id, story_type, brief, index)
+                for index, (story_id, story_type, brief) in enumerate([*sourced_specs, *generated_specs])
+            ]
+            sourced = [seed for seed, _ in pairs[:len(sourced_specs)]]
+            generated = [seed for seed, _ in pairs[len(sourced_specs):]]
+            adaptations = [adaptation for _, adaptation in pairs]
+            duplicate_history = copy.deepcopy(sourced[-2])
+            call = Mock(side_effect=[
+                {"stories": [*sourced[:-1], duplicate_history]},
+                {"stories": [sourced[-1]]},
+                {"stories": generated},
+                {"adaptations": adaptations},
+            ])
+            with (
+                patch.dict(os.environ, {"OPENAI_MODEL": "test-model"}),
+                patch("src.generate_issue.ADAPTATION_BATCH_SIZE", 12),
+                patch("src.generate_issue._call_openai", call),
+            ):
+                result = generate(root, "2026-09-10", 3)
+
+            self.assertEqual(call.call_count, 4)
+            self.assertEqual(call.call_args_list[0].kwargs["phase"], "Sourced discovery attempt 1/2")
+            self.assertTrue(call.call_args_list[0].kwargs["use_web_search"])
+            self.assertIn("# Sourced discovery instructions", call.call_args_list[0].args[1])
+            self.assertNotIn("# Everyday-story instructions", call.call_args_list[0].args[1])
+            self.assertEqual(call.call_args_list[1].kwargs["phase"], "Sourced discovery attempt 2/2")
+            self.assertTrue(call.call_args_list[1].kwargs["use_web_search"])
+            self.assertIn("RETRY FEEDBACK", call.call_args_list[1].args[2])
+            self.assertIn("ALREADY SELECTED SOURCED STORIES", call.call_args_list[1].args[2])
+            self.assertEqual(call.call_args_list[2].kwargs["phase"], "Generated planning attempt 1/3")
+            self.assertFalse(call.call_args_list[2].kwargs["use_web_search"])
+            self.assertNotIn("# Sourced discovery instructions", call.call_args_list[2].args[1])
+            self.assertIn("# Everyday-story instructions", call.call_args_list[2].args[1])
+            self.assertEqual(call.call_args_list[3].kwargs["phase"], "Adaptation batch 1/1, attempt 1/2")
+            self.assertIn("# Adaptation and annotation instructions", call.call_args_list[3].args[1])
+            self.assertEqual(len(result["stories"]), 12)
+
     def test_existing_day_appends_without_overwriting(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
@@ -607,7 +690,8 @@ class GenerationTests(unittest.TestCase):
             ):
                 result = generate(root, "2024-01-26", 1)
             self.assertEqual(call.call_count, 3)
-            self.assertIn("only replacement stories", call.call_args_list[1].args[2])
+            self.assertIn("RETRY FEEDBACK", call.call_args_list[1].args[2])
+            self.assertIn("Generate unrelated replacements", call.call_args_list[1].args[2])
             replacement_schema = call.call_args_list[1].args[3]
             replacement_types = replacement_schema["properties"]["stories"]["items"]["properties"]["type"]["enum"]
             self.assertEqual(replacement_types, ["everyday", "dialog"])
@@ -638,18 +722,18 @@ class GenerationTests(unittest.TestCase):
             ):
                 result = generate(root, "2024-01-26", 1)
             self.assertEqual(call.call_count, 3)
-            self.assertEqual(call.call_args_list[0].kwargs["phase"], "Research attempt 1/3")
+            self.assertEqual(call.call_args_list[0].kwargs["phase"], "Generated planning attempt 1/3")
             self.assertFalse(call.call_args_list[0].kwargs["use_web_search"])
             self.assertEqual(call.call_args_list[1].kwargs["phase"], "Adaptation batch 1/1, attempt 1/2")
             self.assertEqual(call.call_args_list[2].kwargs["phase"], "Adaptation batch 1/1, attempt 2/2")
-            research_instructions = call.call_args_list[0].args[1]
+            generated_instructions = call.call_args_list[0].args[1]
             adaptation_instructions = call.call_args_list[1].args[1]
-            self.assertIn("# Editorial instructions", research_instructions)
-            self.assertIn("# Everyday-story instructions", research_instructions)
-            self.assertIn("# Dialogue instructions", research_instructions)
-            self.assertNotIn("# Adaptation and annotation instructions", research_instructions)
+            self.assertNotIn("# Sourced discovery instructions", generated_instructions)
+            self.assertIn("# Everyday-story instructions", generated_instructions)
+            self.assertIn("# Dialogue instructions", generated_instructions)
+            self.assertNotIn("# Adaptation and annotation instructions", generated_instructions)
             self.assertIn("# Adaptation and annotation instructions", adaptation_instructions)
-            self.assertNotIn("# Editorial instructions", adaptation_instructions)
+            self.assertNotIn("# Sourced discovery instructions", adaptation_instructions)
             self.assertIn("one to three Hebrew words", adaptation_instructions)
             self.assertIn("Never put a complete sentence", adaptation_instructions)
             self.assertIn("never emit forms such as `ב העיר`", adaptation_instructions)
@@ -711,7 +795,7 @@ class GenerationTests(unittest.TestCase):
             self.assertEqual(result["availableLevels"], ["alef", "alefPlus", "bet"])
             self.assertNotIn("gimel", result["stories"][-1]["levels"])
 
-    def test_invalid_research_is_retried_before_adaptation(self) -> None:
+    def test_invalid_generated_plan_is_retried_before_adaptation(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
             for directory in ("config", "i18n", "prompts", "content"):
