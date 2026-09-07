@@ -227,6 +227,167 @@
         "בכיף",
         "בסוף"
       ]
+    },
+    {
+      "date": "2026-09-07",
+      "storyId": "office-printer-paper-jam-before-meeting",
+      "domain": "office",
+      "scenario": "office_printer_jam_before_meeting",
+      "lexicalThemes": [
+        "office routine",
+        "equipment problems",
+        "asking for help",
+        "small delay",
+        "quick solution"
+      ],
+      "targetVocabulary": [
+        "printer",
+        "paper jam",
+        "tray",
+        "copy",
+        "reprint",
+        "right away",
+        "wrong size",
+        "meeting room"
+      ]
+    },
+    {
+      "date": "2026-09-07",
+      "storyId": "missed-delivery-package-pickup-window",
+      "domain": "delivery",
+      "scenario": "missed_package_pickup_window",
+      "lexicalThemes": [
+        "delivery",
+        "tracking",
+        "customer support",
+        "pickup point",
+        "waiting"
+      ],
+      "targetVocabulary": [
+        "tracking number",
+        "missed delivery",
+        "locker",
+        "pickup point",
+        "customer service",
+        "available",
+        "queue",
+        "collect"
+      ]
+    },
+    {
+      "date": "2026-09-07",
+      "storyId": "dialogue-dentist-appointment-reschedule",
+      "domain": "health_appointments",
+      "scenario": "dentist_appointment_reschedule",
+      "lexicalThemes": [
+        "appointments",
+        "work conflict",
+        "rescheduling",
+        "confirmation",
+        "polite requests"
+      ],
+      "targetVocabulary": [
+        "appointment",
+        "reschedule",
+        "available",
+        "calendar",
+        "this week",
+        "next week",
+        "confirm",
+        "text message"
+      ]
+    },
+    {
+      "date": "2026-09-07",
+      "storyId": "building-intercom-package-unknown-name",
+      "domain": "housing_delivery",
+      "scenario": "building_intercom_wrong_name_package",
+      "lexicalThemes": [
+        "intercom",
+        "package delivery",
+        "identity check",
+        "building entrance",
+        "phone confirmation"
+      ],
+      "targetVocabulary": [
+        "intercom",
+        "delivery driver",
+        "package",
+        "label",
+        "apartment",
+        "guard",
+        "order",
+        "door"
+      ]
+    },
+    {
+      "date": "2026-09-07",
+      "storyId": "supermarket-return-opened-breakfast-cereal",
+      "domain": "shopping",
+      "scenario": "supermarket_opened_cereal_return",
+      "lexicalThemes": [
+        "returns",
+        "receipt",
+        "refund",
+        "exchange",
+        "customer service"
+      ],
+      "targetVocabulary": [
+        "service desk",
+        "receipt",
+        "refund",
+        "exchange",
+        "opened",
+        "seal",
+        "policy",
+        "replacement"
+      ]
+    },
+    {
+      "date": "2026-09-07",
+      "storyId": "friends-train-platform-carriage-change",
+      "domain": "transport",
+      "scenario": "train_platform_carriage_change",
+      "lexicalThemes": [
+        "station directions",
+        "platforms",
+        "timing",
+        "meeting point",
+        "quick decisions"
+      ],
+      "targetVocabulary": [
+        "platform",
+        "carriage",
+        "station",
+        "arriving",
+        "next stop",
+        "exit",
+        "board",
+        "meet up"
+      ]
+    },
+    {
+      "date": "2026-09-07",
+      "storyId": "neighbors-noisy-drill-afternoon-agreement",
+      "domain": "neighbors",
+      "scenario": "noisy_drilling_afternoon_agreement",
+      "lexicalThemes": [
+        "neighbors",
+        "noise",
+        "apology",
+        "working from home",
+        "timing agreement"
+      ],
+      "targetVocabulary": [
+        "drill",
+        "noise",
+        "quiet",
+        "apartment",
+        "working from home",
+        "one more hour",
+        "calls",
+        "apologize"
+      ]
     }
   ]
 }
