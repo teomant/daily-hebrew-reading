@@ -141,7 +141,7 @@ def _story_batch_schema(
                 "type": "array",
                 "items": unit_list,
                 "minItems": 4,
-                "maxItems": 5,
+                "maxItems": 12,
             },
         },
         "required": ["title", "teaser", "paragraphs"],

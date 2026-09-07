@@ -15,6 +15,7 @@ from unittest.mock import Mock, patch
 from src.common import ROOT, read_json
 from src.generate_issue import (
     PROVENANCE_ERRORS_KEY,
+    _adaptation_batch_schema,
     _call_openai,
     _existing_exclusions,
     _generation_request,
@@ -33,6 +34,27 @@ from src.validation import validate_repository
 
 
 class GenerationTests(unittest.TestCase):
+    def test_adaptation_schema_allows_one_line_per_dialog_turn(self) -> None:
+        schema = _adaptation_batch_schema(
+            ["family-dialog"],
+            [{"id": "alef"}],
+            ["ru", "en"],
+            ["ru", "en"],
+        )
+        paragraphs = (
+            schema["properties"]["adaptations"]["items"]
+            ["properties"]["levels"]["properties"]["alef"]
+            ["properties"]["paragraphs"]
+        )
+        self.assertEqual(paragraphs["minItems"], 4)
+        self.assertEqual(paragraphs["maxItems"], 12)
+
+        prompt = (ROOT / "prompts" / "adaptation.md").read_text(encoding="utf-8")
+        self.assertIn("8–12 short turns", prompt)
+        self.assertIn("exactly one complete speaker turn", prompt)
+        self.assertIn("separate line", prompt)
+        self.assertIn("Never place two speaker labels", prompt)
+
     def test_recent_issue_context_uses_only_previous_three_days(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             content_dir = Path(temporary)

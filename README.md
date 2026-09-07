@@ -12,7 +12,7 @@ The repository contains a complete sample issue, so the site can be built and te
 - Keyboard, hover, and tap translation popovers.
 - Source links and optional externally hosted, attributed source images with graceful failure.
 - Two-stage OpenAI Responses API generation: research freezes briefs, then one adaptation call writes and proofreads Hebrew before adding lexical units and contextual translations.
-- A target of three short, practical DIALOG conversations and three EVERYDAY stories per new issue, with extra generated stories allowed when unique sourced material is unavailable.
+- A target of three short, practical DIALOG conversations and three EVERYDAY stories per new issue, with each dialogue turn on its own line and extra generated stories allowed when unique sourced material is unavailable.
 - Separate surplus discovery pools for sourced stories: at least eight CURRENT candidates and four timeless Israeli HISTORY candidates are considered before selecting the normal four and two.
 - Safe same-day append behavior; existing stories are preserved, duplicates are rejected, and new entries are only EVERYDAY or DIALOG in any mix.
 - Content validation, tests, daily/manual GitHub Actions, and GitHub Pages deployment.

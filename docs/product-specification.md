@@ -19,7 +19,7 @@ A new issue is generated automatically every day. A typical issue contains:
 
 This normally produces 12 stories and may range from 10–13 as the number of sourced stories varies. Keep the three EVERYDAY and three DIALOG entries stable; never fill the flexible CURRENT or HISTORY allowance with weak material.
 
-The target reading time is approximately 40–50 learner minutes, enough for a typical commute. Articles should normally contain 4–5 developed paragraphs rather than collapsing a story into three sentences.
+The target reading time is approximately 40–50 learner minutes, enough for a typical commute. CURRENT, HISTORY, and EVERYDAY articles should normally contain 4–5 developed paragraphs rather than collapsing a story into three sentences. DIALOG instead uses 8–12 short speaker turns, each on its own line.
 
 ## 2. Content types
 
@@ -71,7 +71,7 @@ These stories should expose readers to useful constructions such as:
 
 A specially generated short conversation for practical Hebrew learning. A new issue normally aims for about three. Dialogues normally use two speakers in familiar family and daily-life situations such as making plans, meals, shopping, school, transport, appointments, errands, neighbors, and small problems at home.
 
-The exchange should sound like ordinary contemporary Israeli conversation, not a classroom exercise, interview, screenplay, dramatic scene, or narrated story. Every paragraph at every reading level must contain direct speech labeled with consistent Hebrew speaker names and colons. Use short natural turns, questions, answers, clarifications, reactions, and a simple practical outcome. Do not describe the conversation in third-person prose; a mainly narrated result belongs to EVERYDAY. Avoid long speeches, artificial repetition, exaggerated slang, and vocabulary included only to demonstrate a rule. DIALOG uses the same scenario metadata and repetition history as EVERYDAY and has no external sources or images.
+The exchange should sound like ordinary contemporary Israeli conversation, not a classroom exercise, interview, screenplay, dramatic scene, or narrated story. Use 8–12 short turns at every reading level. Every paragraph-array item contains exactly one direct-speech turn, starts with a consistent Hebrew speaker name and colon, and is displayed as its own line. Never put two speakers in one paragraph item. Use natural questions, answers, clarifications, reactions, and a simple practical outcome. Do not describe the conversation in third-person prose; a mainly narrated result belongs to EVERYDAY. Avoid long speeches, artificial repetition, exaggerated slang, and vocabulary included only to demonstrate a rule. DIALOG uses the same scenario metadata and repetition history as EVERYDAY and has no external sources or images.
 
 ### HISTORY
 
@@ -278,7 +278,7 @@ Read the recent scenario-history data, identify what has been used, remove overl
 
 ## 29. DIALOG generation
 
-Aim for about three short dialogues for each new issue, with additional dialogues allowed to replace rejected sourced candidates. Use ordinary situations useful to a learner and their family, normally with two speakers and a few short alternating turns in each of the existing 4–5 content paragraphs. Keep the exchange natural, simple, and practical across all configured levels. Reuse the scenario history to avoid recently repeated situations, and mark every DIALOG visibly as fully AI-generated.
+Aim for about three short dialogues for each new issue, with additional dialogues allowed to replace rejected sourced candidates. Use ordinary situations useful to a learner and their family, normally with two speakers and 8–12 short alternating turns. Store every turn as its own paragraph-array item so it appears on a separate line. Keep the exchange natural, simple, and practical across all configured levels. Reuse the scenario history to avoid recently repeated situations, and mark every DIALOG visibly as fully AI-generated.
 
 ## 30. HISTORY generation
 
