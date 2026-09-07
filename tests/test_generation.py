@@ -107,6 +107,9 @@ class GenerationTests(unittest.TestCase):
         self.assertIn("https://example.com/previous-story", request)
         self.assertIn("NOVELTY CONTRACT", request)
         self.assertIn("same central entity or subject and the same underlying event", request)
+        self.assertIn("same street, building, archaeological site", request)
+        self.assertIn("different source, excavation report, historical period", request)
+        self.assertIn("later status report, continuing consequence", request)
         self.assertNotIn("previous-dialog", request)
         self.assertNotIn("Configured reading levels", request)
         self.assertNotIn("Required translation locales", request)
@@ -128,6 +131,19 @@ class GenerationTests(unittest.TestCase):
         self.assertIn("HISTORY does not need a connection to the target date", request)
         self.assertIn("continue searching for another candidate", request)
         self.assertIn("continuing the search", request)
+        self.assertIn("final rejection pass", request)
+        self.assertIn("RETRY SEARCH EXPANSION", request)
+        self.assertIn("stories from around the world", request)
+        self.assertIn("do not limit this retry to Israel", request)
+
+        first_attempt = _sourced_discovery_request("2026-09-07", 4, 2, [], [])
+        self.assertNotIn("RETRY SEARCH EXPANSION", first_attempt)
+
+        static_prompt = (ROOT / "prompts" / "editorial.md").read_text(encoding="utf-8")
+        self.assertIn("strict recent-subject exclusion", static_prompt)
+        self.assertIn("archaeological layer", static_prompt)
+        self.assertIn("continuing consequence", static_prompt)
+        self.assertIn("expand both CURRENT and HISTORY discovery", static_prompt)
 
     def test_generated_planning_forbids_exact_recent_scenarios(self) -> None:
         request = _generated_planning_request(

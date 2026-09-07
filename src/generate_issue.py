@@ -394,9 +394,15 @@ def _sourced_discovery_request(
     selected_stories: list[dict[str, Any]],
     feedback: list[str] | None = None,
 ) -> str:
+    retry_scope = (
+        "\nRETRY SEARCH EXPANSION\nThe Israel-focused first pass did not fill every sourced slot. "
+        "Broaden both CURRENT and HISTORY search to suitable stories from around the world. Israeli candidates are still "
+        "allowed, but do not limit this retry to Israel. Keep every editorial, source-quality, safety, and novelty rule."
+        if feedback else ""
+    )
     retry = (
-        "\nRETRY FEEDBACK\nThe previous result was rejected. Do not return the rejected candidates again. "
-        f"Correct these problems while continuing the search: {json.dumps(feedback, ensure_ascii=False)}"
+        "\nRETRY FEEDBACK\nThe previous attempt left sourced slots unfilled. Do not return any rejected "
+        f"candidates again. Correct these problems while continuing the search: {json.dumps(feedback, ensure_ascii=False)}"
         if feedback else ""
     )
     return f"""
@@ -412,11 +418,11 @@ SEARCH PROCESS
 - Return only the final selected stories, not search notes or surplus candidates.
 
 NOVELTY CONTRACT
-- A CURRENT candidate is a duplicate when it has the same central entity or subject and the same underlying event, action, announcement, change, project, or outcome as a forbidden record or selected candidate.
-- A HISTORY candidate is a duplicate when it tells the same specific historical story. Merely sharing a city, place, object, or institution is not enough when the historical event or subject is genuinely different.
+- A CURRENT candidate is a duplicate when it has the same central entity or subject and the same underlying event, action, announcement, change, project, or outcome as a forbidden record or selected candidate. A later status report, continuing consequence, “still” update, new article, or changed statistic about that event is still a duplicate.
+- For HISTORY, first identify the candidate's primary named subject. The same street, building, archaeological site, institution, person, event, object, custom, or other primary subject used in a forbidden or selected HISTORY story is always a duplicate. A different source, excavation report, historical period, archaeological layer, newly emphasized fact, or angle about the same primary subject does not make it new.
 - The same or equivalent source URL is always a duplicate. Another publisher, URL, headline, language, date, angle, or minor follow-up does not make the same underlying event new.
 - A new slug, renamed people, changed wording, or cosmetic details never make a duplicate new.
-For every candidate, compare underlying meaning—not only exact words—with every forbidden and already selected brief and URL. If it matches or uniqueness is uncertain, do not return it. Discard it and search for a different article or historical subject.
+Before returning the batch, perform a final rejection pass: compare each candidate's primary subject and underlying meaning—not only exact words—with every forbidden and already selected brief and URL. If it matches or uniqueness is uncertain, do not return it. Discard it and continue searching until either a genuinely different candidate is found or the response returns fewer sourced stories.
 
 FORBIDDEN SOURCED STORIES FROM THE EXISTING ISSUE AND RECENT ISSUES:
 <forbidden_story_records>
@@ -429,7 +435,7 @@ ALREADY SELECTED SOURCED STORIES IN THIS RUN:
 </selected_story_records>
 
 OUTPUT CONTRACT
-Write every `brief` in English and include enough supported detail for later adaptation without inventing facts. The story id and slug must be identical. Use null `everydayMeta`. Prefer distinct canonical HTTPS content-page URLs; never use homepages, section pages, search pages, generic latest pages, or liveblogs. Use an empty source list rather than an uncertain URL. Use null image unless every provenance and rights requirement is verified. Return only schema-matching data and no prose.{retry}
+Write every `brief` in English and include enough supported detail for later adaptation without inventing facts. The story id and slug must be identical. Use null `everydayMeta`. Prefer distinct canonical HTTPS content-page URLs; never use homepages, section pages, search pages, generic latest pages, or liveblogs. Use an empty source list rather than an uncertain URL. Use null image unless every provenance and rights requirement is verified. Return only schema-matching data and no prose.{retry_scope}{retry}
 """.strip()
 
 
@@ -1070,6 +1076,11 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
                 f"{phase}: selected {len(sourced_seeds) - before_count} candidate(s); "
                 f"{len(sourced_seeds)} sourced story brief(s) retained"
             )
+            if len(sourced_seeds) < sourced_target and sourced_feedback is None:
+                sourced_feedback = [
+                    "The Israel-focused pass returned fewer usable sourced stories than requested; "
+                    "search worldwide for the remaining CURRENT or HISTORY slots."
+                ]
 
     generated_target = target_count - len(sourced_seeds) if existing is None else target_count
     generated_target = max(0, generated_target)
