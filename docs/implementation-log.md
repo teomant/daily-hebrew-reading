@@ -3,6 +3,9 @@
 ## 2026-09-08
 
 - Began forcing a fresh GitHub Actions scheduler registration after three scheduled runs continued firing near the retired 06:00 UTC cron and none fired near the configured 01:15 UTC time. Removed `.github/workflows/generate.yml` as phase one of a deliberate two-push replacement; the new workflow must be added under a different filename and display name only after GitHub has observed this deletion. Per owner direction, Codex did not commit or push the change.
+- Confirmed through the GitHub Actions API that old workflow ID `350520994` entered the `deleted` state after the owner pushed phase one. Added the unchanged generation/deployment jobs under `.github/workflows/generate-daily-v2.yml` with the new display name `Generate daily issue v2` and the intended `15 1 * * *` schedule, updated the Actions-tab name in the README, and left all commits and pushes to the owner.
+- Final verification passed workflow YAML parsing with the 01:37 UTC cron assertion, content validation, all 50 unit tests, documentation/footer consistency checks, and whitespace checks. A direct read-only implementation review found no code or documentation issues; scheduler registration and timing can only be verified after the owner pushes the replacement.
+- Changed the not-yet-pushed replacement schedule from 01:15 UTC to the owner-selected 01:37 UTC (`37 1 * * *`) and synchronized the README, product specification, and localized site footers. This moves the trigger farther from common scheduler boundaries while retaining UTC scheduling.
 
 ## 2026-09-07
 

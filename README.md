@@ -74,7 +74,7 @@ The OpenAI API is billed separately from ChatGPT Plus. The API uses the credits 
 
 ## Running the workflows
 
-- **Generate daily issue** runs at `01:15 UTC` and can also be started from **Actions → Generate daily issue → Run workflow**.
+- **Generate daily issue v2** runs at `01:37 UTC` and can also be started from **Actions → Generate daily issue v2 → Run workflow**.
 - Leave `date` blank to use the current UTC date. Enter an existing date to append rather than replace. Append runs generate only EVERYDAY or DIALOG stories, in any mix. `additional_stories` controls the append size; it is ignored for a new full issue.
 - **Validate and deploy site** runs on an ordinary push to `master` and never calls OpenAI.
 
