@@ -383,6 +383,144 @@
         "מהיר",
         "מוסיף"
       ]
+    },
+    {
+      "date": "2026-09-08",
+      "storyId": "train-platform-switch-and-missed-connection",
+      "domain": "transport",
+      "scenario": "train_platform_changed_last_minute_connection_race",
+      "lexicalThemes": [
+        "station navigation",
+        "time pressure",
+        "asking for clarification",
+        "changing plans",
+        "making a connection"
+      ],
+      "targetVocabulary": [
+        "כבר",
+        "עוד מעט",
+        "לא שמתי לב",
+        "מתי בערך",
+        "אפשר לשאול",
+        "למה",
+        "מהר",
+        "בסוף"
+      ]
+    },
+    {
+      "date": "2026-09-08",
+      "storyId": "office-courier-at-reception-and-a-missing-package",
+      "domain": "work",
+      "scenario": "courier_package_left_with_wrong_reception_desk",
+      "lexicalThemes": [
+        "delivery and reception",
+        "checking logs",
+        "lost items",
+        "work coordination",
+        "messages and follow-up"
+      ],
+      "targetVocabulary": [
+        "אמרו לי ש",
+        "לא מצאתי",
+        "אולי",
+        "כבר",
+        "נשאר",
+        "חסר",
+        "אפשר לבדוק",
+        "בסוף"
+      ]
+    },
+    {
+      "date": "2026-09-08",
+      "storyId": "neighbor-who-borrowed-a-drill-and-returns-it-late",
+      "domain": "everyday",
+      "scenario": "borrowed_drill_returned_late_after_small_repair",
+      "lexicalThemes": [
+        "neighbors",
+        "borrowing items",
+        "apologies",
+        "small repairs",
+        "keeping good relations"
+      ],
+      "targetVocabulary": [
+        "שכחתי",
+        "עדיין",
+        "לא הספקתי",
+        "בסוף",
+        "אין בעיה",
+        "לא נורא",
+        "להחזיר",
+        "להחליף"
+      ]
+    },
+    {
+      "date": "2026-09-08",
+      "storyId": "supermarket-checkout-price-mismatch-and-substitution",
+      "domain": "consumer",
+      "scenario": "supermarket_checkout_price_label_mismatch_and_substitution",
+      "lexicalThemes": [
+        "price checks",
+        "checkout conversation",
+        "mistakes and correction",
+        "shopping decisions",
+        "alternatives"
+      ],
+      "targetVocabulary": [
+        "יותר יקר",
+        "לבדוק",
+        "על המדף",
+        "בקופה",
+        "אפשר להחליף",
+        "זה לא משתלם",
+        "בערך",
+        "בסדר"
+      ]
+    },
+    {
+      "date": "2026-09-08",
+      "storyId": "cousins-decide-on-a-last-minute-shabbat-visit",
+      "domain": "culture",
+      "scenario": "last_minute_shabbat_dinner_visit_arrangement",
+      "lexicalThemes": [
+        "family plans",
+        "timing",
+        "invitations",
+        "food coordination",
+        "flexible arrangements"
+      ],
+      "targetVocabulary": [
+        "עוד מעט",
+        "מתי בערך",
+        "לא בטוח",
+        "אין צורך",
+        "כבר בדרך",
+        "בסוף החלטנו",
+        "נשאר",
+        "נוח"
+      ]
+    },
+    {
+      "date": "2026-09-08",
+      "storyId": "clinic-despite-ringing-phone-and-rescheduled-appointment",
+      "domain": "everyday",
+      "scenario": "clinic_wait_and_reschedule_around_work_calls",
+      "lexicalThemes": [
+        "appointments",
+        "waiting",
+        "lateness",
+        "clarifying times",
+        "rescheduling"
+      ],
+      "targetVocabulary": [
+        "כבר",
+        "מאוחר",
+        "מתי בערך",
+        "אפשר לחכות",
+        "לא הספקתי",
+        "עדיף",
+        "בסוף",
+        "אין בעיה"
+      ]
     }
   ]
 }
