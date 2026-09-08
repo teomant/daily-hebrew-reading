@@ -383,6 +383,156 @@
         "מהיר",
         "מוסיף"
       ]
+    },
+    {
+      "date": "2026-09-08",
+      "storyId": "office-laptop-charger-mixup-before-presentation",
+      "domain": "work",
+      "scenario": "office_laptop_charger_mixup_before_presentation",
+      "lexicalThemes": [
+        "office logistics",
+        "equipment problem",
+        "asking for help",
+        "time pressure",
+        "small delay"
+      ],
+      "targetVocabulary": [
+        "charger",
+        "battery",
+        "spare",
+        "fit",
+        "borrow",
+        "drawer",
+        "reception",
+        "presentation",
+        "compatible",
+        "late"
+      ]
+    },
+    {
+      "date": "2026-09-08",
+      "storyId": "delivery-package-left-at-wrong-door",
+      "domain": "consumer",
+      "scenario": "delivery_package_left_at_wrong_door",
+      "lexicalThemes": [
+        "delivery",
+        "building access",
+        "customer support",
+        "misunderstanding",
+        "finding a package"
+      ],
+      "targetVocabulary": [
+        "courier",
+        "delivery",
+        "lobby",
+        "neighbor",
+        "door number",
+        "note",
+        "photo",
+        "office",
+        "left",
+        "check"
+      ]
+    },
+    {
+      "date": "2026-09-08",
+      "storyId": "missed-groceries-after-gym-stop",
+      "domain": "shopping",
+      "scenario": "missed_groceries_after_gym_stop",
+      "lexicalThemes": [
+        "supermarket",
+        "budget",
+        "stock",
+        "substitute",
+        "daily errands"
+      ],
+      "targetVocabulary": [
+        "budget",
+        "sold out",
+        "brand",
+        "stock",
+        "package",
+        "employee",
+        "extra",
+        "simple",
+        "skip",
+        "enough"
+      ]
+    },
+    {
+      "date": "2026-09-08",
+      "storyId": "roommate-sink-clog-and-evening-dishes",
+      "domain": "housing",
+      "scenario": "roommate_sink_clog_and_evening_dishes",
+      "lexicalThemes": [
+        "apartment life",
+        "shared kitchen",
+        "small repair",
+        "chores",
+        "asking and clarifying"
+      ],
+      "targetVocabulary": [
+        "sink",
+        "drain",
+        "clog",
+        "plunger",
+        "landlord",
+        "dishes",
+        "oil",
+        "sauce",
+        "temporary",
+        "message"
+      ]
+    },
+    {
+      "date": "2026-09-08",
+      "storyId": "friend-meeting-after-train-platform-change",
+      "domain": "transport",
+      "scenario": "friend_meeting_after_train_platform_change",
+      "lexicalThemes": [
+        "train station",
+        "platform changes",
+        "meeting point",
+        "timing",
+        "carrying luggage"
+      ],
+      "targetVocabulary": [
+        "platform",
+        "station",
+        "exit",
+        "wait",
+        "suitcase",
+        "stairs",
+        "crowded",
+        "train number",
+        "board",
+        "meeting point"
+      ]
+    },
+    {
+      "date": "2026-09-08",
+      "storyId": "neighbor-lost-key-and-building-entrance",
+      "domain": "everyday",
+      "scenario": "neighbor_lost_key_and_building_entrance",
+      "lexicalThemes": [
+        "lost items",
+        "building entrance",
+        "neighbor help",
+        "searching",
+        "late evening"
+      ],
+      "targetVocabulary": [
+        "key",
+        "entrance",
+        "bag",
+        "mailbox",
+        "elevator",
+        "group chat",
+        "found",
+        "pharmacy",
+        "mat",
+        "return"
+      ]
     }
   ]
 }
