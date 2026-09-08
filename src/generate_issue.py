@@ -525,7 +525,7 @@ ALREADY SELECTED SOURCED STORIES IN THIS RUN:
 </selected_story_records>
 
 OUTPUT CONTRACT
-Return exactly {SOURCED_CANDIDATE_COUNT} records containing only `id`, `type`, `category`, `brief`, and `sources`. Write every `brief` in English with enough supported detail to identify the underlying story during deduplication. Give every candidate at least one distinct canonical HTTPS content-page source; never use homepages, section pages, search pages, generic latest pages, or liveblogs. Do not return Hebrew, level adaptations, scenario metadata, images, or prose outside the schema.
+Return exactly {SOURCED_CANDIDATE_COUNT} records containing only `id`, `type`, `category`, `brief`, and `sources`. Write every `brief` in English with enough source-supported detail both to identify the underlying story during deduplication and to sustain a developed 4–5-paragraph adaptation without invented facts or filler. Give every candidate at least one distinct canonical HTTPS content-page source; never use homepages, section pages, search pages, generic latest pages, or liveblogs. Do not return Hebrew, level adaptations, scenario metadata, images, or prose outside the schema.
 """.strip()
 
 
@@ -635,7 +635,7 @@ ALREADY SELECTED STORIES IN THIS RUN:
 </selected_story_records>
 
 OUTPUT CONTRACT
-Write every `brief` in English and make the id and slug identical. Supply complete scenario metadata. Every story must have an empty source list and null image. DIALOG briefs must support 8–12 short alternating direct-speech turns. Return only schema-matching data and no prose.{retry}
+Write every `brief` in English and make the id and slug identical. Supply complete scenario metadata. Make EVERYDAY briefs support 4–5 developed story beats, and make DIALOG briefs support 8–12 useful alternating direct-speech turns with questions, clarification, reactions, and an outcome. Every story must have an empty source list and null image. Return only schema-matching data and no prose.{retry}
 """.strip()
 
 
@@ -805,7 +805,7 @@ def _adaptation_request(
     retry = f"\nCorrect these validation problems from the previous adaptation: {json.dumps(feedback, ensure_ascii=False)}" if feedback else ""
     return f"""
 This is the adaptation phase. The story metadata and briefs below are frozen results of completed sourced discovery and generated-scenario planning.
-Create title, teaser, paragraphs, lexical segmentation, and translations for every listed story and level. Do not change, extend, or infer beyond a brief. Do not add facts to reach a word target. Return each story ID exactly once and no other IDs.
+Create title, teaser, paragraphs, lexical segmentation, and translations for every listed story and level. Develop each body toward its configured targetWords and perform the prompt's one pre-segmentation length revision when needed. Do not change, extend, or infer beyond a brief, and do not add facts or filler to reach a word target. A result that remains below minimumWords is still usable and must not cause the request or generation run to fail. Return each story ID exactly once and no other IDs.
 
 Configured reading levels:
 {json.dumps(level_payload, ensure_ascii=False, indent=2)}

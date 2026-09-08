@@ -67,6 +67,9 @@ class GenerationTests(unittest.TestCase):
         self.assertIn("exactly one complete speaker turn", prompt)
         self.assertIn("separate line", prompt)
         self.assertIn("Never place two speaker labels", prompt)
+        self.assertIn("count the approximate whitespace-delimited Hebrew words", prompt)
+        self.assertIn("a shorter coherent version must never cause generation to fail", prompt)
+        self.assertIn("return the best shorter version and continue normally", prompt)
 
     def test_recent_issue_context_uses_only_previous_three_days(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:

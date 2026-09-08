@@ -130,7 +130,7 @@ Approximately 235–305 words, targeting about 270, corresponding approximately 
 
 ## 8. Do not pad articles
 
-Word counts are guidelines, not goals. Do not lengthen an article through repetition, empty introductions, generic conclusions, unnecessary adjectives, invented details, or artificially complex phrasing. A short, good text is better than a longer text with filler.
+Word counts are editorial targets, not publication gates. Before segmentation, adaptation should estimate the Hebrew body word count and make one supported revision toward the configured target when a version is below its suggested minimum. Do not lengthen an article through repetition, empty introductions, generic conclusions, unnecessary adjectives, invented details, or artificially complex phrasing. If the frozen brief cannot honestly support more detail, return the best coherent shorter version and continue generation; being below the suggested word range alone must never fail publication.
 
 ## 9. Hebrew style
 

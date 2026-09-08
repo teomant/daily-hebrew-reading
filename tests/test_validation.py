@@ -23,6 +23,22 @@ class ValidationTests(unittest.TestCase):
         errors = validate_issue(issue, load_site_config(), load_level_config())
         self.assertEqual(errors, [])
 
+    def test_short_adaptation_does_not_fail_validation(self) -> None:
+        issue = copy.deepcopy(read_json(ROOT / "content" / "2024-01-26.json"))
+        story = issue["stories"][0]
+        levels_by_id = {level["id"]: level for level in load_level_config()}
+        for level_id, level in story["levels"].items():
+            first_unit = copy.deepcopy(level["paragraphs"][0][0])
+            level["paragraphs"] = [[copy.deepcopy(first_unit)] for _ in range(4)]
+            body_words = sum(
+                len(unit["text"].split())
+                for paragraph in level["paragraphs"]
+                for unit in paragraph
+            )
+            self.assertLess(body_words, levels_by_id[level_id]["minimumWords"])
+        errors = validate_issue(issue, load_site_config(), load_level_config())
+        self.assertEqual(errors, [])
+
     def test_translation_coverage_below_seventy_five_percent_is_rejected(self) -> None:
         issue = copy.deepcopy(read_json(ROOT / "content" / "2024-01-26.json"))
         level = issue["stories"][0]["levels"]["alef"]
