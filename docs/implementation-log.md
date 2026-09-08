@@ -1,5 +1,9 @@
 # Implementation log
 
+## 2026-09-08
+
+- Began forcing a fresh GitHub Actions scheduler registration after three scheduled runs continued firing near the retired 06:00 UTC cron and none fired near the configured 01:15 UTC time. Removed `.github/workflows/generate.yml` as phase one of a deliberate two-push replacement; the new workflow must be added under a different filename and display name only after GitHub has observed this deletion. Per owner direction, Codex did not commit or push the change.
+
 ## 2026-09-07
 
 - Removed the latest 12-story `2026-09-07` issue, its index entry, and all 11 matching generated-scenario history records so the fixed 20-candidate discovery flow can be tested with a clean deployment generation.
