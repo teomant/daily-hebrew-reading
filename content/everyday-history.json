@@ -670,6 +670,81 @@
         "wait",
         "walk"
       ]
+    },
+    {
+      "date": "2026-09-09",
+      "storyId": "office-courier-delivery-at-reception",
+      "domain": "work",
+      "scenario": "office_courier_delivery_at_reception",
+      "lexicalThemes": [
+        "office logistics",
+        "deliveries",
+        "checking details",
+        "message follow-up",
+        "small misunderstandings"
+      ],
+      "targetVocabulary": [
+        "courier",
+        "reception",
+        "tracking number",
+        "label",
+        "confirm",
+        "old address",
+        "hold",
+        "sign",
+        "photo",
+        "supplier"
+      ]
+    },
+    {
+      "date": "2026-09-09",
+      "storyId": "train-station-locker-and-late-return",
+      "domain": "transport",
+      "scenario": "train_station_locker_and_late_return",
+      "lexicalThemes": [
+        "station errands",
+        "lost receipt",
+        "time pressure",
+        "asking staff for help",
+        "recovering belongings"
+      ],
+      "targetVocabulary": [
+        "locker",
+        "receipt",
+        "attendant",
+        "code",
+        "payment confirmation",
+        "glitchy",
+        "refresh",
+        "recover",
+        "station record",
+        "next train"
+      ]
+    },
+    {
+      "date": "2026-09-09",
+      "storyId": "neighbor-shared-hose-and-garden-water-plan",
+      "domain": "everyday",
+      "scenario": "neighbor_shared_hose_and_garden_water_plan",
+      "lexicalThemes": [
+        "neighbors",
+        "shared spaces",
+        "small safety issue",
+        "polite request",
+        "practical agreement"
+      ],
+      "targetVocabulary": [
+        "shared",
+        "path",
+        "trip",
+        "roll up",
+        "pressure",
+        "apologize",
+        "entrance",
+        "before seven",
+        "near the wall",
+        "building chat"
+      ]
     }
   ]
 }
