@@ -533,6 +533,143 @@
         "mat",
         "return"
       ]
+    },
+    {
+      "date": "2026-09-09",
+      "storyId": "dry-cleaner-stained-shirt-and-rush-alteration",
+      "domain": "consumer",
+      "scenario": "dry_cleaner_stained_shirt_rush_alteration",
+      "lexicalThemes": [
+        "pickup and drop-off",
+        "complaint and clarification",
+        "time pressure",
+        "repair and service"
+      ],
+      "targetVocabulary": [
+        "stain",
+        "pickup",
+        "alteration",
+        "rush",
+        "re-clean",
+        "by tomorrow evening",
+        "second pass",
+        "pick up"
+      ]
+    },
+    {
+      "date": "2026-09-09",
+      "storyId": "dialogue-gym-locker-key-and-afterwork-plan",
+      "domain": "everyday",
+      "scenario": "gym_locker_key_missing_after_work_plan",
+      "lexicalThemes": [
+        "lost item",
+        "clarification",
+        "going back inside",
+        "schedule change",
+        "help from reception"
+      ],
+      "targetVocabulary": [
+        "locker",
+        "key",
+        "treadmill",
+        "bench",
+        "charger",
+        "receipt",
+        "open",
+        "still"
+      ]
+    },
+    {
+      "date": "2026-09-09",
+      "storyId": "meeting-room-ac-misunderstanding-and-window-plan",
+      "domain": "work",
+      "scenario": "meeting_room_ac_misunderstanding_and_window_fix",
+      "lexicalThemes": [
+        "office coordination",
+        "temperature",
+        "misunderstanding",
+        "small fix",
+        "meeting prep"
+      ],
+      "targetVocabulary": [
+        "air conditioner",
+        "temperature",
+        "remote",
+        "window",
+        "fix",
+        "too low",
+        "comfortable",
+        "next time"
+      ]
+    },
+    {
+      "date": "2026-09-09",
+      "storyId": "dialogue-neighborhood-package-swap-and-concierge",
+      "domain": "consumer",
+      "scenario": "neighbor_package_swap_with_concierge_confirmation",
+      "lexicalThemes": [
+        "delivery",
+        "mix-up",
+        "building lobby",
+        "label checking",
+        "customer support"
+      ],
+      "targetVocabulary": [
+        "parcel",
+        "label",
+        "apartment number",
+        "concierge",
+        "swap",
+        "confirm",
+        "courier",
+        "mix-up"
+      ]
+    },
+    {
+      "date": "2026-09-09",
+      "storyId": "dentist-cancelled-checkup-and-new-slot",
+      "domain": "consumer",
+      "scenario": "dentist_checkup_delayed_new_slot",
+      "lexicalThemes": [
+        "appointments",
+        "delay",
+        "rescheduling",
+        "waiting",
+        "front desk"
+      ],
+      "targetVocabulary": [
+        "checkup",
+        "receptionist",
+        "appointment",
+        "delay",
+        "slot",
+        "hygienist",
+        "reschedule",
+        "wait"
+      ]
+    },
+    {
+      "date": "2026-09-09",
+      "storyId": "dialogue-bus-stop-umbrella-and-route-change",
+      "domain": "transport",
+      "scenario": "bus_stop_route_change_in_rain",
+      "lexicalThemes": [
+        "public transport",
+        "route change",
+        "weather",
+        "directions",
+        "checking the app"
+      ],
+      "targetVocabulary": [
+        "bus stop",
+        "route",
+        "late",
+        "road work",
+        "umbrella",
+        "map",
+        "wait",
+        "walk"
+      ]
     }
   ]
 }
