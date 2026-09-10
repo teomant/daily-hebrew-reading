@@ -745,6 +745,98 @@
         "near the wall",
         "building chat"
       ]
+    },
+    {
+      "date": "2026-09-10",
+      "storyId": "neighbors-lend-vacuum-after-small-accident",
+      "domain": "housing",
+      "scenario": "borrow_vacuum_after_kitchen_spill",
+      "lexicalThemes": [
+        "apartment chores",
+        "help from a neighbor",
+        "clean-up",
+        "small household problem",
+        "thanks and return"
+      ],
+      "targetVocabulary": [
+        "לשאול",
+        "להשאיל",
+        "לשפוך",
+        "לטאטא",
+        "לנקות",
+        "מחר בערב",
+        "אין בעיה",
+        "להחזיר"
+      ]
+    },
+    {
+      "date": "2026-09-10",
+      "storyId": "doctor-office-waiting-room-and-insurance-form",
+      "domain": "health",
+      "scenario": "missing_insurance_form_before_appointment",
+      "lexicalThemes": [
+        "clinic reception",
+        "forms and documents",
+        "phone call",
+        "waiting room",
+        "appointment logistics"
+      ],
+      "targetVocabulary": [
+        "טופס",
+        "הפניה",
+        "קבלה",
+        "ביטוח",
+        "תור",
+        "להדפיס",
+        "בדרך",
+        "במקום"
+      ]
+    },
+    {
+      "date": "2026-09-10",
+      "storyId": "coworkers-confirm-office-catering-order",
+      "domain": "work",
+      "scenario": "office_catering_order_confirmation_missing_item",
+      "lexicalThemes": [
+        "office logistics",
+        "food ordering",
+        "email confirmation",
+        "team planning",
+        "delivery timing"
+      ],
+      "targetVocabulary": [
+        "הזמנה",
+        "אישור",
+        "חסר",
+        "להוסיף",
+        "להחליף",
+        "משלוח",
+        "תוך כמה זמן",
+        "בסדר"
+      ]
+    },
+    {
+      "date": "2026-09-10",
+      "storyId": "siblings-coordinate-supermarket-and-pickup-time",
+      "domain": "shopping",
+      "scenario": "family_supermarket_list_and_pickup_coordination",
+      "lexicalThemes": [
+        "shopping list",
+        "family logistics",
+        "time pressure",
+        "availability",
+        "plan changes"
+      ],
+      "targetVocabulary": [
+        "רשימה",
+        "נשאר",
+        "נגמר",
+        "עוד מעט",
+        "בערך",
+        "לא הספקתי",
+        "לא נורא",
+        "להספיק"
+      ]
     }
   ]
 }
