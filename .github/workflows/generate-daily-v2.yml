@@ -10,9 +10,9 @@ on:
         required: false
         type: string
       additional_stories:
-        description: "Stories to append if that date already exists"
+        description: "Stories to append if that date already exists; leave 0 for no append"
         required: true
-        default: "3"
+        default: "0"
         type: string
 
 concurrency:
@@ -20,7 +20,76 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  inspect-trigger:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      should_generate: ${{ steps.decision.outputs.should_generate }}
+      target_date: ${{ steps.decision.outputs.target_date }}
+      additional_stories: ${{ steps.decision.outputs.additional_stories }}
+    steps:
+      - uses: actions/checkout@v6
+      - name: Log trigger diagnostics and decide whether generation is needed
+        id: decision
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          EVENT_SCHEDULE: ${{ github.event.schedule || '' }}
+          INPUT_TARGET_DATE: ${{ inputs.date || '' }}
+          INPUT_ADDITIONAL_STORIES: ${{ inputs.additional_stories || '0' }}
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+          ACTOR: ${{ github.actor }}
+          TRIGGERING_ACTOR: ${{ github.triggering_actor }}
+          REF: ${{ github.ref }}
+          HEAD_SHA: ${{ github.sha }}
+          WORKFLOW_REF: ${{ github.workflow_ref }}
+          WORKFLOW_SHA: ${{ github.workflow_sha }}
+        run: |
+          runner_utc="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+          target_date="${INPUT_TARGET_DATE:-$(date -u +%F)}"
+          additional_stories="${INPUT_ADDITIONAL_STORIES:-0}"
+
+          echo "runner_utc=$runner_utc"
+          echo "event_name=$EVENT_NAME"
+          echo "event_schedule=${EVENT_SCHEDULE:-<none>}"
+          echo "run_id=$RUN_ID"
+          echo "run_attempt=$RUN_ATTEMPT"
+          echo "actor=$ACTOR"
+          echo "triggering_actor=$TRIGGERING_ACTOR"
+          echo "ref=$REF"
+          echo "head_sha=$HEAD_SHA"
+          echo "workflow_ref=$WORKFLOW_REF"
+          echo "workflow_sha=$WORKFLOW_SHA"
+          echo "input_target_date=${INPUT_TARGET_DATE:-<none>}"
+          echo "input_additional_stories=${INPUT_ADDITIONAL_STORIES:-<none>}"
+
+          if [[ ! "$target_date" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]; then
+            echo "Invalid target date: $target_date" >&2
+            exit 1
+          fi
+          if [[ ! "$additional_stories" =~ ^(0|[1-9]|10)$ ]]; then
+            echo "additional_stories must be between 0 and 10" >&2
+            exit 1
+          fi
+
+          should_generate=true
+          if [[ -f "content/$target_date.json" && "$additional_stories" -eq 0 ]]; then
+            should_generate=false
+            echo "Issue content/$target_date.json already exists and no append was requested; stopping before setup, secrets, or AI calls."
+          elif [[ -f "content/$target_date.json" ]]; then
+            echo "Issue content/$target_date.json exists; an explicit append of $additional_stories stories was requested."
+          else
+            echo "Issue content/$target_date.json does not exist; a fresh issue is required."
+          fi
+
+          echo "target_date=$target_date" >> "$GITHUB_OUTPUT"
+          echo "additional_stories=$additional_stories" >> "$GITHUB_OUTPUT"
+          echo "should_generate=$should_generate" >> "$GITHUB_OUTPUT"
+
   generate-and-build:
+    needs: inspect-trigger
+    if: needs.inspect-trigger.outputs.should_generate == 'true'
     runs-on: ubuntu-latest
     environment: daily-hebrew-reading
     permissions:
@@ -43,13 +112,13 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
-          TARGET_DATE: ${{ inputs.date }}
-          ADDITIONAL_STORIES: ${{ inputs.additional_stories || '3' }}
+          TARGET_DATE: ${{ needs.inspect-trigger.outputs.target_date }}
+          ADDITIONAL_STORIES: ${{ needs.inspect-trigger.outputs.additional_stories }}
         run: |
-          if [ -n "$TARGET_DATE" ]; then
+          if [ "$ADDITIONAL_STORIES" -gt 0 ]; then
             python -m src.generate_issue --date "$TARGET_DATE" --additional-stories "$ADDITIONAL_STORIES"
           else
-            python -m src.generate_issue --additional-stories "$ADDITIONAL_STORIES"
+            python -m src.generate_issue --date "$TARGET_DATE"
           fi
       - name: Validate generated content and build
         run: |
@@ -57,7 +126,7 @@ jobs:
           python -m src.build_site
       - name: Commit generated content
         env:
-          TARGET_DATE: ${{ inputs.date }}
+          TARGET_DATE: ${{ needs.inspect-trigger.outputs.target_date }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -65,7 +134,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "No content changes to commit."
           else
-            git commit -m "content: update ${TARGET_DATE:-$(date -u +%F)} issue"
+            git commit -m "content: update $TARGET_DATE issue"
             git push origin HEAD:master
           fi
       - uses: actions/upload-pages-artifact@v3

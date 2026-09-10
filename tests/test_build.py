@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import copy
+import json
 import tempfile
 import unittest
 from html.parser import HTMLParser
@@ -62,6 +63,34 @@ class BuildTests(unittest.TestCase):
             issue["stories"].append(story)
         rendered = build_home(issue, read_json(ROOT / "content" / "index.json"), load_site_config(), load_level_config(), load_locales())
         self.assertIn('data-story-index="5"', rendered)
+
+    def test_home_offers_a_random_article_from_any_issue_without_schedule_claims(self) -> None:
+        index = read_json(ROOT / "content" / "index.json")
+        issues = {
+            item["date"]: read_json(ROOT / "content" / f"{item['date']}.json")
+            for item in index["dates"]
+        }
+        latest = issues[index["dates"][0]["date"]]
+        rendered = build_home(
+            latest,
+            index,
+            load_site_config(),
+            load_level_config(),
+            load_locales(),
+            issues,
+        )
+        oldest = issues[index["dates"][-1]["date"]]
+        runtime_json = rendered.split('<script id="dhr-data" type="application/json">', 1)[1].split("</script>", 1)[0]
+        random_articles = json.loads(runtime_json)["payload"]["randomArticles"]
+
+        self.assertIn("data-random-article", rendered)
+        self.assertIn("Случайная статья", rendered)
+        self.assertIn(f"/{oldest['date']}/{oldest['stories'][0]['slug']}/", rendered)
+        self.assertEqual(len(random_articles), sum(len(item["stories"]) for item in issues.values()))
+        self.assertTrue(all(path.startswith("/daily-hebrew-reading/") for path in random_articles))
+        self.assertNotIn("40–50", rendered)
+        self.assertNotIn("01:37 UTC", rendered)
+        self.assertNotIn("footer.schedule", rendered)
 
     def test_everyday_story_is_disclosed_as_ai_generated(self) -> None:
         issue = read_json(ROOT / "content" / "2024-01-26.json")

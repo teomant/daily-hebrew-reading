@@ -119,7 +119,7 @@ def shell(
     <nav class="site-nav" aria-label="{esc(copy['accessibility.primaryNavigation'])}"><a href="{esc(base)}" data-i18n="nav.today">{esc(copy['nav.today'])}</a><a href="{esc(site_url('archive/', base))}" data-i18n="nav.archive">{esc(copy['nav.archive'])}</a><label class="locale-control"><span class="sr-only" data-i18n="accessibility.interfaceLanguage">{esc(copy['accessibility.interfaceLanguage'])}</span><select id="interface-locale">{locale_options}</select></label></nav>
   </header>
   <main id="main">{body}</main>
-  <footer class="site-footer"><strong>{esc(site['siteName'])}</strong><span data-i18n="footer.schedule">{esc(copy['footer.schedule'])}</span><a href="{esc(site_url('archive/', base))}" data-i18n="nav.archive">{esc(copy['nav.archive'])}</a></footer>
+  <footer class="site-footer"><strong>{esc(site['siteName'])}</strong><a href="{esc(site_url('archive/', base))}" data-i18n="nav.archive">{esc(copy['nav.archive'])}</a></footer>
   <script id="dhr-data" type="application/json">{json_script(runtime)}</script>
   <script src="{esc(site_url('assets/app.js', base))}" defer></script>
 </body>
@@ -154,11 +154,25 @@ def story_card(story: dict[str, Any], index: int, issue: dict[str, Any], site: d
     return f'''<article class="{css}" data-story-index="{index}">{image}<div class="card-copy"><span class="story-kind" data-story-kind>{esc(story_kind(story, copy))}</span><h2 dir="rtl" data-story-title>{render_units(level["title"])}</h2><p dir="rtl" data-story-teaser>{render_units(level["teaser"])}</p><footer><span data-story-minutes>{esc(minutes_label(story_minutes(story, level_id, levels), site["defaultInterfaceLocale"], copy))}</span><a href="{esc(url)}"><span data-i18n="meta.read">{esc(copy['meta.read'])}</span> →</a></footer></div></article>'''
 
 
-def build_home(issue: dict[str, Any], index: dict[str, Any], site: dict[str, Any], levels: list[dict[str, Any]], locales: dict[str, dict[str, str]]) -> str:
+def build_home(
+    issue: dict[str, Any],
+    index: dict[str, Any],
+    site: dict[str, Any],
+    levels: list[dict[str, Any]],
+    locales: dict[str, dict[str, str]],
+    issues: dict[str, dict[str, Any]] | None = None,
+) -> str:
     copy = locales[site["defaultInterfaceLocale"]]
     level_id = issue_level(issue, site)
     minutes = issue_minutes(issue, level_id, levels)
     first = issue["stories"][0]
+    available_issues = issues or {issue["date"]: issue}
+    random_articles = [
+        site_url(f"{item['date']}/{story['slug']}/", site["basePath"])
+        for item in index["dates"]
+        for story in available_issues.get(item["date"], {}).get("stories", [])
+    ]
+    random_fallback = random_articles[0] if random_articles else site_url("archive/", site["basePath"])
     cards = "".join(story_card(story, i, issue, site, levels, copy) for i, story in enumerate(issue["stories"]))
     image = ""
     if first.get("image"):
@@ -170,11 +184,19 @@ def build_home(issue: dict[str, Any], index: dict[str, Any], site: dict[str, Any
     body = f'''
 <section class="page home-page">
   <div class="home-kicker"><span data-i18n="home.dailyIssue">{esc(copy['home.dailyIssue'])}</span><time data-date="{esc(issue['date'])}">{esc(format_date(issue['date'], site['defaultInterfaceLocale']))}</time></div>
-  <section class="home-hero{' has-image' if image else ''}"><div class="hero-copy"><p class="overline"><span data-date="{esc(issue['date'])}">{esc(format_date(issue['date'], site['defaultInterfaceLocale']))}</span> · {len(issue['stories'])} <span data-i18n="meta.materials">{esc(copy['meta.materials'])}</span> · <span data-i18n="meta.about">{esc(copy['meta.about'])}</span> <span data-issue-minutes>{minutes}</span> <span data-minutes-word>{esc(copy['meta.minutesMany'])}</span></p><h1><span data-i18n="home.heroTitle">{esc(copy['home.heroTitle'])}</span></h1><p class="hero-summary" data-i18n="home.heroSummary">{esc(copy['home.heroSummary'])}</p><div class="hero-actions"><a class="primary-action" href="{esc(site_url(issue['date'] + '/', site['basePath']))}" data-i18n="home.startIssue">{esc(copy['home.startIssue'])}</a>{level_controls(issue, levels, 'article.level')}</div></div>{image}</section>
-  <section class="story-section"><header class="section-heading"><div><span data-i18n="home.inIssue">{esc(copy['home.inIssue'])}</span><h2 data-i18n="home.storiesForTime">{esc(copy['home.storiesForTime'])}</h2></div><a href="{esc(site_url(issue['date'] + '/', site['basePath']))}" data-i18n="home.allStories">{esc(copy['home.allStories'])}</a></header><div class="story-list">{cards}</div></section>
+  <section class="home-hero{' has-image' if image else ''}"><div class="hero-copy"><p class="overline"><span data-date="{esc(issue['date'])}">{esc(format_date(issue['date'], site['defaultInterfaceLocale']))}</span> · {len(issue['stories'])} <span data-i18n="meta.materials">{esc(copy['meta.materials'])}</span> · <span data-i18n="meta.about">{esc(copy['meta.about'])}</span> <span data-issue-minutes>{minutes}</span> <span data-minutes-word>{esc(copy['meta.minutesMany'])}</span></p><h1><span data-i18n="home.heroTitle">{esc(copy['home.heroTitle'])}</span></h1><p class="hero-summary" data-i18n="home.heroSummary">{esc(copy['home.heroSummary'])}</p><div class="hero-actions"><a class="primary-action" href="{esc(site_url(issue['date'] + '/', site['basePath']))}" data-i18n="home.startIssue">{esc(copy['home.startIssue'])}</a><a class="random-action" href="{esc(random_fallback)}" data-random-article data-i18n="home.randomArticle">{esc(copy['home.randomArticle'])}</a>{level_controls(issue, levels, 'article.level')}</div></div>{image}</section>
+  <section class="story-section"><header class="section-heading"><div><span data-i18n="home.inIssue">{esc(copy['home.inIssue'])}</span><h2 data-i18n="home.chooseStory">{esc(copy['home.chooseStory'])}</h2></div><a href="{esc(site_url(issue['date'] + '/', site['basePath']))}" data-i18n="home.allStories">{esc(copy['home.allStories'])}</a></header><div class="story-list">{cards}</div></section>
   <section class="home-bottom"><div><span class="small-label" data-i18n="home.previousIssues">{esc(copy['home.previousIssues'])}</span>{old}</div><a class="archive-link" href="{esc(site_url('archive/', site['basePath']))}" data-i18n="nav.archive">{esc(copy['nav.archive'])}</a></section>
 </section>'''
-    return shell(title=format_date(issue["date"], site["defaultInterfaceLocale"]), body=body, page="home", site=site, levels=levels, locales=locales, payload={"issue": issue})
+    return shell(
+        title=format_date(issue["date"], site["defaultInterfaceLocale"]),
+        body=body,
+        page="home",
+        site=site,
+        levels=levels,
+        locales=locales,
+        payload={"issue": issue, "randomArticles": random_articles},
+    )
 
 
 def build_day(issue: dict[str, Any], site: dict[str, Any], levels: list[dict[str, Any]], locales: dict[str, dict[str, str]]) -> str:
@@ -241,7 +263,7 @@ def build(root: Path = ROOT, output: Path | None = None, base_path: str | None =
     output.mkdir(parents=True)
     shutil.copytree(root / "static", output / "assets")
     latest = issues[index["dates"][0]["date"]]
-    (output / "index.html").write_text(build_home(latest, index, site, levels, locales), encoding="utf-8")
+    (output / "index.html").write_text(build_home(latest, index, site, levels, locales, issues), encoding="utf-8")
     (output / "archive").mkdir()
     (output / "archive" / "index.html").write_text(build_archive(index, issues, site, levels, locales), encoding="utf-8")
     for issue in issues.values():

@@ -39,14 +39,16 @@ CATEGORIES = [
 ]
 PROVENANCE_ERRORS_KEY = "_provenanceErrors"
 SOURCED_DISCOVERY_ATTEMPTS = 2
-SOURCED_CANDIDATE_COUNT = 20
+SOURCED_CANDIDATE_COUNT = 28
+CURRENT_CANDIDATE_TARGET = 12
+HISTORY_CANDIDATE_TARGET = 16
 GENERATED_PLANNING_ATTEMPTS = 3
 ADAPTATION_ATTEMPTS = 2
 ADAPTATION_BATCH_SIZE = 2
 CURRENT_TARGET = 4
-HISTORY_TARGET = 2
-EVERYDAY_TARGET = 3
-DIALOG_TARGET = 3
+HISTORY_TARGET = 4
+EVERYDAY_TARGET = 2
+DIALOG_TARGET = 2
 
 
 def _log(message: str) -> None:
@@ -474,14 +476,17 @@ def _sourced_discovery_request(
     feedback: list[str] | None = None,
 ) -> str:
     if current_count and history_count:
-        candidate_mix = "Return both types. Aim for roughly 12 CURRENT and 8 HISTORY candidates."
+        candidate_mix = (
+            f"Return both types: exactly {CURRENT_CANDIDATE_TARGET} CURRENT and "
+            f"{HISTORY_CANDIDATE_TARGET} HISTORY candidates."
+        )
     elif current_count:
         candidate_mix = "Every candidate should be CURRENT because only CURRENT slots remain."
     else:
         candidate_mix = "Every candidate should be HISTORY because only HISTORY slots remain."
     retry_scope = (
         "\nRETRY WORLDWIDE REPLACEMENT SEARCH\nThis is not another Israel-first pass. Start new searches across "
-        "the world for the remaining CURRENT and HISTORY slots. At least 15 of the 20 candidates should come from "
+        f"the world for the remaining CURRENT and HISTORY slots. At least 21 of the {SOURCED_CANDIDATE_COUNT} candidates should come from "
         "outside Israel and should span at least six countries or regions. Search both international outlets and useful "
         "local sources. Do not re-query, rename, translate, update, or find alternate coverage for any rejected or forbidden "
         "story. For CURRENT, use practical events from the target date or previous several days. For HISTORY, use short, "
@@ -503,6 +508,9 @@ SEARCH PROCESS
 - Use web search and begin from the target date and permitted editorial areas, never from the forbidden records.
 - For CURRENT, search Israeli reporting from the target date and previous several days. Search across the whole country and varied communities; do not default to Jerusalem or treat it as the center of every issue.
 - For HISTORY, first look for date-related Israeli facts when worthwhile, then search for unrelated short, interesting facts from anywhere in Israel. HISTORY does not need a connection to the target date or current news.
+- Build a deliberately varied HISTORY pool. Include at least four candidates from each of these groups: (1) real past events with a clear sequence and consequence, (2) notable people such as artists, writers, scientists, educators, engineers, athletes, founders, guides, and community figures, and (3) the stories of Israeli nature sites, national parks, gardens, trails, viewpoints, museums, landmarks, unusual local attractions, and tourist destinations. Use the remaining HISTORY candidates for the strongest varied subjects.
+- Among the first four HISTORY candidates in the returned batch, cover at least three of those preferred groups. At most one of those first four, and at most two HISTORY candidates in the full batch, may have an archaeological excavation, ancient street, building layer, pottery find, or construction-site dig as the main hook. Archaeology is a fallback, not the default meaning of HISTORY.
+- Order candidates by editorial value within each type, not by search order. Avoid returning several places with the same generic excavation-discovery plot even when their names differ.
 - Search substantially more than {SOURCED_CANDIDATE_COUNT} source pages. A rejected page does not count; continue searching for another candidate.
 - Do not formulate searches from forbidden IDs, briefs, subjects, or URLs. They are comparison data only.
 - Return only compact screening candidates, not search notes or adaptations.

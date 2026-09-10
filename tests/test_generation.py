@@ -138,17 +138,23 @@ class GenerationTests(unittest.TestCase):
         )
         self.assertIn("begin from the target date", request)
         self.assertIn("Do not formulate searches from forbidden", request)
-        self.assertIn("exactly 20 distinct screening candidates", request)
-        self.assertIn("roughly 12 CURRENT and 8 HISTORY", request)
-        self.assertIn("Search substantially more than 20 source pages", request)
+        self.assertIn("exactly 28 distinct screening candidates", request)
+        self.assertIn("exactly 12 CURRENT and 16 HISTORY", request)
+        self.assertIn("Search substantially more than 28 source pages", request)
         self.assertIn("whole country", request)
         self.assertIn("do not default to Jerusalem", request)
         self.assertIn("HISTORY does not need a connection to the target date", request)
+        self.assertIn("real past events with a clear sequence and consequence", request)
+        self.assertIn("notable people", request)
+        self.assertIn("Israeli nature sites, national parks", request)
+        self.assertIn("at least four candidates from each", request)
+        self.assertIn("at most two HISTORY candidates", request)
+        self.assertIn("Archaeology is a fallback", request)
         self.assertIn("continue searching for another candidate", request)
         self.assertIn("continuing the search", request)
         self.assertIn("final rejection pass", request)
         self.assertIn("RETRY WORLDWIDE REPLACEMENT SEARCH", request)
-        self.assertIn("At least 15 of the 20 candidates", request)
+        self.assertIn("At least 21 of the 28 candidates", request)
         self.assertIn("at least six countries or regions", request)
         self.assertIn("Do not re-query, rename, translate, update", request)
 
@@ -157,8 +163,8 @@ class GenerationTests(unittest.TestCase):
 
         schema = _sourced_candidate_batch_schema(["current", "history"])
         stories = schema["properties"]["stories"]
-        self.assertEqual(stories["minItems"], 20)
-        self.assertEqual(stories["maxItems"], 20)
+        self.assertEqual(stories["minItems"], 28)
+        self.assertEqual(stories["maxItems"], 28)
         self.assertEqual(
             set(stories["items"]["properties"]),
             {"id", "type", "category", "brief", "sources"},
@@ -403,7 +409,7 @@ class GenerationTests(unittest.TestCase):
     def test_new_issue_accepts_the_target_everyday_and_dialog_mix(self) -> None:
         site = read_json(ROOT / "config" / "site.json")
         levels = read_json(ROOT / "config" / "reading-levels.json")["levels"]
-        story_types = ["current"] * 4 + ["everyday"] * 3 + ["dialog"] * 3 + ["history"] * 2
+        story_types = ["current"] * 4 + ["everyday"] * 2 + ["dialog"] * 2 + ["history"] * 4
         briefs = [
             "A city adds a late bus on a busy route.",
             "A supermarket changes how reusable bags are sold.",
@@ -411,12 +417,12 @@ class GenerationTests(unittest.TestCase):
             "A cafe introduces advance pickup for breakfast orders.",
             "A parent replaces a missing item from a school bag.",
             "A tenant arranges a convenient time for a repair visit.",
-            "A customer returns shoes that do not fit comfortably.",
             "Two relatives decide what groceries to buy for dinner.",
             "A couple agrees how to divide errands before guests arrive.",
-            "A child and parent clarify where to meet after school.",
             "An old train station becomes a community building.",
             "A familiar market street gets its modern name.",
+            "A botanist helps establish a protected wildflower reserve.",
+            "A desert park opens a historic caravan route to visitors.",
         ]
         seeds = []
         for index, (story_type, brief) in enumerate(zip(story_types, briefs, strict=True)):
@@ -672,14 +678,14 @@ class GenerationTests(unittest.TestCase):
                 ("reusable-produce-crates", "current", "Several supermarkets introduce reusable produce crates and explain the deposit return process to shoppers."),
                 ("postal-bus-route-history", "history", "An early postal bus route connected small communities and carried both letters and passengers."),
                 ("public-beach-showers-history", "history", "A coastal municipality installed its first public beach showers as bathing facilities became more organized."),
+                ("botanist-wildflower-reserve-history", "history", "A botanist helped residents document rare flowers and establish a protected reserve visited by families."),
+                ("desert-caravan-park-history", "history", "A desert park preserves a caravan route and explains how travelers crossed the region before modern roads."),
             ]
             generated_specs = [
                 ("neighbor-borrows-drill", "everyday", "A neighbor borrows a drill, agrees on a return time, and brings it back after finishing a shelf."),
                 ("family-chooses-picnic-food", "dialog", "Two relatives choose simple picnic food, clarify what is already at home, and divide the shopping."),
                 ("tailor-shortens-trousers", "everyday", "A customer asks a tailor to shorten trousers, checks the pickup day, and confirms the price."),
                 ("friends-change-walk-time", "dialog", "Two friends move their evening walk because one finishes work late and agree where to meet."),
-                ("office-mug-mixup", "everyday", "Two colleagues discover they took similar mugs, compare them, and exchange them with a laugh."),
-                ("parents-plan-library-stop", "dialog", "Two parents coordinate a library return, check closing time, and decide who will go with the children."),
             ]
 
             def make_seed(story_id: str, story_type: str, brief: str, index: int) -> tuple[dict, dict]:
@@ -725,7 +731,7 @@ class GenerationTests(unittest.TestCase):
                 patch("src.generate_issue.SOURCED_CANDIDATE_COUNT", 12),
                 patch("src.generate_issue._call_openai", call),
             ):
-                result = generate(root, "2026-09-10", 3)
+                result = generate(root, "2099-01-01", 3)
 
             self.assertEqual(call.call_count, 6)
             self.assertEqual(call.call_args_list[0].kwargs["phase"], "Sourced discovery attempt 1/2")
@@ -748,6 +754,11 @@ class GenerationTests(unittest.TestCase):
             self.assertEqual(call.call_args_list[5].kwargs["phase"], "Adaptation batch 1/1, attempt 1/2")
             self.assertIn("# Adaptation and annotation instructions", call.call_args_list[5].args[1])
             self.assertEqual(len(result["stories"]), 12)
+            result_types = [story["type"] for story in result["stories"]]
+            self.assertEqual(result_types.count("current"), 4)
+            self.assertEqual(result_types.count("history"), 4)
+            self.assertEqual(result_types.count("everyday"), 2)
+            self.assertEqual(result_types.count("dialog"), 2)
 
     def test_existing_day_appends_without_overwriting(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
@@ -831,7 +842,7 @@ class GenerationTests(unittest.TestCase):
                 patch("src.generate_issue.SOURCED_CANDIDATE_COUNT", 1),
                 patch("src.generate_issue._call_openai", call),
             ):
-                result = generate(root, "2026-09-10", 3)
+                result = generate(root, "2099-01-01", 3)
 
             self.assertEqual(call.call_args_list[1].kwargs["phase"], "Sourced discovery attempt 1/2 duplicate review")
             self.assertEqual(call.call_args_list[2].kwargs["phase"], "Sourced discovery attempt 2/2")

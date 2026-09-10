@@ -1,6 +1,6 @@
 # עברית היום — Daily Hebrew Reading
 
-A static daily magazine for learners reading modern spoken Israeli Hebrew. Each new issue combines sourced CURRENT stories, realistic EVERYDAY situations, three natural DIALOG conversations, and sourced HISTORY stories at configurable reading levels. Almost all Hebrew text is selectable for Russian or English translation.
+A static daily magazine for learners reading modern spoken Israeli Hebrew. Each new issue combines sourced CURRENT stories, realistic EVERYDAY situations, natural DIALOG conversations, and sourced HISTORY stories at configurable reading levels. Almost all Hebrew text is selectable for Russian or English translation.
 
 The repository contains a complete sample issue, so the site can be built and tested without an OpenAI key. The production URL is expected to be `https://teomant.github.io/daily-hebrew-reading/`.
 
@@ -12,8 +12,8 @@ The repository contains a complete sample issue, so the site can be built and te
 - Keyboard, hover, and tap translation popovers.
 - Source links and optional externally hosted, attributed source images with graceful failure.
 - Three-stage OpenAI Responses API generation: web-enabled CURRENT/HISTORY discovery freezes factual briefs, separate EVERYDAY/DIALOG planning fills the remaining slots, then small adaptation batches write and proofread Hebrew before adding lexical units and contextual translations.
-- A target of three short, practical DIALOG conversations and three EVERYDAY stories per new issue, with each dialogue turn on its own line and extra generated stories allowed when unique sourced material is unavailable.
-- Separate surplus discovery pools for sourced stories from across Israel: CURRENT focuses on the target date and previous several days, while HISTORY may use date-related or timeless Israeli subjects. Duplicate sourced candidates trigger another web-search attempt before generated stories fill any remaining slots.
+- A normal 4 CURRENT / 4 HISTORY / 2 EVERYDAY / 2 DIALOG target mix, with each dialogue turn on its own line and extra generated stories allowed only when unique sourced material is unavailable.
+- A 28-candidate sourced discovery pool before filtering: 12 CURRENT and 16 HISTORY. HISTORY prioritizes events, notable people, nature sites, parks, landmarks, interesting places, and tourist destinations while treating archaeology as a limited fallback. Duplicate sourced candidates trigger another web-search attempt before generated stories fill any remaining slots.
 - Safe same-day append behavior; existing stories are preserved, duplicates are rejected, and new entries are only EVERYDAY or DIALOG in any mix.
 - Content validation, tests, daily/manual GitHub Actions, and GitHub Pages deployment.
 
@@ -75,12 +75,12 @@ The OpenAI API is billed separately from ChatGPT Plus. The API uses the credits 
 ## Running the workflows
 
 - **Generate daily issue v2** runs at `01:37 UTC` and can also be started from **Actions → Generate daily issue v2 → Run workflow**.
-- Leave `date` blank to use the current UTC date. Enter an existing date to append rather than replace. Append runs generate only EVERYDAY or DIALOG stories, in any mix. `additional_stories` controls the append size; it is ignored for a new full issue.
+- Leave `date` blank to use the current UTC date. The workflow defaults `additional_stories` to `0`; if that issue already exists, it logs the trigger details and stops before setup or AI access. Enter a positive value to explicitly append that many EVERYDAY or DIALOG stories. The value is ignored when creating a new full issue.
 - **Validate and deploy site** runs on an ordinary push to `master` and never calls OpenAI.
 
 Generation logs timestamp each research, adaptation, validation, and write phase. Immediately before each OpenAI call, it logs the complete phase-specific system and user prompts. Research has up to three attempts. Adaptation runs in two-story batches; a failed request retries only its batch without repeating research.
 
-The generation workflow runs repository validation and unit tests before calling OpenAI, so code or fixture failures stop without API spend. After generation it validates the changed content again and builds the exact site that will be committed and deployed.
+The generation workflow first logs the GitHub event, schedule expression, workflow identity, SHA, run metadata, resolved date, and issue-existence decision. A default same-day repeat stops there. When generation is needed, repository validation and unit tests run before OpenAI, so code or fixture failures stop without API spend. After generation it validates the changed content again and builds the exact site that will be committed and deployed.
 
 Discovery receives only the editorial, everyday-scenario, and dialogue-planning prompts; adaptation receives only the Hebrew writing, dialogue rendering, segmentation, and translation prompt. Discovery briefs include enough supported facts or scenario beats for a developed article. Before segmentation, adaptation estimates the Hebrew body length and makes one supported revision toward the configured target when it is short. It must return a coherent shorter version when the brief cannot support more detail without invention, repetition, or filler; being below the suggested word range alone never fails generation. The finished Hebrew then uses mostly one-to-three-word translation chunks with longer units reserved for indivisible expressions and names. Ordinary spaces are restored locally instead of being represented by verbose JSON separator objects. Individual empty translations are allowed, but each story level must reach at least 75% coverage per language.
 

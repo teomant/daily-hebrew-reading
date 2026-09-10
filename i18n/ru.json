@@ -11,8 +11,9 @@
   "home.heroTitle": "Несколько хороших историй. Нормальный современный иврит.",
   "home.heroSummary": "Заполните дорогу на работу местными историями, жизненными ситуациями и историей на полезном современном иврите.",
   "home.startIssue": "Начать выпуск",
+  "home.randomArticle": "Случайная статья",
   "home.inIssue": "В сегодняшнем выпуске",
-  "home.storiesForTime": "Истории на 40–50 минут",
+  "home.chooseStory": "Выберите историю",
   "home.allStories": "Все материалы",
   "home.previousIssues": "Прошлые выпуски",
   "archive.title": "Архив выпусков",
@@ -51,6 +52,5 @@
   "type.everyday": "EVERYDAY",
   "type.dialog": "DIALOG",
   "type.history": "HISTORY",
-  "type.aiGenerated": "ПОЛНОСТЬЮ СОЗДАНО ИИ",
-  "footer.schedule": "Новые истории каждый день в 01:37 UTC"
+  "type.aiGenerated": "ПОЛНОСТЬЮ СОЗДАНО ИИ"
 }

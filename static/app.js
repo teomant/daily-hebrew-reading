@@ -32,6 +32,14 @@
   const wordCount = level => level.paragraphs.reduce((total, paragraph) => total + paragraph.reduce((sum, unit) => sum + (unit.type === "separator" ? 0 : Math.max(1, unit.text.trim().split(/\s+/).length)), 0), 0);
   const storyMinutes = story => Math.max(1, Math.ceil(wordCount(story.levels[readingLevel]) / levelInfo(readingLevel).learnerWordsPerMinute));
   const issueMinutes = () => issue.stories.reduce((sum, story) => sum + storyMinutes(story), 0);
+  const randomIndex = length => {
+    if (window.crypto?.getRandomValues) {
+      const value = new Uint32Array(1);
+      window.crypto.getRandomValues(value);
+      return Math.floor(value[0] / 2 ** 32 * length);
+    }
+    return Math.floor(Math.random() * length);
+  };
   const minuteWord = count => {
     const category = new Intl.PluralRules(interfaceLocale).select(count);
     const key = category === "one" ? "meta.minute" : category === "few" ? "meta.minutesFew" : "meta.minutesMany";
@@ -52,6 +60,13 @@
       button.classList.toggle("active", button.dataset.translation === translationLocale);
       button.setAttribute("aria-pressed", String(button.dataset.translation === translationLocale));
     });
+  }
+
+  function prepareRandomArticleLink() {
+    const link = document.querySelector("[data-random-article]");
+    const articles = payload.randomArticles;
+    if (!link || !Array.isArray(articles) || !articles.length) return;
+    link.href = articles[randomIndex(articles.length)];
   }
 
   function renderUnit(unit) {
@@ -211,5 +226,6 @@
   });
 
   activateControls();
+  prepareRandomArticleLink();
   renderLocale();
 })();
