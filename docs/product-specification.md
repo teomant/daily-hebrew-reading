@@ -208,7 +208,7 @@ The page for a date is that issue's table of contents. It shows the date, story 
 
 ## 22. Article page
 
-An article page contains a link back to the issue, date, category and content type, title, reading time, level selector (`א`, `א+`, `ב`), translation-language selector (`RU`, `EN`), interface-language selector (`RU`, `EN`), text with lexical popovers, available sources for CURRENT and HISTORY, and previous/next article navigation.
+An article page contains a link back to the issue, date, category and content type, title, reading time, level selector (`א`, `א+`, `ב`), translation-language selector (`RU`, `EN`), interface-language selector (`RU`, `EN`), text with lexical popovers, available sources for CURRENT and HISTORY, and previous/random/next article navigation. The random control selects from every available issue while excluding the article currently open.
 
 Persist the selected level, translation language, and interface language between pages using `localStorage` for the MVP. Translation language and interface language are separate preferences.
 

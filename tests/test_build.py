@@ -8,7 +8,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlparse
 
-from src.build_site import build, build_day, build_home, render_units
+from src.build_site import build, build_article, build_day, build_home, render_units
 from src.common import ROOT, load_level_config, load_locales, load_site_config, read_json, units_text
 
 
@@ -91,6 +91,28 @@ class BuildTests(unittest.TestCase):
         self.assertNotIn("40–50", rendered)
         self.assertNotIn("01:37 UTC", rendered)
         self.assertNotIn("footer.schedule", rendered)
+
+    def test_article_pagination_offers_a_random_article_other_than_the_current_one(self) -> None:
+        issue = read_json(ROOT / "content" / "2024-01-26.json")
+        current_path = "/daily-hebrew-reading/2024-01-26/late-furniture-delivery/"
+        other_day_path = "/daily-hebrew-reading/2026-09-09/israel-whatsapp-blocks-legal-claim/"
+        rendered = build_article(
+            issue,
+            1,
+            load_site_config(),
+            load_level_config(),
+            load_locales(),
+            [current_path, other_day_path],
+        )
+        runtime_json = rendered.split('<script id="dhr-data" type="application/json">', 1)[1].split("</script>", 1)[0]
+        random_articles = json.loads(runtime_json)["payload"]["randomArticles"]
+
+        self.assertIn('class="article-random"', rendered)
+        self.assertIn("data-random-article", rendered)
+        self.assertIn("Случайная статья", rendered)
+        self.assertEqual(rendered.count("data-story-target="), 2)
+        self.assertEqual(random_articles, [other_day_path])
+        self.assertNotIn(current_path, random_articles)
 
     def test_everyday_story_is_disclosed_as_ai_generated(self) -> None:
         issue = read_json(ROOT / "content" / "2024-01-26.json")

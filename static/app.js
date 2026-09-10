@@ -113,7 +113,7 @@
     document.querySelector("[data-article-minutes]").textContent = `${storyMinutes(story)} ${minuteWord(storyMinutes(story))}`;
     const info = levelInfo(readingLevel);
     document.querySelector("[data-article-level]").textContent = `${info.label} · ${info.approximateCefr}`;
-    document.querySelectorAll(".article-pagination a").forEach(link => {
+    document.querySelectorAll(".article-pagination [data-story-target]").forEach(link => {
       const target = Number(link.dataset.storyTarget);
       if (issue.stories[target]) link.querySelector("b").textContent = textFor(issue.stories[target].levels[readingLevel].title);
     });

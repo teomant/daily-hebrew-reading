@@ -154,6 +154,14 @@ def story_card(story: dict[str, Any], index: int, issue: dict[str, Any], site: d
     return f'''<article class="{css}" data-story-index="{index}">{image}<div class="card-copy"><span class="story-kind" data-story-kind>{esc(story_kind(story, copy))}</span><h2 dir="rtl" data-story-title>{render_units(level["title"])}</h2><p dir="rtl" data-story-teaser>{render_units(level["teaser"])}</p><footer><span data-story-minutes>{esc(minutes_label(story_minutes(story, level_id, levels), site["defaultInterfaceLocale"], copy))}</span><a href="{esc(url)}"><span data-i18n="meta.read">{esc(copy['meta.read'])}</span> →</a></footer></div></article>'''
 
 
+def article_routes(index: dict[str, Any], issues: dict[str, dict[str, Any]], site: dict[str, Any]) -> list[str]:
+    return [
+        site_url(f"{item['date']}/{story['slug']}/", site["basePath"])
+        for item in index["dates"]
+        for story in issues.get(item["date"], {}).get("stories", [])
+    ]
+
+
 def build_home(
     issue: dict[str, Any],
     index: dict[str, Any],
@@ -167,11 +175,7 @@ def build_home(
     minutes = issue_minutes(issue, level_id, levels)
     first = issue["stories"][0]
     available_issues = issues or {issue["date"]: issue}
-    random_articles = [
-        site_url(f"{item['date']}/{story['slug']}/", site["basePath"])
-        for item in index["dates"]
-        for story in available_issues.get(item["date"], {}).get("stories", [])
-    ]
+    random_articles = article_routes(index, available_issues, site)
     random_fallback = random_articles[0] if random_articles else site_url("archive/", site["basePath"])
     cards = "".join(story_card(story, i, issue, site, levels, copy) for i, story in enumerate(issue["stories"]))
     image = ""
@@ -218,7 +222,14 @@ def build_archive(index: dict[str, Any], issues: dict[str, dict[str, Any]], site
     return shell(title=copy["archive.title"], body=body, page="archive", site=site, levels=levels, locales=locales)
 
 
-def build_article(issue: dict[str, Any], position: int, site: dict[str, Any], levels: list[dict[str, Any]], locales: dict[str, dict[str, str]]) -> str:
+def build_article(
+    issue: dict[str, Any],
+    position: int,
+    site: dict[str, Any],
+    levels: list[dict[str, Any]],
+    locales: dict[str, dict[str, str]],
+    random_articles: list[str] | None = None,
+) -> str:
     copy = locales[site["defaultInterfaceLocale"]]
     story = issue["stories"][position]
     level_id = issue_level(issue, site)
@@ -240,10 +251,18 @@ def build_article(issue: dict[str, Any], position: int, site: dict[str, Any], le
             other_title = units_text(other["levels"][level_id]["title"])
             nav.append(f'<a href="{esc(site_url(issue["date"] + "/" + other["slug"] + "/", site["basePath"]))}" data-story-target="{target}"><span>{arrow} <i data-i18n="{key}">{esc(copy[key])}</i></span><b dir="rtl">{esc(other_title)}</b></a>')
         else:
-            nav.append('<span></span>')
+            nav.append('<span class="pagination-placeholder" aria-hidden="true"></span>')
+    current_url = site_url(f"{issue['date']}/{story['slug']}/", site["basePath"])
+    available_random_articles = random_articles or [
+        site_url(f"{issue['date']}/{item['slug']}/", site["basePath"])
+        for item in issue["stories"]
+    ]
+    random_choices = [url for url in available_random_articles if url != current_url]
+    random_fallback = random_choices[0] if random_choices else site_url(f"{issue['date']}/", site["basePath"])
+    random_nav = f'<a class="article-random" href="{esc(random_fallback)}" data-random-article data-i18n="home.randomArticle">{esc(copy["home.randomArticle"])}</a>'
     level = next(item for item in levels if item["id"] == level_id)
-    body = f'''<article class="page article-page"><div class="article-progress"><span style="width:{round((position + 1) / len(issue['stories']) * 100)}%"></span></div><header class="article-topline"><a href="{esc(site_url(issue['date'] + '/', site['basePath']))}">← <span data-i18n="nav.backToIssue">{esc(copy['nav.backToIssue'])}</span></a><span>{position + 1} <span data-i18n="article.of">{esc(copy['article.of'])}</span> {len(issue['stories'])}</span></header><div class="article-layout"><aside class="article-tools">{level_controls(issue, levels, 'article.level')}<div class="translation-control"><span data-i18n="article.translation">{esc(copy['article.translation'])}</span><div>{translation_buttons}</div></div><p data-i18n="article.translationHelp">{esc(copy['article.translationHelp'])}</p></aside><div class="article-main"><header class="article-heading"><span class="story-kind" data-story-kind>{esc(story_kind(story, copy))}</span><h1 dir="rtl" data-article-title>{render_units(story['levels'][level_id]['title'], True)}</h1><p class="article-dek" dir="rtl" data-article-teaser>{render_units(story['levels'][level_id]['teaser'], True)}</p><div class="article-meta"><span data-date="{esc(issue['date'])}">{esc(format_date(issue['date'], site['defaultInterfaceLocale']))}</span><span data-article-minutes>{minutes_label(story_minutes(story, level_id, levels), site['defaultInterfaceLocale'], copy)}</span><span data-article-level>{esc(level['label'])} · {esc(level['approximateCefr'])}</span></div></header>{image}<div class="hebrew-article" dir="rtl" data-article-body>{paragraphs}</div>{sources}<nav class="article-pagination">{''.join(nav)}</nav></div></div></article>'''
-    return shell(title=units_text(story["levels"][level_id]["title"]), body=body, page="article", site=site, levels=levels, locales=locales, payload={"issue": issue, "storyIndex": position})
+    body = f'''<article class="page article-page"><div class="article-progress"><span style="width:{round((position + 1) / len(issue['stories']) * 100)}%"></span></div><header class="article-topline"><a href="{esc(site_url(issue['date'] + '/', site['basePath']))}">← <span data-i18n="nav.backToIssue">{esc(copy['nav.backToIssue'])}</span></a><span>{position + 1} <span data-i18n="article.of">{esc(copy['article.of'])}</span> {len(issue['stories'])}</span></header><div class="article-layout"><aside class="article-tools">{level_controls(issue, levels, 'article.level')}<div class="translation-control"><span data-i18n="article.translation">{esc(copy['article.translation'])}</span><div>{translation_buttons}</div></div><p data-i18n="article.translationHelp">{esc(copy['article.translationHelp'])}</p></aside><div class="article-main"><header class="article-heading"><span class="story-kind" data-story-kind>{esc(story_kind(story, copy))}</span><h1 dir="rtl" data-article-title>{render_units(story['levels'][level_id]['title'], True)}</h1><p class="article-dek" dir="rtl" data-article-teaser>{render_units(story['levels'][level_id]['teaser'], True)}</p><div class="article-meta"><span data-date="{esc(issue['date'])}">{esc(format_date(issue['date'], site['defaultInterfaceLocale']))}</span><span data-article-minutes>{minutes_label(story_minutes(story, level_id, levels), site['defaultInterfaceLocale'], copy)}</span><span data-article-level>{esc(level['label'])} · {esc(level['approximateCefr'])}</span></div></header>{image}<div class="hebrew-article" dir="rtl" data-article-body>{paragraphs}</div>{sources}<nav class="article-pagination">{nav[0]}{random_nav}{nav[1]}</nav></div></div></article>'''
+    return shell(title=units_text(story["levels"][level_id]["title"]), body=body, page="article", site=site, levels=levels, locales=locales, payload={"issue": issue, "storyIndex": position, "randomArticles": random_choices})
 
 
 def build(root: Path = ROOT, output: Path | None = None, base_path: str | None = None) -> Path:
@@ -257,6 +276,7 @@ def build(root: Path = ROOT, output: Path | None = None, base_path: str | None =
     locales = load_locales(root)
     index = read_json(root / "content" / "index.json")
     issues = {item["date"]: read_json(root / "content" / f"{item['date']}.json") for item in index["dates"]}
+    random_articles = article_routes(index, issues, site)
     output = output or root / "dist"
     if output.exists():
         shutil.rmtree(output)
@@ -273,7 +293,10 @@ def build(root: Path = ROOT, output: Path | None = None, base_path: str | None =
         for position, story in enumerate(issue["stories"]):
             article_dir = day_dir / story["slug"]
             article_dir.mkdir()
-            (article_dir / "index.html").write_text(build_article(issue, position, site, levels, locales), encoding="utf-8")
+            (article_dir / "index.html").write_text(
+                build_article(issue, position, site, levels, locales, random_articles),
+                encoding="utf-8",
+            )
     return output
 
 
