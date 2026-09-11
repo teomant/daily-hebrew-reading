@@ -837,6 +837,106 @@
         "לא נורא",
         "להספיק"
       ]
+    },
+    {
+      "date": "2026-09-11",
+      "storyId": "apartment-utility-bill-and-meter-reading",
+      "domain": "housing",
+      "scenario": "utility_bill_high_estimate_correct_meter_reading",
+      "lexicalThemes": [
+        "bills and payments",
+        "phone call with a service provider",
+        "meter reading",
+        "home admin",
+        "correction and follow-up"
+      ],
+      "targetVocabulary": [
+        "חשבונית",
+        "מדד",
+        "הערכה",
+        "תמונה",
+        "ברור",
+        "לתקן",
+        "להגיש",
+        "הנחה",
+        "יתרה",
+        "לבדוק שוב"
+      ]
+    },
+    {
+      "date": "2026-09-11",
+      "storyId": "afterwork-grocery-detour-and-missing-sauce",
+      "domain": "food",
+      "scenario": "afterwork_grocery_detour_and_missing_sauce",
+      "lexicalThemes": [
+        "shopping after work",
+        "recipe substitution",
+        "budget choices",
+        "store help",
+        "changing dinner plans"
+      ],
+      "targetVocabulary": [
+        "במקום",
+        "בערך",
+        "לא משתלם",
+        "חסר",
+        "מדף",
+        "סל",
+        "להחליף",
+        "ארוחה",
+        "פשוט יותר",
+        "אין צורך"
+      ]
+    },
+    {
+      "date": "2026-09-11",
+      "storyId": "friends-coffee-before-a-short-rain-shower",
+      "domain": "food",
+      "scenario": "friends_decide_inside_or_takeaway_before_rain",
+      "lexicalThemes": [
+        "cafés",
+        "weather",
+        "making plans",
+        "waiting for someone",
+        "quick decision"
+      ],
+      "targetVocabulary": [
+        "עוד מעט",
+        "כדאי",
+        "להספיק",
+        "מבפנים",
+        "לקחת לדרך",
+        "להזמין",
+        "להיכנס",
+        "להישאר",
+        "בסוף",
+        "לא נורא"
+      ]
+    },
+    {
+      "date": "2026-09-11",
+      "storyId": "office-room-booking-and-the-extra-meeting",
+      "domain": "work",
+      "scenario": "office_room_booking_conflict_and_backup_space",
+      "lexicalThemes": [
+        "office scheduling",
+        "room booking",
+        "client call",
+        "backup plan",
+        "polite coordination"
+      ],
+      "targetVocabulary": [
+        "מוזמן",
+        "פנוי",
+        "להעביר",
+        "במקום",
+        "זמן קצר",
+        "לעדכן",
+        "מתאים",
+        "בינתיים",
+        "בסדר",
+        "אין בעיה"
+      ]
     }
   ]
 }
