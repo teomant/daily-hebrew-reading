@@ -937,6 +937,96 @@
         "בסדר",
         "אין בעיה"
       ]
+    },
+    {
+      "date": "2026-09-12",
+      "storyId": "office-visitor-pass-and-lost-meeting-room",
+      "domain": "work",
+      "scenario": "office_visitor_pass_and_lost_meeting_room",
+      "lexicalThemes": [
+        "office logistics",
+        "meeting rooms",
+        "reception",
+        "scheduling",
+        "last-minute adjustments"
+      ],
+      "targetVocabulary": [
+        "visitor pass",
+        "booked",
+        "calendar entry",
+        "free room",
+        "start right away",
+        "screen share",
+        "on time",
+        "confirm"
+      ]
+    },
+    {
+      "date": "2026-09-12",
+      "storyId": "bakery-stand-in-line-and-missing-change",
+      "domain": "food",
+      "scenario": "bakery_queue_and_payment_mismatch",
+      "lexicalThemes": [
+        "bakery",
+        "queue",
+        "payment",
+        "change",
+        "morning routine"
+      ],
+      "targetVocabulary": [
+        "exact change",
+        "contactless",
+        "split the payment",
+        "remove one item",
+        "total",
+        "goes through",
+        "only a little late"
+      ]
+    },
+    {
+      "date": "2026-09-12",
+      "storyId": "neighbor-watering-plan-and-shared-key",
+      "domain": "everyday",
+      "scenario": "neighbor_watering_plan_and_shared_key",
+      "lexicalThemes": [
+        "neighbors",
+        "plants",
+        "keys",
+        "travel plans",
+        "building manager"
+      ],
+      "targetVocabulary": [
+        "leave town",
+        "balcony plants",
+        "spare key",
+        "locked from the inside",
+        "backup key",
+        "before sunset",
+        "worrying"
+      ]
+    },
+    {
+      "date": "2026-09-12",
+      "storyId": "couple-reschedule-dinner-after-overtime",
+      "domain": "everyday",
+      "scenario": "couple_reschedule_dinner_after_overtime",
+      "lexicalThemes": [
+        "plans",
+        "lateness",
+        "work overtime",
+        "food",
+        "text messages"
+      ],
+      "targetVocabulary": [
+        "still stuck",
+        "ran long",
+        "hold on",
+        "worth waiting",
+        "change the plan",
+        "take dinner home",
+        "cancel the table",
+        "in twenty minutes"
+      ]
     }
   ]
 }
