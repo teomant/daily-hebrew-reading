@@ -1027,6 +1027,86 @@
         "cancel the table",
         "in twenty minutes"
       ]
+    },
+    {
+      "date": "2026-09-13",
+      "storyId": "office-guest-card-and-finding-the-right-floor",
+      "domain": "work",
+      "scenario": "office_guest_badge_wrong_floor_and_room_change",
+      "lexicalThemes": [
+        "office logistics",
+        "security desk",
+        "meeting updates",
+        "directions",
+        "small delays"
+      ],
+      "targetVocabulary": [
+        "guest card",
+        "reception",
+        "correct floor",
+        "meeting invite",
+        "updated"
+      ]
+    },
+    {
+      "date": "2026-09-13",
+      "storyId": "wrong-branch-and-the-returned-parcel",
+      "domain": "consumer",
+      "scenario": "courier_parcel_sent_to_wrong_branch_pickup_deadline",
+      "lexicalThemes": [
+        "delivery and pickup",
+        "tracking messages",
+        "deadlines",
+        "transport detour",
+        "fees"
+      ],
+      "targetVocabulary": [
+        "parcel",
+        "branch",
+        "pickup deadline",
+        "return fee",
+        "tracking message"
+      ]
+    },
+    {
+      "date": "2026-09-13",
+      "storyId": "neighbor-ladder-and-the-high-balcony-light",
+      "domain": "everyday",
+      "scenario": "neighbor_high_balcony_light_needs_ladder_fix",
+      "lexicalThemes": [
+        "neighbors",
+        "small repairs",
+        "safety",
+        "home maintenance",
+        "quick check"
+      ],
+      "targetVocabulary": [
+        "bulb",
+        "fixture",
+        "ladder",
+        "switch",
+        "tighten"
+      ]
+    },
+    {
+      "date": "2026-09-13",
+      "storyId": "pharmacy-closed-at-lunch-and-a-different-medicine",
+      "domain": "consumer",
+      "scenario": "pharmacy_out_of_stock_and_choice_of_alternative_medicine",
+      "lexicalThemes": [
+        "pharmacy",
+        "stock shortage",
+        "prescription",
+        "medical advice",
+        "waiting"
+      ],
+      "targetVocabulary": [
+        "out of stock",
+        "similar product",
+        "prescription",
+        "recommended",
+        "suitable"
+      ]
     }
   ]
 }
