@@ -1107,6 +1107,94 @@
         "recommended",
         "suitable"
       ]
+    },
+    {
+      "date": "2026-09-14",
+      "storyId": "office-visitor-badge-and-building-map-mixup",
+      "domain": "work",
+      "scenario": "office_visitor_badge_and_building_map_mixup",
+      "lexicalThemes": [
+        "office logistics",
+        "visitor handling",
+        "directions",
+        "schedule change",
+        "reception"
+      ],
+      "targetVocabulary": [
+        "guest badge",
+        "reception",
+        "room number",
+        "elevator bank",
+        "escort",
+        "update",
+        "wait by the desk"
+      ]
+    },
+    {
+      "date": "2026-09-14",
+      "storyId": "doctor-office-lab-form-and-pharmacy-detour",
+      "domain": "everyday",
+      "scenario": "doctor_office_lab_form_and_pharmacy_detour",
+      "lexicalThemes": [
+        "health appointments",
+        "paperwork",
+        "errands",
+        "time pressure",
+        "documents"
+      ],
+      "targetVocabulary": [
+        "lab form",
+        "signature",
+        "file",
+        "digital copy",
+        "before closing",
+        "print",
+        "appointment message"
+      ]
+    },
+    {
+      "date": "2026-09-14",
+      "storyId": "train-platform-alert-and-lunch-reroute",
+      "domain": "transport",
+      "scenario": "train_platform_alert_and_lunch_reroute",
+      "lexicalThemes": [
+        "train travel",
+        "platform changes",
+        "meeting plans",
+        "maps",
+        "service alerts"
+      ],
+      "targetVocabulary": [
+        "platform",
+        "track",
+        "service alert",
+        "cross over",
+        "station exit",
+        "pin",
+        "on the way"
+      ]
+    },
+    {
+      "date": "2026-09-14",
+      "storyId": "supermarket-last-minutes-and-freezer-check",
+      "domain": "food",
+      "scenario": "supermarket_last_minutes_and_freezer_check",
+      "lexicalThemes": [
+        "shopping",
+        "budget",
+        "meal planning",
+        "freezer",
+        "choice"
+      ],
+      "targetVocabulary": [
+        "delivery window",
+        "shopping list",
+        "dairy section",
+        "alternative",
+        "cheaper",
+        "basket",
+        "ingredients"
+      ]
     }
   ]
 }
