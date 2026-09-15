@@ -39,16 +39,32 @@ CATEGORIES = [
 ]
 PROVENANCE_ERRORS_KEY = "_provenanceErrors"
 SOURCED_DISCOVERY_ATTEMPTS = 2
-SOURCED_CANDIDATE_COUNT = 28
+SOURCED_CANDIDATE_COUNT = 36
 CURRENT_CANDIDATE_TARGET = 12
-HISTORY_CANDIDATE_TARGET = 16
+HISTORY_CANDIDATE_TARGET = 24
 GENERATED_PLANNING_ATTEMPTS = 3
 ADAPTATION_ATTEMPTS = 2
-ADAPTATION_BATCH_SIZE = 2
+ADAPTATION_BATCH_SIZE = 1
 CURRENT_TARGET = 4
-HISTORY_TARGET = 4
+HISTORY_TARGET = 7
 EVERYDAY_TARGET = 2
 DIALOG_TARGET = 2
+HISTORY_FAMILIES = ["person", "israeliIndustry", "culture", "event", "place", "archaeology"]
+HISTORY_CANDIDATE_MINIMUMS = {
+    "person": 6,
+    "israeliIndustry": 6,
+    "culture": 6,
+    "event": 4,
+}
+HISTORY_SELECTION_GROUPS = [
+    ("person",),
+    ("israeliIndustry",),
+    ("culture",),
+    ("event", "place"),
+    ("person",),
+    ("israeliIndustry",),
+    ("culture",),
+]
 
 
 def _log(message: str) -> None:
@@ -265,10 +281,11 @@ def _sourced_candidate_batch_schema(story_types: list[str]) -> dict[str, Any]:
             "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
             "type": {"type": "string", "enum": story_types},
             "category": {"type": "string", "enum": CATEGORIES},
+            "historyFamily": {"type": "string", "enum": ["current", *HISTORY_FAMILIES]},
             "brief": {"type": "string"},
             "sources": {"type": "array", "items": source, "minItems": 1},
         },
-        "required": ["id", "type", "category", "brief", "sources"],
+        "required": ["id", "type", "category", "historyFamily", "brief", "sources"],
         "additionalProperties": False,
     }
     return {
@@ -292,11 +309,90 @@ def _sourced_candidate_to_seed(candidate: dict[str, Any]) -> dict[str, Any]:
         "slug": candidate.get("id"),
         "type": candidate.get("type"),
         "category": candidate.get("category"),
+        "historyFamily": candidate.get("historyFamily"),
         "brief": candidate.get("brief"),
         "everydayMeta": None,
         "sources": candidate.get("sources"),
         "image": None,
     }
+
+
+def _sourced_candidate_mix_errors(
+    candidates: list[dict[str, Any]],
+    requested_types: list[str],
+) -> list[str]:
+    errors: list[str] = []
+    current = [story for story in candidates if story.get("type") == "current"]
+    history = [story for story in candidates if story.get("type") == "history"]
+    if set(requested_types) == {"current", "history"}:
+        if len(current) != CURRENT_CANDIDATE_TARGET or len(history) != HISTORY_CANDIDATE_TARGET:
+            errors.append(
+                f"candidate mix must contain exactly {CURRENT_CANDIDATE_TARGET} CURRENT and "
+                f"{HISTORY_CANDIDATE_TARGET} HISTORY stories"
+            )
+    if any(story.get("historyFamily") != "current" for story in current):
+        errors.append("CURRENT candidates must use historyFamily=current")
+    if any(story.get("historyFamily") not in HISTORY_FAMILIES for story in history):
+        errors.append("HISTORY candidates must use a supported historyFamily")
+    if len(history) >= HISTORY_CANDIDATE_TARGET:
+        family_counts = {
+            family: sum(story.get("historyFamily") == family for story in history)
+            for family in HISTORY_FAMILIES
+        }
+        for family, minimum in HISTORY_CANDIDATE_MINIMUMS.items():
+            if family_counts[family] < minimum:
+                errors.append(f"HISTORY candidate pool needs at least {minimum} {family} stories")
+        if family_counts["place"] > 2:
+            errors.append("HISTORY candidate pool may contain at most 2 place stories")
+        if family_counts["archaeology"] > 1:
+            errors.append("HISTORY candidate pool may contain at most 1 archaeology story")
+    return errors
+
+
+def _select_sourced_candidates(
+    selected: list[dict[str, Any]],
+    candidates: list[dict[str, Any]],
+    current_target: int,
+    history_target: int,
+) -> list[dict[str, Any]]:
+    additions: list[dict[str, Any]] = []
+    current_slots = current_target - sum(story.get("type") == "current" for story in selected)
+    additions.extend(
+        story for story in candidates if story.get("type") == "current"
+    )
+    additions = additions[:max(0, current_slots)]
+
+    selected_history = [story for story in [*selected, *additions] if story.get("type") == "history"]
+    history_pool = [story for story in candidates if story.get("type") == "history"]
+    for position, family_group in enumerate(HISTORY_SELECTION_GROUPS[:history_target], start=1):
+        if len(selected_history) >= history_target:
+            break
+        required = sum(
+            previous_group == family_group
+            for previous_group in HISTORY_SELECTION_GROUPS[:position]
+        )
+        fulfilled = sum(story.get("historyFamily") in family_group for story in selected_history)
+        if fulfilled >= required:
+            continue
+        match = next(
+            (story for story in history_pool if story.get("historyFamily") in family_group),
+            None,
+        )
+        if match is None:
+            continue
+        additions.append(match)
+        selected_history.append(match)
+        history_pool.remove(match)
+
+    remaining_history_slots = history_target - len(selected_history)
+    if remaining_history_slots > 0 and history_target > len(HISTORY_SELECTION_GROUPS):
+        preferred = [
+            story
+            for story in history_pool
+            if story.get("historyFamily") in {"person", "israeliIndustry", "culture", "event"}
+        ]
+        additions.extend(preferred[:remaining_history_slots])
+    return additions
 
 
 def _adaptation_batch_schema(
@@ -486,7 +582,7 @@ def _sourced_discovery_request(
         candidate_mix = "Every candidate should be HISTORY because only HISTORY slots remain."
     retry_scope = (
         "\nRETRY WORLDWIDE REPLACEMENT SEARCH\nThis is not another Israel-first pass. Start new searches across "
-        f"the world for the remaining CURRENT and HISTORY slots. At least 21 of the {SOURCED_CANDIDATE_COUNT} candidates should come from "
+        f"the world for the remaining CURRENT and HISTORY slots. At least 27 of the {SOURCED_CANDIDATE_COUNT} candidates should come from "
         "outside Israel and should span at least six countries or regions. Search both international outlets and useful "
         "local sources. Do not re-query, rename, translate, update, or find alternate coverage for any rejected or forbidden "
         "story. For CURRENT, use practical events from the target date or previous several days. For HISTORY, use short, "
@@ -508,8 +604,10 @@ SEARCH PROCESS
 - Use web search and begin from the target date and permitted editorial areas, never from the forbidden records.
 - For CURRENT, search Israeli reporting from the target date and previous several days. Search across the whole country and varied communities; do not default to Jerusalem or treat it as the center of every issue.
 - For HISTORY, first look for date-related Israeli facts when worthwhile, then search for unrelated short, interesting facts from anywhere in Israel. HISTORY does not need a connection to the target date or current news.
-- Build a deliberately varied HISTORY pool. Include at least four candidates from each of these groups: (1) real past events with a clear sequence and consequence, (2) notable people such as artists, writers, scientists, educators, engineers, athletes, founders, guides, and community figures, and (3) the stories of Israeli nature sites, national parks, gardens, trails, viewpoints, museums, landmarks, unusual local attractions, and tourist destinations. Use the remaining HISTORY candidates for the strongest varied subjects.
-- Among the first four HISTORY candidates in the returned batch, cover at least three of those preferred groups. At most one of those first four, and at most two HISTORY candidates in the full batch, may have an archaeological excavation, ancient street, building layer, pottery find, or construction-site dig as the main hook. Archaeology is a fallback, not the default meaning of HISTORY.
+- Give every candidate a `historyFamily`. CURRENT uses `current`. HISTORY uses exactly one of `person`, `israeliIndustry`, `culture`, `event`, `place`, or `archaeology` according to its actual central subject, not the wording used to sell it.
+- When both sourced types are requested, build the 24-candidate HISTORY portion with at least six `person`, six `israeliIndustry`, six `culture`, and four `event` candidates. If only HISTORY remains, all 36 candidates are HISTORY and must preserve those minimums while using the extra slots for the same preferred families. `person` means a specific historical person's life, work, decisions, and impact; a newly published obituary or current death report is CURRENT, not HISTORY. `israeliIndustry` means the history of an Israeli company, manufacturer, brand, cooperative, factory, trade, product, or industrial development—not today's startup, high-tech unicorn, funding round, valuation, product launch, or executive profile. `culture` covers the history of literature, music, theater, cinema, visual art, dance, design, architecture, food culture, publishing, broadcasting, or a cultural movement, work, or institution. A museum qualifies only when the story is about cultural creation, collections, or influence, not merely an old building to visit. `event` covers concrete past events, customs, education, infrastructure, transport, institutions, or everyday objects with a clear human sequence and consequence.
+- `place` is optional and rare, not a required family. Return at most two `place` candidates and reject generic park-preservation, tourist-guide, trail, viewpoint, fortress-visit, or “a place where nature and history meet” pitches. A place candidate needs an exceptional, specific human story that could not be told by swapping in another location. Return at most one `archaeology` candidate.
+- Order the first seven HISTORY candidates so they contain at least two `person`, two `israeliIndustry`, two `culture`, and one `event` or exceptional `place`; no more than one may be `place`, and none may be `archaeology`. Python applies the same mix when selecting the seven published HISTORY stories.
 - Order candidates by editorial value within each type, not by search order. Avoid returning several places with the same generic excavation-discovery plot even when their names differ.
 - Search substantially more than {SOURCED_CANDIDATE_COUNT} source pages. A rejected page does not count; continue searching for another candidate.
 - Do not formulate searches from forbidden IDs, briefs, subjects, or URLs. They are comparison data only.
@@ -533,7 +631,7 @@ ALREADY SELECTED SOURCED STORIES IN THIS RUN:
 </selected_story_records>
 
 OUTPUT CONTRACT
-Return exactly {SOURCED_CANDIDATE_COUNT} records containing only `id`, `type`, `category`, `brief`, and `sources`. Write every `brief` in English with enough source-supported detail both to identify the underlying story during deduplication and to sustain a developed 4–5-paragraph adaptation without invented facts or filler. Give every candidate at least one distinct canonical HTTPS content-page source; never use homepages, section pages, search pages, generic latest pages, or liveblogs. Do not return Hebrew, level adaptations, scenario metadata, images, or prose outside the schema.
+Return exactly {SOURCED_CANDIDATE_COUNT} records containing only `id`, `type`, `category`, `historyFamily`, `brief`, and `sources`. Write every `brief` in English with enough source-supported detail both to identify the underlying story during deduplication and to sustain a developed 4–5-paragraph adaptation without invented facts or filler. Give every candidate at least one distinct canonical HTTPS content-page source; never use homepages, section pages, search pages, generic latest pages, or liveblogs. Do not return Hebrew, level adaptations, scenario metadata, images, or prose outside the schema.
 """.strip()
 
 
@@ -1196,6 +1294,7 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
                 validation_context,
                 {"current", "history"},
             )
+            sourced_errors.extend(_sourced_candidate_mix_errors(returned_seeds, requested_types))
             candidate_batch = returned_seeds
             if sourced_errors:
                 _log_validation_errors(phase, sourced_errors)
@@ -1272,14 +1371,14 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
                     _log(f"{review_phase}: all {len(candidate_batch)} candidate(s) are semantically unique")
 
             before_count = len(sourced_seeds)
-            for story in candidate_batch:
-                story_type = story.get("type")
-                if story_type == "current":
-                    if sum(item.get("type") == "current" for item in sourced_seeds) < current_target:
-                        sourced_seeds.append(story)
-                elif story_type == "history":
-                    if sum(item.get("type") == "history" for item in sourced_seeds) < history_target:
-                        sourced_seeds.append(story)
+            sourced_seeds.extend(
+                _select_sourced_candidates(
+                    sourced_seeds,
+                    candidate_batch,
+                    current_target,
+                    history_target,
+                )
+            )
             _log(
                 f"{phase}: selected {len(sourced_seeds) - before_count} candidate(s); "
                 f"{len(sourced_seeds)} sourced story brief(s) retained"
@@ -1401,7 +1500,10 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
             f"{phase}: {len(generated_seeds)} of {generated_target} generated story brief(s) retained"
         )
 
-    seeds = [*sourced_seeds, *generated_seeds]
+    seeds = [
+        {key: value for key, value in story.items() if key != "historyFamily"}
+        for story in [*sourced_seeds, *generated_seeds]
+    ]
     if not seeds:
         raise RuntimeError("Planning produced no usable story briefs")
     if len(seeds) < target_count:

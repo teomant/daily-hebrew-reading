@@ -11,9 +11,9 @@ The repository contains a complete sample issue, so the site can be built and te
 - Persisted reading level, translation language, and interface language preferences.
 - Keyboard, hover, and tap translation popovers.
 - Source links and optional externally hosted, attributed source images with graceful failure.
-- Three-stage OpenAI Responses API generation: web-enabled CURRENT/HISTORY discovery freezes factual briefs, separate EVERYDAY/DIALOG planning fills the remaining slots, then small adaptation batches write and proofread Hebrew before adding lexical units and contextual translations.
-- A normal 4 CURRENT / 4 HISTORY / 2 EVERYDAY / 2 DIALOG target mix, with each dialogue turn on its own line and extra generated stories allowed only when unique sourced material is unavailable.
-- A 28-candidate sourced discovery pool before filtering: 12 CURRENT and 16 HISTORY. HISTORY prioritizes events, notable people, nature sites, parks, landmarks, interesting places, and tourist destinations while treating archaeology as a limited fallback. Duplicate sourced candidates trigger another web-search attempt before generated stories fill any remaining slots.
+- Three-stage OpenAI Responses API generation: web-enabled CURRENT/HISTORY discovery freezes factual briefs, separate EVERYDAY/DIALOG planning fills the remaining slots, then one adaptation request per story writes and proofreads Hebrew before adding lexical units and contextual translations.
+- A normal 4 CURRENT / 7 HISTORY / 2 EVERYDAY / 2 DIALOG target mix, with each dialogue turn on its own line and extra generated stories allowed only when unique sourced material is unavailable.
+- A 36-candidate sourced discovery pool before filtering: 12 CURRENT and 24 HISTORY. HISTORY is deliberately balanced toward historical people, Israeli companies and manufacturers, and culture, with concrete events in support; generic park, destination, and archaeology stories are tightly capped. Duplicate sourced candidates trigger another web-search attempt before generated stories fill any remaining slots.
 - Safe same-day append behavior; existing stories are preserved, duplicates are rejected, and new entries are only EVERYDAY or DIALOG in any mix.
 - Content validation, tests, daily/manual GitHub Actions, and GitHub Pages deployment.
 
@@ -78,7 +78,7 @@ The OpenAI API is billed separately from ChatGPT Plus. The API uses the credits 
 - Leave `date` blank to use the current UTC date. The workflow defaults `additional_stories` to `0`; if that issue already exists, it logs the trigger details and stops before setup or AI access. Enter a positive value to explicitly append that many EVERYDAY or DIALOG stories. The value is ignored when creating a new full issue.
 - **Validate and deploy site** runs on an ordinary push to `master` and never calls OpenAI.
 
-Generation logs timestamp each research, adaptation, validation, and write phase. Immediately before each OpenAI call, it logs the complete phase-specific system and user prompts. Research has up to three attempts. Adaptation runs in two-story batches; a failed request retries only its batch without repeating research.
+Generation logs timestamp each research, adaptation, validation, and write phase. Immediately before each OpenAI call, it logs the complete phase-specific system and user prompts. Research has up to three attempts. Adaptation runs one story per request; a failed request retries only that story without repeating research.
 
 The generation workflow first logs the GitHub event, schedule expression, workflow identity, SHA, run metadata, resolved date, and issue-existence decision. A default same-day repeat stops there. When generation is needed, repository validation and unit tests run before OpenAI, so code or fixture failures stop without API spend. After generation it validates the changed content again and builds the exact site that will be committed and deployed.
 

@@ -1,5 +1,13 @@
 # Implementation log
 
+## 2026-09-15
+
+- Audited the 20 HISTORY stories published from 2026-09-11 through 2026-09-15 and found 14 were primarily museums, heritage sites, parks, fortresses, reserves, or tourist-place stories. Rebalanced discovery around explicit internal families: historical people, Israeli companies/manufacturers and other industry, culture, concrete events, places, and archaeology.
+- Increased a normal issue from 12 to 15 stories by adding three HISTORY slots, for targets of 4 CURRENT, 7 HISTORY, 2 EVERYDAY, and 2 DIALOG and a flexible 13–16 range. Expanded sourced screening to 36 candidates (12 CURRENT / 24 HISTORY). The HISTORY pool now requires at least six person, six Israeli-industry, six culture, and four event candidates, while capping place-led candidates at two and archaeology at one.
+- Added deterministic HISTORY-family selection in Python so the seven intended published slots contain at least two people, two Israeli-industry stories, two culture stories, and one event or exceptional place, with no archaeology and at most one place. The internal family tag is validated during discovery and removed before adaptation and publication. Generic park preservation, travel-guide, fortress-visit, museum-building, and “nature and history meet” pitches are explicitly rejected; modern startups, unicorns, funding, valuations, launches, and executive profiles do not qualify as industry history.
+- Changed adaptation from two-story batches to one story per request. A failed request retries only that article, while short-but-coherent adaptations remain non-fatal under the existing word-count policy.
+- Verification passed content validation, all 57 unit tests, Python compilation, JavaScript syntax checking, workflow YAML parsing, the production static build, and whitespace checks. A first direct read-only implementation review removed a test-shaped exception from exact 12/24 candidate-mix validation; the follow-up review found no remaining defects. No content was generated and no commit or push was performed.
+
 ## 2026-09-10
 
 - Added the all-days random-article action to the bottom navigation of every article, beside the existing previous and next controls. The current article is excluded from its choices, and the layout remains stacked on narrow screens. Content validation, all 54 unit tests, Python compilation, JavaScript syntax checking, the production build, generated-route assertions, and whitespace checks passed; the attempted Firefox screenshot was skipped because the system browser could not start in this environment. The final read-only implementation review checked all 91 built article pages and found no issues.
