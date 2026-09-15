@@ -1195,6 +1195,106 @@
         "basket",
         "ingredients"
       ]
+    },
+    {
+      "date": "2026-09-15",
+      "storyId": "workshop-phone-on-silent-and-missed-courier",
+      "domain": "work",
+      "scenario": "phone_on_silent_and_missed_courier_delivery",
+      "lexicalThemes": [
+        "deliveries",
+        "missed calls",
+        "office errands",
+        "signatures",
+        "time pressure"
+      ],
+      "targetVocabulary": [
+        "still",
+        "already",
+        "a little longer",
+        "signature",
+        "reception",
+        "tracking",
+        "on time",
+        "hold on",
+        "apologize",
+        "confirm"
+      ]
+    },
+    {
+      "date": "2026-09-15",
+      "storyId": "moving-boxes-and-the-narrow-staircase",
+      "domain": "housing",
+      "scenario": "moving_boxes_and_the_narrow_staircase",
+      "lexicalThemes": [
+        "neighbors",
+        "moving",
+        "stairs",
+        "carrying things",
+        "building logistics"
+      ],
+      "targetVocabulary": [
+        "heavy",
+        "bulky",
+        "fit",
+        "tilted",
+        "one trip at a time",
+        "fragile",
+        "hold the door",
+        "still",
+        "worth it",
+        "careful"
+      ]
+    },
+    {
+      "date": "2026-09-15",
+      "storyId": "library-card-expired-and-short-renewal",
+      "domain": "everyday",
+      "scenario": "library_card_expired_and_short_renewal",
+      "lexicalThemes": [
+        "library",
+        "renewal",
+        "accounts",
+        "small fees",
+        "phone help"
+      ],
+      "targetVocabulary": [
+        "expired",
+        "renew",
+        "overdue fee",
+        "borrow",
+        "check out",
+        "clarify",
+        "message",
+        "online",
+        "still",
+        "carefully"
+      ]
+    },
+    {
+      "date": "2026-09-15",
+      "storyId": "text-message-about-the-clinic-and-the-wrong-day",
+      "domain": "health",
+      "scenario": "clinic_reminder_wrong_day_and_reschedule_by_phone",
+      "lexicalThemes": [
+        "appointments",
+        "calendar changes",
+        "taxi rides",
+        "screenshots",
+        "rescheduling"
+      ],
+      "targetVocabulary": [
+        "reminder",
+        "already on the way",
+        "changed",
+        "screenshot",
+        "worth it",
+        "reception",
+        "reschedule",
+        "turn back",
+        "pin",
+        "lost"
+      ]
     }
   ]
 }
