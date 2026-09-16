@@ -25,6 +25,7 @@ from src.generate_issue import (
     _existing_exclusions,
     _forbidden_story_records,
     _generated_planning_request,
+    _material_repairs_for_types,
     _remove_redundant_sources,
     _recent_history,
     _recent_issue_context,
@@ -37,6 +38,7 @@ from src.generate_issue import (
     _sourced_candidate_mix_errors,
     _sourced_discovery_request,
     _sourced_duplicate_review_request,
+    _sourced_story_material_errors,
     _transactional_write,
     _updated_history,
     generate,
@@ -164,18 +166,55 @@ class GenerationTests(unittest.TestCase):
         self.assertIn("At least 27 of the 36 candidates", request)
         self.assertIn("at least six countries or regions", request)
         self.assertIn("Do not re-query, rename, translate, update", request)
+        self.assertIn("6–10 ordered English `storyBeats`", request)
+        self.assertIn("keep researching that same subject", request)
+        self.assertIn("CURRENT candidates remain compact", request)
 
         first_attempt = _sourced_discovery_request("2026-09-07", 4, 2, [], [])
         self.assertNotIn("RETRY WORLDWIDE REPLACEMENT SEARCH", first_attempt)
+
+        repair_request = _sourced_discovery_request(
+            "2026-09-07",
+            0,
+            1,
+            [],
+            [],
+            ["candidate factory-history HISTORY story needs at least one verified source for storyBeats"],
+            [{
+                "id": "factory-history",
+                "type": "history",
+                "brief": "A factory changed its production after a supply crisis.",
+                "sourceUrls": [],
+            }],
+        )
+        self.assertIn("MATERIAL RESEARCH REPAIRS", repair_request)
+        self.assertIn('"id": "factory-history"', repair_request)
+        self.assertIn("preserve its ID and underlying subject", repair_request)
+        self.assertIn("the only exception", repair_request)
+        repair_records = [{"id": "history-repair", "type": "history"}]
+        self.assertEqual(_material_repairs_for_types(repair_records, ["current"]), [])
+        self.assertEqual(_material_repairs_for_types(repair_records, ["history"]), repair_records)
 
         schema = _sourced_candidate_batch_schema(["current", "history"])
         stories = schema["properties"]["stories"]
         self.assertEqual(stories["minItems"], 36)
         self.assertEqual(stories["maxItems"], 36)
+        variants = {
+            variant["properties"]["type"]["enum"][0]: variant
+            for variant in stories["items"]["anyOf"]
+        }
         self.assertEqual(
-            set(stories["items"]["properties"]),
+            set(variants["current"]["properties"]),
             {"id", "type", "category", "historyFamily", "brief", "sources"},
         )
+        self.assertNotIn("storyBeats", variants["current"]["required"])
+        self.assertEqual(
+            set(variants["history"]["properties"]),
+            {"id", "type", "category", "historyFamily", "brief", "sources", "storyBeats"},
+        )
+        self.assertIn("storyBeats", variants["history"]["required"])
+        self.assertEqual(variants["history"]["properties"]["storyBeats"]["minItems"], 6)
+        self.assertEqual(variants["history"]["properties"]["storyBeats"]["maxItems"], 10)
         candidate = {
             "id": "new-library-hours",
             "type": "current",
@@ -189,12 +228,45 @@ class GenerationTests(unittest.TestCase):
         self.assertEqual(seed["historyFamily"], "current")
         self.assertIsNone(seed["everydayMeta"])
         self.assertIsNone(seed["image"])
+        self.assertNotIn("storyBeats", seed)
+
+        history_candidate = {
+            **candidate,
+            "id": "factory-history",
+            "type": "history",
+            "historyFamily": "israeliIndustry",
+            "storyBeats": [f"Concrete supported development {index}." for index in range(6)],
+        }
+        history_seed = _sourced_candidate_to_seed(history_candidate)
+        self.assertEqual(history_seed["storyBeats"], history_candidate["storyBeats"])
+        self.assertEqual(_sourced_story_material_errors([candidate, history_seed]), [])
+        missing_beats = {key: value for key, value in history_seed.items() if key != "storyBeats"}
+        self.assertIn("needs 6–10 storyBeats", _sourced_story_material_errors([missing_beats])[0])
+        source_free_history = {**history_seed, "sources": []}
+        self.assertTrue(any(
+            "needs at least one verified source" in error
+            for error in _sourced_story_material_errors([source_free_history], require_verified_source=True)
+        ))
+        mixed_language_history = copy.deepcopy(history_seed)
+        mixed_language_history["storyBeats"][0] = "עובדה היסטורית a"
+        self.assertTrue(any(
+            "must be written in English" in error
+            for error in _sourced_story_material_errors([mixed_language_history])
+        ))
+        repeated_history = copy.deepcopy(history_seed)
+        repeated_history["storyBeats"][1] = repeated_history["storyBeats"][0]
+        self.assertTrue(any(
+            "duplicates another beat" in error
+            for error in _sourced_story_material_errors([repeated_history])
+        ))
 
         static_prompt = (ROOT / "prompts" / "editorial.md").read_text(encoding="utf-8")
         self.assertIn("strict recent-subject exclusion", static_prompt)
         self.assertIn("archaeological layer", static_prompt)
         self.assertIn("continuing consequence", static_prompt)
         self.assertIn("worldwide replacement search", static_prompt)
+        self.assertIn("A person, company, factory, institution, cultural work, or place is only the subject", static_prompt)
+        self.assertIn("Treat a shallow first page as a lead", static_prompt)
 
     def test_history_candidate_mix_and_selection_prioritize_people_industry_and_culture(self) -> None:
         current = [
@@ -405,6 +477,13 @@ class GenerationTests(unittest.TestCase):
         self.assertEqual(indexes, {0})
         self.assertIn(f"duplicate generated scenario: {scenario}", errors)
         self.assertEqual(_compact_story_record(story)["scenario"], scenario)
+
+    def test_compact_sourced_record_omits_history_story_beats(self) -> None:
+        story = copy.deepcopy(read_json(ROOT / "content" / "2024-01-26.json")["stories"][2])
+        story["storyBeats"] = [f"Supported historical development {index}." for index in range(6)]
+        record = _compact_story_record(story)
+        self.assertNotIn("storyBeats", record)
+        self.assertEqual(set(record), {"id", "type", "brief", "sourceUrls"})
 
     def test_new_issue_does_not_require_fixed_story_type_counts(self) -> None:
         site = read_json(ROOT / "config" / "site.json")
@@ -780,6 +859,16 @@ class GenerationTests(unittest.TestCase):
                         "israeliIndustry",
                         "culture",
                     ][index - 4]
+                    if story_type == "history":
+                        seed["sources"] = [{
+                            "publisher": "History Source",
+                            "title": f"Source for {story_id}",
+                            "url": f"https://example.com/{story_id}",
+                        }]
+                        seed["storyBeats"] = [
+                            f"Supported factual development {beat} for {story_id}."
+                            for beat in range(6)
+                        ]
                 else:
                     seed["everydayMeta"]["scenario"] = f"isolated_stage_scenario_{index}"
                 return seed, {"id": story_id, "levels": template["levels"]}
@@ -842,6 +931,7 @@ class GenerationTests(unittest.TestCase):
             self.assertIn("# Everyday-story instructions", call.call_args_list[4].args[1])
             self.assertEqual(call.call_args_list[5].kwargs["phase"], "Adaptation batch 1/1, attempt 1/2")
             self.assertIn("# Adaptation and annotation instructions", call.call_args_list[5].args[1])
+            self.assertIn("HISTORY storyBeats", call.call_args_list[5].args[2])
             self.assertEqual(len(result["stories"]), 15)
             result_types = [story["type"] for story in result["stories"]]
             self.assertEqual(result_types.count("current"), 4)
@@ -849,6 +939,8 @@ class GenerationTests(unittest.TestCase):
             self.assertEqual(result_types.count("everyday"), 2)
             self.assertEqual(result_types.count("dialog"), 2)
             self.assertTrue(all("historyFamily" not in story for story in result["stories"]))
+            self.assertTrue(all("storyBeats" in story for story in result["stories"] if story["type"] == "history"))
+            self.assertTrue(all("storyBeats" not in story for story in result["stories"] if story["type"] == "current"))
 
     def test_existing_day_appends_without_overwriting(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
@@ -940,6 +1032,83 @@ class GenerationTests(unittest.TestCase):
             self.assertEqual([story["id"] for story in result["stories"]], [generated_seed["id"]])
             self.assertEqual(validate_repository(root), [])
 
+    def test_unsupported_history_material_retries_the_same_subject(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            for directory in ("config", "i18n", "prompts", "content"):
+                shutil.copytree(ROOT / directory, root / directory)
+            site_path = root / "config" / "site.json"
+            site = read_json(site_path)
+            site.update({
+                "defaultIssueStoryCount": 1,
+                "minimumIssueStoryCount": 1,
+                "maximumIssueStoryCount": 1,
+            })
+            site_path.write_text(json.dumps(site), encoding="utf-8")
+
+            template = next(
+                story
+                for story in read_json(root / "content" / "2024-01-26.json")["stories"]
+                if story["type"] == "history"
+            )
+            invalid_seed = {
+                key: copy.deepcopy(value)
+                for key, value in template.items()
+                if key != "levels"
+            }
+            invalid_seed.update({
+                "id": "factory-survives-supply-crisis",
+                "slug": "factory-survives-supply-crisis",
+                "brief": "A factory changed its production after a supply crisis threatened its main product.",
+                "historyFamily": "israeliIndustry",
+                "sources": [],
+                "image": None,
+                "storyBeats": [
+                    f"Supported concrete factory development number {index} happened during the crisis."
+                    for index in range(6)
+                ],
+            })
+            invalid_seed["storyBeats"][0] = "עובדה היסטורית a"
+            valid_seed = copy.deepcopy(invalid_seed)
+            valid_seed["storyBeats"][0] = "The factory first lost access to the material used for its main product."
+            valid_seed["sources"] = [{
+                "publisher": "Factory Archive",
+                "title": "How the factory changed production",
+                "url": "https://example.com/factory-supply-crisis",
+            }]
+            review = {"verdicts": [{
+                "candidateId": invalid_seed["id"],
+                "isDuplicate": False,
+                "matchedStoryId": None,
+                "reason": "unique historical subject",
+            }]}
+            adaptation = {"id": valid_seed["id"], "levels": template["levels"]}
+            call = Mock(side_effect=[
+                {"stories": [invalid_seed]},
+                review,
+                {"stories": [valid_seed]},
+                review,
+                {"adaptations": [adaptation]},
+            ])
+            with (
+                patch.dict(os.environ, {"OPENAI_MODEL": "test-model"}),
+                patch("src.generate_issue.CURRENT_TARGET", 0),
+                patch("src.generate_issue.HISTORY_TARGET", 1),
+                patch("src.generate_issue.HISTORY_SELECTION_GROUPS", [("israeliIndustry",)]),
+                patch("src.generate_issue.SOURCED_CANDIDATE_COUNT", 1),
+                patch("src.generate_issue._call_openai", call),
+            ):
+                result = generate(root, "2099-01-01", 3)
+
+            retry_request = call.call_args_list[2].args[2]
+            self.assertIn("MATERIAL RESEARCH REPAIRS", retry_request)
+            self.assertIn('"id": "factory-survives-supply-crisis"', retry_request)
+            self.assertIn("preserve its ID and underlying subject", retry_request)
+            self.assertIn("must be written in English", retry_request)
+            self.assertEqual(result["stories"][0]["id"], valid_seed["id"])
+            self.assertEqual(result["stories"][0]["storyBeats"], valid_seed["storyBeats"])
+            self.assertEqual(validate_repository(root), [])
+
     def test_duplicate_seed_is_replaced_with_an_ai_story(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
@@ -1024,6 +1193,8 @@ class GenerationTests(unittest.TestCase):
             self.assertIn("one to three Hebrew words", adaptation_instructions)
             self.assertIn("Never put a complete sentence", adaptation_instructions)
             self.assertIn("never emit forms such as `ב העיר`", adaptation_instructions)
+            self.assertIn("authoritative factual backbone to retell", adaptation_instructions)
+            self.assertIn("must preserve the narrative backbone", adaptation_instructions)
             self.assertEqual(result["stories"][-1]["id"], "changed-train-platform")
 
     def test_adaptation_accepts_empty_translation_above_coverage_threshold(self) -> None:

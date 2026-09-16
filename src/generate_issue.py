@@ -20,7 +20,12 @@ from .common import (
     normalized_url,
     read_json,
 )
-from .validation import briefs_are_near_duplicates, slugs_are_near_duplicates, validate_issue
+from .validation import (
+    briefs_are_near_duplicates,
+    is_meaningful_english,
+    slugs_are_near_duplicates,
+    validate_issue,
+)
 
 
 CATEGORIES = [
@@ -275,19 +280,36 @@ def _sourced_candidate_batch_schema(story_types: list[str]) -> dict[str, Any]:
         "required": ["publisher", "title", "url"],
         "additionalProperties": False,
     }
-    candidate = {
-        "type": "object",
-        "properties": {
+    def candidate_schema(story_type: str) -> dict[str, Any]:
+        properties: dict[str, Any] = {
             "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
-            "type": {"type": "string", "enum": story_types},
+            "type": {"type": "string", "enum": [story_type]},
             "category": {"type": "string", "enum": CATEGORIES},
-            "historyFamily": {"type": "string", "enum": ["current", *HISTORY_FAMILIES]},
+            "historyFamily": {
+                "type": "string",
+                "enum": ["current"] if story_type == "current" else HISTORY_FAMILIES,
+            },
             "brief": {"type": "string"},
             "sources": {"type": "array", "items": source, "minItems": 1},
-        },
-        "required": ["id", "type", "category", "historyFamily", "brief", "sources"],
-        "additionalProperties": False,
-    }
+        }
+        required = ["id", "type", "category", "historyFamily", "brief", "sources"]
+        if story_type == "history":
+            properties["storyBeats"] = {
+                "type": "array",
+                "items": {"type": "string"},
+                "minItems": 6,
+                "maxItems": 10,
+            }
+            required.append("storyBeats")
+        return {
+            "type": "object",
+            "properties": properties,
+            "required": required,
+            "additionalProperties": False,
+        }
+
+    candidate_variants = [candidate_schema(story_type) for story_type in story_types]
+    candidate = candidate_variants[0] if len(candidate_variants) == 1 else {"anyOf": candidate_variants}
     return {
         "type": "object",
         "properties": {
@@ -304,7 +326,7 @@ def _sourced_candidate_batch_schema(story_types: list[str]) -> dict[str, Any]:
 
 
 def _sourced_candidate_to_seed(candidate: dict[str, Any]) -> dict[str, Any]:
-    return {
+    seed = {
         "id": candidate.get("id"),
         "slug": candidate.get("id"),
         "type": candidate.get("type"),
@@ -315,6 +337,52 @@ def _sourced_candidate_to_seed(candidate: dict[str, Any]) -> dict[str, Any]:
         "sources": candidate.get("sources"),
         "image": None,
     }
+    if candidate.get("type") == "history":
+        seed["storyBeats"] = candidate.get("storyBeats")
+    return seed
+
+
+def _sourced_story_material_errors(
+    candidates: list[dict[str, Any]],
+    require_verified_source: bool = False,
+) -> list[str]:
+    """Validate the richer HISTORY-only research contract before adaptation."""
+    errors: list[str] = []
+    for index, story in enumerate(candidates):
+        candidate_label = str(story.get("id") or index)
+        if story.get("type") != "history":
+            if "storyBeats" in story:
+                errors.append(f"candidate {candidate_label} CURRENT story must not contain storyBeats")
+            continue
+        beats = story.get("storyBeats")
+        if not isinstance(beats, list) or not 6 <= len(beats) <= 10:
+            errors.append(f"candidate {candidate_label} HISTORY story needs 6–10 storyBeats")
+            continue
+        sources = story.get("sources")
+        if require_verified_source and (not isinstance(sources, list) or not sources):
+            errors.append(
+                f"candidate {candidate_label} HISTORY story needs at least one verified source for storyBeats"
+            )
+        normalized_beats: set[str] = set()
+        for beat_index, beat in enumerate(beats):
+            if not isinstance(beat, str) or not beat.strip():
+                errors.append(f"candidate {candidate_label} storyBeats[{beat_index}] must be a non-empty string")
+            elif not is_meaningful_english(beat):
+                errors.append(f"candidate {candidate_label} storyBeats[{beat_index}] must be written in English")
+            else:
+                normalized_beat = " ".join(beat.casefold().split())
+                if normalized_beat in normalized_beats:
+                    errors.append(f"candidate {candidate_label} storyBeats[{beat_index}] duplicates another beat")
+                normalized_beats.add(normalized_beat)
+    return errors
+
+
+def _material_repairs_for_types(
+    repair_stories: list[dict[str, Any]],
+    requested_types: list[str],
+) -> list[dict[str, Any]]:
+    allowed = set(requested_types)
+    return [story for story in repair_stories if story.get("type") in allowed]
 
 
 def _sourced_candidate_mix_errors(
@@ -570,6 +638,7 @@ def _sourced_discovery_request(
     forbidden_stories: list[dict[str, Any]],
     selected_stories: list[dict[str, Any]],
     feedback: list[str] | None = None,
+    repair_stories: list[dict[str, Any]] | None = None,
 ) -> str:
     if current_count and history_count:
         candidate_mix = (
@@ -584,21 +653,32 @@ def _sourced_discovery_request(
         "\nRETRY WORLDWIDE REPLACEMENT SEARCH\nThis is not another Israel-first pass. Start new searches across "
         f"the world for the remaining CURRENT and HISTORY slots. At least 27 of the {SOURCED_CANDIDATE_COUNT} candidates should come from "
         "outside Israel and should span at least six countries or regions. Search both international outlets and useful "
-        "local sources. Do not re-query, rename, translate, update, or find alternate coverage for any rejected or forbidden "
-        "story. For CURRENT, use practical events from the target date or previous several days. For HISTORY, use short, "
+        "local sources. Do not re-query, rename, translate, update, or find alternate coverage for any duplicate or forbidden "
+        "story. The explicitly listed material-repair subjects below are not duplicate rejections and are the only exception: "
+        "research those same subjects through new specific pages. For CURRENT, use practical events from the target date or previous several days. For HISTORY, use short, "
         "concrete, relatable subjects from any period; no date connection is required. Israeli candidates remain allowed "
         "only when they are genuinely new. Keep every editorial, source-quality, safety, and novelty rule."
         if feedback else ""
     )
     retry = (
-        "\nRETRY FEEDBACK\nThe previous attempt left sourced slots unfilled. Do not return any rejected "
-        f"candidates again. Correct these problems while continuing the search: {json.dumps(feedback, ensure_ascii=False)}"
+        "\nRETRY FEEDBACK\nThe previous attempt left sourced slots unfilled. Do not return duplicate or otherwise "
+        "rejected candidates again. A candidate listed under MATERIAL RESEARCH REPAIRS is not rejected: preserve its ID and "
+        "underlying subject, find additional specific supporting pages, and return a corrected factual pack. "
+        f"Correct these problems while continuing the search: {json.dumps(feedback, ensure_ascii=False)}"
         if feedback else ""
     )
+    repairs = f"""
+
+MATERIAL RESEARCH REPAIRS
+These HISTORY subjects were worthwhile and semantically unique, but their factual packs lacked valid support or structure. Research these same subjects again; do not replace them merely because their first material was insufficient. Preserve each ID and compact brief while returning corrected sources and storyBeats.
+<material_repair_records>
+{json.dumps(repair_stories or [], ensure_ascii=False, indent=2)}
+</material_repair_records>
+""" if repair_stories else ""
     return f"""
 Target publication date: {target_date}
 The issue still needs up to {current_count} CURRENT and up to {history_count} HISTORY stories. Return exactly {SOURCED_CANDIDATE_COUNT} distinct screening candidates even though fewer final slots remain. These are candidates for later deduplication and selection, not final stories. {candidate_mix}
-{retry_scope}{retry}
+{retry_scope}{retry}{repairs}
 
 SEARCH PROCESS
 - Use web search and begin from the target date and permitted editorial areas, never from the forbidden records.
@@ -631,7 +711,9 @@ ALREADY SELECTED SOURCED STORIES IN THIS RUN:
 </selected_story_records>
 
 OUTPUT CONTRACT
-Return exactly {SOURCED_CANDIDATE_COUNT} records containing only `id`, `type`, `category`, `historyFamily`, `brief`, and `sources`. Write every `brief` in English with enough source-supported detail both to identify the underlying story during deduplication and to sustain a developed 4–5-paragraph adaptation without invented facts or filler. Give every candidate at least one distinct canonical HTTPS content-page source; never use homepages, section pages, search pages, generic latest pages, or liveblogs. Do not return Hebrew, level adaptations, scenario metadata, images, or prose outside the schema.
+Return exactly {SOURCED_CANDIDATE_COUNT} records. Every record contains `id`, `type`, `category`, `historyFamily`, `brief`, and `sources`; every HISTORY record also contains `storyBeats`. Keep `brief` compact and use it only to identify the underlying subject and story during deduplication. For each HISTORY candidate, return 6–10 ordered English `storyBeats` containing the concrete, source-supported material that a later writer will retell: context, actions, decisions, changes, problems, turning points, consequences, and outcome as applicable. Each beat must add a distinct factual development, not describe what an article, profile, institution, exhibition, life, or legacy supposedly “shows,” “reflects,” or “represents.” If the first page is shallow, keep researching that same subject through additional specific source pages during this call; do not replace factual development with a generic importance summary. Collectively, the beats must support a developed 4–5-paragraph learner article without invention or filler.
+
+Give every candidate at least one distinct canonical HTTPS content-page source and include every specific page used to support its brief or beats; never use homepages, section pages, search pages, generic latest pages, or liveblogs. Do not return Hebrew, level adaptations, scenario metadata, images, or prose outside the schema. CURRENT candidates remain compact and do not use `storyBeats`.
 """.strip()
 
 
@@ -910,8 +992,8 @@ def _adaptation_request(
     ]
     retry = f"\nCorrect these validation problems from the previous adaptation: {json.dumps(feedback, ensure_ascii=False)}" if feedback else ""
     return f"""
-This is the adaptation phase. The story metadata and briefs below are frozen results of completed sourced discovery and generated-scenario planning.
-Create title, teaser, paragraphs, lexical segmentation, and translations for every listed story and level. Develop each body toward its configured targetWords and perform the prompt's one pre-segmentation length revision when needed. Do not change, extend, or infer beyond a brief, and do not add facts or filler to reach a word target. A result that remains below minimumWords is still usable and must not cause the request or generation run to fail. Return each story ID exactly once and no other IDs.
+This is the adaptation phase. The story metadata, briefs, and any HISTORY storyBeats below are frozen results of completed sourced discovery and generated-scenario planning.
+Create title, teaser, paragraphs, lexical segmentation, and translations for every listed story and level. Develop each body toward its configured targetWords and perform the prompt's one pre-segmentation length revision when needed. Do not change, extend, or infer beyond the supplied brief, scenario metadata, or HISTORY storyBeats, and do not add facts or filler to reach a word target. A result that remains below minimumWords is still usable and must not cause the request or generation run to fail. Return each story ID exactly once and no other IDs.
 
 Configured reading levels:
 {json.dumps(level_payload, ensure_ascii=False, indent=2)}
@@ -1212,6 +1294,7 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
         current_target = min(CURRENT_TARGET, sourced_target)
         history_target = min(HISTORY_TARGET, sourced_target - current_target)
         sourced_feedback: list[str] | None = None
+        sourced_material_repairs: list[dict[str, Any]] = []
         forbidden_sourced = _forbidden_story_records(
             exclusions,
             recent_issues,
@@ -1237,6 +1320,10 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
                 )
                 if remaining
             ]
+            active_material_repairs = _material_repairs_for_types(
+                sourced_material_repairs,
+                requested_types,
+            )
             attempt_number = attempt + 1
             phase = f"Sourced discovery attempt {attempt_number}/{SOURCED_DISCOVERY_ATTEMPTS}"
             try:
@@ -1250,6 +1337,7 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
                         forbidden_sourced,
                         [_compact_story_record(story) for story in sourced_seeds],
                         sourced_feedback,
+                        active_material_repairs,
                     ),
                     _sourced_candidate_batch_schema(requested_types),
                     use_web_search=True,
@@ -1259,6 +1347,7 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
                 sourced_feedback = ["The previous sourced-discovery request failed; retry the search for all remaining slots."]
                 _log(f"{phase}: request failed; continuing sourced discovery")
                 continue
+            sourced_material_repairs = []
             unverified_urls = seed_batch.pop(PROVENANCE_ERRORS_KEY, [])
             returned_candidates = seed_batch.get("stories", [])
             returned_seeds = [
@@ -1294,6 +1383,13 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
                 validation_context,
                 {"current", "history"},
             )
+            # Material errors are handled per candidate after semantic duplicate
+            # filtering so one repairable HISTORY record cannot discard the batch.
+            sourced_errors = [
+                error
+                for error in sourced_errors
+                if ".storyBeats" not in error
+            ]
             sourced_errors.extend(_sourced_candidate_mix_errors(returned_seeds, requested_types))
             candidate_batch = returned_seeds
             if sourced_errors:
@@ -1369,6 +1465,39 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
                     )
                 else:
                     _log(f"{review_phase}: all {len(candidate_batch)} candidate(s) are semantically unique")
+
+            material_errors: list[str] = []
+            invalid_material_indexes: set[int] = set()
+            for candidate_index, candidate in enumerate(candidate_batch):
+                candidate_errors = _sourced_story_material_errors(
+                    [candidate],
+                    require_verified_source=True,
+                )
+                if candidate_errors:
+                    invalid_material_indexes.add(candidate_index)
+                    material_errors.extend(candidate_errors)
+            if material_errors:
+                _log_validation_errors(f"{phase} story material", material_errors)
+                candidate_batch_before_material_filter = candidate_batch
+                candidate_batch = [
+                    story
+                    for index, story in enumerate(candidate_batch)
+                    if index not in invalid_material_indexes
+                ]
+                sourced_material_repairs = [
+                    _compact_story_record(story)
+                    for index, story in enumerate(candidate_batch_before_material_filter)
+                    if index in invalid_material_indexes
+                ]
+                sourced_feedback = [
+                    *(sourced_feedback or []),
+                    *list(dict.fromkeys(material_errors))[:19],
+                    "Keep each worthwhile subject and research specific supporting pages before returning it again.",
+                ]
+                _log(
+                    f"{phase}: retained {len(candidate_batch)} sourced candidate(s) after "
+                    f"discarding {len(invalid_material_indexes)} unsupported fact pack(s)"
+                )
 
             before_count = len(sourced_seeds)
             sourced_seeds.extend(

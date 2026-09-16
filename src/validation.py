@@ -24,6 +24,12 @@ BRIEF_STOP_WORDS = {
 }
 
 
+def is_meaningful_english(value: str) -> bool:
+    letters = [character for character in value if character.isalpha()]
+    latin_letters = sum(character.isascii() for character in letters)
+    return latin_letters >= 10 and latin_letters / max(1, len(letters)) >= 0.75
+
+
 def briefs_are_near_duplicates(first: str, second: str) -> bool:
     """Detect the same story when a generated brief has been lightly rewritten."""
     normalized_first = " ".join(re.findall(r"\w+", first.casefold()))
@@ -217,6 +223,26 @@ def validate_issue(
                     )
                     break
             seen_briefs.append((story_index, brief, str(slug)))
+
+        if "storyBeats" in story:
+            story_beats = story.get("storyBeats")
+            if story_type != "history":
+                errors.append(f"{story_path}.storyBeats: only HISTORY stories may store research beats")
+            elif not isinstance(story_beats, list) or not 6 <= len(story_beats) <= 10:
+                errors.append(f"{story_path}.storyBeats: expected 6–10 ordered factual beats")
+            else:
+                normalized_beats: set[str] = set()
+                for beat_index, beat in enumerate(story_beats):
+                    beat_path = f"{story_path}.storyBeats[{beat_index}]"
+                    if not isinstance(beat, str) or not beat.strip():
+                        errors.append(f"{beat_path}: expected a non-empty string")
+                    elif not is_meaningful_english(beat):
+                        errors.append(f"{beat_path}: expected English research material")
+                    else:
+                        normalized_beat = " ".join(beat.casefold().split())
+                        if normalized_beat in normalized_beats:
+                            errors.append(f"{beat_path}: duplicate factual beat")
+                        normalized_beats.add(normalized_beat)
 
         sources = story.get("sources")
         if not isinstance(sources, list):

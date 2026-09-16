@@ -56,6 +56,35 @@ class ValidationTests(unittest.TestCase):
         errors = validate_issue(issue, load_site_config(), load_level_config())
         self.assertEqual(errors, [])
 
+    def test_archived_history_may_omit_story_beats_but_present_beats_are_validated(self) -> None:
+        issue = copy.deepcopy(read_json(ROOT / "content" / "2024-01-26.json"))
+        story = issue["stories"][2]
+        self.assertEqual(story["type"], "history")
+        self.assertNotIn("storyBeats", story)
+        self.assertEqual(validate_issue(issue, load_site_config(), load_level_config()), [])
+
+        story["storyBeats"] = [f"Concrete English development {index}." for index in range(6)]
+        self.assertEqual(validate_issue(issue, load_site_config(), load_level_config()), [])
+
+        story["storyBeats"] = ["Only one beat is not enough."]
+        errors = validate_issue(issue, load_site_config(), load_level_config())
+        self.assertTrue(any("expected 6–10 ordered factual beats" in error for error in errors), errors)
+
+    def test_story_beats_are_history_only_and_must_be_english(self) -> None:
+        issue = copy.deepcopy(read_json(ROOT / "content" / "2024-01-26.json"))
+        issue["stories"][0]["storyBeats"] = [f"Current beat {index}." for index in range(6)]
+        errors = validate_issue(issue, load_site_config(), load_level_config())
+        self.assertTrue(any("only HISTORY stories" in error for error in errors), errors)
+
+        del issue["stories"][0]["storyBeats"]
+        issue["stories"][2]["storyBeats"] = ["עובדה היסטורית a"] * 6
+        errors = validate_issue(issue, load_site_config(), load_level_config())
+        self.assertTrue(any("expected English research material" in error for error in errors), errors)
+
+        issue["stories"][2]["storyBeats"] = ["A concrete historical development happened here."] * 6
+        errors = validate_issue(issue, load_site_config(), load_level_config())
+        self.assertTrue(any("duplicate factual beat" in error for error in errors), errors)
+
     def test_dialog_uses_scenario_metadata_and_has_no_sources(self) -> None:
         issue = copy.deepcopy(read_json(ROOT / "content" / "2024-01-26.json"))
         story = issue["stories"][1]
