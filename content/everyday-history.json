@@ -1295,6 +1295,126 @@
         "pin",
         "lost"
       ]
+    },
+    {
+      "date": "2026-09-16",
+      "storyId": "office-id-card-still-not-working-at-the-front-desk",
+      "domain": "office security",
+      "scenario": "front_desk_badge_activation_problem",
+      "lexicalThemes": [
+        "office access",
+        "front desk",
+        "clarification",
+        "waiting",
+        "late arrival",
+        "practical fix"
+      ],
+      "targetVocabulary": [
+        "כבר",
+        "עוד מעט",
+        "לא שמתי לב",
+        "אפשר לבדוק",
+        "מתי בערך",
+        "אין בעיה",
+        "צריך לחכות",
+        "הופעל"
+      ]
+    },
+    {
+      "date": "2026-09-16",
+      "storyId": "neighbor-shared-freezer-space-and-the-labeled-boxes",
+      "domain": "housing",
+      "scenario": "shared_freezer_space_and_labeled_boxes",
+      "lexicalThemes": [
+        "shared space",
+        "food storage",
+        "labels",
+        "small misunderstanding",
+        "cooperation",
+        "household organization"
+      ],
+      "targetVocabulary": [
+        "חסר",
+        "נגמר",
+        "לא שמתי לב",
+        "אפשר להחליף",
+        "כבר",
+        "בסוף החלטנו",
+        "אין צורך",
+        "מספיק"
+      ]
+    },
+    {
+      "date": "2026-09-16",
+      "storyId": "appointment-reminder-and-the-rush-to-reschedule",
+      "domain": "appointments",
+      "scenario": "appointment_reminder_rush_to_reschedule",
+      "lexicalThemes": [
+        "calendar mix-up",
+        "phone call",
+        "family logistics",
+        "rescheduling",
+        "clarification",
+        "shared chat"
+      ],
+      "targetVocabulary": [
+        "עוד מעט",
+        "מתי בערך",
+        "כבר",
+        "לא הספקתי",
+        "אמרו לי ש",
+        "אפשר לקבוע",
+        "אין בעיה",
+        "בסוף"
+      ]
+    },
+    {
+      "date": "2026-09-16",
+      "storyId": "parcel-locker-code-and-the-wrong-compartment",
+      "domain": "delivery",
+      "scenario": "parcel_locker_code_and_wrong_compartment",
+      "lexicalThemes": [
+        "delivery locker",
+        "code",
+        "app message",
+        "mistake",
+        "customer support",
+        "retry"
+      ],
+      "targetVocabulary": [
+        "לא שמתי לב",
+        "אפשר לבדוק",
+        "קוד",
+        "חסר",
+        "עוד פעם",
+        "תוך כמה זמן",
+        "בסוף",
+        "אין בעיה"
+      ]
+    },
+    {
+      "date": "2026-09-16",
+      "storyId": "cafe-table-request-and-a-takeaway-change-of-mind",
+      "domain": "food",
+      "scenario": "cafe_seating_takeaway_change_of_mind",
+      "lexicalThemes": [
+        "café order",
+        "seating",
+        "takeaway",
+        "busy place",
+        "changing plans",
+        "waiting"
+      ],
+      "targetVocabulary": [
+        "אפשר",
+        "עדיף",
+        "עוד מעט",
+        "לא נורא",
+        "אין לי זמן",
+        "בסוף החלטתי",
+        "כבר",
+        "מבחוץ"
+      ]
     }
   ]
 }
