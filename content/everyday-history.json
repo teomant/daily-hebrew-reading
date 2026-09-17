@@ -1415,6 +1415,102 @@
         "כבר",
         "מבחוץ"
       ]
+    },
+    {
+      "date": "2026-09-17",
+      "storyId": "lost-wallet-and-the-cancelled-card",
+      "domain": "consumer",
+      "scenario": "lost_wallet_after_errands_and_card_cancellation",
+      "lexicalThemes": [
+        "lost items",
+        "payments",
+        "phone calls",
+        "errands",
+        "workday disruption"
+      ],
+      "targetVocabulary": [
+        "אבד",
+        "מצאתי",
+        "כרטיס",
+        "לבטל",
+        "להחזיר",
+        "אולי",
+        "בסוף",
+        "בדרך",
+        "בינתיים"
+      ]
+    },
+    {
+      "date": "2026-09-17",
+      "storyId": "childs-school-note-and-early-pickup",
+      "domain": "family logistics",
+      "scenario": "school_early_pickup_note_and_schedule_check",
+      "lexicalThemes": [
+        "school messages",
+        "schedule changes",
+        "family coordination",
+        "pickup time",
+        "WhatsApp"
+      ],
+      "targetVocabulary": [
+        "להספיק",
+        "הודעה",
+        "לא שמתי לב",
+        "בערך",
+        "לאשר",
+        "לאסוף",
+        "אחרי הצהריים",
+        "לבדוק",
+        "לשלוח"
+      ]
+    },
+    {
+      "date": "2026-09-17",
+      "storyId": "neighbor-at-the-shared-laundry-room",
+      "domain": "everyday",
+      "scenario": "shared_laundry_room_machine_turn_and_mixed_clothes",
+      "lexicalThemes": [
+        "laundry room",
+        "shared space",
+        "time pressure",
+        "small help",
+        "sorting clothes"
+      ],
+      "targetVocabulary": [
+        "מכונה",
+        "פנוי",
+        "רטוב",
+        "לייבש",
+        "בזמן",
+        "לערבב",
+        "לסדר",
+        "לעזור",
+        "תור"
+      ]
+    },
+    {
+      "date": "2026-09-17",
+      "storyId": "delivery-slot-and-building-intercom",
+      "domain": "consumer",
+      "scenario": "delivery_driver_cannot_reach_correct_building_entrance",
+      "lexicalThemes": [
+        "delivery",
+        "intercom",
+        "building entrance",
+        "phone coordination",
+        "tracking"
+      ],
+      "targetVocabulary": [
+        "שליח",
+        "אינטרקום",
+        "כניסה",
+        "חלון זמן",
+        "לעקוב",
+        "להמתין",
+        "להוריד",
+        "לפתוח",
+        "להגיע"
+      ]
     }
   ]
 }
