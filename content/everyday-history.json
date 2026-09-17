@@ -1415,6 +1415,351 @@
         "כבר",
         "מבחוץ"
       ]
+    },
+    {
+      "date": "2026-09-17",
+      "storyId": "train-ticket-machine-and-seat-change",
+      "domain": "transport",
+      "scenario": "train_ticket_shows_wrong_carriage_after_service_change",
+      "lexicalThemes": [
+        "public transport",
+        "tickets",
+        "platform changes",
+        "time pressure",
+        "clarification"
+      ],
+      "targetVocabulary": [
+        "carriage",
+        "platform",
+        "connection",
+        "app ticket",
+        "reserved",
+        "section",
+        "free seat",
+        "split"
+      ]
+    },
+    {
+      "date": "2026-09-17",
+      "storyId": "pharmacy-vaccination-card-and-closed-lunch-break",
+      "domain": "health",
+      "scenario": "pharmacy_needs_id_number_before_printing_vaccination_record",
+      "lexicalThemes": [
+        "pharmacy",
+        "documents",
+        "appointments",
+        "time pressure",
+        "email"
+      ],
+      "targetVocabulary": [
+        "record",
+        "passport number",
+        "printer",
+        "lunch break",
+        "spelled",
+        "email",
+        "saved",
+        "appointment"
+      ]
+    },
+    {
+      "date": "2026-09-17",
+      "storyId": "office-badge-and-visitor-parking-spot",
+      "domain": "work",
+      "scenario": "visitor_badge_validates_after_parking_garage_change",
+      "lexicalThemes": [
+        "office",
+        "parking",
+        "directions",
+        "visitor access",
+        "schedules"
+      ],
+      "targetVocabulary": [
+        "visitor badge",
+        "receptionist",
+        "garage entrance",
+        "validated",
+        "barrier",
+        "meeting starts",
+        "street",
+        "front desk"
+      ]
+    },
+    {
+      "date": "2026-09-17",
+      "storyId": "library-fine-and-renewed-card-at-the-desk",
+      "domain": "culture",
+      "scenario": "library_card_has_small_fine_before_borrowing_book",
+      "lexicalThemes": [
+        "library",
+        "membership",
+        "payment",
+        "renewal",
+        "holds"
+      ],
+      "targetVocabulary": [
+        "fine",
+        "renewal",
+        "terminal",
+        "hold",
+        "update",
+        "borrow",
+        "membership",
+        "reader"
+      ]
+    },
+    {
+      "date": "2026-09-17",
+      "storyId": "cafe-extra-bottle-and-table-near-window",
+      "domain": "food",
+      "scenario": "cafe_receipt_has_extra_item_and_table_choice_near_window",
+      "lexicalThemes": [
+        "café",
+        "receipt",
+        "seating",
+        "wind",
+        "correction"
+      ],
+      "targetVocabulary": [
+        "takeaway",
+        "receipt",
+        "charged twice",
+        "extra item",
+        "apologize",
+        "back table",
+        "cups",
+        "bus"
+      ]
+    },
+    {
+      "date": "2026-09-17",
+      "storyId": "parcel-locker-code-and-neighbor-help",
+      "domain": "delivery",
+      "scenario": "parcel_locker_was_moved_to_a_different_box_after_retry",
+      "lexicalThemes": [
+        "delivery",
+        "pickup code",
+        "apps",
+        "neighbor help",
+        "deadlines"
+      ],
+      "targetVocabulary": [
+        "pickup code",
+        "delivery notice",
+        "digit",
+        "retry",
+        "compartment",
+        "customer support",
+        "locker number",
+        "window"
+      ]
+    },
+    {
+      "date": "2026-09-17",
+      "storyId": "haircut-only-available-later-and-the-earlier-run",
+      "domain": "consumer",
+      "scenario": "barber_only_has_late_slot_so_customer_chooses_short_trim",
+      "lexicalThemes": [
+        "haircut",
+        "appointments",
+        "waiting",
+        "time pressure",
+        "service choice"
+      ],
+      "targetVocabulary": [
+        "slot",
+        "trim",
+        "styling",
+        "wash",
+        "reservation",
+        "book ahead",
+        "barber",
+        "clean up"
+      ]
+    },
+    {
+      "date": "2026-09-17",
+      "storyId": "office-printer-paper-jam-and-meeting-handouts",
+      "domain": "work",
+      "scenario": "printer_jams_because_paper_size_setting_is_wrong",
+      "lexicalThemes": [
+        "office",
+        "printing",
+        "meetings",
+        "paper jam",
+        "backup plan"
+      ],
+      "targetVocabulary": [
+        "paper jam",
+        "tray",
+        "settings",
+        "stack",
+        "backup printer",
+        "reset",
+        "handouts",
+        "client meeting"
+      ]
+    },
+    {
+      "date": "2026-09-17",
+      "storyId": "bus-stop-app-reroute-and-umbrella-share",
+      "domain": "transport",
+      "scenario": "bus_route_changes_and_passengers_walk_to_temporary_stop_in_rain",
+      "lexicalThemes": [
+        "bus stop",
+        "route changes",
+        "weather",
+        "service alerts",
+        "walking"
+      ],
+      "targetVocabulary": [
+        "rerouted",
+        "service alert",
+        "temporarily closed",
+        "temporary stop",
+        "umbrella",
+        "delay",
+        "ride",
+        "app"
+      ]
+    },
+    {
+      "date": "2026-09-17",
+      "storyId": "apartment-door-closer-and-building-manager-call",
+      "domain": "everyday",
+      "scenario": "apartment_door_wont_stay_closed_and_repair_is_scheduled",
+      "lexicalThemes": [
+        "apartment",
+        "repairs",
+        "neighbors",
+        "safety",
+        "maintenance"
+      ],
+      "targetVocabulary": [
+        "hinge",
+        "frame",
+        "latch",
+        "draft",
+        "building manager",
+        "maintenance",
+        "lock turned",
+        "scheduled"
+      ]
+    },
+    {
+      "date": "2026-09-17",
+      "storyId": "doctor-office-referral-and-missing-stamp",
+      "domain": "health",
+      "scenario": "specialist_referral_missing_stamp_until_doctor_returns",
+      "lexicalThemes": [
+        "clinic",
+        "forms",
+        "signatures",
+        "waiting",
+        "digital copy"
+      ],
+      "targetVocabulary": [
+        "referral",
+        "stamp",
+        "scan",
+        "specialist",
+        "signature",
+        "digital copy",
+        "calendar",
+        "receptionist"
+      ]
+    },
+    {
+      "date": "2026-09-17",
+      "storyId": "supermarket-price-mismatch-and-coupon-check",
+      "domain": "consumer",
+      "scenario": "supermarket_item_scans_higher_than_shelf_label_and_coupon_is_for_other_brand",
+      "lexicalThemes": [
+        "supermarket",
+        "price check",
+        "coupon",
+        "labels",
+        "comparison"
+      ],
+      "targetVocabulary": [
+        "rings up",
+        "shelf label",
+        "scanned",
+        "aisle manager",
+        "package size",
+        "substitution",
+        "register",
+        "alternative"
+      ]
+    },
+    {
+      "date": "2026-09-17",
+      "storyId": "friends-arrange-late-supper-after-delayed-return",
+      "domain": "everyday",
+      "scenario": "friends_decide_whether_to_start_dinner_before_one_person_arrives_late",
+      "lexicalThemes": [
+        "dinner",
+        "lateness",
+        "plans",
+        "reheating",
+        "messages"
+      ],
+      "targetVocabulary": [
+        "stuck at work",
+        "reply",
+        "first plate",
+        "portion",
+        "reheat",
+        "save half",
+        "on the way",
+        "start without"
+      ]
+    },
+    {
+      "date": "2026-09-17",
+      "storyId": "hotel-key-card-and-late-checkout-request",
+      "domain": "travel",
+      "scenario": "hotel_key_card_stops_working_before_checkout_and_late_checkout_is_limited",
+      "lexicalThemes": [
+        "hotel",
+        "key card",
+        "checkout",
+        "luggage",
+        "reception"
+      ],
+      "targetVocabulary": [
+        "key card",
+        "locked out",
+        "late checkout",
+        "system",
+        "luggage cart",
+        "late-fee",
+        "receptionist",
+        "cleaned"
+      ]
+    },
+    {
+      "date": "2026-09-17",
+      "storyId": "hotel-luggage-storage-and-extra-hour",
+      "domain": "travel",
+      "scenario": "hotel_luggage_storage_after_checkout_before_late_train",
+      "lexicalThemes": [
+        "travel logistics",
+        "luggage storage",
+        "check-out timing",
+        "clarification",
+        "small plans"
+      ],
+      "targetVocabulary": [
+        "leave the bags",
+        "luggage room",
+        "tag",
+        "fragile",
+        "come back before",
+        "keep the receipt",
+        "change clothes",
+        "lobby restroom"
+      ]
     }
   ]
 }
