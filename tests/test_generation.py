@@ -15,6 +15,7 @@ from unittest.mock import Mock, patch
 from src.common import ROOT, normalized_url, read_json
 from src.generate_issue import (
     ADAPTATION_BATCH_SIZE,
+    HISTORY_BEAT_CONTRACT_KEY,
     PROVENANCE_ERRORS_KEY,
     _adaptation_batch_schema,
     _call_openai,
@@ -25,7 +26,10 @@ from src.generate_issue import (
     _existing_exclusions,
     _forbidden_story_records,
     _generated_planning_request,
-    _material_repairs_for_types,
+    _history_adaptation_errors,
+    _history_research_batch_schema,
+    _history_research_record_errors,
+    _history_research_request,
     _remove_redundant_sources,
     _recent_history,
     _recent_issue_context,
@@ -38,12 +42,59 @@ from src.generate_issue import (
     _sourced_candidate_mix_errors,
     _sourced_discovery_request,
     _sourced_duplicate_review_request,
-    _sourced_story_material_errors,
     _transactional_write,
     _updated_history,
+    _validated_history_research,
     generate,
 )
 from src.validation import validate_repository
+
+
+def adaptation_payload(
+    story_id: str,
+    levels: dict,
+    covered_ids: list[str] | None = None,
+) -> dict:
+    return {
+        "id": story_id,
+        "levels": levels,
+        "coveredStoryBeatIds": {
+            level_id: list(covered_ids or [])
+            for level_id in levels
+        },
+    }
+
+
+def history_research_record(story_id: str, status: str = "sufficient") -> dict:
+    if status == "insufficient":
+        return {
+            "id": story_id,
+            "status": "insufficient",
+            "reason": "The available pages do not support a complete historical sequence.",
+            "sources": [],
+            "storyBeats": [],
+        }
+    source_urls = [
+        f"https://research.example.com/{story_id}/one",
+        f"https://research.example.org/{story_id}/two",
+    ]
+    roles = ["setup", "action", "turningPoint", "outcome", "detail", "action", "consequence", "detail"]
+    return {
+        "id": story_id,
+        "status": "sufficient",
+        "reason": "Two sources support a complete historical sequence.",
+        "sources": [
+            {"publisher": "Research Archive", "title": f"Source {index} for {story_id}", "url": url}
+            for index, url in enumerate(source_urls)
+        ],
+        "storyBeats": [{
+            "id": f"b{index + 1}",
+            "role": role,
+            "text": f"The subject completed concrete supported historical development number {index + 1} in sequence.",
+            "required": index < 4,
+            "supportingSourceUrls": [source_urls[index % 2]],
+        } for index, role in enumerate(roles)],
+    }
 
 
 class GenerationTests(unittest.TestCase):
@@ -57,7 +108,7 @@ class GenerationTests(unittest.TestCase):
 
     def test_adaptation_schema_allows_one_line_per_dialog_turn(self) -> None:
         schema = _adaptation_batch_schema(
-            ["family-dialog"],
+            [{"id": "family-dialog", "type": "dialog"}],
             [{"id": "alef"}],
             ["ru", "en"],
             ["ru", "en"],
@@ -76,8 +127,10 @@ class GenerationTests(unittest.TestCase):
         self.assertIn("separate line", prompt)
         self.assertIn("Never place two speaker labels", prompt)
         self.assertIn("count the approximate whitespace-delimited Hebrew words", prompt)
-        self.assertIn("a shorter coherent version must never cause generation to fail", prompt)
-        self.assertIn("return the best shorter version and continue normally", prompt)
+        self.assertIn("minimumWords is a publication gate", prompt)
+        self.assertIn("coveredStoryBeatIds", prompt)
+        coverage = schema["properties"]["adaptations"]["items"]["properties"]["coveredStoryBeatIds"]
+        self.assertEqual(coverage["properties"]["alef"]["maxItems"], 0)
 
     def test_recent_issue_context_uses_only_previous_three_days(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
@@ -166,35 +219,11 @@ class GenerationTests(unittest.TestCase):
         self.assertIn("At least 27 of the 36 candidates", request)
         self.assertIn("at least six countries or regions", request)
         self.assertIn("Do not re-query, rename, translate, update", request)
-        self.assertIn("6–10 ordered English `storyBeats`", request)
-        self.assertIn("keep researching that same subject", request)
-        self.assertIn("CURRENT candidates remain compact", request)
+        self.assertIn("Do not research or return story beats", request)
         self.assertIn("do not use ordinal placeholders", request)
 
         first_attempt = _sourced_discovery_request("2026-09-07", 4, 2, [], [])
         self.assertNotIn("RETRY WORLDWIDE REPLACEMENT SEARCH", first_attempt)
-
-        repair_request = _sourced_discovery_request(
-            "2026-09-07",
-            0,
-            1,
-            [],
-            [],
-            ["candidate factory-history HISTORY story needs at least one verified source for storyBeats"],
-            [{
-                "id": "factory-history",
-                "type": "history",
-                "brief": "A factory changed its production after a supply crisis.",
-                "sourceUrls": [],
-            }],
-        )
-        self.assertIn("MATERIAL RESEARCH REPAIRS", repair_request)
-        self.assertIn('"id": "factory-history"', repair_request)
-        self.assertIn("preserve its ID and underlying subject", repair_request)
-        self.assertIn("the only exception", repair_request)
-        repair_records = [{"id": "history-repair", "type": "history"}]
-        self.assertEqual(_material_repairs_for_types(repair_records, ["current"]), [])
-        self.assertEqual(_material_repairs_for_types(repair_records, ["history"]), repair_records)
 
         schema = _sourced_candidate_batch_schema(["current", "history"])
         stories = schema["properties"]["stories"]
@@ -211,11 +240,9 @@ class GenerationTests(unittest.TestCase):
         self.assertNotIn("storyBeats", variants["current"]["required"])
         self.assertEqual(
             set(variants["history"]["properties"]),
-            {"id", "type", "category", "historyFamily", "brief", "sources", "storyBeats"},
+            {"id", "type", "category", "historyFamily", "brief", "sources"},
         )
-        self.assertIn("storyBeats", variants["history"]["required"])
-        self.assertEqual(variants["history"]["properties"]["storyBeats"]["minItems"], 6)
-        self.assertEqual(variants["history"]["properties"]["storyBeats"]["maxItems"], 10)
+        self.assertNotIn("storyBeats", variants["history"]["required"])
         candidate = {
             "id": "new-library-hours",
             "type": "current",
@@ -258,38 +285,83 @@ class GenerationTests(unittest.TestCase):
             "id": "factory-history",
             "type": "history",
             "historyFamily": "israeliIndustry",
-            "storyBeats": [f"Concrete supported development {index}." for index in range(6)],
         }
         history_seed = _sourced_candidate_to_seed(history_candidate, "2026-09-17")
-        self.assertEqual(history_seed["storyBeats"], history_candidate["storyBeats"])
-        self.assertEqual(_sourced_story_material_errors([candidate, history_seed]), [])
-        missing_beats = {key: value for key, value in history_seed.items() if key != "storyBeats"}
-        self.assertIn("needs 6–10 storyBeats", _sourced_story_material_errors([missing_beats])[0])
-        source_free_history = {**history_seed, "sources": []}
+        self.assertNotIn("storyBeats", history_seed)
+
+        research_request = _history_research_request("2026-09-17", [history_seed])
+        self.assertIn("Deeply research each selected HISTORY subject", research_request)
+        self.assertIn("at least 2 distinct canonical HTTPS content pages", research_request)
+        self.assertIn("8–12 concrete", research_request)
+        self.assertIn("currently running exhibition", research_request)
+        research_schema = _history_research_batch_schema([history_seed["id"]])
+        research_items = research_schema["properties"]["stories"]
+        self.assertEqual(research_items["minItems"], 1)
+        beat_schema = research_items["items"]["properties"]["storyBeats"]["items"]
+        self.assertEqual(
+            set(beat_schema["required"]),
+            {"id", "role", "text", "required", "supportingSourceUrls"},
+        )
+
+        source_urls = ["https://example.com/factory-one", "https://example.org/factory-two"]
+        roles = ["setup", "action", "turningPoint", "outcome", "detail", "action", "consequence", "detail"]
+        research_record = {
+            "id": history_seed["id"],
+            "status": "sufficient",
+            "reason": "The sources support a complete production story.",
+            "sources": [
+                {"publisher": "Archive", "title": f"Factory source {index}", "url": url}
+                for index, url in enumerate(source_urls)
+            ],
+            "storyBeats": [{
+                "id": f"b{index + 1}",
+                "role": role,
+                "text": f"The factory completed concrete supported development number {index + 1} during its production change.",
+                "required": role in {"setup", "action", "turningPoint", "outcome"} and index < 4,
+                "supportingSourceUrls": [source_urls[index % 2]],
+            } for index, role in enumerate(roles)],
+        }
+        self.assertEqual(_history_research_record_errors(research_record), [])
+        valid, unresolved, errors = _validated_history_research([research_record], [history_seed["id"]])
+        self.assertEqual(set(valid), {history_seed["id"]})
+        self.assertEqual(unresolved, [])
+        self.assertEqual(errors, [])
+
+        unsupported = copy.deepcopy(research_record)
+        unsupported["storyBeats"][0]["supportingSourceUrls"] = ["https://unverified.example/fact"]
         self.assertTrue(any(
-            "needs at least one verified source" in error
-            for error in _sourced_story_material_errors([source_free_history], require_verified_source=True)
+            "retained verified sources" in error
+            for error in _history_research_record_errors(unsupported)
         ))
-        mixed_language_history = copy.deepcopy(history_seed)
-        mixed_language_history["storyBeats"][0] = "עובדה היסטורית a"
+
+        unused_source = copy.deepcopy(research_record)
+        for beat in unused_source["storyBeats"]:
+            beat["supportingSourceUrls"] = [source_urls[0]]
         self.assertTrue(any(
-            "must be written in English" in error
-            for error in _sourced_story_material_errors([mixed_language_history])
+            "every retained source must support" in error
+            for error in _history_research_record_errors(unused_source)
         ))
-        repeated_history = copy.deepcopy(history_seed)
-        repeated_history["storyBeats"][1] = repeated_history["storyBeats"][0]
+
+        nonempty_insufficient = history_research_record(history_seed["id"], "insufficient")
+        nonempty_insufficient["sources"] = research_record["sources"]
         self.assertTrue(any(
-            "duplicates another beat" in error
-            for error in _sourced_story_material_errors([repeated_history])
+            "insufficient result must not retain sources" in error
+            for error in _history_research_record_errors(nonempty_insufficient)
         ))
+
+        duplicate_results = [research_record, copy.deepcopy(research_record)]
+        valid, unresolved, errors = _validated_history_research(duplicate_results, [history_seed["id"]])
+        self.assertEqual(valid, {})
+        self.assertEqual(unresolved, [history_seed["id"]])
+        self.assertTrue(any("exactly once" in error for error in errors))
 
         static_prompt = (ROOT / "prompts" / "editorial.md").read_text(encoding="utf-8")
         self.assertIn("strict recent-subject exclusion", static_prompt)
         self.assertIn("archaeological layer", static_prompt)
         self.assertIn("continuing consequence", static_prompt)
         self.assertIn("worldwide replacement search", static_prompt)
-        self.assertIn("A person, company, factory, institution, cultural work, or place is only the subject", static_prompt)
-        self.assertIn("Treat a shallow first page as a lead", static_prompt)
+        self.assertIn("This is screening, not deep research", static_prompt)
+        self.assertIn("currently running exhibition", static_prompt)
 
     def test_history_candidate_mix_and_selection_prioritize_people_industry_and_culture(self) -> None:
         current = [
@@ -840,6 +912,11 @@ class GenerationTests(unittest.TestCase):
             root = Path(temporary)
             for directory in ("config", "i18n", "prompts", "content"):
                 shutil.copytree(ROOT / directory, root / directory)
+            levels_path = root / "config" / "reading-levels.json"
+            level_config = read_json(levels_path)
+            for level in level_config["levels"]:
+                level["minimumWords"] = 1
+            levels_path.write_text(json.dumps(level_config), encoding="utf-8")
             sample = read_json(root / "content" / "2024-01-26.json")
             templates = {story["type"]: story for story in sample["stories"]}
             sourced_specs = [
@@ -889,13 +966,10 @@ class GenerationTests(unittest.TestCase):
                             "title": f"Source for {story_id}",
                             "url": f"https://example.com/{story_id}",
                         }]
-                        seed["storyBeats"] = [
-                            f"Supported factual development {beat} for {story_id}."
-                            for beat in range(6)
-                        ]
                 else:
                     seed["everydayMeta"]["scenario"] = f"isolated_stage_scenario_{index}"
-                return seed, {"id": seed["id"], "levels": template["levels"]}
+                covered_ids = ["b1", "b2", "b3", "b4"] if story_type == "history" else None
+                return seed, adaptation_payload(seed["id"], template["levels"], covered_ids)
 
             pairs = [
                 make_seed(story_id, story_type, brief, index)
@@ -904,6 +978,9 @@ class GenerationTests(unittest.TestCase):
             sourced = [seed for seed, _ in pairs[:len(sourced_specs)]]
             generated = [seed for seed, _ in pairs[len(sourced_specs):]]
             adaptations = [adaptation for _, adaptation in pairs]
+            history_research = {
+                "stories": [history_research_record(seed["id"]) for seed in sourced if seed["type"] == "history"]
+            }
             duplicate_history = copy.deepcopy(sourced[-2])
             unique_review = lambda stories: {"verdicts": [{
                 "candidateId": story["id"],
@@ -916,6 +993,7 @@ class GenerationTests(unittest.TestCase):
                 unique_review(sourced[:-1]),
                 {"stories": [sourced[-1]]},
                 unique_review([sourced[-1]]),
+                history_research,
                 {"stories": generated},
                 {"adaptations": adaptations},
             ])
@@ -935,7 +1013,7 @@ class GenerationTests(unittest.TestCase):
             ):
                 result = generate(root, "2099-01-01", 3)
 
-            self.assertEqual(call.call_count, 6)
+            self.assertEqual(call.call_count, 7)
             self.assertEqual(call.call_args_list[0].kwargs["phase"], "Sourced discovery attempt 1/2")
             self.assertTrue(call.call_args_list[0].kwargs["use_web_search"])
             self.assertIn("# Sourced discovery instructions", call.call_args_list[0].args[1])
@@ -949,13 +1027,16 @@ class GenerationTests(unittest.TestCase):
             self.assertIn("ALREADY SELECTED SOURCED STORIES", call.call_args_list[2].args[2])
             self.assertEqual(call.call_args_list[3].kwargs["phase"], "Sourced discovery attempt 2/2 duplicate review")
             self.assertFalse(call.call_args_list[3].kwargs["use_web_search"])
-            self.assertEqual(call.call_args_list[4].kwargs["phase"], "Generated planning attempt 1/3")
-            self.assertFalse(call.call_args_list[4].kwargs["use_web_search"])
-            self.assertNotIn("# Sourced discovery instructions", call.call_args_list[4].args[1])
-            self.assertIn("# Everyday-story instructions", call.call_args_list[4].args[1])
-            self.assertEqual(call.call_args_list[5].kwargs["phase"], "Adaptation batch 1/1, attempt 1/2")
-            self.assertIn("# Adaptation and annotation instructions", call.call_args_list[5].args[1])
-            self.assertIn("HISTORY storyBeats", call.call_args_list[5].args[2])
+            self.assertEqual(call.call_args_list[4].kwargs["phase"], "HISTORY research attempt 1/2")
+            self.assertTrue(call.call_args_list[4].kwargs["use_web_search"])
+            self.assertIn("# Selected HISTORY research instructions", call.call_args_list[4].args[1])
+            self.assertEqual(call.call_args_list[5].kwargs["phase"], "Generated planning attempt 1/3")
+            self.assertFalse(call.call_args_list[5].kwargs["use_web_search"])
+            self.assertNotIn("# Sourced discovery instructions", call.call_args_list[5].args[1])
+            self.assertIn("# Everyday-story instructions", call.call_args_list[5].args[1])
+            self.assertEqual(call.call_args_list[6].kwargs["phase"], "Adaptation batch 1/1, attempt 1/2")
+            self.assertIn("# Adaptation and annotation instructions", call.call_args_list[6].args[1])
+            self.assertIn("_storyBeatContract", call.call_args_list[6].args[2])
             self.assertEqual(len(result["stories"]), 15)
             result_types = [story["type"] for story in result["stories"]]
             self.assertEqual(result_types.count("current"), 4)
@@ -964,6 +1045,7 @@ class GenerationTests(unittest.TestCase):
             self.assertEqual(result_types.count("dialog"), 2)
             self.assertTrue(all("historyFamily" not in story for story in result["stories"]))
             self.assertTrue(all("storyBeats" in story for story in result["stories"] if story["type"] == "history"))
+            self.assertTrue(all(HISTORY_BEAT_CONTRACT_KEY not in story for story in result["stories"]))
             self.assertTrue(all("storyBeats" not in story for story in result["stories"] if story["type"] == "current"))
 
     def test_existing_day_appends_without_overwriting(self) -> None:
@@ -980,7 +1062,7 @@ class GenerationTests(unittest.TestCase):
             seed = {key: value for key, value in new_story.items() if key != "levels"}
             for level in new_story["levels"].values():
                 level["title"].append({"text": "", "type": "separator", "translations": {"ru": "", "en": ""}})
-            adaptation = {"id": new_story["id"], "levels": new_story["levels"]}
+            adaptation = adaptation_payload(new_story["id"], new_story["levels"])
             with patch.dict(os.environ, {"OPENAI_MODEL": "test-model"}), patch(
                 "src.generate_issue._call_openai",
                 side_effect=[{"stories": [seed]}, {"adaptations": [adaptation]}],
@@ -1036,7 +1118,7 @@ class GenerationTests(unittest.TestCase):
                 "image": None,
             })
             generated_seed["everydayMeta"]["scenario"] = "family_measures_balcony_for_chair"
-            adaptation = {"id": generated_seed["id"], "levels": generated_template["levels"]}
+            adaptation = adaptation_payload(generated_seed["id"], generated_template["levels"])
             call = Mock(side_effect=[
                 {"stories": [sourced_seed]},
                 RuntimeError("duplicate review unavailable"),
@@ -1069,6 +1151,11 @@ class GenerationTests(unittest.TestCase):
                 "maximumIssueStoryCount": 2,
             })
             site_path.write_text(json.dumps(site), encoding="utf-8")
+            levels_path = root / "config" / "reading-levels.json"
+            level_config = read_json(levels_path)
+            for level in level_config["levels"]:
+                level["minimumWords"] = 1
+            levels_path.write_text(json.dumps(level_config), encoding="utf-8")
 
             template = next(
                 story
@@ -1088,10 +1175,6 @@ class GenerationTests(unittest.TestCase):
                         "title": f"The work of {subject}",
                         "url": f"https://example.com/{story_id}",
                     }],
-                    "storyBeats": [
-                        f"{subject} completed distinct supported development number {index} while building the evening program."
-                        for index in range(6)
-                    ],
                 }
 
             candidates = [
@@ -1132,12 +1215,16 @@ class GenerationTests(unittest.TestCase):
                 "evening-school-founder-2099-01-01",
                 "cooperative-school-opening-2099-01-01",
             ]
-            adaptations = [{"id": story_id, "levels": template["levels"]} for story_id in selected_ids]
+            adaptations = [
+                adaptation_payload(story_id, template["levels"], ["b1", "b2", "b3", "b4"])
+                for story_id in selected_ids
+            ]
             call = Mock(side_effect=[
                 {"stories": candidates},
                 unique_review(candidates),
                 {"stories": replacements},
                 unique_review(replacements),
+                {"stories": [history_research_record(story_id) for story_id in selected_ids]},
                 {"adaptations": adaptations},
             ])
             with (
@@ -1153,17 +1240,18 @@ class GenerationTests(unittest.TestCase):
             ):
                 result = generate(root, "2099-01-01", 3)
 
-            self.assertEqual(call.call_count, 5)
+            self.assertEqual(call.call_count, 6)
             self.assertEqual(call.call_args_list[1].kwargs["phase"], "Sourced discovery attempt 1/2 duplicate review")
             self.assertEqual(call.call_args_list[2].kwargs["phase"], "Sourced discovery attempt 2/2")
             self.assertIn("HISTORY candidate pool needs at least 1 event stories", call.call_args_list[2].args[2])
             self.assertIn("evening-school-founder-2099-01-01", call.call_args_list[2].args[2])
-            self.assertEqual(call.call_args_list[4].kwargs["phase"], "Adaptation batch 1/1, attempt 1/2")
+            self.assertEqual(call.call_args_list[4].kwargs["phase"], "HISTORY research attempt 1/2")
+            self.assertEqual(call.call_args_list[5].kwargs["phase"], "Adaptation batch 1/1, attempt 1/2")
             self.assertEqual([story["id"] for story in result["stories"]], selected_ids)
             self.assertTrue(all(story["type"] == "history" for story in result["stories"]))
             self.assertEqual(validate_repository(root), [])
 
-    def test_unsupported_history_material_retries_the_same_subject(self) -> None:
+    def test_insufficient_history_research_uses_a_reviewed_reserve(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
             for directory in ("config", "i18n", "prompts", "content"):
@@ -1176,50 +1264,59 @@ class GenerationTests(unittest.TestCase):
                 "maximumIssueStoryCount": 1,
             })
             site_path.write_text(json.dumps(site), encoding="utf-8")
+            levels_path = root / "config" / "reading-levels.json"
+            level_config = read_json(levels_path)
+            for level in level_config["levels"]:
+                level["minimumWords"] = 1
+            levels_path.write_text(json.dumps(level_config), encoding="utf-8")
 
             template = next(
                 story
                 for story in read_json(root / "content" / "2024-01-26.json")["stories"]
                 if story["type"] == "history"
             )
-            invalid_seed = {
-                key: copy.deepcopy(value)
-                for key, value in template.items()
-                if key != "levels"
-            }
-            invalid_seed.update({
+            selected_candidate = {
                 "id": "factory-survives-supply-crisis",
-                "slug": "factory-survives-supply-crisis",
+                "type": "history",
+                "category": "history",
                 "brief": "A factory changed its production after a supply crisis threatened its main product.",
                 "historyFamily": "israeliIndustry",
-                "sources": [],
-                "image": None,
-                "storyBeats": [
-                    f"Supported concrete factory development number {index} happened during the crisis."
-                    for index in range(6)
-                ],
-            })
-            invalid_seed["storyBeats"][0] = "עובדה היסטורית a"
-            valid_seed = copy.deepcopy(invalid_seed)
-            valid_seed["id"] = valid_seed["slug"] = "factory-survives-supply-crisis-2099-01-01"
-            valid_seed["storyBeats"][0] = "The factory first lost access to the material used for its main product."
-            valid_seed["sources"] = [{
-                "publisher": "Factory Archive",
-                "title": "How the factory changed production",
-                "url": "https://example.com/factory-supply-crisis",
-            }]
+                "sources": [{
+                    "publisher": "Factory Archive",
+                    "title": "How the factory changed production",
+                    "url": "https://example.com/factory-supply-crisis",
+                }],
+            }
+            reserve_candidate = {
+                "id": "workwear-factory-expansion",
+                "type": "history",
+                "category": "history",
+                "brief": "A workwear factory expanded production after redesigning its durable clothing line.",
+                "historyFamily": "israeliIndustry",
+                "sources": [{
+                    "publisher": "Industry Archive",
+                    "title": "The workwear factory expansion",
+                    "url": "https://example.org/workwear-factory",
+                }],
+            }
+            selected_id = "factory-survives-supply-crisis-2099-01-01"
+            reserve_id = "workwear-factory-expansion-2099-01-01"
             review = {"verdicts": [{
-                "candidateId": valid_seed["id"],
+                "candidateId": candidate_id,
                 "isDuplicate": False,
                 "matchedStoryId": None,
                 "reason": "unique historical subject",
-            }]}
-            adaptation = {"id": valid_seed["id"], "levels": template["levels"]}
+            } for candidate_id in (selected_id, reserve_id)]}
+            adaptation = adaptation_payload(
+                reserve_id,
+                template["levels"],
+                ["b1", "b2", "b3", "b4"],
+            )
             call = Mock(side_effect=[
-                {"stories": [invalid_seed]},
+                {"stories": [selected_candidate, reserve_candidate]},
                 review,
-                {"stories": [valid_seed]},
-                review,
+                {"stories": [history_research_record(selected_id, "insufficient")]},
+                {"stories": [history_research_record(reserve_id)]},
                 {"adaptations": [adaptation]},
             ])
             with (
@@ -1227,19 +1324,200 @@ class GenerationTests(unittest.TestCase):
                 patch("src.generate_issue.CURRENT_TARGET", 0),
                 patch("src.generate_issue.HISTORY_TARGET", 1),
                 patch("src.generate_issue.HISTORY_SELECTION_GROUPS", [("israeliIndustry",)]),
-                patch("src.generate_issue.SOURCED_CANDIDATE_COUNT", 1),
+                patch("src.generate_issue.SOURCED_CANDIDATE_COUNT", 2),
+                patch("src.generate_issue.HISTORY_CANDIDATE_TARGET", 2),
                 patch("src.generate_issue._call_openai", call),
             ):
                 result = generate(root, "2099-01-01", 3)
 
-            retry_request = call.call_args_list[2].args[2]
-            self.assertIn("MATERIAL RESEARCH REPAIRS", retry_request)
-            self.assertIn('"id": "factory-survives-supply-crisis-2099-01-01"', retry_request)
-            self.assertIn("preserve its ID and underlying subject", retry_request)
-            self.assertIn("must be written in English", retry_request)
-            self.assertEqual(result["stories"][0]["id"], valid_seed["id"])
-            self.assertEqual(result["stories"][0]["storyBeats"], valid_seed["storyBeats"])
+            self.assertEqual(call.call_args_list[2].kwargs["phase"], "HISTORY research attempt 1/2")
+            self.assertIn(selected_id, call.call_args_list[2].args[2])
+            self.assertEqual(call.call_args_list[3].kwargs["phase"], "HISTORY research attempt 2/2")
+            retry_request = call.call_args_list[3].args[2]
+            selected_subjects = retry_request.split(
+                "<selected_history_subjects>", 1
+            )[1].split("</selected_history_subjects>", 1)[0]
+            self.assertIn(reserve_id, selected_subjects)
+            self.assertNotIn(selected_id, selected_subjects)
+            self.assertEqual(result["stories"][0]["id"], reserve_id)
+            self.assertEqual(len(result["stories"][0]["storyBeats"]), 8)
             self.assertEqual(validate_repository(root), [])
+
+    def test_two_failed_history_research_requests_abort_instead_of_generating_replacements(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            for directory in ("config", "i18n", "prompts", "content"):
+                shutil.copytree(ROOT / directory, root / directory)
+            site_path = root / "config" / "site.json"
+            site = read_json(site_path)
+            site.update({
+                "defaultIssueStoryCount": 1,
+                "minimumIssueStoryCount": 1,
+                "maximumIssueStoryCount": 1,
+            })
+            site_path.write_text(json.dumps(site), encoding="utf-8")
+            candidate = {
+                "id": "factory-supply-change",
+                "type": "history",
+                "category": "history",
+                "historyFamily": "israeliIndustry",
+                "brief": "A factory reorganized production when its original raw material became unavailable.",
+                "sources": [{
+                    "publisher": "Industry Archive",
+                    "title": "Factory production changes",
+                    "url": "https://example.com/factory-production",
+                }],
+            }
+            story_id = "factory-supply-change-2099-01-01"
+            review = {"verdicts": [{
+                "candidateId": story_id,
+                "isDuplicate": False,
+                "matchedStoryId": None,
+                "reason": "unique historical subject",
+            }]}
+            call = Mock(side_effect=[
+                {"stories": [candidate]},
+                review,
+                RuntimeError("research unavailable"),
+                RuntimeError("research still unavailable"),
+            ])
+            with (
+                patch.dict(os.environ, {"OPENAI_MODEL": "test-model"}),
+                patch("src.generate_issue.CURRENT_TARGET", 0),
+                patch("src.generate_issue.HISTORY_TARGET", 1),
+                patch("src.generate_issue.HISTORY_SELECTION_GROUPS", [("israeliIndustry",)]),
+                patch("src.generate_issue.SOURCED_CANDIDATE_COUNT", 1),
+                patch("src.generate_issue.HISTORY_CANDIDATE_TARGET", 1),
+                patch("src.generate_issue._call_openai", call),
+            ):
+                with self.assertRaisesRegex(RuntimeError, "HISTORY research failed twice"):
+                    generate(root, "2099-01-01", 3)
+
+            self.assertEqual(call.call_count, 4)
+            self.assertEqual(call.call_args_list[2].kwargs["phase"], "HISTORY research attempt 1/2")
+            self.assertEqual(call.call_args_list[3].kwargs["phase"], "HISTORY research attempt 2/2")
+
+    def test_incompatible_history_reserve_does_not_break_the_selected_family_mix(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            for directory in ("config", "i18n", "prompts", "content"):
+                shutil.copytree(ROOT / directory, root / directory)
+            site_path = root / "config" / "site.json"
+            site = read_json(site_path)
+            site.update({
+                "defaultIssueStoryCount": 1,
+                "minimumIssueStoryCount": 1,
+                "maximumIssueStoryCount": 1,
+            })
+            site_path.write_text(json.dumps(site), encoding="utf-8")
+            sample = read_json(root / "content" / "2024-01-26.json")
+            everyday_template = next(story for story in sample["stories"] if story["type"] == "everyday")
+            selected_candidate = {
+                "id": "theater-company-tour",
+                "type": "history",
+                "category": "history",
+                "historyFamily": "culture",
+                "brief": "A theater company reorganized its productions and toured them for new regional audiences.",
+                "sources": [{
+                    "publisher": "Theater Archive",
+                    "title": "The touring company",
+                    "url": "https://example.com/theater-company",
+                }],
+            }
+            incompatible_reserve = {
+                "id": "evening-school-founder",
+                "type": "history",
+                "category": "history",
+                "historyFamily": "person",
+                "brief": "An educator opened evening lessons and expanded them for adults who worked during the day.",
+                "sources": [{
+                    "publisher": "Education Archive",
+                    "title": "The evening school founder",
+                    "url": "https://example.org/evening-school-founder",
+                }],
+            }
+            selected_id = "theater-company-tour-2099-01-01"
+            reserve_id = "evening-school-founder-2099-01-01"
+            review = {"verdicts": [{
+                "candidateId": candidate_id,
+                "isDuplicate": False,
+                "matchedStoryId": None,
+                "reason": "unique historical subject",
+            } for candidate_id in (selected_id, reserve_id)]}
+            generated_seed = {
+                key: copy.deepcopy(value)
+                for key, value in everyday_template.items()
+                if key != "levels"
+            }
+            generated_seed.update({
+                "id": "neighbors-sort-shared-storage",
+                "slug": "neighbors-sort-shared-storage",
+                "brief": "Two neighbors sort a shared storage shelf, label their boxes, and agree where tools should go.",
+                "sources": [],
+                "image": None,
+            })
+            generated_seed["everydayMeta"]["scenario"] = "neighbors_sort_shared_storage_shelf"
+            adaptation = adaptation_payload(generated_seed["id"], everyday_template["levels"])
+            call = Mock(side_effect=[
+                {"stories": [selected_candidate, incompatible_reserve]},
+                review,
+                {"stories": [history_research_record(selected_id, "insufficient")]},
+                {"stories": [generated_seed]},
+                {"adaptations": [adaptation]},
+            ])
+            with (
+                patch.dict(os.environ, {"OPENAI_MODEL": "test-model"}),
+                patch("src.generate_issue.CURRENT_TARGET", 0),
+                patch("src.generate_issue.HISTORY_TARGET", 1),
+                patch("src.generate_issue.HISTORY_SELECTION_GROUPS", [("culture",)]),
+                patch("src.generate_issue.SOURCED_CANDIDATE_COUNT", 2),
+                patch("src.generate_issue.HISTORY_CANDIDATE_TARGET", 2),
+                patch("src.generate_issue._call_openai", call),
+            ):
+                result = generate(root, "2099-01-01", 3)
+
+            phases = [request.kwargs["phase"] for request in call.call_args_list]
+            self.assertNotIn("HISTORY research attempt 2/2", phases)
+            self.assertEqual(call.call_args_list[3].kwargs["phase"], "Generated planning attempt 1/3")
+            self.assertEqual(result["stories"][0]["id"], generated_seed["id"])
+            self.assertNotEqual(result["stories"][0]["id"], reserve_id)
+            self.assertEqual(validate_repository(root), [])
+
+    def test_history_adaptation_requires_minimum_length_and_required_beat_coverage(self) -> None:
+        issue = read_json(ROOT / "content" / "2024-01-26.json")
+        template = next(story for story in issue["stories"] if story["type"] == "history")
+        research = history_research_record("researched-history")
+        seed = {
+            "id": "researched-history",
+            "type": "history",
+            HISTORY_BEAT_CONTRACT_KEY: research["storyBeats"],
+        }
+        levels = [{"id": level_id, "minimumWords": 10_000} for level_id in template["levels"]]
+        adaptation = adaptation_payload(
+            seed["id"],
+            template["levels"],
+            ["b1", "b2", "b3"],
+        )
+
+        errors = _history_adaptation_errors([seed], [adaptation], levels)
+        self.assertTrue(any("missing required story beat IDs: b4" in error for error in errors), errors)
+        self.assertTrue(any("HISTORY body has" in error for error in errors), errors)
+
+        permissive_levels = [{"id": level_id, "minimumWords": 1} for level_id in template["levels"]]
+        complete = adaptation_payload(
+            seed["id"],
+            template["levels"],
+            ["b1", "b2", "b3", "b4"],
+        )
+        self.assertEqual(_history_adaptation_errors([seed], [complete], permissive_levels), [])
+        self.assertEqual(
+            _history_adaptation_errors(
+                [{"id": "current-story", "type": "current"}],
+                [adaptation_payload("current-story", template["levels"])],
+                levels,
+            ),
+            [],
+        )
 
     def test_duplicate_seed_is_replaced_with_an_ai_story(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
@@ -1266,7 +1544,7 @@ class GenerationTests(unittest.TestCase):
                 for key, value in replacement.items()
                 if key != "levels"
             }
-            adaptation = {"id": replacement["id"], "levels": replacement["levels"]}
+            adaptation = adaptation_payload(replacement["id"], replacement["levels"])
             call = Mock(side_effect=[
                 {"stories": [duplicate_seed]},
                 {"stories": [replacement_seed]},
@@ -1298,7 +1576,7 @@ class GenerationTests(unittest.TestCase):
             new_story["everydayMeta"]["domain"] = "public_transport"
             new_story["everydayMeta"]["scenario"] = "changed_train_platform"
             seed = {key: value for key, value in new_story.items() if key != "levels"}
-            adaptation = {"id": new_story["id"], "levels": new_story["levels"]}
+            adaptation = adaptation_payload(new_story["id"], new_story["levels"])
             call = Mock(side_effect=[
                 {"stories": [seed]},
                 RuntimeError("OpenAI generation failed (APIConnectionError)"),
@@ -1343,7 +1621,7 @@ class GenerationTests(unittest.TestCase):
             seed = {key: value for key, value in new_story.items() if key != "levels"}
             levels = copy.deepcopy(new_story["levels"])
             levels["alef"]["title"][0]["translations"]["ru"] = ""
-            adaptation = {"id": new_story["id"], "levels": levels}
+            adaptation = adaptation_payload(new_story["id"], levels)
             call = Mock(side_effect=[
                 {"stories": [seed]},
                 {"adaptations": [copy.deepcopy(adaptation)]},
@@ -1376,7 +1654,7 @@ class GenerationTests(unittest.TestCase):
             new_story["everydayMeta"]["domain"] = "pharmacy"
             new_story["everydayMeta"]["scenario"] = "collect_before_closing"
             seed = {key: value for key, value in new_story.items() if key != "levels"}
-            adaptation = {"id": new_story["id"], "levels": new_story["levels"]}
+            adaptation = adaptation_payload(new_story["id"], new_story["levels"])
             with patch.dict(os.environ, {"OPENAI_MODEL": "test-model"}), patch(
                 "src.generate_issue._call_openai",
                 side_effect=[{"stories": [seed]}, {"adaptations": [adaptation]}],
@@ -1398,7 +1676,7 @@ class GenerationTests(unittest.TestCase):
             new_story["everydayMeta"]["scenario"] = "change_order_before_preparation"
             valid_seed = {key: value for key, value in new_story.items() if key != "levels"}
             invalid_seed = {**valid_seed, "slug": "Not a valid slug"}
-            adaptation = {"id": new_story["id"], "levels": new_story["levels"]}
+            adaptation = adaptation_payload(new_story["id"], new_story["levels"])
             call = Mock(side_effect=[
                 {"stories": [invalid_seed]},
                 {"stories": [valid_seed]},

@@ -68,7 +68,10 @@ class ValidationTests(unittest.TestCase):
 
         story["storyBeats"] = ["Only one beat is not enough."]
         errors = validate_issue(issue, load_site_config(), load_level_config())
-        self.assertTrue(any("expected 6–10 ordered factual beats" in error for error in errors), errors)
+        self.assertTrue(any("expected 6–12 ordered factual beats" in error for error in errors), errors)
+
+        story["storyBeats"] = [f"Concrete English development {index}." for index in range(12)]
+        self.assertEqual(validate_issue(issue, load_site_config(), load_level_config()), [])
 
     def test_story_beats_are_history_only_and_must_be_english(self) -> None:
         issue = copy.deepcopy(read_json(ROOT / "content" / "2024-01-26.json"))

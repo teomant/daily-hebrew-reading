@@ -228,8 +228,8 @@ def validate_issue(
             story_beats = story.get("storyBeats")
             if story_type != "history":
                 errors.append(f"{story_path}.storyBeats: only HISTORY stories may store research beats")
-            elif not isinstance(story_beats, list) or not 6 <= len(story_beats) <= 10:
-                errors.append(f"{story_path}.storyBeats: expected 6–10 ordered factual beats")
+            elif not isinstance(story_beats, list) or not 6 <= len(story_beats) <= 12:
+                errors.append(f"{story_path}.storyBeats: expected 6–12 ordered factual beats")
             else:
                 normalized_beats: set[str] = set()
                 for beat_index, beat in enumerate(story_beats):
