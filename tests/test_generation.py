@@ -25,11 +25,13 @@ from src.generate_issue import (
     _duplicate_review_schema,
     _existing_exclusions,
     _forbidden_story_records,
+    _generated_story_target,
     _generated_planning_request,
     _history_adaptation_errors,
     _history_research_batch_schema,
     _history_research_record_errors,
     _history_research_request,
+    _pop_history_reserve,
     _remove_redundant_sources,
     _recent_history,
     _recent_issue_context,
@@ -189,7 +191,7 @@ class GenerationTests(unittest.TestCase):
         self.assertNotIn("Configured reading levels", request)
         self.assertNotIn("Required translation locales", request)
 
-    def test_sourced_discovery_searches_broadly_and_retries_with_web_search(self) -> None:
+    def test_sourced_discovery_prioritizes_israeli_collections_before_worldwide_fallback(self) -> None:
         request = _sourced_discovery_request(
             "2026-09-07",
             4,
@@ -216,17 +218,44 @@ class GenerationTests(unittest.TestCase):
         self.assertIn("continue searching for another candidate", request)
         self.assertIn("continuing the search", request)
         self.assertIn("final rejection pass", request)
-        self.assertIn("RETRY WORLDWIDE REPLACEMENT SEARCH", request)
-        self.assertIn("At least 27 of the 36 candidates", request)
-        self.assertIn("at least six countries or regions", request)
-        self.assertIn("Do not re-query, rename, translate, update", request)
+        self.assertIn("RETRY ISRAEL-FOCUSED SOURCE SEARCH", request)
+        self.assertNotIn("FINAL WORLDWIDE FALLBACK SEARCH", request)
+        self.assertIn("National Library of Israel", request)
+        self.assertIn("Historical Jewish Press", request)
+        self.assertIn("Israel State Archives", request)
+        self.assertIn("National Photo Collection", request)
+        self.assertIn("PikiWiki Israel", request)
+        self.assertIn("Israel Film Archive", request)
+        self.assertIn("Project Ben-Yehuda", request)
+        self.assertIn("12 `wikimedia`", request)
+        self.assertIn("six `nationalLibraryPress`", request)
+        self.assertIn("four `stateVisualArchives`", request)
+        self.assertIn("two `cultureArchives`", request)
         self.assertIn("Do not research or return story beats", request)
         self.assertIn("do not use ordinal placeholders", request)
 
         first_attempt = _sourced_discovery_request("2026-09-07", 4, 2, [], [])
-        self.assertNotIn("RETRY WORLDWIDE REPLACEMENT SEARCH", first_attempt)
+        self.assertNotIn("RETRY ISRAEL-FOCUSED SOURCE SEARCH", first_attempt)
+        self.assertNotIn("FINAL WORLDWIDE FALLBACK SEARCH", first_attempt)
+        worldwide = _sourced_discovery_request(
+            "2026-09-07",
+            4,
+            2,
+            [],
+            [],
+            ["Israeli candidates exhausted"],
+            True,
+        )
+        self.assertIn("FINAL WORLDWIDE FALLBACK SEARCH", worldwide)
+        self.assertIn("at least six countries or regions", worldwide)
+        self.assertIn("Do not re-query, rename, translate, update", worldwide)
+        self.assertIn("`discoverySource` = `worldwideFallback`", worldwide)
+        self.assertNotIn("12 `wikimedia`", worldwide)
 
-        schema = _sourced_candidate_batch_schema(["current", "history"])
+        schema = _sourced_candidate_batch_schema(
+            ["current", "history"],
+            ["wikimedia", "nationalLibraryPress", "stateVisualArchives", "cultureArchives"],
+        )
         stories = schema["properties"]["stories"]
         self.assertEqual(stories["minItems"], 36)
         self.assertEqual(stories["maxItems"], 36)
@@ -236,21 +265,27 @@ class GenerationTests(unittest.TestCase):
         }
         self.assertEqual(
             set(variants["current"]["properties"]),
-            {"id", "type", "category", "historyFamily", "brief", "sources"},
+            {"id", "type", "category", "historyFamily", "discoverySource", "brief", "sources"},
         )
         self.assertNotIn("storyBeats", variants["current"]["required"])
         self.assertEqual(
             set(variants["history"]["properties"]),
-            {"id", "type", "category", "historyFamily", "brief", "sources"},
+            {"id", "type", "category", "historyFamily", "discoverySource", "brief", "sources"},
         )
         self.assertNotIn("storyBeats", variants["history"]["required"])
         self.assertEqual(variants["current"]["properties"]["sources"]["minItems"], 1)
         self.assertNotIn("minItems", variants["history"]["properties"]["sources"])
+        self.assertEqual(variants["current"]["properties"]["discoverySource"]["enum"], ["current"])
+        self.assertEqual(
+            set(variants["history"]["properties"]["discoverySource"]["enum"]),
+            {"wikimedia", "nationalLibraryPress", "stateVisualArchives", "cultureArchives"},
+        )
         candidate = {
             "id": "new-library-hours",
             "type": "current",
             "category": "culture",
             "historyFamily": "current",
+            "discoverySource": "current",
             "brief": "A town library extends its opening hours.",
             "sources": [{"publisher": "Local", "title": "Longer hours", "url": "https://example.com/library"}],
         }
@@ -288,12 +323,15 @@ class GenerationTests(unittest.TestCase):
             "id": "factory-history",
             "type": "history",
             "historyFamily": "israeliIndustry",
+            "discoverySource": "wikimedia",
         }
         history_seed = _sourced_candidate_to_seed(history_candidate, "2026-09-17")
         self.assertNotIn("storyBeats", history_seed)
 
         research_request = _history_research_request("2026-09-17", [history_seed])
         self.assertIn("Deeply research each selected HISTORY subject", research_request)
+        self.assertIn('"discoverySource": "wikimedia"', research_request)
+        self.assertIn("Search Hebrew and English", research_request)
         self.assertIn("Source links are optional", research_request)
         self.assertIn("empty source list is valid", research_request)
         self.assertIn("8–12 concrete", research_request)
@@ -361,13 +399,20 @@ class GenerationTests(unittest.TestCase):
         self.assertIn("strict recent-subject exclusion", static_prompt)
         self.assertIn("archaeological layer", static_prompt)
         self.assertIn("continuing consequence", static_prompt)
-        self.assertIn("worldwide replacement search", static_prompt)
+        self.assertIn("final worldwide fallback", static_prompt)
+        self.assertIn("National Library of Israel", static_prompt)
+        self.assertIn("discoverySource", static_prompt)
         self.assertIn("This is screening, not deep research", static_prompt)
         self.assertIn("currently running exhibition", static_prompt)
 
     def test_history_candidate_mix_and_selection_prioritize_people_industry_and_culture(self) -> None:
         current = [
-            {"id": f"current-{index}", "type": "current", "historyFamily": "current"}
+            {
+                "id": f"current-{index}",
+                "type": "current",
+                "historyFamily": "current",
+                "discoverySource": "current",
+            }
             for index in range(12)
         ]
         families = (
@@ -379,11 +424,28 @@ class GenerationTests(unittest.TestCase):
             + ["person"] * 6
         )
         history = [
-            {"id": f"history-{index}", "type": "history", "historyFamily": family}
+            {
+                "id": f"history-{index}",
+                "type": "history",
+                "historyFamily": family,
+                "discoverySource": (
+                    "wikimedia" if index < 12 else
+                    "nationalLibraryPress" if index < 18 else
+                    "stateVisualArchives" if index < 22 else
+                    "cultureArchives"
+                ),
+            }
             for index, family in enumerate(families)
         ]
         candidates = [*current, *history[:24]]
-        self.assertEqual(_sourced_candidate_mix_errors(candidates, ["current", "history"]), [])
+        self.assertEqual(
+            _sourced_candidate_mix_errors(
+                candidates,
+                ["current", "history"],
+                {"wikimedia", "nationalLibraryPress", "stateVisualArchives", "cultureArchives"},
+            ),
+            [],
+        )
 
         selected = _select_sourced_candidates([], candidates, 4, 7)
         selected_history = [story for story in selected if story["type"] == "history"]
@@ -398,7 +460,12 @@ class GenerationTests(unittest.TestCase):
 
     def test_history_candidate_mix_rejects_place_heavy_pool(self) -> None:
         current = [
-            {"id": f"current-{index}", "type": "current", "historyFamily": "current"}
+            {
+                "id": f"current-{index}",
+                "type": "current",
+                "historyFamily": "current",
+                "discoverySource": "current",
+            }
             for index in range(12)
         ]
         families = (
@@ -421,6 +488,32 @@ class GenerationTests(unittest.TestCase):
         self.assertIn("HISTORY candidate pool needs at least 6 culture stories", errors)
         self.assertIn("HISTORY candidate pool may contain at most 2 place stories", errors)
         self.assertIn("HISTORY candidate pool may contain at most 1 archaeology story", errors)
+
+    def test_generated_story_target_never_replaces_missing_sourced_slots(self) -> None:
+        self.assertEqual(_generated_story_target(15, 11, False), 4)
+        self.assertEqual(_generated_story_target(15, 7, False), 4)
+        self.assertEqual(_generated_story_target(3, 0, False), 3)
+        self.assertEqual(_generated_story_target(6, 6, False), 0)
+        self.assertEqual(_generated_story_target(8, 99, True), 8)
+
+    def test_history_reserves_preserve_israeli_before_worldwide_order(self) -> None:
+        reserves = [{
+            "id": "israeli-industry-reserve",
+            "type": "history",
+            "historyFamily": "israeliIndustry",
+            "discoverySource": "nationalLibraryPress",
+        }, {
+            "id": "worldwide-industry-reserve",
+            "type": "history",
+            "historyFamily": "israeliIndustry",
+            "discoverySource": "worldwideFallback",
+        }]
+
+        first = _pop_history_reserve(reserves, "israeliIndustry")
+        second = _pop_history_reserve(reserves, "israeliIndustry")
+
+        self.assertEqual(first["id"], "israeli-industry-reserve")
+        self.assertEqual(second["id"], "worldwide-industry-reserve")
 
     def test_llm_duplicate_review_requires_and_enforces_one_verdict_per_candidate(self) -> None:
         candidates = [{
@@ -966,6 +1059,15 @@ class GenerationTests(unittest.TestCase):
                         "israeliIndustry",
                         "culture",
                     ][index - 4]
+                    seed["discoverySource"] = "current" if story_type == "current" else [
+                        "wikimedia",
+                        "nationalLibraryPress",
+                        "stateVisualArchives",
+                        "cultureArchives",
+                        "wikimedia",
+                        "nationalLibraryPress",
+                        "wikimedia",
+                    ][index - 4]
                     if story_type == "history":
                         seed["sources"] = [{
                             "publisher": "History Source",
@@ -1027,20 +1129,20 @@ class GenerationTests(unittest.TestCase):
                 result = generate(root, "2099-01-01", 3)
 
             self.assertEqual(call.call_count, 7)
-            self.assertEqual(call.call_args_list[0].kwargs["phase"], "Sourced discovery attempt 1/2")
+            self.assertEqual(call.call_args_list[0].kwargs["phase"], "Sourced discovery attempt 1/3")
             self.assertTrue(call.call_args_list[0].kwargs["use_web_search"])
             self.assertIn("# Sourced discovery instructions", call.call_args_list[0].args[1])
             self.assertNotIn("# Everyday-story instructions", call.call_args_list[0].args[1])
-            self.assertEqual(call.call_args_list[1].kwargs["phase"], "Sourced discovery attempt 1/2 duplicate review")
+            self.assertEqual(call.call_args_list[1].kwargs["phase"], "Sourced discovery attempt 1/3 duplicate review")
             self.assertFalse(call.call_args_list[1].kwargs["use_web_search"])
             self.assertIn("# Sourced-story duplicate review", call.call_args_list[1].args[1])
-            self.assertEqual(call.call_args_list[2].kwargs["phase"], "Sourced discovery attempt 2/2")
+            self.assertEqual(call.call_args_list[2].kwargs["phase"], "Sourced discovery attempt 2/3")
             self.assertTrue(call.call_args_list[2].kwargs["use_web_search"])
             self.assertIn("RETRY FEEDBACK", call.call_args_list[2].args[2])
             self.assertIn("ALREADY SELECTED SOURCED STORIES", call.call_args_list[2].args[2])
-            self.assertEqual(call.call_args_list[3].kwargs["phase"], "Sourced discovery attempt 2/2 duplicate review")
+            self.assertEqual(call.call_args_list[3].kwargs["phase"], "Sourced discovery attempt 2/3 duplicate review")
             self.assertFalse(call.call_args_list[3].kwargs["use_web_search"])
-            self.assertEqual(call.call_args_list[4].kwargs["phase"], "HISTORY research attempt 1/2")
+            self.assertEqual(call.call_args_list[4].kwargs["phase"], "HISTORY research round 1")
             self.assertTrue(call.call_args_list[4].kwargs["use_web_search"])
             self.assertIn("# Selected HISTORY research instructions", call.call_args_list[4].args[1])
             self.assertEqual(call.call_args_list[5].kwargs["phase"], "Generated planning attempt 1/3")
@@ -1057,6 +1159,7 @@ class GenerationTests(unittest.TestCase):
             self.assertEqual(result_types.count("everyday"), 2)
             self.assertEqual(result_types.count("dialog"), 2)
             self.assertTrue(all("historyFamily" not in story for story in result["stories"]))
+            self.assertTrue(all("discoverySource" not in story for story in result["stories"]))
             self.assertTrue(all("storyBeats" in story for story in result["stories"] if story["type"] == "history"))
             self.assertTrue(any(
                 story["type"] == "history" and story["sources"] == []
@@ -1140,6 +1243,7 @@ class GenerationTests(unittest.TestCase):
                 {"stories": [sourced_seed]},
                 RuntimeError("duplicate review unavailable"),
                 RuntimeError("retry search unavailable"),
+                RuntimeError("worldwide fallback unavailable"),
                 {"stories": [generated_seed]},
                 {"adaptations": [adaptation]},
             ])
@@ -1150,8 +1254,9 @@ class GenerationTests(unittest.TestCase):
             ):
                 result = generate(root, "2099-01-01", 3)
 
-            self.assertEqual(call.call_args_list[1].kwargs["phase"], "Sourced discovery attempt 1/2 duplicate review")
-            self.assertEqual(call.call_args_list[2].kwargs["phase"], "Sourced discovery attempt 2/2")
+            self.assertEqual(call.call_args_list[1].kwargs["phase"], "Sourced discovery attempt 1/3 duplicate review")
+            self.assertEqual(call.call_args_list[2].kwargs["phase"], "Sourced discovery attempt 2/3")
+            self.assertEqual(call.call_args_list[3].kwargs["phase"], "Sourced discovery attempt 3/3")
             self.assertEqual([story["id"] for story in result["stories"]], [generated_seed["id"]])
             self.assertEqual(validate_repository(root), [])
 
@@ -1258,17 +1363,17 @@ class GenerationTests(unittest.TestCase):
                 result = generate(root, "2099-01-01", 3)
 
             self.assertEqual(call.call_count, 6)
-            self.assertEqual(call.call_args_list[1].kwargs["phase"], "Sourced discovery attempt 1/2 duplicate review")
-            self.assertEqual(call.call_args_list[2].kwargs["phase"], "Sourced discovery attempt 2/2")
+            self.assertEqual(call.call_args_list[1].kwargs["phase"], "Sourced discovery attempt 1/3 duplicate review")
+            self.assertEqual(call.call_args_list[2].kwargs["phase"], "Sourced discovery attempt 2/3")
             self.assertIn("HISTORY candidate pool needs at least 1 event stories", call.call_args_list[2].args[2])
             self.assertIn("evening-school-founder-2099-01-01", call.call_args_list[2].args[2])
-            self.assertEqual(call.call_args_list[4].kwargs["phase"], "HISTORY research attempt 1/2")
+            self.assertEqual(call.call_args_list[4].kwargs["phase"], "HISTORY research round 1")
             self.assertEqual(call.call_args_list[5].kwargs["phase"], "Adaptation batch 1/1, attempt 1/2")
             self.assertEqual([story["id"] for story in result["stories"]], selected_ids)
             self.assertTrue(all(story["type"] == "history" for story in result["stories"]))
             self.assertEqual(validate_repository(root), [])
 
-    def test_insufficient_history_research_uses_a_reviewed_reserve(self) -> None:
+    def test_insufficient_history_research_keeps_using_reviewed_reserves(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
             for directory in ("config", "i18n", "prompts", "content"):
@@ -1298,6 +1403,7 @@ class GenerationTests(unittest.TestCase):
                 "category": "history",
                 "brief": "A factory changed its production after a supply crisis threatened its main product.",
                 "historyFamily": "israeliIndustry",
+                "discoverySource": "wikimedia",
                 "sources": [{
                     "publisher": "Factory Archive",
                     "title": "How the factory changed production",
@@ -1310,30 +1416,46 @@ class GenerationTests(unittest.TestCase):
                 "category": "history",
                 "brief": "A workwear factory expanded production after redesigning its durable clothing line.",
                 "historyFamily": "israeliIndustry",
+                "discoverySource": "nationalLibraryPress",
                 "sources": [{
                     "publisher": "Industry Archive",
                     "title": "The workwear factory expansion",
                     "url": "https://example.org/workwear-factory",
                 }],
             }
+            second_reserve_candidate = {
+                "id": "ceramics-factory-new-kiln",
+                "type": "history",
+                "category": "history",
+                "brief": "A ceramics factory installed a new kiln and reorganized how local workers produced household goods.",
+                "historyFamily": "israeliIndustry",
+                "discoverySource": "stateVisualArchives",
+                "sources": [{
+                    "publisher": "Industry Collection",
+                    "title": "The ceramics factory kiln",
+                    "url": "https://example.net/ceramics-factory",
+                }],
+            }
             selected_id = "factory-survives-supply-crisis-2099-01-01"
             reserve_id = "workwear-factory-expansion-2099-01-01"
+            second_reserve_id = "ceramics-factory-new-kiln-2099-01-01"
             review = {"verdicts": [{
                 "candidateId": candidate_id,
                 "isDuplicate": False,
                 "matchedStoryId": None,
                 "reason": "unique historical subject",
-            } for candidate_id in (selected_id, reserve_id)]}
+            } for candidate_id in (selected_id, reserve_id, second_reserve_id)]}
             adaptation = adaptation_payload(
-                reserve_id,
+                second_reserve_id,
                 template["levels"],
                 ["b1", "b2", "b3", "b4"],
             )
             call = Mock(side_effect=[
-                {"stories": [selected_candidate, reserve_candidate]},
+                {"stories": [selected_candidate, reserve_candidate, second_reserve_candidate]},
                 review,
                 {"stories": [history_research_record(selected_id, "insufficient")]},
-                {"stories": [history_research_record(reserve_id)]},
+                {"stories": [history_research_record(reserve_id, "insufficient")]},
+                {"stories": [history_research_record(second_reserve_id)]},
                 {"adaptations": [adaptation]},
             ])
             with (
@@ -1341,22 +1463,29 @@ class GenerationTests(unittest.TestCase):
                 patch("src.generate_issue.CURRENT_TARGET", 0),
                 patch("src.generate_issue.HISTORY_TARGET", 1),
                 patch("src.generate_issue.HISTORY_SELECTION_GROUPS", [("israeliIndustry",)]),
-                patch("src.generate_issue.SOURCED_CANDIDATE_COUNT", 2),
-                patch("src.generate_issue.HISTORY_CANDIDATE_TARGET", 2),
+                patch("src.generate_issue.SOURCED_CANDIDATE_COUNT", 3),
+                patch("src.generate_issue.HISTORY_CANDIDATE_TARGET", 3),
                 patch("src.generate_issue._call_openai", call),
             ):
                 result = generate(root, "2099-01-01", 3)
 
-            self.assertEqual(call.call_args_list[2].kwargs["phase"], "HISTORY research attempt 1/2")
+            self.assertEqual(call.call_args_list[2].kwargs["phase"], "HISTORY research round 1")
             self.assertIn(selected_id, call.call_args_list[2].args[2])
-            self.assertEqual(call.call_args_list[3].kwargs["phase"], "HISTORY research attempt 2/2")
+            self.assertEqual(call.call_args_list[3].kwargs["phase"], "HISTORY research round 2")
             retry_request = call.call_args_list[3].args[2]
             selected_subjects = retry_request.split(
                 "<selected_history_subjects>", 1
             )[1].split("</selected_history_subjects>", 1)[0]
             self.assertIn(reserve_id, selected_subjects)
             self.assertNotIn(selected_id, selected_subjects)
-            self.assertEqual(result["stories"][0]["id"], reserve_id)
+            self.assertEqual(call.call_args_list[4].kwargs["phase"], "HISTORY research round 3")
+            final_request = call.call_args_list[4].args[2]
+            final_subjects = final_request.split(
+                "<selected_history_subjects>", 1
+            )[1].split("</selected_history_subjects>", 1)[0]
+            self.assertIn(second_reserve_id, final_subjects)
+            self.assertNotIn(reserve_id, final_subjects)
+            self.assertEqual(result["stories"][0]["id"], second_reserve_id)
             self.assertEqual(len(result["stories"][0]["storyBeats"]), 8)
             self.assertEqual(validate_repository(root), [])
 
@@ -1407,12 +1536,12 @@ class GenerationTests(unittest.TestCase):
                 patch("src.generate_issue.HISTORY_CANDIDATE_TARGET", 1),
                 patch("src.generate_issue._call_openai", call),
             ):
-                with self.assertRaisesRegex(RuntimeError, "HISTORY research failed twice"):
+                with self.assertRaisesRegex(RuntimeError, "HISTORY research failed twice consecutively"):
                     generate(root, "2099-01-01", 3)
 
             self.assertEqual(call.call_count, 4)
-            self.assertEqual(call.call_args_list[2].kwargs["phase"], "HISTORY research attempt 1/2")
-            self.assertEqual(call.call_args_list[3].kwargs["phase"], "HISTORY research attempt 2/2")
+            self.assertEqual(call.call_args_list[2].kwargs["phase"], "HISTORY research round 1")
+            self.assertEqual(call.call_args_list[3].kwargs["phase"], "HISTORY research round 2")
 
     def test_incompatible_history_reserve_does_not_break_the_selected_family_mix(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
@@ -1494,7 +1623,7 @@ class GenerationTests(unittest.TestCase):
                 result = generate(root, "2099-01-01", 3)
 
             phases = [request.kwargs["phase"] for request in call.call_args_list]
-            self.assertNotIn("HISTORY research attempt 2/2", phases)
+            self.assertNotIn("HISTORY research round 2", phases)
             self.assertEqual(call.call_args_list[3].kwargs["phase"], "Generated planning attempt 1/3")
             self.assertEqual(result["stories"][0]["id"], generated_seed["id"])
             self.assertNotEqual(result["stories"][0]["id"], reserve_id)

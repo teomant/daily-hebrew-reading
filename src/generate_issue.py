@@ -44,11 +44,11 @@ CATEGORIES = [
     "everyday",
 ]
 PROVENANCE_ERRORS_KEY = "_provenanceErrors"
-SOURCED_DISCOVERY_ATTEMPTS = 2
+SOURCED_DISCOVERY_ATTEMPTS = 3
 SOURCED_CANDIDATE_COUNT = 36
 CURRENT_CANDIDATE_TARGET = 12
 HISTORY_CANDIDATE_TARGET = 24
-HISTORY_RESEARCH_ATTEMPTS = 2
+HISTORY_RESEARCH_REQUEST_FAILURE_LIMIT = 2
 HISTORY_RESEARCH_MIN_BEATS = 8
 HISTORY_RESEARCH_MAX_BEATS = 12
 GENERATED_PLANNING_ATTEMPTS = 3
@@ -62,6 +62,14 @@ HISTORY_FAMILIES = ["person", "israeliIndustry", "culture", "event", "place", "a
 HISTORY_REQUIRED_BEAT_ROLES = {"setup", "action", "turningPoint", "outcome"}
 HISTORY_BEAT_ROLES = [*sorted(HISTORY_REQUIRED_BEAT_ROLES), "consequence", "detail"]
 HISTORY_BEAT_CONTRACT_KEY = "_storyBeatContract"
+DISCOVERY_SOURCE_KEY = "discoverySource"
+ISRAELI_HISTORY_SOURCE_MINIMUMS = {
+    "wikimedia": 12,
+    "nationalLibraryPress": 6,
+    "stateVisualArchives": 4,
+    "cultureArchives": 2,
+}
+WORLDWIDE_HISTORY_SOURCE = "worldwideFallback"
 HISTORY_CANDIDATE_MINIMUMS = {
     "person": 6,
     "israeliIndustry": 6,
@@ -276,7 +284,10 @@ def _seed_batch_schema(
     return schema
 
 
-def _sourced_candidate_batch_schema(story_types: list[str]) -> dict[str, Any]:
+def _sourced_candidate_batch_schema(
+    story_types: list[str],
+    history_sources: list[str] | None = None,
+) -> dict[str, Any]:
     source = {
         "type": "object",
         "properties": {
@@ -296,6 +307,14 @@ def _sourced_candidate_batch_schema(story_types: list[str]) -> dict[str, Any]:
                 "type": "string",
                 "enum": ["current"] if story_type == "current" else HISTORY_FAMILIES,
             },
+            DISCOVERY_SOURCE_KEY: {
+                "type": "string",
+                "enum": (
+                    ["current"]
+                    if story_type == "current"
+                    else history_sources or [*ISRAELI_HISTORY_SOURCE_MINIMUMS, WORLDWIDE_HISTORY_SOURCE]
+                ),
+            },
             "brief": {"type": "string"},
             "sources": {
                 "type": "array",
@@ -303,7 +322,15 @@ def _sourced_candidate_batch_schema(story_types: list[str]) -> dict[str, Any]:
                 **({"minItems": 1} if story_type == "current" else {}),
             },
         }
-        required = ["id", "type", "category", "historyFamily", "brief", "sources"]
+        required = [
+            "id",
+            "type",
+            "category",
+            "historyFamily",
+            DISCOVERY_SOURCE_KEY,
+            "brief",
+            "sources",
+        ]
         return {
             "type": "object",
             "properties": properties,
@@ -338,6 +365,7 @@ def _sourced_candidate_to_seed(candidate: dict[str, Any], target_date: str) -> d
         "type": candidate.get("type"),
         "category": candidate.get("category"),
         "historyFamily": candidate.get("historyFamily"),
+        DISCOVERY_SOURCE_KEY: candidate.get(DISCOVERY_SOURCE_KEY),
         "brief": candidate.get("brief"),
         "everydayMeta": None,
         "sources": candidate.get("sources"),
@@ -524,7 +552,8 @@ def _validated_history_research(
 
 
 def _public_story_seed(story: dict[str, Any]) -> dict[str, Any]:
-    return {key: value for key, value in story.items() if key != HISTORY_BEAT_CONTRACT_KEY}
+    private_keys = {HISTORY_BEAT_CONTRACT_KEY, "historyFamily", DISCOVERY_SOURCE_KEY}
+    return {key: value for key, value in story.items() if key not in private_keys}
 
 
 def _pop_history_reserve(
@@ -551,6 +580,7 @@ def _pop_history_reserve(
 def _sourced_candidate_mix_errors(
     candidates: list[dict[str, Any]],
     requested_types: list[str],
+    expected_history_sources: set[str] | None = None,
 ) -> list[str]:
     errors: list[str] = []
     current = [story for story in candidates if story.get("type") == "current"]
@@ -565,6 +595,29 @@ def _sourced_candidate_mix_errors(
         errors.append("CURRENT candidates must use historyFamily=current")
     if any(story.get("historyFamily") not in HISTORY_FAMILIES for story in history):
         errors.append("HISTORY candidates must use a supported historyFamily")
+    if any(story.get(DISCOVERY_SOURCE_KEY) != "current" for story in current):
+        errors.append("CURRENT candidates must use discoverySource=current")
+    if expected_history_sources is not None and "history" in requested_types:
+        invalid_sources = sorted({
+            str(story.get(DISCOVERY_SOURCE_KEY))
+            for story in history
+            if story.get(DISCOVERY_SOURCE_KEY) not in expected_history_sources
+        })
+        if invalid_sources:
+            errors.append(
+                "HISTORY candidates must use the expected discovery sources; received "
+                + ", ".join(invalid_sources)
+            )
+        if expected_history_sources == set(ISRAELI_HISTORY_SOURCE_MINIMUMS):
+            source_counts = {
+                source: sum(story.get(DISCOVERY_SOURCE_KEY) == source for story in history)
+                for source in ISRAELI_HISTORY_SOURCE_MINIMUMS
+            }
+            for source, minimum in ISRAELI_HISTORY_SOURCE_MINIMUMS.items():
+                if source_counts[source] < minimum:
+                    errors.append(
+                        f"HISTORY candidate pool needs at least {minimum} {source} discovery stories"
+                    )
     if len(history) >= HISTORY_CANDIDATE_TARGET:
         family_counts = {
             family: sum(story.get("historyFamily") == family for story in history)
@@ -821,6 +874,7 @@ def _sourced_discovery_request(
     forbidden_stories: list[dict[str, Any]],
     selected_stories: list[dict[str, Any]],
     feedback: list[str] | None = None,
+    worldwide_fallback: bool = False,
 ) -> str:
     if current_count and history_count:
         candidate_mix = (
@@ -831,15 +885,40 @@ def _sourced_discovery_request(
         candidate_mix = "Every candidate should be CURRENT because only CURRENT slots remain."
     else:
         candidate_mix = "Every candidate should be HISTORY because only HISTORY slots remain."
-    retry_scope = (
-        "\nRETRY WORLDWIDE REPLACEMENT SEARCH\nThis is not another Israel-first pass. Start new searches across "
-        f"the world for the remaining CURRENT and HISTORY slots. At least 27 of the {SOURCED_CANDIDATE_COUNT} candidates should come from "
-        "outside Israel and should span at least six countries or regions. Search both international outlets and useful "
-        "local sources. Do not re-query, rename, translate, update, or find alternate coverage for any duplicate or forbidden "
-        "story. For CURRENT, use practical events from the target date or previous several days. For HISTORY, use short, "
-        "concrete, relatable subjects from any period; no date connection is required. Israeli candidates remain allowed "
-        "only when they are genuinely new. Keep every editorial, source-quality, safety, and novelty rule."
-        if feedback else ""
+    if worldwide_fallback:
+        retry_scope = (
+            "\nFINAL WORLDWIDE FALLBACK SEARCH\nThe two Israel-focused searches left sourced slots unfilled. "
+            "Search worldwide only for the remaining slots, using new subjects across at least six countries or regions. "
+            "Do not re-query, rename, translate, update, or find alternate coverage for any duplicate or forbidden story. "
+            "For CURRENT, use practical events from the target date or previous several days. For HISTORY, use short, "
+            "concrete, relatable subjects from any period; no date connection is required. Label every HISTORY candidate "
+            f"with `{DISCOVERY_SOURCE_KEY}` = `{WORLDWIDE_HISTORY_SOURCE}`. Keep every editorial, source-quality, safety, "
+            "and novelty rule."
+        )
+    elif feedback:
+        retry_scope = (
+            "\nRETRY ISRAEL-FOCUSED SOURCE SEARCH\nThis is a second fresh search of Israeli material, not a worldwide "
+            "fallback. Use new queries across the named Israeli and Wikimedia collections and do not return alternate "
+            "coverage, translations, updates, or renamed versions of rejected subjects. Search Hebrew as well as English."
+        )
+    else:
+        retry_scope = ""
+    history_source_process = (
+        "- For HISTORY on this final worldwide fallback, search varied countries and source collections for concrete, "
+        "relatable subjects. Use the source page as a lead to a person, company, work, decision, event, institution, "
+        "invention, or ordinary-life development—not as a reason to write about the page itself. Label every HISTORY "
+        f"candidate with `{DISCOVERY_SOURCE_KEY}` = `{WORLDWIDE_HISTORY_SOURCE}`."
+        if worldwide_fallback else
+        "- For HISTORY on this Israel-focused pass, search Israeli subjects and Israeli repositories in Hebrew as well as "
+        "English. HISTORY does not need a connection to the target date or current news. Use the source page as a lead to "
+        "a person, company, work, decision, event, institution, invention, or ordinary-life development—not as a reason "
+        "to write about an article, photograph, archive record, museum object, or exhibition page.\n"
+        "- Build the 24-candidate Israel-focused HISTORY pool from four editorial discovery lanes. Return 12 `wikimedia` "
+        "candidates discovered through Hebrew or English Wikipedia or Wikidata; six `nationalLibraryPress` candidates from "
+        "the National Library of Israel or Historical Jewish Press; four `stateVisualArchives` candidates from the Israel "
+        "State Archives, National Photo Collection, or PikiWiki Israel; and two `cultureArchives` candidates from the Israel "
+        f"Film Archive or Project Ben-Yehuda. Store the lane in `{DISCOVERY_SOURCE_KEY}`. This field records the discovery "
+        "route for editorial balancing; it is not proof that every fact is supported by a returned URL."
     )
     retry = (
         "\nRETRY FEEDBACK\nThe previous attempt left sourced slots unfilled. Do not return duplicate or otherwise "
@@ -854,7 +933,7 @@ The issue still needs up to {current_count} CURRENT and up to {history_count} HI
 SEARCH PROCESS
 - Use web search and begin from the target date and permitted editorial areas, never from the forbidden records.
 - For CURRENT, search Israeli reporting from the target date and previous several days. Search across the whole country and varied communities; do not default to Jerusalem or treat it as the center of every issue.
-- For HISTORY, first look for date-related Israeli facts when worthwhile, then search for unrelated short, interesting facts from anywhere in Israel. HISTORY does not need a connection to the target date or current news.
+{history_source_process}
 - Give every candidate a `historyFamily`. CURRENT uses `current`. HISTORY uses exactly one of `person`, `israeliIndustry`, `culture`, `event`, `place`, or `archaeology` according to its actual central subject, not the wording used to sell it.
 - When both sourced types are requested, build the 24-candidate HISTORY portion with at least six `person`, six `israeliIndustry`, six `culture`, and four `event` candidates. If only HISTORY remains, all 36 candidates are HISTORY and must preserve those minimums while using the extra slots for the same preferred families. `person` means a specific historical person's life, work, decisions, and impact; a newly published obituary or current death report is CURRENT, not HISTORY. `israeliIndustry` means the history of an Israeli company, manufacturer, brand, cooperative, factory, trade, product, or industrial development—not today's startup, high-tech unicorn, funding round, valuation, product launch, or executive profile. `culture` covers the history of literature, music, theater, cinema, visual art, dance, design, architecture, food culture, publishing, broadcasting, or a cultural movement, work, or institution. A museum qualifies only when the story is about cultural creation, collections, or influence, not merely an old building to visit. `event` covers concrete past events, customs, education, infrastructure, transport, institutions, or everyday objects with a clear human sequence and consequence.
 - `place` is optional and rare, not a required family. Return at most two `place` candidates and reject generic park-preservation, tourist-guide, trail, viewpoint, fortress-visit, or “a place where nature and history meet” pitches. A place candidate needs an exceptional, specific human story that could not be told by swapping in another location. Return at most one `archaeology` candidate.
@@ -882,7 +961,7 @@ ALREADY SELECTED SOURCED STORIES IN THIS RUN:
 </selected_story_records>
 
 OUTPUT CONTRACT
-Return exactly {SOURCED_CANDIDATE_COUNT} compact screening records. Every record contains only `id`, `type`, `category`, `historyFamily`, `brief`, and `sources`. Prefer a descriptive lowercase hyphenated topic ID such as `haifa-library-late-hours`; do not use ordinal placeholders such as `current-01` or `history-02`. Keep `brief` compact and use it only to identify the underlying subject and story during deduplication and later selection. Do not research or return story beats in this screening phase.
+Return exactly {SOURCED_CANDIDATE_COUNT} compact screening records. Every record contains only `id`, `type`, `category`, `historyFamily`, `{DISCOVERY_SOURCE_KEY}`, `brief`, and `sources`. CURRENT uses `{DISCOVERY_SOURCE_KEY}` = `current`. On an Israel-focused pass, HISTORY uses one of `wikimedia`, `nationalLibraryPress`, `stateVisualArchives`, or `cultureArchives`; on the final worldwide fallback it uses `worldwideFallback`. Prefer a descriptive lowercase hyphenated topic ID such as `haifa-library-late-hours`; do not use ordinal placeholders such as `current-01` or `history-02`. Keep `brief` compact and use it only to identify the underlying subject and story during deduplication and later selection. Do not research or return story beats in this screening phase.
 
 Give every CURRENT candidate at least one distinct canonical HTTPS content-page source. For HISTORY, include a useful source when available; an empty source list is acceptable because selected subjects receive separate research. Never use homepages, section pages, search pages, generic latest pages, or liveblogs. Do not return Hebrew, story beats, level adaptations, scenario metadata, images, or prose outside the schema.
 """.strip()
@@ -901,10 +980,10 @@ def _history_research_request(
     return f"""
 Target publication date: {target_date}
 
-Deeply research each selected HISTORY subject below. These subjects already passed novelty review and selection. This phase decides whether each one can support a developed retelling and freezes its factual material; it does not write Hebrew.
+Deeply research each selected HISTORY subject below. These subjects already passed novelty review and selection. Search Hebrew and English when relevant. For Israeli subjects, prioritize Israeli archival, library, press, film, photographic, literary, official, and institutional material; for a worldwide fallback subject, use the strongest appropriate primary, archival, institutional, and biographical sources. The internal `discoverySource` value records how the screening lead was found, but is not verified provenance and must not limit follow-up research. This phase decides whether each subject can support a developed retelling and freezes its factual material; it does not write Hebrew.
 
 <selected_history_subjects>
-{json.dumps([_compact_story_record(story) | {"historyFamily": story.get("historyFamily")} for story in stories], ensure_ascii=False, indent=2)}
+{json.dumps([_compact_story_record(story) | {"historyFamily": story.get("historyFamily"), DISCOVERY_SOURCE_KEY: story.get(DISCOVERY_SOURCE_KEY)} for story in stories], ensure_ascii=False, indent=2)}
 </selected_history_subjects>
 
 RESEARCH CONTRACT
@@ -912,7 +991,7 @@ RESEARCH CONTRACT
 - Search beyond the screening lead and return {HISTORY_RESEARCH_MIN_BEATS}–{HISTORY_RESEARCH_MAX_BEATS} concrete, non-overlapping English factual beats for every sufficient subject. Source links are optional: include trustworthy canonical HTTPS content pages when available, but do not mark an otherwise retellable subject insufficient merely because no usable link can be returned.
 - Each beat has a stable ID (`b1`, `b2`, ...), one narrative role, factual text, a required flag, and a supporting-source URL list. The list may be empty; when it is not empty, use URLs from the record's source list.
 - Required beats must collectively cover setup, action, turningPoint, and outcome. Use consequence and detail for additional supported developments.
-- Facts must describe what people or institutions actually did, what changed, the problem or decision, what happened next, and the outcome. Do not describe what an article, feature, exhibition, life, legacy, or institution supposedly shows, reflects, represents, or symbolizes.
+- Facts must describe what people or institutions actually did, what changed, the problem or decision, what happened next, and the outcome. A Wikipedia page, archive record, photograph, newspaper result, museum object, film record, or literary text is a lead to the underlying story, not the story itself. Do not describe what an article, feature, exhibition, life, legacy, or institution supposedly shows, reflects, represents, or symbolizes.
 - A currently running exhibition, festival listing, anniversary program, promotional institutional profile, or private collection is insufficient unless the researched material independently supplies a real historical sequence with concrete actors, decisions, changes, and outcomes.
 - If research cannot support that story arc, return `insufficient`, explain why briefly, and leave storyBeats empty. Never stretch thin material, invent facts, or return generic significance claims to satisfy the schema. Missing source metadata alone is not a reason to reject a story.
 - For `sufficient`, include only useful sources you actually consulted. An empty source list is valid.
@@ -1462,6 +1541,15 @@ def _updated_history(history: dict[str, Any], stories: list[dict[str, Any]], tar
     return {"schemaVersion": 1, "items": items}
 
 
+def _generated_story_target(target_count: int, sourced_count: int, appending: bool) -> int:
+    if appending:
+        return target_count
+    return min(
+        max(0, target_count - sourced_count),
+        EVERYDAY_TARGET + DIALOG_TARGET,
+    )
+
+
 def _transactional_write(payloads: dict[Path, dict[str, Any]]) -> None:
     staged: dict[Path, Path] = {}
     backups: dict[Path, Path | None] = {}
@@ -1562,6 +1650,12 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
             {"current", "history"},
         )
         for attempt in range(SOURCED_DISCOVERY_ATTEMPTS):
+            worldwide_fallback = attempt == SOURCED_DISCOVERY_ATTEMPTS - 1
+            expected_history_sources = (
+                {WORLDWIDE_HISTORY_SOURCE}
+                if worldwide_fallback
+                else set(ISRAELI_HISTORY_SOURCE_MINIMUMS)
+            )
             current_remaining = max(
                 0,
                 current_target - sum(story.get("type") == "current" for story in sourced_seeds),
@@ -1595,8 +1689,12 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
                         forbidden_sourced,
                         [_compact_story_record(story) for story in reviewed_sourced],
                         sourced_feedback,
+                        worldwide_fallback,
                     ),
-                    _sourced_candidate_batch_schema(requested_types),
+                    _sourced_candidate_batch_schema(
+                        requested_types,
+                        sorted(expected_history_sources),
+                    ),
                     use_web_search=True,
                     phase=phase,
                 )
@@ -1652,7 +1750,11 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
                 candidate_batch.append(candidate)
                 candidate_validation_context.append(candidate)
 
-            mix_errors = _sourced_candidate_mix_errors(returned_seeds, requested_types)
+            mix_errors = _sourced_candidate_mix_errors(
+                returned_seeds,
+                requested_types,
+                expected_history_sources,
+            )
             attempt_feedback = list(dict.fromkeys([*mix_errors, *candidate_errors]))
             if candidate_errors:
                 _log_validation_errors(phase, candidate_errors)
@@ -1742,18 +1844,17 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
             sourced_feedback = list(dict.fromkeys(attempt_feedback))[:20] or None
             if len(sourced_seeds) < sourced_target and sourced_feedback is None:
                 sourced_feedback = [
-                    "The Israel-focused pass returned fewer usable sourced stories than requested; "
-                    "search worldwide for the remaining CURRENT or HISTORY slots."
+                    "The current pass returned fewer usable sourced stories than requested; "
+                    "continue with fresh candidates for the remaining CURRENT or HISTORY slots."
                 ]
 
         pending_history = [story for story in sourced_seeds if story.get("type") == "history"]
         research_feedback: list[str] | None = None
-        failed_research_requests = 0
-        for attempt in range(HISTORY_RESEARCH_ATTEMPTS):
-            if not pending_history:
-                break
-            attempt_number = attempt + 1
-            phase = f"HISTORY research attempt {attempt_number}/{HISTORY_RESEARCH_ATTEMPTS}"
+        consecutive_failed_research_requests = 0
+        research_round = 0
+        while pending_history:
+            research_round += 1
+            phase = f"HISTORY research round {research_round}"
             requested_ids = [story["id"] for story in pending_history]
             try:
                 research_batch = _call_openai(
@@ -1765,15 +1866,15 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
                     phase=phase,
                 )
             except RuntimeError:
-                failed_research_requests += 1
+                consecutive_failed_research_requests += 1
                 research_feedback = ["The previous HISTORY research request failed; retry every unresolved subject."]
                 _log(f"{phase}: request failed")
-                if failed_research_requests >= HISTORY_RESEARCH_ATTEMPTS:
-                    raise RuntimeError("HISTORY research failed twice; refusing to replace all sourced history with generated stories")
-                if attempt == HISTORY_RESEARCH_ATTEMPTS - 1:
-                    unresolved_ids = set(requested_ids)
-                    sourced_seeds = [story for story in sourced_seeds if story.get("id") not in unresolved_ids]
+                if consecutive_failed_research_requests >= HISTORY_RESEARCH_REQUEST_FAILURE_LIMIT:
+                    raise RuntimeError(
+                        "HISTORY research failed twice consecutively; refusing to discard researched-story slots"
+                    )
                 continue
+            consecutive_failed_research_requests = 0
 
             unverified_urls = research_batch.pop(PROVENANCE_ERRORS_KEY, [])
             research_records = [
@@ -1810,21 +1911,23 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
                 story_index = next(
                     index for index, story in enumerate(sourced_seeds) if story.get("id") == unresolved_id
                 )
-                if attempt < HISTORY_RESEARCH_ATTEMPTS - 1:
-                    replacement = _pop_history_reserve(
-                        sourced_reserves,
-                        unresolved_story.get("historyFamily"),
-                    )
-                    if replacement is not None:
-                        sourced_seeds[story_index] = replacement
-                        next_pending.append(replacement)
-                        continue
+                replacement = _pop_history_reserve(
+                    sourced_reserves,
+                    unresolved_story.get("historyFamily"),
+                )
+                if replacement is not None:
+                    sourced_seeds[story_index] = replacement
+                    next_pending.append(replacement)
+                    continue
                 sourced_seeds.pop(story_index)
             pending_history = next_pending
             research_feedback = list(dict.fromkeys(research_errors))[:20] or None
 
-    generated_target = target_count - len(sourced_seeds) if existing is None else target_count
-    generated_target = max(0, generated_target)
+    generated_target = _generated_story_target(
+        target_count,
+        len(sourced_seeds),
+        existing is not None,
+    )
     generated_seeds: list[dict[str, Any]] = []
     generated_feedback: list[str] | None = None
     forbidden_generated = _forbidden_story_records(
@@ -1935,7 +2038,11 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
         )
 
     seeds = [
-        {key: value for key, value in story.items() if key != "historyFamily"}
+        {
+            key: value
+            for key, value in story.items()
+            if key not in {"historyFamily", DISCOVERY_SOURCE_KEY}
+        }
         for story in [*sourced_seeds, *generated_seeds]
     ]
     if not seeds:
