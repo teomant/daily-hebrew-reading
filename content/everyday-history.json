@@ -1415,6 +1415,98 @@
         "כבר",
         "מבחוץ"
       ]
+    },
+    {
+      "date": "2026-09-17",
+      "storyId": "everyday-dentist-insurance-card-renewal",
+      "domain": "health",
+      "scenario": "expired_insurance_card_at_dentist_check_in",
+      "lexicalThemes": [
+        "appointments",
+        "insurance",
+        "waiting",
+        "documents",
+        "phone call"
+      ],
+      "targetVocabulary": [
+        "כבר",
+        "עוד מעט",
+        "להיות בתוקף",
+        "לא שמתי לב",
+        "מספר פוליסה",
+        "לא נורא",
+        "לא הספקתי",
+        "לאשר"
+      ]
+    },
+    {
+      "date": "2026-09-17",
+      "storyId": "dialog-office-lunch-order-and-last-minute-change",
+      "domain": "work",
+      "scenario": "office_lunch_delivery_missing_item_and_fast_decision",
+      "lexicalThemes": [
+        "orders",
+        "delivery",
+        "correction",
+        "meeting timing",
+        "team chat"
+      ],
+      "targetVocabulary": [
+        "חסר",
+        "להחליף",
+        "לפחות",
+        "כבר בדרך",
+        "בעוד",
+        "לא משתלם",
+        "לבדוק שוב",
+        "לאשר"
+      ]
+    },
+    {
+      "date": "2026-09-17",
+      "storyId": "everyday-neighbor-building-door-code-and-package",
+      "domain": "city",
+      "scenario": "building_entrance_code_change_and_misdelivered_package",
+      "lexicalThemes": [
+        "building entry",
+        "neighbors",
+        "delivery",
+        "address numbers",
+        "notices"
+      ],
+      "targetVocabulary": [
+        "קוד כניסה",
+        "כתובת",
+        "החליפו",
+        "שייך ל",
+        "להשאיר",
+        "להעביר",
+        "שכחתי",
+        "תוך כדי"
+      ]
+    },
+    {
+      "date": "2026-09-17",
+      "storyId": "dialog-bus-stop-shared-umbrella-and-short-delay",
+      "domain": "transport",
+      "scenario": "bus_stop_shared_umbrella_and_route_decision",
+      "lexicalThemes": [
+        "bus stops",
+        "rain",
+        "apps",
+        "delay",
+        "route changes"
+      ],
+      "targetVocabulary": [
+        "איחור",
+        "עוד כמה דקות",
+        "בערך",
+        "להחליט",
+        "לא נורא",
+        "בסוף",
+        "לחלוק",
+        "הודעה"
+      ]
     }
   ]
 }
