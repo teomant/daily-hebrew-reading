@@ -169,6 +169,7 @@ class GenerationTests(unittest.TestCase):
         self.assertIn("6–10 ordered English `storyBeats`", request)
         self.assertIn("keep researching that same subject", request)
         self.assertIn("CURRENT candidates remain compact", request)
+        self.assertIn("do not use ordinal placeholders", request)
 
         first_attempt = _sourced_discovery_request("2026-09-07", 4, 2, [], [])
         self.assertNotIn("RETRY WORLDWIDE REPLACEMENT SEARCH", first_attempt)
@@ -223,12 +224,34 @@ class GenerationTests(unittest.TestCase):
             "brief": "A town library extends its opening hours.",
             "sources": [{"publisher": "Local", "title": "Longer hours", "url": "https://example.com/library"}],
         }
-        seed = _sourced_candidate_to_seed(candidate)
-        self.assertEqual(seed["slug"], candidate["id"])
+        seed = _sourced_candidate_to_seed(candidate, "2026-09-17")
+        self.assertEqual(seed["slug"], "new-library-hours-2026-09-17")
         self.assertEqual(seed["historyFamily"], "current")
         self.assertIsNone(seed["everydayMeta"])
         self.assertIsNone(seed["image"])
         self.assertNotIn("storyBeats", seed)
+
+        ordinal_candidate = {**candidate, "id": "current-01"}
+        ordinal_seed = _sourced_candidate_to_seed(ordinal_candidate, "2026-09-17")
+        self.assertEqual(ordinal_seed["id"], "current-01-2026-09-17")
+        self.assertEqual(
+            _duplicate_findings(
+                [ordinal_seed],
+                None,
+                [{
+                    "id": "current-01",
+                    "slug": "current-01",
+                    "brief": "A different subject from an earlier issue.",
+                    "sources": [],
+                }],
+            )[1],
+            set(),
+        )
+        repaired_seed = _sourced_candidate_to_seed(
+            {**candidate, "id": ordinal_seed["id"]},
+            "2026-09-17",
+        )
+        self.assertEqual(repaired_seed["id"], ordinal_seed["id"])
 
         history_candidate = {
             **candidate,
@@ -237,7 +260,7 @@ class GenerationTests(unittest.TestCase):
             "historyFamily": "israeliIndustry",
             "storyBeats": [f"Concrete supported development {index}." for index in range(6)],
         }
-        history_seed = _sourced_candidate_to_seed(history_candidate)
+        history_seed = _sourced_candidate_to_seed(history_candidate, "2026-09-17")
         self.assertEqual(history_seed["storyBeats"], history_candidate["storyBeats"])
         self.assertEqual(_sourced_story_material_errors([candidate, history_seed]), [])
         missing_beats = {key: value for key, value in history_seed.items() if key != "storyBeats"}
@@ -849,6 +872,7 @@ class GenerationTests(unittest.TestCase):
                 seed["sources"] = []
                 seed["image"] = None
                 if story_type in {"current", "history"}:
+                    seed["id"] = seed["slug"] = f"{story_id}-2099-01-01"
                     seed["everydayMeta"] = None
                     seed["historyFamily"] = "current" if story_type == "current" else [
                         "event",
@@ -871,7 +895,7 @@ class GenerationTests(unittest.TestCase):
                         ]
                 else:
                     seed["everydayMeta"]["scenario"] = f"isolated_stage_scenario_{index}"
-                return seed, {"id": story_id, "levels": template["levels"]}
+                return seed, {"id": seed["id"], "levels": template["levels"]}
 
             pairs = [
                 make_seed(story_id, story_type, brief, index)
@@ -1032,6 +1056,113 @@ class GenerationTests(unittest.TestCase):
             self.assertEqual([story["id"] for story in result["stories"]], [generated_seed["id"]])
             self.assertEqual(validate_repository(root), [])
 
+    def test_incomplete_history_family_mix_keeps_valid_sourced_candidate(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            for directory in ("config", "i18n", "prompts", "content"):
+                shutil.copytree(ROOT / directory, root / directory)
+            site_path = root / "config" / "site.json"
+            site = read_json(site_path)
+            site.update({
+                "defaultIssueStoryCount": 2,
+                "minimumIssueStoryCount": 2,
+                "maximumIssueStoryCount": 2,
+            })
+            site_path.write_text(json.dumps(site), encoding="utf-8")
+
+            template = next(
+                story
+                for story in read_json(root / "content" / "2024-01-26.json")["stories"]
+                if story["type"] == "history"
+            )
+
+            def candidate(story_id: str, subject: str, brief: str, family: str = "person") -> dict:
+                return {
+                    "id": story_id,
+                    "type": "history",
+                    "category": "history",
+                    "historyFamily": family,
+                    "brief": brief,
+                    "sources": [{
+                        "publisher": "Education Archive",
+                        "title": f"The work of {subject}",
+                        "url": f"https://example.com/{story_id}",
+                    }],
+                    "storyBeats": [
+                        f"{subject} completed distinct supported development number {index} while building the evening program."
+                        for index in range(6)
+                    ],
+                }
+
+            candidates = [
+                candidate(
+                    "evening-school-founder",
+                    "One educator",
+                    "An educator opened evening arithmetic lessons and expanded the school for working adults.",
+                ),
+                candidate(
+                    "nature-club-organizer",
+                    "A field biologist",
+                    "A field biologist organized neighborhood nature clubs and trained volunteer guides.",
+                ),
+            ]
+            replacements = [
+                candidate(
+                    "cooperative-school-opening",
+                    "A neighborhood cooperative",
+                    "A neighborhood cooperative opened a shared school after families converted an unused workshop.",
+                    "event",
+                ),
+                candidate(
+                    "community-nurse-training",
+                    "A community nurse",
+                    "A community nurse established home-care training and organized local health visits.",
+                ),
+            ]
+
+            def unique_review(items: list[dict]) -> dict:
+                return {"verdicts": [{
+                    "candidateId": f"{item['id']}-2099-01-01",
+                    "isDuplicate": False,
+                    "matchedStoryId": None,
+                    "reason": "different historical subject",
+                } for item in items]}
+
+            selected_ids = [
+                "evening-school-founder-2099-01-01",
+                "cooperative-school-opening-2099-01-01",
+            ]
+            adaptations = [{"id": story_id, "levels": template["levels"]} for story_id in selected_ids]
+            call = Mock(side_effect=[
+                {"stories": candidates},
+                unique_review(candidates),
+                {"stories": replacements},
+                unique_review(replacements),
+                {"adaptations": adaptations},
+            ])
+            with (
+                patch.dict(os.environ, {"OPENAI_MODEL": "test-model"}),
+                patch("src.generate_issue.CURRENT_TARGET", 0),
+                patch("src.generate_issue.HISTORY_TARGET", 2),
+                patch("src.generate_issue.HISTORY_SELECTION_GROUPS", [("person",), ("event",)]),
+                patch("src.generate_issue.SOURCED_CANDIDATE_COUNT", 2),
+                patch("src.generate_issue.HISTORY_CANDIDATE_TARGET", 2),
+                patch("src.generate_issue.HISTORY_CANDIDATE_MINIMUMS", {"person": 1, "event": 1}),
+                patch("src.generate_issue.ADAPTATION_BATCH_SIZE", 2),
+                patch("src.generate_issue._call_openai", call),
+            ):
+                result = generate(root, "2099-01-01", 3)
+
+            self.assertEqual(call.call_count, 5)
+            self.assertEqual(call.call_args_list[1].kwargs["phase"], "Sourced discovery attempt 1/2 duplicate review")
+            self.assertEqual(call.call_args_list[2].kwargs["phase"], "Sourced discovery attempt 2/2")
+            self.assertIn("HISTORY candidate pool needs at least 1 event stories", call.call_args_list[2].args[2])
+            self.assertIn("evening-school-founder-2099-01-01", call.call_args_list[2].args[2])
+            self.assertEqual(call.call_args_list[4].kwargs["phase"], "Adaptation batch 1/1, attempt 1/2")
+            self.assertEqual([story["id"] for story in result["stories"]], selected_ids)
+            self.assertTrue(all(story["type"] == "history" for story in result["stories"]))
+            self.assertEqual(validate_repository(root), [])
+
     def test_unsupported_history_material_retries_the_same_subject(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
@@ -1070,6 +1201,7 @@ class GenerationTests(unittest.TestCase):
             })
             invalid_seed["storyBeats"][0] = "עובדה היסטורית a"
             valid_seed = copy.deepcopy(invalid_seed)
+            valid_seed["id"] = valid_seed["slug"] = "factory-survives-supply-crisis-2099-01-01"
             valid_seed["storyBeats"][0] = "The factory first lost access to the material used for its main product."
             valid_seed["sources"] = [{
                 "publisher": "Factory Archive",
@@ -1077,7 +1209,7 @@ class GenerationTests(unittest.TestCase):
                 "url": "https://example.com/factory-supply-crisis",
             }]
             review = {"verdicts": [{
-                "candidateId": invalid_seed["id"],
+                "candidateId": valid_seed["id"],
                 "isDuplicate": False,
                 "matchedStoryId": None,
                 "reason": "unique historical subject",
@@ -1102,7 +1234,7 @@ class GenerationTests(unittest.TestCase):
 
             retry_request = call.call_args_list[2].args[2]
             self.assertIn("MATERIAL RESEARCH REPAIRS", retry_request)
-            self.assertIn('"id": "factory-survives-supply-crisis"', retry_request)
+            self.assertIn('"id": "factory-survives-supply-crisis-2099-01-01"', retry_request)
             self.assertIn("preserve its ID and underlying subject", retry_request)
             self.assertIn("must be written in English", retry_request)
             self.assertEqual(result["stories"][0]["id"], valid_seed["id"])

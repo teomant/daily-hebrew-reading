@@ -325,10 +325,13 @@ def _sourced_candidate_batch_schema(story_types: list[str]) -> dict[str, Any]:
     }
 
 
-def _sourced_candidate_to_seed(candidate: dict[str, Any]) -> dict[str, Any]:
+def _sourced_candidate_to_seed(candidate: dict[str, Any], target_date: str) -> dict[str, Any]:
+    candidate_id = str(candidate.get("id"))
+    date_suffix = f"-{target_date}"
+    story_id = candidate_id if candidate_id.endswith(date_suffix) else f"{candidate_id}{date_suffix}"
     seed = {
-        "id": candidate.get("id"),
-        "slug": candidate.get("id"),
+        "id": story_id,
+        "slug": story_id,
         "type": candidate.get("type"),
         "category": candidate.get("category"),
         "historyFamily": candidate.get("historyFamily"),
@@ -711,7 +714,7 @@ ALREADY SELECTED SOURCED STORIES IN THIS RUN:
 </selected_story_records>
 
 OUTPUT CONTRACT
-Return exactly {SOURCED_CANDIDATE_COUNT} records. Every record contains `id`, `type`, `category`, `historyFamily`, `brief`, and `sources`; every HISTORY record also contains `storyBeats`. Keep `brief` compact and use it only to identify the underlying subject and story during deduplication. For each HISTORY candidate, return 6–10 ordered English `storyBeats` containing the concrete, source-supported material that a later writer will retell: context, actions, decisions, changes, problems, turning points, consequences, and outcome as applicable. Each beat must add a distinct factual development, not describe what an article, profile, institution, exhibition, life, or legacy supposedly “shows,” “reflects,” or “represents.” If the first page is shallow, keep researching that same subject through additional specific source pages during this call; do not replace factual development with a generic importance summary. Collectively, the beats must support a developed 4–5-paragraph learner article without invention or filler.
+Return exactly {SOURCED_CANDIDATE_COUNT} records. Every record contains `id`, `type`, `category`, `historyFamily`, `brief`, and `sources`; every HISTORY record also contains `storyBeats`. Prefer a descriptive lowercase hyphenated topic ID such as `haifa-library-late-hours`; do not use ordinal placeholders such as `current-01` or `history-02`. Keep `brief` compact and use it only to identify the underlying subject and story during deduplication. For each HISTORY candidate, return 6–10 ordered English `storyBeats` containing the concrete, source-supported material that a later writer will retell: context, actions, decisions, changes, problems, turning points, consequences, and outcome as applicable. Each beat must add a distinct factual development, not describe what an article, profile, institution, exhibition, life, or legacy supposedly “shows,” “reflects,” or “represents.” If the first page is shallow, keep researching that same subject through additional specific source pages during this call; do not replace factual development with a generic importance summary. Collectively, the beats must support a developed 4–5-paragraph learner article without invention or filler.
 
 Give every candidate at least one distinct canonical HTTPS content-page source and include every specific page used to support its brief or beats; never use homepages, section pages, search pages, generic latest pages, or liveblogs. Do not return Hebrew, level adaptations, scenario metadata, images, or prose outside the schema. CURRENT candidates remain compact and do not use `storyBeats`.
 """.strip()
@@ -1351,7 +1354,7 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
             unverified_urls = seed_batch.pop(PROVENANCE_ERRORS_KEY, [])
             returned_candidates = seed_batch.get("stories", [])
             returned_seeds = [
-                _sourced_candidate_to_seed(candidate)
+                _sourced_candidate_to_seed(candidate, target_date)
                 for candidate in returned_candidates
                 if isinstance(candidate, dict)
             ]
@@ -1370,57 +1373,57 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
                 _log(f"{phase}: returned no candidates; continuing sourced discovery")
                 continue
             validation_context = [*recent_sourced_records, *sourced_seeds]
-            sourced_errors = _seed_errors(
-                returned_seeds,
-                target_date,
-                level_ids,
-                locales,
-                site,
-                levels,
-                None,
-                0,
-                SOURCED_CANDIDATE_COUNT,
-                validation_context,
-                {"current", "history"},
-            )
-            # Material errors are handled per candidate after semantic duplicate
-            # filtering so one repairable HISTORY record cannot discard the batch.
-            sourced_errors = [
-                error
-                for error in sourced_errors
-                if ".storyBeats" not in error
-            ]
-            sourced_errors.extend(_sourced_candidate_mix_errors(returned_seeds, requested_types))
-            candidate_batch = returned_seeds
-            if sourced_errors:
-                _log_validation_errors(phase, sourced_errors)
-                duplicate_errors, duplicate_indexes = _duplicate_findings(
-                    returned_seeds,
+            candidate_batch: list[dict[str, Any]] = []
+            candidate_errors: list[str] = []
+            candidate_validation_context = list(validation_context)
+            for candidate in returned_seeds:
+                errors = _seed_errors(
+                    [candidate],
+                    target_date,
+                    level_ids,
+                    locales,
+                    site,
+                    levels,
                     None,
-                    validation_context,
+                    0,
+                    1,
+                    candidate_validation_context,
+                    {"current", "history"},
                 )
-                duplicate_only = bool(duplicate_indexes) and all(
-                    "duplicate" in error.lower()
-                    for error in sourced_errors
-                )
-                if not duplicate_only:
-                    sourced_feedback = list(dict.fromkeys(sourced_errors))[:20]
+                # Material errors are handled per candidate after semantic duplicate
+                # filtering so one repairable HISTORY record cannot discard the batch.
+                errors = [error for error in errors if ".storyBeats" not in error]
+                if errors:
+                    candidate_errors.extend(
+                        f"candidate {candidate.get('id')}: {error}"
+                        for error in errors
+                    )
                     continue
-                candidate_batch = [
-                    story
-                    for index, story in enumerate(returned_seeds)
-                    if index not in duplicate_indexes
-                ]
-                sourced_feedback = [
-                    *list(dict.fromkeys(duplicate_errors))[:19],
-                    "Continue web search for unrelated replacements; do not switch to generated stories.",
-                ]
+                candidate_batch.append(candidate)
+                candidate_validation_context.append(candidate)
+
+            mix_errors = _sourced_candidate_mix_errors(returned_seeds, requested_types)
+            attempt_feedback = list(dict.fromkeys([*mix_errors, *candidate_errors]))
+            if candidate_errors:
+                _log_validation_errors(phase, candidate_errors)
+            if mix_errors:
+                unique_mix_errors = list(dict.fromkeys(mix_errors))
                 _log(
-                    f"{phase}: kept {len(candidate_batch)} unique sourced candidate(s); "
-                    f"continuing web search for {len(duplicate_indexes)} replacement(s)"
+                    f"{phase}: candidate pool has {len(unique_mix_errors)} non-blocking mix issue(s); "
+                    "valid candidates will continue"
                 )
-            else:
-                sourced_feedback = None
+                for error in unique_mix_errors[:20]:
+                    _log(f"  - {error}")
+            if candidate_errors:
+                _log(
+                    f"{phase}: retained {len(candidate_batch)} individually valid sourced candidate(s) "
+                    f"after discarding {len(returned_seeds) - len(candidate_batch)} invalid candidate(s)"
+                )
+            if not candidate_batch:
+                sourced_feedback = attempt_feedback or [
+                    "No individually valid candidates were returned; continue searching for the requested sourced stories."
+                ]
+                continue
 
             if candidate_batch:
                 review_phase = f"{phase} duplicate review"
@@ -1442,10 +1445,11 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
                         candidate_batch,
                     )
                 except (KeyError, TypeError, RuntimeError):
-                    sourced_feedback = [
+                    sourced_feedback = list(dict.fromkeys([
+                        *attempt_feedback,
                         "The strict duplicate review failed, so none of the unreviewed candidates were retained. "
-                        "Continue searching for all remaining sourced slots."
-                    ]
+                        "Continue searching for all remaining sourced slots.",
+                    ]))[:20]
                     _log(f"{review_phase}: failed closed; discarded {len(candidate_batch)} unreviewed candidate(s)")
                     continue
                 if reviewed_duplicate_indexes:
@@ -1454,8 +1458,8 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
                         for index, story in enumerate(candidate_batch)
                         if index not in reviewed_duplicate_indexes
                     ]
-                    sourced_feedback = [
-                        *(sourced_feedback or []),
+                    attempt_feedback = [
+                        *attempt_feedback,
                         *reviewed_findings[:19],
                         "Continue web search for genuinely unrelated replacements.",
                     ]
@@ -1469,13 +1473,13 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
             material_errors: list[str] = []
             invalid_material_indexes: set[int] = set()
             for candidate_index, candidate in enumerate(candidate_batch):
-                candidate_errors = _sourced_story_material_errors(
+                candidate_material_errors = _sourced_story_material_errors(
                     [candidate],
                     require_verified_source=True,
                 )
-                if candidate_errors:
+                if candidate_material_errors:
                     invalid_material_indexes.add(candidate_index)
-                    material_errors.extend(candidate_errors)
+                    material_errors.extend(candidate_material_errors)
             if material_errors:
                 _log_validation_errors(f"{phase} story material", material_errors)
                 candidate_batch_before_material_filter = candidate_batch
@@ -1489,8 +1493,8 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
                     for index, story in enumerate(candidate_batch_before_material_filter)
                     if index in invalid_material_indexes
                 ]
-                sourced_feedback = [
-                    *(sourced_feedback or []),
+                attempt_feedback = [
+                    *attempt_feedback,
                     *list(dict.fromkeys(material_errors))[:19],
                     "Keep each worthwhile subject and research specific supporting pages before returning it again.",
                 ]
@@ -1512,6 +1516,7 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
                 f"{phase}: selected {len(sourced_seeds) - before_count} candidate(s); "
                 f"{len(sourced_seeds)} sourced story brief(s) retained"
             )
+            sourced_feedback = list(dict.fromkeys(attempt_feedback))[:20] or None
             if len(sourced_seeds) < sourced_target and sourced_feedback is None:
                 sourced_feedback = [
                     "The Israel-focused pass returned fewer usable sourced stories than requested; "
