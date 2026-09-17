@@ -23,6 +23,7 @@ from .common import (
 )
 from .validation import (
     briefs_are_near_duplicates,
+    is_valid_https_url,
     is_meaningful_english,
     slugs_are_near_duplicates,
     validate_issue,
@@ -51,7 +52,6 @@ HISTORY_CANDIDATE_TARGET = 24
 HISTORY_RESEARCH_ATTEMPTS = 2
 HISTORY_RESEARCH_MIN_BEATS = 8
 HISTORY_RESEARCH_MAX_BEATS = 12
-HISTORY_RESEARCH_MIN_SOURCES = 2
 GENERATED_PLANNING_ATTEMPTS = 3
 ADAPTATION_ATTEMPTS = 2
 ADAPTATION_BATCH_SIZE = 1
@@ -298,7 +298,11 @@ def _sourced_candidate_batch_schema(story_types: list[str]) -> dict[str, Any]:
                 "enum": ["current"] if story_type == "current" else HISTORY_FAMILIES,
             },
             "brief": {"type": "string"},
-            "sources": {"type": "array", "items": source, "minItems": 1},
+            "sources": {
+                "type": "array",
+                "items": source,
+                **({"minItems": 1} if story_type == "current" else {}),
+            },
         }
         required = ["id", "type", "category", "historyFamily", "brief", "sources"]
         return {
@@ -364,23 +368,40 @@ def _history_research_batch_schema(story_ids: list[str]) -> dict[str, Any]:
             "supportingSourceUrls": {
                 "type": "array",
                 "items": {"type": "string"},
-                "minItems": 1,
             },
         },
         "required": ["id", "role", "text", "required", "supportingSourceUrls"],
         "additionalProperties": False,
     }
-    record = {
+    common_properties = {
+        "id": {"type": "string", "enum": story_ids},
+        "reason": {"type": "string"},
+        "sources": {"type": "array", "items": source},
+    }
+    sufficient_record = {
         "type": "object",
         "properties": {
-            "id": {"type": "string", "enum": story_ids},
-            "status": {"type": "string", "enum": ["sufficient", "insufficient"]},
-            "reason": {"type": "string"},
-            "sources": {"type": "array", "items": source},
+            **common_properties,
+            "status": {"type": "string", "enum": ["sufficient"]},
             "storyBeats": {
                 "type": "array",
                 "items": beat,
+                "minItems": HISTORY_RESEARCH_MIN_BEATS,
                 "maxItems": HISTORY_RESEARCH_MAX_BEATS,
+            },
+        },
+        "required": ["id", "status", "reason", "sources", "storyBeats"],
+        "additionalProperties": False,
+    }
+    insufficient_record = {
+        "type": "object",
+        "properties": {
+            **common_properties,
+            "status": {"type": "string", "enum": ["insufficient"]},
+            "storyBeats": {
+                "type": "array",
+                "items": beat,
+                "maxItems": 0,
             },
         },
         "required": ["id", "status", "reason", "sources", "storyBeats"],
@@ -391,7 +412,7 @@ def _history_research_batch_schema(story_ids: list[str]) -> dict[str, Any]:
         "properties": {
             "stories": {
                 "type": "array",
-                "items": record,
+                "items": {"anyOf": [sufficient_record, insufficient_record]},
                 "minItems": len(story_ids),
                 "maxItems": len(story_ids),
             }
@@ -405,34 +426,11 @@ def _history_research_record_errors(record: dict[str, Any]) -> list[str]:
     story_id = str(record.get("id") or "unknown")
     if record.get("status") == "insufficient":
         reason = record.get("reason")
-        errors = [] if isinstance(reason, str) and reason.strip() else [f"{story_id}: insufficient result needs a reason"]
-        if record.get("sources"):
-            errors.append(f"{story_id}: insufficient result must not retain sources")
-        if record.get("storyBeats"):
-            errors.append(f"{story_id}: insufficient result must not retain story beats")
-        return errors
+        return [] if isinstance(reason, str) and reason.strip() else [f"{story_id}: insufficient result needs a reason"]
     if record.get("status") != "sufficient":
         return [f"{story_id}: research status must be sufficient or insufficient"]
 
     errors: list[str] = []
-    sources = record.get("sources")
-    if not isinstance(sources, list) or len(sources) < HISTORY_RESEARCH_MIN_SOURCES:
-        errors.append(f"{story_id}: needs at least {HISTORY_RESEARCH_MIN_SOURCES} verified source pages")
-        sources = [] if not isinstance(sources, list) else sources
-    retained_urls = {
-        normalized_url(source["url"])
-        for source in sources
-        if isinstance(source, dict)
-        and isinstance(source.get("publisher"), str)
-        and source["publisher"].strip()
-        and isinstance(source.get("title"), str)
-        and source["title"].strip()
-        and isinstance(source.get("url"), str)
-        and source["url"].startswith("https://")
-    }
-    if len(retained_urls) < HISTORY_RESEARCH_MIN_SOURCES:
-        errors.append(f"{story_id}: verified source pages must be distinct HTTPS URLs")
-
     beats = record.get("storyBeats")
     if not isinstance(beats, list) or not HISTORY_RESEARCH_MIN_BEATS <= len(beats) <= HISTORY_RESEARCH_MAX_BEATS:
         errors.append(
@@ -442,7 +440,6 @@ def _history_research_record_errors(record: dict[str, Any]) -> list[str]:
 
     seen_ids: set[str] = set()
     seen_texts: set[str] = set()
-    used_source_urls: set[str] = set()
     required_roles: set[str] = set()
     forbidden_phrases = (
         "the article",
@@ -482,24 +479,9 @@ def _history_research_record_errors(record: dict[str, Any]) -> list[str]:
             if any(phrase in normalized_text for phrase in forbidden_phrases):
                 errors.append(f"{beat_path}.text: source-summary language cannot replace an event")
             seen_texts.add(normalized_text)
-        support_urls = beat.get("supportingSourceUrls")
-        normalized_support = {
-            normalized_url(url)
-            for url in support_urls or []
-            if isinstance(url, str)
-        }
-        if not normalized_support:
-            errors.append(f"{beat_path}.supportingSourceUrls: needs retained source support")
-        elif not normalized_support <= retained_urls:
-            errors.append(f"{beat_path}.supportingSourceUrls: must reference only retained verified sources")
-        else:
-            used_source_urls.update(normalized_support)
     missing_roles = HISTORY_REQUIRED_BEAT_ROLES - required_roles
     if missing_roles:
         errors.append(f"{story_id}: required beats must cover {', '.join(sorted(missing_roles))}")
-    unused_sources = retained_urls - used_source_urls
-    if unused_sources:
-        errors.append(f"{story_id}: every retained source must support at least one story beat")
     return errors
 
 
@@ -665,7 +647,6 @@ def _adaptation_batch_schema(
                     "type": "array",
                     "items": {"type": "string", **({"enum": beat_ids} if beat_ids else {})},
                     "maxItems": len(beat_ids),
-                    "uniqueItems": True,
                 }
                 for level_id in level_ids
             },
@@ -904,7 +885,7 @@ ALREADY SELECTED SOURCED STORIES IN THIS RUN:
 OUTPUT CONTRACT
 Return exactly {SOURCED_CANDIDATE_COUNT} compact screening records. Every record contains only `id`, `type`, `category`, `historyFamily`, `brief`, and `sources`. Prefer a descriptive lowercase hyphenated topic ID such as `haifa-library-late-hours`; do not use ordinal placeholders such as `current-01` or `history-02`. Keep `brief` compact and use it only to identify the underlying subject and story during deduplication and later selection. Do not research or return story beats in this screening phase.
 
-Give every candidate at least one distinct canonical HTTPS content-page source; never use homepages, section pages, search pages, generic latest pages, or liveblogs. Do not return Hebrew, story beats, level adaptations, scenario metadata, images, or prose outside the schema.
+Give every CURRENT candidate at least one distinct canonical HTTPS content-page source. For HISTORY, include a useful source when available; an empty source list is acceptable because selected subjects receive separate research. Never use homepages, section pages, search pages, generic latest pages, or liveblogs. Do not return Hebrew, story beats, level adaptations, scenario metadata, images, or prose outside the schema.
 """.strip()
 
 
@@ -929,13 +910,13 @@ Deeply research each selected HISTORY subject below. These subjects already pass
 
 RESEARCH CONTRACT
 - Return exactly one record for every supplied ID and no other IDs. Preserve each ID exactly.
-- Search beyond the screening page. A sufficient story needs at least {HISTORY_RESEARCH_MIN_SOURCES} distinct canonical HTTPS content pages actually consulted during this call and {HISTORY_RESEARCH_MIN_BEATS}–{HISTORY_RESEARCH_MAX_BEATS} concrete, non-overlapping English factual beats.
-- Each beat has a stable ID (`b1`, `b2`, ...), one narrative role, factual text, a required flag, and one or more supporting source URLs copied exactly from the record's source list.
+- Search beyond the screening lead and return {HISTORY_RESEARCH_MIN_BEATS}–{HISTORY_RESEARCH_MAX_BEATS} concrete, non-overlapping English factual beats for every sufficient subject. Source links are optional: include trustworthy canonical HTTPS content pages when available, but do not mark an otherwise retellable subject insufficient merely because no usable link can be returned.
+- Each beat has a stable ID (`b1`, `b2`, ...), one narrative role, factual text, a required flag, and a supporting-source URL list. The list may be empty; when it is not empty, use URLs from the record's source list.
 - Required beats must collectively cover setup, action, turningPoint, and outcome. Use consequence and detail for additional supported developments.
 - Facts must describe what people or institutions actually did, what changed, the problem or decision, what happened next, and the outcome. Do not describe what an article, feature, exhibition, life, legacy, or institution supposedly shows, reflects, represents, or symbolizes.
 - A currently running exhibition, festival listing, anniversary program, promotional institutional profile, or private collection is insufficient unless the researched material independently supplies a real historical sequence with concrete actors, decisions, changes, and outcomes.
-- If trustworthy pages cannot support that story arc, return `insufficient`, explain why briefly, and leave sources and storyBeats empty. Never stretch thin material, invent facts, or return generic significance claims to satisfy the schema.
-- For `sufficient`, return only sources actually used by at least one beat. Every supporting URL must match a returned source URL.
+- If research cannot support that story arc, return `insufficient`, explain why briefly, and leave storyBeats empty. Never stretch thin material, invent facts, or return generic significance claims to satisfy the schema. Missing source metadata alone is not a reason to reject a story.
+- For `sufficient`, include only useful sources you actually consulted. An empty source list is valid.
 
 Return only schema-matching data and no prose.{retry}
 """.strip()
@@ -1165,8 +1146,15 @@ def _remove_redundant_sources(
         locally_unique: list[dict[str, Any]] = []
         local_urls: set[str] = set()
         for source in sources:
-            if not isinstance(source, dict) or not isinstance(source.get("url"), str):
-                locally_unique.append(source)
+            if (
+                not isinstance(source, dict)
+                or any(
+                    not isinstance(source.get(field), str) or not source[field].strip()
+                    for field in ("publisher", "title", "url")
+                )
+                or not is_valid_https_url(source["url"])
+            ):
+                removed_sources += 1
                 continue
             source_url = normalized_url(source["url"])
             if source_url in unverified or source_url in local_urls:
@@ -1265,6 +1253,8 @@ def _history_adaptation_errors(
                 errors.append(f"{story_id}.{level_id}: missing coveredStoryBeatIds")
             else:
                 covered_set = set(covered)
+                if len(covered) != len(covered_set):
+                    errors.append(f"{story_id}.{level_id}: duplicate covered story beat IDs")
                 unknown_ids = covered_set - beat_ids
                 missing_ids = required_ids - covered_set
                 if unknown_ids:

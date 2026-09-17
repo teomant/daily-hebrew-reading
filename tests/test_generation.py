@@ -131,6 +131,7 @@ class GenerationTests(unittest.TestCase):
         self.assertIn("coveredStoryBeatIds", prompt)
         coverage = schema["properties"]["adaptations"]["items"]["properties"]["coveredStoryBeatIds"]
         self.assertEqual(coverage["properties"]["alef"]["maxItems"], 0)
+        self.assertNotIn("uniqueItems", coverage["properties"]["alef"])
 
     def test_recent_issue_context_uses_only_previous_three_days(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
@@ -243,6 +244,8 @@ class GenerationTests(unittest.TestCase):
             {"id", "type", "category", "historyFamily", "brief", "sources"},
         )
         self.assertNotIn("storyBeats", variants["history"]["required"])
+        self.assertEqual(variants["current"]["properties"]["sources"]["minItems"], 1)
+        self.assertNotIn("minItems", variants["history"]["properties"]["sources"])
         candidate = {
             "id": "new-library-hours",
             "type": "current",
@@ -291,13 +294,24 @@ class GenerationTests(unittest.TestCase):
 
         research_request = _history_research_request("2026-09-17", [history_seed])
         self.assertIn("Deeply research each selected HISTORY subject", research_request)
-        self.assertIn("at least 2 distinct canonical HTTPS content pages", research_request)
+        self.assertIn("Source links are optional", research_request)
+        self.assertIn("empty source list is valid", research_request)
         self.assertIn("8–12 concrete", research_request)
         self.assertIn("currently running exhibition", research_request)
         research_schema = _history_research_batch_schema([history_seed["id"]])
         research_items = research_schema["properties"]["stories"]
         self.assertEqual(research_items["minItems"], 1)
-        beat_schema = research_items["items"]["properties"]["storyBeats"]["items"]
+        sufficient_schema, insufficient_schema = research_items["items"]["anyOf"]
+        beat_schema = sufficient_schema["properties"]["storyBeats"]["items"]
+        self.assertEqual(
+            sufficient_schema["properties"]["storyBeats"]["minItems"],
+            8,
+        )
+        self.assertEqual(
+            insufficient_schema["properties"]["storyBeats"]["maxItems"],
+            0,
+        )
+        self.assertNotIn("minItems", beat_schema["properties"]["supportingSourceUrls"])
         self.assertEqual(
             set(beat_schema["required"]),
             {"id", "role", "text", "required", "supportingSourceUrls"},
@@ -327,27 +341,15 @@ class GenerationTests(unittest.TestCase):
         self.assertEqual(unresolved, [])
         self.assertEqual(errors, [])
 
-        unsupported = copy.deepcopy(research_record)
-        unsupported["storyBeats"][0]["supportingSourceUrls"] = ["https://unverified.example/fact"]
-        self.assertTrue(any(
-            "retained verified sources" in error
-            for error in _history_research_record_errors(unsupported)
-        ))
-
-        unused_source = copy.deepcopy(research_record)
-        for beat in unused_source["storyBeats"]:
-            beat["supportingSourceUrls"] = [source_urls[0]]
-        self.assertTrue(any(
-            "every retained source must support" in error
-            for error in _history_research_record_errors(unused_source)
-        ))
-
-        nonempty_insufficient = history_research_record(history_seed["id"], "insufficient")
-        nonempty_insufficient["sources"] = research_record["sources"]
-        self.assertTrue(any(
-            "insufficient result must not retain sources" in error
-            for error in _history_research_record_errors(nonempty_insufficient)
-        ))
+        source_free = copy.deepcopy(research_record)
+        source_free["sources"] = []
+        for beat in source_free["storyBeats"]:
+            beat["supportingSourceUrls"] = []
+        self.assertEqual(_history_research_record_errors(source_free), [])
+        valid, unresolved, errors = _validated_history_research([source_free], [history_seed["id"]])
+        self.assertEqual(set(valid), {history_seed["id"]})
+        self.assertEqual(unresolved, [])
+        self.assertEqual(errors, [])
 
         duplicate_results = [research_record, copy.deepcopy(research_record)]
         valid, unresolved, errors = _validated_history_research(duplicate_results, [history_seed["id"]])
@@ -829,18 +831,22 @@ class GenerationTests(unittest.TestCase):
         openai.assert_called_once_with(max_retries=2, timeout=300.0)
 
     def test_redundant_sources_are_removed_when_a_unique_source_remains(self) -> None:
+        def source(url: str) -> dict:
+            return {"publisher": "Example", "title": "Example article", "url": url}
+
         stories = [
             {
                 "sources": [
-                    {"url": "https://example.com/shared"},
-                    {"url": "https://example.com/shared/"},
+                    source("https://example.com/shared"),
+                    source("https://example.com/shared/"),
                 ],
                 "image": None,
             },
             {
                 "sources": [
-                    {"url": "https://example.com/shared?utm_source=test"},
-                    {"url": "https://example.com/unique"},
+                    source("https://example.com/shared?utm_source=test"),
+                    source("https://example.com/unique"),
+                    {"publisher": "", "title": "Broken", "url": "https://example.com/broken"},
                 ],
                 "image": {
                     "sourceUrl": "https://example.com/shared",
@@ -854,7 +860,7 @@ class GenerationTests(unittest.TestCase):
             None,
             ["https://example.com/shared"],
         )
-        self.assertEqual((removed_sources, removed_images), (3, 1))
+        self.assertEqual((removed_sources, removed_images), (4, 1))
         self.assertEqual(stories[0]["sources"], [])
         self.assertEqual([source["url"] for source in stories[1]["sources"]], ["https://example.com/unique"])
         self.assertIsNone(stories[1]["image"])
@@ -981,6 +987,13 @@ class GenerationTests(unittest.TestCase):
             history_research = {
                 "stories": [history_research_record(seed["id"]) for seed in sourced if seed["type"] == "history"]
             }
+            history_research["stories"][0]["sources"] = [{
+                "publisher": "Malformed Archive",
+                "title": "Malformed source that must be discarded",
+                "url": "https://research.example.com/malformed\n",
+            }]
+            for beat in history_research["stories"][0]["storyBeats"]:
+                beat["supportingSourceUrls"] = ["https://research.example.com/malformed\n"]
             duplicate_history = copy.deepcopy(sourced[-2])
             unique_review = lambda stories: {"verdicts": [{
                 "candidateId": story["id"],
@@ -1045,6 +1058,10 @@ class GenerationTests(unittest.TestCase):
             self.assertEqual(result_types.count("dialog"), 2)
             self.assertTrue(all("historyFamily" not in story for story in result["stories"]))
             self.assertTrue(all("storyBeats" in story for story in result["stories"] if story["type"] == "history"))
+            self.assertTrue(any(
+                story["type"] == "history" and story["sources"] == []
+                for story in result["stories"]
+            ))
             self.assertTrue(all(HISTORY_BEAT_CONTRACT_KEY not in story for story in result["stories"]))
             self.assertTrue(all("storyBeats" not in story for story in result["stories"] if story["type"] == "current"))
 
@@ -1502,6 +1519,14 @@ class GenerationTests(unittest.TestCase):
         errors = _history_adaptation_errors([seed], [adaptation], levels)
         self.assertTrue(any("missing required story beat IDs: b4" in error for error in errors), errors)
         self.assertTrue(any("HISTORY body has" in error for error in errors), errors)
+
+        duplicate_coverage = adaptation_payload(
+            seed["id"],
+            template["levels"],
+            ["b1", "b2", "b3", "b4", "b4"],
+        )
+        duplicate_errors = _history_adaptation_errors([seed], [duplicate_coverage], levels)
+        self.assertTrue(any("duplicate covered story beat IDs" in error for error in duplicate_errors))
 
         permissive_levels = [{"id": level_id, "minimumWords": 1} for level_id in template["levels"]]
         complete = adaptation_payload(

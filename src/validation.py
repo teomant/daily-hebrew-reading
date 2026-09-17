@@ -65,7 +65,7 @@ def slugs_are_near_duplicates(first: str, second: str) -> bool:
     return len(shared) >= 3 and overlap >= 0.75 and jaccard >= 0.45
 
 
-def _https_url(value: Any) -> bool:
+def is_valid_https_url(value: Any) -> bool:
     if not isinstance(value, str):
         return False
     if any(character.isspace() or unicode_category(character).startswith("C") for character in value):
@@ -260,7 +260,7 @@ def validate_issue(
                 if not isinstance(source.get(field), str) or not source[field].strip():
                     errors.append(f"{source_path}.{field}: expected a non-empty string")
             url = source.get("url")
-            if not _https_url(url):
+            if not is_valid_https_url(url):
                 errors.append(f"{source_path}.url: expected a valid HTTPS URL")
             else:
                 source_url = normalized_url(url)
@@ -291,16 +291,16 @@ def validate_issue(
             elif not isinstance(image, dict):
                 errors.append(f"{story_path}.image: expected an object or null")
             else:
-                if not _https_url(image.get("url")):
+                if not is_valid_https_url(image.get("url")):
                     errors.append(f"{story_path}.image.url: expected a valid HTTPS URL")
                 image_source_url = image.get("sourceUrl")
-                if not _https_url(image_source_url):
+                if not is_valid_https_url(image_source_url):
                     errors.append(f"{story_path}.image.sourceUrl: expected a valid HTTPS URL")
                 elif normalized_url(image_source_url) not in source_urls:
                     errors.append(f"{story_path}.image.sourceUrl: must match a story source")
                 if not isinstance(image.get("credit"), str) or not image["credit"].strip():
                     errors.append(f"{story_path}.image.credit: required")
-                if not _https_url(image.get("rightsUrl")):
+                if not is_valid_https_url(image.get("rightsUrl")):
                     errors.append(f"{story_path}.image.rightsUrl: expected a valid HTTPS URL")
                 if not isinstance(image.get("rightsLabel"), str) or not image["rightsLabel"].strip():
                     errors.append(f"{story_path}.image.rightsLabel: required")
