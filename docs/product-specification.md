@@ -134,7 +134,7 @@ Approximately 235–305 words, targeting about 270, corresponding approximately 
 
 ## 8. Do not pad articles
 
-Word counts are editorial targets rather than publication gates for CURRENT, EVERYDAY, DIALOG, and archived HISTORY. Before segmentation, adaptation should estimate the Hebrew body word count and make one supported revision toward the configured target when a version is below its suggested minimum. Do not lengthen an article through repetition, empty introductions, generic conclusions, unnecessary adjectives, invented details, or artificially complex phrasing. Newly researched HISTORY is the deliberate exception: its source pack must be rich enough for every level to reach configured `minimumWords`, and falling below that minimum blocks publication after the normal adaptation retry.
+Word counts are editorial targets rather than publication gates for every story type, including newly researched HISTORY. Before segmentation, adaptation should estimate the Hebrew body word count and make one supported revision toward the configured target when a version is below its suggested minimum. Do not lengthen an article through repetition, empty introductions, generic conclusions, unnecessary adjectives, invented details, or artificially complex phrasing. If the material cannot honestly support the configured minimum, keep the best coherent shorter version and continue generation.
 
 ## 9. Hebrew style
 
@@ -290,7 +290,7 @@ Return 24 distinct compact HISTORY screening candidates from a substantially lar
 
 ## 31. Facts and generation
 
-Language adaptation must not freely invent details for real stories. A factual brief must precede all CURRENT versions; a compact brief and ordered factual beats must precede new HISTORY versions. HISTORY adaptation retells those beats rather than describing the source or offering generic commentary about the subject. Every level of a newly researched HISTORY story must report coverage of all required beat IDs and meet the configured `minimumWords`; failure retries the adaptation and then blocks publication. This stricter gate does not apply retroactively to archived HISTORY or to CURRENT, EVERYDAY, and DIALOG word counts. Never hallucinate details, repeat facts, or add filler to meet the minimum; a research pack too thin to support the required article must be rejected before adaptation.
+Language adaptation must not freely invent details for real stories. A factual brief must precede all CURRENT versions; a compact brief and ordered factual beats must precede new HISTORY versions. HISTORY adaptation retells those beats rather than describing the source or offering generic commentary about the subject. Every level of a newly researched HISTORY story must report coverage of all required beat IDs; missing coverage retries the adaptation and then blocks publication. Word count remains non-blocking. Never hallucinate details, repeat facts, or add filler to meet a length target.
 
 ## 32. OpenAI API
 

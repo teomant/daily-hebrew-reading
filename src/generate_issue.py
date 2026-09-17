@@ -19,7 +19,6 @@ from .common import (
     load_site_config,
     normalized_url,
     read_json,
-    units_text,
 )
 from .validation import (
     briefs_are_near_duplicates,
@@ -1205,7 +1204,7 @@ def _adaptation_request(
     retry = f"\nCorrect these validation problems from the previous adaptation: {json.dumps(feedback, ensure_ascii=False)}" if feedback else ""
     return f"""
 This is the adaptation phase. The story metadata, briefs, and any HISTORY storyBeats below are frozen results of completed sourced discovery and generated-scenario planning.
-Create title, teaser, paragraphs, lexical segmentation, translations, and `coveredStoryBeatIds` for every listed story and level. Develop each body toward its configured targetWords and perform the prompt's one pre-segmentation length revision when needed. Do not change, extend, or infer beyond the supplied brief, scenario metadata, or HISTORY story-beat contract, and do not add facts or filler to reach a word target. A non-HISTORY result that remains below minimumWords is still usable; every newly researched HISTORY level must reach minimumWords and cover every required beat ID or it will be retried. Return each story ID exactly once and no other IDs. For non-HISTORY stories, return an empty covered-story-beat list for every level.
+Create title, teaser, paragraphs, lexical segmentation, translations, and `coveredStoryBeatIds` for every listed story and level. Develop each body toward its configured targetWords and perform the prompt's one pre-segmentation length revision when needed. Do not change, extend, or infer beyond the supplied brief, scenario metadata, or HISTORY story-beat contract, and do not add facts or filler to reach a word target. A result below minimumWords remains usable and must not be padded; every researched HISTORY level must still cover every required beat ID or it will be retried. Return each story ID exactly once and no other IDs. For non-HISTORY stories, return an empty covered-story-beat list for every level.
 
 Configured reading levels:
 {json.dumps(level_payload, ensure_ascii=False, indent=2)}
@@ -1229,7 +1228,7 @@ def _history_adaptation_errors(
         for adaptation in adaptations
         if isinstance(adaptation, dict)
     }
-    minimum_words = {level["id"]: int(level["minimumWords"]) for level in levels}
+    level_ids = [level["id"] for level in levels]
     for seed in seeds:
         contract = seed.get(HISTORY_BEAT_CONTRACT_KEY)
         if not isinstance(contract, list):
@@ -1246,8 +1245,7 @@ def _history_adaptation_errors(
             if isinstance(beat, dict) and beat.get("required") is True
         }
         coverage = adaptation.get("coveredStoryBeatIds")
-        story_levels = adaptation.get("levels")
-        for level_id, minimum in minimum_words.items():
+        for level_id in level_ids:
             covered = coverage.get(level_id) if isinstance(coverage, dict) else None
             if not isinstance(covered, list):
                 errors.append(f"{story_id}.{level_id}: missing coveredStoryBeatIds")
@@ -1264,18 +1262,6 @@ def _history_adaptation_errors(
                 if missing_ids:
                     errors.append(
                         f"{story_id}.{level_id}: missing required story beat IDs: {', '.join(sorted(missing_ids))}"
-                    )
-            level = story_levels.get(level_id) if isinstance(story_levels, dict) else None
-            paragraphs = level.get("paragraphs") if isinstance(level, dict) else None
-            if isinstance(paragraphs, list):
-                word_count = sum(
-                    len(units_text(paragraph).split())
-                    for paragraph in paragraphs
-                    if isinstance(paragraph, list)
-                )
-                if word_count < minimum:
-                    errors.append(
-                        f"{story_id}.{level_id}: HISTORY body has {word_count} words; minimum is {minimum}"
                     )
     return errors
 

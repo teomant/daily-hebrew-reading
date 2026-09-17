@@ -127,7 +127,7 @@ class GenerationTests(unittest.TestCase):
         self.assertIn("separate line", prompt)
         self.assertIn("Never place two speaker labels", prompt)
         self.assertIn("count the approximate whitespace-delimited Hebrew words", prompt)
-        self.assertIn("minimumWords is a publication gate", prompt)
+        self.assertIn("minimumWords is not a publication gate", prompt)
         self.assertIn("coveredStoryBeatIds", prompt)
         coverage = schema["properties"]["adaptations"]["items"]["properties"]["coveredStoryBeatIds"]
         self.assertEqual(coverage["properties"]["alef"]["maxItems"], 0)
@@ -1500,7 +1500,7 @@ class GenerationTests(unittest.TestCase):
             self.assertNotEqual(result["stories"][0]["id"], reserve_id)
             self.assertEqual(validate_repository(root), [])
 
-    def test_history_adaptation_requires_minimum_length_and_required_beat_coverage(self) -> None:
+    def test_history_adaptation_requires_beat_coverage_but_not_minimum_length(self) -> None:
         issue = read_json(ROOT / "content" / "2024-01-26.json")
         template = next(story for story in issue["stories"] if story["type"] == "history")
         research = history_research_record("researched-history")
@@ -1518,7 +1518,7 @@ class GenerationTests(unittest.TestCase):
 
         errors = _history_adaptation_errors([seed], [adaptation], levels)
         self.assertTrue(any("missing required story beat IDs: b4" in error for error in errors), errors)
-        self.assertTrue(any("HISTORY body has" in error for error in errors), errors)
+        self.assertFalse(any("HISTORY body has" in error for error in errors), errors)
 
         duplicate_coverage = adaptation_payload(
             seed["id"],
