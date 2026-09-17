@@ -1415,6 +1415,183 @@
         "כבר",
         "מבחוץ"
       ]
+    },
+    {
+      "date": "2026-09-17",
+      "storyId": "neighbor-parking-permit-and-towed-car-check",
+      "domain": "housing",
+      "scenario": "neighbor_parking_permit_and_towed_car_check",
+      "lexicalThemes": [
+        "parking",
+        "building management",
+        "mistake correction",
+        "phone calls",
+        "peace of mind"
+      ],
+      "targetVocabulary": [
+        "permit",
+        "warning notice",
+        "resident spot",
+        "guest spot",
+        "register",
+        "pickup request",
+        "cancel"
+      ]
+    },
+    {
+      "date": "2026-09-17",
+      "storyId": "office-printing-error-and-last-minute-handout",
+      "domain": "work",
+      "scenario": "office_printing_error_and_last_minute_handout",
+      "lexicalThemes": [
+        "office tasks",
+        "printing",
+        "file versions",
+        "time pressure",
+        "presentation prep"
+      ],
+      "targetVocabulary": [
+        "handout",
+        "margins",
+        "PDF",
+        "re-export",
+        "staple",
+        "copies",
+        "version"
+      ]
+    },
+    {
+      "date": "2026-09-17",
+      "storyId": "dialogue-grocery-self-checkout-price-mismatch",
+      "domain": "shopping",
+      "scenario": "grocery_self_checkout_price_mismatch",
+      "lexicalThemes": [
+        "shopping",
+        "pricing",
+        "self-checkout",
+        "receipts",
+        "quick decisions"
+      ],
+      "targetVocabulary": [
+        "scan",
+        "receipt",
+        "shelf label",
+        "discount",
+        "staff member",
+        "correct the price",
+        "switch"
+      ]
+    },
+    {
+      "date": "2026-09-17",
+      "storyId": "dialogue-roommates-evening-dishes-and-shared-plan",
+      "domain": "everyday",
+      "scenario": "roommates_evening_dishes_and_shared_chore_plan",
+      "lexicalThemes": [
+        "home routine",
+        "chores",
+        "shared apartment",
+        "agreement",
+        "cleanup"
+      ],
+      "targetVocabulary": [
+        "pan",
+        "sink",
+        "dry",
+        "take out the trash",
+        "split",
+        "counter",
+        "fridge"
+      ]
+    },
+    {
+      "date": "2026-09-17",
+      "storyId": "doctor-office-test-results-and-new-referral",
+      "domain": "health",
+      "scenario": "doctor_office_test_results_and_new_referral",
+      "lexicalThemes": [
+        "clinic communication",
+        "test results",
+        "referral",
+        "waiting",
+        "follow-up"
+      ],
+      "targetVocabulary": [
+        "results",
+        "referral",
+        "reviewed",
+        "lab",
+        "sign",
+        "email",
+        "follow-up"
+      ]
+    },
+    {
+      "date": "2026-09-17",
+      "storyId": "late-night-taxi-and-locked-building-entrance",
+      "domain": "transport",
+      "scenario": "late_night_taxi_and_locked_building_entrance",
+      "lexicalThemes": [
+        "late arrival",
+        "building access",
+        "keys and codes",
+        "neighbor help",
+        "security"
+      ],
+      "targetVocabulary": [
+        "entrance",
+        "side door",
+        "repair",
+        "main code",
+        "security",
+        "laptop",
+        "updated code"
+      ]
+    },
+    {
+      "date": "2026-09-17",
+      "storyId": "dialogue-cancelled-dinner-and-rebooking-after-overtime",
+      "domain": "everyday",
+      "scenario": "cancelled_dinner_and_rebooking_after_overtime",
+      "lexicalThemes": [
+        "plans",
+        "overtime",
+        "reservations",
+        "cancelling",
+        "timing"
+      ],
+      "targetVocabulary": [
+        "reservation",
+        "overtime",
+        "delay",
+        "fee",
+        "move the booking",
+        "simple",
+        "run late"
+      ]
+    },
+    {
+      "date": "2026-09-17",
+      "storyId": "train-ticket-issue-and-platform-change",
+      "domain": "transport",
+      "scenario": "train_ticket_qr_and_platform_change",
+      "lexicalThemes": [
+        "train travel",
+        "ticket problems",
+        "platform changes",
+        "station help",
+        "last-minute coordination"
+      ],
+      "targetVocabulary": [
+        "ticket",
+        "QR code",
+        "platform",
+        "gate",
+        "boarding",
+        "booking",
+        "help machine",
+        "offline"
+      ]
     }
   ]
 }
