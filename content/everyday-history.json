@@ -1511,6 +1511,90 @@
         "לפתוח",
         "להגיע"
       ]
+    },
+    {
+      "date": "2026-09-18",
+      "storyId": "office-cabinet-key-and-missing-invoice",
+      "domain": "work",
+      "scenario": "office_cabinet_key_and_missing_invoice",
+      "lexicalThemes": [
+        "office admin",
+        "keys and access",
+        "documents",
+        "time pressure",
+        "asking for help"
+      ],
+      "targetVocabulary": [
+        "invoice",
+        "cabinet",
+        "spare key",
+        "folder",
+        "reception",
+        "client call"
+      ]
+    },
+    {
+      "date": "2026-09-18",
+      "storyId": "train-delayed-and-platform-change-for-a-visit",
+      "domain": "travel",
+      "scenario": "train_delayed_and_platform_change_for_a_visit",
+      "lexicalThemes": [
+        "station announcements",
+        "delays",
+        "changing plans",
+        "timing",
+        "transport options"
+      ],
+      "targetVocabulary": [
+        "delay",
+        "platform",
+        "connection",
+        "already on my way",
+        "next train",
+        "worth it"
+      ]
+    },
+    {
+      "date": "2026-09-18",
+      "storyId": "neighbor-package-with-a-damaged-box",
+      "domain": "consumer",
+      "scenario": "neighbor_package_with_a_damaged_box",
+      "lexicalThemes": [
+        "delivery problems",
+        "returns",
+        "damage",
+        "neighbors",
+        "customer support"
+      ],
+      "targetVocabulary": [
+        "damaged",
+        "torn",
+        "label",
+        "refuse the delivery",
+        "take photos",
+        "customer support"
+      ]
+    },
+    {
+      "date": "2026-09-18",
+      "storyId": "cafeteria-no-cash-and-asking-to-transfer-money",
+      "domain": "food",
+      "scenario": "cafeteria_no_cash_and_asking_to_transfer_money",
+      "lexicalThemes": [
+        "payment problems",
+        "cafeteria",
+        "small debts",
+        "colleagues",
+        "quick solutions"
+      ],
+      "targetVocabulary": [
+        "cashier",
+        "transfer",
+        "exact amount",
+        "backup card",
+        "bill",
+        "line"
+      ]
     }
   ]
 }
