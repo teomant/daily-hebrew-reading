@@ -1595,6 +1595,98 @@
         "bill",
         "line"
       ]
+    },
+    {
+      "date": "2026-09-19",
+      "storyId": "office-desktop-monitor-replacement-before-client-demo",
+      "domain": "work",
+      "scenario": "office_monitor_flickers_before_demo_and_spare_swap",
+      "lexicalThemes": [
+        "office equipment",
+        "troubleshooting",
+        "deadlines",
+        "backup plans",
+        "presentation prep"
+      ],
+      "targetVocabulary": [
+        "monitor",
+        "cable",
+        "outlet",
+        "display mode",
+        "spare",
+        "repair",
+        "on time",
+        "setup"
+      ]
+    },
+    {
+      "date": "2026-09-19",
+      "storyId": "neighbor-water-heater-and-short-shower-schedule",
+      "domain": "housing",
+      "scenario": "neighbor_water_heater_short_shower_schedule",
+      "lexicalThemes": [
+        "building services",
+        "timing",
+        "shared facilities",
+        "polite requests",
+        "maintenance"
+      ],
+      "targetVocabulary": [
+        "water heater",
+        "hot water",
+        "setting",
+        "temporary",
+        "manager",
+        "wait",
+        "half an hour",
+        "routine"
+      ]
+    },
+    {
+      "date": "2026-09-19",
+      "storyId": "friend-whatsapp-location-pin-and-cafe-arrival",
+      "domain": "everyday",
+      "scenario": "whatsapp_location_pin_and_cafe_branch_mixup",
+      "lexicalThemes": [
+        "messaging",
+        "directions",
+        "meeting places",
+        "clarification",
+        "small delays"
+      ],
+      "targetVocabulary": [
+        "WhatsApp",
+        "location pin",
+        "corner",
+        "branch",
+        "landmark",
+        "entrance",
+        "wet umbrella",
+        "table"
+      ]
+    },
+    {
+      "date": "2026-09-19",
+      "storyId": "parent-pharmacy-substitute-and-child-cough-syrup",
+      "domain": "consumer",
+      "scenario": "pharmacy_substitute_cough_syrup_and_dose_check",
+      "lexicalThemes": [
+        "pharmacy",
+        "medicine",
+        "replacement items",
+        "prescriptions",
+        "family errands"
+      ],
+      "targetVocabulary": [
+        "out of stock",
+        "substitute",
+        "dosage",
+        "flavor",
+        "prescription",
+        "measuring spoon",
+        "label",
+        "improve"
+      ]
     }
   ]
 }
