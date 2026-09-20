@@ -1687,6 +1687,102 @@
         "label",
         "improve"
       ]
+    },
+    {
+      "date": "2026-09-20",
+      "storyId": "coffee-shop-laptop-seat-and-charging-cable",
+      "domain": "food_service",
+      "scenario": "cafe_work_session_outlet_and_table_change",
+      "lexicalThemes": [
+        "ordering",
+        "seating",
+        "charging devices",
+        "time limits",
+        "small requests",
+        "work after hours"
+      ],
+      "targetVocabulary": [
+        "outlet",
+        "charger",
+        "table for two",
+        "move tables",
+        "need a socket",
+        "already dead",
+        "forty minutes",
+        "no problem"
+      ]
+    },
+    {
+      "date": "2026-09-20",
+      "storyId": "doctor-office-referral-and-missing-form",
+      "domain": "health",
+      "scenario": "specialist_visit_missing_referral_and_email_fix",
+      "lexicalThemes": [
+        "appointments",
+        "forms",
+        "phone calls",
+        "waiting",
+        "documents",
+        "clinic administration"
+      ],
+      "targetVocabulary": [
+        "referral",
+        "form",
+        "uploaded",
+        "hold the appointment",
+        "photo copy",
+        "correct email",
+        "file",
+        "next-step instructions"
+      ]
+    },
+    {
+      "date": "2026-09-20",
+      "storyId": "siblings-coordinate-school-pickup-and-evening-errands",
+      "domain": "family logistics",
+      "scenario": "family_evening_pickup_and_pharmacy_coordination",
+      "lexicalThemes": [
+        "schedules",
+        "pickup times",
+        "messages",
+        "traffic",
+        "keys",
+        "errands"
+      ],
+      "targetVocabulary": [
+        "already on the way",
+        "can it wait",
+        "pick up",
+        "prescription code",
+        "closing time",
+        "snack",
+        "meet at home",
+        "checklist"
+      ]
+    },
+    {
+      "date": "2026-09-20",
+      "storyId": "neighbor-noise-and-late-night-tv-volume",
+      "domain": "everyday",
+      "scenario": "late_evening_tv_noise_and_volume_adjustment",
+      "lexicalThemes": [
+        "neighbors",
+        "noise",
+        "apologies",
+        "boundaries",
+        "settings",
+        "late evening"
+      ],
+      "targetVocabulary": [
+        "too loud",
+        "open window",
+        "acceptable",
+        "lower the volume",
+        "headphones",
+        "settings",
+        "for the rest of the week",
+        "text first"
+      ]
     }
   ]
 }
