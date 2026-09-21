@@ -1783,6 +1783,91 @@
         "for the rest of the week",
         "text first"
       ]
+    },
+    {
+      "date": "2026-09-21",
+      "storyId": "office-keycard-stuck-and-temporary-badge",
+      "domain": "work",
+      "scenario": "office_keycard_stuck_and_temporary_badge",
+      "lexicalThemes": [
+        "office access",
+        "reception",
+        "IT problems",
+        "late arrival",
+        "temporary solution"
+      ],
+      "targetVocabulary": [
+        "keycard",
+        "badge",
+        "reception",
+        "reactivate",
+        "temporary pass",
+        "ticket"
+      ]
+    },
+    {
+      "date": "2026-09-21",
+      "storyId": "lost-parking-ticket-and-payment-machine",
+      "domain": "transport",
+      "scenario": "lost_parking_ticket_and_payment_machine",
+      "lexicalThemes": [
+        "parking garage",
+        "payment",
+        "lost item",
+        "attendant",
+        "receipt",
+        "exit barrier"
+      ],
+      "targetVocabulary": [
+        "parking ticket",
+        "machine",
+        "attendant",
+        "plate number",
+        "fee",
+        "receipt"
+      ]
+    },
+    {
+      "date": "2026-09-21",
+      "storyId": "apartment-package-left-with-a-neighbor",
+      "domain": "consumer",
+      "scenario": "apartment_package_left_with_a_neighbor",
+      "lexicalThemes": [
+        "delivery",
+        "neighbors",
+        "building entrance",
+        "tracking",
+        "customer support"
+      ],
+      "targetVocabulary": [
+        "parcel",
+        "intercom",
+        "tracking number",
+        "reroute",
+        "delivery notice",
+        "stairwell"
+      ]
+    },
+    {
+      "date": "2026-09-21",
+      "storyId": "friends-decide-on-a-last-minute-dinner-change",
+      "domain": "food",
+      "scenario": "friends_decide_on_a_last_minute_dinner_change",
+      "lexicalThemes": [
+        "dinner plans",
+        "reservation",
+        "lateness",
+        "weather",
+        "restaurant choice"
+      ],
+      "targetVocabulary": [
+        "reservation",
+        "full table",
+        "cancel",
+        "kitchen closes",
+        "nearby",
+        "waiting"
+      ]
     }
   ]
 }
