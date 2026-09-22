@@ -1868,6 +1868,106 @@
         "nearby",
         "waiting"
       ]
+    },
+    {
+      "date": "2026-09-22",
+      "storyId": "morning-coffee-spill-and-clean-shirt-plan",
+      "domain": "work",
+      "scenario": "morning_coffee_spill_and_clean_shirt_plan",
+      "lexicalThemes": [
+        "office routine",
+        "clothing",
+        "small accident",
+        "quick improvisation",
+        "time pressure"
+      ],
+      "targetVocabulary": [
+        "spilled",
+        "stain",
+        "tissues",
+        "spare",
+        "borrow",
+        "presentable",
+        "jacket",
+        "lint roller",
+        "dry cleaner",
+        "still not ready"
+      ]
+    },
+    {
+      "date": "2026-09-22",
+      "storyId": "apartment-window-lock-and-handyman-visit",
+      "domain": "housing",
+      "scenario": "apartment_window_lock_and_handyman_visit",
+      "lexicalThemes": [
+        "apartment repairs",
+        "home safety",
+        "maintenance",
+        "weather",
+        "coordination"
+      ],
+      "targetVocabulary": [
+        "loose",
+        "lock",
+        "close properly",
+        "windy",
+        "handyman",
+        "frame",
+        "missing screw",
+        "toolbox",
+        "draft",
+        "secure"
+      ]
+    },
+    {
+      "date": "2026-09-22",
+      "storyId": "coworkers-confirm-train-time-and-office-delivery",
+      "domain": "work",
+      "scenario": "coworkers_confirm_train_time_and_office_delivery",
+      "lexicalThemes": [
+        "office coordination",
+        "courier delivery",
+        "time pressure",
+        "train schedule",
+        "task splitting"
+      ],
+      "targetVocabulary": [
+        "courier",
+        "reception",
+        "wrong cabinet",
+        "meeting notes",
+        "still enough time",
+        "print",
+        "on time",
+        "split the tasks",
+        "leave early",
+        "arrived"
+      ]
+    },
+    {
+      "date": "2026-09-22",
+      "storyId": "friends-change-plan-after-pharmacy-delay",
+      "domain": "consumer",
+      "scenario": "friends_change_plan_after_pharmacy_delay",
+      "lexicalThemes": [
+        "errands",
+        "pharmacy wait",
+        "changing plans",
+        "queue",
+        "dinner coordination"
+      ],
+      "targetVocabulary": [
+        "prescription",
+        "not ready yet",
+        "queue",
+        "probably",
+        "wait",
+        "hungry",
+        "across the street",
+        "message",
+        "change the order",
+        "come back later"
+      ]
     }
   ]
 }
