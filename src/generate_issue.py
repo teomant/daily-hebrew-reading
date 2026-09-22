@@ -53,6 +53,7 @@ HISTORY_RESEARCH_MIN_BEATS = 8
 HISTORY_RESEARCH_MAX_BEATS = 12
 GENERATED_PLANNING_ATTEMPTS = 3
 ADAPTATION_ATTEMPTS = 2
+# Article validation failures are isolated by keeping every adaptation request to one story.
 ADAPTATION_BATCH_SIZE = 1
 CURRENT_TARGET = 4
 HISTORY_TARGET = 7
@@ -1586,7 +1587,7 @@ def _transactional_write(payloads: dict[Path, dict[str, Any]]) -> None:
             temporary.unlink(missing_ok=True)
 
 
-def generate(root: Path, target_date: str, additional_stories: int) -> dict[str, Any]:
+def generate(root: Path, target_date: str, additional_stories: int) -> dict[str, Any] | None:
     target = date.fromisoformat(target_date)
     site = load_site_config(root)
     configured_levels = load_level_config(root)
@@ -2056,6 +2057,8 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
         _log(f"Planning completed with {len(seeds)} frozen story briefs")
 
     new_stories: list[dict[str, Any]] = []
+    if ADAPTATION_BATCH_SIZE != 1:
+        raise RuntimeError("Adaptation validation isolation requires one story per batch")
     adaptation_batches = [
         seeds[index:index + ADAPTATION_BATCH_SIZE]
         for index in range(0, len(seeds), ADAPTATION_BATCH_SIZE)
@@ -2115,12 +2118,21 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
                 break
             adaptation_feedback = candidate_errors[:20]
             _log_validation_errors(phase, candidate_errors)
-            if attempt == ADAPTATION_ATTEMPTS - 1:
-                raise RuntimeError("Generated content failed validation:\n- " + _error_report(candidate_errors))
 
         if completed_batch is None:
-            raise RuntimeError(f"Adaptation batch {batch_index} produced no usable stories")
+            _log(
+                f"Adaptation batch {batch_index}/{len(adaptation_batches)} failed article validation after "
+                f"{ADAPTATION_ATTEMPTS} attempts; omitting story {', '.join(story_ids)}"
+            )
+            continue
         new_stories.extend(completed_batch)
+
+    if not new_stories:
+        if existing is not None:
+            _log("No appended articles passed adaptation validation; leaving the existing issue unchanged")
+            return existing
+        _log("No articles passed adaptation validation; no issue file was created")
+        return None
 
     combined = list(existing["stories"]) + new_stories if existing else new_stories
     issue = {
@@ -2166,6 +2178,9 @@ def main() -> int:
     if not os.environ.get("OPENAI_MODEL"):
         parser.error("OPENAI_MODEL is required")
     issue = generate(args.root.resolve(), target_date, additional)
+    if issue is None:
+        print(f"No valid articles remained for {target_date}; no issue was created.")
+        return 0
     print(f"Prepared {issue['date']} with {len(issue['stories'])} stories using {os.environ['OPENAI_MODEL']}.")
     return 0
 

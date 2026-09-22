@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import copy
+from contextlib import redirect_stdout
+from io import StringIO
 import os
 import shutil
 import sys
@@ -48,6 +50,7 @@ from src.generate_issue import (
     _updated_history,
     _validated_history_research,
     generate,
+    main,
 )
 from src.validation import validate_repository
 
@@ -65,6 +68,19 @@ def adaptation_payload(
             for level_id in levels
         },
     }
+
+
+def without_translation_coverage(levels: dict, locale: str = "ru") -> dict:
+    result = copy.deepcopy(levels)
+    for level in result.values():
+        groups = [level.get("title"), level.get("teaser"), *level.get("paragraphs", [])]
+        for units in groups:
+            if not isinstance(units, list):
+                continue
+            for unit in units:
+                if isinstance(unit, dict) and isinstance(unit.get("translations"), dict):
+                    unit["translations"][locale] = ""
+    return result
 
 
 def history_research_record(story_id: str, status: str = "sufficient") -> dict:
@@ -1086,6 +1102,18 @@ class GenerationTests(unittest.TestCase):
             sourced = [seed for seed, _ in pairs[:len(sourced_specs)]]
             generated = [seed for seed, _ in pairs[len(sourced_specs):]]
             adaptations = [adaptation for _, adaptation in pairs]
+            adaptations_by_id = {adaptation["id"]: adaptation for adaptation in adaptations}
+            selected_seed_order = [
+                *sourced[:4],
+                sourced[6],
+                sourced[5],
+                sourced[7],
+                sourced[4],
+                sourced[8],
+                sourced[9],
+                sourced[10],
+                *generated,
+            ]
             history_research = {
                 "stories": [history_research_record(seed["id"]) for seed in sourced if seed["type"] == "history"]
             }
@@ -1110,11 +1138,13 @@ class GenerationTests(unittest.TestCase):
                 unique_review([sourced[-1]]),
                 history_research,
                 {"stories": generated},
-                {"adaptations": adaptations},
+                *[
+                    {"adaptations": [adaptations_by_id[seed["id"]]]}
+                    for seed in selected_seed_order
+                ],
             ])
             with (
                 patch.dict(os.environ, {"OPENAI_MODEL": "test-model"}),
-                patch("src.generate_issue.ADAPTATION_BATCH_SIZE", 15),
                 patch("src.generate_issue.SOURCED_CANDIDATE_COUNT", 12),
                 patch("src.generate_issue.CURRENT_CANDIDATE_TARGET", 4),
                 patch("src.generate_issue.HISTORY_CANDIDATE_TARGET", 8),
@@ -1128,7 +1158,7 @@ class GenerationTests(unittest.TestCase):
             ):
                 result = generate(root, "2099-01-01", 3)
 
-            self.assertEqual(call.call_count, 7)
+            self.assertEqual(call.call_count, 21)
             self.assertEqual(call.call_args_list[0].kwargs["phase"], "Sourced discovery attempt 1/3")
             self.assertTrue(call.call_args_list[0].kwargs["use_web_search"])
             self.assertIn("# Sourced discovery instructions", call.call_args_list[0].args[1])
@@ -1149,9 +1179,10 @@ class GenerationTests(unittest.TestCase):
             self.assertFalse(call.call_args_list[5].kwargs["use_web_search"])
             self.assertNotIn("# Sourced discovery instructions", call.call_args_list[5].args[1])
             self.assertIn("# Everyday-story instructions", call.call_args_list[5].args[1])
-            self.assertEqual(call.call_args_list[6].kwargs["phase"], "Adaptation batch 1/1, attempt 1/2")
+            self.assertEqual(call.call_args_list[6].kwargs["phase"], "Adaptation batch 1/15, attempt 1/2")
             self.assertIn("# Adaptation and annotation instructions", call.call_args_list[6].args[1])
-            self.assertIn("_storyBeatContract", call.call_args_list[6].args[2])
+            self.assertEqual(call.call_args_list[10].kwargs["phase"], "Adaptation batch 5/15, attempt 1/2")
+            self.assertIn("_storyBeatContract", call.call_args_list[10].args[2])
             self.assertEqual(len(result["stories"]), 15)
             result_types = [story["type"] for story in result["stories"]]
             self.assertEqual(result_types.count("current"), 4)
@@ -1347,7 +1378,7 @@ class GenerationTests(unittest.TestCase):
                 {"stories": replacements},
                 unique_review(replacements),
                 {"stories": [history_research_record(story_id) for story_id in selected_ids]},
-                {"adaptations": adaptations},
+                *[{"adaptations": [adaptation]} for adaptation in adaptations],
             ])
             with (
                 patch.dict(os.environ, {"OPENAI_MODEL": "test-model"}),
@@ -1357,18 +1388,18 @@ class GenerationTests(unittest.TestCase):
                 patch("src.generate_issue.SOURCED_CANDIDATE_COUNT", 2),
                 patch("src.generate_issue.HISTORY_CANDIDATE_TARGET", 2),
                 patch("src.generate_issue.HISTORY_CANDIDATE_MINIMUMS", {"person": 1, "event": 1}),
-                patch("src.generate_issue.ADAPTATION_BATCH_SIZE", 2),
                 patch("src.generate_issue._call_openai", call),
             ):
                 result = generate(root, "2099-01-01", 3)
 
-            self.assertEqual(call.call_count, 6)
+            self.assertEqual(call.call_count, 7)
             self.assertEqual(call.call_args_list[1].kwargs["phase"], "Sourced discovery attempt 1/3 duplicate review")
             self.assertEqual(call.call_args_list[2].kwargs["phase"], "Sourced discovery attempt 2/3")
             self.assertIn("HISTORY candidate pool needs at least 1 event stories", call.call_args_list[2].args[2])
             self.assertIn("evening-school-founder-2099-01-01", call.call_args_list[2].args[2])
             self.assertEqual(call.call_args_list[4].kwargs["phase"], "HISTORY research round 1")
-            self.assertEqual(call.call_args_list[5].kwargs["phase"], "Adaptation batch 1/1, attempt 1/2")
+            self.assertEqual(call.call_args_list[5].kwargs["phase"], "Adaptation batch 1/2, attempt 1/2")
+            self.assertEqual(call.call_args_list[6].kwargs["phase"], "Adaptation batch 2/2, attempt 1/2")
             self.assertEqual([story["id"] for story in result["stories"]], selected_ids)
             self.assertTrue(all(story["type"] == "history" for story in result["stories"]))
             self.assertEqual(validate_repository(root), [])
@@ -1760,6 +1791,200 @@ class GenerationTests(unittest.TestCase):
             self.assertIn("authoritative factual backbone to retell", adaptation_instructions)
             self.assertIn("must preserve the narrative backbone", adaptation_instructions)
             self.assertEqual(result["stories"][-1]["id"], "changed-train-platform")
+
+    def test_invalid_article_is_omitted_and_later_articles_continue(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            for directory in ("config", "i18n", "prompts", "content"):
+                shutil.copytree(ROOT / directory, root / directory)
+            original = read_json(root / "content" / "2024-01-26.json")
+            base = original["stories"][1]
+
+            invalid_story = copy.deepcopy(base)
+            invalid_story["id"] = invalid_story["slug"] = "locksmith-after-lost-apartment-key"
+            invalid_story["brief"] = (
+                "A tenant loses an apartment key, calls a locksmith, and verifies the replacement before paying."
+            )
+            invalid_story["everydayMeta"].update({
+                "domain": "home_repair",
+                "scenario": "locksmith_after_lost_apartment_key",
+            })
+            valid_story = copy.deepcopy(base)
+            valid_story["id"] = valid_story["slug"] = "garden-center-damaged-plant-exchange"
+            valid_story["brief"] = (
+                "A customer returns a damaged plant to a garden center and agrees on a healthier replacement."
+            )
+            valid_story["everydayMeta"].update({
+                "domain": "shopping",
+                "scenario": "garden_center_damaged_plant_exchange",
+            })
+            seeds = [
+                {key: copy.deepcopy(value) for key, value in story.items() if key != "levels"}
+                for story in (invalid_story, valid_story)
+            ]
+            invalid_adaptation = adaptation_payload(
+                invalid_story["id"],
+                without_translation_coverage(invalid_story["levels"]),
+            )
+            valid_adaptation = adaptation_payload(valid_story["id"], valid_story["levels"])
+            call = Mock(side_effect=[
+                {"stories": seeds},
+                {"adaptations": [copy.deepcopy(invalid_adaptation)]},
+                {"adaptations": [copy.deepcopy(invalid_adaptation)]},
+                {"adaptations": [valid_adaptation]},
+            ])
+
+            output = StringIO()
+            with patch.dict(os.environ, {"OPENAI_MODEL": "test-model"}), patch(
+                "src.generate_issue._call_openai",
+                call,
+            ), redirect_stdout(output):
+                result = generate(root, "2024-01-26", 2)
+
+            self.assertIsNotNone(result)
+            result_ids = [story["id"] for story in result["stories"]]
+            self.assertNotIn(invalid_story["id"], result_ids)
+            self.assertIn(valid_story["id"], result_ids)
+            self.assertIn("omitting story locksmith-after-lost-apartment-key", output.getvalue())
+            history = read_json(root / "content" / "everyday-history.json")["items"]
+            self.assertFalse(any(item["storyId"] == invalid_story["id"] for item in history))
+            self.assertTrue(any(item["storyId"] == valid_story["id"] for item in history))
+            self.assertEqual(validate_repository(root), [])
+
+    def test_all_invalid_append_leaves_existing_content_unchanged(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            for directory in ("config", "i18n", "prompts", "content"):
+                shutil.copytree(ROOT / directory, root / directory)
+            issue_path = root / "content" / "2024-01-26.json"
+            history_path = root / "content" / "everyday-history.json"
+            index_path = root / "content" / "index.json"
+            original = read_json(issue_path)
+            new_story = copy.deepcopy(original["stories"][1])
+            new_story["id"] = new_story["slug"] = "invalid-tailor-alteration"
+            new_story["brief"] = "A customer requests a clothing alteration and agrees on a pickup time with the tailor."
+            new_story["everydayMeta"].update({
+                "domain": "shopping",
+                "scenario": "tailor_alteration_and_pickup_time",
+            })
+            seed = {key: copy.deepcopy(value) for key, value in new_story.items() if key != "levels"}
+            invalid_adaptation = adaptation_payload(
+                new_story["id"],
+                without_translation_coverage(new_story["levels"]),
+            )
+            before = {
+                path: path.read_bytes()
+                for path in (issue_path, history_path, index_path)
+            }
+            call = Mock(side_effect=[
+                {"stories": [seed]},
+                RuntimeError("OpenAI generation failed (APIConnectionError)"),
+                {"adaptations": [invalid_adaptation]},
+            ])
+
+            with patch.dict(os.environ, {"OPENAI_MODEL": "test-model"}), patch(
+                "src.generate_issue._call_openai",
+                call,
+            ):
+                result = generate(root, "2024-01-26", 1)
+
+            self.assertEqual(result, original)
+            self.assertEqual(call.call_count, 3)
+            for path, contents in before.items():
+                self.assertEqual(path.read_bytes(), contents)
+
+    def test_final_adaptation_request_failure_remains_fatal(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            for directory in ("config", "i18n", "prompts", "content"):
+                shutil.copytree(ROOT / directory, root / directory)
+            original = read_json(root / "content" / "2024-01-26.json")
+            new_story = copy.deepcopy(original["stories"][1])
+            new_story["id"] = new_story["slug"] = "failed-second-request"
+            new_story["brief"] = "A customer arranges a repair visit after an appliance stops working at home."
+            new_story["everydayMeta"].update({
+                "domain": "home_repair",
+                "scenario": "appliance_repair_visit_arrangement",
+            })
+            seed = {key: copy.deepcopy(value) for key, value in new_story.items() if key != "levels"}
+            invalid_adaptation = adaptation_payload(
+                new_story["id"],
+                without_translation_coverage(new_story["levels"]),
+            )
+            call = Mock(side_effect=[
+                {"stories": [seed]},
+                {"adaptations": [invalid_adaptation]},
+                RuntimeError("OpenAI generation failed (APIConnectionError)"),
+            ])
+
+            with patch.dict(os.environ, {"OPENAI_MODEL": "test-model"}), patch(
+                "src.generate_issue._call_openai",
+                call,
+            ):
+                with self.assertRaisesRegex(RuntimeError, "APIConnectionError"):
+                    generate(root, "2024-01-26", 1)
+
+    def test_fresh_issue_with_no_valid_articles_writes_nothing(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            for directory in ("config", "i18n", "prompts", "content"):
+                shutil.copytree(ROOT / directory, root / directory)
+            site = read_json(root / "config" / "site.json")
+            site.update({
+                "defaultIssueStoryCount": 1,
+                "minimumIssueStoryCount": 1,
+                "maximumIssueStoryCount": 1,
+            })
+            base = read_json(root / "content" / "2024-01-26.json")["stories"][1]
+            new_story = copy.deepcopy(base)
+            new_story["id"] = new_story["slug"] = "invalid-new-issue-story"
+            new_story["brief"] = "A resident reports a broken hallway light and agrees when the technician should visit."
+            new_story["everydayMeta"].update({
+                "domain": "housing",
+                "scenario": "broken_hallway_light_repair_visit",
+            })
+            seed = {key: copy.deepcopy(value) for key, value in new_story.items() if key != "levels"}
+            invalid_adaptation = adaptation_payload(
+                new_story["id"],
+                without_translation_coverage(new_story["levels"]),
+            )
+            call = Mock(side_effect=[
+                {"stories": [seed]},
+                {"adaptations": [copy.deepcopy(invalid_adaptation)]},
+                {"adaptations": [copy.deepcopy(invalid_adaptation)]},
+            ])
+            issue_path = root / "content" / "2099-01-01.json"
+            history_before = (root / "content" / "everyday-history.json").read_bytes()
+            index_before = (root / "content" / "index.json").read_bytes()
+
+            with patch.dict(os.environ, {"OPENAI_MODEL": "test-model"}), patch(
+                "src.generate_issue.load_site_config",
+                return_value=site,
+            ), patch("src.generate_issue.CURRENT_TARGET", 0), patch(
+                "src.generate_issue.HISTORY_TARGET",
+                0,
+            ), patch("src.generate_issue._call_openai", call):
+                result = generate(root, "2099-01-01", 3)
+
+            self.assertIsNone(result)
+            self.assertFalse(issue_path.exists())
+            self.assertEqual((root / "content" / "everyday-history.json").read_bytes(), history_before)
+            self.assertEqual((root / "content" / "index.json").read_bytes(), index_before)
+
+    def test_main_reports_success_when_no_valid_articles_remain(self) -> None:
+        output = StringIO()
+        with patch.dict(os.environ, {"OPENAI_API_KEY": "test-key", "OPENAI_MODEL": "test-model"}), patch(
+            "src.generate_issue.generate",
+            return_value=None,
+        ), patch.object(
+            sys,
+            "argv",
+            ["generate_issue", "--date", "2099-01-01", "--root", str(ROOT)],
+        ), redirect_stdout(output):
+            exit_code = main()
+
+        self.assertEqual(exit_code, 0)
+        self.assertIn("no issue was created", output.getvalue())
 
     def test_adaptation_accepts_empty_translation_above_coverage_threshold(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
