@@ -1968,6 +1968,106 @@
         "change the order",
         "come back later"
       ]
+    },
+    {
+      "date": "2026-09-23",
+      "storyId": "office-lunch-courier-cancelled",
+      "domain": "work",
+      "scenario": "office_lunch_delivery_blocked_change_to_pickup",
+      "lexicalThemes": [
+        "office logistics",
+        "delivery problems",
+        "time pressure",
+        "order changes",
+        "customer communication"
+      ],
+      "targetVocabulary": [
+        "already",
+        "still",
+        "worth it",
+        "change the order",
+        "pickup",
+        "delivery",
+        "late",
+        "missing",
+        "on time",
+        "no problem"
+      ]
+    },
+    {
+      "date": "2026-09-23",
+      "storyId": "train-station-platform-mixup",
+      "domain": "transport",
+      "scenario": "train_station_platform_change_last_minute",
+      "lexicalThemes": [
+        "train travel",
+        "station announcements",
+        "last-minute changes",
+        "asking for directions",
+        "time pressure"
+      ],
+      "targetVocabulary": [
+        "platform",
+        "already",
+        "a few minutes",
+        "delay",
+        "reserved",
+        "wrong",
+        "still",
+        "double-check",
+        "on time",
+        "take the elevator"
+      ]
+    },
+    {
+      "date": "2026-09-23",
+      "storyId": "apartment-fuse-and-the-freezer",
+      "domain": "housing",
+      "scenario": "apartment_power_outage_breaker_and_freezer_check",
+      "lexicalThemes": [
+        "apartment problems",
+        "power outage",
+        "household repairs",
+        "safety",
+        "food storage"
+      ],
+      "targetVocabulary": [
+        "breaker",
+        "switch",
+        "safe",
+        "freezer",
+        "thawing",
+        "power",
+        "puddle",
+        "reset",
+        "landlord",
+        "trip again"
+      ]
+    },
+    {
+      "date": "2026-09-23",
+      "storyId": "shared-desk-and-the-missing-charger",
+      "domain": "work",
+      "scenario": "shared_desk_missing_charger_and_labeling_cables",
+      "lexicalThemes": [
+        "office sharing",
+        "chargers and cables",
+        "small misunderstandings",
+        "checking places",
+        "practical coordination"
+      ],
+      "targetVocabulary": [
+        "charger",
+        "borrowed",
+        "drawer",
+        "already",
+        "plugged in",
+        "fit",
+        "label",
+        "mix-up",
+        "on time",
+        "shared"
+      ]
     }
   ]
 }
