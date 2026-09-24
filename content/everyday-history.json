@@ -2068,6 +2068,106 @@
         "on time",
         "shared"
       ]
+    },
+    {
+      "date": "2026-09-24",
+      "storyId": "office-visitors-arrive-before-the-room-is-ready",
+      "domain": "work",
+      "scenario": "office_visitors_arrive_before_the_room_is_ready",
+      "lexicalThemes": [
+        "office logistics",
+        "meeting preparation",
+        "polite clarification",
+        "time pressure",
+        "backup plan"
+      ],
+      "targetVocabulary": [
+        "already",
+        "still",
+        "in a minute",
+        "to confirm",
+        "reception",
+        "meeting room",
+        "handouts",
+        "delay",
+        "backup",
+        "send a message"
+      ]
+    },
+    {
+      "date": "2026-09-24",
+      "storyId": "neighbor-keys-and-the-locked-gate",
+      "domain": "everyday",
+      "scenario": "neighbor_keys_and_the_locked_gate",
+      "lexicalThemes": [
+        "building access",
+        "small neighbor help",
+        "repair problem",
+        "waiting",
+        "practical coordination"
+      ],
+      "targetVocabulary": [
+        "locked",
+        "stuck",
+        "intercom",
+        "building manager",
+        "control panel",
+        "carry up",
+        "shade",
+        "for the evening",
+        "repair",
+        "acts up"
+      ]
+    },
+    {
+      "date": "2026-09-24",
+      "storyId": "dinner-reservation-and-the-late-table",
+      "domain": "food",
+      "scenario": "dinner_reservation_and_the_late_table",
+      "lexicalThemes": [
+        "restaurant booking",
+        "lateness",
+        "keeping a reservation",
+        "phone coordination",
+        "changing plans"
+      ],
+      "targetVocabulary": [
+        "reservation",
+        "still",
+        "held",
+        "arrive late",
+        "full menu",
+        "smaller table",
+        "next door",
+        "switch plans",
+        "keep the booking",
+        "drinks first"
+      ]
+    },
+    {
+      "date": "2026-09-24",
+      "storyId": "package-code-and-the-wrong-parcel-locker",
+      "domain": "consumer",
+      "scenario": "package_code_and_the_wrong_parcel_locker",
+      "lexicalThemes": [
+        "delivery pickup",
+        "codes",
+        "customer support",
+        "mistake correction",
+        "time limit"
+      ],
+      "targetVocabulary": [
+        "code",
+        "parcel locker",
+        "label",
+        "scan",
+        "customer support",
+        "nearby",
+        "compartment",
+        "retype",
+        "carefully",
+        "second trip"
+      ]
     }
   ]
 }
