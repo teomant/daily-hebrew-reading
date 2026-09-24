@@ -4,6 +4,7 @@ import argparse
 import copy
 import json
 import os
+import re
 import shutil
 import tempfile
 from datetime import UTC, date, datetime, timedelta
@@ -19,6 +20,7 @@ from .common import (
     load_site_config,
     normalized_url,
     read_json,
+    units_text,
 )
 from .validation import (
     briefs_are_near_duplicates,
@@ -59,11 +61,29 @@ CURRENT_TARGET = 4
 HISTORY_TARGET = 7
 EVERYDAY_TARGET = 2
 DIALOG_TARGET = 2
+GENERATED_SCENARIO_DOMAINS = [
+    "home_family",
+    "social_leisure",
+    "workplace",
+    "services_appointments",
+    "shopping_payments",
+    "transport_navigation",
+    "food_cooking",
+    "health_wellbeing",
+    "neighbors_community",
+    "hobbies_culture",
+    "digital_admin",
+]
 HISTORY_FAMILIES = ["person", "israeliIndustry", "culture", "event", "place", "archaeology"]
 HISTORY_REQUIRED_BEAT_ROLES = {"setup", "action", "turningPoint", "outcome"}
 HISTORY_BEAT_ROLES = [*sorted(HISTORY_REQUIRED_BEAT_ROLES), "consequence", "detail"]
 HISTORY_BEAT_CONTRACT_KEY = "_storyBeatContract"
 DISCOVERY_SOURCE_KEY = "discoverySource"
+TERMINAL_PUNCTUATION = ".!?…"
+TRAILING_CLOSERS = "׳״'\")]}"
+DIALOG_SPEAKER_PATTERN = re.compile(
+    r"^([\u0590-\u05ff][\u0590-\u05ff׳״'\" -]{0,29}):\s*\S"
+)
 ISRAELI_HISTORY_SOURCE_MINIMUMS = {
     "wikimedia": 12,
     "nationalLibraryPress": 6,
@@ -280,6 +300,9 @@ def _seed_batch_schema(
     story = schema["properties"]["stories"]["items"]
     if story_types is not None:
         story["properties"]["type"]["enum"] = story_types
+        if set(story_types) <= {"everyday", "dialog"}:
+            everyday_meta = story["properties"]["everydayMeta"]["anyOf"][0]
+            everyday_meta["properties"]["domain"]["enum"] = GENERATED_SCENARIO_DOMAINS
     story["properties"].pop("levels")
     story["required"].remove("levels")
     return schema
@@ -687,10 +710,14 @@ def _adaptation_batch_schema(
     image_locales: list[str],
 ) -> dict[str, Any]:
     full = _story_batch_schema(1, 1, levels, locales, image_locales)
-    level_map = full["properties"]["stories"]["items"]["properties"]["levels"]
+    base_level_map = full["properties"]["stories"]["items"]["properties"]["levels"]
     level_ids = [level["id"] for level in levels]
     adaptations = []
     for story in stories:
+        level_map = copy.deepcopy(base_level_map)
+        if story.get("type") == "dialog":
+            for level_id in level_ids:
+                level_map["properties"][level_id]["properties"]["paragraphs"]["minItems"] = 8
         contract = story.get(HISTORY_BEAT_CONTRACT_KEY)
         beat_ids = [beat["id"] for beat in contract] if isinstance(contract, list) else []
         coverage = {
@@ -849,6 +876,7 @@ def _compact_story_record(story: dict[str, Any]) -> dict[str, Any]:
     meta = story.get("everydayMeta")
     if isinstance(meta, dict):
         record["scenario"] = meta.get("scenario")
+        record["domain"] = meta.get("domain")
     return record
 
 
@@ -1084,6 +1112,13 @@ Generate up to {target_count} new stories, using only EVERYDAY and DIALOG. Aim t
 
 Create each scenario independently from ordinary life. Give every story a concrete situation, interaction, action, clarification or reaction, and outcome. Return only English scenario briefs and metadata; do not write Hebrew adaptations.
 
+DIVERSITY CONTRACT
+- Use only these canonical `domain` values: {json.dumps(GENERATED_SCENARIO_DOMAINS)}.
+- Give every scenario in this batch a different domain, including from generated stories already selected for this issue. Recent history may reuse a broad domain; it forbids repeated situations, not the domain itself.
+- Vary what people are doing and why. Across one batch, use at most one story centered on each of these shapes: waiting/lateness/schedule change; delivery/order/package; missing/lost/wrong item; repair/access/equipment; workplace coordination.
+- Include at least one positive cooperative activity that is not caused by a delay, mistake, missing item, damaged item, breakdown, or lockout. Useful stories may involve choosing, making, learning, sharing, hosting, practicing, comparing, or asking for an opinion.
+- Do not make every plot “small problem, phone or message, wait, problem solved.” Vary relationships, actions, decisions, and outcomes as well as nouns and settings.
+
 NOVELTY CONTRACT
 - A scenario is a duplicate when its practical problem or goal, interaction, and resolution substantially match a forbidden or already selected scenario.
 - An identical `scenario` value is always a duplicate. Changing its identifier, names, setting details, wording, or story type does not make the same scenario new.
@@ -1201,6 +1236,161 @@ def _remove_empty_lexical_units(adaptations: list[dict[str, Any]]) -> int:
                     removed += len(units) - len(filtered)
                     paragraphs[index] = filtered
     return removed
+
+
+def _has_terminal_punctuation(value: str) -> bool:
+    candidate = value.rstrip()
+    while candidate and candidate[-1] in TRAILING_CLOSERS:
+        candidate = candidate[:-1].rstrip()
+    return bool(candidate) and candidate[-1] in TERMINAL_PUNCTUATION
+
+
+def _restore_terminal_punctuation(
+    adaptations: list[dict[str, Any]],
+    locales: list[str],
+) -> int:
+    """Add a neutral full stop where a generated teaser or paragraph has none."""
+    restored = 0
+    punctuation_unit = {
+        "text": ".",
+        "type": "separator",
+        "translations": {locale: "" for locale in locales},
+    }
+    for adaptation in adaptations:
+        levels = adaptation.get("levels")
+        if not isinstance(levels, dict):
+            continue
+        for level in levels.values():
+            if not isinstance(level, dict):
+                continue
+            groups = [level.get("teaser")]
+            paragraphs = level.get("paragraphs")
+            if isinstance(paragraphs, list):
+                groups.extend(paragraphs)
+            for units in groups:
+                if not isinstance(units, list) or not units:
+                    continue
+                visible_text = units_text(units)
+                if not visible_text.strip() or _has_terminal_punctuation(visible_text):
+                    continue
+                while units and isinstance(units[-1], dict) and not str(units[-1].get("text", "")).strip():
+                    units.pop()
+                if not units:
+                    continue
+                last_unit = units[-1]
+                if isinstance(last_unit, dict) and isinstance(last_unit.get("text"), str):
+                    last_unit["text"] = last_unit["text"].rstrip()
+                units.append(copy.deepcopy(punctuation_unit))
+                restored += 1
+    return restored
+
+
+def _adaptation_content_errors(
+    seeds: list[dict[str, Any]],
+    adaptations: list[dict[str, Any]],
+    levels: list[dict[str, Any]],
+) -> list[str]:
+    """Validate new generated text without retroactively invalidating archived issues."""
+    errors: list[str] = []
+    adaptations_by_id = {
+        adaptation.get("id"): adaptation
+        for adaptation in adaptations
+        if isinstance(adaptation, dict)
+    }
+    level_ids = [level["id"] for level in levels]
+    for seed in seeds:
+        story_id = str(seed.get("id"))
+        adaptation = adaptations_by_id.get(story_id)
+        if not isinstance(adaptation, dict):
+            continue
+        story_levels = adaptation.get("levels")
+        if not isinstance(story_levels, dict):
+            continue
+        expected_speakers: set[str] | None = None
+        for level_id in level_ids:
+            level = story_levels.get(level_id)
+            if not isinstance(level, dict):
+                continue
+            groups: list[tuple[str, Any, bool]] = [
+                ("title", level.get("title"), False),
+                ("teaser", level.get("teaser"), True),
+            ]
+            paragraphs = level.get("paragraphs")
+            if isinstance(paragraphs, list):
+                groups.extend(
+                    (f"paragraphs[{index}]", units, True)
+                    for index, units in enumerate(paragraphs)
+                )
+            for field, units, requires_terminal in groups:
+                if not isinstance(units, list):
+                    continue
+                visible_text = units_text(units)
+                if requires_terminal and visible_text.strip() and not _has_terminal_punctuation(visible_text):
+                    errors.append(f"{story_id}.{level_id}.{field}: missing terminal punctuation")
+                if any(
+                    isinstance(unit, dict)
+                    and unit.get("type") == "separator"
+                    and any(character.isalpha() for character in str(unit.get("text", "")))
+                    for unit in units
+                ):
+                    errors.append(
+                        f"{story_id}.{level_id}.{field}: separator units may contain only punctuation or whitespace"
+                    )
+
+            if seed.get("type") != "dialog" or not isinstance(paragraphs, list):
+                continue
+            if not 8 <= len(paragraphs) <= 12:
+                errors.append(
+                    f"{story_id}.{level_id}: DIALOG must contain 8–12 direct-speech turns; got {len(paragraphs)}"
+                )
+            labels: list[str] = []
+            turn_texts: list[str] = []
+            malformed_turns: list[int] = []
+            for index, units in enumerate(paragraphs):
+                text = units_text(units).strip() if isinstance(units, list) else ""
+                match = DIALOG_SPEAKER_PATTERN.match(text)
+                if match is None:
+                    malformed_turns.append(index + 1)
+                else:
+                    labels.append(match.group(1).strip())
+                    turn_texts.append(text)
+            if malformed_turns:
+                errors.append(
+                    f"{story_id}.{level_id}: every DIALOG paragraph must start with one Hebrew speaker name and colon; "
+                    f"invalid turns {', '.join(map(str, malformed_turns))}"
+                )
+                continue
+            speakers = set(labels)
+            if len(speakers) < 2:
+                errors.append(f"{story_id}.{level_id}: DIALOG must use at least two speakers")
+            multiple_label_turns = [
+                index + 1
+                for index, text in enumerate(turn_texts)
+                if sum(
+                    len(re.findall(rf"(?:^|\s){re.escape(speaker)}:\s*\S", text))
+                    for speaker in speakers
+                ) != 1
+            ]
+            if multiple_label_turns:
+                errors.append(
+                    f"{story_id}.{level_id}: every DIALOG paragraph must contain exactly one known speaker label; "
+                    f"invalid turns {', '.join(map(str, multiple_label_turns))}"
+                )
+            repeated_turns = [
+                index + 1
+                for index in range(1, len(labels))
+                if labels[index] == labels[index - 1]
+            ]
+            if repeated_turns:
+                errors.append(
+                    f"{story_id}.{level_id}: adjacent DIALOG turns must alternate speakers; "
+                    f"repeated speaker at turns {', '.join(map(str, repeated_turns))}"
+                )
+            if expected_speakers is None:
+                expected_speakers = speakers
+            elif speakers != expected_speakers:
+                errors.append(f"{story_id}.{level_id}: DIALOG speaker names must stay consistent across levels")
+    return errors
 
 
 def _remove_redundant_sources(
@@ -1437,6 +1627,42 @@ def _duplicate_errors(
     return errors
 
 
+def _generated_domain_findings(
+    new_stories: list[dict[str, Any]],
+    same_issue_stories: list[dict[str, Any]],
+) -> tuple[list[str], set[int]]:
+    """Keep generated scenario domains distinct within one issue, not across history."""
+    seen_domains: dict[str, str] = {}
+    for story in same_issue_stories:
+        if not isinstance(story, dict) or story.get("type") not in {"everyday", "dialog"}:
+            continue
+        meta = story.get("everydayMeta")
+        domain = meta.get("domain") if isinstance(meta, dict) else None
+        if isinstance(domain, str) and domain.strip():
+            seen_domains.setdefault(domain.strip().casefold(), str(story.get("id") or "existing story"))
+
+    errors: list[str] = []
+    repeated_indexes: set[int] = set()
+    for index, story in enumerate(new_stories):
+        if not isinstance(story, dict) or story.get("type") not in {"everyday", "dialog"}:
+            continue
+        meta = story.get("everydayMeta")
+        domain = meta.get("domain") if isinstance(meta, dict) else None
+        if not isinstance(domain, str) or not domain.strip():
+            continue
+        normalized_domain = domain.strip().casefold()
+        previous_id = seen_domains.get(normalized_domain)
+        if previous_id is not None:
+            story_id = str(story.get("id") or f"candidate {index + 1}")
+            errors.append(
+                f"repeated generated domain in current issue: {story_id} and {previous_id} both use {domain}"
+            )
+            repeated_indexes.add(index)
+            continue
+        seen_domains[normalized_domain] = str(story.get("id") or f"candidate {index + 1}")
+    return errors, repeated_indexes
+
+
 def _seed_errors(
     seeds: list[dict[str, Any]],
     target_date: str,
@@ -1632,6 +1858,7 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
     history_research_instructions = _read_prompts(root, ("history-research.md",))
     generated_instructions = _read_prompts(root, ("everyday.md", "dialog.md"))
     adaptation_instructions = _read_prompts(root, ("adaptation.md",))
+    dialog_adaptation_example = _read_prompts(root, ("dialog-adaptation.md",))
     image_locales = list(dict.fromkeys([*site["interfaceLocales"], *locales]))
     mode = "append" if existing else "new issue"
     _log(
@@ -2003,6 +2230,22 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
             validation_context,
             {"everyday", "dialog"},
         )
+        same_issue_generated = [
+            *(
+                [
+                    story
+                    for story in existing.get("stories", [])
+                    if isinstance(story, dict) and story.get("type") in {"everyday", "dialog"}
+                ]
+                if existing else []
+            ),
+            *generated_seeds,
+        ]
+        domain_errors, repeated_domain_indexes = _generated_domain_findings(
+            returned_batch,
+            same_issue_generated,
+        )
+        generated_errors.extend(domain_errors)
         candidate_batch = returned_batch
         if generated_errors:
             _log_validation_errors(phase, generated_errors)
@@ -2011,25 +2254,26 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
                 existing,
                 validation_context,
             )
-            duplicate_only = bool(duplicate_indexes) and all(
-                "duplicate" in error.lower()
-                for error in generated_errors
-            )
-            if not duplicate_only:
+            replaceable_indexes = duplicate_indexes | repeated_domain_indexes
+            replaceable_errors = {*duplicate_errors, *domain_errors}
+            nonreplaceable_errors = [
+                error for error in generated_errors if error not in replaceable_errors
+            ]
+            if not replaceable_indexes or nonreplaceable_errors:
                 generated_feedback = list(dict.fromkeys(generated_errors))[:20]
                 continue
             candidate_batch = [
                 story
                 for index, story in enumerate(returned_batch)
-                if index not in duplicate_indexes
+                if index not in replaceable_indexes
             ]
             generated_feedback = [
-                *list(dict.fromkeys(duplicate_errors))[:19],
+                *list(dict.fromkeys([*duplicate_errors, *domain_errors]))[:19],
                 f"Generate up to {request_target - len(candidate_batch)} unrelated replacements for rejected scenarios.",
             ]
             _log(
                 f"{phase}: kept {len(candidate_batch)} unique scenario(s); "
-                f"retrying {len(duplicate_indexes)} rejected slot(s)"
+                f"retrying {len(replaceable_indexes)} rejected slot(s)"
             )
         else:
             generated_feedback = None
@@ -2077,7 +2321,11 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
             try:
                 adaptation_batch = _call_openai(
                     os.environ["OPENAI_MODEL"],
-                    adaptation_instructions,
+                    adaptation_instructions + (
+                        f"\n\n{dialog_adaptation_example}"
+                        if any(story.get("type") == "dialog" for story in batch_seeds)
+                        else ""
+                    ),
                     _adaptation_request(batch_seeds, levels, locales, adaptation_feedback),
                     adaptation_schema,
                     use_web_search=False,
@@ -2093,6 +2341,9 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
             removed_units = _remove_empty_lexical_units(adaptations)
             if removed_units:
                 _log(f"{phase}: removed {removed_units} empty lexical unit(s)")
+            restored_punctuation = _restore_terminal_punctuation(adaptations, locales)
+            if restored_punctuation:
+                _log(f"{phase}: restored {restored_punctuation} missing terminal punctuation mark(s)")
             adaptation_ids = [item.get("id") for item in adaptations]
             adaptation_map = {item.get("id"): item.get("levels", {}) for item in adaptations}
             candidate_stories = [
@@ -2110,6 +2361,7 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
             _log(f"{phase}: validating {len(candidate_stories)} adapted stories")
             candidate_errors = validate_issue(candidate_issue, site, levels, "generated batch")
             candidate_errors.extend(_history_adaptation_errors(batch_seeds, adaptations, levels))
+            candidate_errors.extend(_adaptation_content_errors(batch_seeds, adaptations, levels))
             if len(set(adaptation_ids)) != len(adaptation_ids) or set(adaptation_ids) != set(story_ids):
                 candidate_errors.append("adaptation phase must return every frozen story ID exactly once")
             if not candidate_errors:

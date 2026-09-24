@@ -14,12 +14,14 @@ from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import Mock, patch
 
-from src.common import ROOT, normalized_url, read_json
+from src.common import ROOT, normalized_url, read_json, units_text
 from src.generate_issue import (
     ADAPTATION_BATCH_SIZE,
+    GENERATED_SCENARIO_DOMAINS,
     HISTORY_BEAT_CONTRACT_KEY,
     PROVENANCE_ERRORS_KEY,
     _adaptation_batch_schema,
+    _adaptation_content_errors,
     _call_openai,
     _compact_story_record,
     _duplicate_findings,
@@ -29,12 +31,14 @@ from src.generate_issue import (
     _forbidden_story_records,
     _generated_story_target,
     _generated_planning_request,
+    _generated_domain_findings,
     _history_adaptation_errors,
     _history_research_batch_schema,
     _history_research_record_errors,
     _history_research_request,
     _pop_history_reserve,
     _remove_redundant_sources,
+    _restore_terminal_punctuation,
     _recent_history,
     _recent_issue_context,
     _safe_log_text,
@@ -68,6 +72,34 @@ def adaptation_payload(
             for level_id in levels
         },
     }
+
+
+def lexical_unit(text: str, unit_type: str = "word") -> dict:
+    translated = "" if unit_type == "separator" else "translation"
+    return {
+        "text": text,
+        "type": unit_type,
+        "translations": {"ru": translated, "en": translated},
+    }
+
+
+def valid_dialog_levels() -> dict:
+    turns = [
+        "נועה: אתה כבר בדרך?",
+        "דני: כן, אני מגיע בעוד עשר דקות.",
+        "נועה: אתה רוצה שאחכה ליד הכניסה?",
+        "דני: כן, זה יהיה לי נוח.",
+        "נועה: בסדר. אני אקנה מים בינתיים.",
+        "דני: תודה. חסר לנו עוד משהו?",
+        "נועה: לא, יש לנו כל מה שצריך.",
+        "דני: מצוין. נתראה עוד מעט.",
+    ]
+    level = {
+        "title": [lexical_unit("שיחה קצרה")],
+        "teaser": [lexical_unit("שני חברים קובעים איפה להיפגש.")],
+        "paragraphs": [[lexical_unit(turn)] for turn in turns],
+    }
+    return {level_id: copy.deepcopy(level) for level_id in ("alef", "alefPlus", "bet")}
 
 
 def without_translation_coverage(levels: dict, locale: str = "ru") -> dict:
@@ -136,20 +168,113 @@ class GenerationTests(unittest.TestCase):
             ["properties"]["levels"]["properties"]["alef"]
             ["properties"]["paragraphs"]
         )
-        self.assertEqual(paragraphs["minItems"], 4)
+        self.assertEqual(paragraphs["minItems"], 8)
         self.assertEqual(paragraphs["maxItems"], 12)
+
+        non_dialog_schema = _adaptation_batch_schema(
+            [{"id": "ordinary-story", "type": "everyday"}],
+            [{"id": "alef"}],
+            ["ru", "en"],
+            ["ru", "en"],
+        )
+        non_dialog_paragraphs = (
+            non_dialog_schema["properties"]["adaptations"]["items"]
+            ["properties"]["levels"]["properties"]["alef"]
+            ["properties"]["paragraphs"]
+        )
+        self.assertEqual(non_dialog_paragraphs["minItems"], 4)
 
         prompt = (ROOT / "prompts" / "adaptation.md").read_text(encoding="utf-8")
         self.assertIn("8–12 short turns", prompt)
         self.assertIn("exactly one complete speaker turn", prompt)
         self.assertIn("separate line", prompt)
         self.assertIn("Never place two speaker labels", prompt)
+        dialog_example = (ROOT / "prompts" / "dialog-adaptation.md").read_text(encoding="utf-8")
+        self.assertIn("BAD", dialog_example)
+        self.assertIn("GOOD", dialog_example)
+        self.assertIn("8–12 items", dialog_example)
         self.assertIn("count the approximate whitespace-delimited Hebrew words", prompt)
         self.assertIn("minimumWords is not a publication gate", prompt)
         self.assertIn("coveredStoryBeatIds", prompt)
         coverage = schema["properties"]["adaptations"]["items"]["properties"]["coveredStoryBeatIds"]
         self.assertEqual(coverage["properties"]["alef"]["maxItems"], 0)
         self.assertNotIn("uniqueItems", coverage["properties"]["alef"])
+
+    def test_new_dialog_validation_requires_actual_alternating_speech(self) -> None:
+        seed = {"id": "friends-meet", "type": "dialog"}
+        levels = [{"id": level_id} for level_id in ("alef", "alefPlus", "bet")]
+        adaptation = adaptation_payload(seed["id"], valid_dialog_levels())
+        self.assertEqual(_adaptation_content_errors([seed], [adaptation], levels), [])
+
+        narrated = copy.deepcopy(adaptation)
+        for level in narrated["levels"].values():
+            level["paragraphs"] = [
+                [lexical_unit(f"נועה ודני דיברו על התוכנית {index}.")]
+                for index in range(8)
+            ]
+        errors = _adaptation_content_errors([seed], [narrated], levels)
+        self.assertTrue(any("every DIALOG paragraph" in error for error in errors), errors)
+
+        two_speakers_in_one_turn = copy.deepcopy(adaptation)
+        two_speakers_in_one_turn["levels"]["alef"]["paragraphs"][0] = [
+            lexical_unit("נועה: אתה בדרך? דני: כן, אני כבר מגיע.")
+        ]
+        errors = _adaptation_content_errors([seed], [two_speakers_in_one_turn], levels)
+        self.assertTrue(any("invalid turns 1" in error for error in errors), errors)
+
+        ordinary_colon = copy.deepcopy(adaptation)
+        ordinary_colon["levels"]["alef"]["paragraphs"][0] = [
+            lexical_unit("נועה: יש לי רעיון: נלך לפארק.")
+        ]
+        self.assertEqual(_adaptation_content_errors([seed], [ordinary_colon], levels), [])
+
+        too_short = copy.deepcopy(adaptation)
+        too_short["levels"]["alef"]["paragraphs"] = too_short["levels"]["alef"]["paragraphs"][:4]
+        errors = _adaptation_content_errors([seed], [too_short], levels)
+        self.assertTrue(any("got 4" in error for error in errors), errors)
+
+        inconsistent = copy.deepcopy(adaptation)
+        inconsistent["levels"]["alefPlus"]["paragraphs"][1] = [lexical_unit("יעל: כן, אני מגיעה.")]
+        errors = _adaptation_content_errors([seed], [inconsistent], levels)
+        self.assertTrue(any("speaker names must stay consistent" in error for error in errors), errors)
+
+        repeated = copy.deepcopy(adaptation)
+        repeated["levels"]["bet"]["paragraphs"][1] = [lexical_unit("נועה: כן, אחכה כאן.")]
+        errors = _adaptation_content_errors([seed], [repeated], levels)
+        self.assertTrue(any("must alternate speakers" in error for error in errors), errors)
+
+    def test_new_adaptation_repairs_only_missing_terminal_punctuation(self) -> None:
+        levels = valid_dialog_levels()
+        levels["alef"]["teaser"] = [lexical_unit('היא שאלה "אתה מגיע?"')]
+        levels["alef"]["paragraphs"][0] = [
+            lexical_unit("נועה: אני כבר בדרך"),
+            lexical_unit("   ", "separator"),
+        ]
+        levels["alef"]["paragraphs"][1] = [lexical_unit("דני: באמת!")]
+        adaptation = adaptation_payload("friends-meet", levels)
+
+        restored = _restore_terminal_punctuation([adaptation], ["ru", "en"])
+
+        self.assertEqual(restored, 1)
+        self.assertEqual(units_text(levels["alef"]["teaser"]), 'היא שאלה "אתה מגיע?"')
+        self.assertEqual(units_text(levels["alef"]["paragraphs"][0]), "נועה: אני כבר בדרך.")
+        self.assertEqual(units_text(levels["alef"]["paragraphs"][1]), "דני: באמת!")
+        added = levels["alef"]["paragraphs"][0][-1]
+        self.assertEqual(added, {
+            "text": ".",
+            "type": "separator",
+            "translations": {"ru": "", "en": ""},
+        })
+
+    def test_new_adaptation_rejects_alphabetic_separator_units(self) -> None:
+        seed = {"id": "friends-meet", "type": "dialog"}
+        levels = [{"id": level_id} for level_id in ("alef", "alefPlus", "bet")]
+        adaptation = adaptation_payload(seed["id"], valid_dialog_levels())
+        adaptation["levels"]["alef"]["paragraphs"][0].insert(0, lexical_unit("של", "separator"))
+
+        errors = _adaptation_content_errors([seed], [adaptation], levels)
+
+        self.assertTrue(any("separator units may contain only punctuation" in error for error in errors), errors)
 
     def test_recent_issue_context_uses_only_previous_three_days(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
@@ -609,8 +734,32 @@ class GenerationTests(unittest.TestCase):
         self.assertIn('"scenario": "pharmacy_prescription_not_ready"', request)
         self.assertIn("An identical `scenario` value is always a duplicate", request)
         self.assertIn("Changing its identifier, names, setting details, wording, or story type", request)
+        self.assertIn("DIVERSITY CONTRACT", request)
+        self.assertIn("Recent history may reuse a broad domain", request)
+        self.assertIn("positive cooperative activity", request)
         self.assertNotIn("canonical HTTPS", request)
         self.assertNotIn("Configured reading levels", request)
+
+    def test_generated_domain_diversity_keeps_first_story_per_current_issue_domain(self) -> None:
+        def generated(story_id: str, domain: str) -> dict:
+            return {
+                "id": story_id,
+                "type": "everyday",
+                "everydayMeta": {"domain": domain},
+            }
+
+        errors, indexes = _generated_domain_findings(
+            [
+                generated("new-work-story", "workplace"),
+                generated("social-story", "social_leisure"),
+                generated("another-social-story", "social_leisure"),
+            ],
+            [generated("existing-work-story", "workplace")],
+        )
+
+        self.assertEqual(indexes, {0, 2})
+        self.assertEqual(len(errors), 2)
+        self.assertIn("current issue", errors[0])
 
     def test_new_issue_rejects_a_previous_day_story_before_adaptation(self) -> None:
         site = read_json(ROOT / "config" / "site.json")
@@ -646,6 +795,11 @@ class GenerationTests(unittest.TestCase):
         schema = _seed_batch_schema(3, 3, [], ["ru", "en"], ["ru", "en"], ["everyday", "dialog"])
         story_types = schema["properties"]["stories"]["items"]["properties"]["type"]["enum"]
         self.assertEqual(story_types, ["everyday", "dialog"])
+        domain_schema = (
+            schema["properties"]["stories"]["items"]["properties"]["everydayMeta"]
+            ["anyOf"][0]["properties"]["domain"]
+        )
+        self.assertEqual(domain_schema["enum"], GENERATED_SCENARIO_DOMAINS)
 
     def test_recent_scenario_history_is_compact_for_prompt_context(self) -> None:
         history = {
@@ -1092,8 +1246,15 @@ class GenerationTests(unittest.TestCase):
                         }]
                 else:
                     seed["everydayMeta"]["scenario"] = f"isolated_stage_scenario_{index}"
+                    seed["everydayMeta"]["domain"] = [
+                        "neighbors_community",
+                        "food_cooking",
+                        "services_appointments",
+                        "social_leisure",
+                    ][index - len(sourced_specs)]
                 covered_ids = ["b1", "b2", "b3", "b4"] if story_type == "history" else None
-                return seed, adaptation_payload(seed["id"], template["levels"], covered_ids)
+                adaptation_levels = valid_dialog_levels() if story_type == "dialog" else template["levels"]
+                return seed, adaptation_payload(seed["id"], adaptation_levels, covered_ids)
 
             pairs = [
                 make_seed(story_id, story_type, brief, index)
@@ -1183,6 +1344,8 @@ class GenerationTests(unittest.TestCase):
             self.assertIn("# Adaptation and annotation instructions", call.call_args_list[6].args[1])
             self.assertEqual(call.call_args_list[10].kwargs["phase"], "Adaptation batch 5/15, attempt 1/2")
             self.assertIn("_storyBeatContract", call.call_args_list[10].args[2])
+            self.assertNotIn("# Binding DIALOG structure example", call.call_args_list[17].args[1])
+            self.assertIn("# Binding DIALOG structure example", call.call_args_list[18].args[1])
             self.assertEqual(len(result["stories"]), 15)
             result_types = [story["type"] for story in result["stories"]]
             self.assertEqual(result_types.count("current"), 4)
@@ -1722,14 +1885,14 @@ class GenerationTests(unittest.TestCase):
                 "and agree who will visit the supermarket."
             )
             replacement["type"] = "dialog"
-            replacement["everydayMeta"]["domain"] = "family"
+            replacement["everydayMeta"]["domain"] = "shopping_payments"
             replacement["everydayMeta"]["scenario"] = "revise_shared_shopping_list"
             replacement_seed = {
                 key: copy.deepcopy(value)
                 for key, value in replacement.items()
                 if key != "levels"
             }
-            adaptation = adaptation_payload(replacement["id"], replacement["levels"])
+            adaptation = adaptation_payload(replacement["id"], valid_dialog_levels())
             call = Mock(side_effect=[
                 {"stories": [duplicate_seed]},
                 {"stories": [replacement_seed]},

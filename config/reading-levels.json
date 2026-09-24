@@ -9,7 +9,7 @@
       "targetWords": 180,
       "maximumWords": 205,
       "learnerWordsPerMinute": 45,
-      "guidance": "Write for an end-of-Alef learner who can decode unpointed Hebrew. Use 4 short paragraphs and normally 7–9 short sentences, frequent vocabulary, a clear event sequence, and very few subordinate clauses. Keep the voice adult and natural."
+      "guidance": "Write for an end-of-Alef learner who can decode unpointed Hebrew. Keep the full developed story and aim for the unchanged target length using 4 short paragraphs and usually 12–18 short sentences. Prefer frequent concrete words, active clauses, simple verb forms, and one event or thought per sentence. Avoid passive or nominal phrasing, formal connectors, unnecessary foreign terms, dense construct chains, and nested clauses. Explain a necessary hard term immediately in simple words. Simplicity must come from wording and sentence shape, not from deleting events or making the version shorter. Keep the voice adult and natural."
     },
     {
       "id": "alefPlus",
