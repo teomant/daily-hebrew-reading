@@ -2168,6 +2168,56 @@
         "carefully",
         "second trip"
       ]
+    },
+    {
+      "date": "2026-09-25",
+      "storyId": "community-garden-seedling-swap",
+      "domain": "neighbors_community",
+      "scenario": "community_garden_seedling_swap",
+      "lexicalThemes": [
+        "neighbor cooperation",
+        "gardening",
+        "sharing resources",
+        "planning together",
+        "simple maintenance"
+      ],
+      "targetVocabulary": [
+        "שתילים",
+        "אדנית",
+        "להעביר",
+        "להשקות",
+        "צל",
+        "אדמה",
+        "לסמן",
+        "לחלק",
+        "בסוף",
+        "שבת בבוקר"
+      ]
+    },
+    {
+      "date": "2026-09-25",
+      "storyId": "afterwork-swimming-and-locker-routine",
+      "domain": "hobbies_culture",
+      "scenario": "afterwork_swimming_and_locker_routine",
+      "lexicalThemes": [
+        "exercise routine",
+        "free time",
+        "shared plans",
+        "changing rooms",
+        "choosing duration"
+      ],
+      "targetVocabulary": [
+        "בריכה",
+        "מסלול",
+        "לוקרים",
+        "סיבוב",
+        "עוד מעט",
+        "להספיק",
+        "לשחות",
+        "להיפגש",
+        "אחר כך",
+        "בערב"
+      ]
     }
   ]
 }
