@@ -64,6 +64,37 @@ def adaptation_payload(
     levels: dict,
     covered_ids: list[str] | None = None,
 ) -> dict:
+    for level in levels.values():
+        groups = [level.get("title"), level.get("teaser"), *level.get("paragraphs", [])]
+        for units in groups:
+            if not isinstance(units, list):
+                continue
+            segmented: list[dict] = []
+            at_sentence_start = True
+            for unit in units:
+                if not isinstance(unit, dict):
+                    segmented.append(unit)
+                    continue
+                unit_text = str(unit.get("text", ""))
+                terminal = unit_text.rstrip().rstrip('”’"׳)]}').rstrip().endswith((".", "?", "!", "…"))
+                if unit.get("type") == "separator":
+                    segmented.append(unit)
+                    if terminal:
+                        at_sentence_start = True
+                    continue
+                words = unit_text.split()
+                short_sentence = at_sentence_start and len(words) >= 3 and terminal
+                if len(words) <= 4 and not short_sentence:
+                    segmented.append(unit)
+                    at_sentence_start = terminal
+                    continue
+                chunk_size = len(words) - 1 if short_sentence and len(words) <= 4 else 3
+                for index in range(0, len(words), chunk_size):
+                    chunk = copy.deepcopy(unit)
+                    chunk["text"] = " ".join(words[index:index + chunk_size])
+                    segmented.append(chunk)
+                at_sentence_start = terminal
+            units[:] = segmented
     return {
         "id": story_id,
         "levels": levels,
@@ -83,6 +114,14 @@ def lexical_unit(text: str, unit_type: str = "word") -> dict:
     }
 
 
+def segmented_units(text: str, chunk_size: int = 3) -> list[dict]:
+    words = text.split()
+    return [
+        lexical_unit(" ".join(words[index:index + chunk_size]))
+        for index in range(0, len(words), chunk_size)
+    ]
+
+
 def valid_dialog_levels() -> dict:
     turns = [
         "נועה: אתה כבר בדרך?",
@@ -95,9 +134,9 @@ def valid_dialog_levels() -> dict:
         "דני: מצוין. נתראה עוד מעט.",
     ]
     level = {
-        "title": [lexical_unit("שיחה קצרה")],
-        "teaser": [lexical_unit("שני חברים קובעים איפה להיפגש.")],
-        "paragraphs": [[lexical_unit(turn)] for turn in turns],
+        "title": segmented_units("שיחה קצרה"),
+        "teaser": segmented_units("שני חברים קובעים איפה להיפגש."),
+        "paragraphs": [segmented_units(turn) for turn in turns],
     }
     return {level_id: copy.deepcopy(level) for level_id in ("alef", "alefPlus", "bet")}
 
@@ -223,9 +262,9 @@ class GenerationTests(unittest.TestCase):
         self.assertTrue(any("invalid turns 1" in error for error in errors), errors)
 
         ordinary_colon = copy.deepcopy(adaptation)
-        ordinary_colon["levels"]["alef"]["paragraphs"][0] = [
-            lexical_unit("נועה: יש לי רעיון: נלך לפארק.")
-        ]
+        ordinary_colon["levels"]["alef"]["paragraphs"][0] = segmented_units(
+            "נועה: יש לי רעיון: נלך לפארק."
+        )
         self.assertEqual(_adaptation_content_errors([seed], [ordinary_colon], levels), [])
 
         too_short = copy.deepcopy(adaptation)
@@ -275,6 +314,43 @@ class GenerationTests(unittest.TestCase):
         errors = _adaptation_content_errors([seed], [adaptation], levels)
 
         self.assertTrue(any("separator units may contain only punctuation" in error for error in errors), errors)
+
+    def test_new_adaptation_rejects_sentence_sized_lexical_units(self) -> None:
+        seed = {"id": "friends-meet", "type": "dialog"}
+        levels = [{"id": level_id} for level_id in ("alef", "alefPlus", "bet")]
+        adaptation = adaptation_payload(seed["id"], valid_dialog_levels())
+        adaptation["levels"]["alef"]["paragraphs"][0] = [
+            lexical_unit("נועה: אני כבר בדרך ואגיע בעוד כמה דקות")
+        ]
+
+        errors = _adaptation_content_errors([seed], [adaptation], levels)
+
+        self.assertTrue(any("lexical units may contain at most four words" in error for error in errors), errors)
+
+    def test_new_adaptation_rejects_short_complete_sentence_units(self) -> None:
+        seed = {"id": "school-news", "type": "current"}
+        levels = [{"id": level_id} for level_id in ("alef", "alefPlus", "bet")]
+        adaptation = adaptation_payload(seed["id"], valid_dialog_levels())
+        adaptation["levels"]["alef"]["paragraphs"][0] = [
+            lexical_unit("המשטרה עצרה שלושה חשודים.")
+        ]
+
+        errors = _adaptation_content_errors([seed], [adaptation], levels)
+
+        self.assertTrue(any("a complete sentence may not be one lexical unit" in error for error in errors), errors)
+
+    def test_new_adaptation_rejects_sentence_unit_with_separate_punctuation(self) -> None:
+        seed = {"id": "school-news", "type": "current"}
+        levels = [{"id": level_id} for level_id in ("alef", "alefPlus", "bet")]
+        adaptation = adaptation_payload(seed["id"], valid_dialog_levels())
+        adaptation["levels"]["alef"]["paragraphs"][0] = [
+            lexical_unit("המשטרה עצרה שלושה חשודים"),
+            lexical_unit(".", "separator"),
+        ]
+
+        errors = _adaptation_content_errors([seed], [adaptation], levels)
+
+        self.assertTrue(any("a complete sentence may not be one lexical unit" in error for error in errors), errors)
 
     def test_recent_issue_context_uses_only_previous_three_days(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:

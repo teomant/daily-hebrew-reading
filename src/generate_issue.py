@@ -1311,6 +1311,8 @@ def _adaptation_content_errors(
             level = story_levels.get(level_id)
             if not isinstance(level, dict):
                 continue
+            oversized_units: list[str] = []
+            sentence_units: list[str] = []
             groups: list[tuple[str, Any, bool]] = [
                 ("title", level.get("title"), False),
                 ("teaser", level.get("teaser"), True),
@@ -1336,6 +1338,42 @@ def _adaptation_content_errors(
                     errors.append(
                         f"{story_id}.{level_id}.{field}: separator units may contain only punctuation or whitespace"
                     )
+                sentence_members: list[tuple[int, int]] = []
+                for unit_index, unit in enumerate(units):
+                    if not isinstance(unit, dict):
+                        continue
+                    unit_text = str(unit.get("text", ""))
+                    if unit.get("type") == "separator":
+                        if _has_terminal_punctuation(unit_text):
+                            if len(sentence_members) == 1 and sentence_members[0][1] >= 3:
+                                member_index, member_words = sentence_members[0]
+                                sentence_units.append(f"{field}[{member_index}] ({member_words} words)")
+                            sentence_members = []
+                        continue
+                    word_count = len(unit_text.split())
+                    if word_count > 4:
+                        oversized_units.append(f"{field}[{unit_index}] ({word_count} words)")
+                    sentence_members.append((unit_index, word_count))
+                    if _has_terminal_punctuation(unit_text):
+                        if len(sentence_members) == 1 and word_count >= 3:
+                            sentence_units.append(f"{field}[{unit_index}] ({word_count} words)")
+                        sentence_members = []
+            if oversized_units:
+                examples = ", ".join(oversized_units[:3])
+                remainder = len(oversized_units) - 3
+                suffix = f", and {remainder} more" if remainder > 0 else ""
+                errors.append(
+                    f"{story_id}.{level_id}: lexical units may contain at most four words; "
+                    f"oversized units: {examples}{suffix}"
+                )
+            if sentence_units:
+                examples = ", ".join(sentence_units[:3])
+                remainder = len(sentence_units) - 3
+                suffix = f", and {remainder} more" if remainder > 0 else ""
+                errors.append(
+                    f"{story_id}.{level_id}: a complete sentence may not be one lexical unit; "
+                    f"sentence-sized units: {examples}{suffix}"
+                )
 
             if seed.get("type") != "dialog" or not isinstance(paragraphs, list):
                 continue

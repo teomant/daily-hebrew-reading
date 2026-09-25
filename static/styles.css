@@ -65,3 +65,7 @@ body{font-size:16px;line-height:1.5}
   .story-list .story-card h2{text-align:right}
   .story-list .story-card footer{margin-top:8px;align-items:center}
 }
+
+/* Keep interactive Hebrew text aligned with its RTL article container. */
+.article-heading h1,.article-dek{text-align:right}
+.lexeme{text-align:inherit;direction:inherit}

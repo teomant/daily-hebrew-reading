@@ -1,5 +1,11 @@
 # Implementation log
 
+## 2026-09-25
+
+- Audited the regenerated 13-story issue and the supplied mobile screenshots. Generated lexical annotation had ignored the existing 1–3-word prompt and stored many complete sentences as single interactive units; because each unit renders as a button, browser-default button alignment centered wrapped Hebrew inside otherwise right-aligned paragraphs. New adaptations now reject any meaningful lexical unit over four whitespace-delimited words and short whole-sentence units at sentence boundaries through the existing article-isolated retry/omit path, with concise per-level feedback. Article titles and teasers are explicitly right-aligned, and lexical buttons inherit their RTL container's alignment and direction while translation popovers keep their own LTR styling.
+- Removed the `2026-09-25` issue, its index entry, and its four generated-scenario history records so the owner can regenerate the date manually. Repository validation, all 79 unit tests, Python compilation, JavaScript syntax checking, the production build, date-removal assertions, and whitespace checks passed.
+- The independent implementation review identified short whole sentences and separately stored terminal punctuation as gaps in the initial length-only validation. Validation now evaluates complete sentence spans across meaningful and separator units; focused regressions cover both punctuation representations, and the final confirmation review found no remaining issues.
+
 ## 2026-09-24
 
 - Audited the eight latest issues and their production logs. Only five of 18 DIALOG stories followed the intended direct-speech structure at every level; recent generated scenarios overused work, delays, deliveries, missing items, repairs/access problems, and changed plans. Many published paragraphs had no terminal punctuation, and alphabetic text misclassified as separators produced glued Hebrew such as `לנועהיש` and `אתהמטען`. The renderer preserves supplied punctuation and spacing rules, so these were generation and generation-validation failures rather than frontend loss.

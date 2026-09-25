@@ -151,9 +151,12 @@ class BuildTests(unittest.TestCase):
                 self.assertTrue((output / relative).is_file(), relative)
             home = (output / "index.html").read_text(encoding="utf-8")
             article = (output / expected[3]).read_text(encoding="utf-8")
+            styles = (output / "assets/styles.css").read_text(encoding="utf-8")
             self.assertIn('/daily-hebrew-reading/assets/styles.css', home)
             self.assertIn('id="interface-locale"', home)
             self.assertIn('class="lexeme"', article)
+            self.assertIn('.article-heading h1,.article-dek{text-align:right}', styles)
+            self.assertIn('.lexeme{text-align:inherit;direction:inherit}', styles)
             self.assertNotIn("OPENAI_API_KEY", home + article)
 
             prefix = "/daily-hebrew-reading/"
