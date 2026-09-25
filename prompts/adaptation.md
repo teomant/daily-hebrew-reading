@@ -2,6 +2,14 @@
 
 This phase receives frozen story briefs and metadata. Do not search for topics, choose different stories, change metadata, or apply cross-day novelty rules.
 
+Follow this priority order:
+
+1. Return a complete, usable adaptation for every requested story and every configured level.
+2. Preserve the frozen story, required HISTORY beats, correct Hebrew, and required DIALOG structure.
+3. Add useful lexical segmentation and contextual translations.
+
+Publishing a usable article is the goal. Segmentation is best-effort annotation and must never replace, shorten, or prevent the return of an otherwise usable article. When a boundary is uncertain, prefer smaller single-word or short-phrase units and continue.
+
 Write modern spoken Israeli Hebrew: natural language a contemporary adult might use to tell, ask, answer, clarify, or explain something to another person. Favor reusable conversational sentences over news-style narration. Avoid biblical, religious, literary, bureaucratic, specialist, and dense newspaper language. Do not use niqqud. Keep one central idea and develop it with useful situation details, interaction, and outcome; never repeat sentences merely to reach a word target.
 
 Use normal sentence punctuation in every version. Every teaser and every body paragraph or DIALOG turn must end with `.` `?` `!` or `…`. Use commas and internal sentence boundaries wherever natural; do not return an unpunctuated block of Hebrew.
@@ -18,7 +26,14 @@ For each returned story, include `coveredStoryBeatIds` keyed by every reading-le
 
 For DIALOG, write only direct speech and return 8–12 short turns at every level. “Short” means a natural conversational turn, often one or two useful sentences, not a fragment that strips out the planned interaction. Use follow-up questions, answers, clarification, reaction, and agreement or another practical outcome to develop the exchange. Every paragraph-array item must contain exactly one complete speaker turn so the renderer displays every turn on a separate line. Start each item with one consistent Hebrew speaker name and a colon, such as `נועה: ...` or `דני: ...`. Never place two speaker labels or two speakers in the same paragraph item. Alternate naturally between at least two speakers. Keep the names and colons visible. Do not add third-person narration such as “נועה ראתה”, “היא שאלה”, “הם בדקו”, or “בסוף הם החליטו”. Put necessary context and actions into what the speakers say, and never use long speeches merely to reach the word target.
 
-During the segmentation phase, treat the supplied Hebrew wording and punctuation as immutable. Apply the same chunk-size rules to titles, teasers, and paragraphs. Most meaningful lexical units must contain one to three Hebrew words. Four words are allowed only for a fixed expression, proper name, or phrase that would become misleading if split. Never put a complete sentence, an independent clause, or multiple clauses into one lexical unit. Split long sentences into several useful translation targets at natural grammatical boundaries.
+During the segmentation phase, treat the supplied Hebrew wording and punctuation as immutable. Apply the same chunk-size guidance to titles, teasers, and paragraphs. Prefer one to three Hebrew words per meaningful lexical unit. Keep a longer fixed expression, proper name, or indivisible phrase together only when splitting it would make the meaning worse. Never put a complete sentence into one translation target; split it into useful words and short phrases at natural grammatical boundaries. If unsure, split more rather than returning the sentence as one unit.
+
+Literal segmentation anti-example based on a bad production result:
+
+- BAD: one meaningful unit containing `המשטרה עצרה שלושה חשודים.`
+- GOOD: four units: `המשטרה` / `עצרה` / `שלושה חשודים` / `.`. The first three are meaningful units with contextual translations; the final period is a separator with empty translations.
+
+The same rule applies to headings. BAD: one unit containing `מעצרים אחרי פריצות לבתי ספר באזור לכיש`. GOOD: `מעצרים` / `אחרי פריצות` / `לבתי ספר` / `באזור לכיש`.
 
 Keep attached Hebrew prefixes inside their complete written word; never emit forms such as `ב העיר`, `מ מקום`, or `ל רחוב`. Preserve expressions such as מזג אוויר, שם לב, and בסופו של דבר as single units when splitting would harm understanding. Do not emit separator units for ordinary single spaces between meaningful units; the renderer restores those spaces locally. Use separator units only for punctuation or whitespace whose exact placement matters. Never return a lexical unit with an empty `text` value; omit it instead.
 

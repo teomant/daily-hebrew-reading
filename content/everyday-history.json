@@ -2168,46 +2168,6 @@
         "carefully",
         "second trip"
       ]
-    },
-    {
-      "date": "2026-09-25",
-      "storyId": "morning-market-taste-and-weekend-dinner-ideas",
-      "domain": "food_cooking",
-      "scenario": "market_tasting_and_simple_weekend_dinner_plan",
-      "lexicalThemes": [
-        "shopping for ingredients",
-        "comparing options",
-        "budget choice",
-        "meal planning",
-        "vendor interaction"
-      ],
-      "targetVocabulary": [
-        "בערך",
-        "כדאי",
-        "אפשר להחליף",
-        "לא משתלם",
-        "בסוף החלטתי"
-      ]
-    },
-    {
-      "date": "2026-09-25",
-      "storyId": "coworker-chooses-a-quiet-work-lunch",
-      "domain": "workplace",
-      "scenario": "coworkers_choose_quiet_lunch_option",
-      "lexicalThemes": [
-        "work lunch",
-        "comparing options",
-        "price and hunger",
-        "informal planning",
-        "shared break"
-      ],
-      "targetVocabulary": [
-        "כדאי",
-        "בערך",
-        "אין לי זמן",
-        "עדיף",
-        "בסוף החלטתי"
-      ]
     }
   ]
 }
