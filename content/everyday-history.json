@@ -2218,6 +2218,66 @@
         "אחר כך",
         "בערב"
       ]
+    },
+    {
+      "date": "2026-09-26",
+      "storyId": "home-bakery-taste-test-and-bread-choice",
+      "domain": "food_cooking",
+      "scenario": "home_bread_choice_for_family_dinner",
+      "lexicalThemes": [
+        "home cooking",
+        "food comparison",
+        "family dinner",
+        "planning ahead",
+        "reducing waste"
+      ],
+      "targetVocabulary": [
+        "טוב יותר",
+        "בערך",
+        "נשאר",
+        "להביא",
+        "להשתמש מחר"
+      ]
+    },
+    {
+      "date": "2026-09-26",
+      "storyId": "coworkers-choose-a-quiet-cafe-for-a-work-chat",
+      "domain": "social_leisure",
+      "scenario": "coworkers_choose_quiet_cafe_for_afterwork_chat",
+      "lexicalThemes": [
+        "making plans",
+        "comparing options",
+        "café seating",
+        "work friendship",
+        "small talk"
+      ],
+      "targetVocabulary": [
+        "נראה לי",
+        "עדיף",
+        "אפשר לשבת",
+        "בערך",
+        "להזמין"
+      ]
+    },
+    {
+      "date": "2026-09-26",
+      "storyId": "clinic-checkup-and-exercise-questions",
+      "domain": "health_wellbeing",
+      "scenario": "clinic_visit_about_mild_knee_pain_and_exercise_routine",
+      "lexicalThemes": [
+        "health advice",
+        "routine checkup",
+        "exercise habits",
+        "clarification",
+        "follow-up plan"
+      ],
+      "targetVocabulary": [
+        "כדאי",
+        "לא צריך",
+        "עדיין",
+        "להרגיש",
+        "לבדוק"
+      ]
     }
   ]
 }
