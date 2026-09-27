@@ -2278,6 +2278,52 @@
         "להרגיש",
         "לבדוק"
       ]
+    },
+    {
+      "date": "2026-09-27",
+      "storyId": "family-shared-dessert-and-new-recipe",
+      "domain": "food_cooking",
+      "scenario": "family_tests_and_adjusts_a_new_dessert_recipe_before_sunday_lunch",
+      "lexicalThemes": [
+        "home cooking",
+        "tasting and comparing",
+        "recipe adjustments",
+        "family planning",
+        "bringing food to a meal"
+      ],
+      "targetVocabulary": [
+        "בערך",
+        "להוסיף",
+        "לטעום",
+        "מתכון",
+        "נראה לי",
+        "לרשום",
+        "לקחת איתנו",
+        "בסוף החלטנו"
+      ]
+    },
+    {
+      "date": "2026-09-27",
+      "storyId": "neighbors-plan-a-community-table",
+      "domain": "neighbors_community",
+      "scenario": "neighbors_set_up_a_small_shared_table_in_the_building_entrance_for_useful_items",
+      "lexicalThemes": [
+        "community life",
+        "shared space",
+        "organization",
+        "small cooperation",
+        "building entrance"
+      ],
+      "targetVocabulary": [
+        "לסדר",
+        "שכנים",
+        "משותף",
+        "שלט",
+        "נוח",
+        "פינה",
+        "להשאיר",
+        "לבוא לראות"
+      ]
     }
   ]
 }
