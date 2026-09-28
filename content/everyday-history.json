@@ -2324,6 +2324,75 @@
         "להשאיר",
         "לבוא לראות"
       ]
+    },
+    {
+      "date": "2026-09-28",
+      "storyId": "home-sunday-plan-and-two-desserts",
+      "domain": "food_cooking",
+      "scenario": "home_sunday_plan_and_two_desserts",
+      "lexicalThemes": [
+        "meal planning",
+        "recipe comparison",
+        "home cooking",
+        "time constraints",
+        "practical choices"
+      ],
+      "targetVocabulary": [
+        "בערך",
+        "כדאי",
+        "בסוף החלטתי",
+        "לא הספקתי",
+        "אין צורך",
+        "נשאר",
+        "להוסיף",
+        "מתכון"
+      ]
+    },
+    {
+      "date": "2026-09-28",
+      "storyId": "friends-choose-a-walk-and-a-cafe",
+      "domain": "social_leisure",
+      "scenario": "friends_choose_a_walk_and_a_cafe",
+      "lexicalThemes": [
+        "making plans",
+        "comparing options",
+        "café talk",
+        "preferences",
+        "agreeing"
+      ],
+      "targetVocabulary": [
+        "נראה לי",
+        "אפשר",
+        "עדיף",
+        "בערך",
+        "כבר",
+        "אין בעיה",
+        "בואי",
+        "נלך"
+      ]
+    },
+    {
+      "date": "2026-09-28",
+      "storyId": "clinic-question-and-simple-exercise-plan",
+      "domain": "health_wellbeing",
+      "scenario": "clinic_question_and_simple_exercise_plan",
+      "lexicalThemes": [
+        "health advice",
+        "exercise",
+        "pain description",
+        "clarifying questions",
+        "reassurance"
+      ],
+      "targetVocabulary": [
+        "כואב",
+        "שאלתי",
+        "נראה לי",
+        "עוד מעט",
+        "לא קבוע",
+        "אין צורך",
+        "לנוח",
+        "להתקשר"
+      ]
     }
   ]
 }
