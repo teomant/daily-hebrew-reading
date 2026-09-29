@@ -5,33 +5,24 @@
       "label": "א",
       "name": "Alef",
       "approximateCefr": "A1.1",
-      "minimumWords": 155,
-      "targetWords": 180,
-      "maximumWords": 205,
       "learnerWordsPerMinute": 45,
-      "guidance": "Write for an end-of-Alef learner who can decode unpointed Hebrew. Keep the full developed story and aim for the unchanged target length using 4 short paragraphs and usually 12–18 short sentences. Prefer frequent concrete words, active clauses, simple verb forms, and one event or thought per sentence. Avoid passive or nominal phrasing, formal connectors, unnecessary foreign terms, dense construct chains, and nested clauses. Explain a necessary hard term immediately in simple words. Simplicity must come from wording and sentence shape, not from deleting events or making the version shorter. Keep the voice adult and natural."
+      "guidance": "Write for an end-of-Alef learner who can decode unpointed Hebrew. Prefer very common concrete words, active clauses, familiar verb forms, and one event or thought per short sentence. Avoid passive or nominal phrasing, formal connectors, unnecessary foreign terms, dense construct chains, and nested clauses. Explain a necessary less-common term immediately in simple words. Keep the voice adult and natural. Difficulty is determined by wording and sentence shape, not word count."
     },
     {
       "id": "alefPlus",
       "label": "א+",
       "name": "Alef Plus",
       "approximateCefr": "A1.2",
-      "minimumWords": 190,
-      "targetWords": 220,
-      "maximumWords": 250,
       "learnerWordsPerMinute": 55,
-      "guidance": "Write for advanced Alef in 4–5 paragraphs and normally 8–11 sentences. Use past tense, simple cause and effect, natural connectors, common fixed expressions, and limited subordinate clauses while keeping the story easy to follow."
+      "guidance": "Write for advanced Alef. Use a broader but still common vocabulary than Alef, past and future forms where natural, simple cause and effect, everyday connectors, common fixed expressions, and occasional short subordinate clauses. Keep the story easy to follow. Difficulty is determined by wording and grammar, not word count."
     },
     {
       "id": "bet",
       "label": "ב",
       "name": "Bet",
       "approximateCefr": "A2",
-      "minimumWords": 235,
-      "targetWords": 270,
-      "maximumWords": 305,
       "learnerWordsPerMinute": 65,
-      "guidance": "Write 4–5 developed paragraphs of reasonably natural contemporary Hebrew, normally 9–12 sentences, with useful detail, causes, comparisons, reactions, and common colloquial constructions. Avoid dense journalistic syntax and specialist vocabulary."
+      "guidance": "Write reasonably natural contemporary Hebrew for a Bet learner. Use a wider everyday vocabulary, more precise verbs and adjectives, natural connectors, comparisons, reactions, common colloquial constructions, and moderately more complex sentences than Alef Plus. Avoid dense journalistic syntax and specialist vocabulary. Difficulty is determined by wording and grammar, not word count."
     }
   ]
 }

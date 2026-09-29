@@ -137,7 +137,7 @@ def level_controls(issue: dict[str, Any], levels: list[dict[str, Any]], label_ke
 
 def story_kind(story: dict[str, Any], copy: dict[str, str]) -> str:
     label = f"{copy.get('category.' + story['category'], story['category'])} · {copy['type.' + story['type']]}"
-    return f"{label} · {copy['type.aiGenerated']}" if story["type"] in {"everyday", "dialog"} else label
+    return f"{label} · {copy['type.aiGenerated']}" if story["type"] in {"everyday", "dialog", "shorts"} else label
 
 
 def story_card(story: dict[str, Any], index: int, issue: dict[str, Any], site: dict[str, Any], levels: list[dict[str, Any]], copy: dict[str, str], lead: bool = False) -> str:
@@ -216,7 +216,7 @@ def build_archive(index: dict[str, Any], issues: dict[str, dict[str, Any]], site
     cards = []
     for position, item in enumerate(index["dates"]):
         counts = Counter(story["type"] for story in issues[item["date"]]["stories"])
-        tags = "".join(f'<span data-type-count="{kind}" data-count="{counts[kind]}">{counts[kind]} {copy["type." + kind]}</span>' for kind in ("current", "everyday", "dialog", "history") if counts[kind])
+        tags = "".join(f'<span data-type-count="{kind}" data-count="{counts[kind]}">{counts[kind]} {copy["type." + kind]}</span>' for kind in ("current", "everyday", "dialog", "history", "shorts") if counts[kind])
         cards.append(f'''<article class="issue-card{' current-issue' if position == 0 else ''}"><time datetime="{esc(item['date'])}" data-date="{esc(item['date'])}">{esc(format_date(item['date'], site['defaultInterfaceLocale']))}</time><div><p>{item['storyCount']} <span data-i18n="meta.materials">{esc(copy['meta.materials'])}</span> · <span data-i18n="meta.about">{esc(copy['meta.about'])}</span> {item['readingMinutes']} <span data-minutes-word data-minutes="{item['readingMinutes']}">{esc(copy['meta.minutesMany'])}</span></p><div class="issue-tags">{tags}</div></div><a href="{esc(site_url(item['date'] + '/', site['basePath']))}" data-i18n="archive.open">{esc(copy['archive.open'])}</a></article>''')
     body = f'''<section class="page archive-page"><header class="page-title"><p class="overline" data-i18n="nav.archive">{esc(copy['nav.archive'])}</p><h1 data-i18n="archive.title">{esc(copy['archive.title'])}</h1><p data-i18n="archive.summary">{esc(copy['archive.summary'])}</p></header><div class="archive-list">{''.join(cards)}</div></section>'''
     return shell(title=copy["archive.title"], body=body, page="archive", site=site, levels=levels, locales=locales)
@@ -235,7 +235,14 @@ def build_article(
     level_id = issue_level(issue, site)
     level = story["levels"][level_id]
     translation_buttons = "".join(f'<button type="button" data-translation="{esc(code)}">{esc(code.upper())}</button>' for code in issue["translationLocales"])
-    paragraphs = "".join(f'<p>{render_units(paragraph, True)}</p>' for paragraph in level["paragraphs"])
+    if story["type"] == "shorts":
+        paragraphs = "".join(
+            f'<section class="short-item"><span class="short-number">{index:02d}</span>'
+            f'<p>{render_units(paragraph, True)}</p></section>'
+            for index, paragraph in enumerate(level["paragraphs"], start=1)
+        )
+    else:
+        paragraphs = "".join(f'<p>{render_units(paragraph, True)}</p>' for paragraph in level["paragraphs"])
     image = ""
     if story.get("image"):
         img = story["image"]
@@ -261,7 +268,8 @@ def build_article(
     random_fallback = random_choices[0] if random_choices else site_url(f"{issue['date']}/", site["basePath"])
     random_nav = f'<a class="article-random" href="{esc(random_fallback)}" data-random-article data-i18n="home.randomArticle">{esc(copy["home.randomArticle"])}</a>'
     level = next(item for item in levels if item["id"] == level_id)
-    body = f'''<article class="page article-page"><div class="article-progress"><span style="width:{round((position + 1) / len(issue['stories']) * 100)}%"></span></div><header class="article-topline"><a href="{esc(site_url(issue['date'] + '/', site['basePath']))}">← <span data-i18n="nav.backToIssue">{esc(copy['nav.backToIssue'])}</span></a><span>{position + 1} <span data-i18n="article.of">{esc(copy['article.of'])}</span> {len(issue['stories'])}</span></header><div class="article-layout"><aside class="article-tools">{level_controls(issue, levels, 'article.level')}<div class="translation-control"><span data-i18n="article.translation">{esc(copy['article.translation'])}</span><div>{translation_buttons}</div></div><p data-i18n="article.translationHelp">{esc(copy['article.translationHelp'])}</p></aside><div class="article-main"><header class="article-heading"><span class="story-kind" data-story-kind>{esc(story_kind(story, copy))}</span><h1 dir="rtl" data-article-title>{render_units(story['levels'][level_id]['title'], True)}</h1><p class="article-dek" dir="rtl" data-article-teaser>{render_units(story['levels'][level_id]['teaser'], True)}</p><div class="article-meta"><span data-date="{esc(issue['date'])}">{esc(format_date(issue['date'], site['defaultInterfaceLocale']))}</span><span data-article-minutes>{minutes_label(story_minutes(story, level_id, levels), site['defaultInterfaceLocale'], copy)}</span><span data-article-level>{esc(level['label'])} · {esc(level['approximateCefr'])}</span></div></header>{image}<div class="hebrew-article" dir="rtl" data-article-body>{paragraphs}</div>{sources}<nav class="article-pagination">{nav[0]}{random_nav}{nav[1]}</nav></div></div></article>'''
+    article_class = "hebrew-article shorts-list" if story["type"] == "shorts" else "hebrew-article"
+    body = f'''<article class="page article-page"><div class="article-progress"><span style="width:{round((position + 1) / len(issue['stories']) * 100)}%"></span></div><header class="article-topline"><a href="{esc(site_url(issue['date'] + '/', site['basePath']))}">← <span data-i18n="nav.backToIssue">{esc(copy['nav.backToIssue'])}</span></a><span>{position + 1} <span data-i18n="article.of">{esc(copy['article.of'])}</span> {len(issue['stories'])}</span></header><div class="article-layout"><aside class="article-tools">{level_controls(issue, levels, 'article.level')}<div class="translation-control"><span data-i18n="article.translation">{esc(copy['article.translation'])}</span><div>{translation_buttons}</div></div><p data-i18n="article.translationHelp">{esc(copy['article.translationHelp'])}</p></aside><div class="article-main"><header class="article-heading"><span class="story-kind" data-story-kind>{esc(story_kind(story, copy))}</span><h1 dir="rtl" data-article-title>{render_units(story['levels'][level_id]['title'], True)}</h1><p class="article-dek" dir="rtl" data-article-teaser>{render_units(story['levels'][level_id]['teaser'], True)}</p><div class="article-meta"><span data-date="{esc(issue['date'])}">{esc(format_date(issue['date'], site['defaultInterfaceLocale']))}</span><span data-article-minutes>{minutes_label(story_minutes(story, level_id, levels), site['defaultInterfaceLocale'], copy)}</span><span data-article-level>{esc(level['label'])} · {esc(level['approximateCefr'])}</span></div></header>{image}<div class="{article_class}" dir="rtl" data-article-body>{paragraphs}</div>{sources}<nav class="article-pagination">{nav[0]}{random_nav}{nav[1]}</nav></div></div></article>'''
     return shell(title=units_text(story["levels"][level_id]["title"]), body=body, page="article", site=site, levels=levels, locales=locales, payload={"issue": issue, "storyIndex": position, "randomArticles": random_choices})
 
 

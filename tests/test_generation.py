@@ -17,9 +17,14 @@ from unittest.mock import Mock, patch
 from src.common import ROOT, normalized_url, read_json, units_text
 from src.generate_issue import (
     ADAPTATION_BATCH_SIZE,
+    CURRENT_TARGET,
+    DIALOG_TARGET,
+    EVERYDAY_TARGET,
     GENERATED_SCENARIO_DOMAINS,
     HISTORY_BEAT_CONTRACT_KEY,
     PROVENANCE_ERRORS_KEY,
+    HISTORY_TARGET,
+    SHORTS_TARGET,
     _adaptation_batch_schema,
     _adaptation_content_errors,
     _call_openai,
@@ -37,6 +42,8 @@ from src.generate_issue import (
     _history_research_record_errors,
     _history_research_request,
     _pop_history_reserve,
+    _repair_alphabetic_separator_units,
+    _repair_dialog_labels,
     _remove_redundant_sources,
     _restore_terminal_punctuation,
     _recent_history,
@@ -50,13 +57,14 @@ from src.generate_issue import (
     _sourced_candidate_mix_errors,
     _sourced_discovery_request,
     _sourced_duplicate_review_request,
+    _shorts_page,
     _transactional_write,
     _updated_history,
     _validated_history_research,
     generate,
     main,
 )
-from src.validation import validate_repository
+from src.validation import validate_issue, validate_repository
 
 
 def adaptation_payload(
@@ -148,6 +156,14 @@ def history_research_record(story_id: str, status: str = "sufficient") -> dict:
 
 
 class GenerationTests(unittest.TestCase):
+    def test_default_issue_mix_matches_the_product_contract(self) -> None:
+        site = read_json(ROOT / "config" / "site.json")
+        self.assertEqual(site["defaultIssueStoryCount"], 11)
+        self.assertEqual(
+            (CURRENT_TARGET, HISTORY_TARGET, EVERYDAY_TARGET, DIALOG_TARGET, SHORTS_TARGET),
+            (2, 3, 3, 2, 9),
+        )
+
     def test_adaptation_processes_one_story_per_request(self) -> None:
         self.assertEqual(ADAPTATION_BATCH_SIZE, 1)
 
@@ -184,6 +200,20 @@ class GenerationTests(unittest.TestCase):
         )
         self.assertEqual(non_dialog_paragraphs["minItems"], 4)
 
+        short_schema = _adaptation_batch_schema(
+            [{"id": "queue-question", "type": "everyday", "_shortItem": True}],
+            [{"id": "alef"}],
+            ["ru", "en"],
+            ["ru", "en"],
+        )
+        short_paragraphs = (
+            short_schema["properties"]["adaptations"]["items"]
+            ["properties"]["levels"]["properties"]["alef"]
+            ["properties"]["paragraphs"]
+        )
+        self.assertEqual(short_paragraphs["minItems"], 1)
+        self.assertEqual(short_paragraphs["maxItems"], 1)
+
         prompt = (ROOT / "prompts" / "adaptation.md").read_text(encoding="utf-8")
         self.assertIn("8–12 short turns", prompt)
         self.assertIn("exactly one complete speaker turn", prompt)
@@ -193,8 +223,8 @@ class GenerationTests(unittest.TestCase):
         self.assertIn("BAD", dialog_example)
         self.assertIn("GOOD", dialog_example)
         self.assertIn("8–12 items", dialog_example)
-        self.assertIn("count the approximate whitespace-delimited Hebrew words", prompt)
-        self.assertIn("minimumWords is not a publication gate", prompt)
+        self.assertIn("Do not count words", prompt)
+        self.assertIn("Difficulty is determined by wording", read_json(ROOT / "config" / "reading-levels.json")["levels"][0]["guidance"])
         self.assertIn("Publishing a usable article is the goal", prompt)
         self.assertIn("BAD: one meaningful unit", prompt)
         self.assertIn("GOOD: four units", prompt)
@@ -279,6 +309,51 @@ class GenerationTests(unittest.TestCase):
 
         self.assertTrue(any("separator units may contain only punctuation" in error for error in errors), errors)
 
+    def test_alphabetic_separator_units_are_repaired_before_validation(self) -> None:
+        adaptation = adaptation_payload("daily-example", valid_dialog_levels())
+        paragraph = adaptation["levels"]["alef"]["paragraphs"][0]
+        paragraph[0:0] = [lexical_unit("ו", "separator"), lexical_unit("בית")]
+        adaptation["levels"]["alef"]["teaser"].insert(0, lexical_unit("של", "separator"))
+
+        repaired = _repair_alphabetic_separator_units([adaptation])
+
+        self.assertEqual(repaired, 2)
+        self.assertEqual(paragraph[0]["text"], "ובית")
+        self.assertEqual(adaptation["levels"]["alef"]["teaser"][0]["type"], "word")
+        self.assertFalse(any(
+            unit["type"] == "separator" and any(character.isalpha() for character in unit["text"])
+            for level in adaptation["levels"].values()
+            for units in [level["title"], level["teaser"], *level["paragraphs"]]
+            for unit in units
+        ))
+
+    def test_dialog_label_repair_uses_planned_speakers_and_prevents_omission(self) -> None:
+        levels = valid_dialog_levels()
+        for level in levels.values():
+            level["paragraphs"] = [
+                [lexical_unit("אני כבר בדרך.")],
+                [lexical_unit("טוב, אחכה ליד הכניסה.")],
+                *level["paragraphs"][2:],
+            ]
+        seed = {
+            "id": "friends-meet",
+            "type": "dialog",
+            "everydayMeta": {"dialogSpeakers": ["נועה", "דני"]},
+        }
+        adaptation = adaptation_payload(seed["id"], levels)
+
+        repaired = _repair_dialog_labels([seed], [adaptation], ["ru", "en"])
+        errors = _adaptation_content_errors(
+            [seed],
+            [adaptation],
+            [{"id": level_id} for level_id in ("alef", "alefPlus", "bet")],
+        )
+
+        self.assertGreaterEqual(repaired, 6)
+        self.assertEqual(errors, [])
+        self.assertTrue(units_text(levels["alef"]["paragraphs"][0]).startswith("נועה:"))
+        self.assertTrue(units_text(levels["alef"]["paragraphs"][1]).startswith("דני:"))
+
     def test_new_adaptation_accepts_sentence_sized_lexical_units(self) -> None:
         seed = {"id": "school-news", "type": "current"}
         levels = [{"id": level_id} for level_id in ("alef", "alefPlus", "bet")]
@@ -358,19 +433,19 @@ class GenerationTests(unittest.TestCase):
         )
         self.assertIn("begin from the target date", request)
         self.assertIn("Do not formulate searches from forbidden", request)
-        self.assertIn("exactly 36 distinct screening candidates", request)
-        self.assertIn("exactly 12 CURRENT and 24 HISTORY", request)
-        self.assertIn("Search substantially more than 36 source pages", request)
+        self.assertIn("exactly 18 distinct screening candidates", request)
+        self.assertIn("exactly 6 CURRENT and 12 HISTORY", request)
+        self.assertIn("Search substantially more than 18 source pages", request)
         self.assertIn("whole country", request)
         self.assertIn("do not default to Jerusalem", request)
         self.assertIn("HISTORY does not need a connection to the target date", request)
-        self.assertIn("at least six `person`, six `israeliIndustry`, six `culture`", request)
+        self.assertIn("at least 3 `person`, 3 `israeliIndustry`, 3 `culture`", request)
         self.assertIn("today's startup, high-tech unicorn", request)
         self.assertIn("newly published obituary", request)
         self.assertIn("museum qualifies only", request)
         self.assertIn("generic park-preservation", request)
         self.assertIn("at most one `archaeology`", request)
-        self.assertIn("first seven HISTORY candidates", request)
+        self.assertIn("first three HISTORY candidates", request)
         self.assertIn("continue searching for another candidate", request)
         self.assertIn("continuing the search", request)
         self.assertIn("final rejection pass", request)
@@ -383,10 +458,10 @@ class GenerationTests(unittest.TestCase):
         self.assertIn("PikiWiki Israel", request)
         self.assertIn("Israel Film Archive", request)
         self.assertIn("Project Ben-Yehuda", request)
-        self.assertIn("12 `wikimedia`", request)
-        self.assertIn("six `nationalLibraryPress`", request)
-        self.assertIn("four `stateVisualArchives`", request)
-        self.assertIn("two `cultureArchives`", request)
+        self.assertIn("6 `wikimedia`", request)
+        self.assertIn("3 `nationalLibraryPress`", request)
+        self.assertIn("2 `stateVisualArchives`", request)
+        self.assertIn("1 `cultureArchives`", request)
         self.assertIn("Do not research or return story beats", request)
         self.assertIn("do not use ordinal placeholders", request)
 
@@ -413,8 +488,8 @@ class GenerationTests(unittest.TestCase):
             ["wikimedia", "nationalLibraryPress", "stateVisualArchives", "cultureArchives"],
         )
         stories = schema["properties"]["stories"]
-        self.assertEqual(stories["minItems"], 36)
-        self.assertEqual(stories["maxItems"], 36)
+        self.assertEqual(stories["minItems"], 18)
+        self.assertEqual(stories["maxItems"], 18)
         variants = {
             variant["properties"]["type"]["enum"][0]: variant
             for variant in stories["items"]["anyOf"]
@@ -569,15 +644,14 @@ class GenerationTests(unittest.TestCase):
                 "historyFamily": "current",
                 "discoverySource": "current",
             }
-            for index in range(12)
+            for index in range(6)
         ]
         families = (
-            ["place"]
-            + ["archaeology"]
-            + ["event"] * 4
-            + ["culture"] * 6
-            + ["israeliIndustry"] * 6
-            + ["person"] * 6
+            ["event"] * 2
+            + ["culture"] * 3
+            + ["israeliIndustry"] * 3
+            + ["person"] * 3
+            + ["place"]
         )
         history = [
             {
@@ -585,15 +659,15 @@ class GenerationTests(unittest.TestCase):
                 "type": "history",
                 "historyFamily": family,
                 "discoverySource": (
-                    "wikimedia" if index < 12 else
-                    "nationalLibraryPress" if index < 18 else
-                    "stateVisualArchives" if index < 22 else
+                    "wikimedia" if index < 6 else
+                    "nationalLibraryPress" if index < 9 else
+                    "stateVisualArchives" if index < 11 else
                     "cultureArchives"
                 ),
             }
             for index, family in enumerate(families)
         ]
-        candidates = [*current, *history[:24]]
+        candidates = [*current, *history[:12]]
         self.assertEqual(
             _sourced_candidate_mix_errors(
                 candidates,
@@ -603,14 +677,14 @@ class GenerationTests(unittest.TestCase):
             [],
         )
 
-        selected = _select_sourced_candidates([], candidates, 4, 7)
+        selected = _select_sourced_candidates([], candidates, 2, 3)
         selected_history = [story for story in selected if story["type"] == "history"]
         selected_families = [story["historyFamily"] for story in selected_history]
-        self.assertEqual(len([story for story in selected if story["type"] == "current"]), 4)
-        self.assertEqual(len(selected_history), 7)
-        self.assertGreaterEqual(selected_families.count("person"), 2)
-        self.assertGreaterEqual(selected_families.count("israeliIndustry"), 2)
-        self.assertGreaterEqual(selected_families.count("culture"), 2)
+        self.assertEqual(len([story for story in selected if story["type"] == "current"]), 2)
+        self.assertEqual(len(selected_history), 3)
+        self.assertEqual(selected_families.count("person"), 1)
+        self.assertEqual(selected_families.count("israeliIndustry"), 1)
+        self.assertEqual(selected_families.count("culture"), 1)
         self.assertLessEqual(selected_families.count("place"), 1)
         self.assertNotIn("archaeology", selected_families)
 
@@ -622,15 +696,15 @@ class GenerationTests(unittest.TestCase):
                 "historyFamily": "current",
                 "discoverySource": "current",
             }
-            for index in range(12)
+            for index in range(6)
         ]
         families = (
-            ["place"] * 5
+            ["place"] * 4
             + ["archaeology"] * 2
-            + ["event"] * 4
-            + ["culture"] * 5
-            + ["israeliIndustry"] * 4
-            + ["person"] * 4
+            + ["event"] * 2
+            + ["culture"] * 2
+            + ["israeliIndustry"]
+            + ["person"]
         )
         history = [
             {"id": f"history-{index}", "type": "history", "historyFamily": family}
@@ -639,15 +713,15 @@ class GenerationTests(unittest.TestCase):
 
         errors = _sourced_candidate_mix_errors([*current, *history], ["current", "history"])
 
-        self.assertIn("HISTORY candidate pool needs at least 6 person stories", errors)
-        self.assertIn("HISTORY candidate pool needs at least 6 israeliIndustry stories", errors)
-        self.assertIn("HISTORY candidate pool needs at least 6 culture stories", errors)
+        self.assertIn("HISTORY candidate pool needs at least 3 person stories", errors)
+        self.assertIn("HISTORY candidate pool needs at least 3 israeliIndustry stories", errors)
+        self.assertIn("HISTORY candidate pool needs at least 3 culture stories", errors)
         self.assertIn("HISTORY candidate pool may contain at most 2 place stories", errors)
         self.assertIn("HISTORY candidate pool may contain at most 1 archaeology story", errors)
 
     def test_generated_story_target_never_replaces_missing_sourced_slots(self) -> None:
         self.assertEqual(_generated_story_target(15, 11, False), 4)
-        self.assertEqual(_generated_story_target(15, 7, False), 4)
+        self.assertEqual(_generated_story_target(15, 7, False), 5)
         self.assertEqual(_generated_story_target(3, 0, False), 3)
         self.assertEqual(_generated_story_target(6, 6, False), 0)
         self.assertEqual(_generated_story_target(8, 99, True), 8)
@@ -926,10 +1000,10 @@ class GenerationTests(unittest.TestCase):
         self.assertTrue(errors)
         self.assertEqual(indexes, {1})
 
-    def test_new_issue_accepts_the_target_everyday_and_dialog_mix(self) -> None:
+    def test_new_issue_accepts_the_standard_story_mix_before_shorts_page(self) -> None:
         site = read_json(ROOT / "config" / "site.json")
         levels = read_json(ROOT / "config" / "reading-levels.json")["levels"]
-        story_types = ["current"] * 4 + ["everyday"] * 2 + ["dialog"] * 2 + ["history"] * 7
+        story_types = ["current"] * 2 + ["everyday"] * 3 + ["dialog"] * 2 + ["history"] * 3
         briefs = [
             "A city adds a late bus on a busy route.",
             "A supermarket changes how reusable bags are sold.",
@@ -948,7 +1022,7 @@ class GenerationTests(unittest.TestCase):
             "An educator establishes evening classes for working adults.",
         ]
         seeds = []
-        for index, (story_type, brief) in enumerate(zip(story_types, briefs, strict=True)):
+        for index, (story_type, brief) in enumerate(zip(story_types, briefs[:10], strict=True)):
             generated = story_type in {"everyday", "dialog"}
             seeds.append(
                 {
@@ -962,6 +1036,7 @@ class GenerationTests(unittest.TestCase):
                         "scenario": f"scenario_{index}",
                         "lexicalThemes": ["plans"],
                         "targetVocabulary": ["להחליט"],
+                        "dialogSpeakers": ["נועה", "דני"] if story_type == "dialog" else [],
                     } if generated else None,
                     "sources": [],
                     "image": None,
@@ -975,8 +1050,8 @@ class GenerationTests(unittest.TestCase):
             site,
             levels,
             None,
-            13,
-            16,
+            10,
+            10,
         )
         self.assertEqual(errors, [])
 
@@ -1040,6 +1115,42 @@ class GenerationTests(unittest.TestCase):
         }
         history = _updated_history({"schemaVersion": 1, "items": []}, [story], "2026-09-07")
         self.assertEqual(history["items"][0]["storyId"], "family-dinner-dialog")
+
+    def test_independently_adapted_short_items_are_collected_on_one_valid_page(self) -> None:
+        site = read_json(ROOT / "config" / "site.json")
+        levels = read_json(ROOT / "config" / "reading-levels.json")["levels"]
+        template = next(
+            story for story in read_json(ROOT / "content" / "2024-01-26.json")["stories"]
+            if story["type"] == "everyday"
+        )
+        short_stories = []
+        for index in range(8):
+            story = copy.deepcopy(template)
+            story["id"] = story["slug"] = f"short-situation-{index}"
+            story["brief"] = f"A customer asks one small practical question in ordinary situation number {index}."
+            story["everydayMeta"]["scenario"] = f"short_situation_{index}"
+            story["everydayMeta"]["dialogSpeakers"] = []
+            for level in story["levels"].values():
+                level["paragraphs"] = [level["paragraphs"][0]]
+            short_stories.append(story)
+
+        page = _shorts_page(
+            short_stories,
+            "2026-09-07",
+            [level["id"] for level in levels],
+            site["translationLocales"],
+        )
+        self.assertIsNotNone(page)
+        issue = {
+            "schemaVersion": 1,
+            "date": "2026-09-07",
+            "availableLevels": [level["id"] for level in levels],
+            "translationLocales": site["translationLocales"],
+            "stories": [page],
+        }
+        self.assertEqual(validate_issue(issue, site, levels), [])
+        history = _updated_history({"schemaVersion": 1, "items": []}, [page], "2026-09-07")
+        self.assertEqual(len(history["items"]), 8)
 
     def test_append_rejects_a_rephrased_existing_topic(self) -> None:
         site = read_json(ROOT / "config" / "site.json")
@@ -1196,6 +1307,14 @@ class GenerationTests(unittest.TestCase):
             root = Path(temporary)
             for directory in ("config", "i18n", "prompts", "content"):
                 shutil.copytree(ROOT / directory, root / directory)
+            site_path = root / "config" / "site.json"
+            site_config = read_json(site_path)
+            site_config.update({
+                "defaultIssueStoryCount": 15,
+                "minimumIssueStoryCount": 13,
+                "maximumIssueStoryCount": 16,
+            })
+            site_path.write_text(json.dumps(site_config), encoding="utf-8")
             levels_path = root / "config" / "reading-levels.json"
             level_config = read_json(levels_path)
             for level in level_config["levels"]:
@@ -1324,6 +1443,10 @@ class GenerationTests(unittest.TestCase):
                 patch("src.generate_issue.SOURCED_CANDIDATE_COUNT", 12),
                 patch("src.generate_issue.CURRENT_CANDIDATE_TARGET", 4),
                 patch("src.generate_issue.HISTORY_CANDIDATE_TARGET", 8),
+                patch("src.generate_issue.CURRENT_TARGET", 4),
+                patch("src.generate_issue.HISTORY_TARGET", 7),
+                patch("src.generate_issue.EVERYDAY_TARGET", 2),
+                patch("src.generate_issue.DIALOG_TARGET", 2),
                 patch("src.generate_issue.HISTORY_CANDIDATE_MINIMUMS", {
                     "person": 2,
                     "israeliIndustry": 2,

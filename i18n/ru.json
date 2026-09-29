@@ -52,5 +52,6 @@
   "type.everyday": "EVERYDAY",
   "type.dialog": "DIALOG",
   "type.history": "HISTORY",
+  "type.shorts": "КОРОТКО",
   "type.aiGenerated": "ПОЛНОСТЬЮ СОЗДАНО ИИ"
 }

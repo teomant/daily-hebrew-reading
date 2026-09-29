@@ -11,7 +11,7 @@ from .common import issue_minutes, normalized_url, read_json, units_text
 
 
 SLUG_PATTERN = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
-STORY_TYPES = {"current", "everyday", "dialog", "history"}
+STORY_TYPES = {"current", "everyday", "dialog", "history", "shorts"}
 UNIT_TYPES = {"word", "expression", "properNoun", "separator"}
 MIN_TRANSLATION_COVERAGE = 0.75
 BRIEF_STOP_WORDS = {
@@ -248,7 +248,7 @@ def validate_issue(
         if not isinstance(sources, list):
             errors.append(f"{story_path}.sources: expected a list")
             sources = []
-        if story_type in {"everyday", "dialog"} and sources:
+        if story_type in {"everyday", "dialog", "shorts"} and sources:
             errors.append(f"{story_path}.sources: {story_type.upper()} stories cannot have sources")
         source_urls: set[str] = set()
         for source_index, source in enumerate(sources):
@@ -281,12 +281,56 @@ def validate_issue(
                 for field in ("lexicalThemes", "targetVocabulary"):
                     if not isinstance(meta.get(field), list) or not meta[field]:
                         errors.append(f"{story_path}.everydayMeta.{field}: expected a non-empty list")
+                speakers = meta.get("dialogSpeakers")
+                if speakers is not None:
+                    if story_type == "dialog" and (
+                        not isinstance(speakers, list)
+                        or len(speakers) != 2
+                        or any(not isinstance(name, str) or not name.strip() for name in speakers)
+                    ):
+                        errors.append(f"{story_path}.everydayMeta.dialogSpeakers: expected two names")
+                    if story_type == "everyday" and speakers != []:
+                        errors.append(f"{story_path}.everydayMeta.dialogSpeakers: EVERYDAY must use an empty list")
         elif meta is not None:
             errors.append(f"{story_path}.everydayMeta: only EVERYDAY and DIALOG stories may have metadata")
 
+        short_items = story.get("shortItems")
+        if story_type == "shorts":
+            if not isinstance(short_items, list) or not 8 <= len(short_items) <= 9:
+                errors.append(f"{story_path}.shortItems: expected 8–9 short-item metadata records")
+                short_items = []
+            else:
+                seen_short_ids: set[str] = set()
+                for short_index, short_item in enumerate(short_items):
+                    short_path = f"{story_path}.shortItems[{short_index}]"
+                    if not isinstance(short_item, dict):
+                        errors.append(f"{short_path}: expected an object")
+                        continue
+                    short_id = short_item.get("id")
+                    if not isinstance(short_id, str) or not SLUG_PATTERN.fullmatch(short_id):
+                        errors.append(f"{short_path}.id: expected lowercase ASCII kebab-case")
+                    elif short_id in seen_short_ids:
+                        errors.append(f"{short_path}.id: duplicate {short_id}")
+                    else:
+                        seen_short_ids.add(short_id)
+                    if not isinstance(short_item.get("brief"), str) or not is_meaningful_english(short_item["brief"]):
+                        errors.append(f"{short_path}.brief: expected an English brief")
+                    short_meta = short_item.get("everydayMeta")
+                    if not isinstance(short_meta, dict):
+                        errors.append(f"{short_path}.everydayMeta: required")
+                        continue
+                    for field in ("domain", "scenario"):
+                        if not isinstance(short_meta.get(field), str) or not short_meta[field].strip():
+                            errors.append(f"{short_path}.everydayMeta.{field}: required")
+                    for field in ("lexicalThemes", "targetVocabulary"):
+                        if not isinstance(short_meta.get(field), list) or not short_meta[field]:
+                            errors.append(f"{short_path}.everydayMeta.{field}: expected a non-empty list")
+        elif short_items is not None:
+            errors.append(f"{story_path}.shortItems: only SHORTS pages may contain short items")
+
         image = story.get("image")
         if image is not None:
-            if story_type in {"everyday", "dialog"}:
+            if story_type in {"everyday", "dialog", "shorts"}:
                 errors.append(f"{story_path}.image: {story_type.upper()} stories cannot use sourced images")
             elif not isinstance(image, dict):
                 errors.append(f"{story_path}.image: expected an object or null")
@@ -334,6 +378,8 @@ def validate_issue(
                     _validate_units(paragraph, f"{level_path}.paragraphs[{paragraph_index}]", locales, errors)
                 if not any(units_text(paragraph).strip() for paragraph in paragraphs if isinstance(paragraph, list)):
                     errors.append(f"{level_path}.paragraphs: text is empty")
+                if story_type == "shorts" and isinstance(short_items, list) and len(paragraphs) != len(short_items):
+                    errors.append(f"{level_path}.paragraphs: must match shortItems count")
             _validate_translation_coverage(level, level_path, locales, errors)
     return errors
 
@@ -408,4 +454,9 @@ def validate_repository(root: Path) -> list[str]:
                     history_key = (issue.get("date"), story.get("id"))
                     if story.get("type") in {"everyday", "dialog"} and history_key not in history_ids:
                         errors.append(f"everyday-history.json: missing {story.get('id')}")
+                    if story.get("type") == "shorts":
+                        for short_item in story.get("shortItems", []):
+                            short_key = (issue.get("date"), short_item.get("id"))
+                            if short_key not in history_ids:
+                                errors.append(f"everyday-history.json: missing {short_item.get('id')}")
     return errors

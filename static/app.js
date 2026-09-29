@@ -48,7 +48,7 @@
   const formatDate = value => new Intl.DateTimeFormat(interfaceLocale, {day:"numeric", month:"long", year:"numeric", timeZone:"UTC"}).format(new Date(`${value}T00:00:00Z`));
   const kind = story => {
     const label = `${copy(`category.${story.category}`)} · ${copy(`type.${story.type}`)}`;
-    return ["everyday", "dialog"].includes(story.type) ? `${label} · ${copy("type.aiGenerated")}` : label;
+    return ["everyday", "dialog", "shorts"].includes(story.type) ? `${label} · ${copy("type.aiGenerated")}` : label;
   };
 
   function activateControls() {
@@ -105,10 +105,18 @@
     document.querySelector("[data-article-title]").replaceChildren(...renderUnits(content.title));
     document.querySelector("[data-article-teaser]").replaceChildren(...renderUnits(content.teaser));
     const articleBody = document.querySelector("[data-article-body]");
-    articleBody.replaceChildren(...content.paragraphs.map(units => {
+    articleBody.classList.toggle("shorts-list", story.type === "shorts");
+    articleBody.replaceChildren(...content.paragraphs.map((units, index) => {
       const paragraph = document.createElement("p");
       paragraph.append(...renderUnits(units));
-      return paragraph;
+      if (story.type !== "shorts") return paragraph;
+      const section = document.createElement("section");
+      section.className = "short-item";
+      const number = document.createElement("span");
+      number.className = "short-number";
+      number.textContent = String(index + 1).padStart(2, "0");
+      section.append(number, paragraph);
+      return section;
     }));
     document.querySelector("[data-article-minutes]").textContent = `${storyMinutes(story)} ${minuteWord(storyMinutes(story))}`;
     const info = levelInfo(readingLevel);

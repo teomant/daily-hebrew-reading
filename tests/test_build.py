@@ -126,6 +126,41 @@ class BuildTests(unittest.TestCase):
         self.assertIn("DIALOG", rendered)
         self.assertIn("ПОЛНОСТЬЮ СОЗДАНО ИИ", rendered)
 
+    def test_shorts_page_renders_numbered_items_and_ai_disclosure(self) -> None:
+        issue = copy.deepcopy(read_json(ROOT / "content" / "2024-01-26.json"))
+        story = issue["stories"][1]
+        story["type"] = "shorts"
+        story["everydayMeta"] = None
+        story["shortItems"] = [
+            {
+                "id": f"short-item-{index}",
+                "brief": f"A small ordinary interaction for short item number {index}.",
+                "everydayMeta": {
+                    "domain": "services_appointments",
+                    "scenario": f"short_item_{index}",
+                    "lexicalThemes": ["questions"],
+                    "targetVocabulary": ["איפה"],
+                    "dialogSpeakers": [],
+                },
+            }
+            for index in range(8)
+        ]
+        for level in story["levels"].values():
+            level["paragraphs"] = [copy.deepcopy(level["paragraphs"][0]) for _ in range(8)]
+
+        rendered = build_article(
+            issue,
+            1,
+            load_site_config(),
+            load_level_config(),
+            load_locales(),
+        )
+
+        self.assertIn('class="hebrew-article shorts-list"', rendered)
+        self.assertEqual(rendered.count('class="short-item"'), 8)
+        self.assertIn("КОРОТКО", rendered)
+        self.assertIn("ПОЛНОСТЬЮ СОЗДАНО ИИ", rendered)
+
     def test_old_issue_builds_when_a_new_level_becomes_default(self) -> None:
         issue = read_json(ROOT / "content" / "2024-01-26.json")
         site = {**load_site_config(), "defaultReadingLevel": "gimel"}

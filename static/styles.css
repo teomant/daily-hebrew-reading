@@ -68,4 +68,5 @@ body{font-size:16px;line-height:1.5}
 
 /* Keep interactive Hebrew text aligned with its RTL article container. */
 .article-heading h1,.article-dek{text-align:right}
+.shorts-list{display:grid;gap:18px;margin-top:30px}.short-item{display:grid;grid-template-columns:42px 1fr;padding:22px 0;border-top:1px solid var(--line);align-items:start}.short-item:first-child{border-top:3px double var(--ink)}.short-item .short-number{padding-top:7px;color:var(--accent);font:800 10px var(--ui);letter-spacing:.08em;direction:ltr}.short-item p{margin:0}
 .lexeme{text-align:inherit;direction:inherit}

@@ -47,20 +47,23 @@ CATEGORIES = [
 ]
 PROVENANCE_ERRORS_KEY = "_provenanceErrors"
 SOURCED_DISCOVERY_ATTEMPTS = 3
-SOURCED_CANDIDATE_COUNT = 36
-CURRENT_CANDIDATE_TARGET = 12
-HISTORY_CANDIDATE_TARGET = 24
+SOURCED_CANDIDATE_COUNT = 18
+CURRENT_CANDIDATE_TARGET = 6
+HISTORY_CANDIDATE_TARGET = 12
 HISTORY_RESEARCH_REQUEST_FAILURE_LIMIT = 2
 HISTORY_RESEARCH_MIN_BEATS = 8
 HISTORY_RESEARCH_MAX_BEATS = 12
 GENERATED_PLANNING_ATTEMPTS = 3
 ADAPTATION_ATTEMPTS = 2
+GENERATED_ADAPTATION_ATTEMPTS = 3
 # Article validation failures are isolated by keeping every adaptation request to one story.
 ADAPTATION_BATCH_SIZE = 1
-CURRENT_TARGET = 4
-HISTORY_TARGET = 7
-EVERYDAY_TARGET = 2
+CURRENT_TARGET = 2
+HISTORY_TARGET = 3
+EVERYDAY_TARGET = 3
 DIALOG_TARGET = 2
+SHORTS_TARGET = 9
+SHORTS_MINIMUM = 8
 GENERATED_SCENARIO_DOMAINS = [
     "home_family",
     "social_leisure",
@@ -73,6 +76,17 @@ GENERATED_SCENARIO_DOMAINS = [
     "neighbors_community",
     "hobbies_culture",
     "digital_admin",
+    "learning_classes",
+    "sports_exercise",
+    "pets_animals",
+    "clothing_personal_care",
+    "hosting_celebrations",
+    "arts_events",
+    "travel_day_trips",
+    "volunteering_community",
+    "money_subscriptions",
+    "parenting_school",
+    "nature_outdoors",
 ]
 HISTORY_FAMILIES = ["person", "israeliIndustry", "culture", "event", "place", "archaeology"]
 HISTORY_REQUIRED_BEAT_ROLES = {"setup", "action", "turningPoint", "outcome"}
@@ -85,23 +99,19 @@ DIALOG_SPEAKER_PATTERN = re.compile(
     r"^([\u0590-\u05ff][\u0590-\u05ff׳״'\" -]{0,29}):\s*\S"
 )
 ISRAELI_HISTORY_SOURCE_MINIMUMS = {
-    "wikimedia": 12,
-    "nationalLibraryPress": 6,
-    "stateVisualArchives": 4,
-    "cultureArchives": 2,
+    "wikimedia": 6,
+    "nationalLibraryPress": 3,
+    "stateVisualArchives": 2,
+    "cultureArchives": 1,
 }
 WORLDWIDE_HISTORY_SOURCE = "worldwideFallback"
 HISTORY_CANDIDATE_MINIMUMS = {
-    "person": 6,
-    "israeliIndustry": 6,
-    "culture": 6,
-    "event": 4,
+    "person": 3,
+    "israeliIndustry": 3,
+    "culture": 3,
+    "event": 2,
 }
 HISTORY_SELECTION_GROUPS = [
-    ("person",),
-    ("israeliIndustry",),
-    ("culture",),
-    ("event", "place"),
     ("person",),
     ("israeliIndustry",),
     ("culture",),
@@ -253,8 +263,13 @@ def _story_batch_schema(
             "scenario": {"type": "string"},
             "lexicalThemes": {"type": "array", "items": {"type": "string"}, "minItems": 1},
             "targetVocabulary": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+            "dialogSpeakers": {
+                "type": "array",
+                "items": {"type": "string", "pattern": "^[\u0590-\u05ff׳״'\" -]+$"},
+                "maxItems": 2,
+            },
         },
-        "required": ["domain", "scenario", "lexicalThemes", "targetVocabulary"],
+        "required": ["domain", "scenario", "lexicalThemes", "targetVocabulary", "dialogSpeakers"],
         "additionalProperties": False,
     }
     story = {
@@ -576,7 +591,7 @@ def _validated_history_research(
 
 
 def _public_story_seed(story: dict[str, Any]) -> dict[str, Any]:
-    private_keys = {HISTORY_BEAT_CONTRACT_KEY, "historyFamily", DISCOVERY_SOURCE_KEY}
+    private_keys = {HISTORY_BEAT_CONTRACT_KEY, "historyFamily", DISCOVERY_SOURCE_KEY, "_shortItem"}
     return {key: value for key, value in story.items() if key not in private_keys}
 
 
@@ -715,7 +730,12 @@ def _adaptation_batch_schema(
     adaptations = []
     for story in stories:
         level_map = copy.deepcopy(base_level_map)
-        if story.get("type") == "dialog":
+        if story.get("_shortItem") is True:
+            for level_id in level_ids:
+                paragraphs = level_map["properties"][level_id]["properties"]["paragraphs"]
+                paragraphs["minItems"] = 1
+                paragraphs["maxItems"] = 1
+        elif story.get("type") == "dialog":
             for level_id in level_ids:
                 level_map["properties"][level_id]["properties"]["paragraphs"]["minItems"] = 8
         contract = story.get(HISTORY_BEAT_CONTRACT_KEY)
@@ -942,10 +962,12 @@ def _sourced_discovery_request(
         "English. HISTORY does not need a connection to the target date or current news. Use the source page as a lead to "
         "a person, company, work, decision, event, institution, invention, or ordinary-life development—not as a reason "
         "to write about an article, photograph, archive record, museum object, or exhibition page.\n"
-        "- Build the 24-candidate Israel-focused HISTORY pool from four editorial discovery lanes. Return 12 `wikimedia` "
-        "candidates discovered through Hebrew or English Wikipedia or Wikidata; six `nationalLibraryPress` candidates from "
-        "the National Library of Israel or Historical Jewish Press; four `stateVisualArchives` candidates from the Israel "
-        "State Archives, National Photo Collection, or PikiWiki Israel; and two `cultureArchives` candidates from the Israel "
+        f"- Build the {HISTORY_CANDIDATE_TARGET}-candidate Israel-focused HISTORY pool from four editorial discovery lanes. "
+        f"Return {ISRAELI_HISTORY_SOURCE_MINIMUMS.get('wikimedia', 0)} `wikimedia` candidates discovered through Hebrew or English "
+        f"Wikipedia or Wikidata; {ISRAELI_HISTORY_SOURCE_MINIMUMS.get('nationalLibraryPress', 0)} `nationalLibraryPress` candidates from "
+        f"the National Library of Israel or Historical Jewish Press; {ISRAELI_HISTORY_SOURCE_MINIMUMS.get('stateVisualArchives', 0)} "
+        f"`stateVisualArchives` candidates from the Israel State Archives, National Photo Collection, or PikiWiki Israel; and "
+        f"{ISRAELI_HISTORY_SOURCE_MINIMUMS.get('cultureArchives', 0)} `cultureArchives` candidates from the Israel "
         f"Film Archive or Project Ben-Yehuda. Store the lane in `{DISCOVERY_SOURCE_KEY}`. This field records the discovery "
         "route for editorial balancing; it is not proof that every fact is supported by a returned URL."
     )
@@ -964,9 +986,9 @@ SEARCH PROCESS
 - For CURRENT, search Israeli reporting from the target date and previous several days. Search across the whole country and varied communities; do not default to Jerusalem or treat it as the center of every issue.
 {history_source_process}
 - Give every candidate a `historyFamily`. CURRENT uses `current`. HISTORY uses exactly one of `person`, `israeliIndustry`, `culture`, `event`, `place`, or `archaeology` according to its actual central subject, not the wording used to sell it.
-- When both sourced types are requested, build the 24-candidate HISTORY portion with at least six `person`, six `israeliIndustry`, six `culture`, and four `event` candidates. If only HISTORY remains, all 36 candidates are HISTORY and must preserve those minimums while using the extra slots for the same preferred families. `person` means a specific historical person's life, work, decisions, and impact; a newly published obituary or current death report is CURRENT, not HISTORY. `israeliIndustry` means the history of an Israeli company, manufacturer, brand, cooperative, factory, trade, product, or industrial development—not today's startup, high-tech unicorn, funding round, valuation, product launch, or executive profile. `culture` covers the history of literature, music, theater, cinema, visual art, dance, design, architecture, food culture, publishing, broadcasting, or a cultural movement, work, or institution. A museum qualifies only when the story is about cultural creation, collections, or influence, not merely an old building to visit. `event` covers concrete past events, customs, education, infrastructure, transport, institutions, or everyday objects with a clear human sequence and consequence.
+- When both sourced types are requested, build the {HISTORY_CANDIDATE_TARGET}-candidate HISTORY portion with at least {HISTORY_CANDIDATE_MINIMUMS.get('person', 0)} `person`, {HISTORY_CANDIDATE_MINIMUMS.get('israeliIndustry', 0)} `israeliIndustry`, {HISTORY_CANDIDATE_MINIMUMS.get('culture', 0)} `culture`, and {HISTORY_CANDIDATE_MINIMUMS.get('event', 0)} `event` candidates. If only HISTORY remains, all {SOURCED_CANDIDATE_COUNT} candidates are HISTORY and must preserve those minimums while using the extra slots for the same preferred families. `person` means a specific historical person's life, work, decisions, and impact; a newly published obituary or current death report is CURRENT, not HISTORY. `israeliIndustry` means the history of an Israeli company, manufacturer, brand, cooperative, factory, trade, product, or industrial development—not today's startup, high-tech unicorn, funding round, valuation, product launch, or executive profile. `culture` covers the history of literature, music, theater, cinema, visual art, dance, design, architecture, food culture, publishing, broadcasting, or a cultural movement, work, or institution. A museum qualifies only when the story is about cultural creation, collections, or influence, not merely an old building to visit. `event` covers concrete past events, customs, education, infrastructure, transport, institutions, or everyday objects with a clear human sequence and consequence.
 - `place` is optional and rare, not a required family. Return at most two `place` candidates and reject generic park-preservation, tourist-guide, trail, viewpoint, fortress-visit, or “a place where nature and history meet” pitches. A place candidate needs an exceptional, specific human story that could not be told by swapping in another location. Return at most one `archaeology` candidate.
-- Order the first seven HISTORY candidates so they contain at least two `person`, two `israeliIndustry`, two `culture`, and one `event` or exceptional `place`; no more than one may be `place`, and none may be `archaeology`. Python applies the same mix when selecting the seven published HISTORY stories.
+- Order the first three HISTORY candidates as one `person`, one `israeliIndustry`, and one `culture` story. Python applies the same mix when selecting the three published HISTORY stories.
 - Order candidates by editorial value within each type, not by search order. Avoid returning several places with the same generic excavation-discovery plot even when their names differ.
 - Search substantially more than {SOURCED_CANDIDATE_COUNT} source pages. A rejected page does not count; continue searching for another candidate.
 - Do not formulate searches from forbidden IDs, briefs, subjects, or URLs. They are comparison data only.
@@ -1108,7 +1130,7 @@ def _generated_planning_request(
     return f"""
 Target publication date: {target_date}
 Task: {mode}.
-Generate up to {target_count} new stories, using only EVERYDAY and DIALOG. Aim to include at least {everyday_count} EVERYDAY and {dialog_count} DIALOG stories among them; any remaining slots may use either type. These are planning targets, not publication-blocking quotas. Do not use web search and do not produce CURRENT or HISTORY stories.
+Generate exactly {target_count} new stories, using only EVERYDAY and DIALOG. {f'Return exactly {everyday_count} EVERYDAY and {dialog_count} DIALOG stories.' if not is_append else 'For this same-day append, either generated type may be used.'} Do not use web search and do not produce CURRENT or HISTORY stories.
 
 Create each scenario independently from ordinary life. Give every story a concrete situation, interaction, action, clarification or reaction, and outcome. Return only English scenario briefs and metadata; do not write Hebrew adaptations.
 
@@ -1143,6 +1165,42 @@ ALREADY SELECTED STORIES IN THIS RUN:
 
 OUTPUT CONTRACT
 Write every `brief` in English and make the id and slug identical. Supply complete scenario metadata. Make EVERYDAY briefs support 4–5 developed story beats, and make DIALOG briefs support 8–12 useful alternating direct-speech turns with questions, clarification, reactions, and an outcome. Every story must have an empty source list and null image. Return only schema-matching data and no prose.{retry}
+""".strip()
+
+
+def _short_planning_request(
+    target_date: str,
+    target_count: int,
+    forbidden_stories: list[dict[str, Any]],
+    recent_history: list[dict[str, Any]],
+    selected_stories: list[dict[str, Any]],
+    feedback: list[str] | None = None,
+) -> str:
+    retry = (
+        "\nRETRY FEEDBACK\nDiscard rejected ideas and return unrelated replacements: "
+        f"{json.dumps(feedback, ensure_ascii=False)}"
+        if feedback else ""
+    )
+    return f"""
+Target publication date: {target_date}
+Generate up to {target_count} independent mini-situations for one SHORTS page. Return them as EVERYDAY planning records; Python will mark them as short items and adapt each one separately. Do not use web search or write Hebrew prose.
+
+- Use only these canonical `domain` values: {json.dumps(GENERATED_SCENARIO_DOMAINS)}.
+- Give each item one small practical interaction or action and one result, suitable for one compact paragraph of two to four sentences.
+- Vary situations, relationships, useful wording, and outcomes. A broad domain may repeat when the scenario itself is different.
+- Set `dialogSpeakers` to an empty list. Use empty sources and a null image.
+- Do not repeat, rename, or lightly rewrite anything in the comparison records.
+
+RECENT SCENARIO RECORDS:
+{json.dumps(recent_history, ensure_ascii=False, indent=2)}
+
+FORBIDDEN GENERATED STORIES:
+{json.dumps(forbidden_stories, ensure_ascii=False, indent=2)}
+
+ALREADY SELECTED STORIES AND SHORT ITEMS:
+{json.dumps(selected_stories, ensure_ascii=False, indent=2)}
+
+Return only schema-matching data. Every id and slug must be identical and descriptive, every type must be `everyday`, and every brief must be in English.{retry}
 """.strip()
 
 
@@ -1236,6 +1294,149 @@ def _remove_empty_lexical_units(adaptations: list[dict[str, Any]]) -> int:
                     removed += len(units) - len(filtered)
                     paragraphs[index] = filtered
     return removed
+
+
+def _repair_alphabetic_separator_units(adaptations: list[dict[str, Any]]) -> int:
+    """Repair generated Hebrew that was incorrectly marked as non-language punctuation."""
+    repaired = 0
+    detachable_prefixes = {"ב", "ו", "כ", "ל", "מ", "ש", "ה"}
+    for adaptation in adaptations:
+        levels = adaptation.get("levels")
+        if not isinstance(levels, dict):
+            continue
+        for level in levels.values():
+            if not isinstance(level, dict):
+                continue
+            groups = [level.get("title"), level.get("teaser")]
+            paragraphs = level.get("paragraphs")
+            if isinstance(paragraphs, list):
+                groups.extend(paragraphs)
+            for units in groups:
+                if not isinstance(units, list):
+                    continue
+                index = 0
+                while index < len(units):
+                    unit = units[index]
+                    if not isinstance(unit, dict) or unit.get("type") != "separator":
+                        index += 1
+                        continue
+                    text = str(unit.get("text", ""))
+                    stripped = text.strip()
+                    if not any(character.isalpha() for character in text):
+                        index += 1
+                        continue
+                    next_unit = units[index + 1] if index + 1 < len(units) else None
+                    if (
+                        stripped in detachable_prefixes
+                        and stripped == text
+                        and isinstance(next_unit, dict)
+                        and next_unit.get("type") != "separator"
+                        and isinstance(next_unit.get("text"), str)
+                        and next_unit["text"]
+                    ):
+                        next_unit["text"] = stripped + next_unit["text"].lstrip()
+                        units.pop(index)
+                    else:
+                        unit["type"] = "expression" if any(character.isspace() for character in stripped) else "word"
+                        index += 1
+                    repaired += 1
+    return repaired
+
+
+def _dialog_speakers(seed: dict[str, Any], adaptations: list[dict[str, Any]]) -> list[str]:
+    meta = seed.get("everydayMeta")
+    configured = meta.get("dialogSpeakers") if isinstance(meta, dict) else None
+    if (
+        isinstance(configured, list)
+        and len(configured) == 2
+        and all(isinstance(name, str) and name.strip() for name in configured)
+    ):
+        return [name.strip() for name in configured]
+
+    found: list[str] = []
+    for adaptation in adaptations:
+        levels = adaptation.get("levels")
+        if not isinstance(levels, dict):
+            continue
+        for level in levels.values():
+            paragraphs = level.get("paragraphs") if isinstance(level, dict) else None
+            if not isinstance(paragraphs, list):
+                continue
+            for units in paragraphs:
+                text = units_text(units).strip() if isinstance(units, list) else ""
+                match = DIALOG_SPEAKER_PATTERN.match(text)
+                if match is not None and match.group(1).strip() not in found:
+                    found.append(match.group(1).strip())
+                    if len(found) == 2:
+                        return found
+    return ["דובר א", "דובר ב"]
+
+
+def _remove_existing_dialog_label(units: list[dict[str, Any]]) -> None:
+    """Remove a recognized leading `name:` while preserving the segmented speech."""
+    text = units_text(units).strip()
+    if DIALOG_SPEAKER_PATTERN.match(text) is None:
+        return
+    colon_seen = False
+    retained: list[dict[str, Any]] = []
+    for unit in units:
+        if colon_seen or not isinstance(unit, dict):
+            retained.append(unit)
+            continue
+        unit_text = str(unit.get("text", ""))
+        colon_index = unit_text.find(":")
+        if colon_index < 0:
+            continue
+        colon_seen = True
+        suffix = unit_text[colon_index + 1:].lstrip()
+        if suffix:
+            replacement = copy.deepcopy(unit)
+            replacement["text"] = suffix
+            retained.append(replacement)
+    units[:] = retained
+
+
+def _repair_dialog_labels(
+    seeds: list[dict[str, Any]],
+    adaptations: list[dict[str, Any]],
+    locales: list[str],
+) -> int:
+    """Normalize labels deterministically so punctuation mistakes do not discard a dialogue."""
+    seeds_by_id = {seed.get("id"): seed for seed in seeds if seed.get("type") == "dialog"}
+    repaired = 0
+    for adaptation in adaptations:
+        seed = seeds_by_id.get(adaptation.get("id"))
+        if seed is None:
+            continue
+        speakers = _dialog_speakers(seed, [adaptation])
+        levels = adaptation.get("levels")
+        if not isinstance(levels, dict):
+            continue
+        for level in levels.values():
+            paragraphs = level.get("paragraphs") if isinstance(level, dict) else None
+            if not isinstance(paragraphs, list):
+                continue
+            for index, units in enumerate(paragraphs):
+                if not isinstance(units, list):
+                    continue
+                expected = speakers[index % 2]
+                before = units_text(units).strip()
+                _remove_existing_dialog_label(units)
+                units[0:0] = [
+                    {
+                        "text": expected,
+                        "type": "properNoun" if not expected.startswith("דובר ") else "expression",
+                        "translations": {locale: expected for locale in locales},
+                    },
+                    {
+                        "text": ":",
+                        "type": "separator",
+                        "translations": {locale: "" for locale in locales},
+                    },
+                ]
+                if units_text(units).strip() != before:
+                    repaired += 1
+    return repaired
 
 
 def _has_terminal_punctuation(value: str) -> bool:
@@ -1467,13 +1668,17 @@ def _adaptation_request(
     feedback: list[str] | None,
 ) -> str:
     level_payload = [
-        {key: level[key] for key in ("id", "targetWords", "minimumWords", "maximumWords", "guidance")}
+        {key: level[key] for key in ("id", "guidance")}
         for level in levels
     ]
     retry = f"\nCorrect these validation problems from the previous adaptation: {json.dumps(feedback, ensure_ascii=False)}" if feedback else ""
     return f"""
 This is the adaptation phase. The story metadata, briefs, and any HISTORY storyBeats below are frozen results of completed sourced discovery and generated-scenario planning.
-Create title, teaser, paragraphs, lexical segmentation, translations, and `coveredStoryBeatIds` for every listed story and level. Develop each body toward its configured targetWords and perform the prompt's one pre-segmentation length revision when needed. Do not change, extend, or infer beyond the supplied brief, scenario metadata, or HISTORY story-beat contract, and do not add facts or filler to reach a word target. A result below minimumWords remains usable and must not be padded; every researched HISTORY level must still cover every required beat ID or it will be retried. Return each story ID exactly once and no other IDs. For non-HISTORY stories, return an empty covered-story-beat list for every level.
+Create title, teaser, paragraphs, lexical segmentation, translations, and `coveredStoryBeatIds` for every listed story and level. Do not change, extend, or infer beyond the supplied brief, scenario metadata, or HISTORY story-beat contract. Reading levels differ through vocabulary, grammar, sentence shape, and natural constructions—not through a requirement that a harder level be longer. Every researched HISTORY level must still cover every required beat ID or it will be retried. Return each story ID exactly once and no other IDs. For non-HISTORY stories, return an empty covered-story-beat list for every level.
+
+When a seed has `_shortItem: true`, return exactly one compact body paragraph at every level. It should contain roughly two to four natural sentences and only the small situation in the brief. Do not expand it into a full article.
+
+For DIALOG, `everydayMeta.dialogSpeakers` contains the two binding Hebrew speaker labels. Start every turn with exactly one of those names and an ASCII colon, alternate them, and use the same names at every level.
 
 Configured reading levels:
 {json.dumps(level_payload, ensure_ascii=False, indent=2)}
@@ -1751,6 +1956,24 @@ def _build_index(
 def _updated_history(history: dict[str, Any], stories: list[dict[str, Any]], target_date: str) -> dict[str, Any]:
     items = list(history.get("items", []))
     for story in stories:
+        if story.get("type") == "shorts":
+            for short_item in story.get("shortItems", []):
+                if not isinstance(short_item, dict):
+                    continue
+                meta = short_item.get("everydayMeta")
+                if not isinstance(meta, dict):
+                    continue
+                items.append(
+                    {
+                        "date": target_date,
+                        "storyId": short_item.get("id"),
+                        "domain": meta["domain"],
+                        "scenario": meta["scenario"],
+                        "lexicalThemes": meta["lexicalThemes"],
+                        "targetVocabulary": meta["targetVocabulary"],
+                    }
+                )
+            continue
         if story["type"] not in {"everyday", "dialog"}:
             continue
         meta = story["everydayMeta"]
@@ -1765,6 +1988,73 @@ def _updated_history(history: dict[str, Any], stories: list[dict[str, Any]], tar
             }
         )
     return {"schemaVersion": 1, "items": items}
+
+
+def _shorts_page(
+    short_stories: list[dict[str, Any]],
+    target_date: str,
+    level_ids: list[str],
+    locales: list[str],
+) -> dict[str, Any] | None:
+    selected = short_stories[:SHORTS_TARGET]
+    if len(selected) < SHORTS_MINIMUM:
+        return None
+
+    def translations(english: str, russian: str) -> dict[str, str]:
+        return {locale: russian if locale == "ru" else english for locale in locales}
+
+    page_levels: dict[str, Any] = {}
+    for level_id in level_ids:
+        paragraphs = [
+            story["levels"][level_id]["paragraphs"][0]
+            for story in selected
+        ]
+        page_levels[level_id] = {
+            "title": [
+                {
+                    "text": "רגעים קטנים ביום־יום",
+                    "type": "expression",
+                    "translations": translations("Small everyday moments", "Короткие бытовые ситуации"),
+                }
+            ],
+            "teaser": [
+                {
+                    "text": "מצבים קצרים ושימושיים מהחיים הרגילים",
+                    "type": "expression",
+                    "translations": translations(
+                        "Short, useful situations from ordinary life",
+                        "Короткие полезные ситуации из обычной жизни",
+                    ),
+                },
+                {
+                    "text": ".",
+                    "type": "separator",
+                    "translations": {locale: "" for locale in locales},
+                },
+            ],
+            "paragraphs": paragraphs,
+        }
+
+    page_id = f"small-everyday-moments-{target_date}"
+    return {
+        "id": page_id,
+        "slug": page_id,
+        "type": "shorts",
+        "category": "everyday",
+        "brief": "A collection of independent short practical situations from ordinary daily life.",
+        "everydayMeta": None,
+        "shortItems": [
+            {
+                "id": story["id"],
+                "brief": story["brief"],
+                "everydayMeta": story["everydayMeta"],
+            }
+            for story in selected
+        ],
+        "sources": [],
+        "image": None,
+        "levels": page_levels,
+    }
 
 
 def _generated_story_target(target_count: int, sourced_count: int, appending: bool) -> int:
@@ -1834,6 +2124,9 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
     target_count = additional_stories if existing else int(site["defaultIssueStoryCount"])
     minimum_count = additional_stories if existing else int(site["minimumIssueStoryCount"])
     maximum_count = additional_stories if existing else int(site["maximumIssueStoryCount"])
+    full_issue_target = CURRENT_TARGET + HISTORY_TARGET + EVERYDAY_TARGET + DIALOG_TARGET + 1
+    include_shorts_page = existing is None and target_count >= full_issue_target
+    standard_story_target = target_count - 1 if include_shorts_page else target_count
     exclusions = _existing_exclusions(existing)
     recent = _recent_history(history, target, int(site["everydayHistoryDays"]))
     recent_issues = _recent_issue_context(
@@ -1856,6 +2149,7 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
     duplicate_review_instructions = _read_prompts(root, ("deduplication.md",))
     history_research_instructions = _read_prompts(root, ("history-research.md",))
     generated_instructions = _read_prompts(root, ("everyday.md", "dialog.md"))
+    short_instructions = _read_prompts(root, ("shorts.md",))
     adaptation_instructions = _read_prompts(root, ("adaptation.md",))
     dialog_adaptation_example = _read_prompts(root, ("dialog-adaptation.md",))
     image_locales = list(dict.fromkeys([*site["interfaceLocales"], *locales]))
@@ -1867,7 +2161,7 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
     sourced_seeds: list[dict[str, Any]] = []
     sourced_reserves: list[dict[str, Any]] = []
     if existing is None:
-        sourced_target = min(target_count, CURRENT_TARGET + HISTORY_TARGET)
+        sourced_target = min(standard_story_target, CURRENT_TARGET + HISTORY_TARGET)
         current_target = min(CURRENT_TARGET, sourced_target)
         history_target = min(HISTORY_TARGET, sourced_target - current_target)
         sourced_feedback: list[str] | None = None
@@ -2151,7 +2445,7 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
             research_feedback = list(dict.fromkeys(research_errors))[:20] or None
 
     generated_target = _generated_story_target(
-        target_count,
+        standard_story_target,
         len(sourced_seeds),
         existing is not None,
     )
@@ -2229,6 +2523,14 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
             validation_context,
             {"everyday", "dialog"},
         )
+        if include_shorts_page:
+            returned_everyday = sum(story.get("type") == "everyday" for story in returned_batch)
+            returned_dialog = sum(story.get("type") == "dialog" for story in returned_batch)
+            if returned_everyday != requested_everyday or returned_dialog != requested_dialog:
+                generated_errors.append(
+                    f"generated mix must contain exactly {requested_everyday} EVERYDAY and "
+                    f"{requested_dialog} DIALOG stories; received {returned_everyday} and {returned_dialog}"
+                )
         same_issue_generated = [
             *(
                 [
@@ -2281,25 +2583,100 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
             f"{phase}: {len(generated_seeds)} of {generated_target} generated story brief(s) retained"
         )
 
+    short_seeds: list[dict[str, Any]] = []
+    if include_shorts_page:
+        short_feedback: list[str] | None = None
+        for attempt in range(GENERATED_PLANNING_ATTEMPTS):
+            request_target = SHORTS_TARGET - len(short_seeds)
+            if request_target <= 0:
+                break
+            phase = f"SHORTS planning attempt {attempt + 1}/{GENERATED_PLANNING_ATTEMPTS}"
+            try:
+                returned_shorts = _call_openai(
+                    os.environ["OPENAI_MODEL"],
+                    short_instructions,
+                    _short_planning_request(
+                        target_date,
+                        request_target,
+                        forbidden_generated,
+                        recent,
+                        [
+                            _compact_story_record(story)
+                            for story in [*sourced_seeds, *generated_seeds, *short_seeds]
+                        ],
+                        short_feedback,
+                    ),
+                    _seed_batch_schema(
+                        request_target,
+                        request_target,
+                        levels,
+                        locales,
+                        image_locales,
+                        ["everyday"],
+                    ),
+                    use_web_search=False,
+                    phase=phase,
+                ).get("stories", [])
+            except RuntimeError:
+                short_feedback = ["The previous SHORTS planning request failed; retry all remaining items."]
+                _log(f"{phase}: request failed; retrying the remaining items")
+                continue
+
+            context = [*recent_generated_records, *recent, *sourced_seeds, *generated_seeds, *short_seeds]
+            retained: list[dict[str, Any]] = []
+            errors: list[str] = []
+            for candidate in returned_shorts:
+                candidate_errors = _seed_errors(
+                    [candidate],
+                    target_date,
+                    level_ids,
+                    locales,
+                    site,
+                    levels,
+                    None,
+                    1,
+                    1,
+                    [*context, *retained],
+                    {"everyday"},
+                )
+                if candidate_errors:
+                    errors.extend(
+                        f"short item {candidate.get('id')}: {error}"
+                        for error in candidate_errors
+                    )
+                    continue
+                retained.append({**candidate, "_shortItem": True})
+            short_seeds.extend(retained)
+            short_feedback = list(dict.fromkeys(errors))[:20] or None
+            if errors:
+                _log_validation_errors(phase, errors)
+            _log(f"{phase}: {len(short_seeds)} of {SHORTS_TARGET} short item brief(s) retained")
+
     seeds = [
         {
             key: value
             for key, value in story.items()
             if key not in {"historyFamily", DISCOVERY_SOURCE_KEY}
         }
-        for story in [*sourced_seeds, *generated_seeds]
+        for story in [*sourced_seeds, *generated_seeds, *short_seeds]
     ]
     if not seeds:
         raise RuntimeError("Planning produced no usable story briefs")
-    if len(seeds) < target_count:
+    planned_standard_count = len(seeds) - len(short_seeds)
+    if planned_standard_count < standard_story_target:
         _log(
-            f"Planning retained {len(seeds)} unique stories, below the target of {target_count}; "
+            f"Planning retained {planned_standard_count} standard stories, below the target of "
+            f"{standard_story_target}; "
             "continuing without a strict count failure"
         )
     else:
-        _log(f"Planning completed with {len(seeds)} frozen story briefs")
+        _log(
+            f"Planning completed with {planned_standard_count} standard story brief(s) and "
+            f"{len(short_seeds)} short item brief(s)"
+        )
 
     new_stories: list[dict[str, Any]] = []
+    adapted_short_items: list[dict[str, Any]] = []
     if ADAPTATION_BATCH_SIZE != 1:
         raise RuntimeError("Adaptation validation isolation requires one story per batch")
     adaptation_batches = [
@@ -2311,11 +2688,19 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
         adaptation_schema = _adaptation_batch_schema(batch_seeds, levels, locales, image_locales)
         adaptation_feedback: list[str] | None = None
         completed_batch: list[dict[str, Any]] | None = None
-        for attempt in range(ADAPTATION_ATTEMPTS):
+        batch_attempts = (
+            GENERATED_ADAPTATION_ATTEMPTS
+            if any(
+                story.get("type") == "dialog" or story.get("_shortItem") is True
+                for story in batch_seeds
+            )
+            else ADAPTATION_ATTEMPTS
+        )
+        for attempt in range(batch_attempts):
             attempt_number = attempt + 1
             phase = (
                 f"Adaptation batch {batch_index}/{len(adaptation_batches)}, "
-                f"attempt {attempt_number}/{ADAPTATION_ATTEMPTS}"
+                f"attempt {attempt_number}/{batch_attempts}"
             )
             try:
                 adaptation_batch = _call_openai(
@@ -2331,7 +2716,7 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
                     phase=phase,
                 )
             except RuntimeError:
-                if attempt == ADAPTATION_ATTEMPTS - 1:
+                if attempt == batch_attempts - 1:
                     raise
                 _log(f"{phase}: request failed; retrying only this batch")
                 continue
@@ -2340,6 +2725,12 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
             removed_units = _remove_empty_lexical_units(adaptations)
             if removed_units:
                 _log(f"{phase}: removed {removed_units} empty lexical unit(s)")
+            repaired_separators = _repair_alphabetic_separator_units(adaptations)
+            if repaired_separators:
+                _log(f"{phase}: repaired {repaired_separators} alphabetic separator unit(s)")
+            repaired_dialog_turns = _repair_dialog_labels(batch_seeds, adaptations, locales)
+            if repaired_dialog_turns:
+                _log(f"{phase}: normalized {repaired_dialog_turns} DIALOG speaker label(s)")
             restored_punctuation = _restore_terminal_punctuation(adaptations, locales)
             if restored_punctuation:
                 _log(f"{phase}: restored {restored_punctuation} missing terminal punctuation mark(s)")
@@ -2358,14 +2749,29 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
                 "stories": candidate_stories,
             }
             _log(f"{phase}: validating {len(candidate_stories)} adapted stories")
-            candidate_errors = validate_issue(candidate_issue, site, levels, "generated batch")
-            candidate_errors.extend(_history_adaptation_errors(batch_seeds, adaptations, levels))
-            candidate_errors.extend(_adaptation_content_errors(batch_seeds, adaptations, levels))
+            structural_errors = validate_issue(candidate_issue, site, levels, "generated batch")
+            history_errors = _history_adaptation_errors(batch_seeds, adaptations, levels)
+            content_errors = _adaptation_content_errors(batch_seeds, adaptations, levels)
+            identity_errors = []
             if len(set(adaptation_ids)) != len(adaptation_ids) or set(adaptation_ids) != set(story_ids):
-                candidate_errors.append("adaptation phase must return every frozen story ID exactly once")
+                identity_errors.append("adaptation phase must return every frozen story ID exactly once")
+            candidate_errors = [*structural_errors, *history_errors, *content_errors, *identity_errors]
             if not candidate_errors:
                 completed_batch = candidate_stories
                 _log(f"{phase}: validation passed")
+                break
+            if (
+                attempt == batch_attempts - 1
+                and any(story.get("type") == "dialog" for story in batch_seeds)
+                and not structural_errors
+                and not history_errors
+                and not identity_errors
+            ):
+                completed_batch = candidate_stories
+                _log(
+                    f"{phase}: retained usable DIALOG after prompt retries; "
+                    f"{len(content_errors)} dialogue-style warning(s) remain"
+                )
                 break
             adaptation_feedback = candidate_errors[:20]
             _log_validation_errors(phase, candidate_errors)
@@ -2373,10 +2779,24 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
         if completed_batch is None:
             _log(
                 f"Adaptation batch {batch_index}/{len(adaptation_batches)} failed article validation after "
-                f"{ADAPTATION_ATTEMPTS} attempts; omitting story {', '.join(story_ids)}"
+                f"{batch_attempts} attempts; omitting story {', '.join(story_ids)}"
             )
             continue
-        new_stories.extend(completed_batch)
+        if any(story.get("_shortItem") is True for story in batch_seeds):
+            adapted_short_items.extend(completed_batch)
+        else:
+            new_stories.extend(completed_batch)
+
+    if include_shorts_page:
+        shorts_page = _shorts_page(adapted_short_items, target_date, level_ids, locales)
+        if shorts_page is not None:
+            new_stories.append(shorts_page)
+            _log(f"Collected {len(shorts_page['shortItems'])} independently adapted items on one SHORTS page")
+        elif short_seeds:
+            _log(
+                f"Only {len(adapted_short_items)} SHORTS items passed adaptation; "
+                f"at least {SHORTS_MINIMUM} are required for the grouped page"
+            )
 
     if not new_stories:
         if existing is not None:

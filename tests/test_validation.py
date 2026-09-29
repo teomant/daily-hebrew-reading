@@ -26,16 +26,13 @@ class ValidationTests(unittest.TestCase):
     def test_short_adaptation_does_not_fail_validation(self) -> None:
         issue = copy.deepcopy(read_json(ROOT / "content" / "2024-01-26.json"))
         story = issue["stories"][0]
-        levels_by_id = {level["id"]: level for level in load_level_config()}
-        for level_id, level in story["levels"].items():
+        for level in story["levels"].values():
             first_unit = copy.deepcopy(level["paragraphs"][0][0])
             level["paragraphs"] = [[copy.deepcopy(first_unit)] for _ in range(4)]
-            body_words = sum(
-                len(unit["text"].split())
-                for paragraph in level["paragraphs"]
-                for unit in paragraph
-            )
-            self.assertLess(body_words, levels_by_id[level_id]["minimumWords"])
+        for configured_level in load_level_config():
+            self.assertNotIn("minimumWords", configured_level)
+            self.assertNotIn("targetWords", configured_level)
+            self.assertNotIn("maximumWords", configured_level)
         errors = validate_issue(issue, load_site_config(), load_level_config())
         self.assertEqual(errors, [])
 
