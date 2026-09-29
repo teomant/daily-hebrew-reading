@@ -111,7 +111,7 @@ jobs:
       - name: Generate or append stories
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
+          OPENAI_MODEL: gpt-6-luna
           TARGET_DATE: ${{ needs.inspect-trigger.outputs.target_date }}
           ADDITIONAL_STORIES: ${{ needs.inspect-trigger.outputs.additional_stories }}
         run: |

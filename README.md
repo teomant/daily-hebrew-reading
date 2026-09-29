@@ -12,7 +12,7 @@ The repository contains a complete sample issue, so the site can be built and te
 - Keyboard, hover, and tap translation popovers.
 - Source links and optional externally hosted, attributed source images with graceful failure.
 - Staged OpenAI Responses API generation: web-enabled CURRENT/HISTORY discovery returns compact screening records, strict duplicate review and deterministic selection choose publishable subjects, batched web-enabled requests deeply research only selected HISTORY stories, separate no-web planners create the full generated stories and SHORTS items, and adaptation handles each full story or short item independently with lexical units and contextual translations.
-- A normal 2 CURRENT / 3 HISTORY / 3 EVERYDAY / 2 DIALOG / 1 SHORTS-page target mix. The SHORTS page contains 8–9 mini-situations planned and adapted independently, then collected on one page. Missing sourced stories reduce the issue size instead of expanding the fixed generated allocation.
+- A normal 2 CURRENT / 3 HISTORY / 3 EVERYDAY / 2 DIALOG / 1 SHORTS-page target mix. The SHORTS page contains 10–11 two-or-three-sentence mini-situations planned and adapted independently, then collected on one page. Missing sourced stories reduce the issue size instead of expanding the fixed generated allocation.
 - An 18-candidate sourced discovery pool before filtering: six compact CURRENT and 12 compact HISTORY candidates. The first two attempts focus on Israeli material and divide HISTORY discovery across Wikimedia references, the National Library/Historical Jewish Press, state visual archives, and Israeli culture archives; a third attempt may search worldwide only for sourced slots that remain open. The three final HISTORY slots prioritize a person, Israeli industry, and culture. Invalid or duplicate candidates are removed individually, while an imperfect pool mix becomes retry guidance instead of discarding the whole batch. Reviewed but unselected HISTORY candidates remain reserves, with Israeli candidates ahead of worldwide fallbacks.
 - Safe same-day append behavior; existing stories are preserved, duplicates are rejected, and new entries are only EVERYDAY or DIALOG in any mix.
 - Content validation, tests, daily/manual GitHub Actions, and GitHub Pages deployment.
@@ -37,7 +37,7 @@ Generation additionally requires the official OpenAI SDK:
 ```bash
 python -m pip install -r requirements.txt
 export OPENAI_API_KEY="..."
-export OPENAI_MODEL="gpt-5.4-mini"
+export OPENAI_MODEL="gpt-6-luna"
 python -m src.generate_issue --date 2026-09-04
 ```
 
@@ -67,7 +67,7 @@ The repository owner needs to configure these once:
 
 1. In **Settings → Pages**, keep **Source: GitHub Actions**. No custom or verified domain is required for the free `github.io` address.
 2. In **Settings → Environments**, use the environment named `daily-hebrew-reading`.
-3. In that environment, add secret `OPENAI_API_KEY` and non-secret variable `OPENAI_MODEL` (currently `gpt-5.4-mini`). The existing screenshot configuration matches this contract.
+3. In that environment, add secret `OPENAI_API_KEY`. The workflow pins every generation phase to `gpt-6-luna` at low reasoning effort; no GitHub `OPENAI_MODEL` variable is required.
 4. Under **Settings → Actions → General → Workflow permissions**, allow **Read and write permissions** so the generator can commit `content/` to `master`.
 
 The OpenAI API is billed separately from ChatGPT Plus. The API uses the credits on the API account; GitHub Pages is free for a public repository under GitHub's normal Pages/Actions quotas.

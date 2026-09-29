@@ -18,6 +18,8 @@ from src.common import ROOT, normalized_url, read_json, units_text
 from src.generate_issue import (
     ADAPTATION_BATCH_SIZE,
     CURRENT_TARGET,
+    DEFAULT_OPENAI_MODEL,
+    DEFAULT_REASONING_EFFORT,
     DIALOG_TARGET,
     EVERYDAY_TARGET,
     GENERATED_SCENARIO_DOMAINS,
@@ -161,7 +163,7 @@ class GenerationTests(unittest.TestCase):
         self.assertEqual(site["defaultIssueStoryCount"], 11)
         self.assertEqual(
             (CURRENT_TARGET, HISTORY_TARGET, EVERYDAY_TARGET, DIALOG_TARGET, SHORTS_TARGET),
-            (2, 3, 3, 2, 9),
+            (2, 3, 3, 2, 11),
         )
 
     def test_adaptation_processes_one_story_per_request(self) -> None:
@@ -365,6 +367,27 @@ class GenerationTests(unittest.TestCase):
         errors = _adaptation_content_errors([seed], [adaptation], levels)
 
         self.assertEqual(errors, [])
+
+    def test_short_item_requires_two_or_three_complete_sentences_per_level(self) -> None:
+        seed = {"id": "queue-question", "type": "everyday", "_shortItem": True}
+        levels = {
+            level_id: {
+                "title": [lexical_unit("שאלה בתור")],
+                "teaser": [lexical_unit("שאלה קצרה.")],
+                "paragraphs": [[lexical_unit("אני שואל מי האחרון. האיש ליד הדלת עונה לי.")]],
+            }
+            for level_id in ("alef", "alefPlus", "bet")
+        }
+        adaptation = adaptation_payload(seed["id"], levels)
+        configured_levels = [{"id": level_id} for level_id in levels]
+        self.assertEqual(_adaptation_content_errors([seed], [adaptation], configured_levels), [])
+
+        adaptation["levels"]["alef"]["paragraphs"] = [[lexical_unit("אני שואל מי האחרון.")]]
+        adaptation["levels"]["bet"]["paragraphs"] = [[
+            lexical_unit("אני מגיע לתור. אני שואל מי האחרון. האיש עונה לי. אני עומד אחריו.")
+        ]]
+        errors = _adaptation_content_errors([seed], [adaptation], configured_levels)
+        self.assertEqual(len([error for error in errors if "SHORTS item" in error]), 2)
 
     def test_recent_issue_context_uses_only_previous_three_days(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
@@ -1124,7 +1147,7 @@ class GenerationTests(unittest.TestCase):
             if story["type"] == "everyday"
         )
         short_stories = []
-        for index in range(8):
+        for index in range(10):
             story = copy.deepcopy(template)
             story["id"] = story["slug"] = f"short-situation-{index}"
             story["brief"] = f"A customer asks one small practical question in ordinary situation number {index}."
@@ -1150,7 +1173,7 @@ class GenerationTests(unittest.TestCase):
         }
         self.assertEqual(validate_issue(issue, site, levels), [])
         history = _updated_history({"schemaVersion": 1, "items": []}, [page], "2026-09-07")
-        self.assertEqual(len(history["items"]), 8)
+        self.assertEqual(len(history["items"]), 10)
 
     def test_append_rejects_a_rephrased_existing_topic(self) -> None:
         site = read_json(ROOT / "config" / "site.json")
@@ -1218,6 +1241,19 @@ class GenerationTests(unittest.TestCase):
             result = _call_openai("test-model", "instructions", "request", {})
         self.assertEqual(result[PROVENANCE_ERRORS_KEY], ["https://example.com/invented"])
         openai.assert_called_once_with(max_retries=2, timeout=300.0)
+
+    def test_luna_requests_use_low_reasoning_effort(self) -> None:
+        response = SimpleNamespace(
+            output_text=json.dumps({"stories": []}),
+            model_dump=lambda: {"output": []},
+        )
+        openai = Mock()
+        openai.return_value.responses.create.return_value = response
+        with patch.dict(sys.modules, {"openai": SimpleNamespace(OpenAI=openai)}):
+            _call_openai(DEFAULT_OPENAI_MODEL, "instructions", "request", {}, use_web_search=False)
+        parameters = openai.return_value.responses.create.call_args.kwargs
+        self.assertEqual(parameters["model"], "gpt-6-luna")
+        self.assertEqual(parameters["reasoning"], {"effort": DEFAULT_REASONING_EFFORT})
 
     def test_redundant_sources_are_removed_when_a_unique_source_remains(self) -> None:
         def source(url: str) -> dict:
@@ -2274,7 +2310,7 @@ class GenerationTests(unittest.TestCase):
 
     def test_main_reports_success_when_no_valid_articles_remain(self) -> None:
         output = StringIO()
-        with patch.dict(os.environ, {"OPENAI_API_KEY": "test-key", "OPENAI_MODEL": "test-model"}), patch(
+        with patch.dict(os.environ, {"OPENAI_API_KEY": "test-key"}, clear=True), patch(
             "src.generate_issue.generate",
             return_value=None,
         ), patch.object(
@@ -2283,8 +2319,10 @@ class GenerationTests(unittest.TestCase):
             ["generate_issue", "--date", "2099-01-01", "--root", str(ROOT)],
         ), redirect_stdout(output):
             exit_code = main()
+            selected_model = os.environ["OPENAI_MODEL"]
 
         self.assertEqual(exit_code, 0)
+        self.assertEqual(selected_model, DEFAULT_OPENAI_MODEL)
         self.assertIn("no issue was created", output.getvalue())
 
     def test_adaptation_accepts_empty_translation_above_coverage_threshold(self) -> None:

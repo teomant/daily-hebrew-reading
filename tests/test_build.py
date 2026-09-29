@@ -143,10 +143,10 @@ class BuildTests(unittest.TestCase):
                     "dialogSpeakers": [],
                 },
             }
-            for index in range(8)
+            for index in range(10)
         ]
         for level in story["levels"].values():
-            level["paragraphs"] = [copy.deepcopy(level["paragraphs"][0]) for _ in range(8)]
+            level["paragraphs"] = [copy.deepcopy(level["paragraphs"][0]) for _ in range(10)]
 
         rendered = build_article(
             issue,
@@ -157,7 +157,7 @@ class BuildTests(unittest.TestCase):
         )
 
         self.assertIn('class="hebrew-article shorts-list"', rendered)
-        self.assertEqual(rendered.count('class="short-item"'), 8)
+        self.assertEqual(rendered.count('class="short-item"'), 10)
         self.assertIn("КОРОТКО", rendered)
         self.assertIn("ПОЛНОСТЬЮ СОЗДАНО ИИ", rendered)
 

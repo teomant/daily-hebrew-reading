@@ -46,6 +46,8 @@ CATEGORIES = [
     "everyday",
 ]
 PROVENANCE_ERRORS_KEY = "_provenanceErrors"
+DEFAULT_OPENAI_MODEL = "gpt-6-luna"
+DEFAULT_REASONING_EFFORT = "low"
 SOURCED_DISCOVERY_ATTEMPTS = 3
 SOURCED_CANDIDATE_COUNT = 18
 CURRENT_CANDIDATE_TARGET = 6
@@ -62,8 +64,8 @@ CURRENT_TARGET = 2
 HISTORY_TARGET = 3
 EVERYDAY_TARGET = 3
 DIALOG_TARGET = 2
-SHORTS_TARGET = 9
-SHORTS_MINIMUM = 8
+SHORTS_TARGET = 11
+SHORTS_MINIMUM = 10
 GENERATED_SCENARIO_DOMAINS = [
     "home_family",
     "social_leisure",
@@ -1186,7 +1188,7 @@ Target publication date: {target_date}
 Generate up to {target_count} independent mini-situations for one SHORTS page. Return them as EVERYDAY planning records; Python will mark them as short items and adapt each one separately. Do not use web search or write Hebrew prose.
 
 - Use only these canonical `domain` values: {json.dumps(GENERATED_SCENARIO_DOMAINS)}.
-- Give each item one small practical interaction or action and one result, suitable for one compact paragraph of two to four sentences.
+- Give each item one tiny practical interaction or action and its immediate result, suitable for one compact paragraph of exactly two or three complete sentences.
 - Vary situations, relationships, useful wording, and outcomes. A broad domain may repeat when the scenario itself is different.
 - Set `dialogSpeakers` to an empty list. Use empty sources and a null image.
 - Do not repeat, rename, or lightly rewrite anything in the comparison records.
@@ -1234,6 +1236,8 @@ def _call_openai(
             },
             store=False,
         )
+        if model == DEFAULT_OPENAI_MODEL:
+            parameters["reasoning"] = {"effort": DEFAULT_REASONING_EFFORT}
         if use_web_search:
             parameters["tools"] = [{"type": "web_search", "search_context_size": "medium"}]
             parameters["include"] = ["web_search_call.action.sources"]
@@ -1537,6 +1541,13 @@ def _adaptation_content_errors(
                     errors.append(
                         f"{story_id}.{level_id}.{field}: separator units may contain only punctuation or whitespace"
                     )
+            if seed.get("_shortItem") is True and isinstance(paragraphs, list) and len(paragraphs) == 1:
+                sentence_count = len(re.findall(r"[.!?…]+", units_text(paragraphs[0])))
+                if not 2 <= sentence_count <= 3:
+                    errors.append(
+                        f"{story_id}.{level_id}: SHORTS item must contain 2–3 complete sentences; "
+                        f"got {sentence_count}"
+                    )
             if seed.get("type") != "dialog" or not isinstance(paragraphs, list):
                 continue
             if not 8 <= len(paragraphs) <= 12:
@@ -1676,7 +1687,7 @@ def _adaptation_request(
 This is the adaptation phase. The story metadata, briefs, and any HISTORY storyBeats below are frozen results of completed sourced discovery and generated-scenario planning.
 Create title, teaser, paragraphs, lexical segmentation, translations, and `coveredStoryBeatIds` for every listed story and level. Do not change, extend, or infer beyond the supplied brief, scenario metadata, or HISTORY story-beat contract. Reading levels differ through vocabulary, grammar, sentence shape, and natural constructions—not through a requirement that a harder level be longer. Every researched HISTORY level must still cover every required beat ID or it will be retried. Return each story ID exactly once and no other IDs. For non-HISTORY stories, return an empty covered-story-beat list for every level.
 
-When a seed has `_shortItem: true`, return exactly one compact body paragraph at every level. It should contain roughly two to four natural sentences and only the small situation in the brief. Do not expand it into a full article.
+When a seed has `_shortItem: true`, return exactly one compact body paragraph containing exactly two or three complete sentences at every level. Cover only one tiny practical action or question and its immediate answer or result. Do not add background, a second event, or a full-article arc. Keep all three levels similarly compact; distinguish them through wording and grammar, not length.
 
 For DIALOG, `everydayMeta.dialogSpeakers` contains the two binding Hebrew speaker labels. Start every turn with exactly one of those names and an ASCII colon, alternate them, and use the same names at every level.
 
@@ -2846,8 +2857,7 @@ def main() -> int:
         parser.error("--additional-stories must be between 1 and 10")
     if not os.environ.get("OPENAI_API_KEY"):
         parser.error("OPENAI_API_KEY is required")
-    if not os.environ.get("OPENAI_MODEL"):
-        parser.error("OPENAI_MODEL is required")
+    os.environ.setdefault("OPENAI_MODEL", DEFAULT_OPENAI_MODEL)
     issue = generate(args.root.resolve(), target_date, additional)
     if issue is None:
         print(f"No valid articles remained for {target_date}; no issue was created.")

@@ -22,6 +22,8 @@ class WorkflowTests(unittest.TestCase):
         self.assertIn("  inspect-trigger:", inspection_job)
         self.assertNotIn("OPENAI_API_KEY", inspection_job)
         self.assertIn("OPENAI_API_KEY", generation_job)
+        self.assertIn("OPENAI_MODEL: gpt-6-luna", generation_job)
+        self.assertNotIn("vars.OPENAI_MODEL", generation_job)
 
 
 if __name__ == "__main__":

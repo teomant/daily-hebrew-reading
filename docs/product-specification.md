@@ -16,11 +16,11 @@ A new issue is generated automatically every day. A typical issue contains:
 - 3 purpose-written everyday stories;
 - 2 purpose-written dialogues;
 - 3 historical stories;
-- 1 SHORTS page containing 8–9 independently generated mini-situations.
+- 1 SHORTS page containing 10–11 independently generated mini-situations.
 
 This normally produces 11 pages. Missing sourced material may make the issue smaller, but it does not expand the fixed generated allocation.
 
-Reading time is calculated from the resulting content rather than enforced as a generation quota. CURRENT, HISTORY, and EVERYDAY articles should normally contain 4–5 developed paragraphs. DIALOG uses 8–12 short speaker turns, each on its own line. Every SHORTS item is one compact paragraph of roughly two to four sentences.
+Reading time is calculated from the resulting content rather than enforced as a generation quota. CURRENT, HISTORY, and EVERYDAY articles should normally contain 4–5 developed paragraphs. DIALOG uses 8–12 short speaker turns, each on its own line. Every SHORTS item is one compact paragraph of exactly two or three complete sentences.
 
 ## 2. Content types
 
@@ -76,7 +76,7 @@ The exchange should sound like ordinary contemporary Israeli conversation, not a
 
 ### SHORTS
 
-One fully AI-generated page containing 8–9 independent mini-situations from ordinary life. Examples include asking who is last in a queue, how to reach a place, where to find an item, which entrance to use, or whether a seat is free. Each item is planned and adapted independently, contains one interaction or action and one result, and occupies one compact paragraph. The valid items are then collected into one numbered page. Each item has its own scenario metadata and repetition-history record; the page has no sources or image.
+One fully AI-generated page containing 10–11 independent mini-situations from ordinary life. Examples include asking who is last in a queue, how to reach a place, where to find an item, which entrance to use, or whether a seat is free. Each item is planned and adapted independently, contains one tiny interaction or action and its immediate result in exactly two or three complete sentences, and occupies one compact paragraph. The valid items are then collected into one numbered page. Each item has its own scenario metadata and repetition-history record; the page has no sources or image.
 
 ### HISTORY
 
@@ -249,7 +249,7 @@ i18n/
   ru.json
 ```
 
-A daily JSON file contains its date, available reading-level IDs, available translation-locale codes, and ordered pages. Ordinary stories contain their type, category, English internal brief, sources, optional image, configured level variants, teaser, title, paragraphs, and lexical annotations. EVERYDAY and DIALOG store scenario metadata. A SHORTS page stores 8–9 ordered `shortItems` metadata records and one corresponding paragraph per item at every level. Newly researched HISTORY stories retain 8–12 ordered English `storyBeats` as their factual contract. `index.json` lists available dates, while `everyday-history.json` tracks full generated stories and each SHORTS item independently.
+A daily JSON file contains its date, available reading-level IDs, available translation-locale codes, and ordered pages. Ordinary stories contain their type, category, English internal brief, sources, optional image, configured level variants, teaser, title, paragraphs, and lexical annotations. EVERYDAY and DIALOG store scenario metadata. A SHORTS page stores 10–11 ordered `shortItems` metadata records and one corresponding paragraph per item at every level. Newly researched HISTORY stories retain 8–12 ordered English `storyBeats` as their factual contract. `index.json` lists available dates, while `everyday-history.json` tracks full generated stories and each SHORTS item independently.
 
 ## 26. Illustrative story shape
 
@@ -291,7 +291,7 @@ Generate two short dialogues for each new issue. Planning supplies exactly two b
 
 ## 29a. SHORTS generation
 
-Plan nine independent short situations and adapt each in its own request with exactly one paragraph per level. Each brief supports roughly two to four sentences and one practical outcome. Keep at least eight valid items, assemble at most nine in their planning order, and publish them as one numbered SHORTS page. Record every item—not merely the containing page—in generated-scenario history.
+Plan eleven independent short situations and adapt each in its own request with exactly one paragraph per level. Each brief supports exactly two or three complete sentences covering one tiny practical action or question and its immediate answer or result. Keep at least ten valid items, assemble at most eleven in their planning order, and publish them as one numbered SHORTS page. Record every item—not merely the containing page—in generated-scenario history.
 
 ## 30. HISTORY generation
 
@@ -303,11 +303,11 @@ Language adaptation must not freely invent details for real stories. A factual b
 
 ## 32. OpenAI API
 
-Use the OpenAI API for sourced discovery and selection, sourced semantic duplicate review, selected-HISTORY research, generated-scenario planning, level adaptation, lexical segmentation, and Russian and English translations. A normal issue first makes up to three web-enabled discovery requests of 18 compact candidates. A separate no-web request plans the three EVERYDAY and two DIALOG stories, and another plans the nine SHORTS items. Each full generated story and each SHORTS item is adapted independently.
+Use the OpenAI API for sourced discovery and selection, sourced semantic duplicate review, selected-HISTORY research, generated-scenario planning, level adaptation, lexical segmentation, and Russian and English translations. A normal issue first makes up to three web-enabled discovery requests of 18 compact candidates. A separate no-web request plans the three EVERYDAY and two DIALOG stories, and another plans the eleven SHORTS items. Each full generated story and each SHORTS item is adapted independently.
 
-Configure the model through `OPENAI_MODEL` and supply the key through `OPENAI_API_KEY`. Store the key only in a GitHub Actions secret or runtime environment. It must never enter Git, frontend assets, JSON content, HTML output, logs, or error messages.
+Use `gpt-6-luna` for every discovery, research, planning, adaptation, annotation, and translation request, with low reasoning effort. Supply the key through `OPENAI_API_KEY`; a local `OPENAI_MODEL` override may be used for tests or explicit experiments. Store the key only in a GitHub Actions secret or runtime environment. It must never enter Git, frontend assets, JSON content, HTML output, logs, or error messages.
 
-In the target repository, both values are configured in the GitHub Actions environment named `daily-hebrew-reading`: `OPENAI_API_KEY` is an environment secret and `OPENAI_MODEL` is an environment variable. The issue-generation job must explicitly declare that environment before reading either value.
+In the target repository, `OPENAI_API_KEY` is configured as a secret in the GitHub Actions environment named `daily-hebrew-reading`. The issue-generation job explicitly declares that environment and pins `OPENAI_MODEL` to `gpt-6-luna` in the workflow.
 
 ## 33. Prompts
 
@@ -335,7 +335,7 @@ For the normal five sourced slots, each discovery attempt returns exactly 18 com
 
 The separate LLM reviewer must classify every surviving candidate exactly once from its compact brief and URLs, comparing underlying events and named historical subjects rather than wording. Its duplicate verdicts are binding and removed candidates are never selected, reserved, adapted, or published. Missing, malformed, or failed review coverage fails closed by discarding the unreviewed batch, but does not fail publication. The second discovery pass remains Israel-focused and must search new leads rather than alternate coverage, translations, updates, or renamed versions of rejected stories. Only the third and final pass becomes a worldwide replacement search. All editorial, safety, source, and novelty rules remain active. A remaining sourced shortfall reduces issue size rather than expanding the generated allocation.
 
-After selection, one batched web request researches the three chosen HISTORY subjects. Every sufficient pack still contains 8–12 unique factual beats covering setup, action, turning point, and outcome. Generated planning creates exactly three EVERYDAY and two DIALOG briefs for a normal fresh issue. SHORTS planning separately creates nine mini-situation briefs; each is adapted independently and 8–9 valid items are collected on one page.
+After selection, one batched web request researches the three chosen HISTORY subjects. Every sufficient pack still contains 8–12 unique factual beats covering setup, action, turning point, and outcome. Generated planning creates exactly three EVERYDAY and two DIALOG briefs for a normal fresh issue. SHORTS planning separately creates eleven mini-situation briefs; each is adapted independently and 10–11 valid items are collected on one page.
 
 Retries are fresh Responses API requests containing compact retained records and exact validation feedback. They do not use `previous_response_id`, because inherited input remains billable and stale rejected output can anchor the correction. Before every OpenAI request, generation logs the complete phase-specific system and user prompt with role and phase markers. Python also rejects duplicate or near-duplicate slugs, briefs, canonicalized source URLs—including normal and `/amp` forms of the same article—and exact generated scenario IDs before adaptation. Generation runs are serialized so simultaneous scheduled or manual invocations cannot race and overwrite one another. A failed append leaves the existing issue unchanged.
 
