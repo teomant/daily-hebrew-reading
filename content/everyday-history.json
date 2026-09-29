@@ -2393,6 +2393,288 @@
         "לנוח",
         "להתקשר"
       ]
+    },
+    {
+      "date": "2026-09-29",
+      "storyId": "family-photo-album-evening",
+      "domain": "digital_admin",
+      "scenario": "siblings_create_shared_family_photo_album",
+      "lexicalThemes": [
+        "family photos",
+        "shared albums",
+        "choosing and organizing",
+        "digital sharing"
+      ],
+      "targetVocabulary": [
+        "shared album",
+        "blurry",
+        "caption",
+        "link",
+        "add photos"
+      ]
+    },
+    {
+      "date": "2026-09-29",
+      "storyId": "neighbor-dog-training-in-the-park",
+      "domain": "pets_animals",
+      "scenario": "neighbors_practice_dog_training_together",
+      "lexicalThemes": [
+        "dogs and training",
+        "neighborly cooperation",
+        "instructions",
+        "praise and rewards"
+      ],
+      "targetVocabulary": [
+        "command",
+        "treat",
+        "sit",
+        "quiet voice",
+        "practice"
+      ]
+    },
+    {
+      "date": "2026-09-29",
+      "storyId": "couple-review-monthly-subscriptions",
+      "domain": "money_subscriptions",
+      "scenario": "couple_review_and_cancel_unused_subscription",
+      "lexicalThemes": [
+        "monthly expenses",
+        "subscriptions",
+        "shared decisions",
+        "account review"
+      ],
+      "targetVocabulary": [
+        "subscription",
+        "monthly charge",
+        "billing date",
+        "cancel",
+        "account"
+      ]
+    },
+    {
+      "date": "2026-09-29",
+      "storyId": "adult-pottery-class-choice",
+      "domain": "learning_classes",
+      "scenario": "friends_choose_beginner_pottery_class",
+      "lexicalThemes": [
+        "adult classes",
+        "pottery",
+        "asking for details",
+        "choosing a session"
+      ],
+      "targetVocabulary": [
+        "beginner",
+        "pottery wheel",
+        "hand-building",
+        "materials",
+        "sign up"
+      ]
+    },
+    {
+      "date": "2026-09-29",
+      "storyId": "optician-glasses-style-choice",
+      "domain": "clothing_personal_care",
+      "scenario": "friend_helps_choose_everyday_glasses",
+      "lexicalThemes": [
+        "personal style",
+        "trying items",
+        "asking for an opinion",
+        "shop assistance"
+      ],
+      "targetVocabulary": [
+        "frame",
+        "lightweight",
+        "try on",
+        "comfortable",
+        "lenses"
+      ]
+    },
+    {
+      "date": "2026-09-29",
+      "storyId": "queue-last-person-at-the-post-office",
+      "domain": "services_appointments",
+      "scenario": "customer_checks_who_is_last_in_post_office_queue",
+      "lexicalThemes": [
+        "queues",
+        "polite questions",
+        "waiting"
+      ],
+      "targetVocabulary": [
+        "line",
+        "last",
+        "wait",
+        "counter"
+      ]
+    },
+    {
+      "date": "2026-09-29",
+      "storyId": "market-asks-where-to-find-batteries",
+      "domain": "shopping_payments",
+      "scenario": "shopper_locates_batteries_in_neighborhood_market",
+      "lexicalThemes": [
+        "shopping",
+        "store directions",
+        "household goods"
+      ],
+      "targetVocabulary": [
+        "batteries",
+        "shelf",
+        "aisle",
+        "size"
+      ]
+    },
+    {
+      "date": "2026-09-29",
+      "storyId": "bus-stop-confirms-route-to-museum",
+      "domain": "transport_navigation",
+      "scenario": "passenger_confirms_bus_route_and_museum_stop",
+      "lexicalThemes": [
+        "public transit",
+        "routes",
+        "landmarks"
+      ],
+      "targetVocabulary": [
+        "bus",
+        "stop",
+        "get off",
+        "museum"
+      ]
+    },
+    {
+      "date": "2026-09-29",
+      "storyId": "library-asks-to-borrow-a-pen",
+      "domain": "hobbies_culture",
+      "scenario": "visitor_borrows_pen_to_complete_library_form",
+      "lexicalThemes": [
+        "library",
+        "borrowing",
+        "forms"
+      ],
+      "targetVocabulary": [
+        "pen",
+        "borrow",
+        "form",
+        "return"
+      ]
+    },
+    {
+      "date": "2026-09-29",
+      "storyId": "community-center-checks-available-chair",
+      "domain": "arts_events",
+      "scenario": "attendee_checks_if_empty_chair_is_available",
+      "lexicalThemes": [
+        "events",
+        "seating",
+        "polite questions"
+      ],
+      "targetVocabulary": [
+        "chair",
+        "free",
+        "sit",
+        "event"
+      ]
+    },
+    {
+      "date": "2026-09-29",
+      "storyId": "corner-shop-checks-closing-time",
+      "domain": "shopping_payments",
+      "scenario": "customer_checks_corner_shop_closing_time",
+      "lexicalThemes": [
+        "shop hours",
+        "time",
+        "quick errands"
+      ],
+      "targetVocabulary": [
+        "close",
+        "open",
+        "half hour",
+        "shopkeeper"
+      ]
+    },
+    {
+      "date": "2026-09-29",
+      "storyId": "gym-asks-where-to-put-yoga-mat",
+      "domain": "sports_exercise",
+      "scenario": "participant_asks_where_to_place_mat_in_class",
+      "lexicalThemes": [
+        "exercise class",
+        "directions",
+        "equipment"
+      ],
+      "targetVocabulary": [
+        "mat",
+        "place",
+        "back",
+        "instructor"
+      ]
+    },
+    {
+      "date": "2026-09-29",
+      "storyId": "cafe-asks-for-tap-water",
+      "domain": "food_cooking",
+      "scenario": "diner_requests_a_glass_of_tap_water",
+      "lexicalThemes": [
+        "café",
+        "requests",
+        "drinks"
+      ],
+      "targetVocabulary": [
+        "glass",
+        "water",
+        "ask for",
+        "server"
+      ]
+    },
+    {
+      "date": "2026-09-29",
+      "storyId": "building-reception-finds-side-entrance",
+      "domain": "services_appointments",
+      "scenario": "visitor_gets_directions_to_building_garden_entrance",
+      "lexicalThemes": [
+        "public buildings",
+        "entrances",
+        "directions"
+      ],
+      "targetVocabulary": [
+        "entrance",
+        "side door",
+        "garden",
+        "point"
+      ]
+    },
+    {
+      "date": "2026-09-29",
+      "storyId": "neighbor-returns-misdelivered-flyer",
+      "domain": "neighbors_community",
+      "scenario": "neighbor_returns_flyer_delivered_to_wrong_mailbox",
+      "lexicalThemes": [
+        "neighbors",
+        "mail",
+        "small favors"
+      ],
+      "targetVocabulary": [
+        "mailbox",
+        "flyer",
+        "next door",
+        "thank"
+      ]
+    },
+    {
+      "date": "2026-09-29",
+      "storyId": "phone-settings-asks-how-to-turn-on-captions",
+      "domain": "digital_admin",
+      "scenario": "user_gets_quick_help_enabling_video_call_captions",
+      "lexicalThemes": [
+        "phone settings",
+        "accessibility",
+        "simple instructions"
+      ],
+      "targetVocabulary": [
+        "captions",
+        "settings",
+        "button",
+        "screen"
+      ]
     }
   ]
 }
