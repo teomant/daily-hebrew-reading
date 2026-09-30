@@ -2675,6 +2675,297 @@
         "button",
         "screen"
       ]
+    },
+    {
+      "date": "2026-09-30",
+      "storyId": "neighbors-organize-a-community-kitchen-shift",
+      "domain": "volunteering_community",
+      "scenario": "volunteers_choose_and_prepare_a_community_kitchen_lunch",
+      "lexicalThemes": [
+        "volunteering",
+        "cooking together",
+        "dividing tasks",
+        "serving a community meal"
+      ],
+      "targetVocabulary": [
+        "volunteer shift",
+        "ingredients",
+        "serving bowls",
+        "divide the jobs",
+        "prepare vegetables",
+        "serve lunch"
+      ]
+    },
+    {
+      "date": "2026-09-30",
+      "storyId": "couple-plans-a-cycling-day-trip",
+      "domain": "travel_day_trips",
+      "scenario": "couple_compares_cycling_routes_and_plans_a_riverside_picnic",
+      "lexicalThemes": [
+        "day-trip planning",
+        "cycling routes",
+        "comparing options",
+        "packing for an outing"
+      ],
+      "targetVocabulary": [
+        "route",
+        "map",
+        "distance",
+        "steep section",
+        "flatter path",
+        "pack sandwiches",
+        "picnic"
+      ]
+    },
+    {
+      "date": "2026-09-30",
+      "storyId": "customer-and-tailor-adjust-a-jacket-fitting",
+      "domain": "services_appointments",
+      "scenario": "customer_and_tailor_adjust_jacket_sleeves_for_a_fitting",
+      "lexicalThemes": [
+        "tailoring appointment",
+        "clothing fit",
+        "explaining preferences",
+        "agreeing on alterations"
+      ],
+      "targetVocabulary": [
+        "try it on",
+        "sleeves",
+        "shoulders",
+        "take up",
+        "adjustment",
+        "fitting",
+        "price"
+      ]
+    },
+    {
+      "date": "2026-09-30",
+      "storyId": "friends-choose-a-book-for-a-reading-group",
+      "domain": "hobbies_culture",
+      "scenario": "friends_select_a_book_for_their_monthly_reading_group",
+      "lexicalThemes": [
+        "reading group",
+        "book recommendations",
+        "comparing options",
+        "making a shared choice"
+      ],
+      "targetVocabulary": [
+        "reading group",
+        "novel",
+        "short chapters",
+        "recommend",
+        "characters",
+        "discussion questions",
+        "title"
+      ]
+    },
+    {
+      "date": "2026-09-30",
+      "storyId": "parent-and-teacher-plan-a-class-art-display",
+      "domain": "parenting_school",
+      "scenario": "parent_and_teacher_agree_on_a_childs_class_art_display",
+      "lexicalThemes": [
+        "school communication",
+        "children's artwork",
+        "display planning",
+        "parent participation"
+      ],
+      "targetVocabulary": [
+        "class display",
+        "framed work",
+        "choose a piece",
+        "wall space",
+        "label",
+        "drawing",
+        "viewing time"
+      ]
+    },
+    {
+      "date": "2026-09-30",
+      "storyId": "home-borrowing-a-measuring-cup",
+      "domain": "home_family",
+      "scenario": "roommate lends a measuring cup during meal preparation",
+      "lexicalThemes": [
+        "kitchen utensils",
+        "cooking",
+        "polite requests"
+      ],
+      "targetVocabulary": [
+        "measuring cup",
+        "borrow",
+        "drawer",
+        "please"
+      ]
+    },
+    {
+      "date": "2026-09-30",
+      "storyId": "workplace-where-to-leave-a-signed-form",
+      "domain": "workplace",
+      "scenario": "employee asks where to submit a completed office form",
+      "lexicalThemes": [
+        "office supplies",
+        "directions",
+        "paperwork"
+      ],
+      "targetVocabulary": [
+        "signed form",
+        "tray",
+        "reception",
+        "leave"
+      ]
+    },
+    {
+      "date": "2026-09-30",
+      "storyId": "transport-which-ticket-machine-to-use",
+      "domain": "transport_navigation",
+      "scenario": "traveler asks station attendant which machine sells day passes",
+      "lexicalThemes": [
+        "public transit",
+        "tickets",
+        "asking for directions"
+      ],
+      "targetVocabulary": [
+        "day pass",
+        "machine",
+        "attendant",
+        "buy"
+      ]
+    },
+    {
+      "date": "2026-09-30",
+      "storyId": "services-asking-for-a-copy-at-the-print-shop",
+      "domain": "services_appointments",
+      "scenario": "customer asks print-shop clerk how to print one document from a phone",
+      "lexicalThemes": [
+        "local services",
+        "printing",
+        "technology"
+      ],
+      "targetVocabulary": [
+        "copy",
+        "document",
+        "phone",
+        "printer"
+      ]
+    },
+    {
+      "date": "2026-09-30",
+      "storyId": "shopping-asking-to-try-on-a-hat",
+      "domain": "shopping_payments",
+      "scenario": "shopper asks permission to try on a displayed hat",
+      "lexicalThemes": [
+        "clothing",
+        "shopping",
+        "polite requests"
+      ],
+      "targetVocabulary": [
+        "try on",
+        "hat",
+        "display",
+        "mirror"
+      ]
+    },
+    {
+      "date": "2026-09-30",
+      "storyId": "food-cooking-checking-if-soup-is-vegetarian",
+      "domain": "food_cooking",
+      "scenario": "diner checks whether vegetable soup contains meat stock",
+      "lexicalThemes": [
+        "food choices",
+        "ingredients",
+        "ordering"
+      ],
+      "targetVocabulary": [
+        "vegetable soup",
+        "meat stock",
+        "vegetarian",
+        "bowl"
+      ]
+    },
+    {
+      "date": "2026-09-30",
+      "storyId": "digital-admin-asking-how-to-save-a-contact",
+      "domain": "digital_admin",
+      "scenario": "person gets quick help saving a phone number as a contact",
+      "lexicalThemes": [
+        "phone functions",
+        "contacts",
+        "simple instructions"
+      ],
+      "targetVocabulary": [
+        "save",
+        "number",
+        "contact",
+        "name"
+      ]
+    },
+    {
+      "date": "2026-09-30",
+      "storyId": "sports-exercise-asking-where-to-return-a-ball",
+      "domain": "sports_exercise",
+      "scenario": "tennis player asks coach where to return practice balls",
+      "lexicalThemes": [
+        "sports equipment",
+        "courts",
+        "simple directions"
+      ],
+      "targetVocabulary": [
+        "practice ball",
+        "basket",
+        "court",
+        "return"
+      ]
+    },
+    {
+      "date": "2026-09-30",
+      "storyId": "pets-asking-before-giving-a-dog-a-treat",
+      "domain": "pets_animals",
+      "scenario": "guest checks with dog owner before offering a treat",
+      "lexicalThemes": [
+        "pets",
+        "food",
+        "asking permission"
+      ],
+      "targetVocabulary": [
+        "dog",
+        "treat",
+        "suitable",
+        "offer"
+      ]
+    },
+    {
+      "date": "2026-09-30",
+      "storyId": "learning-classes-asking-which-page-to-read",
+      "domain": "learning_classes",
+      "scenario": "student confirms the assigned reading page before class",
+      "lexicalThemes": [
+        "classroom instructions",
+        "books",
+        "numbers"
+      ],
+      "targetVocabulary": [
+        "which page",
+        "instructor",
+        "read",
+        "open"
+      ]
+    },
+    {
+      "date": "2026-09-30",
+      "storyId": "nature-outdoors-asking-where-to-fill-a-water-bottle",
+      "domain": "nature_outdoors",
+      "scenario": "park visitor asks groundskeeper for the nearest water fountain",
+      "lexicalThemes": [
+        "parks",
+        "directions",
+        "water"
+      ],
+      "targetVocabulary": [
+        "refill",
+        "water bottle",
+        "drinking fountain",
+        "nearby"
+      ]
     }
   ]
 }
