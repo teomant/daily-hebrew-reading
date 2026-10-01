@@ -2966,6 +2966,292 @@
         "drinking fountain",
         "nearby"
       ]
+    },
+    {
+      "date": "2026-10-01",
+      "storyId": "housewarming-evening-small-hosting-plan-2026-10-01",
+      "domain": "hosting_celebrations",
+      "scenario": "housewarming_evening_guest_flow_and_simple_refreshments",
+      "lexicalThemes": [
+        "hosting friends",
+        "room arrangement",
+        "snacks and drinks",
+        "dividing preparations"
+      ],
+      "targetVocabulary": [
+        "housewarming",
+        "living room",
+        "move the table",
+        "snacks",
+        "set out plates",
+        "arrive at different times",
+        "make room",
+        "relaxed plan"
+      ]
+    },
+    {
+      "date": "2026-10-01",
+      "storyId": "coworker-feedback-on-presentation-practice-2026-10-01",
+      "domain": "workplace",
+      "scenario": "colleague_refines_presentation_message_through_practice_feedback",
+      "lexicalThemes": [
+        "presentation practice",
+        "asking for feedback",
+        "explaining a point",
+        "editing slides"
+      ],
+      "targetVocabulary": [
+        "practice run",
+        "main point",
+        "audience",
+        "chart",
+        "too many details",
+        "replace",
+        "closing slide",
+        "come through clearly"
+      ]
+    },
+    {
+      "date": "2026-10-01",
+      "storyId": "community-center-instrument-donation-sorting-2026-10-01",
+      "domain": "volunteering_community",
+      "scenario": "community_center_sorts_donated_instruments_for_open_house",
+      "lexicalThemes": [
+        "volunteering",
+        "sorting donations",
+        "community events",
+        "organizing an activity"
+      ],
+      "targetVocabulary": [
+        "community center",
+        "donated instruments",
+        "sheet music",
+        "put on display",
+        "try-it activity",
+        "clearly marked",
+        "set aside",
+        "open house"
+      ]
+    },
+    {
+      "date": "2026-10-01",
+      "storyId": "dialog-siblings-choose-a-family-game-evening-2026-10-01",
+      "domain": "home_family",
+      "scenario": "siblings_choose_an_inclusive_family_game_for_friday_evening",
+      "lexicalThemes": [
+        "making family plans",
+        "comparing games",
+        "explaining preferences",
+        "agreeing on an activity"
+      ],
+      "targetVocabulary": [
+        "after dinner",
+        "strategy game",
+        "rules",
+        "teams",
+        "different ages",
+        "quick game",
+        "another evening",
+        "bring out snacks"
+      ]
+    },
+    {
+      "date": "2026-10-01",
+      "storyId": "dialog-neighbors-plan-a-balcony-birdwatch-2026-10-01",
+      "domain": "nature_outdoors",
+      "scenario": "neighbors_plan_a_casual_balcony_birdwatch_and_observation_list",
+      "lexicalThemes": [
+        "observing birds",
+        "making a casual plan",
+        "describing what you notice",
+        "sharing a guide"
+      ],
+      "targetVocabulary": [
+        "binoculars",
+        "identify",
+        "size and color",
+        "field guide",
+        "observe",
+        "nearby park",
+        "make a list",
+        "look up the names"
+      ]
+    },
+    {
+      "date": "2026-10-01",
+      "storyId": "bus-driver-bike-policy",
+      "domain": "transport_navigation",
+      "scenario": "cyclist_checks_whether_a_folded_bike_can_be_taken_on_a_bus",
+      "lexicalThemes": [
+        "public transport",
+        "bicycles",
+        "permission"
+      ],
+      "targetVocabulary": [
+        "folded bike",
+        "bring aboard",
+        "space"
+      ]
+    },
+    {
+      "date": "2026-10-01",
+      "storyId": "market-asks-how-peaches-are-priced",
+      "domain": "shopping_payments",
+      "scenario": "shopper_confirms_fruit_price_is_by_weight",
+      "lexicalThemes": [
+        "fruit shopping",
+        "prices",
+        "weights"
+      ],
+      "targetVocabulary": [
+        "peaches",
+        "by weight",
+        "kilogram"
+      ]
+    },
+    {
+      "date": "2026-10-01",
+      "storyId": "cafe-asks-for-oat-milk",
+      "domain": "food_cooking",
+      "scenario": "customer_checks_for_oat_milk_in_a_coffee_order",
+      "lexicalThemes": [
+        "café orders",
+        "coffee",
+        "milk alternatives"
+      ],
+      "targetVocabulary": [
+        "oat milk",
+        "available",
+        "coffee"
+      ]
+    },
+    {
+      "date": "2026-10-01",
+      "storyId": "gym-asks-to-use-an-exercise-bike",
+      "domain": "sports_exercise",
+      "scenario": "gym_member_checks_whether_an_exercise_bike_is_available",
+      "lexicalThemes": [
+        "gym equipment",
+        "turn-taking",
+        "exercise"
+      ],
+      "targetVocabulary": [
+        "exercise bike",
+        "free",
+        "finished"
+      ]
+    },
+    {
+      "date": "2026-10-01",
+      "storyId": "clinic-asks-where-to-check-in",
+      "domain": "health_wellbeing",
+      "scenario": "clinic_visitor_asks_where_to_check_in_for_an_appointment",
+      "lexicalThemes": [
+        "clinic visits",
+        "reception",
+        "directions"
+      ],
+      "targetVocabulary": [
+        "check in",
+        "receptionist",
+        "entrance"
+      ]
+    },
+    {
+      "date": "2026-10-01",
+      "storyId": "museum-asks-where-coat-check-is",
+      "domain": "hobbies_culture",
+      "scenario": "museum_visitor_asks_where_to_leave_a_coat",
+      "lexicalThemes": [
+        "museum visits",
+        "coat check",
+        "directions"
+      ],
+      "targetVocabulary": [
+        "attendant",
+        "coat check",
+        "lobby"
+      ]
+    },
+    {
+      "date": "2026-10-01",
+      "storyId": "park-trail-asks-about-dog-leash",
+      "domain": "nature_outdoors",
+      "scenario": "trail_visitor_checks_park_leash_rule_and_leashes_dog",
+      "lexicalThemes": [
+        "park rules",
+        "trails",
+        "dogs"
+      ],
+      "targetVocabulary": [
+        "ranger",
+        "leash",
+        "trail"
+      ]
+    },
+    {
+      "date": "2026-10-01",
+      "storyId": "school-office-asks-for-lost-and-found",
+      "domain": "parenting_school",
+      "scenario": "parent_asks_where_to_check_for_a_lost_lunchbox_at_school",
+      "lexicalThemes": [
+        "school office",
+        "lost items",
+        "directions"
+      ],
+      "targetVocabulary": [
+        "lunchbox",
+        "lost and found",
+        "shelf"
+      ]
+    },
+    {
+      "date": "2026-10-01",
+      "storyId": "community-center-asks-where-to-sign-in",
+      "domain": "volunteering_community",
+      "scenario": "new_volunteer_asks_where_to_sign_in_at_a_community_center",
+      "lexicalThemes": [
+        "volunteering",
+        "sign-in",
+        "community center"
+      ],
+      "targetVocabulary": [
+        "coordinator",
+        "attendance sheet",
+        "sign in"
+      ]
+    },
+    {
+      "date": "2026-10-01",
+      "storyId": "friend-asks-to-take-a-photo",
+      "domain": "social_leisure",
+      "scenario": "friend_asks_companion_to_take_a_quick_photo_at_a_viewpoint",
+      "lexicalThemes": [
+        "friends",
+        "photos",
+        "outings"
+      ],
+      "targetVocabulary": [
+        "take a photo",
+        "phone",
+        "viewpoint"
+      ]
+    },
+    {
+      "date": "2026-10-01",
+      "storyId": "sewing-class-asks-for-scissors",
+      "domain": "learning_classes",
+      "scenario": "sewing_student_borrows_scissors_to_trim_a_loose_thread",
+      "lexicalThemes": [
+        "sewing class",
+        "sharing tools",
+        "clothing"
+      ],
+      "targetVocabulary": [
+        "scissors",
+        "borrow",
+        "loose thread"
+      ]
     }
   ]
 }
