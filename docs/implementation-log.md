@@ -1,5 +1,9 @@
 # Implementation log
 
+## 2026-10-01
+
+- Owner narrowed the quality fix to CURRENT only and explicitly chose to keep the September 30 “no verified news story” article for its humor. Left all existing issue data, HISTORY adaptation and selection, and Alef behavior unchanged. For future discovery, CURRENT candidates now need a usable source after source cleanup; the existing duplicate-review call also rejects CURRENT briefs with no actual event or development. Discovery may leave CURRENT slots empty instead of manufacturing placeholders; extra HISTORY screening candidates fill the discovery pool when CURRENT is scarce, without changing the normal HISTORY or generated-story output targets. Updated the discovery/review prompts, product specification, and regression tests. All 86 tests, repository content validation, and whitespace checks passed. An independent read-only review found no confirmed defects; the semantic rejection still needs observation in a future generation. No paid generation was run.
+
 ## 2026-09-29
 
 - Tightened only the adaptation prompt for future Alef output after the regenerated issue still showed dense HISTORY prose. Alef now starts from the required story sequence, omits optional researched details by default, keeps the central subject identifiable, and uses short concrete sentences before lexical segmentation. No issue data or generation code changed, and no paid generation was run. The focused adaptation-contract test and whitespace check passed; independent read-only review found no contract conflicts. Actual language improvement remains to be checked on the next generation.

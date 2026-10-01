@@ -387,7 +387,7 @@ def _sourced_candidate_batch_schema(
             "stories": {
                 "type": "array",
                 "items": candidate,
-                "minItems": SOURCED_CANDIDATE_COUNT,
+                "minItems": 0 if story_types == ["current"] else SOURCED_CANDIDATE_COUNT,
                 "maxItems": SOURCED_CANDIDATE_COUNT,
             }
         },
@@ -413,6 +413,12 @@ def _sourced_candidate_to_seed(candidate: dict[str, Any], target_date: str) -> d
         "image": None,
     }
     return seed
+
+
+def _current_candidate_errors(candidate: dict[str, Any]) -> list[str]:
+    if candidate.get("type") == "current" and not candidate.get("sources"):
+        return ["CURRENT candidate needs a usable source after source cleanup"]
+    return []
 
 
 def _history_research_batch_schema(story_ids: list[str]) -> dict[str, Any]:
@@ -627,10 +633,10 @@ def _sourced_candidate_mix_errors(
     current = [story for story in candidates if story.get("type") == "current"]
     history = [story for story in candidates if story.get("type") == "history"]
     if set(requested_types) == {"current", "history"}:
-        if len(current) != CURRENT_CANDIDATE_TARGET or len(history) != HISTORY_CANDIDATE_TARGET:
+        if len(candidates) != SOURCED_CANDIDATE_COUNT or len(current) > CURRENT_CANDIDATE_TARGET or len(history) < HISTORY_CANDIDATE_TARGET:
             errors.append(
-                f"candidate mix must contain exactly {CURRENT_CANDIDATE_TARGET} CURRENT and "
-                f"{HISTORY_CANDIDATE_TARGET} HISTORY stories"
+                f"candidate mix must contain {SOURCED_CANDIDATE_COUNT} stories with up to "
+                f"{CURRENT_CANDIDATE_TARGET} CURRENT and at least {HISTORY_CANDIDATE_TARGET} HISTORY stories"
             )
     if any(story.get("historyFamily") != "current" for story in current):
         errors.append("CURRENT candidates must use historyFamily=current")
@@ -787,10 +793,11 @@ def _duplicate_review_schema(candidate_ids: list[str]) -> dict[str, Any]:
         "properties": {
             "candidateId": {"type": "string", "enum": candidate_ids},
             "isDuplicate": {"type": "boolean"},
+            "isEmptyCurrent": {"type": "boolean"},
             "matchedStoryId": {"anyOf": [{"type": "string"}, {"type": "null"}]},
             "reason": {"type": "string"},
         },
-        "required": ["candidateId", "isDuplicate", "matchedStoryId", "reason"],
+        "required": ["candidateId", "isDuplicate", "isEmptyCurrent", "matchedStoryId", "reason"],
         "additionalProperties": False,
     }
     return {
@@ -929,11 +936,12 @@ def _sourced_discovery_request(
 ) -> str:
     if current_count and history_count:
         candidate_mix = (
-            f"Return both types: exactly {CURRENT_CANDIDATE_TARGET} CURRENT and "
-            f"{HISTORY_CANDIDATE_TARGET} HISTORY candidates."
+            f"Return up to {CURRENT_CANDIDATE_TARGET} genuine CURRENT candidates and at least "
+            f"{HISTORY_CANDIDATE_TARGET} HISTORY candidates; use extra HISTORY candidates "
+            f"to fill the {SOURCED_CANDIDATE_COUNT}-candidate pool when CURRENT is scarce."
         )
     elif current_count:
-        candidate_mix = "Every candidate should be CURRENT because only CURRENT slots remain."
+        candidate_mix = f"Return up to {SOURCED_CANDIDATE_COUNT} genuine CURRENT candidates; fewer, including zero, is valid because only CURRENT slots remain."
     else:
         candidate_mix = "Every candidate should be HISTORY because only HISTORY slots remain."
     if worldwide_fallback:
@@ -954,7 +962,7 @@ def _sourced_discovery_request(
         )
     else:
         retry_scope = ""
-    history_source_process = (
+    history_source_process = "" if not history_count else (
         "- For HISTORY on this final worldwide fallback, search varied countries and source collections for concrete, "
         "relatable subjects. Use the source page as a lead to a person, company, work, decision, event, institution, "
         "invention, or ordinary-life development—not as a reason to write about the page itself. Label every HISTORY "
@@ -964,7 +972,7 @@ def _sourced_discovery_request(
         "English. HISTORY does not need a connection to the target date or current news. Use the source page as a lead to "
         "a person, company, work, decision, event, institution, invention, or ordinary-life development—not as a reason "
         "to write about an article, photograph, archive record, museum object, or exhibition page.\n"
-        f"- Build the {HISTORY_CANDIDATE_TARGET}-candidate Israel-focused HISTORY pool from four editorial discovery lanes. "
+        f"- Build at least {HISTORY_CANDIDATE_TARGET} Israel-focused HISTORY candidates from four editorial discovery lanes. "
         f"Return {ISRAELI_HISTORY_SOURCE_MINIMUMS.get('wikimedia', 0)} `wikimedia` candidates discovered through Hebrew or English "
         f"Wikipedia or Wikidata; {ISRAELI_HISTORY_SOURCE_MINIMUMS.get('nationalLibraryPress', 0)} `nationalLibraryPress` candidates from "
         f"the National Library of Israel or Historical Jewish Press; {ISRAELI_HISTORY_SOURCE_MINIMUMS.get('stateVisualArchives', 0)} "
@@ -978,9 +986,14 @@ def _sourced_discovery_request(
         f"rejected candidates again. Correct these problems while continuing the search: {json.dumps(feedback, ensure_ascii=False)}"
         if feedback else ""
     )
+    candidate_count_instruction = (
+        f"Return up to {SOURCED_CANDIDATE_COUNT} distinct screening candidates"
+        if current_count and not history_count else
+        f"Return exactly {SOURCED_CANDIDATE_COUNT} distinct screening candidates"
+    )
     return f"""
 Target publication date: {target_date}
-The issue still needs up to {current_count} CURRENT and up to {history_count} HISTORY stories. Return exactly {SOURCED_CANDIDATE_COUNT} distinct screening candidates even though fewer final slots remain. These are candidates for later deduplication and selection, not final stories. {candidate_mix}
+The issue still needs up to {current_count} CURRENT and up to {history_count} HISTORY stories. {candidate_count_instruction} even though fewer final slots remain. These are candidates for later deduplication and selection, not final stories. {candidate_mix}
 {retry_scope}{retry}
 
 SEARCH PROCESS
@@ -1014,7 +1027,7 @@ ALREADY SELECTED SOURCED STORIES IN THIS RUN:
 </selected_story_records>
 
 OUTPUT CONTRACT
-Return exactly {SOURCED_CANDIDATE_COUNT} compact screening records. Every record contains only `id`, `type`, `category`, `historyFamily`, `{DISCOVERY_SOURCE_KEY}`, `brief`, and `sources`. CURRENT uses `{DISCOVERY_SOURCE_KEY}` = `current`. On an Israel-focused pass, HISTORY uses one of `wikimedia`, `nationalLibraryPress`, `stateVisualArchives`, or `cultureArchives`; on the final worldwide fallback it uses `worldwideFallback`. Prefer a descriptive lowercase hyphenated topic ID such as `haifa-library-late-hours`; do not use ordinal placeholders such as `current-01` or `history-02`. Keep `brief` compact and use it only to identify the underlying subject and story during deduplication and later selection. Do not research or return story beats in this screening phase.
+{candidate_count_instruction}. Every record contains only `id`, `type`, `category`, `historyFamily`, `{DISCOVERY_SOURCE_KEY}`, `brief`, and `sources`. CURRENT uses `{DISCOVERY_SOURCE_KEY}` = `current`. On an Israel-focused pass, HISTORY uses one of `wikimedia`, `nationalLibraryPress`, `stateVisualArchives`, or `cultureArchives`; on the final worldwide fallback it uses `worldwideFallback`. Prefer a descriptive lowercase hyphenated topic ID such as `haifa-library-late-hours`; do not use ordinal placeholders such as `current-01` or `history-02`. Keep `brief` compact and use it only to identify the underlying subject and story during deduplication and later selection. Do not research or return story beats in this screening phase.
 
 Give every CURRENT candidate at least one distinct canonical HTTPS content-page source. For HISTORY, include a useful source when available; an empty source list is acceptable because selected subjects receive separate research. Never use homepages, section pages, search pages, generic latest pages, or liveblogs. Do not return Hebrew, story beats, level adaptations, scenario metadata, images, or prose outside the schema.
 """.strip()
@@ -1076,7 +1089,7 @@ PROPOSED CANDIDATES IN ORDER:
 {json.dumps([_compact_story_record(story) for story in candidates], ensure_ascii=False, indent=2)}
 </candidate_story_records>
 
-Return exactly one verdict per proposed candidate ID. For a unique candidate use false, null, and a short reason. For a duplicate use true, the matched record's ID, and a short explanation of the shared underlying story. Return only schema-matching data.
+Return exactly one verdict per proposed candidate ID. For a unique candidate use `isDuplicate=false`, `matchedStoryId=null`, and a short reason. For a duplicate use `isDuplicate=true`, the matched record's ID, and a short explanation of the shared underlying story. Set `isEmptyCurrent=true` only for a CURRENT candidate that reports no actual event, change, action, or practical development—for example, a note that no suitable news story was found. Set it to false for HISTORY and for a real CURRENT event, even if the event is small. Return only schema-matching data.
 """.strip()
 
 
@@ -1097,19 +1110,23 @@ def _duplicate_review_findings(
         raise RuntimeError("duplicate review did not classify every candidate exactly once")
 
     indexes_by_id = {story_id: index for index, story_id in enumerate(candidate_ids)}
-    duplicate_indexes: set[int] = set()
+    rejected_indexes: set[int] = set()
     findings: list[str] = []
     for verdict in verdicts:
-        if not isinstance(verdict.get("isDuplicate"), bool):
+        if not isinstance(verdict.get("isDuplicate"), bool) or not isinstance(verdict.get("isEmptyCurrent"), bool):
             raise RuntimeError("duplicate review returned an invalid verdict")
+        candidate_id = verdict["candidateId"]
+        candidate_index = indexes_by_id[candidate_id]
+        if candidates[candidate_index].get("type") == "current" and verdict["isEmptyCurrent"]:
+            rejected_indexes.add(candidate_index)
+            findings.append(f"LLM current review: {candidate_id} has no actual current story: {verdict.get('reason') or 'empty candidate'}")
         if not verdict["isDuplicate"]:
             continue
-        candidate_id = verdict["candidateId"]
-        duplicate_indexes.add(indexes_by_id[candidate_id])
+        rejected_indexes.add(candidate_index)
         matched_id = verdict.get("matchedStoryId") or "another sourced story"
         reason = verdict.get("reason") or "same underlying story"
         findings.append(f"LLM duplicate review: {candidate_id} matches {matched_id}: {reason}")
-    return duplicate_indexes, findings
+    return rejected_indexes, findings
 
 
 def _generated_planning_request(
@@ -2273,6 +2290,7 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
                     candidate_validation_context,
                     {"current", "history"},
                 )
+                errors.extend(_current_candidate_errors(candidate))
                 if errors:
                     candidate_errors.extend(
                         f"candidate {candidate.get('id')}: {error}"
@@ -2348,7 +2366,7 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
                         "Continue web search for genuinely unrelated replacements.",
                     ]
                     _log(
-                        f"{review_phase}: rejected {len(reviewed_duplicate_indexes)} semantic duplicate(s); "
+                        f"{review_phase}: rejected {len(reviewed_duplicate_indexes)} duplicate or empty CURRENT candidate(s); "
                         f"retained {len(candidate_batch)} candidate(s)"
                     )
                 else:

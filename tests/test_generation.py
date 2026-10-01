@@ -31,6 +31,7 @@ from src.generate_issue import (
     _adaptation_content_errors,
     _call_openai,
     _compact_story_record,
+    _current_candidate_errors,
     _duplicate_findings,
     _duplicate_review_findings,
     _duplicate_review_schema,
@@ -457,7 +458,7 @@ class GenerationTests(unittest.TestCase):
         self.assertIn("begin from the target date", request)
         self.assertIn("Do not formulate searches from forbidden", request)
         self.assertIn("exactly 18 distinct screening candidates", request)
-        self.assertIn("exactly 6 CURRENT and 12 HISTORY", request)
+        self.assertIn("up to 6 genuine CURRENT candidates and at least 12 HISTORY", request)
         self.assertIn("Search substantially more than 18 source pages", request)
         self.assertIn("whole country", request)
         self.assertIn("do not default to Jerusalem", request)
@@ -487,6 +488,9 @@ class GenerationTests(unittest.TestCase):
         self.assertIn("1 `cultureArchives`", request)
         self.assertIn("Do not research or return story beats", request)
         self.assertIn("do not use ordinal placeholders", request)
+        current_only = _sourced_discovery_request("2026-09-07", 2, 0, [], [])
+        self.assertIn("fewer, including zero, is valid", current_only)
+        self.assertNotIn("Build at least 12 Israel-focused HISTORY", current_only)
 
         first_attempt = _sourced_discovery_request("2026-09-07", 4, 2, [], [])
         self.assertNotIn("RETRY ISRAEL-FOCUSED SOURCE SEARCH", first_attempt)
@@ -699,6 +703,15 @@ class GenerationTests(unittest.TestCase):
             ),
             [],
         )
+        more_history = [{**story, "id": f"extra-{story['id']}"} for story in history[:6]]
+        self.assertEqual(
+            _sourced_candidate_mix_errors(
+                [*history, *more_history],
+                ["current", "history"],
+                {"wikimedia", "nationalLibraryPress", "stateVisualArchives", "cultureArchives"},
+            ),
+            [],
+        )
 
         selected = _select_sourced_candidates([], candidates, 2, 3)
         selected_history = [story for story in selected if story["type"] == "history"]
@@ -801,15 +814,18 @@ class GenerationTests(unittest.TestCase):
         verdicts = schema["properties"]["verdicts"]
         self.assertEqual(verdicts["minItems"], 2)
         self.assertEqual(verdicts["maxItems"], 2)
+        self.assertIn("isEmptyCurrent", verdicts["items"]["required"])
 
         duplicate_indexes, findings = _duplicate_review_findings({"verdicts": [{
             "candidateId": "mahane-yehuda-infrastructure-revamp",
             "isDuplicate": True,
+            "isEmptyCurrent": False,
             "matchedStoryId": "mahane-yehuda-market-modernizes",
             "reason": "same named market renovation project",
         }, {
             "candidateId": "new-bus-route",
             "isDuplicate": False,
+            "isEmptyCurrent": False,
             "matchedStoryId": None,
             "reason": "different subject and event",
         }]}, candidates)
@@ -820,9 +836,48 @@ class GenerationTests(unittest.TestCase):
             _duplicate_review_findings({"verdicts": [{
                 "candidateId": "new-bus-route",
                 "isDuplicate": False,
+                "isEmptyCurrent": False,
                 "matchedStoryId": None,
                 "reason": "unique",
             }]}, candidates)
+
+    def test_current_review_rejects_a_no_story_candidate(self) -> None:
+        candidates = [
+            {"id": "empty-current", "type": "current", "brief": "No suitable news story was found."},
+            {"id": "real-notice", "type": "current", "brief": "The city changed the library opening hours."},
+        ]
+        verdicts = [{
+            "candidateId": candidate["id"],
+            "isDuplicate": False,
+            "isEmptyCurrent": index == 0,
+            "matchedStoryId": None,
+            "reason": "no actual event" if index == 0 else "real practical change",
+        } for index, candidate in enumerate(candidates)]
+
+        rejected, findings = _duplicate_review_findings({"verdicts": verdicts}, candidates)
+
+        self.assertEqual(rejected, {0})
+        self.assertIn("no actual current story", findings[0])
+        self.assertEqual(_sourced_candidate_batch_schema(["current"])["properties"]["stories"]["minItems"], 0)
+        self.assertEqual(_sourced_candidate_batch_schema(["current", "history"])["properties"]["stories"]["minItems"], 18)
+
+    def test_current_seed_needs_a_source_after_cleanup(self) -> None:
+        seed = _sourced_candidate_to_seed({
+            "id": "library-hours-change",
+            "type": "current",
+            "category": "city",
+            "historyFamily": "current",
+            "discoverySource": "current",
+            "brief": "The library changed its opening hours for local visitors.",
+            "sources": [],
+        }, "2026-10-02")
+
+        self.assertEqual(_current_candidate_errors(seed), ["CURRENT candidate needs a usable source after source cleanup"])
+        seed["sources"] = [{"publisher": "Library", "title": "Opening hours", "url": "https://example.com/hours"}]
+        self.assertEqual(_current_candidate_errors(seed), [])
+        removed, _ = _remove_redundant_sources([seed], None, ["https://example.com/hours"])
+        self.assertEqual(removed, 1)
+        self.assertEqual(_current_candidate_errors(seed), ["CURRENT candidate needs a usable source after source cleanup"])
 
     def test_generated_planning_forbids_exact_recent_scenarios(self) -> None:
         request = _generated_planning_request(
@@ -1408,9 +1463,9 @@ class GenerationTests(unittest.TestCase):
                         "nationalLibraryPress",
                         "wikimedia",
                     ][index - 4]
-                    if story_type == "history":
+                    if story_type in {"current", "history"}:
                         seed["sources"] = [{
-                            "publisher": "History Source",
+                            "publisher": "Sourced Story",
                             "title": f"Source for {story_id}",
                             "url": f"https://example.com/{story_id}",
                         }]
@@ -1459,6 +1514,7 @@ class GenerationTests(unittest.TestCase):
             unique_review = lambda stories: {"verdicts": [{
                 "candidateId": story["id"],
                 "isDuplicate": False,
+                "isEmptyCurrent": False,
                 "matchedStoryId": None,
                 "reason": "different subject and event",
             } for story in stories]}
@@ -1588,7 +1644,11 @@ class GenerationTests(unittest.TestCase):
                 "slug": "new-town-library-hours",
                 "brief": "A town library extends its afternoon opening hours.",
                 "historyFamily": "current",
-                "sources": [],
+                "sources": [{
+                    "publisher": "Town Library",
+                    "title": "New opening hours",
+                    "url": "https://example.com/new-town-library-hours",
+                }],
                 "image": None,
             })
 
@@ -1697,6 +1757,7 @@ class GenerationTests(unittest.TestCase):
                 return {"verdicts": [{
                     "candidateId": f"{item['id']}-2099-01-01",
                     "isDuplicate": False,
+                    "isEmptyCurrent": False,
                     "matchedStoryId": None,
                     "reason": "different historical subject",
                 } for item in items]}
@@ -1810,6 +1871,7 @@ class GenerationTests(unittest.TestCase):
             review = {"verdicts": [{
                 "candidateId": candidate_id,
                 "isDuplicate": False,
+                "isEmptyCurrent": False,
                 "matchedStoryId": None,
                 "reason": "unique historical subject",
             } for candidate_id in (selected_id, reserve_id, second_reserve_id)]}
@@ -1886,6 +1948,7 @@ class GenerationTests(unittest.TestCase):
             review = {"verdicts": [{
                 "candidateId": story_id,
                 "isDuplicate": False,
+                "isEmptyCurrent": False,
                 "matchedStoryId": None,
                 "reason": "unique historical subject",
             }]}
@@ -1955,6 +2018,7 @@ class GenerationTests(unittest.TestCase):
             review = {"verdicts": [{
                 "candidateId": candidate_id,
                 "isDuplicate": False,
+                "isEmptyCurrent": False,
                 "matchedStoryId": None,
                 "reason": "unique historical subject",
             } for candidate_id in (selected_id, reserve_id)]}
