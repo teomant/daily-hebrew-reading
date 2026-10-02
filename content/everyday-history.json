@@ -3252,6 +3252,314 @@
         "borrow",
         "loose thread"
       ]
+    },
+    {
+      "date": "2026-10-02",
+      "storyId": "evening-walk-and-a-better-sleep-routine",
+      "domain": "health_wellbeing",
+      "scenario": "friends_try_a_flexible_evening_walk_and_phone_free_bedtime",
+      "lexicalThemes": [
+        "sleep habits",
+        "evening routines",
+        "wellbeing",
+        "friendly advice"
+      ],
+      "targetVocabulary": [
+        "routine",
+        "after dinner",
+        "late",
+        "short walk",
+        "try",
+        "leave the phone",
+        "feel rested",
+        "flexible"
+      ]
+    },
+    {
+      "date": "2026-10-02",
+      "storyId": "shared-calendar-for-family-plans",
+      "domain": "digital_admin",
+      "scenario": "siblings_create_a_shared_calendar_for_family_events",
+      "lexicalThemes": [
+        "shared calendars",
+        "family coordination",
+        "phone apps",
+        "event details"
+      ],
+      "targetVocabulary": [
+        "shared calendar",
+        "invite",
+        "event",
+        "location",
+        "reminder",
+        "weekly summary",
+        "duplicate",
+        "add"
+      ]
+    },
+    {
+      "date": "2026-10-02",
+      "storyId": "choosing-a-small-concert-together",
+      "domain": "arts_events",
+      "scenario": "friends_compare_local_concerts_and_choose_an_early_show",
+      "lexicalThemes": [
+        "concerts",
+        "music preferences",
+        "tickets",
+        "evening plans"
+      ],
+      "targetVocabulary": [
+        "concert",
+        "performer",
+        "venue",
+        "seated",
+        "standing",
+        "ticket",
+        "price",
+        "book online"
+      ]
+    },
+    {
+      "date": "2026-10-02",
+      "storyId": "neighbors-compare-cat-adoption-options",
+      "domain": "pets_animals",
+      "scenario": "neighbors_discuss_choosing_a_cat_to_adopt",
+      "lexicalThemes": [
+        "pet adoption",
+        "cat care",
+        "shelter visit",
+        "daily routines"
+      ],
+      "targetVocabulary": [
+        "adopt",
+        "shelter",
+        "adult cat",
+        "kitten",
+        "temperament",
+        "care",
+        "visit",
+        "needs"
+      ]
+    },
+    {
+      "date": "2026-10-02",
+      "storyId": "friends-plan-a-small-balcony-herb-garden",
+      "domain": "nature_outdoors",
+      "scenario": "friends_plan_a_compact_balcony_herb_garden",
+      "lexicalThemes": [
+        "balcony gardening",
+        "herbs",
+        "plant care",
+        "small-space planning"
+      ],
+      "targetVocabulary": [
+        "herb",
+        "seedling",
+        "pot",
+        "sunny",
+        "space",
+        "separate",
+        "grow",
+        "care"
+      ]
+    },
+    {
+      "date": "2026-10-02",
+      "storyId": "community-center-asks-where-to-return-a-mug",
+      "domain": "services_appointments",
+      "scenario": "visitor_asks_where_to_return_a_borrowed_mug_at_community_center",
+      "lexicalThemes": [
+        "community center",
+        "borrowed item",
+        "returning items",
+        "directions"
+      ],
+      "targetVocabulary": [
+        "mug",
+        "return",
+        "tray",
+        "kitchen door"
+      ]
+    },
+    {
+      "date": "2026-10-02",
+      "storyId": "bus-passenger-checks-which-stop-for-the-market",
+      "domain": "transport_navigation",
+      "scenario": "passenger_asks_bus_driver_for_market_stop",
+      "lexicalThemes": [
+        "bus ride",
+        "asking directions",
+        "stops",
+        "market"
+      ],
+      "targetVocabulary": [
+        "bus driver",
+        "stop",
+        "closest",
+        "market"
+      ]
+    },
+    {
+      "date": "2026-10-02",
+      "storyId": "shopper-asks-whether-bags-are-provided",
+      "domain": "shopping_payments",
+      "scenario": "customer_checks_for_paper_bags_at_checkout",
+      "lexicalThemes": [
+        "checkout",
+        "shopping bags",
+        "asking a question",
+        "groceries"
+      ],
+      "targetVocabulary": [
+        "paper bag",
+        "checkout",
+        "register",
+        "groceries"
+      ]
+    },
+    {
+      "date": "2026-10-02",
+      "storyId": "classroom-student-asks-to-open-a-window",
+      "domain": "learning_classes",
+      "scenario": "student_requests_permission_to_open_classroom_window",
+      "lexicalThemes": [
+        "classroom",
+        "polite request",
+        "temperature",
+        "permission"
+      ],
+      "targetVocabulary": [
+        "window",
+        "warm",
+        "open",
+        "instructor"
+      ]
+    },
+    {
+      "date": "2026-10-02",
+      "storyId": "friend-asks-to-share-an-umbrella",
+      "domain": "social_leisure",
+      "scenario": "friend_shares_umbrella_during_light_rain_near_station",
+      "lexicalThemes": [
+        "friends",
+        "rain",
+        "sharing",
+        "walking"
+      ],
+      "targetVocabulary": [
+        "umbrella",
+        "rain",
+        "share",
+        "café"
+      ]
+    },
+    {
+      "date": "2026-10-02",
+      "storyId": "clinic-visitor-asks-where-the-restroom-is",
+      "domain": "health_wellbeing",
+      "scenario": "clinic_visitor_gets_directions_to_restroom",
+      "lexicalThemes": [
+        "clinic",
+        "reception desk",
+        "directions",
+        "facilities"
+      ],
+      "targetVocabulary": [
+        "restroom",
+        "receptionist",
+        "hall",
+        "where"
+      ]
+    },
+    {
+      "date": "2026-10-02",
+      "storyId": "neighbor-asks-to-use-a-bicycle-pump",
+      "domain": "neighbors_community",
+      "scenario": "neighbor_borrows_bicycle_pump_in_shared_courtyard",
+      "lexicalThemes": [
+        "neighbors",
+        "borrowing",
+        "bicycles",
+        "courtyard"
+      ],
+      "targetVocabulary": [
+        "bicycle tire",
+        "pump",
+        "borrow",
+        "inflate"
+      ]
+    },
+    {
+      "date": "2026-10-02",
+      "storyId": "customer-asks-for-a-receipt-by-email",
+      "domain": "digital_admin",
+      "scenario": "customer_requests_repair_shop_receipt_by_email",
+      "lexicalThemes": [
+        "email",
+        "receipts",
+        "customer service",
+        "confirmation"
+      ],
+      "targetVocabulary": [
+        "receipt",
+        "email",
+        "address",
+        "send"
+      ]
+    },
+    {
+      "date": "2026-10-02",
+      "storyId": "park-visitor-asks-which-trail-is-shorter",
+      "domain": "nature_outdoors",
+      "scenario": "park_visitor_selects_shorter_walking_trail",
+      "lexicalThemes": [
+        "park",
+        "walking trail",
+        "asking for advice",
+        "routes"
+      ],
+      "targetVocabulary": [
+        "trail",
+        "shorter",
+        "pond",
+        "loop"
+      ]
+    },
+    {
+      "date": "2026-10-02",
+      "storyId": "parent-asks-teacher-when-to-bring-a-library-book",
+      "domain": "parenting_school",
+      "scenario": "parent_confirms_class_library_book_return_day",
+      "lexicalThemes": [
+        "school pickup",
+        "class library",
+        "due date",
+        "parent-teacher communication"
+      ],
+      "targetVocabulary": [
+        "library book",
+        "return",
+        "Monday",
+        "due"
+      ]
+    },
+    {
+      "date": "2026-10-02",
+      "storyId": "customer-asks-if-a-seat-is-reserved",
+      "domain": "arts_events",
+      "scenario": "concert_attendee_checks_if_empty_seat_is_available",
+      "lexicalThemes": [
+        "concert hall",
+        "seating",
+        "checking availability",
+        "usher"
+      ],
+      "targetVocabulary": [
+        "seat",
+        "reserved",
+        "available",
+        "usher"
+      ]
     }
   ]
 }
