@@ -3560,6 +3560,301 @@
         "available",
         "usher"
       ]
+    },
+    {
+      "date": "2026-10-03",
+      "storyId": "barber-and-customer-plan-a-low-maintenance-haircut",
+      "domain": "clothing_personal_care",
+      "scenario": "customer_and_barber_agree_on_a_low_maintenance_haircut",
+      "lexicalThemes": [
+        "barbershop visit",
+        "hair length and style",
+        "explaining preferences",
+        "personal care"
+      ],
+      "targetVocabulary": [
+        "trim",
+        "sides",
+        "length",
+        "style",
+        "mirror",
+        "grow out"
+      ]
+    },
+    {
+      "date": "2026-10-03",
+      "storyId": "shopper-chooses-a-reusable-lunch-container",
+      "domain": "shopping_payments",
+      "scenario": "shopper_compares_reusable_lunch_containers_for_work",
+      "lexicalThemes": [
+        "shopping for household goods",
+        "comparing sizes",
+        "asking about care",
+        "making a purchase"
+      ],
+      "targetVocabulary": [
+        "container",
+        "divided",
+        "lid",
+        "fit",
+        "wash",
+        "price"
+      ]
+    },
+    {
+      "date": "2026-10-03",
+      "storyId": "adult-daughter-shows-father-how-to-prune-a-houseplant",
+      "domain": "home_family",
+      "scenario": "daughter_teaches_father_to_prune_an_uneven_houseplant",
+      "lexicalThemes": [
+        "adult family conversation",
+        "plant care",
+        "demonstrating a task",
+        "sharing practical advice"
+      ],
+      "targetVocabulary": [
+        "plant",
+        "stem",
+        "branch",
+        "trim",
+        "leaf",
+        "light"
+      ]
+    },
+    {
+      "date": "2026-10-03",
+      "storyId": "friends-plan-a-potluck-menu-around-a-guest",
+      "domain": "food_cooking",
+      "scenario": "friends_coordinate_a_potluck_menu_with_a_dairy_free_guest",
+      "lexicalThemes": [
+        "planning a shared meal",
+        "food preferences",
+        "offering and choosing dishes",
+        "coordinating with friends"
+      ],
+      "targetVocabulary": [
+        "potluck",
+        "main dish",
+        "salad",
+        "dairy-free",
+        "dressing",
+        "label"
+      ]
+    },
+    {
+      "date": "2026-10-03",
+      "storyId": "friends-plan-a-weekend-pottery-painting-session",
+      "domain": "arts_events",
+      "scenario": "friends_plan_a_pottery_painting_studio_visit",
+      "lexicalThemes": [
+        "planning a creative outing",
+        "asking how an activity works",
+        "comparing choices",
+        "making something together"
+      ],
+      "targetVocabulary": [
+        "studio",
+        "paint",
+        "mug",
+        "serving bowl",
+        "colors",
+        "reserve"
+      ]
+    },
+    {
+      "date": "2026-10-03",
+      "storyId": "building-lobby-asks-where-to-recycle-cardboard",
+      "domain": "neighbors_community",
+      "scenario": "resident_asks_building_caretaker_where_to_recycle_a_cardboard_box",
+      "lexicalThemes": [
+        "building facilities",
+        "recycling",
+        "directions"
+      ],
+      "targetVocabulary": [
+        "cardboard box",
+        "recycling bin",
+        "garage",
+        "where to leave"
+      ]
+    },
+    {
+      "date": "2026-10-03",
+      "storyId": "office-asks-colleague-to-borrow-a-phone-charger",
+      "domain": "workplace",
+      "scenario": "employee_borrows_a_phone_charger_from_a_colleague_at_work",
+      "lexicalThemes": [
+        "workplace objects",
+        "polite requests",
+        "borrowing"
+      ],
+      "targetVocabulary": [
+        "phone charger",
+        "borrow",
+        "for a few minutes",
+        "desk"
+      ]
+    },
+    {
+      "date": "2026-10-03",
+      "storyId": "bakery-asks-which-pastries-are-fresh",
+      "domain": "food_cooking",
+      "scenario": "customer_asks_baker_which_pastries_were_most_recently_baked",
+      "lexicalThemes": [
+        "bakery",
+        "food choices",
+        "asking for information"
+      ],
+      "targetVocabulary": [
+        "pastry",
+        "fresh",
+        "oven",
+        "tray",
+        "warm roll"
+      ]
+    },
+    {
+      "date": "2026-10-03",
+      "storyId": "museum-asks-where-to-find-the-audio-guide",
+      "domain": "hobbies_culture",
+      "scenario": "museum_visitor_gets_directions_to_pick_up_an_audio_guide",
+      "lexicalThemes": [
+        "museum visit",
+        "visitor services",
+        "directions"
+      ],
+      "targetVocabulary": [
+        "audio guide",
+        "information desk",
+        "visitor",
+        "pick up"
+      ]
+    },
+    {
+      "date": "2026-10-03",
+      "storyId": "bus-station-asks-which-platform-for-the-train",
+      "domain": "transport_navigation",
+      "scenario": "passenger_confirms_which_platform_serves_the_next_train_to_the_city_center",
+      "lexicalThemes": [
+        "public transport",
+        "platforms",
+        "asking for directions"
+      ],
+      "targetVocabulary": [
+        "platform",
+        "train",
+        "city center",
+        "display",
+        "next"
+      ]
+    },
+    {
+      "date": "2026-10-03",
+      "storyId": "pharmacy-asks-where-to-collect-a-prescription",
+      "domain": "health_wellbeing",
+      "scenario": "pharmacy_customer_checks_where_to_collect_a_prescription",
+      "lexicalThemes": [
+        "pharmacy services",
+        "prescriptions",
+        "locations"
+      ],
+      "targetVocabulary": [
+        "prescription",
+        "counter",
+        "side window",
+        "collect",
+        "wait"
+      ]
+    },
+    {
+      "date": "2026-10-03",
+      "storyId": "laundromat-asks-how-to-use-the-dryer",
+      "domain": "services_appointments",
+      "scenario": "laundromat_customer_gets_quick_help_starting_a_dryer",
+      "lexicalThemes": [
+        "laundromat",
+        "appliance controls",
+        "asking for help"
+      ],
+      "targetVocabulary": [
+        "dryer",
+        "button",
+        "start",
+        "machine",
+        "show"
+      ]
+    },
+    {
+      "date": "2026-10-03",
+      "storyId": "checkout-asks-to-pay-with-a-card",
+      "domain": "shopping_payments",
+      "scenario": "customer_confirms_card_payment_is_accepted_at_a_small_shop",
+      "lexicalThemes": [
+        "checkout",
+        "payment methods",
+        "polite questions"
+      ],
+      "targetVocabulary": [
+        "cashier",
+        "pay by card",
+        "accept",
+        "tap",
+        "checkout"
+      ]
+    },
+    {
+      "date": "2026-10-03",
+      "storyId": "classroom-asks-how-to-submit-homework-online",
+      "domain": "learning_classes",
+      "scenario": "student_gets_directions_for_uploading_homework_to_the_class_website",
+      "lexicalThemes": [
+        "schoolwork",
+        "online learning",
+        "instructions"
+      ],
+      "targetVocabulary": [
+        "homework",
+        "upload",
+        "assignment folder",
+        "website",
+        "submit"
+      ]
+    },
+    {
+      "date": "2026-10-03",
+      "storyId": "community-garden-asks-where-to-put-compost",
+      "domain": "volunteering_community",
+      "scenario": "community_garden_volunteer_finds_where_to_put_vegetable_scraps_for_compost",
+      "lexicalThemes": [
+        "community gardening",
+        "composting",
+        "directions"
+      ],
+      "targetVocabulary": [
+        "vegetable scraps",
+        "bucket",
+        "compost bin",
+        "volunteer",
+        "empty"
+      ]
+    },
+    {
+      "date": "2026-10-03",
+      "storyId": "shoe-shop-asks-for-a-different-size",
+      "domain": "clothing_personal_care",
+      "scenario": "shopper_requests_a_larger_size_of_shoes_to_try_on",
+      "lexicalThemes": [
+        "shopping for shoes",
+        "sizes",
+        "making a request"
+      ],
+      "targetVocabulary": [
+        "pair of shoes",
+        "larger size",
+        "stockroom",
+        "try on",
+        "available"
+      ]
     }
   ]
 }
