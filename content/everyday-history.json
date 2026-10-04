@@ -3855,6 +3855,293 @@
         "try on",
         "available"
       ]
+    },
+    {
+      "date": "2026-10-04",
+      "storyId": "siblings-plan-a-shared-care-routine",
+      "domain": "home_family",
+      "scenario": "siblings_agree_on_a_supportive_routine_with_their_father_without_taking_over_his_errands",
+      "lexicalThemes": [
+        "family routines",
+        "offering help",
+        "independence",
+        "shared planning"
+      ],
+      "targetVocabulary": [
+        "would appreciate",
+        "once a month",
+        "keep doing",
+        "take over",
+        "agree on a plan",
+        "supportive"
+      ]
+    },
+    {
+      "date": "2026-10-04",
+      "storyId": "volunteers-plan-a-storytelling-afternoon",
+      "domain": "volunteering_community",
+      "scenario": "library_volunteers_shape_a_personal_storytelling_afternoon_into_a_friendly_shared_event",
+      "lexicalThemes": [
+        "volunteering",
+        "community events",
+        "sharing personal stories",
+        "planning an activity"
+      ],
+      "targetVocabulary": [
+        "monthly",
+        "participants",
+        "short story",
+        "rather than",
+        "pause for questions",
+        "take part"
+      ]
+    },
+    {
+      "date": "2026-10-04",
+      "storyId": "neighbor-asks-for-an-opinion-on-a-photo-exhibit",
+      "domain": "hobbies_culture",
+      "scenario": "neighbor_seeks_feedback_and_curates_a_small_hallway_photography_display",
+      "lexicalThemes": [
+        "photography",
+        "asking for an opinion",
+        "choosing and arranging",
+        "local places"
+      ],
+      "targetVocabulary": [
+        "display",
+        "strongest",
+        "overpower",
+        "consistent",
+        "caption",
+        "recognize"
+      ]
+    },
+    {
+      "date": "2026-10-04",
+      "storyId": "dialog-friends-choose-a-beginner-dance-class",
+      "domain": "sports_exercise",
+      "scenario": "friends_compare_beginner_dance_classes_and_choose_a_trial_salsa_lesson",
+      "lexicalThemes": [
+        "trying a new activity",
+        "class options",
+        "schedules",
+        "making a joint decision"
+      ],
+      "targetVocabulary": [
+        "beginner",
+        "partner",
+        "rotate",
+        "trial lesson",
+        "sign up",
+        "comfortable shoes"
+      ]
+    },
+    {
+      "date": "2026-10-04",
+      "storyId": "dialog-parent-and-teacher-discuss-a-school-book-fair",
+      "domain": "parenting_school",
+      "scenario": "parent_and_teacher_clarify_expectations_for_a_classroom_student_book_fair",
+      "lexicalThemes": [
+        "school events",
+        "clarifying expectations",
+        "reading preferences",
+        "preparing a short presentation"
+      ],
+      "targetVocabulary": [
+        "recommend",
+        "collection",
+        "expected to",
+        "bring money",
+        "a couple of sentences",
+        "attend"
+      ]
+    },
+    {
+      "date": "2026-10-04",
+      "storyId": "workplace-asks-which-meeting-room-is-free",
+      "domain": "workplace",
+      "scenario": "employee_checks_which_small_meeting_room_is_available_for_a_call",
+      "lexicalThemes": [
+        "office rooms",
+        "availability",
+        "directions"
+      ],
+      "targetVocabulary": [
+        "meeting room",
+        "available",
+        "empty",
+        "call"
+      ]
+    },
+    {
+      "date": "2026-10-04",
+      "storyId": "shopping-asks-where-to-weigh-vegetables",
+      "domain": "shopping_payments",
+      "scenario": "grocery_shopper_finds_the_produce_scale_before_checkout",
+      "lexicalThemes": [
+        "grocery shopping",
+        "produce",
+        "store directions"
+      ],
+      "targetVocabulary": [
+        "vegetables",
+        "scale",
+        "weigh",
+        "produce section"
+      ]
+    },
+    {
+      "date": "2026-10-04",
+      "storyId": "transport-asks-where-to-tap-transit-card",
+      "domain": "transport_navigation",
+      "scenario": "passenger_locates_the_card_reader_at_a_train_station_gate",
+      "lexicalThemes": [
+        "public transit",
+        "station gates",
+        "payment cards"
+      ],
+      "targetVocabulary": [
+        "transit card",
+        "tap",
+        "reader",
+        "gate"
+      ]
+    },
+    {
+      "date": "2026-10-04",
+      "storyId": "services-asks-where-to-pick-up-altered-trousers",
+      "domain": "services_appointments",
+      "scenario": "customer_confirms_the_pickup_point_for_ready_trousers_at_a_dry_cleaner",
+      "lexicalThemes": [
+        "service counter",
+        "clothing care",
+        "collection"
+      ],
+      "targetVocabulary": [
+        "dry cleaner",
+        "ready",
+        "counter",
+        "pick up"
+      ]
+    },
+    {
+      "date": "2026-10-04",
+      "storyId": "food-cooking-asks-how-long-to-steep-tea",
+      "domain": "food_cooking",
+      "scenario": "guest_checks_steeping_time_for_herbal_tea_and_sets_a_timer",
+      "lexicalThemes": [
+        "tea preparation",
+        "kitchen",
+        "timing"
+      ],
+      "targetVocabulary": [
+        "herbal tea",
+        "steep",
+        "five minutes",
+        "timer"
+      ]
+    },
+    {
+      "date": "2026-10-04",
+      "storyId": "digital-admin-asks-how-to-mute-a-group-chat",
+      "domain": "digital_admin",
+      "scenario": "phone_user_gets_help_muting_group_chat_notifications_temporarily",
+      "lexicalThemes": [
+        "phone settings",
+        "messaging",
+        "notifications"
+      ],
+      "targetVocabulary": [
+        "group chat",
+        "mute",
+        "notifications",
+        "settings"
+      ]
+    },
+    {
+      "date": "2026-10-04",
+      "storyId": "health-wellbeing-asks-where-to-sit-for-a-vaccine",
+      "domain": "health_wellbeing",
+      "scenario": "clinic_visitor_gets_directions_to_the_post_vaccination_waiting_area",
+      "lexicalThemes": [
+        "clinic visit",
+        "waiting area",
+        "health care"
+      ],
+      "targetVocabulary": [
+        "nurse",
+        "wait",
+        "chairs",
+        "vaccine"
+      ]
+    },
+    {
+      "date": "2026-10-04",
+      "storyId": "home-family-asks-who-is-taking-out-the-rubbish",
+      "domain": "home_family",
+      "scenario": "siblings_confirm_who_will_take_the_rubbish_out_that_evening",
+      "lexicalThemes": [
+        "household chores",
+        "family",
+        "simple plans"
+      ],
+      "targetVocabulary": [
+        "rubbish",
+        "take out",
+        "tonight",
+        "bin"
+      ]
+    },
+    {
+      "date": "2026-10-04",
+      "storyId": "learning-classes-asks-where-to-return-a-classroom-book",
+      "domain": "learning_classes",
+      "scenario": "student_checks_the_return_location_for_a_borrowed_workbook",
+      "lexicalThemes": [
+        "classroom materials",
+        "borrowing",
+        "directions"
+      ],
+      "targetVocabulary": [
+        "workbook",
+        "return",
+        "shelf",
+        "borrowed"
+      ]
+    },
+    {
+      "date": "2026-10-04",
+      "storyId": "clothing-personal-care-asks-if-a-coat-can-be-checked",
+      "domain": "clothing_personal_care",
+      "scenario": "theater_visitor_confirms_coat_check_service_and_leaves_a_coat",
+      "lexicalThemes": [
+        "outerwear",
+        "venue services",
+        "checking belongings"
+      ],
+      "targetVocabulary": [
+        "coat",
+        "usher",
+        "coat room",
+        "check"
+      ]
+    },
+    {
+      "date": "2026-10-04",
+      "storyId": "pets-animals-asks-if-a-cat-can-have-fresh-water",
+      "domain": "pets_animals",
+      "scenario": "guest_asks_where_to_refill_a_cat_water_bowl_and_fills_it",
+      "lexicalThemes": [
+        "pet care",
+        "hosting",
+        "water"
+      ],
+      "targetVocabulary": [
+        "cat",
+        "water bowl",
+        "refill",
+        "tap"
+      ]
     }
   ]
 }
