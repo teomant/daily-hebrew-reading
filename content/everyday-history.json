@@ -4142,6 +4142,293 @@
         "refill",
         "tap"
       ]
+    },
+    {
+      "date": "2026-10-05",
+      "storyId": "neighbors-organize-a-building-book-swap",
+      "domain": "neighbors_community",
+      "scenario": "neighbors_create_a_shared_lobby_book_swap_shelf",
+      "lexicalThemes": [
+        "building neighbors",
+        "shared spaces",
+        "books and recommendations",
+        "making a simple plan"
+      ],
+      "targetVocabulary": [
+        "shelf",
+        "book swap",
+        "in good condition",
+        "take freely",
+        "sign",
+        "recommend"
+      ]
+    },
+    {
+      "date": "2026-10-05",
+      "storyId": "friends-prepare-for-a-community-fun-run",
+      "domain": "sports_exercise",
+      "scenario": "friends_prepare_for_a_relaxed_neighborhood_fun_run",
+      "lexicalThemes": [
+        "recreational running",
+        "choosing a distance",
+        "setting a comfortable pace",
+        "encouraging a friend"
+      ],
+      "targetVocabulary": [
+        "fun run",
+        "route",
+        "shorter distance",
+        "pace",
+        "practice",
+        "sign up"
+      ]
+    },
+    {
+      "date": "2026-10-05",
+      "storyId": "traveler-plans-a-local-train-and-ferry-day-out",
+      "domain": "travel_day_trips",
+      "scenario": "friends_plan_a_flexible_train_and_ferry_coastal_day_trip",
+      "lexicalThemes": [
+        "day-trip planning",
+        "public transport connections",
+        "meeting points",
+        "flexible itineraries"
+      ],
+      "targetVocabulary": [
+        "coastal town",
+        "connection",
+        "pier",
+        "return trip",
+        "meeting point",
+        "loose plan"
+      ]
+    },
+    {
+      "date": "2026-10-05",
+      "storyId": "dialog-friends-choose-a-weekly-language-exchange-format",
+      "domain": "learning_classes",
+      "scenario": "friends_set_a_relaxed_weekly_language_exchange_routine",
+      "lexicalThemes": [
+        "language practice",
+        "giving feedback",
+        "conversation routines",
+        "choosing a meeting place"
+      ],
+      "targetVocabulary": [
+        "alternate",
+        "correct",
+        "interrupt",
+        "take notes",
+        "halfway through",
+        "try a session"
+      ]
+    },
+    {
+      "date": "2026-10-05",
+      "storyId": "dialog-customer-and-accountant-sort-a-freelance-expense",
+      "domain": "services_appointments",
+      "scenario": "freelancer_asks_accountant_how_to_organize_digital_expense_receipts",
+      "lexicalThemes": [
+        "accounting appointment",
+        "work expenses",
+        "digital records",
+        "clarifying requirements"
+      ],
+      "targetVocabulary": [
+        "receipt",
+        "readable",
+        "purchase details",
+        "digital file",
+        "separate folder",
+        "send a copy"
+      ]
+    },
+    {
+      "date": "2026-10-05",
+      "storyId": "home-family-asks-where-to-put-leftovers",
+      "domain": "home_family",
+      "scenario": "roommate_asks_where_to_store_leftover_rice_and_puts_it_in_a_container",
+      "lexicalThemes": [
+        "leftovers",
+        "food storage",
+        "refrigerator"
+      ],
+      "targetVocabulary": [
+        "leftover rice",
+        "container",
+        "middle shelf",
+        "refrigerator"
+      ]
+    },
+    {
+      "date": "2026-10-05",
+      "storyId": "services-asks-where-to-wait-for-a-repair",
+      "domain": "services_appointments",
+      "scenario": "phone_repair_customer_asks_where_to_wait_while_screen_protector_is_fitted",
+      "lexicalThemes": [
+        "repair shop",
+        "waiting",
+        "directions"
+      ],
+      "targetVocabulary": [
+        "screen protector",
+        "wait",
+        "bench",
+        "window"
+      ]
+    },
+    {
+      "date": "2026-10-05",
+      "storyId": "shopping-asks-for-a-smaller-coin",
+      "domain": "shopping_payments",
+      "scenario": "kiosk_customer_exchanges_a_large_coin_for_smaller_coins",
+      "lexicalThemes": [
+        "cash",
+        "coins",
+        "small purchase"
+      ],
+      "targetVocabulary": [
+        "change",
+        "coin",
+        "smaller coins",
+        "cashier"
+      ]
+    },
+    {
+      "date": "2026-10-05",
+      "storyId": "transport-asks-which-exit-leads-to-the-square",
+      "domain": "transport_navigation",
+      "scenario": "metro_passenger_asks_staff_which_exit_leads_to_the_central_square",
+      "lexicalThemes": [
+        "metro station",
+        "exits",
+        "directions"
+      ],
+      "targetVocabulary": [
+        "exit",
+        "central square",
+        "staff member",
+        "this way"
+      ]
+    },
+    {
+      "date": "2026-10-05",
+      "storyId": "food-cooking-asks-how-to-store-fresh-herbs",
+      "domain": "food_cooking",
+      "scenario": "housemates_choose_a_simple_way_to_store_fresh_parsley",
+      "lexicalThemes": [
+        "fresh herbs",
+        "food storage",
+        "kitchen"
+      ],
+      "targetVocabulary": [
+        "parsley",
+        "bunch",
+        "glass of water",
+        "refrigerator"
+      ]
+    },
+    {
+      "date": "2026-10-05",
+      "storyId": "workplace-asks-where-to-find-sticky-notes",
+      "domain": "workplace",
+      "scenario": "new_employee_asks_coworker_where_sticky_notes_are_kept",
+      "lexicalThemes": [
+        "office supplies",
+        "asking for help",
+        "workspace"
+      ],
+      "targetVocabulary": [
+        "sticky notes",
+        "drawer",
+        "printer",
+        "small pad"
+      ]
+    },
+    {
+      "date": "2026-10-05",
+      "storyId": "digital-admin-asks-how-to-download-a-file",
+      "domain": "digital_admin",
+      "scenario": "friend_shows_how_to_download_a_shared_document_to_a_tablet",
+      "lexicalThemes": [
+        "tablet",
+        "file saving",
+        "shared documents"
+      ],
+      "targetVocabulary": [
+        "shared link",
+        "download icon",
+        "document",
+        "saved file"
+      ]
+    },
+    {
+      "date": "2026-10-05",
+      "storyId": "clothing-personal-care-asks-where-to-find-a-mirror",
+      "domain": "clothing_personal_care",
+      "scenario": "shopper_asks_employee_where_to_check_a_scarf_in_a_mirror",
+      "lexicalThemes": [
+        "clothing store",
+        "accessories",
+        "checking appearance"
+      ],
+      "targetVocabulary": [
+        "scarf",
+        "mirror",
+        "changing rooms",
+        "color"
+      ]
+    },
+    {
+      "date": "2026-10-05",
+      "storyId": "parenting-school-asks-what-to-pack-for-a-trip",
+      "domain": "parenting_school",
+      "scenario": "parent_confirms_with_teacher_what_to_pack_for_a_school_outing",
+      "lexicalThemes": [
+        "school outing",
+        "packing",
+        "teacher communication"
+      ],
+      "targetVocabulary": [
+        "lunch",
+        "water bottle",
+        "bring",
+        "school outing"
+      ]
+    },
+    {
+      "date": "2026-10-05",
+      "storyId": "neighbors-community-asks-to-move-a-package",
+      "domain": "neighbors_community",
+      "scenario": "resident_checks_with_neighbor_before_moving_a_package_blocking_the_shared_hallway",
+      "lexicalThemes": [
+        "shared hallway",
+        "deliveries",
+        "polite request"
+      ],
+      "targetVocabulary": [
+        "package",
+        "hallway",
+        "beside the door",
+        "move"
+      ]
+    },
+    {
+      "date": "2026-10-05",
+      "storyId": "arts-events-asks-when-the-show-begins",
+      "domain": "arts_events",
+      "scenario": "theater_audience_member_checks_start_time_with_an_usher",
+      "lexicalThemes": [
+        "theater",
+        "event timing",
+        "usher"
+      ],
+      "targetVocabulary": [
+        "performance",
+        "usher",
+        "starts",
+        "ten minutes"
+      ]
     }
   ]
 }
