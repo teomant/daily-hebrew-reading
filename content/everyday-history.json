@@ -4429,6 +4429,298 @@
         "starts",
         "ten minutes"
       ]
+    },
+    {
+      "date": "2026-10-06",
+      "storyId": "roommates-adjust-a-new-pasta-recipe",
+      "domain": "food_cooking",
+      "scenario": "roommates_adjust_a_pasta_sauce_together_after_tasting_it",
+      "lexicalThemes": [
+        "cooking together",
+        "following a recipe",
+        "taste and texture",
+        "dividing kitchen tasks"
+      ],
+      "targetVocabulary": [
+        "recipe",
+        "sauce",
+        "pasta water",
+        "thick",
+        "taste",
+        "add a little",
+        "turn out"
+      ]
+    },
+    {
+      "date": "2026-10-06",
+      "storyId": "passenger-and-driver-choose-a-quieter-route",
+      "domain": "transport_navigation",
+      "scenario": "taxi_passenger_and_driver_choose_a_quieter_alternative_route",
+      "lexicalThemes": [
+        "taxi ride",
+        "route choices",
+        "traffic",
+        "polite preferences"
+      ],
+      "targetVocabulary": [
+        "route",
+        "quieter",
+        "main street",
+        "a few minutes",
+        "turn",
+        "residential area",
+        "rejoin"
+      ]
+    },
+    {
+      "date": "2026-10-06",
+      "storyId": "patient-and-physiotherapist-plan-home-exercises",
+      "domain": "health_wellbeing",
+      "scenario": "patient_and_physiotherapist_choose_a_manageable_home_exercise_routine",
+      "lexicalThemes": [
+        "physiotherapy appointment",
+        "daily routine",
+        "demonstrating movement",
+        "comfort and adjustment"
+      ],
+      "targetVocabulary": [
+        "exercise",
+        "routine",
+        "movement",
+        "comfortable",
+        "seated",
+        "after dinner",
+        "manage"
+      ]
+    },
+    {
+      "date": "2026-10-06",
+      "storyId": "dialog-friends-plan-a-weekend-sketching-outing",
+      "domain": "arts_events",
+      "scenario": "friends_choose_a_calm_outdoor_spot_for_a_casual_sketching_morning",
+      "lexicalThemes": [
+        "making plans",
+        "drawing outdoors",
+        "comparing locations",
+        "preferences and supplies"
+      ],
+      "targetVocabulary": [
+        "sketch",
+        "courtyard",
+        "shady",
+        "bench",
+        "pencils",
+        "bring",
+        "whatever catches your attention"
+      ]
+    },
+    {
+      "date": "2026-10-06",
+      "storyId": "dialog-roommates-discuss-sharing-a-car-for-errands",
+      "domain": "home_family",
+      "scenario": "roommates_agree_on_a_flexible_shared_car_plan_for_joint_errands",
+      "lexicalThemes": [
+        "roommate agreements",
+        "sharing transport costs",
+        "errand planning",
+        "clarifying expectations"
+      ],
+      "targetVocabulary": [
+        "share",
+        "every trip",
+        "occasionally",
+        "fuel costs",
+        "take turns",
+        "in advance",
+        "flexible"
+      ]
+    },
+    {
+      "date": "2026-10-06",
+      "storyId": "home-family-asks-where-to-put-clean-towels",
+      "domain": "home_family",
+      "scenario": "housemate_checks_where_clean_towels_are_stored_and_puts_them_away",
+      "lexicalThemes": [
+        "laundry",
+        "household storage",
+        "asking where something belongs"
+      ],
+      "targetVocabulary": [
+        "clean towels",
+        "shelf",
+        "laundry basket",
+        "put away"
+      ]
+    },
+    {
+      "date": "2026-10-06",
+      "storyId": "workplace-asks-where-to-plug-in-a-laptop",
+      "domain": "workplace",
+      "scenario": "new_employee_locates_an_available_power_outlet_at_a_shared_desk",
+      "lexicalThemes": [
+        "office equipment",
+        "asking for help",
+        "workplace"
+      ],
+      "targetVocabulary": [
+        "shared desk",
+        "outlet",
+        "nearby",
+        "plug in"
+      ]
+    },
+    {
+      "date": "2026-10-06",
+      "storyId": "services-asks-how-to-book-a-library-room",
+      "domain": "services_appointments",
+      "scenario": "library_visitor_gets_brief_instructions_for_reserving_a_study_room",
+      "lexicalThemes": [
+        "library services",
+        "reservations",
+        "time"
+      ],
+      "targetVocabulary": [
+        "reserve",
+        "study room",
+        "booking screen",
+        "open slot"
+      ]
+    },
+    {
+      "date": "2026-10-06",
+      "storyId": "shopping-asks-if-a-product-is-on-sale",
+      "domain": "shopping_payments",
+      "scenario": "shopper_confirms_discount_applies_to_each_size_of_a_grocery_item",
+      "lexicalThemes": [
+        "shopping",
+        "prices",
+        "discounts"
+      ],
+      "targetVocabulary": [
+        "discount",
+        "marked price",
+        "size",
+        "confirm"
+      ]
+    },
+    {
+      "date": "2026-10-06",
+      "storyId": "transport-asks-whether-a-bus-stops-at-the-airport",
+      "domain": "transport_navigation",
+      "scenario": "traveler_checks_with_driver_if_bus_serves_the_airport_and_gets_boarding_guidance",
+      "lexicalThemes": [
+        "public transport",
+        "destinations",
+        "boarding"
+      ],
+      "targetVocabulary": [
+        "bus terminal",
+        "stop at",
+        "airport",
+        "board"
+      ]
+    },
+    {
+      "date": "2026-10-06",
+      "storyId": "food-cooking-asks-where-to-find-the-cutlery",
+      "domain": "food_cooking",
+      "scenario": "guest_finds_forks_in_a_kitchen_drawer_while_helping_set_the_table",
+      "lexicalThemes": [
+        "table setting",
+        "kitchen storage",
+        "hosting"
+      ],
+      "targetVocabulary": [
+        "forks",
+        "drawer",
+        "cutlery",
+        "set the table"
+      ]
+    },
+    {
+      "date": "2026-10-06",
+      "storyId": "social-leisure-checks-if-a-cafe-table-is-free",
+      "domain": "social_leisure",
+      "scenario": "friends_check_that_an_empty_cafe_table_is_available_before_sitting",
+      "lexicalThemes": [
+        "meeting friends",
+        "café",
+        "availability"
+      ],
+      "targetVocabulary": [
+        "table by the window",
+        "free",
+        "empty",
+        "take a seat"
+      ]
+    },
+    {
+      "date": "2026-10-06",
+      "storyId": "digital-admin-asks-how-to-attach-a-file",
+      "domain": "digital_admin",
+      "scenario": "student_gets_a_quick_hint_for_attaching_a_document_to_an_email",
+      "lexicalThemes": [
+        "email",
+        "files",
+        "computer interface"
+      ],
+      "targetVocabulary": [
+        "attach",
+        "document",
+        "paperclip icon",
+        "select a file"
+      ]
+    },
+    {
+      "date": "2026-10-06",
+      "storyId": "health-wellbeing-asks-where-to-collect-test-results",
+      "domain": "health_wellbeing",
+      "scenario": "medical_center_visitor_is_directed_to_the_records_desk_for_a_printed_result",
+      "lexicalThemes": [
+        "medical center",
+        "directions",
+        "documents"
+      ],
+      "targetVocabulary": [
+        "receptionist",
+        "test result",
+        "records desk",
+        "collect"
+      ]
+    },
+    {
+      "date": "2026-10-06",
+      "storyId": "neighbors-community-asks-to-water-a-shared-plant",
+      "domain": "neighbors_community",
+      "scenario": "resident_checks_with_caretaker_and_waters_a_dry_shared_lobby_plant",
+      "lexicalThemes": [
+        "shared spaces",
+        "plants",
+        "neighborly cooperation"
+      ],
+      "targetVocabulary": [
+        "lobby",
+        "caretaker",
+        "needs water",
+        "watering can"
+      ]
+    },
+    {
+      "date": "2026-10-06",
+      "storyId": "clothing-personal-care-asks-if-a-shirt-is-washable",
+      "domain": "clothing_personal_care",
+      "scenario": "shopper_checks_the_care_label_for_a_shirt_before_buying",
+      "lexicalThemes": [
+        "clothing",
+        "care labels",
+        "shopping questions"
+      ],
+      "targetVocabulary": [
+        "machine-wash",
+        "label",
+        "gentle cycle",
+        "confirm"
+      ]
     }
   ]
 }
