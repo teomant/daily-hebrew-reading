@@ -4721,6 +4721,292 @@
         "gentle cycle",
         "confirm"
       ]
+    },
+    {
+      "date": "2026-10-07",
+      "storyId": "compare-monthly-mobile-plans",
+      "domain": "money_subscriptions",
+      "scenario": "customer_compares_mobile_plans_against_personal_data_use_and_selects_a_better_fit",
+      "lexicalThemes": [
+        "mobile phone plans",
+        "monthly bills",
+        "data use",
+        "cost comparison",
+        "customer service"
+      ],
+      "targetVocabulary": [
+        "monthly plan",
+        "bill",
+        "data",
+        "allowance",
+        "extra charge",
+        "change plans",
+        "cost"
+      ]
+    },
+    {
+      "date": "2026-10-07",
+      "storyId": "friends-choose-glasses-frames",
+      "domain": "clothing_personal_care",
+      "scenario": "friend_gives_opinion_as_customer_compares_and_selects_new_eyeglass_frames",
+      "lexicalThemes": [
+        "eyeglasses",
+        "personal style",
+        "asking for an opinion",
+        "shopping decisions",
+        "fit and comfort"
+      ],
+      "targetVocabulary": [
+        "frames",
+        "try on",
+        "fit",
+        "comfortable",
+        "style",
+        "which one",
+        "price"
+      ]
+    },
+    {
+      "date": "2026-10-07",
+      "storyId": "dog-owner-practices-calm-greetings",
+      "domain": "pets_animals",
+      "scenario": "dog_owner_and_neighbor_practice_calm_greetings_with_an_excitable_pet",
+      "lexicalThemes": [
+        "dog behavior",
+        "neighborly help",
+        "greeting visitors",
+        "practice and patience",
+        "pet training"
+      ],
+      "targetVocabulary": [
+        "calm",
+        "sit",
+        "wait",
+        "jump",
+        "visitor",
+        "try again",
+        "reward"
+      ]
+    },
+    {
+      "date": "2026-10-07",
+      "storyId": "neighbors-plan-a-courtyard-herb-tasting",
+      "domain": "neighbors_community",
+      "scenario": "neighbors_plan_a_courtyard_herb_tasting_with_shared_contributions",
+      "lexicalThemes": [
+        "neighbors",
+        "community gathering",
+        "sharing food",
+        "making a simple plan",
+        "preferences"
+      ],
+      "targetVocabulary": [
+        "courtyard",
+        "tasting",
+        "invite",
+        "bring",
+        "ingredients",
+        "simple",
+        "agree"
+      ]
+    },
+    {
+      "date": "2026-10-07",
+      "storyId": "siblings-make-a-shared-family-photo-album",
+      "domain": "digital_admin",
+      "scenario": "siblings_curate_a_private_shared_digital_album_of_family_photos",
+      "lexicalThemes": [
+        "digital photos",
+        "family memories",
+        "privacy choices",
+        "collaboration",
+        "organizing an album"
+      ],
+      "targetVocabulary": [
+        "shared album",
+        "photo",
+        "caption",
+        "private",
+        "choose",
+        "add",
+        "share"
+      ]
+    },
+    {
+      "date": "2026-10-07",
+      "storyId": "services-parcel-drop-off-counter",
+      "domain": "services_appointments",
+      "scenario": "customer_asks_which_post_office_counter_accepts_prepaid_parcels_and_drops_one_off",
+      "lexicalThemes": [
+        "post office",
+        "parcels",
+        "counters"
+      ],
+      "targetVocabulary": [
+        "prepaid",
+        "drop-off desk",
+        "parcel"
+      ]
+    },
+    {
+      "date": "2026-10-07",
+      "storyId": "transport-checks-bus-stop-name",
+      "domain": "transport_navigation",
+      "scenario": "passenger_confirms_the_name_of_the_next_bus_stop_with_the_driver",
+      "lexicalThemes": [
+        "bus",
+        "stops",
+        "street names"
+      ],
+      "targetVocabulary": [
+        "next stop",
+        "confirm",
+        "get off"
+      ]
+    },
+    {
+      "date": "2026-10-07",
+      "storyId": "home-borrows-a-flashlight",
+      "domain": "home_family",
+      "scenario": "housemate_borrows_a_flashlight_from_the_hall_cupboard",
+      "lexicalThemes": [
+        "household items",
+        "lighting",
+        "shared home"
+      ],
+      "targetVocabulary": [
+        "flashlight",
+        "borrow",
+        "cupboard"
+      ]
+    },
+    {
+      "date": "2026-10-07",
+      "storyId": "shopping-asks-about-batteries",
+      "domain": "shopping_payments",
+      "scenario": "shopper_checks_whether_an_alarm_clock_includes_batteries_and_buys_them_separately",
+      "lexicalThemes": [
+        "shopping",
+        "electronics",
+        "product contents"
+      ],
+      "targetVocabulary": [
+        "include",
+        "batteries",
+        "basket"
+      ]
+    },
+    {
+      "date": "2026-10-07",
+      "storyId": "workplace-asks-how-to-book-a-desk",
+      "domain": "workplace",
+      "scenario": "new_employee_gets_help_reserving_an_available_shared_desk_for_tomorrow",
+      "lexicalThemes": [
+        "office",
+        "shared desks",
+        "scheduling"
+      ],
+      "targetVocabulary": [
+        "reserve",
+        "booking calendar",
+        "available"
+      ]
+    },
+    {
+      "date": "2026-10-07",
+      "storyId": "social-leisure-asks-for-a-board-game",
+      "domain": "social_leisure",
+      "scenario": "guest_asks_host_for_a_board_game_and_joins_a_short_card_game",
+      "lexicalThemes": [
+        "visiting friends",
+        "games",
+        "leisure"
+      ],
+      "targetVocabulary": [
+        "board game",
+        "card game",
+        "bring out"
+      ]
+    },
+    {
+      "date": "2026-10-07",
+      "storyId": "food-cooking-checks-oven-temperature",
+      "domain": "food_cooking",
+      "scenario": "home_cook_checks_recipe_for_the_correct_oven_temperature_for_roasted_vegetables",
+      "lexicalThemes": [
+        "cooking",
+        "recipes",
+        "oven"
+      ],
+      "targetVocabulary": [
+        "temperature",
+        "oven",
+        "recipe"
+      ]
+    },
+    {
+      "date": "2026-10-07",
+      "storyId": "digital-admin-turns-on-phone-captions",
+      "domain": "digital_admin",
+      "scenario": "phone_user_gets_help_enabling_captions_for_a_video",
+      "lexicalThemes": [
+        "phone settings",
+        "video",
+        "accessibility"
+      ],
+      "targetVocabulary": [
+        "captions",
+        "settings",
+        "switch on"
+      ]
+    },
+    {
+      "date": "2026-10-07",
+      "storyId": "health-wellbeing-asks-for-a-bandage",
+      "domain": "health_wellbeing",
+      "scenario": "sports_center_visitor_gets_a_bandage_for_a_small_paper_cut",
+      "lexicalThemes": [
+        "minor first aid",
+        "sports center",
+        "front desk"
+      ],
+      "targetVocabulary": [
+        "bandage",
+        "paper cut",
+        "front desk"
+      ]
+    },
+    {
+      "date": "2026-10-07",
+      "storyId": "clothing-personal-care-asks-for-a-shoehorn",
+      "domain": "clothing_personal_care",
+      "scenario": "shoe_shopper_requests_a_shoehorn_to_try_on_boots",
+      "lexicalThemes": [
+        "shoes",
+        "trying on footwear",
+        "shop assistance"
+      ],
+      "targetVocabulary": [
+        "shoehorn",
+        "boots",
+        "try on"
+      ]
+    },
+    {
+      "date": "2026-10-07",
+      "storyId": "nature-outdoors-asks-about-a-bench",
+      "domain": "nature_outdoors",
+      "scenario": "botanical_garden_visitor_asks_for_directions_to_a_bench_near_the_pond",
+      "lexicalThemes": [
+        "gardens",
+        "walking paths",
+        "resting"
+      ],
+      "targetVocabulary": [
+        "bench",
+        "pond",
+        "shaded"
+      ]
     }
   ]
 }
