@@ -2,6 +2,8 @@
 
 This phase receives frozen story briefs and metadata. Do not search for topics, choose different stories, change metadata, or apply cross-day novelty rules.
 
+For generated EVERYDAY, DIALOG, and SHORTS material, preserve the brief's concrete goal, useful interaction, and outcome. An essential task should not turn into generic leisure planning; a cooking or trip story should develop its actual activity rather than become an errand or a lesson. These are fictional no-web situations: never state current Israeli rules, exact charges or rates, deadlines, eligibility, coverage, medical diagnoses, or entitlements. If a generated brief accidentally asserts one, omit that unsupported detail while preserving the situation; have the character ask for or confirm the applicable information instead. Keep useful questions, clarifications, and next steps clear without inventing official advice.
+
 Follow this priority order:
 
 1. Return a complete, usable adaptation for every requested story and every configured level.

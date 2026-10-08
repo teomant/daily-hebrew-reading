@@ -22,10 +22,13 @@ from src.generate_issue import (
     DEFAULT_REASONING_EFFORT,
     DIALOG_TARGET,
     EVERYDAY_TARGET,
+    FULL_STORY_POOL_TARGETS,
     GENERATED_SCENARIO_DOMAINS,
+    GENERATED_SCENARIO_POOLS,
     HISTORY_BEAT_CONTRACT_KEY,
     PROVENANCE_ERRORS_KEY,
     HISTORY_TARGET,
+    SHORTS_POOL_TARGETS,
     SHORTS_TARGET,
     _adaptation_batch_schema,
     _adaptation_content_errors,
@@ -39,6 +42,7 @@ from src.generate_issue import (
     _forbidden_story_records,
     _generated_story_target,
     _generated_planning_request,
+    _generated_pool_counts,
     _generated_domain_findings,
     _history_adaptation_errors,
     _history_research_batch_schema,
@@ -48,6 +52,7 @@ from src.generate_issue import (
     _pop_history_reserve,
     _repair_alphabetic_separator_units,
     _repair_dialog_labels,
+    _requested_pool_counts,
     _remove_redundant_sources,
     _restore_terminal_punctuation,
     _recent_history,
@@ -62,6 +67,7 @@ from src.generate_issue import (
     _sourced_discovery_request,
     _sourced_duplicate_review_request,
     _shorts_page,
+    _short_planning_request,
     _transactional_write,
     _updated_history,
     _validated_history_research,
@@ -942,11 +948,50 @@ class GenerationTests(unittest.TestCase):
         self.assertIn('"scenario": "pharmacy_prescription_not_ready"', request)
         self.assertIn("An identical `scenario` value is always a duplicate", request)
         self.assertIn("Changing its identifier, names, setting details, wording, or story type", request)
-        self.assertIn("DIVERSITY CONTRACT", request)
+        self.assertIn("TOPIC POOLS AND STORY VALUE", request)
         self.assertIn("Recent history may reuse a broad domain", request)
-        self.assertIn("positive cooperative activity", request)
+        self.assertIn("not a fixed or exhaustive list", request)
+        self.assertIn("banking_credit", request)
+        self.assertIn("government_documents", request)
+        self.assertIn("food_cooking", request)
+        self.assertIn("travel_day_trips", request)
+        self.assertIn("must not assert current Israeli rules", request)
+        self.assertNotIn("positive cooperative activity", request)
         self.assertNotIn("canonical HTTPS", request)
         self.assertNotIn("Configured reading levels", request)
+
+    def test_generated_pool_targets_cover_all_three_lists_and_retry_overfill(self) -> None:
+        self.assertEqual(set(GENERATED_SCENARIO_DOMAINS), {
+            domain for domains in GENERATED_SCENARIO_POOLS.values() for domain in domains
+        })
+        self.assertEqual(len(GENERATED_SCENARIO_DOMAINS), len(set(GENERATED_SCENARIO_DOMAINS)))
+        self.assertTrue({"food_cooking", "travel_day_trips"} <= set(GENERATED_SCENARIO_POOLS["experience"]))
+        self.assertEqual(_requested_pool_counts(FULL_STORY_POOL_TARGETS, [], 5), FULL_STORY_POOL_TARGETS)
+        self.assertEqual(_requested_pool_counts(SHORTS_POOL_TARGETS, [], 11), SHORTS_POOL_TARGETS)
+
+        retained = [
+            {"everydayMeta": {"domain": domain}}
+            for domain in ("banking_credit", "bills_taxes", "government_documents", "supermarket_queues")
+        ]
+        self.assertEqual(_generated_pool_counts(retained), {"essential": 3, "routine": 1, "experience": 0})
+        self.assertEqual(
+            _requested_pool_counts(FULL_STORY_POOL_TARGETS, retained, 1),
+            {"essential": 0, "routine": 0, "experience": 1},
+        )
+        retry_request = _generated_planning_request(
+            "2026-10-09", 1, 1, 0, False, [], [], [], retained_generated=retained,
+        )
+        self.assertIn('aim for {"essential": 0, "routine": 0, "experience": 1}', retry_request)
+
+    def test_append_has_no_fixed_pool_quota_and_shorts_use_all_pools(self) -> None:
+        append_request = _generated_planning_request(
+            "2026-10-09", 2, 0, 0, True, [], [], [],
+        )
+        self.assertIn("there is no fixed pool quota", append_request)
+        self.assertNotIn("normal five-story issue targets", append_request)
+        shorts_request = _short_planning_request("2026-10-09", 11, [], [], [])
+        self.assertIn('target {"essential": 5, "routine": 4, "experience": 2}', shorts_request)
+        self.assertIn("food_cooking", shorts_request)
 
     def test_generated_domain_diversity_keeps_first_story_per_current_issue_domain(self) -> None:
         def generated(story_id: str, domain: str) -> dict:
@@ -958,11 +1003,11 @@ class GenerationTests(unittest.TestCase):
 
         errors, indexes = _generated_domain_findings(
             [
-                generated("new-work-story", "workplace"),
-                generated("social-story", "social_leisure"),
-                generated("another-social-story", "social_leisure"),
+                generated("new-work-story", "work_pay"),
+                generated("bank-story", "banking_credit"),
+                generated("another-bank-story", "banking_credit"),
             ],
-            [generated("existing-work-story", "workplace")],
+            [generated("existing-work-story", "work_pay")],
         )
 
         self.assertEqual(indexes, {0, 2})
@@ -1468,10 +1513,10 @@ class GenerationTests(unittest.TestCase):
                 ("radio-music-program-history", "history", "A radio music program introduced listeners to performers who shaped local popular culture."),
             ]
             generated_specs = [
-                ("neighbor-borrows-drill", "everyday", "A neighbor borrows a drill, agrees on a return time, and brings it back after finishing a shelf."),
-                ("family-chooses-picnic-food", "dialog", "Two relatives choose simple picnic food, clarify what is already at home, and divide the shopping."),
+                ("neighbor-reports-water-leak", "everyday", "A resident reports a water leak to the building committee, describes where it is, and confirms who will contact a repair worker."),
+                ("parent-reports-school-absence", "dialog", "A parent asks the school office how to report a child's absence, clarifies where to send the notice, and confirms the next step."),
                 ("tailor-shortens-trousers", "everyday", "A customer asks a tailor to shorten trousers, checks the pickup day, and confirms the price."),
-                ("friends-change-walk-time", "dialog", "Two friends move their evening walk because one finishes work late and agree where to meet."),
+                ("employee-corrects-work-hours", "dialog", "An employee asks a manager to correct recorded work hours, explains the discrepancy, and confirms who will update the record."),
             ]
 
             def make_seed(story_id: str, story_type: str, brief: str, index: int) -> tuple[dict, dict]:
@@ -1513,10 +1558,10 @@ class GenerationTests(unittest.TestCase):
                 else:
                     seed["everydayMeta"]["scenario"] = f"isolated_stage_scenario_{index}"
                     seed["everydayMeta"]["domain"] = [
-                        "neighbors_community",
-                        "food_cooking",
-                        "services_appointments",
-                        "social_leisure",
+                        "neighbors_building",
+                        "school_childcare",
+                        "shopping_returns",
+                        "work_pay",
                     ][index - len(sourced_specs)]
                 covered_ids = ["b1", "b2", "b3", "b4"] if story_type == "history" else None
                 adaptation_levels = valid_dialog_levels() if story_type == "dialog" else template["levels"]
@@ -2114,7 +2159,7 @@ class GenerationTests(unittest.TestCase):
                 "and agree who will visit the supermarket."
             )
             replacement["type"] = "dialog"
-            replacement["everydayMeta"]["domain"] = "shopping_payments"
+            replacement["everydayMeta"]["domain"] = "shopping_returns"
             replacement["everydayMeta"]["scenario"] = "revise_shared_shopping_list"
             replacement_seed = {
                 key: copy.deepcopy(value)

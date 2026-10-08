@@ -4,7 +4,7 @@ Status: approved product requirements, translated from the Russian specification
 
 This document describes a fully working MVP of a static website for daily reading in modern spoken Hebrew. The product is for learners who want to read contemporary, natural Hebrew regularly but are not yet ready for books or difficult newspaper articles.
 
-The core idea is to give the reader a varied daily issue of interesting local/current material, relatable history, realistic everyday stories, natural dialogues, and compact practical situations. This is neither a conventional news site nor a textbook. News and history supply interesting stories and new vocabulary; generated material systematically covers language people need with family and other people around them.
+The core idea is to give the reader a varied daily issue of interesting local/current material, relatable history, realistic everyday stories, natural dialogues, and compact practical situations. This is neither a conventional news site nor a textbook. News and history supply interesting stories and new vocabulary; generated material covers language for essential situations, ordinary routines, and experiences such as cooking and trips in Israel.
 
 The primary product principle is to select and create material according to what is interesting to read and useful for learning contemporary Hebrew, not according to what is considered the day's most important news.
 
@@ -34,9 +34,11 @@ CURRENT stories do not have to concern Israel. Sources may come from anywhere in
 
 ### EVERYDAY
 
-A specially generated, realistic story about ordinary adult life. It is not news. It should model situations such as shopping, transport, customer service, work, deliveries, medical visits, cafés, travel, household problems, changing plans, phone calls, and interactions with other people.
+A specially generated, realistic story about adult life in Israel. It is not news. It should model useful interactions across shopping and queues, healthcare and pharmacies, banking and bills, government documents and taxes, housing and utilities, work, transport, pets and veterinary care, school and family administration, customer service, digital accounts, cooking, trips, events, outdoor activities, and unexpected problems. These are broad examples, not an exhaustive or fixed rotation. The reader should gain language to describe a situation, ask or explain something, clarify a response, and see an action or outcome.
 
-Avoid artificial classroom exchanges such as a sequence of greetings and a simple price question. Each article needs a small real-life situation with an event, action, and outcome. For example: a wardrobe delivery was promised between 10:00 and 14:00; it is nearly 14:00 and nobody has arrived; the customer calls the shop, learns what happened, and decides whether to wait another hour.
+Avoid artificial classroom exchanges such as a sequence of greetings and a simple price question. Each article needs a small real-life situation with an event, action, and outcome. For example: after a fall, a person explains to a clinic worker how their leg hurts and learns the next appointment step; in another story, two people cook with an unfamiliar ingredient, adjust the recipe, and share the finished meal. A problem is not required, but abstract plans to start a hobby or make a shared album are too thin.
+
+Generated stories use no web research. In medical, banking, tax, government, insurance, benefit, and pricing situations, they must not invent current Israeli rules, fees, rates, deadlines, eligibility, coverage, diagnoses, or entitlements. They may show a person asking about these details, requesting written terms or official instructions, clarifying the response, and taking a practical next step. The exchange should remain useful rather than ending at a generic instruction to check online.
 
 These stories should expose readers to useful constructions such as:
 
@@ -70,13 +72,13 @@ These stories should expose readers to useful constructions such as:
 
 ### DIALOG
 
-A specially generated short conversation for practical Hebrew learning. A new issue normally aims for about two. Dialogues normally use two speakers in familiar family and daily-life situations such as making plans, meals, shopping, school, transport, appointments, errands, neighbors, and small problems at home.
+A specially generated short conversation for practical Hebrew learning. A new issue normally aims for about two. Dialogues normally use two speakers handling a concrete need or experience with a shop, clinic, bank, landlord, utility, employer, school, transport provider, government office, service desk, neighbor, friend, or family member. Cooking, trips, and events may also support useful conversations when the speakers do more than choose an activity. Dialogues should model questions, explanations, clarifications, and outcomes that a learner can reuse.
 
 The exchange should sound like ordinary contemporary Israeli conversation, not a classroom exercise, interview, screenplay, dramatic scene, or narrated story. Use 8–12 short turns at every reading level. Planning freezes two Hebrew speaker names, and every paragraph-array item contains exactly one direct-speech turn beginning with one of those names and a colon. Adaptation receives a dialogue-specific example and focused retries; code normalizes recoverable name, colon, and alternation mistakes so an otherwise usable dialogue is not discarded for label formatting. Use natural questions, answers, clarifications, reactions, and a simple practical outcome. Do not describe the conversation in third-person prose; a mainly narrated result belongs to EVERYDAY. DIALOG uses the same scenario metadata and repetition history as EVERYDAY and has no external sources or images.
 
 ### SHORTS
 
-One fully AI-generated page containing 10–11 independent mini-situations from ordinary life. Examples include asking who is last in a queue, how to reach a place, where to find an item, which entrance to use, or whether a seat is free. Each item is planned and adapted independently, contains one tiny interaction or action and its immediate result in exactly two or three complete sentences, and occupies one compact paragraph. The valid items are then collected into one numbered page. Each item has its own scenario metadata and repetition-history record; the page has no sources or image.
+One fully AI-generated page containing 10–11 independent mini-situations from ordinary life. Examples include asking who is last in a checkout queue, which counter handles a request, whether a payment went through, which ingredient to use, or where a trail begins. Each item teaches a tiny reusable phrase or action and its immediate result. Each item is planned and adapted independently, contains exactly two or three complete sentences, and occupies one compact paragraph. The valid items are then collected into one numbered page. Each item has its own scenario metadata and repetition-history record; the page has no sources or image.
 
 ### HISTORY
 
@@ -163,15 +165,17 @@ Generated everyday stories, dialogues, and individual SHORTS items must not repe
 
 For a new complete issue, the generated allocation is exactly three EVERYDAY stories, two DIALOG stories, and one SHORTS page targeting eleven items and requiring at least ten. The normal sourced target is two CURRENT and three HISTORY stories. When both types are needed, discovery returns 18 screening candidates: up to six genuine CURRENT subjects and at least 12 HISTORY subjects; additional HISTORY candidates fill the pool when CURRENT is scarce. A CURRENT-only retry may return fewer candidates, even none. CURRENT candidates with no actual event or no usable source after cleanup are discarded, and an unfilled CURRENT slot is preferable to a placeholder article. Duplicate-reviewed but unselected HISTORY candidates remain in a reserve queue, with Israel-focused passes ordered ahead of the worldwide fallback. Deep research normally uses one batched call for the selected three. Two consecutive HISTORY research request failures abort generation rather than silently publishing an all-generated substitute issue. Missing sourced slots do not expand the generated allocation.
 
+Generated topic selection uses three non-overlapping domain pools: essential situations, ordinary routines, and worthwhile experiences. Across the five full generated stories, planning targets two essential, two routine, and one experience; eleven planned SHORTS target five, four, and two. Retry prompts account for already retained items and prioritize underrepresented pools. These are editorial targets, not publication gates: a valid story or short item is not dropped solely because the mix differs, and same-day appends have no fixed pool quota.
+
 A same-day append generates only fully AI-generated EVERYDAY or DIALOG stories, in any mix. It does not generate CURRENT or HISTORY entries and does not enable web research. The output schema and pre-adaptation validation both enforce this restriction. The combined issue keeps all existing story objects but reorders them generated-first, which updates card and article-navigation order.
 
 ## 12. Generated-scenario domains
 
-Example domains include shopping and payments; food and cooking; transport and navigation; services and appointments; work; home and family; neighbors and community; learning and classes; sports and exercise; pets and animals; clothing and personal care; hosting and celebrations; arts and events; day trips and travel; volunteering; household money and subscriptions; parenting and school; nature and outdoor life; health and wellbeing; and digital administration. This list is extensible.
+The essential pool covers banking and credit; bills and taxes; government documents; health appointments; injuries and symptoms; pharmacies and prescriptions; housing and landlords; home repairs and utilities; work and pay; insurance claims; travel documents; municipal services; employment and job search; and social benefits. The routine pool covers supermarket queues; shopping returns; pets and veterinary care; transport routes and fares; driving and parking; delivery and customer service; digital accounts; school and childcare; neighbors and building issues; food service orders; phone and internet service; and post and parcels. The experience pool covers cooking; day trips and travel; arts and events; and nature and outdoor activities. These pools guide variety, not fixed plots, and may be extended.
 
 ## 13. Do not repeat scenarios
 
-Domain and scenario are different. The restaurant domain can recur later, but articles should not repeat nearly identical plots. Different restaurant scenarios include an unavailable dish, arriving without a reservation, waiting too long, receiving the wrong dish, splitting the bill, changing a reservation, or recovering an item left behind.
+Domain and scenario are different. The `shopping_returns` domain can recur later, but articles should not repeat nearly identical plots. Distinct return scenarios include asking to exchange the wrong size, reporting a damaged item, clarifying a charge, and asking which proof of purchase is needed. Do not invent a store's actual return policy in a fictional scenario.
 
 As a soft guideline, avoid using the same principal domain several times in one week and avoid repeating the same scenario for several weeks. The purpose is to prevent the feeling that only the names changed in a recently read story.
 
@@ -262,7 +266,7 @@ The precise schema may differ, but it must retain the meaning of the following s
   "type": "everyday",
   "category": "everyday",
   "everydayMeta": {
-    "domain": "delivery",
+    "domain": "delivery_customer_service",
     "scenario": "late_delivery",
     "targetVocabulary": ["לחכות", "להגיע", "עדיין", "בערך"]
   },
@@ -283,7 +287,7 @@ Inspect substantially more candidates than the two final CURRENT slots, filter o
 
 ## 28. EVERYDAY generation
 
-Read the recent scenario-history data, remove overly similar ideas, select three EVERYDAY situations, create scenario briefs, and adapt them into the configured levels. Planning uses canonical broad domains and keeps the five full generated stories on distinct domains within the issue. Vary interaction shapes as well as settings and include positive cooperative activities. Mark every generated story visibly as fully AI-generated.
+Read the recent scenario-history data, remove overly similar ideas, select three EVERYDAY situations, create scenario briefs, and adapt them into the configured levels. Planning uses canonical domains from the three pools and keeps the five full generated stories on distinct domains within the issue. Vary the goal, interaction, and outcome; each brief must identify reusable language and a concrete action or result. Cooking, trips, and other experiences are welcome when something happens beyond deciding to start an activity. Mark every generated story visibly as fully AI-generated.
 
 ## 29. DIALOG generation
 

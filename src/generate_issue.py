@@ -67,30 +67,49 @@ DIALOG_TARGET = 2
 SHORTS_TARGET = 11
 SHORTS_MINIMUM = 10
 STORY_DISPLAY_ORDER = {"everyday": 0, "dialog": 1, "shorts": 2, "current": 3, "history": 4}
+GENERATED_SCENARIO_POOLS = {
+    "essential": [
+        "banking_credit",
+        "bills_taxes",
+        "government_documents",
+        "health_appointments",
+        "injuries_symptoms",
+        "pharmacy_prescriptions",
+        "housing_landlord",
+        "home_repairs_utilities",
+        "work_pay",
+        "insurance_claims",
+        "travel_documents",
+        "municipal_services",
+        "employment_jobs",
+        "social_benefits",
+    ],
+    "routine": [
+        "supermarket_queues",
+        "shopping_returns",
+        "pets_veterinary",
+        "transport_fares_routes",
+        "driving_parking",
+        "delivery_customer_service",
+        "digital_accounts",
+        "school_childcare",
+        "neighbors_building",
+        "food_service_orders",
+        "phone_internet",
+        "postal_parcels",
+    ],
+    "experience": [
+        "food_cooking",
+        "travel_day_trips",
+        "arts_events",
+        "nature_outdoors",
+    ],
+}
 GENERATED_SCENARIO_DOMAINS = [
-    "home_family",
-    "social_leisure",
-    "workplace",
-    "services_appointments",
-    "shopping_payments",
-    "transport_navigation",
-    "food_cooking",
-    "health_wellbeing",
-    "neighbors_community",
-    "hobbies_culture",
-    "digital_admin",
-    "learning_classes",
-    "sports_exercise",
-    "pets_animals",
-    "clothing_personal_care",
-    "hosting_celebrations",
-    "arts_events",
-    "travel_day_trips",
-    "volunteering_community",
-    "money_subscriptions",
-    "parenting_school",
-    "nature_outdoors",
+    domain for domains in GENERATED_SCENARIO_POOLS.values() for domain in domains
 ]
+FULL_STORY_POOL_TARGETS = {"essential": 2, "routine": 2, "experience": 1}
+SHORTS_POOL_TARGETS = {"essential": 5, "routine": 4, "experience": 2}
 HISTORY_FAMILIES = ["person", "israeliIndustry", "culture", "event", "place", "archaeology"]
 HISTORY_FAMILY_LIMITS = {"place": 2, "archaeology": 1}
 HISTORY_BEAT_ROLES = ["setup", "action", "turningPoint", "outcome", "consequence", "detail"]
@@ -1096,8 +1115,23 @@ def _generated_planning_request(
     recent_history: list[dict[str, Any]],
     selected_stories: list[dict[str, Any]],
     feedback: list[str] | None = None,
+    retained_generated: list[dict[str, Any]] | None = None,
 ) -> str:
     mode = "append new stories to the existing issue" if is_append else "complete the new issue after sourced discovery"
+    retained_generated = retained_generated or []
+    if is_append:
+        pool_guidance = (
+            "This is an append, so there is no fixed pool quota. Use the three topic pools below and "
+            "favor a pool underrepresented among the existing issue and newly retained stories. "
+            f"Current pool counts: {json.dumps(_generated_pool_counts(retained_generated))}."
+        )
+    else:
+        requested_pools = _requested_pool_counts(FULL_STORY_POOL_TARGETS, retained_generated, target_count)
+        pool_guidance = (
+            f"A normal five-story issue targets {json.dumps(FULL_STORY_POOL_TARGETS)} across EVERYDAY and DIALOG. "
+            f"For this request of {target_count} stories, aim for {json.dumps(requested_pools)}. "
+            "These are editorial targets; keep useful stories if an exact mix is unavailable."
+        )
     retry = (
         "\nRETRY FEEDBACK\nThe previous result was rejected. Do not rewrite rejected scenarios. "
         f"Generate unrelated replacements and correct these problems: {json.dumps(feedback, ensure_ascii=False)}"
@@ -1108,14 +1142,17 @@ Target publication date: {target_date}
 Task: {mode}.
 Generate exactly {target_count} new stories, using only EVERYDAY and DIALOG. {f'Return exactly {everyday_count} EVERYDAY and {dialog_count} DIALOG stories.' if not is_append else 'For this same-day append, either generated type may be used.'} Do not use web search and do not produce CURRENT or HISTORY stories.
 
-Create each scenario independently from ordinary life. Give every story a concrete situation, interaction, action, clarification or reaction, and outcome. Return only English scenario briefs and metadata; do not write Hebrew adaptations.
+Create each scenario independently from a concrete situation in the life of someone living in Israel. Include both necessary tasks and worthwhile everyday experiences. Give every story a goal or need, an interaction or shared action, useful questions or explanations, a meaningful development, and an outcome or next step. A reader should be able to reuse language from the story in a comparable situation. Return only English scenario briefs and metadata; do not write Hebrew adaptations.
 
-DIVERSITY CONTRACT
+TOPIC POOLS AND STORY VALUE
 - Use only these canonical `domain` values: {json.dumps(GENERATED_SCENARIO_DOMAINS)}.
+- Pool membership: {json.dumps(GENERATED_SCENARIO_POOLS)}.
+- {pool_guidance}
 - Give every scenario in this batch a different domain, including from generated stories already selected for this issue. Recent history may reuse a broad domain; it forbids repeated situations, not the domain itself.
-- Vary what people are doing and why. Across one batch, use at most one story centered on each of these shapes: waiting/lateness/schedule change; delivery/order/package; missing/lost/wrong item; repair/access/equipment; workplace coordination.
-- Include at least one positive cooperative activity that is not caused by a delay, mistake, missing item, damaged item, breakdown, or lockout. Useful stories may involve choosing, making, learning, sharing, hosting, practicing, comparing, or asking for an opinion.
-- Do not make every plot “small problem, phone or message, wait, problem solved.” Vary relationships, actions, decisions, and outcomes as well as nouns and settings.
+- Essential covers health, money, documents, housing, and work problems. Routine covers shopping, transport, services, pets, and family logistics. Experience covers cooking, day trips, cultural events, and outdoor activities. The owner's examples are not a fixed or exhaustive list.
+- Cooking and trip stories are welcome even when nothing goes wrong: show actual preparation, travel, discovery, or adjustment and a concrete outcome. Do not stop at friends deciding to try a hobby or assemble a shared album.
+- Vary goals, people, services, questions, and outcomes. Delays, mistakes, missing items, and repairs are useful when the response teaches a specific action; avoid five copies of the same phone-call-and-wait plot.
+- For banking, tax, medical, government, insurance, and pricing situations, the no-web brief must not assert current Israeli rules, exact fees or rates, deadlines, eligibility, coverage, diagnoses, or entitlements. Have the person explain the issue, ask for the applicable terms or instructions, confirm what was said, and identify a concrete next step or official written source.
 
 NOVELTY CONTRACT
 - A scenario is a duplicate when its practical problem or goal, interaction, and resolution substantially match a forbidden or already selected scenario.
@@ -1151,7 +1188,13 @@ def _short_planning_request(
     recent_history: list[dict[str, Any]],
     selected_stories: list[dict[str, Any]],
     feedback: list[str] | None = None,
+    retained_shorts: list[dict[str, Any]] | None = None,
 ) -> str:
+    requested_pools = _requested_pool_counts(
+        SHORTS_POOL_TARGETS,
+        retained_shorts or [],
+        target_count,
+    )
     retry = (
         "\nRETRY FEEDBACK\nDiscard rejected ideas and return unrelated replacements: "
         f"{json.dumps(feedback, ensure_ascii=False)}"
@@ -1162,8 +1205,10 @@ Target publication date: {target_date}
 Generate up to {target_count} independent mini-situations for one SHORTS page. Return them as EVERYDAY planning records; Python will mark them as short items and adapt each one separately. Do not use web search or write Hebrew prose.
 
 - Use only these canonical `domain` values: {json.dumps(GENERATED_SCENARIO_DOMAINS)}.
-- Give each item one tiny practical interaction or action and its immediate result, suitable for one compact paragraph of exactly two or three complete sentences.
-- Vary situations, relationships, useful wording, and outcomes. A broad domain may repeat when the scenario itself is different.
+- Pool membership: {json.dumps(GENERATED_SCENARIO_POOLS)}. Across eleven planned items, target {json.dumps(SHORTS_POOL_TARGETS)}; for these {target_count} remaining items, aim for {json.dumps(requested_pools)}. This is an editorial target, not a reason to discard a useful short item.
+- Give each item one tiny interaction or action and its immediate result, suitable for one compact paragraph of exactly two or three complete sentences. Cover essential questions, routine errands, and moments during cooking, trips, events, or outdoor activities.
+- Skip context-free pleasant moments. Vary situations, relationships, useful wording, and outcomes. A broad domain may repeat when the scenario itself is different.
+- Do not invent current rules, fees, deadlines, diagnoses, or entitlements in these no-web items; ask how to check or clarify them.
 - Set `dialogSpeakers` to an empty list. Use empty sources and a null image.
 - Do not repeat, rename, or lightly rewrite anything in the comparison records.
 
@@ -1659,7 +1704,7 @@ def _adaptation_request(
     retry = f"\nCorrect these validation problems from the previous adaptation: {json.dumps(feedback, ensure_ascii=False)}" if feedback else ""
     return f"""
 This is the adaptation phase. The story metadata, briefs, and any HISTORY storyBeats below are frozen results of completed sourced discovery and generated-scenario planning.
-Create title, teaser, paragraphs, lexical segmentation, translations, and `coveredStoryBeatIds` for every listed story and level. Do not change, extend, or infer beyond the supplied brief, scenario metadata, or HISTORY story-beat contract. Reading levels differ through vocabulary, grammar, sentence shape, and natural constructions—not through a requirement that a harder level be longer. Every researched HISTORY level must still cover every required beat ID or it will be retried. Return each story ID exactly once and no other IDs. For non-HISTORY stories, return an empty covered-story-beat list for every level.
+Create title, teaser, paragraphs, lexical segmentation, translations, and `coveredStoryBeatIds` for every listed story and level. Do not change, extend, or infer beyond the supplied brief, scenario metadata, or HISTORY story-beat contract. For generated no-web stories only, omit any current official rule, exact fee or rate, deadline, eligibility, coverage, diagnosis, or entitlement accidentally asserted in a brief; retain its practical task and show the character asking how to confirm the real detail. Reading levels differ through vocabulary, grammar, sentence shape, and natural constructions—not through a requirement that a harder level be longer. Every researched HISTORY level must still cover every required beat ID or it will be retried. Return each story ID exactly once and no other IDs. For non-HISTORY stories, return an empty covered-story-beat list for every level.
 
 When a seed has `_shortItem: true`, return exactly one compact body paragraph containing exactly two or three complete sentences at every level. Cover only one tiny practical action or question and its immediate answer or result. Do not add background, a second event, or a full-article arc. Keep all three levels similarly compact; distinguish them through wording and grammar, not length.
 
@@ -1850,6 +1895,41 @@ def _generated_domain_findings(
             continue
         seen_domains[normalized_domain] = str(story.get("id") or f"candidate {index + 1}")
     return errors, repeated_indexes
+
+
+def _generated_pool_counts(stories: list[dict[str, Any]]) -> dict[str, int]:
+    counts = {pool: 0 for pool in GENERATED_SCENARIO_POOLS}
+    domain_pool = {
+        domain: pool
+        for pool, domains in GENERATED_SCENARIO_POOLS.items()
+        for domain in domains
+    }
+    for story in stories:
+        if not isinstance(story, dict):
+            continue
+        meta = story.get("everydayMeta")
+        domain = meta.get("domain") if isinstance(meta, dict) else None
+        pool = domain_pool.get(domain) if isinstance(domain, str) else None
+        if pool is not None:
+            counts[pool] += 1
+    return counts
+
+
+def _requested_pool_counts(
+    targets: dict[str, int],
+    retained: list[dict[str, Any]],
+    slots: int,
+) -> dict[str, int]:
+    counts = _generated_pool_counts(retained)
+    requested = {pool: 0 for pool in targets}
+    pool_order = list(targets)
+    for _ in range(slots):
+        under_target = [pool for pool in pool_order if counts[pool] < targets[pool]]
+        candidates = under_target or pool_order
+        pool = min(candidates, key=lambda name: (counts[name] / targets[name], pool_order.index(name)))
+        counts[pool] += 1
+        requested[pool] += 1
+    return requested
 
 
 def _seed_errors(
@@ -2461,6 +2541,17 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
         if requested_dialog < dialog_remaining:
             requested_dialog = min(dialog_remaining, request_target)
             requested_everyday = min(everyday_remaining, request_target - requested_dialog)
+        same_issue_generated = [
+            *(
+                [
+                    story
+                    for story in existing.get("stories", [])
+                    if isinstance(story, dict) and story.get("type") in {"everyday", "dialog"}
+                ]
+                if existing else []
+            ),
+            *generated_seeds,
+        ]
         try:
             returned_batch = _call_openai(
                 os.environ["OPENAI_MODEL"],
@@ -2475,6 +2566,7 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
                     recent,
                     [_compact_story_record(story) for story in [*sourced_seeds, *generated_seeds]],
                     generated_feedback,
+                    same_issue_generated,
                 ),
                 _seed_batch_schema(
                     0,
@@ -2517,17 +2609,6 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
                     f"generated mix must contain exactly {requested_everyday} EVERYDAY and "
                     f"{requested_dialog} DIALOG stories; received {returned_everyday} and {returned_dialog}"
                 )
-        same_issue_generated = [
-            *(
-                [
-                    story
-                    for story in existing.get("stories", [])
-                    if isinstance(story, dict) and story.get("type") in {"everyday", "dialog"}
-                ]
-                if existing else []
-            ),
-            *generated_seeds,
-        ]
         domain_errors, repeated_domain_indexes = _generated_domain_findings(
             returned_batch,
             same_issue_generated,
@@ -2568,6 +2649,8 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
         _log(
             f"{phase}: {len(generated_seeds)} of {generated_target} generated story brief(s) retained"
         )
+    if generated_seeds:
+        _log(f"Generated story topic pools: {_generated_pool_counts(generated_seeds)}")
 
     short_seeds: list[dict[str, Any]] = []
     if include_shorts_page:
@@ -2591,6 +2674,7 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
                             for story in [*sourced_seeds, *generated_seeds, *short_seeds]
                         ],
                         short_feedback,
+                        short_seeds,
                     ),
                     _seed_batch_schema(
                         request_target,
@@ -2637,6 +2721,8 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
             if errors:
                 _log_validation_errors(phase, errors)
             _log(f"{phase}: {len(short_seeds)} of {SHORTS_TARGET} short item brief(s) retained")
+        if short_seeds:
+            _log(f"SHORTS topic pools: {_generated_pool_counts(short_seeds)}")
 
     seeds = [
         {
