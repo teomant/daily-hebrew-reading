@@ -5007,6 +5007,309 @@
         "pond",
         "shaded"
       ]
+    },
+    {
+      "date": "2026-10-08",
+      "storyId": "roommates-plan-a-weekly-laundry-rotation-2026-10-08",
+      "domain": "home_family",
+      "scenario": "roommates_coordinate_shared_laundry_rack_with_a_flexible_completion_note",
+      "lexicalThemes": [
+        "household routines",
+        "shared spaces",
+        "clothes washing",
+        "making a flexible agreement"
+      ],
+      "targetVocabulary": [
+        "laundry",
+        "washing machine",
+        "drying rack",
+        "load",
+        "finished",
+        "shared",
+        "schedule",
+        "flexible",
+        "move promptly"
+      ]
+    },
+    {
+      "date": "2026-10-08",
+      "storyId": "dialog-friends-choose-a-weeknight-volunteer-activity-2026-10-08",
+      "domain": "volunteering_community",
+      "scenario": "friends_choose_a_flexible_food_pantry_volunteer_shift_together",
+      "lexicalThemes": [
+        "volunteering",
+        "community food support",
+        "availability",
+        "trying a new activity"
+      ],
+      "targetVocabulary": [
+        "volunteer",
+        "food pantry",
+        "pack grocery bags",
+        "shift",
+        "coordinator",
+        "experience",
+        "twice a month",
+        "sign up",
+        "try a session"
+      ]
+    },
+    {
+      "date": "2026-10-08",
+      "storyId": "everyday-customer-asks-tailor-to-adjust-a-jacket-sleeve-2026-10-08",
+      "domain": "services_appointments",
+      "scenario": "customer_and_tailor_agree_on_a_practical_jacket_sleeve_adjustment",
+      "lexicalThemes": [
+        "tailoring services",
+        "clothing fit",
+        "explaining preferences",
+        "agreeing on a service"
+      ],
+      "targetVocabulary": [
+        "tailor",
+        "jacket",
+        "sleeve",
+        "measure",
+        "fit",
+        "shirt cuff",
+        "alteration",
+        "price",
+        "collect"
+      ]
+    },
+    {
+      "date": "2026-10-08",
+      "storyId": "dialog-friends-plan-a-home-coffee-tasting-2026-10-08",
+      "domain": "food_cooking",
+      "scenario": "friends_compare_two_coffees_in_a_casual_home_tasting",
+      "lexicalThemes": [
+        "coffee preparation",
+        "comparing flavors",
+        "hosting a simple tasting",
+        "sharing opinions"
+      ],
+      "targetVocabulary": [
+        "coffee beans",
+        "ground coffee",
+        "grind",
+        "brew",
+        "cup",
+        "taste",
+        "sugar",
+        "milk",
+        "flavor",
+        "compare"
+      ]
+    },
+    {
+      "date": "2026-10-08",
+      "storyId": "everyday-neighbors-share-a-building-tool-library-2026-10-08",
+      "domain": "neighbors_community",
+      "scenario": "residents_create_a_simple_shared_tool_cabinet_with_a_sign_out_sheet",
+      "lexicalThemes": [
+        "neighbor cooperation",
+        "shared resources",
+        "building community",
+        "simple record keeping"
+      ],
+      "targetVocabulary": [
+        "tool",
+        "screwdriver",
+        "tape measure",
+        "pliers",
+        "cabinet",
+        "borrow",
+        "return",
+        "sign-out sheet",
+        "label"
+      ]
+    },
+    {
+      "date": "2026-10-08",
+      "storyId": "asks-who-is-last-in-the-bakery-queue",
+      "domain": "food_cooking",
+      "scenario": "bakery_customer_asks_who_is_last_in_the_queue_and_joins_the_line",
+      "lexicalThemes": [
+        "bakery",
+        "queue",
+        "turn-taking"
+      ],
+      "targetVocabulary": [
+        "last",
+        "line",
+        "wait",
+        "turn"
+      ]
+    },
+    {
+      "date": "2026-10-08",
+      "storyId": "asks-when-the-bookshop-closes",
+      "domain": "shopping_payments",
+      "scenario": "shopper_checks_bookshop_closing_time_and_learns_it_closes_at_seven",
+      "lexicalThemes": [
+        "bookshop",
+        "opening hours",
+        "shopping"
+      ],
+      "targetVocabulary": [
+        "close",
+        "today",
+        "at seven",
+        "browse"
+      ]
+    },
+    {
+      "date": "2026-10-08",
+      "storyId": "finds-the-side-entrance-to-a-community-hall",
+      "domain": "transport_navigation",
+      "scenario": "visitor_checks_which_door_is_the_entrance_for_a_class_at_a_community_hall",
+      "lexicalThemes": [
+        "building entrances",
+        "directions",
+        "classes"
+      ],
+      "targetVocabulary": [
+        "entrance",
+        "main door",
+        "side door",
+        "sign"
+      ]
+    },
+    {
+      "date": "2026-10-08",
+      "storyId": "checks-if-a-seat-is-free-on-the-library-shuttle",
+      "domain": "social_leisure",
+      "scenario": "event_visitor_checks_if_an_empty_shuttle_seat_is_available_and_sits",
+      "lexicalThemes": [
+        "seats",
+        "polite questions",
+        "public events"
+      ],
+      "targetVocabulary": [
+        "seat",
+        "free",
+        "beside",
+        "sit"
+      ]
+    },
+    {
+      "date": "2026-10-08",
+      "storyId": "asks-where-to-drop-off-a-library-return",
+      "domain": "services_appointments",
+      "scenario": "library_visitor_finds_the_after_hours_book_return_slot",
+      "lexicalThemes": [
+        "library services",
+        "book returns",
+        "locations"
+      ],
+      "targetVocabulary": [
+        "return",
+        "slot",
+        "beside",
+        "entrance"
+      ]
+    },
+    {
+      "date": "2026-10-08",
+      "storyId": "asks-a-coworker-for-a-paper-clip",
+      "domain": "workplace",
+      "scenario": "employee_borrows_a_paper_clip_from_a_coworker_to_join_two_pages",
+      "lexicalThemes": [
+        "office supplies",
+        "polite requests",
+        "paperwork"
+      ],
+      "targetVocabulary": [
+        "paper clip",
+        "pages",
+        "borrow",
+        "hold together"
+      ]
+    },
+    {
+      "date": "2026-10-08",
+      "storyId": "asks-where-to-put-a-used-tray-at-a-cafe",
+      "domain": "food_cooking",
+      "scenario": "cafe_customer_asks_where_to_return_a_used_tray_and_carries_it_to_the_counter",
+      "lexicalThemes": [
+        "cafe",
+        "cleaning up",
+        "directions"
+      ],
+      "targetVocabulary": [
+        "tray",
+        "return",
+        "counter",
+        "place"
+      ]
+    },
+    {
+      "date": "2026-10-08",
+      "storyId": "asks-how-to-set-a-kitchen-timer",
+      "domain": "home_family",
+      "scenario": "home_cook_gets_a_quick_demonstration_of_setting_a_kitchen_timer",
+      "lexicalThemes": [
+        "kitchen tools",
+        "simple instructions",
+        "cooking"
+      ],
+      "targetVocabulary": [
+        "timer",
+        "ten minutes",
+        "press",
+        "start"
+      ]
+    },
+    {
+      "date": "2026-10-08",
+      "storyId": "asks-where-to-stand-for-the-guided-tour",
+      "domain": "hobbies_culture",
+      "scenario": "historic_house_visitor_finds_the_meeting_point_for_a_guided_tour",
+      "lexicalThemes": [
+        "guided tours",
+        "meeting points",
+        "visitors"
+      ],
+      "targetVocabulary": [
+        "gather",
+        "group",
+        "front steps",
+        "tour"
+      ]
+    },
+    {
+      "date": "2026-10-08",
+      "storyId": "asks-how-to-water-a-shared-window-box",
+      "domain": "neighbors_community",
+      "scenario": "resident_asks_caretaker_for_a_simple_instruction_and_waters_shared_window_box_plants",
+      "lexicalThemes": [
+        "shared plants",
+        "simple instructions",
+        "watering"
+      ],
+      "targetVocabulary": [
+        "watering can",
+        "soil",
+        "damp",
+        "flowers"
+      ]
+    },
+    {
+      "date": "2026-10-08",
+      "storyId": "asks-which-button-starts-a-washing-machine",
+      "domain": "travel_day_trips",
+      "scenario": "guesthouse_guest_clarifies_which_button_starts_a_selected_washing_machine_cycle",
+      "lexicalThemes": [
+        "guesthouse",
+        "appliances",
+        "instructions"
+      ],
+      "targetVocabulary": [
+        "button",
+        "cycle",
+        "start",
+        "washing machine"
+      ]
     }
   ]
 }
