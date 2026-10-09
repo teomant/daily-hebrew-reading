@@ -486,7 +486,7 @@ class GenerationTests(unittest.TestCase):
         self.assertIn("continuing the search", request)
         self.assertIn("final rejection pass", request)
         self.assertIn("RETRY ISRAEL-FOCUSED SOURCE SEARCH", request)
-        self.assertNotIn("FINAL WORLDWIDE FALLBACK SEARCH", request)
+        self.assertNotIn("FINAL HISTORY WORLDWIDE FALLBACK SEARCH", request)
         self.assertIn("National Library of Israel", request)
         self.assertIn("Historical Jewish Press", request)
         self.assertIn("Israel State Archives", request)
@@ -504,7 +504,7 @@ class GenerationTests(unittest.TestCase):
 
         first_attempt = _sourced_discovery_request("2026-09-07", 4, 2, [], [])
         self.assertNotIn("RETRY ISRAEL-FOCUSED SOURCE SEARCH", first_attempt)
-        self.assertNotIn("FINAL WORLDWIDE FALLBACK SEARCH", first_attempt)
+        self.assertNotIn("FINAL HISTORY WORLDWIDE FALLBACK SEARCH", first_attempt)
         worldwide = _sourced_discovery_request(
             "2026-09-07",
             4,
@@ -514,11 +514,18 @@ class GenerationTests(unittest.TestCase):
             ["Israeli candidates exhausted"],
             True,
         )
-        self.assertIn("FINAL WORLDWIDE FALLBACK SEARCH", worldwide)
+        self.assertIn("FINAL HISTORY WORLDWIDE FALLBACK SEARCH", worldwide)
         self.assertIn("at least six countries or regions", worldwide)
+        self.assertIn("Search worldwide only for remaining HISTORY slots", worldwide)
+        self.assertIn("Keep CURRENT searches within Israel", worldwide)
+        self.assertIn("mynet city and regional editions", worldwide)
+        self.assertIn("gov.il ministry", worldwide)
         self.assertIn("Do not re-query, rename, translate, update", worldwide)
         self.assertIn("`discoverySource` = `worldwideFallback`", worldwide)
         self.assertNotIn("12 `wikimedia`", worldwide)
+        current_final = _sourced_discovery_request("2026-09-07", 2, 0, [], [], ["No local story"], True)
+        self.assertNotIn("FINAL HISTORY WORLDWIDE FALLBACK SEARCH", current_final)
+        self.assertIn("RETRY ISRAEL-FOCUSED SOURCE SEARCH", current_final)
 
         schema = _sourced_candidate_batch_schema(
             ["current", "history"],
@@ -862,17 +869,20 @@ class GenerationTests(unittest.TestCase):
         self.assertEqual(verdicts["minItems"], 2)
         self.assertEqual(verdicts["maxItems"], 2)
         self.assertIn("isEmptyCurrent", verdicts["items"]["required"])
+        self.assertIn("isNonLocalCurrent", verdicts["items"]["required"])
 
         duplicate_indexes, findings = _duplicate_review_findings({"verdicts": [{
             "candidateId": "mahane-yehuda-infrastructure-revamp",
             "isDuplicate": True,
             "isEmptyCurrent": False,
+            "isNonLocalCurrent": False,
             "matchedStoryId": "mahane-yehuda-market-modernizes",
             "reason": "same named market renovation project",
         }, {
             "candidateId": "new-bus-route",
             "isDuplicate": False,
             "isEmptyCurrent": False,
+            "isNonLocalCurrent": False,
             "matchedStoryId": None,
             "reason": "different subject and event",
         }]}, candidates)
@@ -884,6 +894,7 @@ class GenerationTests(unittest.TestCase):
                 "candidateId": "new-bus-route",
                 "isDuplicate": False,
                 "isEmptyCurrent": False,
+                "isNonLocalCurrent": False,
                 "matchedStoryId": None,
                 "reason": "unique",
             }]}, candidates)
@@ -897,6 +908,7 @@ class GenerationTests(unittest.TestCase):
             "candidateId": candidate["id"],
             "isDuplicate": False,
             "isEmptyCurrent": index == 0,
+            "isNonLocalCurrent": False,
             "matchedStoryId": None,
             "reason": "no actual event" if index == 0 else "real practical change",
         } for index, candidate in enumerate(candidates)]
@@ -907,6 +919,20 @@ class GenerationTests(unittest.TestCase):
         self.assertIn("no actual current story", findings[0])
         self.assertEqual(_sourced_candidate_batch_schema(["current"])["properties"]["stories"]["minItems"], 0)
         self.assertEqual(_sourced_candidate_batch_schema(["current", "history"])["properties"]["stories"]["minItems"], 18)
+
+    def test_current_review_rejects_an_overseas_story(self) -> None:
+        candidates = [{"id": "foreign-price-change", "type": "current"}]
+        review = {"verdicts": [{
+            "candidateId": "foreign-price-change",
+            "isDuplicate": False,
+            "isEmptyCurrent": False,
+            "isNonLocalCurrent": True,
+            "matchedStoryId": None,
+            "reason": "the central price change happened overseas",
+        }]}
+        rejected, findings = _duplicate_review_findings(review, candidates)
+        self.assertEqual(rejected, {0})
+        self.assertIn("not an Israeli local story", findings[0])
 
     def test_current_seed_needs_a_source_after_cleanup(self) -> None:
         seed = _sourced_candidate_to_seed({
@@ -1315,6 +1341,111 @@ class GenerationTests(unittest.TestCase):
         self.assertEqual(validate_issue(issue, site, levels), [])
         history = _updated_history({"schemaVersion": 1, "items": []}, [page], "2026-09-07")
         self.assertEqual(len(history["items"]), 10)
+        one_item_page = _shorts_page(
+            short_stories[:1], "2026-09-07", [level["id"] for level in levels], site["translationLocales"]
+        )
+        self.assertIsNotNone(one_item_page)
+        self.assertEqual(validate_issue({**issue, "stories": [one_item_page]}, site, levels), [])
+
+    def test_short_failures_keep_successes_and_refill_or_publish_partial_page(self) -> None:
+        for replacements_work, expected_count in ((True, 11), (False, 8), ("none", 0)):
+            with self.subTest(replacements_work=replacements_work):
+                with tempfile.TemporaryDirectory() as temporary:
+                    root = Path(temporary)
+                    for directory in ("config", "prompts", "content"):
+                        shutil.copytree(ROOT / directory, root / directory)
+                    site_path = root / "config" / "site.json"
+                    site = read_json(site_path)
+                    site.update({
+                        "defaultIssueStoryCount": 2,
+                        "minimumIssueStoryCount": 1,
+                        "maximumIssueStoryCount": 2,
+                    })
+                    site_path.write_text(json.dumps(site), encoding="utf-8")
+                    template = next(
+                        story for story in read_json(ROOT / "content" / "2024-01-26.json")["stories"]
+                        if story["type"] == "everyday"
+                    )
+                    briefs = [
+                        "A customer finds the last person in the supermarket queue.",
+                        "A patient describes a sore ankle at the clinic desk.",
+                        "A traveler asks where to board a bus to the beach.",
+                        "A tenant reports that the kitchen tap is leaking.",
+                        "A parent asks the school office how to report an absence.",
+                        "A cook checks whether the dough needs more water.",
+                        "A pet owner asks when the veterinary appointment begins.",
+                        "A customer asks which counter accepts a parcel return.",
+                        "A worker checks whether last week's hours appear on the payslip.",
+                        "A hiker asks where the marked trail starts.",
+                        "A resident asks which document is needed at the office.",
+                        "A rider asks why the fare machine did not accept a card.",
+                        "A neighbor checks when the shared laundry room is free.",
+                        "A diner asks whether a restaurant dish contains nuts.",
+                    ]
+
+                    def seed(number: int) -> dict:
+                        result = {key: copy.deepcopy(value) for key, value in template.items() if key != "levels"}
+                        result["id"] = result["slug"] = f"short-errand-{number}"
+                        result["brief"] = briefs[number] if number < len(briefs) else "A resident reports a broken doorbell to the building caretaker."
+                        result["sources"] = []
+                        result["image"] = None
+                        result["everydayMeta"]["scenario"] = f"distinct_errand_{number}"
+                        result["everydayMeta"]["domain"] = GENERATED_SCENARIO_DOMAINS[number % len(GENERATED_SCENARIO_DOMAINS)]
+                        result["everydayMeta"]["dialogSpeakers"] = []
+                        return result
+
+                    def adaptation(story_id: str, valid_short: bool) -> dict:
+                        levels = copy.deepcopy(template["levels"])
+                        for level in levels.values():
+                            level["paragraphs"] = [[lexical_unit(
+                                "אני שואל שאלה. הוא עונה לי." if valid_short else "אני שואל שאלה."
+                            )]]
+                        return {"adaptations": [adaptation_payload(story_id, levels)]}
+
+                    replacement_number = 11
+                    calls = []
+
+                    def fake_call(model, instructions, request, schema, *, use_web_search, phase):
+                        nonlocal replacement_number
+                        calls.append(phase)
+                        if phase.startswith("Generated planning"):
+                            return {"stories": [seed(100)]}
+                        if phase.startswith("SHORTS planning"):
+                            return {"stories": [seed(index) for index in range(11)]}
+                        if phase.startswith("SHORTS replacement"):
+                            if replacements_work is not True:
+                                raise RuntimeError("simulated planning failure")
+                            result = seed(replacement_number)
+                            replacement_number += 1
+                            return {"stories": [result]}
+                        story_id = schema["properties"]["adaptations"]["items"]["properties"]["id"]["enum"][0]
+                        if story_id == "short-errand-100":
+                            return {"adaptations": [adaptation_payload(story_id, template["levels"])]}
+                        number = int(story_id.rsplit("-", 1)[1])
+                        return adaptation(story_id, replacements_work != "none" and number not in {1, 4, 7})
+
+                    with (
+                        patch.dict(os.environ, {"OPENAI_MODEL": "test-model"}),
+                        patch("src.generate_issue.CURRENT_TARGET", 0),
+                        patch("src.generate_issue.HISTORY_TARGET", 0),
+                        patch("src.generate_issue.EVERYDAY_TARGET", 1),
+                        patch("src.generate_issue.DIALOG_TARGET", 0),
+                        patch("src.generate_issue._call_openai", side_effect=fake_call),
+                    ):
+                        issue = generate(root, "2099-01-01", 0)
+
+                    shorts_pages = [story for story in issue["stories"] if story["type"] == "shorts"]
+                    self.assertEqual(len(shorts_pages), 1 if expected_count else 0)
+                    if shorts_pages:
+                        shorts = shorts_pages[0]
+                        self.assertEqual(len(shorts["shortItems"]), expected_count)
+                        self.assertEqual(shorts["shortItems"][0]["id"], "short-errand-0")
+                        self.assertEqual(shorts["shortItems"][-1]["id"],
+                                         "short-errand-13" if replacements_work is True else "short-errand-10")
+                    self.assertEqual(sum(phase.startswith("SHORTS replacement") for phase in calls),
+                                     3 if replacements_work is True else 33)
+                    self.assertEqual(len(read_json(root / "content" / "everyday-history.json")["items"]),
+                                     len(read_json(ROOT / "content" / "everyday-history.json")["items"]) + expected_count + 1)
 
     def test_append_rejects_a_rephrased_existing_topic(self) -> None:
         site = read_json(ROOT / "config" / "site.json")
@@ -1591,6 +1722,7 @@ class GenerationTests(unittest.TestCase):
                 "candidateId": story["id"],
                 "isDuplicate": False,
                 "isEmptyCurrent": False,
+                "isNonLocalCurrent": False,
                 "matchedStoryId": None,
                 "reason": "different subject and event",
             } for story in stories]}
@@ -1819,6 +1951,7 @@ class GenerationTests(unittest.TestCase):
                     "candidateId": f"{item['id']}-2099-01-01",
                     "isDuplicate": False,
                     "isEmptyCurrent": False,
+                    "isNonLocalCurrent": False,
                     "matchedStoryId": None,
                     "reason": "different historical subject",
                 } for item in items]}
@@ -1926,6 +2059,7 @@ class GenerationTests(unittest.TestCase):
                 "candidateId": candidate_id,
                 "isDuplicate": False,
                 "isEmptyCurrent": False,
+                "isNonLocalCurrent": False,
                 "matchedStoryId": None,
                 "reason": "unique historical subject",
             } for candidate_id in (selected_id, reserve_id, second_reserve_id)]}
@@ -2002,6 +2136,7 @@ class GenerationTests(unittest.TestCase):
                 "candidateId": story_id,
                 "isDuplicate": False,
                 "isEmptyCurrent": False,
+                "isNonLocalCurrent": False,
                 "matchedStoryId": None,
                 "reason": "unique historical subject",
             }]}
@@ -2071,6 +2206,7 @@ class GenerationTests(unittest.TestCase):
                 "candidateId": candidate_id,
                 "isDuplicate": False,
                 "isEmptyCurrent": False,
+                "isNonLocalCurrent": False,
                 "matchedStoryId": None,
                 "reason": "unique historical subject",
             } for candidate_id in (selected_id, reserve_id)]}

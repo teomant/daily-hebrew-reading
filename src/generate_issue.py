@@ -65,7 +65,7 @@ HISTORY_TARGET = 3
 EVERYDAY_TARGET = 3
 DIALOG_TARGET = 2
 SHORTS_TARGET = 11
-SHORTS_MINIMUM = 10
+SHORTS_REPLACEMENT_LIMIT = 11
 STORY_DISPLAY_ORDER = {"everyday": 0, "dialog": 1, "shorts": 2, "current": 3, "history": 4}
 GENERATED_SCENARIO_POOLS = {
     "essential": [
@@ -773,10 +773,11 @@ def _duplicate_review_schema(candidate_ids: list[str]) -> dict[str, Any]:
             "candidateId": {"type": "string", "enum": candidate_ids},
             "isDuplicate": {"type": "boolean"},
             "isEmptyCurrent": {"type": "boolean"},
+            "isNonLocalCurrent": {"type": "boolean"},
             "matchedStoryId": {"anyOf": [{"type": "string"}, {"type": "null"}]},
             "reason": {"type": "string"},
         },
-        "required": ["candidateId", "isDuplicate", "isEmptyCurrent", "matchedStoryId", "reason"],
+        "required": ["candidateId", "isDuplicate", "isEmptyCurrent", "isNonLocalCurrent", "matchedStoryId", "reason"],
         "additionalProperties": False,
     }
     return {
@@ -923,20 +924,20 @@ def _sourced_discovery_request(
         candidate_mix = f"Return up to {SOURCED_CANDIDATE_COUNT} genuine CURRENT candidates; fewer, including zero, is valid because only CURRENT slots remain."
     else:
         candidate_mix = "Every candidate should be HISTORY because only HISTORY slots remain."
-    if worldwide_fallback:
+    if worldwide_fallback and history_count:
         retry_scope = (
-            "\nFINAL WORLDWIDE FALLBACK SEARCH\nThe two Israel-focused searches left sourced slots unfilled. "
-            "Search worldwide only for the remaining slots, using new subjects across at least six countries or regions. "
+            "\nFINAL HISTORY WORLDWIDE FALLBACK SEARCH\nThe two Israel-focused searches left sourced slots unfilled. "
+            "Search worldwide only for remaining HISTORY slots, using new subjects across at least six countries or regions. "
             "Do not re-query, rename, translate, update, or find alternate coverage for any duplicate or forbidden story. "
-            "For CURRENT, use practical events from the target date or previous several days. For HISTORY, use short, "
+            "Keep CURRENT searches within Israel, including on this final pass. For HISTORY, use short, "
             "concrete, relatable subjects from any period; no date connection is required. Label every HISTORY candidate "
             f"with `{DISCOVERY_SOURCE_KEY}` = `{WORLDWIDE_HISTORY_SOURCE}`. Keep every editorial, source-quality, safety, "
             "and novelty rule."
         )
     elif feedback:
         retry_scope = (
-            "\nRETRY ISRAEL-FOCUSED SOURCE SEARCH\nThis is a second fresh search of Israeli material, not a worldwide "
-            "fallback. Use new queries across the named Israeli and Wikimedia collections and do not return alternate "
+            "\nRETRY ISRAEL-FOCUSED SOURCE SEARCH\nUse new queries across the named Israeli local news, official, "
+            "municipal, and Wikimedia collections and do not return alternate "
             "coverage, translations, updates, or renamed versions of rejected subjects. Search Hebrew as well as English."
         )
     else:
@@ -975,7 +976,8 @@ The issue still needs up to {current_count} CURRENT and up to {history_count} HI
 
 SEARCH PROCESS
 - Use web search and begin from the target date and permitted editorial areas, never from the forbidden records.
-- For CURRENT, search Israeli reporting from the target date and previous several days. Search across the whole country and varied communities; do not default to Jerusalem or treat it as the center of every issue.
+- For CURRENT, the actual event, people, place, service, or institution must be in Israel and matter to people living here. An Israeli publisher reporting an overseas event does not make it local. Search the target date and previous several days across the whole country and varied communities; do not default to Jerusalem or treat it as the center of every issue.
+- For CURRENT, use fresh Hebrew local reporting as discovery leads: mynet city and regional editions; suitable local outlets such as Hai Po and Kolbo in Haifa; and Israeli consumer, food, culture, education, and community reporting such as relevant Calcalist sections. Also search municipal news and resident updates from cities across regions (for example Tel Aviv-Yafo, Haifa, Ashdod, and Be'er Sheva) and relevant gov.il ministry or public-service announcements. Search several independent publishers and regions, and verify every candidate on its canonical content page. These are leads, not quotas or an approved-source whitelist; an official announcement can support its own concrete facts, while independent reporting is preferred for disputed claims.
 {history_source_process}
 - Give every candidate a `historyFamily`. CURRENT uses `current`. HISTORY uses exactly one of `person`, `israeliIndustry`, `culture`, `event`, `place`, or `archaeology` according to its actual central subject, not the wording used to sell it.
 - Historical people (including historical politicians), culture, industry, places, holidays and customs, institutions, inventions, objects, and past events are all acceptable. No family has a quota or fixed daily slot. `person` covers a specific historical person's work, choices, and significance; a newly published obituary or current death report is CURRENT, not HISTORY. `israeliIndustry` covers the history of an Israeli company, manufacturer, brand, cooperative, factory, trade, product, or industrial development—not today's startup, high-tech unicorn, funding round, valuation, product launch, or executive profile. `culture` covers literature, music, theater, cinema, visual art, dance, design, architecture, food culture, publishing, broadcasting, or a cultural movement, work, or institution. A museum qualifies when its cultural creation, collection, or influence is the subject, not merely its building or visitor appeal. `event` covers concrete past events, customs, education, infrastructure, transport, institutions, or everyday objects.
@@ -1065,7 +1067,7 @@ PROPOSED CANDIDATES IN ORDER:
 {json.dumps([_compact_story_record(story) for story in candidates], ensure_ascii=False, indent=2)}
 </candidate_story_records>
 
-Return exactly one verdict per proposed candidate ID. For a unique candidate use `isDuplicate=false`, `matchedStoryId=null`, and a short reason. For a duplicate use `isDuplicate=true`, the matched record's ID, and a short explanation of the shared underlying story. Set `isEmptyCurrent=true` only for a CURRENT candidate that reports no actual event, change, action, or practical development—for example, a note that no suitable news story was found. Set it to false for HISTORY and for a real CURRENT event, even if the event is small. Return only schema-matching data.
+Return exactly one verdict per proposed candidate ID. For a unique candidate use `isDuplicate=false`, `matchedStoryId=null`, and a short reason. For a duplicate use `isDuplicate=true`, the matched record's ID, and a short explanation of the shared underlying story. Set `isEmptyCurrent=true` only for a CURRENT candidate that reports no actual event, change, action, or practical development—for example, a note that no suitable news story was found. Set it to false for HISTORY and for a real CURRENT event, even if the event is small. Set `isNonLocalCurrent=true` for CURRENT when its central event, people, place, service, or institution is outside Israel, even if an Israeli outlet published the report; if the brief and sources do not establish an Israeli setting, also set it true. Set it false for HISTORY. Return only schema-matching data.
 """.strip()
 
 
@@ -1089,13 +1091,16 @@ def _duplicate_review_findings(
     rejected_indexes: set[int] = set()
     findings: list[str] = []
     for verdict in verdicts:
-        if not isinstance(verdict.get("isDuplicate"), bool) or not isinstance(verdict.get("isEmptyCurrent"), bool):
+        if any(not isinstance(verdict.get(key), bool) for key in ("isDuplicate", "isEmptyCurrent", "isNonLocalCurrent")):
             raise RuntimeError("duplicate review returned an invalid verdict")
         candidate_id = verdict["candidateId"]
         candidate_index = indexes_by_id[candidate_id]
         if candidates[candidate_index].get("type") == "current" and verdict["isEmptyCurrent"]:
             rejected_indexes.add(candidate_index)
             findings.append(f"LLM current review: {candidate_id} has no actual current story: {verdict.get('reason') or 'empty candidate'}")
+        if candidates[candidate_index].get("type") == "current" and verdict["isNonLocalCurrent"]:
+            rejected_indexes.add(candidate_index)
+            findings.append(f"LLM current review: {candidate_id} is not an Israeli local story: {verdict.get('reason') or 'nonlocal candidate'}")
         if not verdict["isDuplicate"]:
             continue
         rejected_indexes.add(candidate_index)
@@ -2062,7 +2067,7 @@ def _shorts_page(
     locales: list[str],
 ) -> dict[str, Any] | None:
     selected = short_stories[:SHORTS_TARGET]
-    if len(selected) < SHORTS_MINIMUM:
+    if not selected:
         return None
 
     def translations(english: str, russian: str) -> dict[str, str]:
@@ -2653,6 +2658,7 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
         _log(f"Generated story topic pools: {_generated_pool_counts(generated_seeds)}")
 
     short_seeds: list[dict[str, Any]] = []
+    rejected_short_seeds: list[dict[str, Any]] = []
     if include_shorts_page:
         short_feedback: list[str] | None = None
         for attempt in range(GENERATED_PLANNING_ATTEMPTS):
@@ -2671,7 +2677,7 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
                         recent,
                         [
                             _compact_story_record(story)
-                            for story in [*sourced_seeds, *generated_seeds, *short_seeds]
+                            for story in [*sourced_seeds, *generated_seeds, *short_seeds, *rejected_short_seeds]
                         ],
                         short_feedback,
                         short_seeds,
@@ -2692,7 +2698,7 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
                 _log(f"{phase}: request failed; retrying the remaining items")
                 continue
 
-            context = [*recent_generated_records, *recent, *sourced_seeds, *generated_seeds, *short_seeds]
+            context = [*recent_generated_records, *recent, *sourced_seeds, *generated_seeds, *short_seeds, *rejected_short_seeds]
             retained: list[dict[str, Any]] = []
             errors: list[str] = []
             for candidate in returned_shorts:
@@ -2710,6 +2716,7 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
                     {"everyday"},
                 )
                 if candidate_errors:
+                    rejected_short_seeds.append(candidate)
                     errors.extend(
                         f"short item {candidate.get('id')}: {error}"
                         for error in candidate_errors
@@ -2755,7 +2762,79 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
         seeds[index:index + ADAPTATION_BATCH_SIZE]
         for index in range(0, len(seeds), ADAPTATION_BATCH_SIZE)
     ]
-    for batch_index, batch_seeds in enumerate(adaptation_batches, start=1):
+    batch_index = 0
+    replacement_attempts = 0
+    while (
+        batch_index < len(adaptation_batches)
+        or (
+            include_shorts_page
+            and len(adapted_short_items) < SHORTS_TARGET
+            and replacement_attempts < SHORTS_REPLACEMENT_LIMIT
+        )
+    ):
+        if batch_index == len(adaptation_batches):
+            replacement_attempts += 1
+            replacement_feedback: list[str] | None = None
+            replacement_seed: dict[str, Any] | None = None
+            for planning_attempt in range(GENERATED_PLANNING_ATTEMPTS):
+                phase = (
+                    f"SHORTS replacement {replacement_attempts}/{SHORTS_REPLACEMENT_LIMIT}, "
+                    f"planning attempt {planning_attempt + 1}/{GENERATED_PLANNING_ATTEMPTS}"
+                )
+                try:
+                    candidates = _call_openai(
+                        os.environ["OPENAI_MODEL"],
+                        short_instructions,
+                        _short_planning_request(
+                            target_date,
+                            1,
+                            forbidden_generated,
+                            recent,
+                            [
+                                _compact_story_record(story)
+                                for story in [*sourced_seeds, *generated_seeds, *short_seeds, *rejected_short_seeds]
+                            ],
+                            replacement_feedback,
+                            adapted_short_items,
+                        ),
+                        _seed_batch_schema(1, 1, levels, locales, image_locales, ["everyday"]),
+                        use_web_search=False,
+                        phase=phase,
+                    ).get("stories", [])
+                except RuntimeError:
+                    replacement_feedback = ["The replacement planning request failed; try a new short situation."]
+                    _log(f"{phase}: request failed; retrying this replacement")
+                    continue
+                if len(candidates) != 1:
+                    replacement_feedback = ["Return exactly one new SHORTS brief."]
+                    _log(f"{phase}: expected one brief, received {len(candidates)}")
+                    continue
+                candidate = candidates[0]
+                errors = _seed_errors(
+                    [candidate], target_date, level_ids, locales, site, levels, None,
+                    1, 1,
+                    [*recent_generated_records, *recent, *sourced_seeds, *generated_seeds, *short_seeds, *rejected_short_seeds],
+                    {"everyday"},
+                )
+                if errors:
+                    rejected_short_seeds.append(candidate)
+                    replacement_feedback = errors[:20]
+                    _log_validation_errors(phase, errors)
+                    continue
+                replacement_seed = {**candidate, "_shortItem": True}
+                break
+            if replacement_seed is None:
+                _log(f"SHORTS replacement {replacement_attempts}: no valid brief retained")
+                continue
+            short_seeds.append(replacement_seed)
+            adaptation_batches.append([replacement_seed])
+            _log(
+                f"SHORTS replacement {replacement_attempts}: planned {replacement_seed['id']}; "
+                f"{len(adapted_short_items)} valid item(s) retained so far"
+            )
+
+        batch_seeds = adaptation_batches[batch_index]
+        batch_index += 1
         story_ids = [story.get("id", "") for story in batch_seeds]
         adaptation_schema = _adaptation_batch_schema(batch_seeds, levels, locales, image_locales)
         adaptation_feedback: list[str] | None = None
@@ -2789,7 +2868,10 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
                 )
             except RuntimeError:
                 if attempt == batch_attempts - 1:
-                    raise
+                    if not any(story.get("_shortItem") is True for story in batch_seeds):
+                        raise
+                    _log(f"{phase}: request failed; omitting this SHORTS item after retries")
+                    break
                 _log(f"{phase}: request failed; retrying only this batch")
                 continue
 
@@ -2864,10 +2946,10 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
         if shorts_page is not None:
             new_stories.append(shorts_page)
             _log(f"Collected {len(shorts_page['shortItems'])} independently adapted items on one SHORTS page")
-        elif short_seeds:
+        else:
             _log(
-                f"Only {len(adapted_short_items)} SHORTS items passed adaptation; "
-                f"at least {SHORTS_MINIMUM} are required for the grouped page"
+                f"No SHORTS items passed adaptation after {replacement_attempts} "
+                "replacement attempt(s); publishing the other valid stories"
             )
 
     if not new_stories:

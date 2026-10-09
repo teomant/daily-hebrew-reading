@@ -296,8 +296,8 @@ def validate_issue(
 
         short_items = story.get("shortItems")
         if story_type == "shorts":
-            if not isinstance(short_items, list) or not 10 <= len(short_items) <= 11:
-                errors.append(f"{story_path}.shortItems: expected 10–11 short-item metadata records")
+            if not isinstance(short_items, list) or not 1 <= len(short_items) <= 11:
+                errors.append(f"{story_path}.shortItems: expected 1–11 short-item metadata records")
                 short_items = []
             else:
                 seen_short_ids: set[str] = set()
