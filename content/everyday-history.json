@@ -5310,6 +5310,336 @@
         "start",
         "washing machine"
       ]
+    },
+    {
+      "date": "2026-10-09",
+      "storyId": "tenant-documents-a-recurring-ceiling-leak",
+      "domain": "housing_landlord",
+      "scenario": "tenant_reports_recurring_ceiling_leak_and_arranges_source_inspection",
+      "lexicalThemes": [
+        "describing a recurring housing problem",
+        "asking a landlord to inspect before cosmetic repairs",
+        "arranging access and protecting belongings",
+        "sharing photos and confirming next steps"
+      ],
+      "targetVocabulary": [
+        "stain",
+        "damp",
+        "ceiling",
+        "leak",
+        "inspect",
+        "repair worker",
+        "move away",
+        "photograph"
+      ]
+    },
+    {
+      "date": "2026-10-09",
+      "storyId": "customer-returns-a-noisy-kettle",
+      "domain": "shopping_returns",
+      "scenario": "customer_explains_intermittent_kettle_problem_and_exchanges_it_after_shop_review",
+      "lexicalThemes": [
+        "explaining a product fault",
+        "describing when a problem occurs",
+        "asking about exchange terms",
+        "choosing a replacement and keeping proof of purchase"
+      ],
+      "targetVocabulary": [
+        "kettle",
+        "switch",
+        "click off",
+        "boil",
+        "receipt",
+        "exchange",
+        "available options",
+        "replacement"
+      ]
+    },
+    {
+      "date": "2026-10-09",
+      "storyId": "friends-adjust-a-hike-after-finding-a-closed-path",
+      "domain": "nature_outdoors",
+      "scenario": "hikers_choose_an_open_marked_loop_after_finding_their_planned_path_closed",
+      "lexicalThemes": [
+        "responding to a trail closure",
+        "asking staff about marked alternatives",
+        "weighing a route choice",
+        "checking a map and adjusting plans"
+      ],
+      "targetVocabulary": [
+        "hike",
+        "nature reserve",
+        "fork",
+        "closed path",
+        "marked route",
+        "loop",
+        "lookout",
+        "map"
+      ]
+    },
+    {
+      "date": "2026-10-09",
+      "storyId": "dialog-cook-and-neighbor-make-soup-without-celery",
+      "domain": "food_cooking",
+      "scenario": "neighbors_adapt_vegetable_soup_recipe_with_fennel_when_celery_is_unavailable",
+      "lexicalThemes": [
+        "working around a missing ingredient",
+        "comparing flavors",
+        "suggesting a cautious adjustment",
+        "tasting and recording a successful change"
+      ],
+      "targetVocabulary": [
+        "recipe",
+        "celery",
+        "fennel",
+        "strong flavor",
+        "smaller amount",
+        "gradually",
+        "seasoning",
+        "taste"
+      ]
+    },
+    {
+      "date": "2026-10-09",
+      "storyId": "dialog-worker-and-manager-clarify-a-missing-shift-payment",
+      "domain": "work_pay",
+      "scenario": "employee_and_manager_check_unlisted_shift_on_payslip_and_request_written_payroll_review",
+      "lexicalThemes": [
+        "raising a discrepancy politely",
+        "describing a work shift and supporting record",
+        "asking what evidence is needed",
+        "confirming a written follow-up without assuming entitlement"
+      ],
+      "targetVocabulary": [
+        "payslip",
+        "shift",
+        "recorded hours",
+        "schedule",
+        "submit",
+        "forward",
+        "payroll",
+        "written confirmation"
+      ]
+    },
+    {
+      "date": "2026-10-09",
+      "storyId": "bank-customer-checks-a-card-payment",
+      "domain": "banking_credit",
+      "scenario": "customer_asks_bank_representative_how_to_verify_two_similar_card_payment_entries",
+      "lexicalThemes": [
+        "banking",
+        "card payment",
+        "transaction details",
+        "checking a record"
+      ],
+      "targetVocabulary": [
+        "payment",
+        "card",
+        "transaction",
+        "details",
+        "check",
+        "reference number"
+      ]
+    },
+    {
+      "date": "2026-10-09",
+      "storyId": "resident-asks-where-to-send-a-form",
+      "domain": "government_documents",
+      "scenario": "resident_checks_form_instructions_to_confirm_where_to_submit_a_completed_document",
+      "lexicalThemes": [
+        "forms",
+        "submission",
+        "instructions",
+        "public service"
+      ],
+      "targetVocabulary": [
+        "form",
+        "send",
+        "upload",
+        "instructions",
+        "confirm",
+        "service desk"
+      ]
+    },
+    {
+      "date": "2026-10-09",
+      "storyId": "patient-asks-to-move-an-appointment",
+      "domain": "health_appointments",
+      "scenario": "patient_calls_clinic_to_reschedule_an_appointment_and_confirms_an_alternative_slot",
+      "lexicalThemes": [
+        "appointments",
+        "scheduling",
+        "clinic calls",
+        "confirming a time"
+      ],
+      "targetVocabulary": [
+        "appointment",
+        "clinic",
+        "available",
+        "another time",
+        "confirm",
+        "schedule"
+      ]
+    },
+    {
+      "date": "2026-10-09",
+      "storyId": "resident-asks-how-to-read-a-water-meter",
+      "domain": "home_repairs_utilities",
+      "scenario": "resident_asks_caretaker_which_water_meter_digits_to_record_for_a_service_request",
+      "lexicalThemes": [
+        "home utilities",
+        "meter reading",
+        "service request",
+        "asking for help"
+      ],
+      "targetVocabulary": [
+        "water meter",
+        "number",
+        "display",
+        "record",
+        "reading",
+        "request"
+      ]
+    },
+    {
+      "date": "2026-10-09",
+      "storyId": "customer-asks-how-to-report-a-scratched-bag",
+      "domain": "insurance_claims",
+      "scenario": "traveler_asks_what_details_to_provide_when_reporting_a_scratched_suitcase",
+      "lexicalThemes": [
+        "damage report",
+        "travel",
+        "documents",
+        "customer service"
+      ],
+      "targetVocabulary": [
+        "scratch",
+        "report",
+        "photo",
+        "reference",
+        "send",
+        "confirmation"
+      ]
+    },
+    {
+      "date": "2026-10-09",
+      "storyId": "shopper-asks-which-checkout-line-is-shorter",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_asks_employee_if_an_express_checkout_is_open_and_joins_the_available_line",
+      "lexicalThemes": [
+        "supermarket",
+        "checkout",
+        "queues",
+        "directions"
+      ],
+      "targetVocabulary": [
+        "basket",
+        "checkout",
+        "register",
+        "open",
+        "available",
+        "line"
+      ]
+    },
+    {
+      "date": "2026-10-09",
+      "storyId": "friend-helps-reset-a-locked-account",
+      "domain": "digital_accounts",
+      "scenario": "user_finds_account_password_reset_option_after_sign_in_attempts_fail",
+      "lexicalThemes": [
+        "digital accounts",
+        "sign-in",
+        "password reset",
+        "recovery"
+      ],
+      "targetVocabulary": [
+        "account",
+        "sign in",
+        "password",
+        "reset",
+        "recovery email",
+        "screen"
+      ]
+    },
+    {
+      "date": "2026-10-09",
+      "storyId": "customer-asks-for-sauce-on-the-side",
+      "domain": "food_service_orders",
+      "scenario": "cafe_customer_requests_salad_dressing_on_the_side_and_server_confirms",
+      "lexicalThemes": [
+        "café orders",
+        "food preferences",
+        "clarifying a request",
+        "serving"
+      ],
+      "targetVocabulary": [
+        "salad",
+        "dressing",
+        "separately",
+        "kitchen",
+        "small cup",
+        "request"
+      ]
+    },
+    {
+      "date": "2026-10-09",
+      "storyId": "cook-asks-when-to-add-the-eggs",
+      "domain": "food_cooking",
+      "scenario": "home_cook_checks_recipe_order_for_adding_eggs_and_milk_to_pancake_batter",
+      "lexicalThemes": [
+        "cooking",
+        "recipe steps",
+        "ingredients",
+        "mixing"
+      ],
+      "targetVocabulary": [
+        "pancakes",
+        "recipe",
+        "eggs",
+        "milk",
+        "add",
+        "mix"
+      ]
+    },
+    {
+      "date": "2026-10-09",
+      "storyId": "traveler-checks-where-to-board-a-ferry",
+      "domain": "travel_day_trips",
+      "scenario": "traveler_asks_terminal_attendant_which_marked_area_serves_a_nearby_island_ferry",
+      "lexicalThemes": [
+        "day trips",
+        "ferry terminal",
+        "signs",
+        "directions"
+      ],
+      "targetVocabulary": [
+        "ferry",
+        "terminal",
+        "island",
+        "boarding",
+        "sign",
+        "wait"
+      ]
+    },
+    {
+      "date": "2026-10-09",
+      "storyId": "visitor-asks-where-to-leave-a-folded-map",
+      "domain": "nature_outdoors",
+      "scenario": "nature_center_visitor_asks_where_to_return_a_borrowed_trail_map",
+      "lexicalThemes": [
+        "nature center",
+        "walking",
+        "borrowed items",
+        "return location"
+      ],
+      "targetVocabulary": [
+        "trail map",
+        "borrow",
+        "return",
+        "entrance",
+        "box",
+        "walk"
+      ]
     }
   ]
 }
