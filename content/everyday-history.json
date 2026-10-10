@@ -5640,6 +5640,313 @@
         "box",
         "walk"
       ]
+    },
+    {
+      "date": "2026-10-10",
+      "storyId": "resident-asks-municipality-about-a-damaged-sidewalk",
+      "domain": "municipal_services",
+      "scenario": "resident_reports_a_loose_paving_stone_and_confirms_what_location_details_to_send",
+      "lexicalThemes": [
+        "reporting a public-space problem",
+        "giving directions and landmarks",
+        "clarifying instructions",
+        "asking about a next step"
+      ],
+      "targetVocabulary": [
+        "שמתי לב",
+        "מדרכה",
+        "אבן",
+        "זזה",
+        "ליד",
+        "לדווח",
+        "תמונה",
+        "מה צריך",
+        "הבנתי",
+        "בינתיים"
+      ]
+    },
+    {
+      "date": "2026-10-10",
+      "storyId": "friends-join-a-guided-birdwatching-morning",
+      "domain": "nature_outdoors",
+      "scenario": "friends_join_a_guided_birdwalk_and_learn_to_identify_a_common_bird",
+      "lexicalThemes": [
+        "joining a guided activity",
+        "asking about wildlife",
+        "using borrowed equipment",
+        "describing what you notice"
+      ],
+      "targetVocabulary": [
+        "סיור",
+        "ציפורים",
+        "משקפת",
+        "להתמקד",
+        "לשמוע",
+        "לראות",
+        "דומה",
+        "איך יודעים",
+        "שקט",
+        "בפעם הבאה"
+      ]
+    },
+    {
+      "date": "2026-10-10",
+      "storyId": "parent-and-after-school-coordinator-agree-on-pickup-change",
+      "domain": "school_childcare",
+      "scenario": "parent_confirms_an_authorized_alternate_pickup_after_a_work_schedule_change",
+      "lexicalThemes": [
+        "childcare pickup arrangements",
+        "explaining a schedule change",
+        "confirming who is authorized",
+        "repeating a plan"
+      ],
+      "targetVocabulary": [
+        "לא אספיק",
+        "לאסוף",
+        "במקום",
+        "מי יכול",
+        "לאשר",
+        "פרטים",
+        "להודיע",
+        "בערך",
+        "לכתוב",
+        "הבנתי"
+      ]
+    },
+    {
+      "date": "2026-10-10",
+      "storyId": "candidate-clarifies-the-role-and-next-steps-in-an-interview",
+      "domain": "employment_jobs",
+      "scenario": "job_candidate_clarifies_daily_responsibilities_and_confirms_written_interview_follow_up",
+      "lexicalThemes": [
+        "describing work experience",
+        "clarifying job responsibilities",
+        "asking about priorities",
+        "confirming hiring follow-up"
+      ],
+      "targetVocabulary": [
+        "ניסיון",
+        "תפקיד",
+        "בדרך כלל",
+        "מה הכוונה",
+        "משימה",
+        "לוח זמנים",
+        "להתקשר",
+        "מתאים",
+        "השלב הבא",
+        "בכתב"
+      ]
+    },
+    {
+      "date": "2026-10-10",
+      "storyId": "freelancer-asks-accountant-to-explain-a-tax-notice",
+      "domain": "bills_taxes",
+      "scenario": "freelancer_asks_accountant_to_explain_an_unclear_tax_notice_and_lists_records_to_review",
+      "lexicalThemes": [
+        "understanding a formal notice",
+        "explaining uncertainty",
+        "checking supporting records",
+        "asking for official written instructions"
+      ],
+      "targetVocabulary": [
+        "הודעה",
+        "לא ברור",
+        "להסביר",
+        "מסמכים",
+        "קבלות",
+        "לבדוק",
+        "חסר",
+        "הנחיות",
+        "בכתב",
+        "השלבים הבאים"
+      ]
+    },
+    {
+      "date": "2026-10-10",
+      "storyId": "asks-bank-to-check-a-pending-transfer",
+      "domain": "banking_credit",
+      "scenario": "customer_checks_whether_a_pending_bank_transfer_has_been_completed",
+      "lexicalThemes": [
+        "banking",
+        "transfers",
+        "transaction status"
+      ],
+      "targetVocabulary": [
+        "transfer",
+        "pending",
+        "transaction details",
+        "check"
+      ]
+    },
+    {
+      "date": "2026-10-10",
+      "storyId": "asks-what-to-bring-to-a-clinic-visit",
+      "domain": "health_appointments",
+      "scenario": "patient_checks_appointment_message_for_what_to_bring_to_a_clinic_visit",
+      "lexicalThemes": [
+        "clinic appointments",
+        "preparation",
+        "messages"
+      ],
+      "targetVocabulary": [
+        "appointment",
+        "bring",
+        "message",
+        "list of medicines"
+      ]
+    },
+    {
+      "date": "2026-10-10",
+      "storyId": "asks-how-to-describe-a-new-rash-to-a-clinician",
+      "domain": "injuries_symptoms",
+      "scenario": "caller_prepares_clear_details_about_a_new_skin_irritation_for_a_clinician",
+      "lexicalThemes": [
+        "symptoms",
+        "describing a concern",
+        "health calls"
+      ],
+      "targetVocabulary": [
+        "skin irritation",
+        "when it appeared",
+        "where",
+        "describe"
+      ]
+    },
+    {
+      "date": "2026-10-10",
+      "storyId": "asks-pharmacist-how-to-read-a-medicine-label",
+      "domain": "pharmacy_prescriptions",
+      "scenario": "customer_asks_pharmacist_to_explain_unclear_wording_on_a_medicine_label",
+      "lexicalThemes": [
+        "pharmacy",
+        "medicine labels",
+        "clarification"
+      ],
+      "targetVocabulary": [
+        "label",
+        "wording",
+        "pharmacist",
+        "explain"
+      ]
+    },
+    {
+      "date": "2026-10-10",
+      "storyId": "asks-landlord-where-to-send-a-repair-photo",
+      "domain": "housing_landlord",
+      "scenario": "tenant_sends_landlord_a_photo_and_description_of_a_loose_cabinet_handle",
+      "lexicalThemes": [
+        "renting",
+        "small repairs",
+        "messaging"
+      ],
+      "targetVocabulary": [
+        "cabinet handle",
+        "photo",
+        "send",
+        "description"
+      ]
+    },
+    {
+      "date": "2026-10-10",
+      "storyId": "asks-shopper-whether-they-are-next-in-line",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_confirms_where_a_supermarket_counter_queue_begins_and_joins",
+      "lexicalThemes": [
+        "queues",
+        "shopping",
+        "polite questions"
+      ],
+      "targetVocabulary": [
+        "waiting in line",
+        "where it begins",
+        "behind you",
+        "join"
+      ]
+    },
+    {
+      "date": "2026-10-10",
+      "storyId": "asks-how-to-print-a-return-label",
+      "domain": "shopping_returns",
+      "scenario": "customer_finds_and_downloads_a_return_label_from_an_online_order_page",
+      "lexicalThemes": [
+        "online shopping",
+        "returns",
+        "files"
+      ],
+      "targetVocabulary": [
+        "return label",
+        "order page",
+        "download",
+        "print"
+      ]
+    },
+    {
+      "date": "2026-10-10",
+      "storyId": "asks-driver-where-to-pay-for-parking",
+      "domain": "driving_parking",
+      "scenario": "driver_locates_parking_instructions_on_a_sign_and_checks_payment_options",
+      "lexicalThemes": [
+        "parking",
+        "signs",
+        "payment"
+      ],
+      "targetVocabulary": [
+        "parking instructions",
+        "sign",
+        "scan",
+        "options"
+      ]
+    },
+    {
+      "date": "2026-10-10",
+      "storyId": "asks-friend-where-to-find-an-event-ticket",
+      "domain": "arts_events",
+      "scenario": "concert_visitor_finds_ticket_confirmation_by_searching_email",
+      "lexicalThemes": [
+        "events",
+        "email",
+        "finding a ticket"
+      ],
+      "targetVocabulary": [
+        "ticket confirmation",
+        "inbox",
+        "search",
+        "event name"
+      ]
+    },
+    {
+      "date": "2026-10-10",
+      "storyId": "asks-which-spoon-to-use-for-sauce",
+      "domain": "food_cooking",
+      "scenario": "guest_uses_a_clean_teaspoon_to_taste_sauce_and_suggests_adjusting_salt",
+      "lexicalThemes": [
+        "cooking",
+        "kitchen utensils",
+        "tasting"
+      ],
+      "targetVocabulary": [
+        "clean teaspoon",
+        "taste",
+        "sauce",
+        "salt"
+      ]
+    },
+    {
+      "date": "2026-10-10",
+      "storyId": "asks-a-guide-where-the-riverside-path-starts",
+      "domain": "nature_outdoors",
+      "scenario": "park_visitor_finds_the_start_of_a_marked_riverside_walking_path",
+      "lexicalThemes": [
+        "parks",
+        "directions",
+        "walking paths"
+      ],
+      "targetVocabulary": [
+        "marked path",
+        "begins",
+        "wooden sign",
+        "bridge"
+      ]
     }
   ]
 }
