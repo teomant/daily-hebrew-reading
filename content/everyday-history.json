@@ -5947,6 +5947,324 @@
         "wooden sign",
         "bridge"
       ]
+    },
+    {
+      "date": "2026-10-11",
+      "storyId": "resident-clarifies-a-benefits-application",
+      "domain": "social_benefits",
+      "scenario": "applicant_clarifies_which_information_and_supporting_documents_to_gather_for_a_benefits_application",
+      "lexicalThemes": [
+        "applications and forms",
+        "asking for clarification",
+        "supporting documents",
+        "official instructions",
+        "next steps"
+      ],
+      "targetVocabulary": [
+        "application",
+        "section",
+        "supporting document",
+        "instructions",
+        "eligibility",
+        "submit",
+        "in writing"
+      ]
+    },
+    {
+      "date": "2026-10-11",
+      "storyId": "customer-coordinates-internet-technician-access",
+      "domain": "phone_internet",
+      "scenario": "customer_arranges_home_internet_technician_access_around_a_work_meeting",
+      "lexicalThemes": [
+        "internet problems",
+        "service appointments",
+        "availability",
+        "access to the home",
+        "confirming arrangements"
+      ],
+      "targetVocabulary": [
+        "connection",
+        "keeps cutting out",
+        "technician",
+        "appointment window",
+        "available",
+        "access",
+        "confirm"
+      ]
+    },
+    {
+      "date": "2026-10-11",
+      "storyId": "visitor-joins-a-pottery-demonstration",
+      "domain": "arts_events",
+      "scenario": "visitor_takes_a_guided_turn_at_a_shared_pottery_wheel_during_an_open_studio_afternoon",
+      "lexicalThemes": [
+        "arts activities",
+        "asking about participation",
+        "following instructions",
+        "shared equipment",
+        "what happens next"
+      ],
+      "targetVocabulary": [
+        "demonstration",
+        "take a turn",
+        "wheel",
+        "clay",
+        "belongings",
+        "photograph",
+        "dry"
+      ]
+    },
+    {
+      "date": "2026-10-11",
+      "storyId": "dialog-customer-clarifies-a-food-allergy-order",
+      "domain": "food_service_orders",
+      "scenario": "restaurant_customer_confirms_whether_the_kitchen_can_safely_prepare_a_sesame_free_meal",
+      "lexicalThemes": [
+        "food allergies",
+        "restaurant ordering",
+        "checking ingredients",
+        "clarifying uncertainty",
+        "confirming an order"
+      ],
+      "targetVocabulary": [
+        "allergy",
+        "ingredient",
+        "contains",
+        "kitchen",
+        "shared surfaces",
+        "confirm",
+        "order"
+      ]
+    },
+    {
+      "date": "2026-10-11",
+      "storyId": "dialog-resident-clarifies-insurance-documentation",
+      "domain": "insurance_claims",
+      "scenario": "resident_checks_written_claim_instructions_before_authorizing_repairs_for_appliance_water_damage",
+      "lexicalThemes": [
+        "describing damage",
+        "insurance claim steps",
+        "photographs and estimates",
+        "written terms",
+        "confirming a next step"
+      ],
+      "targetVocabulary": [
+        "damage",
+        "claim",
+        "policy terms",
+        "photograph",
+        "estimate",
+        "repair",
+        "written instructions"
+      ]
+    },
+    {
+      "date": "2026-10-11",
+      "storyId": "asks-bank-about-cash-deposit-receipt",
+      "domain": "banking_credit",
+      "scenario": "customer_checks_account_transaction_list_to_confirm_a_cash_deposit_after_receiving_a_machine_receipt",
+      "lexicalThemes": [
+        "cash deposit",
+        "receipt",
+        "transaction list",
+        "account"
+      ],
+      "targetVocabulary": [
+        "deposit",
+        "receipt",
+        "transaction",
+        "account",
+        "check"
+      ]
+    },
+    {
+      "date": "2026-10-11",
+      "storyId": "asks-about-a-utility-bill-line",
+      "domain": "bills_taxes",
+      "scenario": "resident_asks_provider_to_explain_an_unclear_line_item_on_a_household_utility_bill",
+      "lexicalThemes": [
+        "household bill",
+        "line item",
+        "provider",
+        "itemized details"
+      ],
+      "targetVocabulary": [
+        "bill",
+        "line",
+        "charge",
+        "details",
+        "explain"
+      ]
+    },
+    {
+      "date": "2026-10-11",
+      "storyId": "asks-landlord-about-a-sticky-window",
+      "domain": "housing_landlord",
+      "scenario": "tenant_reports_a_window_that_is_difficult_to_open_and_shares_its_location_and_access_time",
+      "lexicalThemes": [
+        "window",
+        "repair request",
+        "room location",
+        "access time"
+      ],
+      "targetVocabulary": [
+        "window",
+        "stuck",
+        "room",
+        "landlord",
+        "visit"
+      ]
+    },
+    {
+      "date": "2026-10-11",
+      "storyId": "asks-driver-about-a-connecting-bus-ticket",
+      "domain": "transport_fares_routes",
+      "scenario": "passenger_checks_where_to_verify_whether_a_ticket_applies_to_a_connecting_bus",
+      "lexicalThemes": [
+        "bus ticket",
+        "connecting bus",
+        "route",
+        "verify"
+      ],
+      "targetVocabulary": [
+        "ticket",
+        "connecting",
+        "route",
+        "driver",
+        "check"
+      ]
+    },
+    {
+      "date": "2026-10-11",
+      "storyId": "asks-vet-how-to-prepare-a-cat-for-a-visit",
+      "domain": "pets_veterinary",
+      "scenario": "cat_owner_confirms_carrier_and_brings_behavior_notes_to_a_veterinary_appointment",
+      "lexicalThemes": [
+        "veterinary visit",
+        "cat carrier",
+        "preparation",
+        "behavior notes"
+      ],
+      "targetVocabulary": [
+        "vet",
+        "carrier",
+        "appointment",
+        "bring",
+        "behavior"
+      ]
+    },
+    {
+      "date": "2026-10-11",
+      "storyId": "asks-how-to-rinse-lentils",
+      "domain": "food_cooking",
+      "scenario": "home_cook_asks_whether_lentils_need_rinsing_and_rinses_them_before_cooking",
+      "lexicalThemes": [
+        "lentils",
+        "rinsing",
+        "colander",
+        "recipe"
+      ],
+      "targetVocabulary": [
+        "lentils",
+        "rinse",
+        "colander",
+        "tap",
+        "pot"
+      ]
+    },
+    {
+      "date": "2026-10-11",
+      "storyId": "asks-visitor-center-about-a-lake-shuttle",
+      "domain": "travel_day_trips",
+      "scenario": "day_tripper_checks_a_shuttle_stop_for_a_lake_viewpoint_and_follows_the_route_map",
+      "lexicalThemes": [
+        "visitor center",
+        "shuttle",
+        "lake viewpoint",
+        "route map"
+      ],
+      "targetVocabulary": [
+        "shuttle",
+        "stop",
+        "map",
+        "lake",
+        "viewpoint"
+      ]
+    },
+    {
+      "date": "2026-10-11",
+      "storyId": "asks-if-a-parcel-can-be-held-at-the-post-office",
+      "domain": "postal_parcels",
+      "scenario": "recipient_checks_tracking_options_for_holding_a_parcel_for_pickup_while_away",
+      "lexicalThemes": [
+        "parcel",
+        "hold for pickup",
+        "postal clerk",
+        "tracking options"
+      ],
+      "targetVocabulary": [
+        "parcel",
+        "pickup",
+        "hold",
+        "tracking",
+        "options"
+      ]
+    },
+    {
+      "date": "2026-10-11",
+      "storyId": "asks-clinic-how-to-request-an-interpreter",
+      "domain": "health_appointments",
+      "scenario": "patient_asks_clinic_how_to_request_an_interpreter_for_an_upcoming_appointment_and_is_given_a_verification_next_step",
+      "lexicalThemes": [
+        "clinic calls",
+        "appointment communication",
+        "language assistance",
+        "checking arrangements"
+      ],
+      "targetVocabulary": [
+        "interpreter",
+        "appointment",
+        "request",
+        "check",
+        "call back"
+      ]
+    },
+    {
+      "date": "2026-10-11",
+      "storyId": "resident-asks-where-to-lock-a-bicycle",
+      "domain": "neighbors_building",
+      "scenario": "resident_asks_building_caretaker_where_to_lock_a_bicycle_and_uses_the_shared_rack",
+      "lexicalThemes": [
+        "bicycle",
+        "building entrance",
+        "shared rack",
+        "parking"
+      ],
+      "targetVocabulary": [
+        "Where can I lock my bicycle?",
+        "shared bike rack",
+        "block the entrance",
+        "park the bicycle"
+      ]
+    },
+    {
+      "date": "2026-10-11",
+      "storyId": "asks-pharmacy-whether-prescription-is-ready",
+      "domain": "pharmacy_prescriptions",
+      "scenario": "customer_asks_pharmacist_to_check_whether_a_prescription_is_ready_for_pickup_and_gets_the_status",
+      "lexicalThemes": [
+        "prescription status",
+        "pickup",
+        "checking information",
+        "next step"
+      ],
+      "targetVocabulary": [
+        "prescription",
+        "ready",
+        "pick up",
+        "check",
+        "status"
+      ]
     }
   ]
 }
