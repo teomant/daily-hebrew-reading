@@ -6265,6 +6265,340 @@
         "check",
         "status"
       ]
+    },
+    {
+      "date": "2026-10-12",
+      "storyId": "resident-and-neighbor-address-late-night-building-noise",
+      "domain": "neighbors_building",
+      "scenario": "neighbors_agree_on_quieter_timing_for_apartment_furniture_assembly",
+      "lexicalThemes": [
+        "building neighbors",
+        "noise and timing",
+        "polite requests",
+        "explaining a problem",
+        "agreement"
+      ],
+      "targetVocabulary": [
+        "למעלה",
+        "רעש",
+        "מאוחר",
+        "להפריע",
+        "להרכיב",
+        "אפשר",
+        "עדיף",
+        "בסוף"
+      ]
+    },
+    {
+      "date": "2026-10-12",
+      "storyId": "resident-asks-about-a-damaged-travel-document",
+      "domain": "travel_documents",
+      "scenario": "traveler_checks_official_guidance_for_a_damaged_travel_document",
+      "lexicalThemes": [
+        "travel documents",
+        "describing damage",
+        "official instructions",
+        "asking for clarification",
+        "next steps"
+      ],
+      "targetVocabulary": [
+        "מסמך",
+        "דרכון",
+        "כריכה",
+        "עמוד",
+        "פגום",
+        "הוראות",
+        "לבדוק",
+        "לוודא",
+        "מה השלב הבא"
+      ]
+    },
+    {
+      "date": "2026-10-12",
+      "storyId": "friends-try-a-short-reading-at-an-open-mic",
+      "domain": "arts_events",
+      "scenario": "visitor_joins_a_neighborhood_open_mic_with_a_short_reading",
+      "lexicalThemes": [
+        "local cultural event",
+        "asking to participate",
+        "sign-up",
+        "making a small adjustment",
+        "trying something new"
+      ],
+      "targetVocabulary": [
+        "ערב",
+        "להופיע",
+        "להירשם",
+        "רשימה",
+        "קטע",
+        "להקריא",
+        "עוד מעט",
+        "בסוף"
+      ]
+    },
+    {
+      "date": "2026-10-12",
+      "storyId": "dialog-patient-clarifies-recurring-knee-discomfort",
+      "domain": "injuries_symptoms",
+      "scenario": "patient_describes_recurring_knee_discomfort_and_agrees_on_symptom_notes",
+      "lexicalThemes": [
+        "describing discomfort",
+        "when symptoms occur",
+        "asking what details matter",
+        "clarifying uncertainty",
+        "follow-up plan"
+      ],
+      "targetVocabulary": [
+        "ברך",
+        "כאב",
+        "אי נוחות",
+        "לפעמים",
+        "הליכה",
+        "נפלתי",
+        "לרשום",
+        "להחמיר",
+        "לעקוב"
+      ]
+    },
+    {
+      "date": "2026-10-12",
+      "storyId": "dog-owner-and-groomer-plan-a-first-nail-trim",
+      "domain": "pets_veterinary",
+      "scenario": "dog_owner_and_groomer_complete_a_first_nail_trim_in_stages",
+      "lexicalThemes": [
+        "pet grooming",
+        "explaining an animal's behavior",
+        "asking how a visit works",
+        "pausing and trying again",
+        "at-home practice"
+      ],
+      "targetVocabulary": [
+        "כלב",
+        "ציפורניים",
+        "כף רגל",
+        "להתרגל",
+        "להחזיק",
+        "לאט",
+        "לעצור",
+        "פינוק"
+      ]
+    },
+    {
+      "date": "2026-10-12",
+      "storyId": "worker-asks-how-to-check-an-overtime-entry",
+      "domain": "work_pay",
+      "scenario": "employee_asks_payroll_how_to_verify_an_unfamiliar_overtime_entry_on_a_payslip",
+      "lexicalThemes": [
+        "payslip",
+        "overtime",
+        "recorded hours",
+        "review"
+      ],
+      "targetVocabulary": [
+        "pay slip",
+        "overtime",
+        "shift",
+        "check",
+        "send",
+        "review"
+      ]
+    },
+    {
+      "date": "2026-10-12",
+      "storyId": "resident-checks-which-copy-to-attach-to-an-application",
+      "domain": "government_documents",
+      "scenario": "resident_checks_application_instructions_to_confirm_whether_to_attach_a_scan_or_present_an_original_document",
+      "lexicalThemes": [
+        "application",
+        "document copy",
+        "instructions",
+        "service desk"
+      ],
+      "targetVocabulary": [
+        "application",
+        "original",
+        "scan",
+        "attach",
+        "instructions",
+        "checklist"
+      ]
+    },
+    {
+      "date": "2026-10-12",
+      "storyId": "tenant-asks-how-to-reset-a-tripped-breaker",
+      "domain": "home_repairs_utilities",
+      "scenario": "tenant_checks_with_building_caretaker_which_labeled_breaker_corresponds_to_a_room_without_power",
+      "lexicalThemes": [
+        "power",
+        "breaker",
+        "labels",
+        "repair service"
+      ],
+      "targetVocabulary": [
+        "power",
+        "breaker",
+        "label",
+        "room",
+        "check",
+        "repair"
+      ]
+    },
+    {
+      "date": "2026-10-12",
+      "storyId": "customer-asks-insurer-how-to-send-a-repair-estimate",
+      "domain": "insurance_claims",
+      "scenario": "customer_checks_claim_instructions_for_the_correct_channel_to_send_a_household_item_repair_estimate",
+      "lexicalThemes": [
+        "claim",
+        "repair estimate",
+        "written instructions",
+        "submission"
+      ],
+      "targetVocabulary": [
+        "estimate",
+        "claim",
+        "send",
+        "instructions",
+        "channel",
+        "review"
+      ]
+    },
+    {
+      "date": "2026-10-12",
+      "storyId": "customer-asks-how-to-update-a-delivery-location",
+      "domain": "delivery_customer_service",
+      "scenario": "customer_uses_order_page_options_to_correct_an_apartment_number_on_a_delivery",
+      "lexicalThemes": [
+        "delivery",
+        "order details",
+        "address correction",
+        "customer service"
+      ],
+      "targetVocabulary": [
+        "delivery",
+        "order",
+        "apartment number",
+        "correct",
+        "options",
+        "update"
+      ]
+    },
+    {
+      "date": "2026-10-12",
+      "storyId": "user-asks-how-to-turn-off-a-shared-calendar-alert",
+      "domain": "digital_accounts",
+      "scenario": "user_turns_off_notifications_for_one_shared_calendar_without_removing_the_calendar",
+      "lexicalThemes": [
+        "shared calendar",
+        "notifications",
+        "settings",
+        "alerts"
+      ],
+      "targetVocabulary": [
+        "calendar",
+        "alert",
+        "notification",
+        "settings",
+        "turn off",
+        "shared"
+      ]
+    },
+    {
+      "date": "2026-10-12",
+      "storyId": "driver-asks-attendant-where-to-find-a-charging-space",
+      "domain": "driving_parking",
+      "scenario": "electric_car_driver_finds_the_marked_charging_spaces_in_a_parking_garage",
+      "lexicalThemes": [
+        "parking garage",
+        "charging space",
+        "signs",
+        "directions"
+      ],
+      "targetVocabulary": [
+        "garage",
+        "charging",
+        "space",
+        "marked",
+        "row",
+        "sign"
+      ]
+    },
+    {
+      "date": "2026-10-12",
+      "storyId": "cook-asks-how-to-measure-flour-without-a-scale",
+      "domain": "food_cooking",
+      "scenario": "home_cook_uses_a_measuring_cup_to_portion_flour_after_the_kitchen_scale_stops_working",
+      "lexicalThemes": [
+        "recipe",
+        "flour",
+        "measuring cup",
+        "kitchen scale"
+      ],
+      "targetVocabulary": [
+        "flour",
+        "measure",
+        "cup",
+        "recipe",
+        "amount",
+        "scale"
+      ]
+    },
+    {
+      "date": "2026-10-12",
+      "storyId": "visitor-checks-which-local-bus-reaches-the-garden",
+      "domain": "travel_day_trips",
+      "scenario": "day_visitor_uses_a_local_route_map_to_find_the_bus_stop_nearest_a_botanical_garden",
+      "lexicalThemes": [
+        "day trip",
+        "local bus",
+        "route map",
+        "garden entrance"
+      ],
+      "targetVocabulary": [
+        "bus",
+        "route",
+        "map",
+        "stop",
+        "garden",
+        "entrance"
+      ]
+    },
+    {
+      "date": "2026-10-12",
+      "storyId": "customer-asks-restaurant-to-pack-soup-separately",
+      "domain": "food_service_orders",
+      "scenario": "takeaway_customer_requests_soup_and_bread_in_separate_containers",
+      "lexicalThemes": [
+        "takeaway order",
+        "soup",
+        "bread",
+        "separate containers"
+      ],
+      "targetVocabulary": [
+        "order",
+        "soup",
+        "bread",
+        "separate",
+        "container",
+        "pack"
+      ]
+    },
+    {
+      "date": "2026-10-12",
+      "storyId": "job-seeker-asks-how-to-update-availability",
+      "domain": "employment_jobs",
+      "scenario": "job_seeker_asks_employment_counselor_where_to_update_work_availability_in_profile_and_changes_it",
+      "lexicalThemes": [
+        "job search",
+        "availability",
+        "online profile"
+      ],
+      "targetVocabulary": [
+        "availability",
+        "profile",
+        "update",
+        "work days"
+      ]
     }
   ]
 }
