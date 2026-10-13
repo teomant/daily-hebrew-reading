@@ -6599,6 +6599,335 @@
         "update",
         "work days"
       ]
+    },
+    {
+      "date": "2026-10-13",
+      "storyId": "tenant-clarifies-shared-water-bill",
+      "domain": "bills_taxes",
+      "scenario": "tenant_checks_an_unexpected_water_bill_by_comparing_reading_period_and_shared_charges",
+      "lexicalThemes": [
+        "household bills",
+        "asking for an explanation",
+        "comparing documents",
+        "written clarification"
+      ],
+      "targetVocabulary": [
+        "bill",
+        "reading",
+        "period",
+        "shared charge",
+        "previous",
+        "check",
+        "send",
+        "written explanation"
+      ]
+    },
+    {
+      "date": "2026-10-13",
+      "storyId": "passenger-clarifies-bus-stop-for-transfer",
+      "domain": "transport_fares_routes",
+      "scenario": "passenger_clarifies_the_correct_city_bus_stop_for_a_transfer_near_a_clinic",
+      "lexicalThemes": [
+        "public transport",
+        "directions",
+        "landmarks",
+        "checking understanding"
+      ],
+      "targetVocabulary": [
+        "stop",
+        "route",
+        "change buses",
+        "across the street",
+        "near",
+        "before",
+        "after",
+        "repeat"
+      ]
+    },
+    {
+      "date": "2026-10-13",
+      "storyId": "friends-prepare-a-picnic-with-limited-kitchen-space",
+      "domain": "food_cooking",
+      "scenario": "friends_prepare_a_packable_beach_picnic_by_dividing_food_between_limited_containers",
+      "lexicalThemes": [
+        "food preparation",
+        "packing",
+        "making practical choices",
+        "sharing tasks"
+      ],
+      "targetVocabulary": [
+        "wash",
+        "slice",
+        "container",
+        "wrap",
+        "separately",
+        "fit",
+        "upright",
+        "pack"
+      ]
+    },
+    {
+      "date": "2026-10-13",
+      "storyId": "dialog-tenant-clarifies-a-rent-receipt",
+      "domain": "housing_landlord",
+      "scenario": "tenant_and_landlord_verify_a_rent_payment_and_replace_a_missing_receipt",
+      "lexicalThemes": [
+        "rent",
+        "payment confirmation",
+        "clarifying records",
+        "polite follow-up"
+      ],
+      "targetVocabulary": [
+        "receipt",
+        "payment",
+        "account",
+        "confirmation",
+        "check records",
+        "forward",
+        "relevant",
+        "send"
+      ]
+    },
+    {
+      "date": "2026-10-13",
+      "storyId": "visitor-joins-a-community-garden-harvest",
+      "domain": "nature_outdoors",
+      "scenario": "new_volunteer_helps_harvest_and_sort_vegetables_at_a_community_garden",
+      "lexicalThemes": [
+        "community gardening",
+        "asking how to help",
+        "sorting food",
+        "sharing a harvest"
+      ],
+      "targetVocabulary": [
+        "volunteer",
+        "harvest",
+        "ripe",
+        "green",
+        "wash",
+        "crate",
+        "set aside",
+        "share"
+      ]
+    },
+    {
+      "date": "2026-10-13",
+      "storyId": "resident-asks-how-to-report-a-streetlight-outage",
+      "domain": "municipal_services",
+      "scenario": "resident_reports_a_dark_streetlight_and_confirms_which_location_details_to_provide",
+      "lexicalThemes": [
+        "streetlight",
+        "pedestrian crossing",
+        "location",
+        "landmark",
+        "report"
+      ],
+      "targetVocabulary": [
+        "streetlight",
+        "crossing",
+        "near",
+        "address",
+        "report"
+      ]
+    },
+    {
+      "date": "2026-10-13",
+      "storyId": "customer-asks-pharmacist-about-a-missed-dose",
+      "domain": "pharmacy_prescriptions",
+      "scenario": "customer_asks_where_to_verify_instructions_after_possibly_missing_a_prescribed_medicine_dose",
+      "lexicalThemes": [
+        "medicine",
+        "dose",
+        "instructions",
+        "pharmacist",
+        "prescriber"
+      ],
+      "targetVocabulary": [
+        "dose",
+        "missed",
+        "instructions",
+        "check",
+        "prescriber"
+      ]
+    },
+    {
+      "date": "2026-10-13",
+      "storyId": "tenant-asks-which-valve-stops-a-dripping-tap",
+      "domain": "home_repairs_utilities",
+      "scenario": "tenant_identifies_and_closes_the_labeled_shutoff_valve_for_a_dripping_kitchen_tap",
+      "lexicalThemes": [
+        "dripping tap",
+        "kitchen sink",
+        "shutoff valve",
+        "caretaker",
+        "repair"
+      ],
+      "targetVocabulary": [
+        "drip",
+        "tap",
+        "valve",
+        "label",
+        "turn off"
+      ]
+    },
+    {
+      "date": "2026-10-13",
+      "storyId": "caller-asks-what-to-do-about-a-small-splinter",
+      "domain": "injuries_symptoms",
+      "scenario": "caller_reports_a_small_finger_splinter_and_is_directed_to_clinical_advice",
+      "lexicalThemes": [
+        "splinter",
+        "finger",
+        "size",
+        "when it happened",
+        "clinic"
+      ],
+      "targetVocabulary": [
+        "splinter",
+        "finger",
+        "small",
+        "describe",
+        "advice"
+      ]
+    },
+    {
+      "date": "2026-10-13",
+      "storyId": "applicant-asks-how-to-check-benefit-application-status",
+      "domain": "social_benefits",
+      "scenario": "applicant_uses_the_official_status_check_option_to_verify_a_submitted_benefits_form_was_received",
+      "lexicalThemes": [
+        "application",
+        "benefits",
+        "submitted form",
+        "status",
+        "receipt"
+      ],
+      "targetVocabulary": [
+        "submit",
+        "received",
+        "status",
+        "check",
+        "application"
+      ]
+    },
+    {
+      "date": "2026-10-13",
+      "storyId": "customer-reports-a-crushed-delivery-box",
+      "domain": "delivery_customer_service",
+      "scenario": "customer_documents_a_crushed_delivery_box_after_asking_customer_service_what_to_preserve",
+      "lexicalThemes": [
+        "delivery",
+        "parcel",
+        "crushed box",
+        "photograph",
+        "label"
+      ],
+      "targetVocabulary": [
+        "parcel",
+        "box",
+        "crushed",
+        "photo",
+        "label"
+      ]
+    },
+    {
+      "date": "2026-10-13",
+      "storyId": "diner-asks-for-the-dressing-to-be-left-off",
+      "domain": "food_service_orders",
+      "scenario": "diner_confirms_a_salad_can_be_prepared_without_dressing_and_orders_it",
+      "lexicalThemes": [
+        "salad",
+        "dressing",
+        "order",
+        "server",
+        "kitchen"
+      ],
+      "targetVocabulary": [
+        "salad",
+        "dressing",
+        "without",
+        "order",
+        "confirm"
+      ]
+    },
+    {
+      "date": "2026-10-13",
+      "storyId": "customer-asks-how-to-check-home-wifi-connection",
+      "domain": "phone_internet",
+      "scenario": "customer_reconnects_a_tablet_to_the_correct_home_wifi_network_after_a_support_hint",
+      "lexicalThemes": [
+        "tablet",
+        "Wi-Fi",
+        "network name",
+        "device",
+        "connection"
+      ],
+      "targetVocabulary": [
+        "Wi-Fi",
+        "network",
+        "connect",
+        "tablet",
+        "select"
+      ]
+    },
+    {
+      "date": "2026-10-13",
+      "storyId": "cook-asks-when-to-add-lemon-to-a-sauce",
+      "domain": "food_cooking",
+      "scenario": "cook_adds_a_small_amount_of_lemon_juice_near_the_end_of_simmering_a_lentil_sauce",
+      "lexicalThemes": [
+        "lemon juice",
+        "sauce",
+        "simmer",
+        "taste",
+        "add"
+      ],
+      "targetVocabulary": [
+        "lemon",
+        "juice",
+        "sauce",
+        "add",
+        "taste"
+      ]
+    },
+    {
+      "date": "2026-10-13",
+      "storyId": "visitor-asks-where-to-rent-a-bike-for-a-day-trip",
+      "domain": "travel_day_trips",
+      "scenario": "visitor_finds_a_nearby_bicycle_rental_stand_and_the_start_of_a_coastal_path",
+      "lexicalThemes": [
+        "seaside town",
+        "bicycle rental",
+        "coastal path",
+        "map",
+        "information desk"
+      ],
+      "targetVocabulary": [
+        "bicycle",
+        "rent",
+        "nearby",
+        "map",
+        "path"
+      ]
+    },
+    {
+      "date": "2026-10-13",
+      "storyId": "diner-chooses-a-substitute-for-a-sold-out-sandwich",
+      "domain": "food_service_orders",
+      "scenario": "lunch_counter_customer_asks_for_a_roasted_vegetable_alternative_after_their_chosen_sandwich_is_sold_out",
+      "lexicalThemes": [
+        "ordering food",
+        "menu choices",
+        "ingredients",
+        "substitutions"
+      ],
+      "targetVocabulary": [
+        "sold out",
+        "option",
+        "roasted vegetables",
+        "wrap",
+        "order"
+      ]
     }
   ]
 }
