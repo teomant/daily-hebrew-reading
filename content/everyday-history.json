@@ -6928,6 +6928,315 @@
         "wrap",
         "order"
       ]
+    },
+    {
+      "date": "2026-10-14",
+      "storyId": "patient-requests-a-copy-of-visit-summary",
+      "domain": "health_appointments",
+      "scenario": "patient_requests_and_reviews_a_copy_of_a_clinic_visit_summary",
+      "lexicalThemes": [
+        "clinic communication",
+        "visit summaries",
+        "asking for clarification",
+        "contact details",
+        "follow-up questions"
+      ],
+      "targetVocabulary": [
+        "visit summary",
+        "the next steps",
+        "approximate date",
+        "contact details",
+        "review it at home"
+      ]
+    },
+    {
+      "date": "2026-10-14",
+      "storyId": "customer-asks-cafe-to-split-a-shared-order",
+      "domain": "food_service_orders",
+      "scenario": "friends_split_a_cafe_bill_by_separating_drinks_from_shared_dishes",
+      "lexicalThemes": [
+        "ordering food",
+        "sharing dishes",
+        "dividing a bill",
+        "checking agreement",
+        "paying at a café"
+      ],
+      "targetVocabulary": [
+        "to share",
+        "the bill",
+        "split the rest",
+        "does that work for you",
+        "card terminal"
+      ]
+    },
+    {
+      "date": "2026-10-14",
+      "storyId": "friends-try-a-guided-kayak-session",
+      "domain": "nature_outdoors",
+      "scenario": "friends_complete_a_guided_kayak_session_and_adjust_their_equipment",
+      "lexicalThemes": [
+        "outdoor activities",
+        "equipment and safety",
+        "asking an instructor",
+        "following directions",
+        "describing a shared experience"
+      ],
+      "targetVocabulary": [
+        "life vest",
+        "does it feel loose",
+        "signal",
+        "pause",
+        "along the shore"
+      ]
+    },
+    {
+      "date": "2026-10-14",
+      "storyId": "bank-customer-sets-a-card-spending-alert",
+      "domain": "banking_credit",
+      "scenario": "customer_sets_a_card_purchase_notification_after_clarifying_what_it_does",
+      "lexicalThemes": [
+        "banking services",
+        "card settings",
+        "notifications",
+        "clarifying terms",
+        "confirming a choice"
+      ],
+      "targetVocabulary": [
+        "card purchase",
+        "individual purchase",
+        "account settings",
+        "notification",
+        "written explanation"
+      ]
+    },
+    {
+      "date": "2026-10-14",
+      "storyId": "customer-asks-postal-clerk-how-to-protect-a-fragile-item",
+      "domain": "postal_parcels",
+      "scenario": "sender_packs_a_ceramic_bowl_safely_after_asking_a_postal_clerk_for_guidance",
+      "lexicalThemes": [
+        "sending a parcel",
+        "packing fragile objects",
+        "asking for materials",
+        "clarifying instructions",
+        "counter service"
+      ],
+      "targetVocabulary": [
+        "ceramic bowl",
+        "packing materials",
+        "move inside the box",
+        "mark the parcel",
+        "careful packing"
+      ]
+    },
+    {
+      "date": "2026-10-14",
+      "storyId": "asks-office-how-to-correct-a-name-on-a-form",
+      "domain": "government_documents",
+      "scenario": "applicant_checks_official_instructions_for_correcting_a_misspelled_name_on_a_form",
+      "lexicalThemes": [
+        "form details",
+        "spelling a name",
+        "written instructions",
+        "checking a correction"
+      ],
+      "targetVocabulary": [
+        "form",
+        "name",
+        "letter",
+        "correct",
+        "instructions"
+      ]
+    },
+    {
+      "date": "2026-10-14",
+      "storyId": "asks-clinician-what-to-note-about-a-new-cough",
+      "domain": "injuries_symptoms",
+      "scenario": "caller_asks_clinic_which_observations_to_note_about_a_new_cough_before_seeking_clinical_advice",
+      "lexicalThemes": [
+        "describing symptoms",
+        "when it began",
+        "observations",
+        "clinical advice"
+      ],
+      "targetVocabulary": [
+        "cough",
+        "started",
+        "notice",
+        "details",
+        "clinician"
+      ]
+    },
+    {
+      "date": "2026-10-14",
+      "storyId": "asks-how-to-check-an-unclear-bill-payment",
+      "domain": "bills_taxes",
+      "scenario": "customer_asks_provider_which_reference_details_to_compare_to_verify_a_bill_payment",
+      "lexicalThemes": [
+        "bill payment",
+        "account entry",
+        "reference details",
+        "verification"
+      ],
+      "targetVocabulary": [
+        "bill",
+        "payment",
+        "account",
+        "reference",
+        "check"
+      ]
+    },
+    {
+      "date": "2026-10-14",
+      "storyId": "asks-insurer-where-to-find-policy-excess-details",
+      "domain": "insurance_claims",
+      "scenario": "customer_asks_insurer_where_to_verify_the_meaning_of_a_policy_term_before_discussing_a_claim",
+      "lexicalThemes": [
+        "insurance paperwork",
+        "policy wording",
+        "written terms",
+        "checking coverage"
+      ],
+      "targetVocabulary": [
+        "policy",
+        "term",
+        "representative",
+        "written",
+        "review"
+      ]
+    },
+    {
+      "date": "2026-10-14",
+      "storyId": "asks-shopper-where-to-weigh-loose-fruit",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_asks_staff_where_to_weigh_loose_fruit_and_print_a_label",
+      "lexicalThemes": [
+        "loose produce",
+        "weighing",
+        "labels",
+        "supermarket help"
+      ],
+      "targetVocabulary": [
+        "apples",
+        "scale",
+        "weigh",
+        "label",
+        "staff member"
+      ]
+    },
+    {
+      "date": "2026-10-14",
+      "storyId": "asks-how-to-change-a-delivery-time-preference",
+      "domain": "delivery_customer_service",
+      "scenario": "customer_asks_how_to_change_a_delivery_preference_in_order_settings_and_updates_it",
+      "lexicalThemes": [
+        "delivery preference",
+        "order settings",
+        "customer service",
+        "making a change"
+      ],
+      "targetVocabulary": [
+        "order",
+        "delivery",
+        "preference",
+        "settings",
+        "change"
+      ]
+    },
+    {
+      "date": "2026-10-14",
+      "storyId": "asks-driver-if-a-bus-accepts-contactless-payment",
+      "domain": "transport_fares_routes",
+      "scenario": "passenger_checks_bus_payment_options_at_the_entrance_before_boarding",
+      "lexicalThemes": [
+        "bus fare",
+        "payment options",
+        "signage",
+        "boarding"
+      ],
+      "targetVocabulary": [
+        "bus",
+        "pay",
+        "contactless",
+        "information",
+        "board"
+      ]
+    },
+    {
+      "date": "2026-10-14",
+      "storyId": "asks-school-office-where-to-submit-a-permission-slip",
+      "domain": "school_childcare",
+      "scenario": "parent_asks_school_office_where_to_place_a_completed_permission_slip",
+      "lexicalThemes": [
+        "school forms",
+        "permission slip",
+        "office",
+        "class tray"
+      ],
+      "targetVocabulary": [
+        "parent",
+        "school office",
+        "permission slip",
+        "tray",
+        "submit"
+      ]
+    },
+    {
+      "date": "2026-10-14",
+      "storyId": "asks-cook-how-to-store-fresh-basil",
+      "domain": "food_cooking",
+      "scenario": "home_cook_asks_how_to_keep_fresh_basil_until_the_next_day_and_stores_it_in_water",
+      "lexicalThemes": [
+        "fresh herbs",
+        "food storage",
+        "kitchen advice",
+        "preparing ahead"
+      ],
+      "targetVocabulary": [
+        "basil",
+        "stems",
+        "glass",
+        "water",
+        "counter"
+      ]
+    },
+    {
+      "date": "2026-10-14",
+      "storyId": "asks-at-the-station-which-platform-serves-the-museum-town",
+      "domain": "travel_day_trips",
+      "scenario": "day_tripper_asks_station_staff_which_platform_serves_their_destination_and_follows_signs",
+      "lexicalThemes": [
+        "station information",
+        "departure board",
+        "platform",
+        "day trip"
+      ],
+      "targetVocabulary": [
+        "station",
+        "destination",
+        "platform",
+        "departure board",
+        "signs"
+      ]
+    },
+    {
+      "date": "2026-10-14",
+      "storyId": "resident-asks-how-to-request-a-replacement-waste-bin",
+      "domain": "municipal_services",
+      "scenario": "resident_asks_municipal_service_how_to_request_a_replacement_for_a_broken_household_waste_bin",
+      "lexicalThemes": [
+        "municipal services",
+        "waste collection",
+        "service requests"
+      ],
+      "targetVocabulary": [
+        "waste bin",
+        "broken",
+        "replacement",
+        "service request",
+        "address",
+        "submit"
+      ]
     }
   ]
 }
