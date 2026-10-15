@@ -7237,6 +7237,298 @@
         "address",
         "submit"
       ]
+    },
+    {
+      "date": "2026-10-15",
+      "storyId": "resident-clarifies-how-to-replace-a-lost-document-2026-10-15",
+      "domain": "government_documents",
+      "scenario": "resident_verifies_official_steps_for_replacing_a_lost_personal_document",
+      "lexicalThemes": [
+        "missing belongings",
+        "explaining what has been checked",
+        "asking about official instructions",
+        "clarifying next steps"
+      ],
+      "targetVocabulary": [
+        "I realized it was missing",
+        "I retraced my steps",
+        "What should I do first?",
+        "the written instructions",
+        "I will check the applicable process"
+      ]
+    },
+    {
+      "date": "2026-10-15",
+      "storyId": "driver-asks-what-to-do-about-a-blank-parking-meter-2026-10-15",
+      "domain": "driving_parking",
+      "scenario": "driver_checks_instructions_after_finding_a_blank_parking_meter_screen",
+      "lexicalThemes": [
+        "parking problems",
+        "asking for local help",
+        "checking posted instructions",
+        "changing plans"
+      ],
+      "targetVocabulary": [
+        "the screen is blank",
+        "I cannot tell whether it is working",
+        "Which space are you in?",
+        "should I move the car?",
+        "I will check the instructions"
+      ]
+    },
+    {
+      "date": "2026-10-15",
+      "storyId": "friends-visit-a-small-olive-press-2026-10-15",
+      "domain": "travel_day_trips",
+      "scenario": "friends_visit_an_olive_press_and_compare_oil_samples",
+      "lexicalThemes": [
+        "day trips",
+        "joining a tour",
+        "asking what is available",
+        "tasting and choosing"
+      ],
+      "targetVocabulary": [
+        "Can we join the next group?",
+        "the press is not running",
+        "What can we see?",
+        "May we taste the samples?",
+        "we chose one to take home"
+      ]
+    },
+    {
+      "date": "2026-10-15",
+      "storyId": "dialog-customer-asks-bank-about-a-recurring-card-charge-2026-10-15",
+      "domain": "banking_credit",
+      "scenario": "customer_checks_how_to_inquire_about_unrecognized_recurring_card_charges",
+      "lexicalThemes": [
+        "describing a transaction",
+        "asking for account-specific guidance",
+        "clarifying what a representative can confirm",
+        "following a written process"
+      ],
+      "targetVocabulary": [
+        "I do not recognize this charge",
+        "it appears more than once",
+        "Can you help me identify it?",
+        "what information should I include?",
+        "the written instructions"
+      ]
+    },
+    {
+      "date": "2026-10-15",
+      "storyId": "dialog-passenger-checks-whether-a-bicycle-can-go-on-the-train-2026-10-15",
+      "domain": "transport_fares_routes",
+      "scenario": "passenger_verifies_bicycle_carriage_instructions_before_a_train_trip",
+      "lexicalThemes": [
+        "train travel",
+        "asking about carrying an item",
+        "checking written conditions",
+        "clarifying a sign or instruction"
+      ],
+      "targetVocabulary": [
+        "Can I bring my bicycle?",
+        "which service are you taking?",
+        "where can I check the instructions?",
+        "I am not sure what this means",
+        "I will confirm before boarding"
+      ]
+    },
+    {
+      "date": "2026-10-15",
+      "storyId": "resident-checks-which-document-to-bring-to-an-appointment",
+      "domain": "government_documents",
+      "scenario": "resident_uses_appointment_message_to_identify_which_document_to_bring",
+      "lexicalThemes": [
+        "appointment message",
+        "document",
+        "information desk",
+        "reminder"
+      ],
+      "targetVocabulary": [
+        "Which document do I need?",
+        "appointment",
+        "message",
+        "bring"
+      ]
+    },
+    {
+      "date": "2026-10-15",
+      "storyId": "tenant-asks-how-to-label-a-building-repair-request",
+      "domain": "housing_landlord",
+      "scenario": "tenant_reports_a_hallway_door_that_will_not_latch_and_confirms_location_details_for_request",
+      "lexicalThemes": [
+        "hallway",
+        "door latch",
+        "maintenance request",
+        "location"
+      ],
+      "targetVocabulary": [
+        "does not latch",
+        "maintenance request",
+        "floor",
+        "location"
+      ]
+    },
+    {
+      "date": "2026-10-15",
+      "storyId": "customer-asks-provider-to-explain-a-bill-credit",
+      "domain": "bills_taxes",
+      "scenario": "customer_checks_the_written_explanation_for_a_credit_line_on_a_household_bill",
+      "lexicalThemes": [
+        "household bill",
+        "credit",
+        "provider",
+        "explanation"
+      ],
+      "targetVocabulary": [
+        "credit",
+        "bill section",
+        "what does this refer to?",
+        "explanation"
+      ]
+    },
+    {
+      "date": "2026-10-15",
+      "storyId": "worker-asks-payroll-how-to-read-a-deduction",
+      "domain": "work_pay",
+      "scenario": "worker_finds_the_written_breakdown_for_an_unfamiliar_payslip_deduction",
+      "lexicalThemes": [
+        "payslip",
+        "deduction",
+        "payroll",
+        "written breakdown"
+      ],
+      "targetVocabulary": [
+        "deduction",
+        "payslip",
+        "written breakdown",
+        "where can I check?"
+      ]
+    },
+    {
+      "date": "2026-10-15",
+      "storyId": "customer-asks-insurer-how-to-update-contact-details",
+      "domain": "insurance_claims",
+      "scenario": "policyholder_updates_a_phone_number_in_insurance_account_settings",
+      "lexicalThemes": [
+        "phone number",
+        "policy",
+        "account settings",
+        "confirmation"
+      ],
+      "targetVocabulary": [
+        "update contact details",
+        "policy",
+        "account settings",
+        "check the number"
+      ]
+    },
+    {
+      "date": "2026-10-15",
+      "storyId": "shopper-asks-to-exchange-a-shirt-size",
+      "domain": "shopping_returns",
+      "scenario": "shopper_compares_a_different_shirt_size_before_deciding_on_an_exchange",
+      "lexicalThemes": [
+        "shirt",
+        "sleeves",
+        "size",
+        "exchange"
+      ],
+      "targetVocabulary": [
+        "too long",
+        "another size",
+        "try it on",
+        "exchange"
+      ]
+    },
+    {
+      "date": "2026-10-15",
+      "storyId": "user-asks-how-to-change-a-profile-language",
+      "domain": "digital_accounts",
+      "scenario": "user_changes_the_display_language_in_app_profile_settings",
+      "lexicalThemes": [
+        "app",
+        "profile",
+        "language",
+        "settings"
+      ],
+      "targetVocabulary": [
+        "account menu",
+        "profile settings",
+        "select a language",
+        "display"
+      ]
+    },
+    {
+      "date": "2026-10-15",
+      "storyId": "cook-asks-how-soft-to-make-pasta-dough",
+      "domain": "food_cooking",
+      "scenario": "home_cook_checks_pasta_dough_texture_and_adjusts_with_a_little_flour",
+      "lexicalThemes": [
+        "pasta dough",
+        "knead",
+        "texture",
+        "flour"
+      ],
+      "targetVocabulary": [
+        "hold together",
+        "sticky",
+        "knead",
+        "a little flour"
+      ]
+    },
+    {
+      "date": "2026-10-15",
+      "storyId": "visitor-asks-where-to-join-an-art-workshop",
+      "domain": "arts_events",
+      "scenario": "visitor_finds_the_studio_for_a_drop_in_drawing_workshop",
+      "lexicalThemes": [
+        "art center",
+        "drawing workshop",
+        "studio",
+        "sketchbook"
+      ],
+      "targetVocabulary": [
+        "where is it meeting?",
+        "studio",
+        "down the hall",
+        "join"
+      ]
+    },
+    {
+      "date": "2026-10-15",
+      "storyId": "passenger-asks-which-ticket-machine-serves-the-tram",
+      "domain": "transport_fares_routes",
+      "scenario": "passenger_identifies_the_ticket_machine_for_a_tram_using_its_marking",
+      "lexicalThemes": [
+        "transit stop",
+        "ticket machine",
+        "tram",
+        "symbol"
+      ],
+      "targetVocabulary": [
+        "which machine?",
+        "tram",
+        "marked with",
+        "ticket"
+      ]
+    },
+    {
+      "date": "2026-10-15",
+      "storyId": "parent-finds-childs-missing-mitten-at-school",
+      "domain": "school_childcare",
+      "scenario": "parent_asks_school_staff_where_to_check_for_a_childs_missing_mitten_and_finds_it_in_lost_property",
+      "lexicalThemes": [
+        "school pickup",
+        "lost property",
+        "clothing"
+      ],
+      "targetVocabulary": [
+        "mitten",
+        "lost-property basket",
+        "turn in",
+        "find"
+      ]
     }
   ]
 }
