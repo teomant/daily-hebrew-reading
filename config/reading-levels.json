@@ -6,7 +6,7 @@
       "name": "Alef",
       "approximateCefr": "A1.1",
       "learnerWordsPerMinute": 45,
-      "guidance": "Write for an end-of-Alef learner who can decode unpointed Hebrew. Prefer very common concrete words, active clauses, familiar verb forms, and one event or thought per short sentence. Avoid passive or nominal phrasing, formal connectors, unnecessary foreign terms, dense construct chains, and nested clauses. Explain a necessary less-common term immediately in simple words. Keep the voice adult and natural. Difficulty is determined by wording and sentence shape, not word count."
+      "guidance": "Write for an end-of-Alef learner who can decode unpointed Hebrew. Prefer very common concrete words, active clauses, familiar verb forms, and one event or thought per short sentence. Avoid passive or nominal phrasing, formal connectors, unnecessary foreign terms, dense construct chains, and nested clauses. Explain a necessary less-common term immediately in simple words. Keep the voice adult and natural. Difficulty is determined by wording and sentence shape, not word count. Name the subject clearly; prefer a direct verb over a noun describing an action. Use familiar present, past, and future forms as the story needs them, without stacking clauses. Keep the useful answer, outcome, and at least one memorable concrete detail; simplify their wording instead of deleting the substance."
     },
     {
       "id": "alefPlus",
@@ -14,7 +14,7 @@
       "name": "Alef Plus",
       "approximateCefr": "A1.2",
       "learnerWordsPerMinute": 55,
-      "guidance": "Write for advanced Alef. Use a broader but still common vocabulary than Alef, past and future forms where natural, simple cause and effect, everyday connectors, common fixed expressions, and occasional short subordinate clauses. Keep the story easy to follow. Difficulty is determined by wording and grammar, not word count."
+      "guidance": "Write for advanced Alef. Use a broader but still common vocabulary than Alef, past and future forms where natural, simple cause and effect, everyday connectors, common fixed expressions, and occasional short subordinate clauses. Keep the story easy to follow. Difficulty is determined by wording and grammar, not word count. Connect familiar ideas with כי, אבל, אז, אם, and short clauses with ש when natural. Introduce a few less familiar words in clear context, without piling them into the same sentence. Keep the same useful answer, outcome, and memorable detail as the other levels."
     },
     {
       "id": "bet",
@@ -22,7 +22,7 @@
       "name": "Bet",
       "approximateCefr": "A2",
       "learnerWordsPerMinute": 65,
-      "guidance": "Write reasonably natural contemporary Hebrew for a Bet learner. Use a wider everyday vocabulary, more precise verbs and adjectives, natural connectors, comparisons, reactions, common colloquial constructions, and moderately more complex sentences than Alef Plus. Avoid dense journalistic syntax and specialist vocabulary. Difficulty is determined by wording and grammar, not word count."
+      "guidance": "Write reasonably natural contemporary Hebrew for a Bet learner. Use a wider everyday vocabulary, more precise verbs and adjectives, natural connectors, comparisons, reactions, common colloquial constructions, and moderately more complex sentences than Alef Plus. Avoid dense journalistic syntax and specialist vocabulary. Difficulty is determined by wording and grammar, not word count. Use connected sentences to explain reasons, contrasts, intentions, and reactions. Richer Hebrew should sound conversational, not more official: do not replace ordinary verbs with bureaucratic noun phrases just to raise the level. Keep the same useful answer, outcome, and memorable detail as the other levels."
     }
   ]
 }

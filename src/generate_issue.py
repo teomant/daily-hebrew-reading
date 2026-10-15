@@ -722,6 +722,9 @@ def _adaptation_batch_schema(
                 paragraphs = level_map["properties"][level_id]["properties"]["paragraphs"]
                 paragraphs["minItems"] = 1
                 paragraphs["maxItems"] = 1
+        elif story.get("type") == "current":
+            for level_id in level_ids:
+                level_map["properties"][level_id]["properties"]["paragraphs"]["minItems"] = 2
         elif story.get("type") == "dialog":
             for level_id in level_ids:
                 level_map["properties"][level_id]["properties"]["paragraphs"]["minItems"] = 8
@@ -1157,7 +1160,7 @@ TOPIC POOLS AND STORY VALUE
 - Essential covers health, money, documents, housing, and work problems. Routine covers shopping, transport, services, pets, and family logistics. Experience covers cooking, day trips, cultural events, and outdoor activities. The owner's examples are not a fixed or exhaustive list.
 - Cooking and trip stories are welcome even when nothing goes wrong: show actual preparation, travel, discovery, or adjustment and a concrete outcome. Do not stop at friends deciding to try a hobby or assemble a shared album.
 - Vary goals, people, services, questions, and outcomes. Delays, mistakes, missing items, and repairs are useful when the response teaches a specific action; avoid five copies of the same phone-call-and-wait plot.
-- For banking, tax, medical, government, insurance, and pricing situations, the no-web brief must not assert current Israeli rules, exact fees or rates, deadlines, eligibility, coverage, diagnoses, or entitlements. Have the person explain the issue, ask for the applicable terms or instructions, confirm what was said, and identify a concrete next step or official written source.
+- For banking, tax, medical, government, insurance, and pricing situations, the no-web brief must not assert current Israeli rules, exact fees or rates, deadlines, eligibility, coverage, diagnoses, or entitlements. Use concrete ordinary fictional observations, answers, choices, and actions. Refer to applicable terms only when needed, not as the default plot or ending. Keep speaker roles and who pays or does what consistent. Vary the interactions across the batch; do not hide an explanation behind “they read it and understood.”
 
 NOVELTY CONTRACT
 - A scenario is a duplicate when its practical problem or goal, interaction, and resolution substantially match a forbidden or already selected scenario.

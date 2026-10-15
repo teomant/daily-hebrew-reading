@@ -1,5 +1,12 @@
 # Implementation log
 
+## 2026-10-15
+
+- Owner requested more engaging articles and clearer א/א+/ב fit, with usable imperfect articles preferred over omissions and no fact-checking expansion. Reviewed October 11–15 output; one independent plan review found no blocking issues. Removed the temporary plan after implementation at the owner's request.
+- Revised generated-scenario prompts and their request guidance to supply actual answers, varied interactions, concrete ordinary actions, and consistent speaker roles instead of defaulting to official-instruction referrals. Retained the existing boundary against invented current official rules and medical advice.
+- Strengthened configurable level guidance and adaptation instructions with a same-meaning Hebrew contrast, preservation of memorable details across levels, and proofreading for agreement, role continuity, missing words, stray English, and punctuation. These are best-effort instructions with no added rejection gates or model calls.
+- Lowered only CURRENT's adaptation-schema paragraph minimum from four to two to avoid repetitive padding; added coverage for CURRENT and unchanged HISTORY bounds across all three levels. Updated README and product specification. Existing issues and validation/retry policies remain unchanged. All 91 unit tests, repository content validation, and whitespace checks passed. No paid generation or deployment run; actual prose improvement remains to be assessed in future output. One focused independent implementation review found no defects.
+
 ## 2026-10-09
 
 - Investigated the October 9 generation log. Eleven SHORTS briefs were planned, but three items failed the two-or-three-sentence adaptation rule after individual retries, leaving eight valid items; the old ten-item gate omitted the entire page. The owner clarified that this count is a target, not a publication gate. Generation now retains each valid item, plans and adapts unrelated replacements one at a time, and counts every replacement cycle against an eleven-cycle limit. Exhausted SHORTS adaptation requests omit only that item. A page with any 1–11 valid items publishes; zero valid items omit only the page. Updated validation, product documentation, and regression tests for full refill, an exhausted refill that publishes eight retained items, a valid one-item page, and a zero-item fallback that publishes the other stories.

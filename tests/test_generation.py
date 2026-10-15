@@ -210,6 +210,23 @@ class GenerationTests(unittest.TestCase):
         )
         self.assertEqual(non_dialog_paragraphs["minItems"], 4)
 
+        for story_type, minimum in (("current", 2), ("history", 4)):
+            with self.subTest(story_type=story_type):
+                prose_schema = _adaptation_batch_schema(
+                    [{"id": "sourced-story", "type": story_type}],
+                    [{"id": level_id} for level_id in ("alef", "alefPlus", "bet")],
+                    ["ru", "en"],
+                    ["ru", "en"],
+                )
+                level_properties = (
+                    prose_schema["properties"]["adaptations"]["items"]
+                    ["properties"]["levels"]["properties"]
+                )
+                for level_schema in level_properties.values():
+                    prose_paragraphs = level_schema["properties"]["paragraphs"]
+                    self.assertEqual(prose_paragraphs["minItems"], minimum)
+                    self.assertEqual(prose_paragraphs["maxItems"], 12)
+
         short_schema = _adaptation_batch_schema(
             [{"id": "queue-question", "type": "everyday", "_shortItem": True}],
             [{"id": "alef"}],

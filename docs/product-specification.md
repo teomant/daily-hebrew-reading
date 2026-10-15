@@ -20,7 +20,7 @@ A new issue is generated automatically every day. A typical issue contains:
 
 This normally produces 11 pages. Missing sourced material may make the issue smaller, but it does not expand the fixed generated allocation.
 
-Reading time is calculated from the resulting content rather than enforced as a generation quota. CURRENT, HISTORY, and EVERYDAY articles should normally contain 4–5 developed paragraphs. DIALOG uses 8–12 short speaker turns, each on its own line. Every SHORTS item is one compact paragraph of exactly two or three complete sentences.
+Reading time is calculated from the resulting content rather than enforced as a generation quota. CURRENT articles normally contain 2–4 paragraphs as the material supports; the generation schema permits 2–12. HISTORY and EVERYDAY articles should normally contain 4–5 developed paragraphs. DIALOG uses 8–12 short speaker turns, each on its own line. Every SHORTS item is one compact paragraph of exactly two or three complete sentences.
 
 ## 2. Content types
 
@@ -139,7 +139,11 @@ Use a broader but still common everyday vocabulary than Alef, more past and futu
 
 Use a wider everyday vocabulary, more precise verbs and adjectives, natural connectors, comparisons, reactions, common colloquial constructions, and moderately more complex sentences without becoming dense newspaper prose.
 
+The three levels preserve the central situation, useful answer, outcome, and a memorable concrete detail when supplied. Alef simplifies the wording of interesting details instead of removing the substance. Alef Plus connects familiar ideas with everyday causal, conditional, and short relative clauses. Bet expresses reasons, contrasts, and reactions with richer conversational wording, without replacing simple verbs with bureaucratic noun phrases. Proofreading checks agreement, speaker roles, missing words, stray English drafting fragments, and accidental repeated punctuation before and after lexical annotation.
+
 ## 8. Do not pad articles
+
+Publication takes priority over polish: usable imperfect articles are preferable to missing articles. Interest, naturalness, and reading-level fit are prompt-guided goals, not new rejection gates or extra model review stages. Existing structural, translation, identity, and HISTORY beat-coverage validation remains in place.
 
 Length follows the content format: full articles use developed paragraphs, dialogues use 8–12 turns, and SHORTS items use one compact paragraph. Do not use length to distinguish Alef, Alef Plus, and Bet. Python must not reject an adaptation because it considers a word too difficult or because one level is not longer than another. Do not pad through repetition, empty introductions, invented details, or artificially complex phrasing.
 
@@ -182,6 +186,8 @@ As a soft guideline, avoid using the same principal domain several times in one 
 ## 14. Vocabulary may repeat
 
 Frequent vocabulary does not need to be new every day; repetition is useful. Words such as להגיע, לחכות, לבחור, כדאי, לבדוק, להזמין, להשתמש, and לשלם may recur. Avoid repeating plots, not language.
+
+Generated briefs provide actual answers, choices, and visible actions, with consistent speaker roles and payment/action direction. Vary discoveries, preferences, misunderstandings, cooperation, and outcomes rather than repeating the same instruction-referral plot. Ordinary fictional details are welcome within the existing no-web boundaries. Official instructions are appropriate when the situation needs them, not the default resolution. An unresolved official question can still lead to a concrete ordinary action. Dialogues show the useful explanation itself rather than saying that the speakers read something and understood it.
 
 ## 15. Generated-scenario vocabulary planning
 

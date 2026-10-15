@@ -49,6 +49,8 @@ python -m src.generate_issue --date 2026-09-04 --additional-stories 2
 
 Generation validates completed content before replacing any repository files. Exhausted API/request failures, unusable planning or research, and invalid final combined content exit with an error and leave the published site unchanged. An individual adaptation that remains invalid after its retry is omitted instead, and later articles continue.
 
+Future generated articles prioritize concrete answers, varied interactions, and memorable details at every reading level. א uses direct, simple clauses; א+ connects familiar ideas; ב uses richer conversational language without bureaucratic phrasing. CURRENT items can use two paragraphs instead of padding sparse material to four. These quality goals guide writing and proofreading, not new rejection checks: usable imperfect articles are better than missing articles. Existing validation and retry behavior remains in place.
+
 ## Content and configuration
 
 - `content/YYYY-MM-DD.json` — complete ordered issue.
