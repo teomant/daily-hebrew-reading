@@ -7529,6 +7529,339 @@
         "turn in",
         "find"
       ]
+    },
+    {
+      "date": "2026-10-16",
+      "storyId": "employee-coordinates-a-shift-swap",
+      "domain": "employment_jobs",
+      "scenario": "coworkers_trade_shifts_after_comparing_schedules_and_confirming_the_change",
+      "lexicalThemes": [
+        "work schedules",
+        "making a request",
+        "availability",
+        "checking an arrangement",
+        "workplace coordination"
+      ],
+      "targetVocabulary": [
+        "shift",
+        "schedule",
+        "swap",
+        "cover",
+        "available",
+        "commitment",
+        "confirm",
+        "record the change"
+      ]
+    },
+    {
+      "date": "2026-10-16",
+      "storyId": "neighbors-coordinate-a-shared-laundry-room",
+      "domain": "neighbors_building",
+      "scenario": "neighbors_coordinate_use_of_a_shared_laundry_machine_after_a_cycle_runs_longer_than_expected",
+      "lexicalThemes": [
+        "shared building spaces",
+        "asking a neighbor",
+        "timing",
+        "making a practical agreement",
+        "household chores"
+      ],
+      "targetVocabulary": [
+        "laundry room",
+        "machine",
+        "cycle",
+        "basket",
+        "finish",
+        "move the clothes",
+        "take a turn",
+        "leave a note"
+      ]
+    },
+    {
+      "date": "2026-10-16",
+      "storyId": "friends-make-a-roasted-vegetable-tart",
+      "domain": "food_cooking",
+      "scenario": "friends_adjust_a_roasted_vegetable_tart_filling_to_keep_it_from_becoming_watery",
+      "lexicalThemes": [
+        "preparing dinner",
+        "checking ingredients",
+        "cooking methods",
+        "making a choice together",
+        "describing texture"
+      ],
+      "targetVocabulary": [
+        "tart",
+        "filling",
+        "crust",
+        "soft",
+        "cut away",
+        "roast",
+        "watery",
+        "mix in"
+      ]
+    },
+    {
+      "date": "2026-10-16",
+      "storyId": "tenant-and-landlord-plan-a-key-handover",
+      "domain": "housing_landlord",
+      "scenario": "tenant_and_landlord_arrange_a_move_out_walkthrough_and_key_handover",
+      "lexicalThemes": [
+        "moving out",
+        "arranging a meeting",
+        "checking an apartment",
+        "clarifying ownership",
+        "confirming a plan"
+      ],
+      "targetVocabulary": [
+        "move out",
+        "handover",
+        "keys",
+        "walk through",
+        "storage area",
+        "shelf",
+        "leave behind",
+        "make a list"
+      ]
+    },
+    {
+      "date": "2026-10-16",
+      "storyId": "sender-chooses-packaging-for-a-flat-document",
+      "domain": "postal_parcels",
+      "scenario": "sender_selects_flat_packaging_to_mail_a_large_drawing_without_folding_it",
+      "lexicalThemes": [
+        "sending a parcel",
+        "describing size and shape",
+        "asking about packaging",
+        "expressing a preference",
+        "completing a mailing"
+      ],
+      "targetVocabulary": [
+        "drawing",
+        "flat",
+        "fold",
+        "stiff envelope",
+        "mailing tube",
+        "protect",
+        "corner",
+        "fit"
+      ]
+    },
+    {
+      "date": "2026-10-16",
+      "storyId": "resident-asks-how-to-correct-a-wrong-meter-reading",
+      "domain": "bills_taxes",
+      "scenario": "resident_reports_a_difference_between_a_recorded_electricity_meter_reading_and_a_bill_by_sending_a_photo_for_review",
+      "lexicalThemes": [
+        "utility bill",
+        "meter reading",
+        "difference",
+        "photo",
+        "review"
+      ],
+      "targetVocabulary": [
+        "reading",
+        "bill",
+        "meter",
+        "submit",
+        "check"
+      ]
+    },
+    {
+      "date": "2026-10-16",
+      "storyId": "applicant-asks-which-name-to-use-on-a-form",
+      "domain": "government_documents",
+      "scenario": "applicant_clarifies_which_name_a_specific_form_field_requests_by_checking_its_label_with_a_clerk",
+      "lexicalThemes": [
+        "application form",
+        "name",
+        "field",
+        "supporting document",
+        "clerk"
+      ],
+      "targetVocabulary": [
+        "form",
+        "name",
+        "field",
+        "document",
+        "clarify"
+      ]
+    },
+    {
+      "date": "2026-10-16",
+      "storyId": "caller-asks-how-to-report-a-change-in-income",
+      "domain": "social_benefits",
+      "scenario": "benefits_recipient_reports_changed_work_hours_through_the_indicated_channel_without_assuming_eligibility_effects",
+      "lexicalThemes": [
+        "work hours",
+        "change",
+        "benefits",
+        "written update",
+        "review"
+      ],
+      "targetVocabulary": [
+        "change",
+        "hours",
+        "report",
+        "information",
+        "review"
+      ]
+    },
+    {
+      "date": "2026-10-16",
+      "storyId": "tenant-asks-landlord-to-check-a-sticking-door-lock",
+      "domain": "housing_landlord",
+      "scenario": "tenant_reports_a_sticking_apartment_door_lock_and_arranges_a_time_for_the_landlord_to_check_it",
+      "lexicalThemes": [
+        "apartment door",
+        "lock",
+        "key",
+        "landlord",
+        "visit"
+      ],
+      "targetVocabulary": [
+        "lock",
+        "key",
+        "stuck",
+        "check",
+        "time"
+      ]
+    },
+    {
+      "date": "2026-10-16",
+      "storyId": "customer-asks-delivery-service-where-a-parcel-was-left",
+      "domain": "delivery_customer_service",
+      "scenario": "customer_uses_delivery_service_note_to_locate_a_parcel_left_at_the_buildings_side_entrance",
+      "lexicalThemes": [
+        "delivery notice",
+        "parcel",
+        "entrance",
+        "customer service",
+        "location"
+      ],
+      "targetVocabulary": [
+        "parcel",
+        "notice",
+        "entrance",
+        "where",
+        "find"
+      ]
+    },
+    {
+      "date": "2026-10-16",
+      "storyId": "passenger-checks-which-bus-stop-is-nearest-the-library",
+      "domain": "transport_fares_routes",
+      "scenario": "passenger_distinguishes_between_similarly_named_stops_to_get_off_near_a_public_library",
+      "lexicalThemes": [
+        "bus route",
+        "stop name",
+        "library",
+        "map",
+        "driver"
+      ],
+      "targetVocabulary": [
+        "bus",
+        "stop",
+        "near",
+        "name",
+        "map"
+      ]
+    },
+    {
+      "date": "2026-10-16",
+      "storyId": "caller-asks-how-to-save-a-phone-contact",
+      "domain": "phone_internet",
+      "scenario": "user_saves_a_neighbors_new_phone_number_under_a_clear_contact_name_with_a_friends_help",
+      "lexicalThemes": [
+        "phone number",
+        "contact",
+        "name",
+        "screen",
+        "save"
+      ],
+      "targetVocabulary": [
+        "number",
+        "contact",
+        "name",
+        "save",
+        "phone"
+      ]
+    },
+    {
+      "date": "2026-10-16",
+      "storyId": "cook-asks-how-to-thicken-a-thin-sauce",
+      "domain": "food_cooking",
+      "scenario": "home_cook_reduces_a_thin_tomato_sauce_by_simmering_it_uncovered",
+      "lexicalThemes": [
+        "tomato sauce",
+        "texture",
+        "simmer",
+        "stir",
+        "liquid"
+      ],
+      "targetVocabulary": [
+        "sauce",
+        "thin",
+        "simmer",
+        "stir",
+        "thicker"
+      ]
+    },
+    {
+      "date": "2026-10-16",
+      "storyId": "visitor-asks-where-to-watch-a-sunset",
+      "domain": "nature_outdoors",
+      "scenario": "visitor_finds_a_seaside_viewpoint_with_an_open_water_view_after_asking_a_park_ranger",
+      "lexicalThemes": [
+        "seaside park",
+        "viewpoint",
+        "sunset",
+        "paved path",
+        "ranger"
+      ],
+      "targetVocabulary": [
+        "view",
+        "sea",
+        "sunset",
+        "path",
+        "nearby"
+      ]
+    },
+    {
+      "date": "2026-10-16",
+      "storyId": "customer-asks-pharmacy-for-a-small-paper-bag",
+      "domain": "pharmacy_prescriptions",
+      "scenario": "customer_requests_a_small_paper_bag_for_several_pharmacy_items_and_packs_them_before_leaving",
+      "lexicalThemes": [
+        "pharmacy",
+        "small items",
+        "paper bag",
+        "cashier",
+        "packing"
+      ],
+      "targetVocabulary": [
+        "bag",
+        "small",
+        "paper",
+        "items",
+        "pack"
+      ]
+    },
+    {
+      "date": "2026-10-16",
+      "storyId": "visitor-asks-where-to-mail-a-postcard",
+      "domain": "postal_parcels",
+      "scenario": "customer_asks_postal_clerk_which_slot_to_use_for_an_outgoing_postcard_and_mails_it",
+      "lexicalThemes": [
+        "post office",
+        "postcard",
+        "mail slot",
+        "sending a letter"
+      ],
+      "targetVocabulary": [
+        "postcard",
+        "outgoing mail",
+        "slot",
+        "send"
+      ]
     }
   ]
 }
