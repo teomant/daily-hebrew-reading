@@ -7862,6 +7862,322 @@
         "slot",
         "send"
       ]
+    },
+    {
+      "date": "2026-10-17",
+      "storyId": "plans-a-follow-up-clinic-visit",
+      "domain": "health_appointments",
+      "scenario": "patient_reschedules_a_follow_up_visit_to_fit_a_work_commitment_and_confirms_the_clinician",
+      "lexicalThemes": [
+        "clinic scheduling",
+        "work commitments",
+        "follow-up visit",
+        "confirming details"
+      ],
+      "targetVocabulary": [
+        "appointment",
+        "follow-up",
+        "available",
+        "earlier",
+        "another time",
+        "overlaps",
+        "confirm",
+        "calendar"
+      ]
+    },
+    {
+      "date": "2026-10-17",
+      "storyId": "chooses-a-store-credit-for-a-defective-kettle",
+      "domain": "shopping_returns",
+      "scenario": "customer_exchanges_a_kettle_with_a_faulty_lid_for_a_different_model_after_comparing_options",
+      "lexicalThemes": [
+        "faulty household item",
+        "shop return",
+        "comparing options",
+        "making a choice"
+      ],
+      "targetVocabulary": [
+        "receipt",
+        "lid",
+        "does not close",
+        "check",
+        "available",
+        "exchange",
+        "different model",
+        "store credit"
+      ]
+    },
+    {
+      "date": "2026-10-17",
+      "storyId": "makes-lunch-with-a-substitute-ingredient",
+      "domain": "food_cooking",
+      "scenario": "siblings_substitute_milder_grated_cheese_for_missing_feta_in_a_savory_vegetable_pie",
+      "lexicalThemes": [
+        "cooking together",
+        "missing ingredient",
+        "taste and adjust",
+        "sharing tasks"
+      ],
+      "targetVocabulary": [
+        "filling",
+        "recipe",
+        "grated cheese",
+        "too salty",
+        "use less",
+        "herbs",
+        "chop",
+        "oven"
+      ]
+    },
+    {
+      "date": "2026-10-17",
+      "storyId": "dialog-asks-payroll-to-correct-bank-details",
+      "domain": "work_pay",
+      "scenario": "employee_updates_payroll_bank_details_through_the_designated_secure_process_and_checks_submission_status",
+      "lexicalThemes": [
+        "payroll records",
+        "updating personal details",
+        "secure communication",
+        "confirming submission"
+      ],
+      "targetVocabulary": [
+        "bank account details",
+        "outdated",
+        "payroll",
+        "staff profile",
+        "secure form",
+        "screenshot",
+        "submit",
+        "status"
+      ]
+    },
+    {
+      "date": "2026-10-17",
+      "storyId": "dialog-chooses-a-mobile-plan-for-a-short-trip",
+      "domain": "phone_internet",
+      "scenario": "traveler_compares_mobile_plan_options_for_maps_messages_and_calls_before_a_short_trip",
+      "lexicalThemes": [
+        "mobile service options",
+        "travel preparation",
+        "clarifying plan details",
+        "making a choice"
+      ],
+      "targetVocabulary": [
+        "short trip",
+        "current plan",
+        "maps",
+        "messages",
+        "calls",
+        "data",
+        "option",
+        "active"
+      ]
+    },
+    {
+      "date": "2026-10-17",
+      "storyId": "checks-why-a-card-payment-was-declined",
+      "domain": "banking_credit",
+      "scenario": "customer_asks_cashier_what_a_declined_card_payment_message_says_and_pays_with_another_card",
+      "lexicalThemes": [
+        "card payment",
+        "declined transaction",
+        "cashier",
+        "account check"
+      ],
+      "targetVocabulary": [
+        "card",
+        "payment",
+        "declined",
+        "terminal",
+        "another card"
+      ]
+    },
+    {
+      "date": "2026-10-17",
+      "storyId": "checks-where-to-put-a-large-cardboard-box",
+      "domain": "municipal_services",
+      "scenario": "resident_asks_municipal_worker_which_marked_recycling_container_accepts_a_flattened_cardboard_box",
+      "lexicalThemes": [
+        "recycling",
+        "cardboard",
+        "collection point",
+        "municipal worker"
+      ],
+      "targetVocabulary": [
+        "cardboard",
+        "box",
+        "container",
+        "recycling",
+        "marked"
+      ]
+    },
+    {
+      "date": "2026-10-17",
+      "storyId": "asks-caretaker-which-switch-controls-the-hall-light",
+      "domain": "home_repairs_utilities",
+      "scenario": "tenant_identifies_the_labeled_switch_for_a_hallway_light_with_the_building_caretaker_and_restores_it",
+      "lexicalThemes": [
+        "hallway light",
+        "switch",
+        "caretaker",
+        "building"
+      ],
+      "targetVocabulary": [
+        "light",
+        "switch",
+        "hallway",
+        "label",
+        "turn off"
+      ]
+    },
+    {
+      "date": "2026-10-17",
+      "storyId": "finds-the-print-size-setting-in-an-online-account",
+      "domain": "digital_accounts",
+      "scenario": "user_finds_the_print_scaling_option_in_an_online_account_with_a_coworkers_help",
+      "lexicalThemes": [
+        "online account",
+        "print window",
+        "scale menu",
+        "document"
+      ],
+      "targetVocabulary": [
+        "print",
+        "size",
+        "scale",
+        "menu",
+        "select"
+      ]
+    },
+    {
+      "date": "2026-10-17",
+      "storyId": "asks-the-vet-to-weigh-a-nervous-dog",
+      "domain": "pets_veterinary",
+      "scenario": "pet_owner_asks_vet_assistant_to_weigh_a_hesitant_dog_with_its_blanket",
+      "lexicalThemes": [
+        "veterinary clinic",
+        "dog",
+        "scale",
+        "blanket"
+      ],
+      "targetVocabulary": [
+        "dog",
+        "scale",
+        "weigh",
+        "blanket",
+        "assistant"
+      ]
+    },
+    {
+      "date": "2026-10-17",
+      "storyId": "reports-a-missing-item-from-a-delivery",
+      "domain": "delivery_customer_service",
+      "scenario": "customer_reports_a_missing_grocery_item_after_comparing_the_delivery_receipt_and_packing_list",
+      "lexicalThemes": [
+        "grocery delivery",
+        "missing item",
+        "receipt",
+        "customer service"
+      ],
+      "targetVocabulary": [
+        "delivery",
+        "missing",
+        "item",
+        "receipt",
+        "packing list"
+      ]
+    },
+    {
+      "date": "2026-10-17",
+      "storyId": "checks-which-side-of-the-platform-has-the-next-train",
+      "domain": "transport_fares_routes",
+      "scenario": "traveler_asks_station_attendant_which_platform_side_serves_a_named_destination_and_follows_the_display",
+      "lexicalThemes": [
+        "station",
+        "platform",
+        "destination display",
+        "attendant"
+      ],
+      "targetVocabulary": [
+        "train",
+        "platform",
+        "side",
+        "destination",
+        "display"
+      ]
+    },
+    {
+      "date": "2026-10-17",
+      "storyId": "asks-usher-which-door-leads-to-the-balcony-seats",
+      "domain": "arts_events",
+      "scenario": "ticket_holder_asks_theater_usher_which_entrance_leads_to_balcony_seating",
+      "lexicalThemes": [
+        "theater",
+        "ticket",
+        "usher",
+        "balcony"
+      ],
+      "targetVocabulary": [
+        "ticket",
+        "usher",
+        "door",
+        "balcony",
+        "stairs"
+      ]
+    },
+    {
+      "date": "2026-10-17",
+      "storyId": "asks-a-ranger-where-to-refill-a-water-bottle",
+      "domain": "nature_outdoors",
+      "scenario": "park_walker_asks_ranger_where_to_refill_a_water_bottle_and_uses_a_nearby_fountain",
+      "lexicalThemes": [
+        "park walk",
+        "ranger",
+        "water bottle",
+        "fountain"
+      ],
+      "targetVocabulary": [
+        "park",
+        "water",
+        "bottle",
+        "refill",
+        "fountain"
+      ]
+    },
+    {
+      "date": "2026-10-17",
+      "storyId": "worker-finds-a-payslip-in-the-staff-portal",
+      "domain": "work_pay",
+      "scenario": "employee_asks_payroll_where_to_find_the_latest_payslip_in_the_staff_portal_and_saves_a_copy",
+      "lexicalThemes": [
+        "work documents",
+        "online portal",
+        "finding a file"
+      ],
+      "targetVocabulary": [
+        "payslip",
+        "payroll",
+        "staff portal",
+        "documents tab",
+        "save a copy"
+      ]
+    },
+    {
+      "date": "2026-10-17",
+      "storyId": "asks-pharmacist-where-to-dispose-of-old-medicine",
+      "domain": "pharmacy_prescriptions",
+      "scenario": "customer_asks_pharmacist_where_to_place_an_old_unused_medicine_package_and_uses_the_pharmacy_collection_box",
+      "lexicalThemes": [
+        "pharmacy",
+        "old medicine",
+        "collection box"
+      ],
+      "targetVocabulary": [
+        "unused",
+        "package",
+        "collection box",
+        "counter"
+      ]
     }
   ]
 }
