@@ -8178,6 +8178,313 @@
         "collection box",
         "counter"
       ]
+    },
+    {
+      "date": "2026-10-18",
+      "storyId": "job-seeker-asks-about-a-part-time-cafe-role",
+      "domain": "employment_jobs",
+      "scenario": "job_seeker_discusses_part_time_cafe_role_duties_and_availability_with_manager",
+      "lexicalThemes": [
+        "job applications",
+        "work schedules",
+        "customer service",
+        "availability"
+      ],
+      "targetVocabulary": [
+        "part-time position",
+        "shift",
+        "closing",
+        "available",
+        "résumé",
+        "apply"
+      ]
+    },
+    {
+      "date": "2026-10-18",
+      "storyId": "shopper-lets-a-customer-with-few-items-go-ahead",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_invites_customer_with_two_items_to_checkout_ahead_in_a_busy_queue",
+      "lexicalThemes": [
+        "supermarket checkout",
+        "queues",
+        "polite offers",
+        "clarifying a situation"
+      ],
+      "targetVocabulary": [
+        "queue",
+        "go ahead",
+        "just a couple of items",
+        "checkout",
+        "belt",
+        "take your time"
+      ]
+    },
+    {
+      "date": "2026-10-18",
+      "storyId": "visitors-talk-with-a-printmaker-at-an-exhibition",
+      "domain": "arts_events",
+      "scenario": "gallery_visitors_examine_printmaking_process_and_choose_a_small_artwork",
+      "lexicalThemes": [
+        "gallery visits",
+        "visual art",
+        "asking an artist",
+        "making a choice"
+      ],
+      "targetVocabulary": [
+        "exhibition",
+        "print",
+        "layered colors",
+        "sample",
+        "proof",
+        "available"
+      ]
+    },
+    {
+      "date": "2026-10-18",
+      "storyId": "dialog-tenant-and-landlord-discuss-balcony-drainage",
+      "domain": "housing_landlord",
+      "scenario": "tenant_and_landlord_inspect_balcony_water_pooling_and_clear_leaves_from_drain",
+      "lexicalThemes": [
+        "rental housing",
+        "describing a problem",
+        "arranging a visit",
+        "cooperation"
+      ],
+      "targetVocabulary": [
+        "balcony",
+        "rainwater",
+        "puddle",
+        "drain",
+        "leaves",
+        "come take a look"
+      ]
+    },
+    {
+      "date": "2026-10-18",
+      "storyId": "dialog-parent-and-after-school-coordinator-clarify-pickup",
+      "domain": "school_childcare",
+      "scenario": "parent_coordinates_one_time_after_school_pickup_by_a_relative",
+      "lexicalThemes": [
+        "after-school care",
+        "family logistics",
+        "confirming details",
+        "handoffs"
+      ],
+      "targetVocabulary": [
+        "pick up",
+        "relative",
+        "staff member",
+        "meet",
+        "this Thursday",
+        "let someone know"
+      ]
+    },
+    {
+      "date": "2026-10-18",
+      "storyId": "caller-asks-clinic-about-a-brief-dizzy-spell",
+      "domain": "injuries_symptoms",
+      "scenario": "caller_reports_one_brief_episode_of_dizziness_and_asks_clinic_which_details_to_share",
+      "lexicalThemes": [
+        "describing a symptom",
+        "when it happened",
+        "asking what details matter"
+      ],
+      "targetVocabulary": [
+        "dizzy",
+        "briefly",
+        "when",
+        "again",
+        "describe",
+        "clinic"
+      ]
+    },
+    {
+      "date": "2026-10-18",
+      "storyId": "customer-asks-pharmacist-to-check-two-medicine-labels",
+      "domain": "pharmacy_prescriptions",
+      "scenario": "customer_asks_pharmacist_to_help_distinguish_two_similarly_named_medicine_packages",
+      "lexicalThemes": [
+        "reading package labels",
+        "checking a medicine name",
+        "sorting items"
+      ],
+      "targetVocabulary": [
+        "package",
+        "label",
+        "name",
+        "similar",
+        "check",
+        "separate"
+      ]
+    },
+    {
+      "date": "2026-10-18",
+      "storyId": "tenant-asks-landlord-about-a-dripping-ceiling",
+      "domain": "housing_landlord",
+      "scenario": "tenant_sends_landlord_a_photo_of_a_new_damp_ceiling_patch_and_arranges_an_inspection",
+      "lexicalThemes": [
+        "reporting a household issue",
+        "sharing a photo",
+        "arranging access"
+      ],
+      "targetVocabulary": [
+        "ceiling",
+        "damp patch",
+        "photo",
+        "inspect",
+        "afternoon",
+        "arrange"
+      ]
+    },
+    {
+      "date": "2026-10-18",
+      "storyId": "customer-asks-shop-about-a-missing-receipt",
+      "domain": "shopping_returns",
+      "scenario": "customer_requests_a_digital_copy_of_a_receipt_left_at_the_shop_counter",
+      "lexicalThemes": [
+        "receipts",
+        "asking shop staff for help",
+        "emailing a copy"
+      ],
+      "targetVocabulary": [
+        "receipt",
+        "paper",
+        "digital copy",
+        "purchase",
+        "email",
+        "send"
+      ]
+    },
+    {
+      "date": "2026-10-18",
+      "storyId": "resident-asks-neighbor-to-collect-a-misdelivered-letter",
+      "domain": "neighbors_building",
+      "scenario": "resident_delivers_a_letter_left_in_the_wrong_mailbox_to_the_neighbor_it_is_addressed_to",
+      "lexicalThemes": [
+        "mailboxes",
+        "checking a neighbor's name",
+        "handing over a letter"
+      ],
+      "targetVocabulary": [
+        "letter",
+        "mailbox",
+        "next door",
+        "name",
+        "envelope",
+        "take"
+      ]
+    },
+    {
+      "date": "2026-10-18",
+      "storyId": "passenger-asks-driver-to-call-out-a-stop",
+      "domain": "transport_fares_routes",
+      "scenario": "passenger_confirms_with_bus_driver_that_the_route_stops_at_a_named_local_square",
+      "lexicalThemes": [
+        "checking a bus stop",
+        "asking the driver",
+        "getting ready to exit"
+      ],
+      "targetVocabulary": [
+        "bus",
+        "stop",
+        "square",
+        "library",
+        "confirm",
+        "exit"
+      ]
+    },
+    {
+      "date": "2026-10-18",
+      "storyId": "walkers-ask-ranger-about-a-muddy-trail",
+      "domain": "nature_outdoors",
+      "scenario": "walkers_ask_a_ranger_which_marked_path_is_firmer_after_rain_and_follow_the_gravel_trail",
+      "lexicalThemes": [
+        "choosing a trail",
+        "asking for local guidance",
+        "following trail signs"
+      ],
+      "targetVocabulary": [
+        "walkers",
+        "fork",
+        "muddy",
+        "ranger",
+        "gravel path",
+        "signs"
+      ]
+    },
+    {
+      "date": "2026-10-18",
+      "storyId": "asks-concert-host-where-to-find-the-program",
+      "domain": "arts_events",
+      "scenario": "concert_attendee_asks_host_where_to_find_a_printed_program_and_takes_one",
+      "lexicalThemes": [
+        "live music",
+        "concert venue",
+        "printed program",
+        "asking for directions"
+      ],
+      "targetVocabulary": [
+        "concert",
+        "host",
+        "program",
+        "entrance",
+        "seat"
+      ]
+    },
+    {
+      "date": "2026-10-18",
+      "storyId": "asks-clinic-how-to-send-a-test-result",
+      "domain": "health_appointments",
+      "scenario": "patient_asks_clinic_how_to_send_a_copy_of_a_test_result_to_the_care_team_and_uses_the_secure_message_option",
+      "lexicalThemes": [
+        "clinic communication",
+        "test results",
+        "sending a document",
+        "secure messages"
+      ],
+      "targetVocabulary": [
+        "test result",
+        "copy",
+        "care team",
+        "send",
+        "secure message"
+      ]
+    },
+    {
+      "date": "2026-10-18",
+      "storyId": "signs-out-of-a-shared-computer-account",
+      "domain": "digital_accounts",
+      "scenario": "library_user_asks_how_to_sign_out_of_an_account_on_a_shared_computer_and_confirms_the_login_page_appears",
+      "lexicalThemes": [
+        "shared computers",
+        "account menu",
+        "signing out"
+      ],
+      "targetVocabulary": [
+        "account",
+        "shared computer",
+        "sign out",
+        "login page"
+      ]
+    },
+    {
+      "date": "2026-10-18",
+      "storyId": "asks-clinic-to-correct-a-contact-number",
+      "domain": "health_appointments",
+      "scenario": "patient_corrects_an_outdated_phone_number_in_a_clinic_appointment_record_and_confirms_the_update",
+      "lexicalThemes": [
+        "clinic contact details",
+        "phone number",
+        "appointment record",
+        "confirming information"
+      ],
+      "targetVocabulary": [
+        "current number",
+        "update",
+        "record",
+        "read it back",
+        "confirm"
+      ]
     }
   ]
 }
