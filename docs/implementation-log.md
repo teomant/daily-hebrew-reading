@@ -1,5 +1,11 @@
 # Implementation log
 
+## 2026-10-18
+
+- Owner requested a fourteen-day HISTORY exclusion window, stronger source priorities with concrete reliable sources, useful and interesting articles, and an Israeli/Jewish connection even for fallback subjects. Clarified that “repairable” was a typo for “reliable”; no source-repair machinery is needed. Kept CURRENT/generated windows at seven days. Removed the completed task plan and empty plans directory at the owner’s request.
+- Added `historyIssueContextDays` and type-specific filtering in the existing issue-context loader, used by discovery and both duplicate checks. Added the shared HISTORY source guide to discovery and research prompts, with concrete collection URLs, search routes, evidence limitations, and live access observations. Restricted the final fallback to Jewish history outside Israel and removed its country-count target. Existing route labels, optional source metadata, reserve handling, stage counts, and published content are preserved.
+- Updated README/product contracts and tests for window boundaries, backward-compatible default behavior, catalog wiring/isolation, and Jewish fallback wording. Repository content validation and whitespace checks passed. All 92 offline unit tests passed. One short independent read-only implementation review found no material defects. Actual article quality and source adherence remain to be observed in future generation. No paid generation or deployment was run.
+
 ## 2026-10-15
 
 - Owner requested more engaging articles and clearer א/א+/ב fit, with usable imperfect articles preferred over omissions and no fact-checking expansion. Reviewed October 11–15 output; one independent plan review found no blocking issues. Removed the temporary plan after implementation at the owner's request.

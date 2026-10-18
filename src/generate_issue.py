@@ -825,22 +825,28 @@ def _recent_history(history: dict[str, Any], target: date, days: int) -> list[di
     return recent
 
 
-def _recent_issue_context(content_dir: Path, target: date, days: int) -> list[dict[str, Any]]:
+def _recent_issue_context(
+    content_dir: Path, target: date, days: int, history_days: int | None = None,
+) -> list[dict[str, Any]]:
     issues: list[dict[str, Any]] = []
     dated_paths: list[tuple[date, Path]] = []
     cutoff = target - timedelta(days=days)
+    history_cutoff = target - timedelta(days=days if history_days is None else history_days)
     for path in content_dir.glob("????-??-??.json"):
         try:
             issue_date = date.fromisoformat(path.stem)
         except ValueError:
             continue
-        if cutoff <= issue_date < target:
+        if min(cutoff, history_cutoff) <= issue_date < target:
             dated_paths.append((issue_date, path))
     for issue_date, path in sorted(dated_paths, reverse=True):
         issue = read_json(path)
         stories = []
         for story in issue.get("stories", []):
             if not isinstance(story, dict):
+                continue
+            story_cutoff = history_cutoff if story.get("type") == "history" else cutoff
+            if issue_date < story_cutoff:
                 continue
             stories.append(
                 {
@@ -854,7 +860,8 @@ def _recent_issue_context(content_dir: Path, target: date, days: int) -> list[di
                     ],
                 }
             )
-        issues.append({"date": issue_date.isoformat(), "stories": stories})
+        if stories:
+            issues.append({"date": issue_date.isoformat(), "stories": stories})
     return issues
 
 
@@ -930,7 +937,7 @@ def _sourced_discovery_request(
     if worldwide_fallback and history_count:
         retry_scope = (
             "\nFINAL HISTORY WORLDWIDE FALLBACK SEARCH\nThe two Israel-focused searches left sourced slots unfilled. "
-            "Search worldwide only for remaining HISTORY slots, using new subjects across at least six countries or regions. "
+            "Search worldwide only for remaining HISTORY slots, restricted to Jewish history and culture outside Israel. Use new subjects across varied communities; there is no country quota. "
             "Do not re-query, rename, translate, update, or find alternate coverage for any duplicate or forbidden story. "
             "Keep CURRENT searches within Israel, including on this final pass. For HISTORY, use short, "
             "concrete, relatable subjects from any period; no date connection is required. Label every HISTORY candidate "
@@ -946,7 +953,7 @@ def _sourced_discovery_request(
     else:
         retry_scope = ""
     history_source_process = "" if not history_count else (
-        "- For HISTORY on this final worldwide fallback, search varied countries and source collections for concrete, "
+        "- For HISTORY on this final worldwide fallback, search Jewish communities outside Israel using the HISTORY source guide for concrete, "
         "relatable subjects. Use the source page as a lead to a person, company, work, decision, event, institution, "
         "invention, or ordinary-life development—not as a reason to write about the page itself. Label every HISTORY "
         f"candidate with `{DISCOVERY_SOURCE_KEY}` = `{WORLDWIDE_HISTORY_SOURCE}`."
@@ -960,7 +967,7 @@ def _sourced_discovery_request(
         "(`nationalLibraryPress`); the Israel State Archives, National Photo Collection, or PikiWiki Israel "
         "(`stateVisualArchives`); the Israel Film Archive or Project Ben-Yehuda (`cultureArchives`); and suitable "
         "official, municipal, educational, archival, cultural, and biographical sources (`otherArchive`). "
-        f"No discovery lane has a quota. Store the route in `{DISCOVERY_SOURCE_KEY}`; it is not proof of factual provenance."
+        f"Follow the attached HISTORY source guide for concrete collection URLs and evidence priorities; the label order is not a ranking. No discovery lane has a quota. Store the route in `{DISCOVERY_SOURCE_KEY}`; it is not proof of factual provenance."
     )
     retry = (
         "\nRETRY FEEDBACK\nThe previous attempt left sourced slots unfilled. Do not return duplicate or otherwise "
@@ -985,7 +992,7 @@ SEARCH PROCESS
 - Give every candidate a `historyFamily`. CURRENT uses `current`. HISTORY uses exactly one of `person`, `israeliIndustry`, `culture`, `event`, `place`, or `archaeology` according to its actual central subject, not the wording used to sell it.
 - Historical people (including historical politicians), culture, industry, places, holidays and customs, institutions, inventions, objects, and past events are all acceptable. No family has a quota or fixed daily slot. `person` covers a specific historical person's work, choices, and significance; a newly published obituary or current death report is CURRENT, not HISTORY. `israeliIndustry` covers the history of an Israeli company, manufacturer, brand, cooperative, factory, trade, product, or industrial development—not today's startup, high-tech unicorn, funding round, valuation, product launch, or executive profile. `culture` covers literature, music, theater, cinema, visual art, dance, design, architecture, food culture, publishing, broadcasting, or a cultural movement, work, or institution. A museum qualifies when its cultural creation, collection, or influence is the subject, not merely its building or visitor appeal. `event` covers concrete past events, customs, education, infrastructure, transport, institutions, or everyday objects.
 - `place` is optional, not a required family. Return at most two `place` candidates and reject generic park-preservation, tourist-guide, trail, viewpoint, fortress-visit, or “a place where nature and history meet” pitches. A place candidate needs distinctive, researched historical facts that could not be told by swapping in another location. Return at most one `archaeology` candidate.
-- Order HISTORY candidates by interest, factual substance, readability, and distinctness rather than by family or search order. The first surviving candidates are selected. Avoid returning several subjects with the same article shape even when their names differ.
+- Every HISTORY brief must establish an explicit Israeli or Jewish connection and a concrete historical hook. Order HISTORY candidates by evidence, interest, everyday-language usefulness, readability, and distinctness rather than by family or search order. The first surviving candidates are selected. Avoid returning several subjects with the same article shape even when their names differ.
 - Search substantially more than {SOURCED_CANDIDATE_COUNT} source pages. A rejected page does not count; continue searching for another candidate.
 - Do not formulate searches from forbidden IDs, briefs, subjects, or URLs. They are comparison data only.
 - Return only compact screening candidates, not search notes or adaptations.
@@ -1027,7 +1034,7 @@ def _history_research_request(
     return f"""
 Target publication date: {target_date}
 
-Deeply research each selected HISTORY subject below. These subjects already passed novelty review and selection. Search Hebrew and English when relevant. For Israeli subjects, prioritize Israeli archival, library, press, film, photographic, literary, official, and institutional material; for a worldwide fallback subject, use the strongest appropriate primary, archival, institutional, and biographical sources. The internal `discoverySource` value records how the screening lead was found, but is not verified provenance and must not limit follow-up research. This phase decides whether each subject can support a developed retelling and freezes its factual material; it does not write Hebrew.
+Deeply research each selected HISTORY subject below. These subjects already passed novelty review and selection. Search Hebrew and English when relevant. For Israeli subjects, prioritize Israeli archival, library, press, film, photographic, literary, official, and institutional material; for a worldwide fallback subject, research Jewish history or culture outside Israel. Follow the attached HISTORY source guide for concrete URLs and evidence priorities, and confirm the subject has an explicit Israeli or Jewish connection. The internal `discoverySource` value records how the screening lead was found, but is not verified provenance and must not limit follow-up research. This phase decides whether each subject can support a developed retelling and freezes its factual material; it does not write Hebrew.
 
 <selected_history_subjects>
 {json.dumps([_compact_story_record(story) | {"historyFamily": story.get("historyFamily"), DISCOVERY_SOURCE_KEY: story.get(DISCOVERY_SOURCE_KEY)} for story in stories], ensure_ascii=False, indent=2)}
@@ -2206,6 +2213,7 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
         content_dir,
         target,
         int(site["recentIssueContextDays"]),
+        int(site.get("historyIssueContextDays", site["recentIssueContextDays"])),
     )
     recent_story_records = [
         story
@@ -2218,9 +2226,9 @@ def generate(root: Path, target_date: str, additional_stories: int) -> dict[str,
     recent_generated_records = [
         story for story in recent_story_records if story.get("type") in {"everyday", "dialog"}
     ]
-    sourced_instructions = _read_prompts(root, ("editorial.md",))
+    sourced_instructions = _read_prompts(root, ("editorial.md", "history-sources.md"))
     duplicate_review_instructions = _read_prompts(root, ("deduplication.md",))
-    history_research_instructions = _read_prompts(root, ("history-research.md",))
+    history_research_instructions = _read_prompts(root, ("history-research.md", "history-sources.md"))
     generated_instructions = _read_prompts(root, ("everyday.md", "dialog.md"))
     short_instructions = _read_prompts(root, ("shorts.md",))
     adaptation_instructions = _read_prompts(root, ("adaptation.md", "frequent-hebrew.md"))

@@ -434,9 +434,28 @@ class GenerationTests(unittest.TestCase):
         self.assertEqual([item["date"] for item in week_context], ["2026-09-05", "2026-09-04", "2026-09-02"])
         site = read_json(ROOT / "config" / "site.json")
         self.assertEqual(site["recentIssueContextDays"], 7)
+        self.assertEqual(site["historyIssueContextDays"], 14)
         self.assertEqual(site["everydayHistoryDays"], 7)
         self.assertEqual(context[0]["stories"][0]["sourceUrls"], ["https://example.com/2026-09-04"])
         self.assertEqual(context[0]["stories"][0]["type"], "current")
+
+    def test_history_context_has_separate_inclusive_fourteen_day_window(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            content_dir = Path(temporary)
+            for day in (3, 4, 10, 11, 18, 19):
+                issue_date = f"2026-10-{day:02}"
+                payload = {"stories": [
+                    {"id": f"{kind}-{day}", "type": kind, "brief": f"{kind} on {day}", "sources": []}
+                    for kind in ("history", "current", "everyday", "dialog", "shorts")
+                ]}
+                (content_dir / f"{issue_date}.json").write_text(json.dumps(payload), encoding="utf-8")
+            context = _recent_issue_context(content_dir, date(2026, 10, 18), 7, 14)
+            default_context = _recent_issue_context(content_dir, date(2026, 10, 18), 7)
+        self.assertEqual([issue["date"] for issue in context], ["2026-10-11", "2026-10-10", "2026-10-04"])
+        self.assertEqual([story["id"] for story in context[1]["stories"]], ["history-10"])
+        self.assertEqual([story["id"] for story in context[2]["stories"]], ["history-4"])
+        self.assertEqual(len(context[0]["stories"]), 5)
+        self.assertEqual([issue["date"] for issue in default_context], ["2026-10-11"])
 
     def test_phase_prompts_receive_only_relevant_forbidden_records(self) -> None:
         existing = read_json(ROOT / "content" / "2026-09-06.json")
@@ -532,7 +551,8 @@ class GenerationTests(unittest.TestCase):
             True,
         )
         self.assertIn("FINAL HISTORY WORLDWIDE FALLBACK SEARCH", worldwide)
-        self.assertIn("at least six countries or regions", worldwide)
+        self.assertIn("restricted to Jewish history and culture outside Israel", worldwide)
+        self.assertNotIn("at least six countries or regions", worldwide)
         self.assertIn("Search worldwide only for remaining HISTORY slots", worldwide)
         self.assertIn("Keep CURRENT searches within Israel", worldwide)
         self.assertIn("mynet city and regional editions", worldwide)
@@ -1789,6 +1809,12 @@ class GenerationTests(unittest.TestCase):
             self.assertEqual(call.call_args_list[4].kwargs["phase"], "HISTORY research round 1")
             self.assertTrue(call.call_args_list[4].kwargs["use_web_search"])
             self.assertIn("# Selected HISTORY research instructions", call.call_args_list[4].args[1])
+            for index in (0, 2, 4):
+                self.assertIn("# HISTORY source guide", call.call_args_list[index].args[1])
+                self.assertIn("https://www.posenlibrary.com/", call.call_args_list[index].args[1])
+                self.assertIn("https://jfc.org.il/en/compilation/", call.call_args_list[index].args[1])
+            for index in (1, 3, 5, 6):
+                self.assertNotIn("# HISTORY source guide", call.call_args_list[index].args[1])
             self.assertEqual(call.call_args_list[5].kwargs["phase"], "Generated planning attempt 1/3")
             self.assertFalse(call.call_args_list[5].kwargs["use_web_search"])
             self.assertNotIn("# Sourced discovery instructions", call.call_args_list[5].args[1])
