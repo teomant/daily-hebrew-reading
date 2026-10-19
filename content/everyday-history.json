@@ -8485,6 +8485,307 @@
         "read it back",
         "confirm"
       ]
+    },
+    {
+      "date": "2026-10-19",
+      "storyId": "employee-clarifies-a-missing-break-entry",
+      "domain": "work_pay",
+      "scenario": "employee_and_supervisor_reconcile_a_shift_record_using_a_message_as_a_time_reference",
+      "lexicalThemes": [
+        "work schedules",
+        "remembering and estimating",
+        "checking a record",
+        "explaining uncertainty"
+      ],
+      "targetVocabulary": [
+        "shift",
+        "schedule",
+        "approximately",
+        "I stayed late",
+        "I am not sure",
+        "check the record",
+        "confirm",
+        "follow up"
+      ]
+    },
+    {
+      "date": "2026-10-19",
+      "storyId": "cat-owner-prepares-for-a-vet-visit",
+      "domain": "pets_veterinary",
+      "scenario": "cat_owner_uses_a_familiar_blanket_to_help_a_hiding_cat_enter_its_carrier_for_a_vet_visit",
+      "lexicalThemes": [
+        "pet care",
+        "asking a neighbor for advice",
+        "gentle encouragement",
+        "preparing for an appointment"
+      ],
+      "targetVocabulary": [
+        "carrier",
+        "blanket",
+        "hide",
+        "sniff",
+        "come out",
+        "gently",
+        "treat",
+        "appointment"
+      ]
+    },
+    {
+      "date": "2026-10-19",
+      "storyId": "walkers-join-a-coastal-tide-pool-visit",
+      "domain": "nature_outdoors",
+      "scenario": "friends_observe_tide_pool_creatures_without_disturbing_the_rocky_coastal_habitat",
+      "lexicalThemes": [
+        "outdoor activities",
+        "asking a guide for practical advice",
+        "observing nature",
+        "respecting a shared environment"
+      ],
+      "targetVocabulary": [
+        "tide pool",
+        "slippery",
+        "rock",
+        "seaweed",
+        "look closely",
+        "disturb",
+        "magnifier",
+        "take turns"
+      ]
+    },
+    {
+      "date": "2026-10-19",
+      "storyId": "dialog-tenant-asks-about-installing-window-shades",
+      "domain": "housing_landlord",
+      "scenario": "tenant_and_landlord_check_a_removable_window_shade_before_installation",
+      "lexicalThemes": [
+        "rental housing",
+        "making a request",
+        "describing a product",
+        "arranging a visit",
+        "checking a practical fit"
+      ],
+      "targetVocabulary": [
+        "shade",
+        "window frame",
+        "clip on",
+        "drill",
+        "removable",
+        "block",
+        "fit",
+        "try it"
+      ]
+    },
+    {
+      "date": "2026-10-19",
+      "storyId": "dialog-customer-recovers-access-to-a-locked-account",
+      "domain": "digital_accounts",
+      "scenario": "customer_recovers_access_to_a_locked_account_using_an_old_email_address",
+      "lexicalThemes": [
+        "account access",
+        "explaining an error message",
+        "clarifying recovery options",
+        "privacy and passwords",
+        "updating contact details"
+      ],
+      "targetVocabulary": [
+        "locked out",
+        "login",
+        "recovery",
+        "email address",
+        "reset",
+        "password",
+        "try again",
+        "settings"
+      ]
+    },
+    {
+      "date": "2026-10-19",
+      "storyId": "asks-clinic-for-an-interpreter",
+      "domain": "health_appointments",
+      "scenario": "patient_requests_an_interpreter_for_a_clinic_appointment_and_the_clinic_checks_availability",
+      "lexicalThemes": [
+        "clinic appointments",
+        "language help",
+        "making a request"
+      ],
+      "targetVocabulary": [
+        "interpreter",
+        "appointment",
+        "request",
+        "check availability"
+      ]
+    },
+    {
+      "date": "2026-10-19",
+      "storyId": "asks-pharmacist-about-a-child-resistant-cap",
+      "domain": "pharmacy_prescriptions",
+      "scenario": "customer_asks_pharmacist_how_to_open_a_child_resistant_medicine_cap_and_tries_the_demonstrated_motion",
+      "lexicalThemes": [
+        "pharmacy",
+        "packaging",
+        "asking for help"
+      ],
+      "targetVocabulary": [
+        "bottle",
+        "cap",
+        "press down",
+        "turn"
+      ]
+    },
+    {
+      "date": "2026-10-19",
+      "storyId": "asks-insurer-what-a-claim-reference-number-is",
+      "domain": "insurance_claims",
+      "scenario": "policyholder_asks_insurer_to_identify_a_claim_reference_number_and_records_it_for_follow_up",
+      "lexicalThemes": [
+        "insurance",
+        "claim details",
+        "record keeping"
+      ],
+      "targetVocabulary": [
+        "claim",
+        "reference number",
+        "message",
+        "write down"
+      ]
+    },
+    {
+      "date": "2026-10-19",
+      "storyId": "asks-about-a-benefits-form-language-option",
+      "domain": "social_benefits",
+      "scenario": "applicant_asks_service_desk_for_a_benefits_form_in_another_language_and_receives_a_copy",
+      "lexicalThemes": [
+        "service desk",
+        "forms",
+        "language options"
+      ],
+      "targetVocabulary": [
+        "form",
+        "language",
+        "copy",
+        "service desk"
+      ]
+    },
+    {
+      "date": "2026-10-19",
+      "storyId": "asks-supermarket-cashier-to-check-a-price-label",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_flags_a_mismatch_between_a_shelf_label_and_register_price_and_staff_check_the_item",
+      "lexicalThemes": [
+        "shopping",
+        "prices",
+        "checkout"
+      ],
+      "targetVocabulary": [
+        "shelf label",
+        "register",
+        "price",
+        "check"
+      ]
+    },
+    {
+      "date": "2026-10-19",
+      "storyId": "asks-shop-about-a-loose-button",
+      "domain": "shopping_returns",
+      "scenario": "customer_asks_shop_assistant_where_to_find_a_spare_button_for_a_coat_and_locates_it",
+      "lexicalThemes": [
+        "clothing",
+        "small repair",
+        "asking in a shop"
+      ],
+      "targetVocabulary": [
+        "coat",
+        "button",
+        "loose",
+        "lining"
+      ]
+    },
+    {
+      "date": "2026-10-19",
+      "storyId": "asks-driver-where-to-tap-a-transit-card",
+      "domain": "transport_fares_routes",
+      "scenario": "passenger_asks_bus_driver_where_to_tap_a_transit_card_and_uses_the_indicated_reader",
+      "lexicalThemes": [
+        "bus travel",
+        "payment",
+        "asking for directions"
+      ],
+      "targetVocabulary": [
+        "transit card",
+        "tap",
+        "reader",
+        "entrance"
+      ]
+    },
+    {
+      "date": "2026-10-19",
+      "storyId": "asks-post-office-for-a-parcel-tracking-slip",
+      "domain": "postal_parcels",
+      "scenario": "sender_requests_a_receipt_with_a_parcel_tracking_number_and_checks_the_printed_number",
+      "lexicalThemes": [
+        "post office",
+        "sending parcels",
+        "receipts"
+      ],
+      "targetVocabulary": [
+        "parcel",
+        "tracking number",
+        "receipt",
+        "printed"
+      ]
+    },
+    {
+      "date": "2026-10-19",
+      "storyId": "asks-cook-how-to-chop-herbs-for-a-salad",
+      "domain": "food_cooking",
+      "scenario": "home_cook_asks_whether_tender_parsley_stems_can_go_into_a_salad_and_chops_them_with_the_leaves",
+      "lexicalThemes": [
+        "cooking",
+        "salad ingredients",
+        "preparation"
+      ],
+      "targetVocabulary": [
+        "parsley",
+        "stems",
+        "leaves",
+        "chop finely"
+      ]
+    },
+    {
+      "date": "2026-10-19",
+      "storyId": "asks-at-the-lake-where-to-borrow-binoculars",
+      "domain": "nature_outdoors",
+      "scenario": "visitors_ask_where_to_borrow_binoculars_at_a_lakeside_center_and_take_a_pair_to_the_viewing_area",
+      "lexicalThemes": [
+        "outdoors",
+        "birdwatching",
+        "visitor center"
+      ],
+      "targetVocabulary": [
+        "binoculars",
+        "borrow",
+        "shelf",
+        "viewing area"
+      ]
+    },
+    {
+      "date": "2026-10-19",
+      "storyId": "patient-confirms-appointment-format-with-clinic",
+      "domain": "health_appointments",
+      "scenario": "patient_calls_clinic_to_clarify_whether_an_appointment_is_in_person_or_by_video_and_notes_the_confirmed_location",
+      "lexicalThemes": [
+        "appointment format",
+        "clinic reminder",
+        "clarifying details"
+      ],
+      "targetVocabulary": [
+        "appointment",
+        "in person",
+        "video visit",
+        "reminder",
+        "address",
+        "confirm"
+      ]
     }
   ]
 }
