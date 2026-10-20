@@ -8786,6 +8786,308 @@
         "address",
         "confirm"
       ]
+    },
+    {
+      "date": "2026-10-20",
+      "storyId": "tenant-prepares-for-water-heater-inspection",
+      "domain": "home_repairs_utilities",
+      "scenario": "tenant_clears_access_to_a_noisy_water_heater_for_a_technician_inspection_and_checks_it_after_repair",
+      "lexicalThemes": [
+        "describing an unfamiliar sound",
+        "arranging a technician visit",
+        "clearing access",
+        "asking what is safe to use",
+        "confirming a repair"
+      ],
+      "targetVocabulary": [
+        "water heater",
+        "rumbling",
+        "switch off",
+        "cupboard",
+        "clear access",
+        "technician",
+        "panel",
+        "hot water"
+      ]
+    },
+    {
+      "date": "2026-10-20",
+      "storyId": "customer-mails-a-returned-parcel",
+      "domain": "postal_parcels",
+      "scenario": "sender_corrects_an_incomplete_recipient_address_after_a_parcel_is_returned_and_mails_it_again",
+      "lexicalThemes": [
+        "checking a returned parcel",
+        "confirming an address",
+        "choosing whether to resend",
+        "preparing a package",
+        "asking a postal clerk"
+      ],
+      "targetVocabulary": [
+        "returned parcel",
+        "address label",
+        "apartment number",
+        "confirm",
+        "repackage",
+        "cover the old label",
+        "mail again",
+        "receipt"
+      ]
+    },
+    {
+      "date": "2026-10-20",
+      "storyId": "friends-find-seats-at-a-small-theater",
+      "domain": "arts_events",
+      "scenario": "theatergoers_ask_an_usher_to_find_clearer_seats_when_stage_equipment_blocks_part_of_their_view",
+      "lexicalThemes": [
+        "describing a blocked view",
+        "asking event staff for help",
+        "checking seat options",
+        "making a preference clear",
+        "finding new seats"
+      ],
+      "targetVocabulary": [
+        "assigned seats",
+        "speaker",
+        "partly blocked",
+        "usher",
+        "available seats",
+        "same section",
+        "nearby row",
+        "clearer view"
+      ]
+    },
+    {
+      "date": "2026-10-20",
+      "storyId": "dialog-neighbors-coordinate-a-driveway-access",
+      "domain": "driving_parking",
+      "scenario": "neighbors_help_a_visitor_move_a_car_blocking_the_shared_driveway_entrance",
+      "lexicalThemes": [
+        "describing an obstruction",
+        "explaining an immediate need",
+        "contacting a visitor",
+        "suggesting alternatives politely",
+        "coordinating a safe maneuver"
+      ],
+      "targetVocabulary": [
+        "driveway entrance",
+        "parked across",
+        "get through",
+        "visitor",
+        "ring the apartment",
+        "move the car",
+        "open space",
+        "guide"
+      ]
+    },
+    {
+      "date": "2026-10-20",
+      "storyId": "dialog-policyholder-asks-how-to-describe-a-damaged-suitcase",
+      "domain": "insurance_claims",
+      "scenario": "policyholder_describes_a_cracked_suitcase_handle_without_guessing_when_or_how_the_damage_occurred",
+      "lexicalThemes": [
+        "describing visible damage",
+        "distinguishing facts from guesses",
+        "sharing relevant photos",
+        "asking what details to include",
+        "saving an inquiry confirmation"
+      ],
+      "targetVocabulary": [
+        "cracked handle",
+        "notice damage",
+        "before the trip",
+        "after unpacking",
+        "describe",
+        "attach a photo",
+        "inquiry form",
+        "confirmation"
+      ]
+    },
+    {
+      "date": "2026-10-20",
+      "storyId": "traveler-checks-passport-expiration-date",
+      "domain": "travel_documents",
+      "scenario": "traveler_locates_and_records_the_expiration_date_on_a_passport_before_booking_a_trip",
+      "lexicalThemes": [
+        "travel documents",
+        "dates",
+        "planning"
+      ],
+      "targetVocabulary": [
+        "passport",
+        "expiration date",
+        "photo page",
+        "check"
+      ]
+    },
+    {
+      "date": "2026-10-20",
+      "storyId": "employee-asks-where-to-send-a-work-application",
+      "domain": "employment_jobs",
+      "scenario": "employee_uses_the_contact_named_in_an_internal_job_notice_to_send_a_resume",
+      "lexicalThemes": [
+        "workplace",
+        "applications",
+        "email"
+      ],
+      "targetVocabulary": [
+        "open position",
+        "application",
+        "contact",
+        "résumé"
+      ]
+    },
+    {
+      "date": "2026-10-20",
+      "storyId": "resident-asks-where-to-put-a-large-branch",
+      "domain": "municipal_services",
+      "scenario": "resident_places_a_trimmed_branch_at_the_collection_spot_indicated_by_a_municipal_worker",
+      "lexicalThemes": [
+        "municipal services",
+        "yard waste",
+        "locations"
+      ],
+      "targetVocabulary": [
+        "branch",
+        "collection",
+        "marked spot",
+        "carry"
+      ]
+    },
+    {
+      "date": "2026-10-20",
+      "storyId": "asks-clinic-which-entrance-to-use",
+      "domain": "health_appointments",
+      "scenario": "visitor_confirms_which_clinic_entrance_leads_to_the_appointment_desk",
+      "lexicalThemes": [
+        "clinic visit",
+        "directions",
+        "entrances"
+      ],
+      "targetVocabulary": [
+        "appointment desk",
+        "entrance",
+        "side door",
+        "signs"
+      ]
+    },
+    {
+      "date": "2026-10-20",
+      "storyId": "tenant-asks-how-to-report-a-broken-window-latch",
+      "domain": "housing_landlord",
+      "scenario": "tenant_sends_the_landlord_a_photo_showing_a_loose_window_latch",
+      "lexicalThemes": [
+        "renting",
+        "home fixtures",
+        "reporting a problem"
+      ],
+      "targetVocabulary": [
+        "window latch",
+        "loose",
+        "photo",
+        "send"
+      ]
+    },
+    {
+      "date": "2026-10-20",
+      "storyId": "customer-returns-a-mug-with-a-chipped-rim",
+      "domain": "shopping_returns",
+      "scenario": "shopper_shows_a_clerk_a_newly_bought_mug_with_a_chipped_rim_and_receives_an_exchange",
+      "lexicalThemes": [
+        "shopping",
+        "damaged goods",
+        "exchanges"
+      ],
+      "targetVocabulary": [
+        "mug",
+        "chipped",
+        "clerk",
+        "exchange"
+      ]
+    },
+    {
+      "date": "2026-10-20",
+      "storyId": "dog-owner-asks-vet-to-check-a-paw",
+      "domain": "pets_veterinary",
+      "scenario": "dog_owner_asks_veterinary_assistant_to_remove_a_piece_of_grass_from_between_the_dogs_toes",
+      "lexicalThemes": [
+        "pets",
+        "veterinary visit",
+        "small requests"
+      ],
+      "targetVocabulary": [
+        "paw",
+        "toes",
+        "grass",
+        "remove"
+      ]
+    },
+    {
+      "date": "2026-10-20",
+      "storyId": "passenger-asks-where-to-buy-a-ferry-ticket",
+      "domain": "transport_fares_routes",
+      "scenario": "passenger_finds_the_ferry_ticket_kiosk_after_asking_terminal_staff",
+      "lexicalThemes": [
+        "public transport",
+        "tickets",
+        "directions"
+      ],
+      "targetVocabulary": [
+        "ferry",
+        "ticket",
+        "terminal",
+        "kiosk"
+      ]
+    },
+    {
+      "date": "2026-10-20",
+      "storyId": "friends-adjust-spice-in-a-soup",
+      "domain": "food_cooking",
+      "scenario": "friends_add_a_small_amount_of_pepper_to_soup_and_leave_more_for_serving",
+      "lexicalThemes": [
+        "cooking",
+        "seasoning",
+        "tasting"
+      ],
+      "targetVocabulary": [
+        "soup",
+        "pepper",
+        "pinch",
+        "taste"
+      ]
+    },
+    {
+      "date": "2026-10-20",
+      "storyId": "visitors-follow-the-river-walk-marker",
+      "domain": "nature_outdoors",
+      "scenario": "walkers_use_a_blue_path_marker_after_asking_a_groundskeeper_for_directions",
+      "lexicalThemes": [
+        "outdoors",
+        "walking paths",
+        "directions"
+      ],
+      "targetVocabulary": [
+        "riverside",
+        "path",
+        "marker",
+        "follow"
+      ]
+    },
+    {
+      "date": "2026-10-20",
+      "storyId": "asks-who-is-last-in-the-pharmacy-queue",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_asks_a_waiting_customer_who_is_last_in_line_and_joins_the_queue",
+      "lexicalThemes": [
+        "queues",
+        "taking turns",
+        "polite questions"
+      ],
+      "targetVocabulary": [
+        "Who is last?",
+        "in line",
+        "to wait",
+        "my turn"
+      ]
     }
   ]
 }
