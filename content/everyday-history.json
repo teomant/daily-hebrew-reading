@@ -9088,6 +9088,303 @@
         "to wait",
         "my turn"
       ]
+    },
+    {
+      "date": "2026-10-21",
+      "storyId": "patient-asks-clinic-how-to-book-a-new-consultation",
+      "domain": "health_appointments",
+      "scenario": "patient_asks_clinic_which_department_can_book_a_suggested_separate_consultation",
+      "lexicalThemes": [
+        "clinic calls",
+        "explaining a referral or suggestion",
+        "asking which department handles a request",
+        "choosing an appointment time",
+        "confirming details"
+      ],
+      "targetVocabulary": [
+        "appointment",
+        "department",
+        "consultation",
+        "available",
+        "later",
+        "confirm",
+        "calendar"
+      ]
+    },
+    {
+      "date": "2026-10-21",
+      "storyId": "home-internet-user-tests-an-intermittent-connection",
+      "domain": "phone_internet",
+      "scenario": "resident_tests_intermittent_home_wifi_by_comparing_a_direct_cable_connection_and_router_placement",
+      "lexicalThemes": [
+        "describing an intermittent connection",
+        "answering support questions",
+        "testing devices and cables",
+        "comparing signal locations",
+        "trying a practical adjustment"
+      ],
+      "targetVocabulary": [
+        "connection",
+        "router",
+        "signal",
+        "cable",
+        "blinking",
+        "wireless",
+        "steady"
+      ]
+    },
+    {
+      "date": "2026-10-21",
+      "storyId": "friends-visit-a-local-pottery-studio-on-a-day-trip",
+      "domain": "travel_day_trips",
+      "scenario": "day_trippers_watch_a_potter_shape_a_bowl_and_choose_a_finished_local_cup",
+      "lexicalThemes": [
+        "stopping at a local studio",
+        "asking to observe a craft",
+        "clarifying stages of making",
+        "comparing handmade items",
+        "choosing and wrapping a souvenir"
+      ],
+      "targetVocabulary": [
+        "studio",
+        "potter",
+        "clay",
+        "shape",
+        "glaze",
+        "finished",
+        "wrap"
+      ]
+    },
+    {
+      "date": "2026-10-21",
+      "storyId": "payroll-clarifies-how-to-submit-a-work-expense",
+      "domain": "work_pay",
+      "scenario": "employee_clarifies_the_internal_process_for_documenting_a_manager_requested_work_purchase",
+      "lexicalThemes": [
+        "explaining a work purchase",
+        "asking which person or channel handles it",
+        "clarifying what a form asks for",
+        "describing and attaching a receipt",
+        "confirming a submission"
+      ],
+      "targetVocabulary": [
+        "receipt",
+        "expense",
+        "purchase",
+        "supplies",
+        "form",
+        "attach",
+        "confirmation"
+      ]
+    },
+    {
+      "date": "2026-10-21",
+      "storyId": "resident-asks-municipal-staff-about-a-community-compost-site",
+      "domain": "municipal_services",
+      "scenario": "resident_uses_a_community_garden_compost_site_after_clarifying_which_household_scraps_it_accepts",
+      "lexicalThemes": [
+        "asking about a shared community service",
+        "sorting suitable and unsuitable materials",
+        "following a simple process",
+        "finding supplies on site",
+        "planning a return visit"
+      ],
+      "targetVocabulary": [
+        "community garden",
+        "compost",
+        "scraps",
+        "peels",
+        "napkins",
+        "dry leaves",
+        "covered bin"
+      ]
+    },
+    {
+      "date": "2026-10-21",
+      "storyId": "checks-which-address-a-water-bill-covers",
+      "domain": "bills_taxes",
+      "scenario": "resident_matches_a_water_bill_to_the_address_printed_on_it_after_asking_the_provider",
+      "lexicalThemes": [
+        "household bills",
+        "addresses",
+        "clarifying details"
+      ],
+      "targetVocabulary": [
+        "bill",
+        "address",
+        "match",
+        "check"
+      ]
+    },
+    {
+      "date": "2026-10-21",
+      "storyId": "asks-where-to-sign-a-government-form",
+      "domain": "government_documents",
+      "scenario": "applicant_asks_a_clerk_to_identify_the_signature_line_on_a_completed_form",
+      "lexicalThemes": [
+        "forms",
+        "signatures",
+        "service desk"
+      ],
+      "targetVocabulary": [
+        "form",
+        "signature",
+        "line",
+        "point"
+      ]
+    },
+    {
+      "date": "2026-10-21",
+      "storyId": "asks-how-to-update-a-benefits-mailing-address",
+      "domain": "social_benefits",
+      "scenario": "benefits_recipient_updates_a_mailing_address_in_the_indicated_account_section",
+      "lexicalThemes": [
+        "contact details",
+        "online accounts",
+        "reviewing information"
+      ],
+      "targetVocabulary": [
+        "mailing address",
+        "update",
+        "account",
+        "review"
+      ]
+    },
+    {
+      "date": "2026-10-21",
+      "storyId": "asks-employer-where-an-interview-will-take-place",
+      "domain": "employment_jobs",
+      "scenario": "job_applicant_clarifies_the_interview_room_with_the_employer_and_records_it",
+      "lexicalThemes": [
+        "job interviews",
+        "locations",
+        "clarifying arrangements"
+      ],
+      "targetVocabulary": [
+        "interview",
+        "building",
+        "room",
+        "calendar"
+      ]
+    },
+    {
+      "date": "2026-10-21",
+      "storyId": "asks-insurer-how-to-save-an-unfinished-claim",
+      "domain": "insurance_claims",
+      "scenario": "policyholder_checks_the_draft_status_of_an_unfinished_online_claim_before_closing_the_page",
+      "lexicalThemes": [
+        "online forms",
+        "claim status",
+        "checking saved work"
+      ],
+      "targetVocabulary": [
+        "claim",
+        "draft",
+        "saved",
+        "status"
+      ]
+    },
+    {
+      "date": "2026-10-21",
+      "storyId": "asks-cashier-to-reprint-a-blurry-receipt",
+      "domain": "shopping_returns",
+      "scenario": "shopper_requests_and_checks_a_legible_reprint_of_a_faint_receipt",
+      "lexicalThemes": [
+        "receipts",
+        "shop counters",
+        "checking details"
+      ],
+      "targetVocabulary": [
+        "receipt",
+        "faint",
+        "reprint",
+        "legible"
+      ]
+    },
+    {
+      "date": "2026-10-21",
+      "storyId": "asks-driver-to-open-the-bus-luggage-compartment",
+      "domain": "transport_fares_routes",
+      "scenario": "passenger_checks_for_space_and_stows_a_folded_stroller_in_the_bus_luggage_compartment",
+      "lexicalThemes": [
+        "bus travel",
+        "luggage",
+        "asking permission"
+      ],
+      "targetVocabulary": [
+        "passenger",
+        "stroller",
+        "compartment",
+        "board"
+      ]
+    },
+    {
+      "date": "2026-10-21",
+      "storyId": "asks-neighbor-to-turn-down-a-radio",
+      "domain": "neighbors_building",
+      "scenario": "resident_politely_asks_a_neighbor_to_lower_a_radio_and_the_noise_decreases",
+      "lexicalThemes": [
+        "neighbors",
+        "noise",
+        "polite requests"
+      ],
+      "targetVocabulary": [
+        "radio",
+        "volume",
+        "lower",
+        "hear"
+      ]
+    },
+    {
+      "date": "2026-10-21",
+      "storyId": "asks-cafe-to-pack-a-leftover-pastry",
+      "domain": "food_service_orders",
+      "scenario": "cafe_customer_requests_a_box_for_a_leftover_pastry_and_packs_it_to_go",
+      "lexicalThemes": [
+        "café orders",
+        "leftovers",
+        "takeaway"
+      ],
+      "targetVocabulary": [
+        "pastry",
+        "box",
+        "leftover",
+        "take home"
+      ]
+    },
+    {
+      "date": "2026-10-21",
+      "storyId": "asks-at-the-museum-where-to-leave-a-backpack",
+      "domain": "arts_events",
+      "scenario": "museum_visitor_checks_the_backpack_policy_at_the_desk_and_stores_the_bag_in_a_locker",
+      "lexicalThemes": [
+        "museum visits",
+        "bags",
+        "visitor information"
+      ],
+      "targetVocabulary": [
+        "backpack",
+        "gallery",
+        "locker",
+        "store"
+      ]
+    },
+    {
+      "date": "2026-10-21",
+      "storyId": "asks-groundskeeper-which-path-leads-to-the-orchard",
+      "domain": "nature_outdoors",
+      "scenario": "garden_visitor_asks_groundskeeper_which_marked_path_leads_to_the_orchard_and_follows_it",
+      "lexicalThemes": [
+        "garden paths",
+        "directions",
+        "orchard"
+      ],
+      "targetVocabulary": [
+        "path",
+        "fork",
+        "sign",
+        "orchard"
+      ]
     }
   ]
 }
