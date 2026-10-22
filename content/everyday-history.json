@@ -9385,6 +9385,322 @@
         "sign",
         "orchard"
       ]
+    },
+    {
+      "date": "2026-10-22",
+      "storyId": "resident-asks-clinic-about-preparing-for-a-blood-test",
+      "domain": "health_appointments",
+      "scenario": "patient_clarifies_what_to_bring_for_a_routine_blood_test",
+      "lexicalThemes": [
+        "clinic appointment",
+        "preparing for a visit",
+        "checking a message",
+        "clarifying instructions",
+        "bringing paperwork"
+      ],
+      "targetVocabulary": [
+        "appointment reminder",
+        "blood test",
+        "bring",
+        "previous result",
+        "appointment notes",
+        "message",
+        "check in"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "storyId": "dialog-resident-asks-landlord-about-a-persistent-kitchen-odor",
+      "domain": "housing_landlord",
+      "scenario": "tenant_and_landlord_investigate_a_persistent_kitchen_cabinet_odor",
+      "lexicalThemes": [
+        "reporting a household problem",
+        "describing where and when",
+        "checking together",
+        "access for a repair visit",
+        "arranging a next step"
+      ],
+      "targetVocabulary": [
+        "odor",
+        "sink",
+        "drain",
+        "cabinet",
+        "damp",
+        "pipe",
+        "plumber",
+        "air out",
+        "visit window"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "storyId": "resident-asks-supermarket-staff-about-a-self-checkout-produce-code",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_finds_a_produce_entry_on_a_self_checkout_screen",
+      "lexicalThemes": [
+        "self-checkout",
+        "asking staff for help",
+        "matching names",
+        "weighing produce",
+        "checking a screen"
+      ],
+      "targetVocabulary": [
+        "self-checkout",
+        "produce",
+        "variety",
+        "label",
+        "shelf sign",
+        "weigh",
+        "entry",
+        "screen",
+        "scan"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "storyId": "dialog-friends-adjust-a-hill-walk-after-a-viewpoint-closure",
+      "domain": "nature_outdoors",
+      "scenario": "friends_choose_an_alternate_marked_loop_when_a_viewpoint_path_is_closed",
+      "lexicalThemes": [
+        "outdoor directions",
+        "reading a trail notice",
+        "comparing route options",
+        "asking a volunteer",
+        "changing plans"
+      ],
+      "targetVocabulary": [
+        "viewpoint",
+        "closed",
+        "maintenance",
+        "trailhead",
+        "loop",
+        "shaded",
+        "marker",
+        "route",
+        "trail"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "storyId": "resident-asks-electrician-about-an-intermittent-kitchen-light",
+      "domain": "home_repairs_utilities",
+      "scenario": "resident_prepares_for_an_electrician_to_inspect_a_flickering_kitchen_light",
+      "lexicalThemes": [
+        "describing an electrical issue",
+        "safe preparation",
+        "arranging access",
+        "following a technician's advice",
+        "testing after inspection"
+      ],
+      "targetVocabulary": [
+        "flicker",
+        "switch",
+        "fixture",
+        "bulb",
+        "electrician",
+        "inspect",
+        "electrical panel",
+        "counter",
+        "steady"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "storyId": "customer-confirms-a-bank-transfer-recipient",
+      "domain": "banking_credit",
+      "scenario": "customer_compares_a_transfer_recipient_name_with_saved_details_before_confirming",
+      "lexicalThemes": [
+        "bank transfer",
+        "recipient",
+        "confirmation screen",
+        "check details"
+      ],
+      "targetVocabulary": [
+        "transfer",
+        "recipient",
+        "name",
+        "confirm"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "storyId": "applicant-asks-about-a-blurry-form-scan",
+      "domain": "government_documents",
+      "scenario": "applicant_rescans_a_blurry_page_of_a_government_form_after_a_clerk_points_out_the_unclear_text",
+      "lexicalThemes": [
+        "form",
+        "scan",
+        "readable text",
+        "attachment"
+      ],
+      "targetVocabulary": [
+        "page",
+        "blurry",
+        "readable",
+        "scan"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "storyId": "resident-asks-how-to-split-a-household-bill-payment",
+      "domain": "bills_taxes",
+      "scenario": "roommates_clarify_whether_a_household_bill_can_be_paid_in_two_separate_payments_before_submitting",
+      "lexicalThemes": [
+        "household bill",
+        "separate accounts",
+        "payment screen",
+        "clarify"
+      ],
+      "targetVocabulary": [
+        "bill",
+        "payment",
+        "separate",
+        "check"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "storyId": "applicant-asks-how-to-follow-up-on-a-job-application",
+      "domain": "employment_jobs",
+      "scenario": "applicant_identifies_the_department_for_a_job_application_follow_up_and_sends_a_short_message",
+      "lexicalThemes": [
+        "job application",
+        "contact address",
+        "department",
+        "follow-up"
+      ],
+      "targetVocabulary": [
+        "application",
+        "contact",
+        "department",
+        "message"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "storyId": "customer-asks-if-a-pharmacy-prescription-is-ready",
+      "domain": "pharmacy_prescriptions",
+      "scenario": "customer_checks_whether_a_prescription_is_ready_and_waits_while_it_is_prepared",
+      "lexicalThemes": [
+        "prescription",
+        "collection",
+        "name",
+        "waiting"
+      ],
+      "targetVocabulary": [
+        "prescription",
+        "ready",
+        "collect",
+        "wait"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "storyId": "shopper-asks-which-basket-belongs-to-the-queue",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_identifies_the_queue_marker_at_a_crowded_bakery_counter",
+      "lexicalThemes": [
+        "queue",
+        "basket",
+        "counter",
+        "where to stand"
+      ],
+      "targetVocabulary": [
+        "queue",
+        "basket",
+        "next",
+        "stand"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "storyId": "customer-asks-cafe-to-change-a-drink-order",
+      "domain": "food_service_orders",
+      "scenario": "customer_corrects_a_drink_order_before_the_cafe_prepares_it",
+      "lexicalThemes": [
+        "drink order",
+        "correction",
+        "milk",
+        "before preparation"
+      ],
+      "targetVocabulary": [
+        "tea",
+        "milk",
+        "without",
+        "change"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "storyId": "traveler-asks-delivery-desk-about-a-parcel-pickup",
+      "domain": "delivery_customer_service",
+      "scenario": "recipient_uses_a_receptionists_help_to_locate_the_pickup_desk_named_in_a_delivery_message",
+      "lexicalThemes": [
+        "delivery message",
+        "pickup desk",
+        "lobby",
+        "collect"
+      ],
+      "targetVocabulary": [
+        "parcel",
+        "message",
+        "desk",
+        "collect"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "storyId": "friends-make-a-quick-herb-dressing",
+      "domain": "food_cooking",
+      "scenario": "friends_taste_a_small_amount_of_chopped_mint_before_adding_the_rest_to_salad_dressing",
+      "lexicalThemes": [
+        "salad dressing",
+        "fresh mint",
+        "chop",
+        "taste"
+      ],
+      "targetVocabulary": [
+        "mint",
+        "chop",
+        "leaves",
+        "taste"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "storyId": "visitors-ask-where-a-day-trip-boat-sets-off",
+      "domain": "travel_day_trips",
+      "scenario": "visitors_identify_the_correct_lakeside_dock_for_a_sightseeing_boat_trip",
+      "lexicalThemes": [
+        "day trip",
+        "boat",
+        "dock",
+        "route sign"
+      ],
+      "targetVocabulary": [
+        "boat",
+        "dock",
+        "route",
+        "board"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "storyId": "customer-asks-server-which-soup-is-vegetarian",
+      "domain": "food_service_orders",
+      "scenario": "customer_asks_server_which_soup_is_vegetarian_and_orders_the_lentil_soup_after_the_server_checks",
+      "lexicalThemes": [
+        "restaurant orders",
+        "menu questions",
+        "food preferences"
+      ],
+      "targetVocabulary": [
+        "soup",
+        "vegetarian",
+        "menu",
+        "order",
+        "server"
+      ]
     }
   ]
 }
