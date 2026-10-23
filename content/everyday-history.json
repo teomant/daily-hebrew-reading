@@ -9701,6 +9701,318 @@
         "order",
         "server"
       ]
+    },
+    {
+      "date": "2026-10-23",
+      "storyId": "applicant-organizes-a-double-sided-document-copy",
+      "domain": "government_documents",
+      "scenario": "applicant_reorders_a_double_sided_supporting_document_copy_at_a_service_desk",
+      "lexicalThemes": [
+        "forms and supporting documents",
+        "front and back",
+        "paper order",
+        "checking and clarifying",
+        "submitting documents"
+      ],
+      "targetVocabulary": [
+        "form",
+        "copy",
+        "both sides",
+        "in order",
+        "original",
+        "submit"
+      ]
+    },
+    {
+      "date": "2026-10-23",
+      "storyId": "driver-chooses-a-parking-space-for-a-tall-car",
+      "domain": "driving_parking",
+      "scenario": "driver_chooses_an_open_air_parking_space_because_a_roof_box_may_not_clear_the_garage",
+      "lexicalThemes": [
+        "parking options",
+        "vehicle height",
+        "asking for directions",
+        "clarifying a location",
+        "choosing a safe space"
+      ],
+      "targetVocabulary": [
+        "parking lot",
+        "covered parking",
+        "clearance",
+        "roof box",
+        "entrance",
+        "open-air"
+      ]
+    },
+    {
+      "date": "2026-10-23",
+      "storyId": "friends-plan-a-market-and-coastal-walk-day-trip",
+      "domain": "travel_day_trips",
+      "scenario": "friends_combine_a_coastal_town_market_visit_with_a_walk_and_adjust_their_route",
+      "lexicalThemes": [
+        "day-trip plans",
+        "market shopping",
+        "ripe fruit",
+        "asking for local suggestions",
+        "adjusting a walking route"
+      ],
+      "targetVocabulary": [
+        "market",
+        "ripe",
+        "wrap",
+        "promenade",
+        "map",
+        "return bus"
+      ]
+    },
+    {
+      "date": "2026-10-23",
+      "storyId": "dialog-parent-and-school-coordinator-plan-a-library-book-return",
+      "domain": "school_childcare",
+      "scenario": "parent_arranges_return_of_a_school_library_book_before_a_class_trip",
+      "lexicalThemes": [
+        "school library items",
+        "due dates",
+        "class schedules",
+        "where to leave an item",
+        "clarifying instructions"
+      ],
+      "targetVocabulary": [
+        "library book",
+        "due back",
+        "class trip",
+        "office",
+        "teacher",
+        "note"
+      ]
+    },
+    {
+      "date": "2026-10-23",
+      "storyId": "dialog-diner-and-server-arrange-to-split-a-shared-meal-bill",
+      "domain": "food_service_orders",
+      "scenario": "friends_split_a_restaurant_bill_by_individual_dishes_and_one_shared_side",
+      "lexicalThemes": [
+        "restaurant bills",
+        "shared dishes",
+        "paying separately",
+        "checking an itemized bill",
+        "agreeing on a split"
+      ],
+      "targetVocabulary": [
+        "bill",
+        "separately",
+        "shared",
+        "side dish",
+        "listed",
+        "pay"
+      ]
+    },
+    {
+      "date": "2026-10-23",
+      "storyId": "customer-checks-a-pending-card-payment",
+      "domain": "banking_credit",
+      "scenario": "customer_compares_two_similar_card_app_entries_with_the_cashier_and_confirms_only_one_payment_was_completed",
+      "lexicalThemes": [
+        "card payments",
+        "banking app",
+        "checking a charge"
+      ],
+      "targetVocabulary": [
+        "charge",
+        "payment",
+        "card",
+        "app",
+        "receipt",
+        "check"
+      ]
+    },
+    {
+      "date": "2026-10-23",
+      "storyId": "policyholder-asks-which-photo-to-attach-to-a-claim",
+      "domain": "insurance_claims",
+      "scenario": "policyholder_clarifies_which_photos_to_attach_to_a_claim_about_a_scratched_bicycle",
+      "lexicalThemes": [
+        "insurance claim",
+        "photographs",
+        "describing damage"
+      ],
+      "targetVocabulary": [
+        "claim",
+        "photo",
+        "scratch",
+        "close-up",
+        "attach",
+        "damage"
+      ]
+    },
+    {
+      "date": "2026-10-23",
+      "storyId": "resident-asks-what-a-bill-line-means",
+      "domain": "bills_taxes",
+      "scenario": "resident_calls_a_provider_to_clarify_an_unfamiliar_line_on_a_water_bill",
+      "lexicalThemes": [
+        "household bill",
+        "bill details",
+        "asking for clarification"
+      ],
+      "targetVocabulary": [
+        "bill",
+        "line",
+        "label",
+        "provider",
+        "explain",
+        "write down"
+      ]
+    },
+    {
+      "date": "2026-10-23",
+      "storyId": "caller-describes-a-sore-wrist-to-a-clinic",
+      "domain": "injuries_symptoms",
+      "scenario": "caller_describes_when_and_during_which_movement_a_sore_wrist_is_noticeable",
+      "lexicalThemes": [
+        "describing a symptom",
+        "body movement",
+        "sharing details"
+      ],
+      "targetVocabulary": [
+        "wrist",
+        "sore",
+        "turn",
+        "notice",
+        "when",
+        "describe"
+      ]
+    },
+    {
+      "date": "2026-10-23",
+      "storyId": "user-turns-off-unwanted-account-notifications",
+      "domain": "digital_accounts",
+      "scenario": "user_adjusts_one_notification_setting_for_saved_drafts_without_turning_off_other_alerts",
+      "lexicalThemes": [
+        "account settings",
+        "notifications",
+        "choosing an option"
+      ],
+      "targetVocabulary": [
+        "account",
+        "setting",
+        "notification",
+        "draft",
+        "switch off",
+        "leave on"
+      ]
+    },
+    {
+      "date": "2026-10-23",
+      "storyId": "shopper-checks-a-self-checkout-bagging-area",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_asks_where_to_place_a_heavy_item_at_self_checkout_and_uses_the_indicated_shelf",
+      "lexicalThemes": [
+        "self-checkout",
+        "placing groceries",
+        "asking for help"
+      ],
+      "targetVocabulary": [
+        "checkout",
+        "bottle",
+        "cart",
+        "shelf",
+        "place",
+        "continue"
+      ]
+    },
+    {
+      "date": "2026-10-23",
+      "storyId": "customer-asks-courier-to-leave-a-parcel-with-a-neighbor",
+      "domain": "delivery_customer_service",
+      "scenario": "recipient_asks_a_courier_to_leave_a_parcel_with_a_neighbor_and_confirms_the_neighbor_can_receive_it",
+      "lexicalThemes": [
+        "parcel delivery",
+        "courier call",
+        "neighbor"
+      ],
+      "targetVocabulary": [
+        "courier",
+        "parcel",
+        "leave",
+        "neighbor",
+        "entrance",
+        "confirm"
+      ]
+    },
+    {
+      "date": "2026-10-23",
+      "storyId": "cook-asks-when-to-add-lentils-to-soup",
+      "domain": "food_cooking",
+      "scenario": "home_cook_times_adding_cooked_lentils_to_soup_until_the_vegetables_are_tender",
+      "lexicalThemes": [
+        "making soup",
+        "cooking sequence",
+        "ingredients"
+      ],
+      "targetVocabulary": [
+        "soup",
+        "lentils",
+        "vegetables",
+        "add",
+        "stir",
+        "tender"
+      ]
+    },
+    {
+      "date": "2026-10-23",
+      "storyId": "visitor-asks-gallery-guide-about-audio-description",
+      "domain": "arts_events",
+      "scenario": "gallery_visitor_requests_and_uses_an_audio_description_for_an_exhibition_painting",
+      "lexicalThemes": [
+        "gallery visit",
+        "accessibility",
+        "using an audio device"
+      ],
+      "targetVocabulary": [
+        "gallery",
+        "painting",
+        "audio",
+        "description",
+        "device",
+        "button"
+      ]
+    },
+    {
+      "date": "2026-10-23",
+      "storyId": "resident-asks-how-to-read-a-meter-display",
+      "domain": "home_repairs_utilities",
+      "scenario": "resident_learns_which_digits_on_a_water_meter_show_the_reading_and_records_them_for_comparison",
+      "lexicalThemes": [
+        "water meter",
+        "reading digits",
+        "recording a number"
+      ],
+      "targetVocabulary": [
+        "meter",
+        "reading",
+        "digits",
+        "number",
+        "point out",
+        "compare"
+      ]
+    },
+    {
+      "date": "2026-10-23",
+      "storyId": "user-changes-an-online-account-display-language",
+      "domain": "digital_accounts",
+      "scenario": "user_changes_an_online_account_display_language_with_a_friends_help_and_confirms_the_menu_updates",
+      "lexicalThemes": [
+        "account settings",
+        "language options",
+        "menus"
+      ],
+      "targetVocabulary": [
+        "display language",
+        "settings",
+        "select",
+        "menu"
+      ]
     }
   ]
 }
