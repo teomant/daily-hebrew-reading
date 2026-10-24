@@ -28,6 +28,14 @@ Order HISTORY candidates by supported factual substance, interest, usefulness fo
 
 Among otherwise suitable HISTORY subjects, prefer concrete facts that an end-of-Alef reader can follow. An article may explain a person's work, an object, a custom, or several interesting facets of a place without a dramatic plot. A subject that depends on many unexplained institutions, specialist terms, or dates is a weaker choice even if its sources are strong.
 
+Use the recent records to identify overused topics as well as exact duplicates before choosing search queries.
+Search beyond those clusters and rank complementary subjects first, because the first surviving candidates become the issue.
+For CURRENT, avoid repeatedly filling the issue from one city or one kind of municipal announcement when suitable alternatives exist.
+For HISTORY, different names or texts can still produce a repetitive run of religious regulations, school histories, writer biographies, or factory origins.
+Prefer a different activity, historical question, period, or aspect of daily life when a recent cluster already covers one of these patterns.
+These examples identify possible clusters; they are not bans or a fixed rotation.
+Keep factual substance and relevance essential, and use variety to choose among suitable candidates without adding family quotas.
+
 Apply a strict recent-subject exclusion before returning anything. For HISTORY, the same named street, building, archaeological site, institution, person, event, object, custom, or other primary subject used in a forbidden or already selected story is a duplicate. A different source, excavation report, historical period, archaeological layer, newly emphasized fact, or angle about that same primary subject does not make it new. For CURRENT, a later status report, continuing consequence, “still” update, new article, or changed statistic about the same underlying event remains a duplicate. Discard such candidates and continue searching for a genuinely different primary subject or event.
 
 Every candidate needs a compact factual English `brief` that identifies its central subject and underlying story for deduplication. CURRENT requires at least one consulted source page. For HISTORY, include a useful screening source when available, but an empty source list is acceptable because selected subjects receive a separate focused web-research pass after duplicate review and selection. This is screening, not deep research: do not return story beats.

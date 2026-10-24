@@ -1,5 +1,17 @@
 # Implementation log
 
+## 2026-10-24
+
+- Owner requested a quick prompt improvement for repeated topics and plots, especially in SHORTS, without a plan document or repeated reviews.
+  Updated local `master` to `ce69c3a` and inspected October 17–24 story briefs and recent scenario records.
+  Found repeated staff-question plots, clinic and repair situations, and clusters of Haifa news and religious-history subjects.
+- Replaced the question-heavy SHORTS examples with guidance for varied actions, relationships, and outcomes.
+  Added comparison of plot patterns across recent full stories and short items, plus a check that removes names and objects to expose cosmetic variations.
+  Added matching guidance for EVERYDAY/DIALOG and topic variety in sourced discovery.
+  Kept existing domains, pool targets, schemas, generation stages, and published content.
+  All 92 offline unit tests and whitespace checks passed.
+  No paid generation ran; the effect on variety must be assessed in future output.
+
 ## 2026-10-18
 
 - Owner requested a fourteen-day HISTORY exclusion window, stronger source priorities with concrete reliable sources, useful and interesting articles, and an Israeli/Jewish connection even for fallback subjects. Clarified that “repairable” was a typo for “reliable”; no source-repair machinery is needed. Kept CURRENT/generated windows at seven days. Removed the completed task plan and empty plans directory at the owner’s request.
