@@ -10013,6 +10013,335 @@
         "select",
         "menu"
       ]
+    },
+    {
+      "date": "2026-10-24",
+      "storyId": "sets-up-a-rent-standing-order",
+      "domain": "banking_credit",
+      "scenario": "customer_sets_up_a_rent_standing_order_and_checks_the_recipient_details_before_confirming",
+      "lexicalThemes": [
+        "recurring payments",
+        "confirming recipient details",
+        "choosing a payment date",
+        "checking an order before confirming"
+      ],
+      "targetVocabulary": [
+        "standing order",
+        "recipient",
+        "account details",
+        "amount",
+        "date",
+        "confirm",
+        "review",
+        "rent"
+      ]
+    },
+    {
+      "date": "2026-10-24",
+      "storyId": "checks-and-reloads-a-transit-card",
+      "domain": "transport_fares_routes",
+      "scenario": "passenger_checks_a_transit_card_balance_and_adds_credit_at_a_station_machine",
+      "lexicalThemes": [
+        "checking a card balance",
+        "using a station machine",
+        "adding credit",
+        "confirming a transaction"
+      ],
+      "targetVocabulary": [
+        "transit card",
+        "balance",
+        "reader",
+        "screen",
+        "add credit",
+        "amount",
+        "pay",
+        "updated"
+      ]
+    },
+    {
+      "date": "2026-10-24",
+      "storyId": "makes-a-small-batch-of-pita-with-a-friend",
+      "domain": "food_cooking",
+      "scenario": "friends_make_pita_dough_at_home_and_adjust_the_texture_and_pan_heat_as_they_cook",
+      "lexicalThemes": [
+        "measuring ingredients",
+        "describing dough texture",
+        "dividing and rolling dough",
+        "adjusting cooking heat"
+      ],
+      "targetVocabulary": [
+        "flour",
+        "water",
+        "dough",
+        "sticky",
+        "knead",
+        "roll out",
+        "pan",
+        "heat",
+        "puff"
+      ]
+    },
+    {
+      "date": "2026-10-24",
+      "storyId": "dialog-chooses-a-quiet-table-at-a-cafe",
+      "domain": "food_service_orders",
+      "scenario": "cafe_visitors_explain_they_need_a_quieter_table_and_agree_to_wait_for_a_suitable_two_person_table",
+      "lexicalThemes": [
+        "requesting a table",
+        "explaining a preference",
+        "availability and waiting",
+        "agreeing on a practical arrangement"
+      ],
+      "targetVocabulary": [
+        "table",
+        "quiet",
+        "reserved",
+        "available",
+        "nearby",
+        "wait",
+        "clear",
+        "window"
+      ]
+    },
+    {
+      "date": "2026-10-24",
+      "storyId": "dialog-asks-a-neighbor-to-coordinate-stairwell-painting",
+      "domain": "neighbors_building",
+      "scenario": "neighbors_coordinate_moving_painting_supplies_out_of_a_shared_stairwell_to_clear_a_passage",
+      "lexicalThemes": [
+        "shared building spaces",
+        "explaining a practical need",
+        "making a safe adjustment",
+        "agreeing on a plan"
+      ],
+      "targetVocabulary": [
+        "stairwell",
+        "shared space",
+        "supplies",
+        "passage",
+        "move",
+        "clear",
+        "carry",
+        "later"
+      ]
+    },
+    {
+      "date": "2026-10-24",
+      "storyId": "asks-bank-about-a-repeated-transfer-entry",
+      "domain": "banking_credit",
+      "scenario": "customer_asks_bank_clerk_to_distinguish_a_scheduled_transfer_from_a_similar_saved_draft_and_leaves_the_scheduled_transfer_unchanged",
+      "lexicalThemes": [
+        "banking app",
+        "transfer",
+        "scheduled payment",
+        "saved draft",
+        "clarification"
+      ],
+      "targetVocabulary": [
+        "transfer",
+        "scheduled",
+        "draft",
+        "entry",
+        "distinguish"
+      ]
+    },
+    {
+      "date": "2026-10-24",
+      "storyId": "asks-pharmacist-how-to-read-a-dose-label",
+      "domain": "pharmacy_prescriptions",
+      "scenario": "customer_asks_pharmacist_to_clarify_whether_a_labelled_amount_refers_to_one_dose_or_the_whole_day_and_repeats_the_wording_back",
+      "lexicalThemes": [
+        "pharmacy",
+        "medicine label",
+        "dose",
+        "clarification",
+        "reading"
+      ],
+      "targetVocabulary": [
+        "label",
+        "dose",
+        "amount",
+        "whole day",
+        "confirm"
+      ]
+    },
+    {
+      "date": "2026-10-24",
+      "storyId": "calls-clinic-to-describe-a-new-itchy-rash",
+      "domain": "injuries_symptoms",
+      "scenario": "caller_describes_when_and_where_a_small_itchy_patch_appeared_after_asking_the_clinic_which_details_to_report",
+      "lexicalThemes": [
+        "clinic call",
+        "symptom description",
+        "itching",
+        "time",
+        "location"
+      ],
+      "targetVocabulary": [
+        "itchy",
+        "patch",
+        "appeared",
+        "arm",
+        "describe"
+      ]
+    },
+    {
+      "date": "2026-10-24",
+      "storyId": "asks-clerk-which-document-field-is-for-a-middle-name",
+      "domain": "government_documents",
+      "scenario": "applicant_asks_a_service_desk_clerk_where_to_enter_a_middle_name_on_a_form_and_fills_in_the_additional_names_field",
+      "lexicalThemes": [
+        "form",
+        "service desk",
+        "name fields",
+        "clarification",
+        "writing"
+      ],
+      "targetVocabulary": [
+        "middle name",
+        "given name",
+        "field",
+        "additional",
+        "fill in"
+      ]
+    },
+    {
+      "date": "2026-10-24",
+      "storyId": "asks-vet-to-check-a-dog-collar-fit",
+      "domain": "pets_veterinary",
+      "scenario": "pet_owner_asks_veterinary_assistant_to_adjust_a_dogs_new_collar_and_checks_that_it_sits_comfortably",
+      "lexicalThemes": [
+        "pet visit",
+        "dog collar",
+        "fit",
+        "adjustment",
+        "comfort"
+      ],
+      "targetVocabulary": [
+        "collar",
+        "strap",
+        "loose",
+        "adjust",
+        "comfortable"
+      ]
+    },
+    {
+      "date": "2026-10-24",
+      "storyId": "asks-phone-support-how-to-save-a-voicemail",
+      "domain": "phone_internet",
+      "scenario": "phone_user_asks_support_how_to_save_a_voicemail_containing_an_address_and_confirms_the_message_is_marked_saved",
+      "lexicalThemes": [
+        "phone support",
+        "voicemail",
+        "saving messages",
+        "address",
+        "app setting"
+      ],
+      "targetVocabulary": [
+        "voicemail",
+        "message",
+        "save",
+        "inbox",
+        "marked"
+      ]
+    },
+    {
+      "date": "2026-10-24",
+      "storyId": "asks-post-office-for-a-parcel-box",
+      "domain": "postal_parcels",
+      "scenario": "sender_asks_post_office_clerk_to_choose_between_two_box_sizes_for_a_small_fragile_gift_and_selects_the_snug_fit",
+      "lexicalThemes": [
+        "post office",
+        "parcel",
+        "box size",
+        "fragile item",
+        "choosing"
+      ],
+      "targetVocabulary": [
+        "parcel",
+        "box",
+        "size",
+        "fragile",
+        "fit"
+      ]
+    },
+    {
+      "date": "2026-10-24",
+      "storyId": "neighbors-label-the-shared-laundry-basket",
+      "domain": "neighbors_building",
+      "scenario": "neighbors_label_their_laundry_baskets_after_finding_their_folded_clothes_mixed_in_a_shared_building_room",
+      "lexicalThemes": [
+        "neighbors",
+        "shared laundry room",
+        "mix-up",
+        "labels",
+        "sorting"
+      ],
+      "targetVocabulary": [
+        "basket",
+        "laundry",
+        "shared",
+        "label",
+        "sort"
+      ]
+    },
+    {
+      "date": "2026-10-24",
+      "storyId": "asks-cook-how-to-keep-cut-apples-from-browning",
+      "domain": "food_cooking",
+      "scenario": "siblings_prepare_cut_apples_for_a_picnic_after_one_suggests_tossing_them_with_a_little_lemon_juice",
+      "lexicalThemes": [
+        "cooking",
+        "apples",
+        "picnic food",
+        "color change",
+        "simple preparation"
+      ],
+      "targetVocabulary": [
+        "slice",
+        "apple",
+        "brown",
+        "lemon juice",
+        "toss"
+      ]
+    },
+    {
+      "date": "2026-10-24",
+      "storyId": "asks-visitor-center-where-the-mosaic-workshop-meets",
+      "domain": "travel_day_trips",
+      "scenario": "day_tripper_asks_visitor_center_staff_to_identify_which_of_two_community_rooms_hosts_a_mosaic_workshop_and_walks_to_the_indicated_room",
+      "lexicalThemes": [
+        "day trip",
+        "visitor center",
+        "workshop",
+        "directions",
+        "local venue"
+      ],
+      "targetVocabulary": [
+        "workshop",
+        "map",
+        "room",
+        "courtyard",
+        "ticket"
+      ]
+    },
+    {
+      "date": "2026-10-24",
+      "storyId": "asks-clinic-where-to-check-in-for-a-urine-test",
+      "domain": "health_appointments",
+      "scenario": "patient_asks_clinic_receptionist_where_to_leave_a_sample_brought_for_a_routine_test_and_hands_it_in_at_the_indicated_collection_window",
+      "lexicalThemes": [
+        "clinic reception",
+        "sample container",
+        "collection window",
+        "directions"
+      ],
+      "targetVocabulary": [
+        "Where should I leave this?",
+        "sample",
+        "collection window",
+        "hand in"
+      ]
     }
   ]
 }
