@@ -10342,6 +10342,313 @@
         "collection window",
         "hand in"
       ]
+    },
+    {
+      "date": "2026-10-25",
+      "storyId": "applicant-collects-a-document-during-a-work-break",
+      "domain": "government_documents",
+      "scenario": "resident_coordinates_same_day_collection_of_a_ready_personal_document_around_a_short_work_break",
+      "lexicalThemes": [
+        "collecting a document",
+        "work schedule",
+        "identification",
+        "checking details"
+      ],
+      "targetVocabulary": [
+        "ready for collection",
+        "opening hours",
+        "short break",
+        "identification",
+        "collection message",
+        "hold it until",
+        "check that it is mine"
+      ]
+    },
+    {
+      "date": "2026-10-25",
+      "storyId": "courier-and-customer-sort-out-a-swapped-delivery",
+      "domain": "delivery_customer_service",
+      "scenario": "customer_and_courier_correct_two_swapped_grocery_boxes_and_report_one_remaining_missing_item",
+      "lexicalThemes": [
+        "delivery mix-up",
+        "checking labels",
+        "missing items",
+        "explaining a discrepancy"
+      ],
+      "targetVocabulary": [
+        "delivery box",
+        "label",
+        "belongs to",
+        "missing item",
+        "compare",
+        "set aside",
+        "report the problem",
+        "order list"
+      ]
+    },
+    {
+      "date": "2026-10-25",
+      "storyId": "cook-and-roommate-adjust-a-frittata-without-cheese",
+      "domain": "food_cooking",
+      "scenario": "roommates_adapt_a_vegetable_frittata_when_the_expected_cheese_is_unavailable",
+      "lexicalThemes": [
+        "missing ingredient",
+        "cooking together",
+        "texture and heat",
+        "serving a meal"
+      ],
+      "targetVocabulary": [
+        "frittata",
+        "cheese",
+        "fresh herbs",
+        "on the side",
+        "too wet",
+        "lower the heat",
+        "cover the pan",
+        "give it more time"
+      ]
+    },
+    {
+      "date": "2026-10-25",
+      "storyId": "dialog-coworkers-negotiate-a-shift-swap",
+      "domain": "work_pay",
+      "scenario": "coworkers_negotiate_a_two_way_shift_swap_around_family_and_morning_commitments",
+      "lexicalThemes": [
+        "work shifts",
+        "availability",
+        "negotiating a swap",
+        "confirming a schedule"
+      ],
+      "targetVocabulary": [
+        "closing shift",
+        "swap shifts",
+        "cover a shift",
+        "whole shift",
+        "commitment",
+        "overlap",
+        "schedule",
+        "confirm"
+      ]
+    },
+    {
+      "date": "2026-10-25",
+      "storyId": "pet-owner-and-sitter-agree-on-a-dog-walk-routine",
+      "domain": "pets_veterinary",
+      "scenario": "neighbor_agrees_to_walk_a_residents_dog_at_a_later_time_and_practices_the_familiar_route",
+      "lexicalThemes": [
+        "pet care",
+        "offering help",
+        "daily routine",
+        "handling a small difficulty"
+      ],
+      "targetVocabulary": [
+        "look after",
+        "short walk",
+        "after work",
+        "leash",
+        "treat",
+        "pull toward",
+        "quieter street",
+        "send a message"
+      ]
+    },
+    {
+      "date": "2026-10-25",
+      "storyId": "asks-how-to-check-a-new-electricity-charge",
+      "domain": "bills_taxes",
+      "scenario": "resident_checks_the_billing_period_on_an_unexpectedly_high_electricity_bill_against_her_calendar",
+      "lexicalThemes": [
+        "household bills",
+        "billing period",
+        "dates"
+      ],
+      "targetVocabulary": [
+        "bill",
+        "electricity",
+        "period",
+        "date",
+        "compare"
+      ]
+    },
+    {
+      "date": "2026-10-25",
+      "storyId": "roommate-clears-space-for-a-repair-visit",
+      "domain": "home_repairs_utilities",
+      "scenario": "roommates_clear_only_the_area_beneath_a_loose_kitchen_cabinet_hinge_before_a_repair_visit",
+      "lexicalThemes": [
+        "home repairs",
+        "sharing tasks",
+        "kitchen storage"
+      ],
+      "targetVocabulary": [
+        "hinge",
+        "cabinet",
+        "shelf",
+        "move",
+        "clear"
+      ]
+    },
+    {
+      "date": "2026-10-25",
+      "storyId": "coworker-points-out-a-pay-slip-error",
+      "domain": "work_pay",
+      "scenario": "employee_and_supervisor_note_a_possible_shift_error_on_a_pay_slip_after_comparing_it_with_a_calendar",
+      "lexicalThemes": [
+        "pay slips",
+        "work records",
+        "uncertainty"
+      ],
+      "targetVocabulary": [
+        "pay slip",
+        "shift",
+        "mistake",
+        "compare",
+        "review"
+      ]
+    },
+    {
+      "date": "2026-10-25",
+      "storyId": "friend-helps-organize-benefit-papers",
+      "domain": "social_benefits",
+      "scenario": "applicant_and_friend_find_the_latest_benefits_letter_and_mark_a_sentence_to_clarify_by_phone",
+      "lexicalThemes": [
+        "benefits letters",
+        "organizing papers",
+        "asking for clarification"
+      ],
+      "targetVocabulary": [
+        "letter",
+        "latest",
+        "sort",
+        "sentence",
+        "clarify"
+      ]
+    },
+    {
+      "date": "2026-10-25",
+      "storyId": "driver-shares-a-jumper-cable",
+      "domain": "driving_parking",
+      "scenario": "driver_offers_a_longer_tire_pump_cable_to_another_driver_and_they_position_it_safely",
+      "lexicalThemes": [
+        "parking area",
+        "offering help",
+        "car equipment"
+      ],
+      "targetVocabulary": [
+        "driver",
+        "cable",
+        "pump",
+        "offer",
+        "reach"
+      ]
+    },
+    {
+      "date": "2026-10-25",
+      "storyId": "friends-compare-two-reading-apps",
+      "domain": "digital_accounts",
+      "scenario": "friends_compare_reading_app_features_and_agree_to_try_each_others_preferred_options",
+      "lexicalThemes": [
+        "digital preferences",
+        "comparison",
+        "trying features"
+      ],
+      "targetVocabulary": [
+        "app",
+        "feature",
+        "text size",
+        "save",
+        "try"
+      ]
+    },
+    {
+      "date": "2026-10-25",
+      "storyId": "neighbor-borrows-a-folding-chair",
+      "domain": "neighbors_building",
+      "scenario": "neighbor_lends_a_folding_chair_for_a_family_visit_and_receives_it_back_with_a_note",
+      "lexicalThemes": [
+        "neighbors",
+        "lending",
+        "returning a favor"
+      ],
+      "targetVocabulary": [
+        "borrow",
+        "lend",
+        "folding chair",
+        "return",
+        "thank-you note"
+      ]
+    },
+    {
+      "date": "2026-10-25",
+      "storyId": "cook-rescues-over-salted-rice",
+      "domain": "food_cooking",
+      "scenario": "siblings_balance_over_salted_rice_by_serving_it_with_plain_yogurt_and_unsalted_vegetables",
+      "lexicalThemes": [
+        "cooking mishaps",
+        "tasting",
+        "improvising"
+      ],
+      "targetVocabulary": [
+        "rice",
+        "salt",
+        "taste",
+        "plain",
+        "balance"
+      ]
+    },
+    {
+      "date": "2026-10-25",
+      "storyId": "visitors-share-a-surprise-at-a-small-show",
+      "domain": "arts_events",
+      "scenario": "audience_member_starts_a_simple_clapping_rhythm_after_a_performers_invitation_and_the_performers_echo_it",
+      "lexicalThemes": [
+        "live performance",
+        "audience participation",
+        "surprise"
+      ],
+      "targetVocabulary": [
+        "performer",
+        "audience",
+        "clap",
+        "rhythm",
+        "echo"
+      ]
+    },
+    {
+      "date": "2026-10-25",
+      "storyId": "friend-covers-a-plant-during-a-windy-walk",
+      "domain": "nature_outdoors",
+      "scenario": "visitor_catches_a_windblown_plant_label_and_helps_secure_it_without_disturbing_the_garden",
+      "lexicalThemes": [
+        "outdoor walk",
+        "small surprise",
+        "care for plants"
+      ],
+      "targetVocabulary": [
+        "wind",
+        "label",
+        "catch",
+        "stone",
+        "plant"
+      ]
+    },
+    {
+      "date": "2026-10-25",
+      "storyId": "friend-pins-a-family-photo-in-chat",
+      "domain": "digital_accounts",
+      "scenario": "relative_shows_another_relative_how_to_pin_a_family_photo_in_a_chat_and_they_confirm_it_is_easy_to_find",
+      "lexicalThemes": [
+        "family",
+        "chat",
+        "photos",
+        "helping"
+      ],
+      "targetVocabulary": [
+        "to pin",
+        "photo",
+        "conversation",
+        "easy to find"
+      ]
     }
   ]
 }
