@@ -10649,6 +10649,338 @@
         "conversation",
         "easy to find"
       ]
+    },
+    {
+      "date": "2026-10-26",
+      "storyId": "tenant-and-landlord-coordinate-a-building-inspection",
+      "domain": "housing_landlord",
+      "scenario": "tenant_and_landlord_reschedule_shared_plumbing_inspection_access_and_clear_only_the_needed_cabinet",
+      "lexicalThemes": [
+        "arranging access to a rented home",
+        "explaining availability",
+        "clarifying what needs to be moved",
+        "agreeing on a visit time"
+      ],
+      "targetVocabulary": [
+        "inspection",
+        "access",
+        "under the sink",
+        "move",
+        "available",
+        "visit window",
+        "accompany",
+        "reschedule"
+      ]
+    },
+    {
+      "date": "2026-10-26",
+      "storyId": "resident-organizes-documents-for-a-benefits-meeting",
+      "domain": "social_benefits",
+      "scenario": "applicant_and_friend_sort_benefits_correspondence_by_date_and_mark_one_unresolved_receipt_question",
+      "lexicalThemes": [
+        "organizing personal paperwork",
+        "describing what is missing",
+        "asking for clarification at a meeting",
+        "making a simple preparation plan"
+      ],
+      "targetVocabulary": [
+        "letter",
+        "receipt",
+        "folder",
+        "date",
+        "envelope",
+        "sort",
+        "missing",
+        "ask about"
+      ]
+    },
+    {
+      "date": "2026-10-26",
+      "storyId": "parent-and-child-prepare-for-a-school-presentation",
+      "domain": "school_childcare",
+      "scenario": "parent_and_child_adapt_a_school_presentation_poster_for_bus_travel_and_rehearse_a_missing_explanation",
+      "lexicalThemes": [
+        "preparing for a school activity",
+        "discussing what is practical to carry",
+        "practicing an explanation",
+        "responding to a useful question"
+      ],
+      "targetVocabulary": [
+        "presentation",
+        "poster",
+        "carry",
+        "pictures",
+        "practice",
+        "explain",
+        "schoolbag",
+        "ready"
+      ]
+    },
+    {
+      "date": "2026-10-26",
+      "storyId": "passengers-adjust-a-route-after-missing-a-stop",
+      "domain": "transport_fares_routes",
+      "scenario": "friends_miss_a_transfer_stop_and_choose_a_recognizable_terminal_for_a_return_route",
+      "lexicalThemes": [
+        "describing a missed stop",
+        "comparing route options",
+        "asking about landmarks",
+        "changing direction and continuing a trip"
+      ],
+      "targetVocabulary": [
+        "missed the stop",
+        "next stop",
+        "terminal",
+        "route",
+        "get off",
+        "opposite direction",
+        "screen",
+        "intersection"
+      ]
+    },
+    {
+      "date": "2026-10-26",
+      "storyId": "friends-choose-and-discuss-a-community-photography-exhibition",
+      "domain": "arts_events",
+      "scenario": "friends_compare_different_views_of_a_landscape_photo_and_leave_distinct_comments_at_a_community_exhibition",
+      "lexicalThemes": [
+        "describing and comparing artwork",
+        "expressing a preference",
+        "asking about visitor participation",
+        "sharing an observation"
+      ],
+      "targetVocabulary": [
+        "exhibition",
+        "photograph",
+        "landscape",
+        "caption",
+        "detail",
+        "prefer",
+        "comment",
+        "revisit"
+      ]
+    },
+    {
+      "date": "2026-10-26",
+      "storyId": "bank-customer-pauses-before-a-cash-deposit",
+      "domain": "banking_credit",
+      "scenario": "customer_catches_a_mismatch_between_a_cash_deposit_envelope_and_the_cash_before_submitting_it",
+      "lexicalThemes": [
+        "banking",
+        "cash",
+        "checking amounts",
+        "correcting a mistake"
+      ],
+      "targetVocabulary": [
+        "deposit",
+        "envelope",
+        "cash",
+        "count",
+        "amount",
+        "match"
+      ]
+    },
+    {
+      "date": "2026-10-26",
+      "storyId": "roommates-sort-out-a-misdelivered-utility-bill",
+      "domain": "bills_taxes",
+      "scenario": "roommates_find_a_utility_bill_addressed_to_a_former_resident_and_choose_not_to_open_it",
+      "lexicalThemes": [
+        "household bills",
+        "mail",
+        "privacy",
+        "asking for help"
+      ],
+      "targetVocabulary": [
+        "bill",
+        "mailbox",
+        "former resident",
+        "unopened",
+        "note",
+        "building manager"
+      ]
+    },
+    {
+      "date": "2026-10-26",
+      "storyId": "patient-and-friend-make-a-short-appointment-note",
+      "domain": "health_appointments",
+      "scenario": "patient_and_friend_condense_a_long_list_of_appointment_questions_into_three_short_notes",
+      "lexicalThemes": [
+        "appointments",
+        "preparation",
+        "questions",
+        "writing notes"
+      ],
+      "targetVocabulary": [
+        "appointment",
+        "questions",
+        "list",
+        "short notes",
+        "read aloud",
+        "discuss"
+      ]
+    },
+    {
+      "date": "2026-10-26",
+      "storyId": "resident-reports-a-noisy-street-cover",
+      "domain": "municipal_services",
+      "scenario": "resident_records_a_rattling_street_cover_from_a_safe_distance_and_sends_a_clear_report",
+      "lexicalThemes": [
+        "city streets",
+        "noise",
+        "observing",
+        "reporting a problem"
+      ],
+      "targetVocabulary": [
+        "street cover",
+        "rattle",
+        "bus",
+        "clip",
+        "street name",
+        "report"
+      ]
+    },
+    {
+      "date": "2026-10-26",
+      "storyId": "friends-make-room-for-a-parent-with-a-stroller",
+      "domain": "supermarket_queues",
+      "scenario": "friends_reposition_their_baskets_to_make_a_wider_gap_for_a_stroller",
+      "lexicalThemes": [
+        "shopping",
+        "queues",
+        "noticing others",
+        "making space"
+      ],
+      "targetVocabulary": [
+        "queue",
+        "basket",
+        "stroller",
+        "crowded",
+        "move",
+        "space"
+      ]
+    },
+    {
+      "date": "2026-10-26",
+      "storyId": "neighbors-rescue-a-fallen-houseplant",
+      "domain": "neighbors_building",
+      "scenario": "neighbors_cooperate_to_stand_up_a_windblown_houseplant_and_clean_spilled_soil",
+      "lexicalThemes": [
+        "neighbors",
+        "shared spaces",
+        "helping",
+        "cleaning up"
+      ],
+      "targetVocabulary": [
+        "balcony",
+        "plant pot",
+        "soil",
+        "spill",
+        "steady",
+        "sweep"
+      ]
+    },
+    {
+      "date": "2026-10-26",
+      "storyId": "customer-picks-a-dessert-to-share",
+      "domain": "food_service_orders",
+      "scenario": "cousins_compare_dessert_preferences_and_choose_one_to_share",
+      "lexicalThemes": [
+        "café",
+        "food preferences",
+        "disagreeing politely",
+        "choosing together"
+      ],
+      "targetVocabulary": [
+        "dessert",
+        "cake",
+        "fruit tart",
+        "share",
+        "prefer",
+        "fork"
+      ]
+    },
+    {
+      "date": "2026-10-26",
+      "storyId": "friends-fold-a-torn-day-trip-map",
+      "domain": "travel_day_trips",
+      "scenario": "friends_repair_a_torn_paper_map_with_tape_and_fold_it_along_a_different_crease",
+      "lexicalThemes": [
+        "day trips",
+        "maps",
+        "small mishaps",
+        "improvising"
+      ],
+      "targetVocabulary": [
+        "map",
+        "tear",
+        "fold",
+        "breeze",
+        "tape",
+        "edges"
+      ]
+    },
+    {
+      "date": "2026-10-26",
+      "storyId": "parent-and-child-sort-out-a-mixed-up-lunchbox",
+      "domain": "school_childcare",
+      "scenario": "parent_and_child_identify_a_mixed_up_lunchbox_by_its_name_sticker",
+      "lexicalThemes": [
+        "school",
+        "lost belongings",
+        "noticing details",
+        "identifying items"
+      ],
+      "targetVocabulary": [
+        "lunchbox",
+        "same color",
+        "name sticker",
+        "lid",
+        "school office",
+        "recognize"
+      ]
+    },
+    {
+      "date": "2026-10-26",
+      "storyId": "hikers-improvise-a-windbreak-for-a-snack",
+      "domain": "nature_outdoors",
+      "scenario": "friends_use_a_jacket_as_a_temporary_windbreak_to_keep_picnic_items_from_blowing_away",
+      "lexicalThemes": [
+        "outdoor walk",
+        "wind",
+        "picnic",
+        "improvising together"
+      ],
+      "targetVocabulary": [
+        "breeze",
+        "bench",
+        "napkin",
+        "jacket",
+        "hold",
+        "blow away",
+        "set out",
+        "eat"
+      ]
+    },
+    {
+      "date": "2026-10-26",
+      "storyId": "applicant-asks-former-colleague-to-be-a-reference",
+      "domain": "employment_jobs",
+      "scenario": "job_applicant_invites_a_former_colleague_to_be_a_reference_and_sends_context_for_an_accurate_recommendation",
+      "lexicalThemes": [
+        "job applications",
+        "professional relationships",
+        "polite requests"
+      ],
+      "targetVocabulary": [
+        "reference",
+        "former colleague",
+        "apply",
+        "role",
+        "agree",
+        "summary",
+        "accurately"
+      ]
     }
   ]
 }
