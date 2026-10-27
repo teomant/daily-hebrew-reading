@@ -10981,6 +10981,351 @@
         "summary",
         "accurately"
       ]
+    },
+    {
+      "date": "2026-10-27",
+      "storyId": "tenant-negotiates-removable-curtain-rod",
+      "domain": "housing_landlord",
+      "scenario": "tenant_and_landlord_choose_a_no_drill_tension_rod_for_a_narrow_rental_window_after_the_first_rod_proves_too_wide",
+      "lexicalThemes": [
+        "rental home",
+        "window measurements",
+        "asking permission",
+        "choosing a household item",
+        "installing without damage"
+      ],
+      "targetVocabulary": [
+        "rented apartment",
+        "curtain",
+        "window frame",
+        "drill",
+        "tension rod",
+        "too wide",
+        "measure",
+        "adjustable",
+        "without screws",
+        "stay in place"
+      ]
+    },
+    {
+      "date": "2026-10-27",
+      "storyId": "patient-reschedules-around-a-work-commitment",
+      "domain": "health_appointments",
+      "scenario": "patient_and_clinic_receptionist_find_a_same_clinician_appointment_time_that_allows_travel_after_a_work_meeting",
+      "lexicalThemes": [
+        "clinic appointments",
+        "work schedule",
+        "availability",
+        "travel time",
+        "confirming a change"
+      ],
+      "targetVocabulary": [
+        "appointment",
+        "overlap",
+        "available",
+        "same clinician",
+        "earlier",
+        "later",
+        "get across town",
+        "move the appointment",
+        "repeat the time",
+        "reminder"
+      ]
+    },
+    {
+      "date": "2026-10-27",
+      "storyId": "friends-make-a-warm-lentil-salad",
+      "domain": "food_cooking",
+      "scenario": "friends_build_a_warm_lentil_salad_by_tasting_a_small_lemon_and_oil_dressing_before_mixing_it_into_roasted_vegetables",
+      "lexicalThemes": [
+        "preparing a meal",
+        "cooked lentils",
+        "seasoning by taste",
+        "sharing preferences",
+        "serving and leftovers"
+      ],
+      "targetVocabulary": [
+        "lentils",
+        "roasted vegetables",
+        "chop",
+        "plain",
+        "lemon juice",
+        "olive oil",
+        "taste first",
+        "mix gently",
+        "fresh herbs",
+        "leftovers"
+      ]
+    },
+    {
+      "date": "2026-10-27",
+      "storyId": "cat-owner-and-vet-plan-a-calm-carrier-visit",
+      "domain": "pets_veterinary",
+      "scenario": "cat_owner_and_veterinary_assistant_plan_familiar_carrier_setup_to_help_a_cat_enter_it_before_a_routine_check",
+      "lexicalThemes": [
+        "pet appointment",
+        "cat carrier",
+        "familiar objects",
+        "offering suggestions",
+        "preparing for a visit"
+      ],
+      "targetVocabulary": [
+        "cat carrier",
+        "routine check",
+        "hide",
+        "leave it open",
+        "familiar room",
+        "blanket",
+        "at his own pace",
+        "favorite toy",
+        "securely closed",
+        "appointment time"
+      ]
+    },
+    {
+      "date": "2026-10-27",
+      "storyId": "siblings-prepare-a-picnic-at-a-shaded-grove",
+      "domain": "nature_outdoors",
+      "scenario": "siblings_choose_a_flat_shaded_picnic_spot_and_secure_their_blanket_and_food_when_a_breeze_picks_up",
+      "lexicalThemes": [
+        "outdoor picnic",
+        "finding a suitable spot",
+        "sharing a task",
+        "handling a small setback",
+        "leaving a place tidy"
+      ],
+      "targetVocabulary": [
+        "grove",
+        "picnic blanket",
+        "uneven ground",
+        "shaded spot",
+        "clear of litter",
+        "container lid",
+        "light breeze",
+        "hold down",
+        "water bottle",
+        "pack rubbish"
+      ]
+    },
+    {
+      "date": "2026-10-27",
+      "storyId": "tenant-returns-a-spare-key-to-the-landlord",
+      "domain": "housing_landlord",
+      "scenario": "tenant_finds_an_unneeded_spare_key_after_a_lock_change_and_returns_it_to_the_landlord_in_a_labeled_envelope",
+      "lexicalThemes": [
+        "spare key",
+        "drawer",
+        "lock",
+        "envelope",
+        "returning an item"
+      ],
+      "targetVocabulary": [
+        "מפתח נוסף",
+        "מגירה",
+        "מנעול",
+        "מעטפה",
+        "להחזיר"
+      ]
+    },
+    {
+      "date": "2026-10-27",
+      "storyId": "coworker-catches-a-missed-break-entry",
+      "domain": "work_pay",
+      "scenario": "employee_notices_a_missing_lunch_break_entry_on_a_timesheet_and_checks_shift_notes_before_correcting_it",
+      "lexicalThemes": [
+        "timesheet",
+        "lunch break",
+        "missing entry",
+        "shift notes",
+        "correcting a record"
+      ],
+      "targetVocabulary": [
+        "דוח שעות",
+        "הפסקת צהריים",
+        "רישום חסר",
+        "הערות למשמרת",
+        "לתקן"
+      ]
+    },
+    {
+      "date": "2026-10-27",
+      "storyId": "friend-helps-a-patient-practice-a-phone-call",
+      "domain": "health_appointments",
+      "scenario": "patient_practices_stating_an_appointment_date_with_a_friend_who_catches_a_day_of_week_mixup",
+      "lexicalThemes": [
+        "appointment",
+        "date",
+        "day of the week",
+        "practice",
+        "correcting a note"
+      ],
+      "targetVocabulary": [
+        "תור",
+        "תאריך",
+        "יום בשבוע",
+        "להתאמן",
+        "לתקן פתק"
+      ]
+    },
+    {
+      "date": "2026-10-27",
+      "storyId": "resident-keeps-a-copy-of-a-benefit-letter",
+      "domain": "social_benefits",
+      "scenario": "resident_scans_a_benefits_letter_with_her_brother_and_rescans_a_crooked_copy_before_filing_the_original",
+      "lexicalThemes": [
+        "benefits letter",
+        "scan",
+        "crooked page",
+        "original",
+        "clear copy"
+      ],
+      "targetVocabulary": [
+        "מכתב",
+        "סריקה",
+        "דף עקום",
+        "מקור",
+        "עותק ברור"
+      ]
+    },
+    {
+      "date": "2026-10-27",
+      "storyId": "driver-finds-a-scratched-car-door",
+      "domain": "insurance_claims",
+      "scenario": "driver_documents_a_car_door_scratch_and_records_when_she_noticed_it_without_guessing_its_cause",
+      "lexicalThemes": [
+        "car door",
+        "scratch",
+        "photo",
+        "when noticed",
+        "not guessing"
+      ],
+      "targetVocabulary": [
+        "דלת המכונית",
+        "שריטה",
+        "תמונה",
+        "שמתי לב",
+        "לא לנחש"
+      ]
+    },
+    {
+      "date": "2026-10-27",
+      "storyId": "shopper-swaps-a-heavy-basket-with-a-friend",
+      "domain": "supermarket_queues",
+      "scenario": "friends_swap_supermarket_baskets_when_one_becomes_too_heavy_to_carry",
+      "lexicalThemes": [
+        "basket",
+        "heavy",
+        "offer help",
+        "swap",
+        "shopping"
+      ],
+      "targetVocabulary": [
+        "סל",
+        "כבד",
+        "להציע עזרה",
+        "להחליף",
+        "קניות"
+      ]
+    },
+    {
+      "date": "2026-10-27",
+      "storyId": "friends-compare-two-ways-to-watch-a-film",
+      "domain": "arts_events",
+      "scenario": "friends_compare_subtitles_with_dubbed_dialogue_on_a_short_film_scene_and_choose_subtitles",
+      "lexicalThemes": [
+        "film",
+        "subtitles",
+        "dubbed dialogue",
+        "preference",
+        "short scene"
+      ],
+      "targetVocabulary": [
+        "סרט",
+        "כתוביות",
+        "דיבוב",
+        "להעדיף",
+        "סצנה קצרה"
+      ]
+    },
+    {
+      "date": "2026-10-27",
+      "storyId": "user-clears-old-photos-from-a-phone",
+      "domain": "digital_accounts",
+      "scenario": "phone_user_and_cousin_compare_duplicate_photos_keep_the_sharpest_copy_and_delete_only_recognized_duplicates",
+      "lexicalThemes": [
+        "phone",
+        "duplicate photos",
+        "compare",
+        "sharpest",
+        "delete"
+      ],
+      "targetVocabulary": [
+        "טלפון",
+        "תמונות כפולות",
+        "להשוות",
+        "החדה ביותר",
+        "למחוק"
+      ]
+    },
+    {
+      "date": "2026-10-27",
+      "storyId": "passengers-make-room-for-a-folding-bike",
+      "domain": "transport_fares_routes",
+      "scenario": "bus_passengers_reposition_a_bag_so_a_folded_bicycle_can_fit_without_blocking_the_aisle",
+      "lexicalThemes": [
+        "bus",
+        "folding bicycle",
+        "crowded aisle",
+        "move a bag",
+        "make room"
+      ],
+      "targetVocabulary": [
+        "אוטובוס",
+        "אופניים מתקפלים",
+        "מעבר צפוף",
+        "להזיז תיק",
+        "לפנות מקום"
+      ]
+    },
+    {
+      "date": "2026-10-27",
+      "storyId": "hikers-share-a-binoculars-view",
+      "domain": "nature_outdoors",
+      "scenario": "hiker_shares_binoculars_with_companion_to_view_a_distant_bird_before_it_flies_away",
+      "lexicalThemes": [
+        "walk",
+        "bird",
+        "binoculars",
+        "focus",
+        "markings"
+      ],
+      "targetVocabulary": [
+        "טיול",
+        "ציפור",
+        "משקפת",
+        "לכוון",
+        "סימנים צבעוניים"
+      ]
+    },
+    {
+      "date": "2026-10-27",
+      "storyId": "friends-improvise-a-cake-stand",
+      "domain": "food_cooking",
+      "scenario": "friends_use_a_clean_upturned_cutting_board_over_a_bowl_as_a_temporary_stand_for_a_small_cake",
+      "lexicalThemes": [
+        "cake",
+        "serving plate",
+        "cutting board",
+        "improvise",
+        "steady"
+      ],
+      "targetVocabulary": [
+        "עוגה",
+        "צלחת הגשה",
+        "קרש חיתוך",
+        "לאלתר",
+        "יציב"
+      ]
     }
   ]
 }
