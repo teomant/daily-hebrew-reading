@@ -22,3 +22,9 @@ Favor natural constructions such as עדיין לא, כבר, עוד מעט, בע
 Across the batch, vary how events develop: a discovery, a preference, a misunderstanding, cooperation, a small setback, or a choice can move a story forward. Do not make every character ask permission or every ending summarize what the character learned. Keep roles and the direction of actions consistent: who paid whom, who owns the object, and who can answer the question.
 
 Make each scenario brief adaptation-ready by laying out 4–5 distinct story beats: the initial situation, the interaction or first attempt, a useful clarification or complication, the decision or action, and the practical outcome. Give the later adaptation enough concrete but ordinary material for developed paragraphs without filler. Provide the brief, domain, stable snake_case scenario name, lexical themes, and target vocabulary, and set `dialogSpeakers` to an empty list. EVERYDAY stories never have sources or images and must never be presented as news.
+
+Record `everydayMeta.storyPattern` as four compact English phrases: goal, relationship, interaction, and outcome.
+Describe the pattern without character names, places, or replaceable objects.
+Compare these fields with recent full stories and individual SHORTS as well as within this batch.
+Prefer less-used relationships, developments, and outcomes; sharing useful vocabulary is welcome.
+Do not make essential, routine, and experience domains all follow the same ask/check/confirm sequence.

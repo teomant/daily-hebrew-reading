@@ -13,3 +13,11 @@ Keep speaker roles stable, including who pays whom, who provides the service, an
 The English scenario brief must identify the speakers, their relationship when relevant, the practical situation, what they need to decide or solve, the important clarification or reaction, and the outcome. Put exactly two short Hebrew first names in `dialogSpeakers`; these are the binding labels for every adapted level. Plan enough distinct questions, answers, follow-ups, reactions, and decision points to support 8–12 useful turns without repetition or artificially long speeches. It must support direct speech rather than prose describing that people talked. If the idea is mainly narration, classify it as EVERYDAY rather than DIALOG.
 
 DIALOG stories use the same scenario metadata as EVERYDAY stories and have no sources or image. Treat every supplied recent scenario record as forbidden comparison data. Never return an identical `scenario` value, and do not rename a recent scenario while keeping substantially the same practical problem or goal, interaction, and resolution. Published dialogues must be visibly marked as fully AI-generated.
+
+Before freezing the brief, map each of the two Hebrew names to an English role and responsibilities.
+State who needs help, who can answer, who owns each object, and who performs the final action.
+Use only those two active participants.
+If a server must explain the bill, make the server one of the two speakers rather than making two diners report the server's words.
+Plan the order of questions and answers so neither person changes roles halfway through.
+Include `everydayMeta.storyPattern` with compact English goal, relationship, interaction, and outcome phrases.
+Compare patterns after removing names and replaceable objects.

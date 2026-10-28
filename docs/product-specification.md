@@ -20,7 +20,8 @@ A new issue is generated automatically every day. A typical issue contains:
 
 This normally produces 11 pages. Missing sourced material may make the issue smaller, but it does not expand the fixed generated allocation.
 
-Reading time is calculated from the resulting content rather than enforced as a generation quota. CURRENT articles normally contain 2–4 paragraphs as the material supports; the generation schema permits 2–12. HISTORY and EVERYDAY articles should normally contain 4–5 developed paragraphs. DIALOG uses 8–12 short speaker turns, each on its own line. Every SHORTS item is one compact paragraph of exactly two or three complete sentences.
+Reading time is calculated from the resulting content rather than enforced as a generation quota. CURRENT articles normally contain 2–4 paragraphs as the material supports; the generation schema permits 2–12. Alef HISTORY and EVERYDAY normally use 2–4 short paragraphs, with a schema minimum of two.
+Harder versions normally use 4–5 developed paragraphs, with a schema minimum of four. DIALOG uses 8–12 short speaker turns, each on its own line. Every SHORTS item is one compact paragraph of exactly two or three complete sentences.
 
 ## 2. Content types
 
@@ -74,7 +75,9 @@ These stories should expose readers to useful constructions such as:
 
 A specially generated short conversation for practical Hebrew learning. A new issue normally aims for about two. Dialogues normally use two speakers handling a concrete need or experience with a shop, clinic, bank, landlord, utility, employer, school, transport provider, government office, service desk, neighbor, friend, or family member. Cooking, trips, and events may also support useful conversations when the speakers do more than choose an activity. Dialogues should model questions, explanations, clarifications, and outcomes that a learner can reuse.
 
-The exchange should sound like ordinary contemporary Israeli conversation, not a classroom exercise, interview, screenplay, dramatic scene, or narrated story. Use 8–12 short turns at every reading level. Planning freezes two Hebrew speaker names, and every paragraph-array item contains exactly one direct-speech turn beginning with one of those names and a colon. Adaptation receives a dialogue-specific example and focused retries; code normalizes recoverable name, colon, and alternation mistakes so an otherwise usable dialogue is not discarded for label formatting. Use natural questions, answers, clarifications, reactions, and a simple practical outcome. Do not describe the conversation in third-person prose; a mainly narrated result belongs to EVERYDAY. DIALOG uses the same scenario metadata and repetition history as EVERYDAY and has no external sources or images.
+The exchange should sound like ordinary contemporary Israeli conversation, not a classroom exercise, interview, screenplay, dramatic scene, or narrated story. Use 8–12 short turns at every reading level. Planning freezes two Hebrew speaker names, and every paragraph-array item contains exactly one direct-speech turn beginning with one of those names and a colon. Adaptation receives a dialogue-specific example and focused retries; code restores a missing colon only after an unambiguous separate name unit.
+Code must never assign a speaker by paragraph position or replace an existing identity.
+The brief binds each of the two active participants to a role and responsibility. Use natural questions, answers, clarifications, reactions, and a simple practical outcome. Do not describe the conversation in third-person prose; a mainly narrated result belongs to EVERYDAY. DIALOG uses the same scenario metadata and repetition history as EVERYDAY and has no external sources or images.
 
 ### SHORTS
 
@@ -129,7 +132,13 @@ Reading levels are configuration-driven, ordered definitions with stable IDs, di
 
 ### Alef — א
 
-Use very common concrete words, familiar verb forms, active clauses, and one event or thought per short sentence. Avoid formal connectors, abstract nominal language, dense construct chains, and nested clauses. The result is simple adult Hebrew, not children's prose.
+Target a beginner who can decode unpointed Hebrew, not an end-of-Alef graduate.
+Use familiar concrete words, explicit subjects, and one simple clause per sentence.
+Prefer present tense in fictional situations; use familiar past or future forms only when facts or the exchange require them.
+Avoid passive forms, abstract action nouns, construct chains, nested clauses, and clusters of unfamiliar terms.
+Explain a few necessary unfamiliar terms immediately in simple words.
+Omit optional names, dates, and specialist details while preserving the central situation and required facts.
+The wording reference contains editorial calibration examples; it is not a certified proficiency test.
 
 ### Alef Plus — א+
 
@@ -143,7 +152,11 @@ The three levels preserve the central situation, useful answer, outcome, and a m
 
 ## 8. Do not pad articles
 
-Publication takes priority over polish: usable imperfect articles are preferable to missing articles. Interest, naturalness, and reading-level fit are prompt-guided goals, not new rejection gates or extra model review stages. Existing structural, translation, identity, and HISTORY beat-coverage validation remains in place.
+Interest, naturalness, and reading-level fit remain prompt-guided judgments without an unconditional AI review stage.
+Correct speaker structure and useful translation targets are quality goals for newly generated content.
+After bounded correction attempts, retain usable imperfect articles and log remaining quality defects.
+Existing structural, translation, identity, and HISTORY beat-coverage validation remains in place.
+Archived issues are not retroactively rejected by the new quality checks.
 
 Length follows the content format: full articles use developed paragraphs, dialogues use 8–12 turns, and SHORTS items use one compact paragraph. Do not use length to distinguish Alef, Alef Plus, and Bet. Python must not reject an adaptation because it considers a word too difficult or because one level is not longer than another. Do not pad through repetition, empty introductions, invented details, or artificially complex phrasing.
 
@@ -157,7 +170,11 @@ The MVP does not need niqqud. Consequently, even the Alef band assumes the reade
 
 ## 10. All configured levels tell the same story
 
-Do not generate level adaptations independently in ways that introduce different facts. The initial Alef, Alef Plus, and Bet versions—and any future configured versions—must share one frozen factual contract. Every HISTORY level preserves its required defining facts; simpler levels may compress secondary dates, names, qualifiers, and context, but must not replace the subject with generalities. If an article still violates its output or factual-coverage validation after one focused retry, omit that article and continue adapting the others rather than failing the issue.
+Do not generate level adaptations independently in ways that introduce different facts. The initial Alef, Alef Plus, and Bet versions—and any future configured versions—must share one frozen factual contract. Every HISTORY level preserves its required defining facts; simpler levels may compress secondary dates, names, qualifiers, and context, but must not replace the subject with generalities. Keep successful levels across content retries and request only unresolved levels.
+Allow two attempts, or three for DIALOG and SHORTS.
+After retries, retain the latest usable level that meets public structure, translation coverage, identity, and required factual coverage.
+Unresolved failures of those core contracts omit the article or item.
+Exhausted full-story API request failures abort only when no usable fallback exists for the pending levels.
 
 For CURRENT, the pipeline is: sources → factual brief → level adaptation with lexical units and contextual translations. For HISTORY, it is: compact sourced screening brief → duplicate review and selection → selected-only batched deep research → 8–12 ordered factual story beats → retold level adaptation with lexical units and contextual translations. For EVERYDAY and DIALOG, it is: scenario brief → level adaptation with lexical units and contextual translations. Within adaptation, Hebrew prose is written and proofread before it is segmented.
 
@@ -165,7 +182,12 @@ Alef may omit details and Bet may expand them, but central facts and events must
 
 ## 11. Generated-scenario diversity history
 
-Generated everyday stories, dialogues, and individual SHORTS items must not repeat too frequently. Keep their scenario history in Git. For recent entries, retain the date, domain, scenario, main lexical themes, and target vocabulary. Pass only the previous seven days of compact scenario records into generation prompts; older records remain stored.
+Generated everyday stories, dialogues, and individual SHORTS items must not repeat too frequently. Keep their scenario history in Git. For recent entries, retain the date, domain, scenario, main lexical themes, target vocabulary, and English brief.
+Fresh generated metadata includes `everydayMeta.storyPattern` with exactly four nonempty English string fields: `goal`, `relationship`, `interaction`, and `outcome`.
+Full stories and individual SHORTS store it under `everydayMeta`; history and compact prompt records flatten it to `storyPattern`.
+Missing legacy values remain valid.
+Preserve patterns and individual SHORTS briefs in recent and same-day append context.
+Planners compare the patterns across domains and prefer less-used interactions without fixed taxonomy quotas. Pass only the previous seven days of compact scenario records into generation prompts; older records remain stored.
 
 For a new complete issue, the generated allocation targets three EVERYDAY stories, two DIALOG stories, and one SHORTS page with eleven items; zero valid SHORTS items omit only that page. The normal sourced target is two CURRENT and three HISTORY stories. When both types are needed, discovery returns 18 screening candidates: up to six genuine CURRENT subjects and at least 12 HISTORY subjects; additional HISTORY candidates fill the pool when CURRENT is scarce. A CURRENT-only retry may return fewer candidates, even none. CURRENT candidates with no actual event, no usable source after cleanup, or no established Israeli setting are discarded, and an unfilled CURRENT slot is preferable to a placeholder article. Duplicate-reviewed but unselected HISTORY candidates remain in a reserve queue, with Israel-focused passes ordered ahead of the worldwide fallback. Deep research normally uses one batched call for the selected three. Two consecutive HISTORY research request failures abort generation rather than silently publishing an all-generated substitute issue. Missing sourced slots do not expand the generated allocation.
 
@@ -203,7 +225,14 @@ For example, מזג אוויר is one unit translated as “погода” in R
 
 Almost all main Hebrew text must be interactive so a reader can select nearly any unfamiliar word or expression. For each meaningful lexical unit, store the Hebrew text, a translation map keyed by stable locale code, and its type. The initial translation locales are `ru` and `en`, but content rendering and validation must use each issue's configured translation locales rather than fixed Russian and English fields. The model should attempt every meaningful unit and translate it according to its meaning and grammatical role in the complete sentence, not as an isolated dictionary entry. An individual translation may be empty when no useful direct translation exists, but each story level must have at least 75% coverage in every configured translation language.
 
-The MVP needs these types: `word`, `expression`, `properNoun`, and `separator`. Most meaningful units contain one to three Hebrew words; four words are reserved for indivisible fixed expressions, proper names, or phrases whose meaning would be damaged by splitting. A complete sentence or independent clause must not be stored as one lexical unit. Attached Hebrew prefixes remain part of their written word. Ordinary single spaces between meaningful units may be omitted from JSON and reconstructed by the renderer; separators are reserved for punctuation or whitespace whose exact placement matters and need no translation.
+The MVP needs these types: `word`, `expression`, `properNoun`, and `separator`. Default to one written word per meaningful unit.
+Keep short indivisible expressions and proper names together, up to four words. A complete multiword sentence must not be stored as one lexical unit.
+Generation checks sentence spans ending in `.`, `?`, `!`, or `…`, including separate punctuation units and closing quotes/brackets.
+The check excludes a leading dialogue label, single-word replies, a small explicit set of conventional replies, and short name-only units.
+It also flags meaningful units longer than four whitespace-delimited words.
+After content passes, one no-web annotation-only request may repair all affected groups for that story or SHORTS item.
+It must return exactly those group IDs, preserve rendered Hebrew exactly, and pass unit, translation, and segmentation checks atomically.
+Failed repair preserves the original usable article and logs a warning; there is no whole-article regeneration for an annotation defect. Attached Hebrew prefixes remain part of their written word. Ordinary single spaces between meaningful units may be omitted from JSON and reconstructed by the renderer; separators are reserved for punctuation or whitespace whose exact placement matters and need no translation.
 
 The MVP does not need roots, binyanim, conjugation, transliteration, niqqud, word frequency, or grammatical analysis.
 
@@ -297,7 +326,14 @@ Read the recent scenario-history data, remove overly similar ideas, select three
 
 ## 29. DIALOG generation
 
-Generate two short dialogues for each new issue. Planning supplies exactly two binding Hebrew speaker names. Store every turn as its own paragraph-array item so it appears on a separate line. The prompt includes a compact literal example; generated dialogue adaptation receives three focused attempts. Before validation, code rewrites recoverable leading labels into the planned alternating `name:` form. A remaining style imperfection is logged but does not remove an otherwise schema-valid dialogue.
+Generate two short dialogues for each new issue.
+Planning supplies exactly two binding Hebrew speaker names and identifies their roles in the brief.
+Store every direct-speech turn as its own paragraph-array item.
+Keep speaker identity stable; never relabel turns by array position to force alternation.
+Missing or unknown labels, adjacent repeated speakers, and clear narration after a label trigger focused level retries.
+The local narration check conservatively detects a known speaker name followed by a reporting/action verb at the start of speech.
+It does not prove semantic role consistency; the prompt also checks roles, gender, timing, and answers.
+Remaining dialogue-style errors become logged warnings after bounded retries when the core public and factual contracts pass.
 
 ## 29a. SHORTS generation
 
@@ -321,6 +357,17 @@ Use the OpenAI API for sourced discovery and selection, sourced semantic duplica
 
 Use `gpt-6-luna` for every discovery, research, planning, adaptation, annotation, and translation request, with low reasoning effort. Supply the key through `OPENAI_API_KEY`; a local `OPENAI_MODEL` override may be used for tests or explicit experiments. Store the key only in a GitHub Actions secret or runtime environment. It must never enter Git, frontend assets, JSON content, HTML output, logs, or error messages.
 
+API requests explicitly use the standard `default` service tier.
+Each response is recorded before output parsing with phase, requested/returned model, input/cached-input/output/reasoning tokens, web-search calls, and estimated USD.
+Reasoning is a subset of output and must not be counted twice.
+`src/generation_usage.py` holds dated standard Luna rates from https://developers.openai.com/api/docs/pricing and applies the documented long-context multipliers.
+Unknown models, unsupported service tiers, and missing counts yield unavailable estimates.
+A run-scoped collector prints observed subtotals, unknown field counts, and unpriced request counts on every exit, including failure.
+Request failures without response usage remain unmeasured.
+SDK-internal retries and unreported cache-write charges cannot be reconstructed.
+These logs estimate cost; they are not an invoice or spending cap.
+No credentials, response bodies, or article content enter the usage collector, and no usage data enters published JSON.
+
 In the target repository, `OPENAI_API_KEY` is configured as a secret in the GitHub Actions environment named `daily-hebrew-reading`. The issue-generation job explicitly declares that environment and pins `OPENAI_MODEL` to `gpt-6-luna` in the workflow.
 
 ## 33. Prompts
@@ -341,7 +388,14 @@ A GitHub Actions workflow is configured to run daily at 01:37 UTC. Its first job
 
 The manual run accepts an optional target date, resolved as the current UTC date when omitted, and a requested number of additional stories from 0–10, defaulting to 0. When no issue exists for the target date, generation creates the normal complete issue regardless of the append input. When an issue already exists, zero is a no-op and a positive explicit value preserves every existing story and adds that many new stories without replacing their content. Append batches contain only EVERYDAY or DIALOG stories in any mix; the fixed new-issue counts do not apply. The combined issue is stably reordered EVERYDAY, DIALOG, SHORTS, CURRENT, HISTORY, preserving order within each type. It recalculates issue metadata and navigation, updates generated-scenario history, validates the combined issue, and only then commits it.
 
-Generation separates sourced discovery, sourced duplicate review, selected-HISTORY research, full generated planning, SHORTS planning, and adaptation. Adaptation receives frozen briefs plus the level, segmentation, translation, and small frequency-aware Hebrew reference contracts. The curated reference in `prompts/frequent-hebrew.md` is based on `wordfreq` 3.1.1 and includes attribution and license; it is passed directly to each no-web adaptation call as soft wording guidance, not a whitelist or numeric publication gate. Level difficulty is prompt-driven: Alef uses frequent concrete wording and simple clauses, Alef Plus broadens ordinary vocabulary and connectors, and Bet uses richer natural language and moderately more complex structures. Python does not score word difficulty or enforce increasing length. After adaptation, generation removes empty units, repairs alphabetic separators, normalizes DIALOG labels, and restores missing terminal punctuation before validation. Clear one-letter Hebrew prefixes are reattached to the next word; other language-bearing separators are reclassified as meaningful units. DIALOG formatting and style receive focused retries but do not silently remove an otherwise public-schema-valid dialogue.
+Generation separates sourced discovery, sourced duplicate review, selected-HISTORY research, full generated planning, SHORTS planning, and adaptation.
+Adaptation receives frozen briefs and required HISTORY beats plus level, segmentation, translation, and frequency-reference guidance.
+The reference includes attribution and license for its word-frequency basis, alongside editorial calibration examples.
+Difficulty remains prompt-guided; Python does not score word difficulty or require increasing length.
+Before content validation, generation removes empty units, repairs alphabetic separators, restores unambiguous missing dialogue colons, and restores missing terminal punctuation.
+Valid levels are retained across retries, while segmentation repair is isolated from prose generation.
+Generation-only dialogue and annotation checks guide bounded repairs and log unresolved quality defects.
+Public structure, translation coverage, identity, and required factual coverage must still pass before the existing transactional write.
 
 Each planning stage receives only its relevant compact forbidden records from the existing issue and previous fourteen days for HISTORY, or seven days for CURRENT and generated stories. `historyIssueContextDays` configures HISTORY separately and falls back to `recentIssueContextDays` when absent. The lower date bound is inclusive; target and future dates are excluded, while same-day exclusions come from the existing issue. Older issues and scenario records remain stored but are not sent as prompt exclusions. Sourced discovery defines a CURRENT duplicate as the same central subject and underlying event, action, announcement, change, project, or outcome; equivalent URLs, alternate coverage, cosmetic rewrites, later status reports, continuing consequences, changed statistics, and minor follow-ups remain duplicates within that window. For HISTORY, reuse of the same named primary subject—such as a street, building, archaeological site, institution, person, event, object, or custom—is a duplicate even when another source, period, excavation, archaeological layer, fact, or angle is used within the window. Generated planning defines a duplicate by the practical problem or goal, interaction, and resolution; an identical recent scenario ID is always a duplicate, while sharing only a domain or vocabulary is allowed. Forbidden records are comparison data, never search suggestions or templates.
 

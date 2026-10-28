@@ -45,3 +45,10 @@ Reject CURRENT event listings relabeled as HISTORY. A currently running exhibiti
 Use real publisher names, article titles, and canonical HTTPS URLs. Every source URL must be unique and point to the content page itself. Never use a publisher homepage, section/category/tag page, search page, generic “latest” page, or rolling liveblog. Never invent names, quotations, reactions, numbers, causes, dates, outcomes, publishers, titles, or URLs.
 
 When both sourced types are requested, return 18 compact candidate records: up to 6 genuine Israeli CURRENT candidates and at least 12 HISTORY candidates, using additional HISTORY subjects if CURRENT is scarce. If only CURRENT remains, return up to 18 genuine Israeli CURRENT candidates; fewer or none is better than a placeholder. If only HISTORY remains, return exactly 18 HISTORY candidates. Every record contains only `id`, `type`, `category`, `historyFamily`, `discoverySource`, `brief`, and `sources`. `discoverySource` is an internal claimed discovery route, not verified per-fact provenance. CURRENT uses `current`. Israel-focused HISTORY uses `wikimedia`, `nationalLibraryPress`, `stateVisualArchives`, `cultureArchives`, or `otherArchive` according to the collection that produced the lead; no route has a quota. A final worldwide HISTORY fallback uses `worldwideFallback`. Do not return `storyBeats`, adapt the candidates, write Hebrew, or return images.
+
+Choose concrete subjects whose defining facts can be retold to a beginner using familiar words and simple clauses.
+Avoid selecting a subject that requires several unexplained specialist, theological, legal, or technical concepts at Alef.
+Compare thematic clusters across the selected issue and recent stories, not only exact named subjects.
+For example, three different factories or two ancient religious food rules still give a narrow reading experience.
+Prefer a varied group of periods, activities, places, and human interests without fixed source quotas.
+Keep all factual claims supported; simplify the choice of defining facts rather than inventing a simpler history.

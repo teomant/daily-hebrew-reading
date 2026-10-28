@@ -34,3 +34,9 @@ Each brief must describe one tiny concrete situation, one useful interaction or 
 These are no-web fictional situations. Do not assert current fees, deadlines, eligibility, coverage, official procedures, or diagnoses. Use ordinary fictional details and show the actual immediate answer or action. A short item can ask how to verify a detail when that fits, but do not make referrals to instructions the repeated answer across the page. Vary observations, requests, choices, small misunderstandings, and shared actions. An unresolved official question can coexist with a concrete ordinary action; do not invent a rule to provide closure.
 
 Use only the canonical domains supplied in the request. Scenarios in the same collection may share a broad domain when their actual interaction and outcome differ. Do not repeat or cosmetically rename a recent scenario. Provide the same metadata as EVERYDAY, with an empty `dialogSpeakers` list, no sources, and no image.
+
+Record `everydayMeta.storyPattern` as four compact English phrases: goal, relationship, interaction, and outcome.
+Describe the pattern without character names, places, or replaceable objects.
+Compare these fields with recent full stories and individual SHORTS as well as within this batch.
+Prefer less-used relationships, developments, and outcomes; sharing useful vocabulary is welcome.
+Do not make essential, routine, and experience domains all follow the same ask/check/confirm sequence.

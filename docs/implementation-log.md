@@ -1,5 +1,24 @@
 # Implementation log
 
+## 2026-10-28
+
+- The owner approved fixes for beginner level fit, dialogue consistency, topic variety, and sentence-sized translation targets, with cost estimates in GitHub Actions logs.
+  A temporary plan and one independent plan review clarified sentence boundaries and metadata storage before implementation.
+  The owner then requested removal of the plan, one direct review by default, and preservation of usable imperfect articles.
+  Removed the plan and added these project rules to `AGENTS.md`.
+- Added beginner grammar guidance, preserved speaker identity, retained valid adaptation levels across retries, and added one bounded annotation-only repair per story or SHORTS item.
+  Added compact story-pattern metadata to planning and recent context, including individual SHORTS.
+  Added response usage logging before output parsing and a per-run summary on success or failure.
+  Existing published content and the model/research flow remain unchanged.
+  The initial 105 offline tests passed before the owner clarified the quality fallback.
+  Updated fallback behavior to retain usable levels and original annotation after bounded quality repair, while preserving core validation.
+  One focused direct review fixed a repair interaction so an existing dialogue-style warning cannot reject improved segmentation.
+  The final full test run exposed an overly broad fallback for SHORTS; restricted that fallback to dialogue style and preserved the existing two-or-three-sentence SHORTS contract.
+  All other tests in the 105-test run passed, and the affected test plus the quality/usage tests passed in a final 15-test rerun, including one additional repair regression.
+  Repository content validation, the production site build, Python compilation, and whitespace checks passed.
+  No paid generation, commit, push, or deployment ran.
+  Actual learner fit, variety, and cost changes require observation of future output.
+
 ## 2026-10-24
 
 - Owner requested a quick prompt improvement for repeated topics and plots, especially in SHORTS, without a plan document or repeated reviews.

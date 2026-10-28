@@ -142,6 +142,17 @@ def _validate_translation_coverage(
             )
 
 
+def _validate_story_pattern(meta: dict[str, Any], path: str, errors: list[str]) -> None:
+    if "storyPattern" not in meta:
+        return
+    pattern = meta["storyPattern"]
+    fields = {"goal", "relationship", "interaction", "outcome"}
+    if (not isinstance(pattern, dict) or set(pattern) != fields
+            or any(not isinstance(value, str) or not value.strip()
+                   or not re.search(r"[A-Za-z]", value) for value in pattern.values())):
+        errors.append(f"{path}.storyPattern: expected goal, relationship, interaction, outcome as nonempty English strings")
+
+
 def validate_issue(
     issue: Any,
     site: dict[str, Any],
@@ -281,6 +292,7 @@ def validate_issue(
                 for field in ("lexicalThemes", "targetVocabulary"):
                     if not isinstance(meta.get(field), list) or not meta[field]:
                         errors.append(f"{story_path}.everydayMeta.{field}: expected a non-empty list")
+                _validate_story_pattern(meta, f"{story_path}.everydayMeta", errors)
                 speakers = meta.get("dialogSpeakers")
                 if speakers is not None:
                     if story_type == "dialog" and (
@@ -319,6 +331,7 @@ def validate_issue(
                     if not isinstance(short_meta, dict):
                         errors.append(f"{short_path}.everydayMeta: required")
                         continue
+                    _validate_story_pattern(short_meta, f"{short_path}.everydayMeta", errors)
                     for field in ("domain", "scenario"):
                         if not isinstance(short_meta.get(field), str) or not short_meta[field].strip():
                             errors.append(f"{short_path}.everydayMeta.{field}: required")

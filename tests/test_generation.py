@@ -4,6 +4,7 @@ import copy
 from contextlib import redirect_stdout
 from io import StringIO
 import os
+import re
 import shutil
 import sys
 import tempfile
@@ -75,6 +76,7 @@ from src.generate_issue import (
     main,
 )
 from src.validation import validate_issue, validate_repository
+from src.generation_quality import segmentation_errors
 
 
 def adaptation_payload(
@@ -82,6 +84,26 @@ def adaptation_payload(
     levels: dict,
     covered_ids: list[str] | None = None,
 ) -> dict:
+    # Old sample issues have coarse annotation. Synthetic successful API fixtures
+    # use per-word targets; translations here are placeholders, not language data.
+    levels = copy.deepcopy(levels)
+    for level in levels.values():
+        for units in [level["title"], level["teaser"], *level["paragraphs"]]:
+            if not segmentation_errors(units):
+                continue
+            replacement = []
+            for unit in units:
+                if unit["type"] == "separator":
+                    replacement.append(unit)
+                    continue
+                for part in re.findall(r"\s+|[^\s.,!?…:;]+|[.,!?…:;]", unit["text"]):
+                    item = copy.deepcopy(unit)
+                    item["text"] = part
+                    if part.isspace() or part in ".,!?…:;":
+                        item["type"] = "separator"
+                        item["translations"] = {key: "" for key in item["translations"]}
+                    replacement.append(item)
+            units[:] = replacement
     return {
         "id": story_id,
         "levels": levels,
@@ -208,7 +230,7 @@ class GenerationTests(unittest.TestCase):
             ["properties"]["levels"]["properties"]["alef"]
             ["properties"]["paragraphs"]
         )
-        self.assertEqual(non_dialog_paragraphs["minItems"], 4)
+        self.assertEqual(non_dialog_paragraphs["minItems"], 2)
 
         for story_type, minimum in (("current", 2), ("history", 4)):
             with self.subTest(story_type=story_type):
@@ -222,9 +244,9 @@ class GenerationTests(unittest.TestCase):
                     prose_schema["properties"]["adaptations"]["items"]
                     ["properties"]["levels"]["properties"]
                 )
-                for level_schema in level_properties.values():
+                for level_id, level_schema in level_properties.items():
                     prose_paragraphs = level_schema["properties"]["paragraphs"]
-                    self.assertEqual(prose_paragraphs["minItems"], minimum)
+                    self.assertEqual(prose_paragraphs["minItems"], 2 if level_id == "alef" else minimum)
                     self.assertEqual(prose_paragraphs["maxItems"], 12)
 
         short_schema = _adaptation_batch_schema(
@@ -316,10 +338,10 @@ class GenerationTests(unittest.TestCase):
         restored = _restore_terminal_punctuation([adaptation], ["ru", "en"])
 
         self.assertEqual(restored, 1)
-        self.assertEqual(units_text(levels["alef"]["teaser"]), 'היא שאלה "אתה מגיע?"')
-        self.assertEqual(units_text(levels["alef"]["paragraphs"][0]), "נועה: אני כבר בדרך.")
-        self.assertEqual(units_text(levels["alef"]["paragraphs"][1]), "דני: באמת!")
-        added = levels["alef"]["paragraphs"][0][-1]
+        self.assertEqual(units_text(adaptation["levels"]["alef"]["teaser"]), 'היא שאלה "אתה מגיע?"')
+        self.assertEqual(units_text(adaptation["levels"]["alef"]["paragraphs"][0]), "נועה: אני כבר בדרך.")
+        self.assertEqual(units_text(adaptation["levels"]["alef"]["paragraphs"][1]), "דני: באמת!")
+        added = adaptation["levels"]["alef"]["paragraphs"][0][-1]
         self.assertEqual(added, {
             "text": ".",
             "type": "separator",
@@ -354,34 +376,21 @@ class GenerationTests(unittest.TestCase):
             for unit in units
         ))
 
-    def test_dialog_label_repair_uses_planned_speakers_and_prevents_omission(self) -> None:
+    def test_dialog_label_repair_never_assigns_an_unknown_identity(self) -> None:
         levels = valid_dialog_levels()
-        for level in levels.values():
-            level["paragraphs"] = [
-                [lexical_unit("אני כבר בדרך.")],
-                [lexical_unit("טוב, אחכה ליד הכניסה.")],
-                *level["paragraphs"][2:],
-            ]
-        seed = {
-            "id": "friends-meet",
-            "type": "dialog",
-            "everydayMeta": {"dialogSpeakers": ["נועה", "דני"]},
-        }
+        seed = {"id": "friends-meet", "type": "dialog", "everydayMeta": {"dialogSpeakers": ["נועה", "דני"]}}
         adaptation = adaptation_payload(seed["id"], levels)
-
+        for level in adaptation["levels"].values():
+            level["paragraphs"][0] = [lexical_unit("אני כבר בדרך.")]
+            level["paragraphs"][1] = [lexical_unit("דני"), lexical_unit("שלום.")]
         repaired = _repair_dialog_labels([seed], [adaptation], ["ru", "en"])
-        errors = _adaptation_content_errors(
-            [seed],
-            [adaptation],
-            [{"id": level_id} for level_id in ("alef", "alefPlus", "bet")],
-        )
+        self.assertEqual(repaired, 3)
+        self.assertEqual(units_text(adaptation["levels"]["alef"]["paragraphs"][0]), "אני כבר בדרך.")
+        self.assertTrue(units_text(adaptation["levels"]["alef"]["paragraphs"][1]).startswith("דני:"))
+        errors = _adaptation_content_errors([seed], [adaptation], [{"id": key} for key in levels])
+        self.assertTrue(any("invalid turns 1" in error for error in errors))
 
-        self.assertGreaterEqual(repaired, 6)
-        self.assertEqual(errors, [])
-        self.assertTrue(units_text(levels["alef"]["paragraphs"][0]).startswith("נועה:"))
-        self.assertTrue(units_text(levels["alef"]["paragraphs"][1]).startswith("דני:"))
-
-    def test_new_adaptation_accepts_sentence_sized_lexical_units(self) -> None:
+    def test_annotation_errors_are_deferred_to_targeted_segmentation_repair(self) -> None:
         seed = {"id": "school-news", "type": "current"}
         levels = [{"id": level_id} for level_id in ("alef", "alefPlus", "bet")]
         adaptation = adaptation_payload(seed["id"], valid_dialog_levels())
@@ -392,6 +401,7 @@ class GenerationTests(unittest.TestCase):
         errors = _adaptation_content_errors([seed], [adaptation], levels)
 
         self.assertEqual(errors, [])
+        self.assertTrue(segmentation_errors(adaptation["levels"]["alef"]["paragraphs"][0]))
 
     def test_short_item_requires_two_or_three_complete_sentences_per_level(self) -> None:
         seed = {"id": "queue-question", "type": "everyday", "_shortItem": True}
@@ -2401,7 +2411,7 @@ class GenerationTests(unittest.TestCase):
             self.assertNotIn("# Adaptation and annotation instructions", generated_instructions)
             self.assertIn("# Adaptation and annotation instructions", adaptation_instructions)
             self.assertNotIn("# Sourced discovery instructions", adaptation_instructions)
-            self.assertIn("one to three Hebrew words", adaptation_instructions)
+            self.assertIn("one written Hebrew word", adaptation_instructions)
             self.assertIn("Never put a complete sentence", adaptation_instructions)
             self.assertIn("never emit forms such as `ב העיר`", adaptation_instructions)
             self.assertIn("authoritative facts", adaptation_instructions)

@@ -11,3 +11,10 @@ Mark a current exhibition, festival listing, anniversary program, promotional in
 For every sufficient subject, return 8–12 non-overlapping English factual beats. Give each beat a stable ID and descriptive role; use `detail` when a narrative role does not fit. Mark at least two defining facts as required so every level remains recognizably about the same subject. Do not mark every beat required: secondary dates, names, numbers, and specialist details should usually remain optional for Alef. The factual beats can develop distinct facets rather than a plot. `supportingSourceUrls` may be empty; when URLs are available, use exact URLs from the returned source list. Do not infer beyond the researched material or invent quotations, motives, reactions, dates, numbers, causes, or consequences.
 
 If the researched material cannot satisfy the 8–12-beat factual contract, return the subject as insufficient with a concise reason and empty beats. Missing source links alone never makes a subject insufficient. It is better to release a genuinely thin slot to an already reviewed reserve than to manufacture a summary-shaped article.
+
+Choose concrete subjects whose defining facts can be retold to a beginner using familiar words and simple clauses.
+Avoid selecting a subject that requires several unexplained specialist, theological, legal, or technical concepts at Alef.
+Compare thematic clusters across the selected issue and recent stories, not only exact named subjects.
+For example, three different factories or two ancient religious food rules still give a narrow reading experience.
+Prefer a varied group of periods, activities, places, and human interests without fixed source quotas.
+Keep all factual claims supported; simplify the choice of defining facts rather than inventing a simpler history.
