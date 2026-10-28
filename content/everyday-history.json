@@ -11326,6 +11326,340 @@
         "לאלתר",
         "יציב"
       ]
+    },
+    {
+      "date": "2026-10-28",
+      "storyId": "insurer-clarifies-a-lost-luggage-claim",
+      "domain": "insurance_claims",
+      "scenario": "traveler_reports_a_missing_suitcase_and_separates_confirmed_contents_from_uncertain_details",
+      "lexicalThemes": [
+        "reporting a loss",
+        "describing what is known",
+        "checking travel photos",
+        "completing a claim",
+        "following up"
+      ],
+      "targetVocabulary": [
+        "missing suitcase",
+        "I last remember",
+        "receipt",
+        "contents",
+        "I am not sure",
+        "check the photos",
+        "describe",
+        "submit",
+        "copy",
+        "follow up"
+      ]
+    },
+    {
+      "date": "2026-10-28",
+      "storyId": "coworkers-clarify-a-misdirected-salary-deposit",
+      "domain": "work_pay",
+      "scenario": "employee_and_payroll_coordinator_check_whether_a_salary_payment_used_old_bank_details",
+      "lexicalThemes": [
+        "salary payment",
+        "changed bank details",
+        "confirmation message",
+        "checking a record",
+        "secure follow-up"
+      ],
+      "targetVocabulary": [
+        "salary",
+        "account details",
+        "I changed banks",
+        "confirmation",
+        "still listed",
+        "payment status",
+        "check",
+        "send again",
+        "usual channel",
+        "follow up"
+      ]
+    },
+    {
+      "date": "2026-10-28",
+      "storyId": "shopper-exchanges-a-pan-that-does-not-fit-the-stove",
+      "domain": "shopping_returns",
+      "scenario": "shopper_exchanges_an_unused_pan_after_testing_its_fit_on_a_small_home_burner",
+      "lexicalThemes": [
+        "explaining a return",
+        "comparing products",
+        "measuring at home",
+        "asking about product features",
+        "choosing an exchange"
+      ],
+      "targetVocabulary": [
+        "exchange",
+        "unused",
+        "does not fit",
+        "burner",
+        "measure",
+        "narrower",
+        "handle",
+        "display model",
+        "choose",
+        "fits securely"
+      ]
+    },
+    {
+      "date": "2026-10-28",
+      "storyId": "parent-and-after-school-coordinator-adjust-pickup-plan",
+      "domain": "school_childcare",
+      "scenario": "parent_and_after_school_coordinator_update_a_pickup_plan_when_work_runs_late",
+      "lexicalThemes": [
+        "school pickup",
+        "explaining a schedule change",
+        "arranging an alternate adult",
+        "identifying someone",
+        "confirming a message"
+      ],
+      "targetVocabulary": [
+        "pick up",
+        "work meeting",
+        "wait inside",
+        "my sister can come",
+        "recognize",
+        "let her know",
+        "a little earlier",
+        "send an update",
+        "confirm",
+        "later"
+      ]
+    },
+    {
+      "date": "2026-10-28",
+      "storyId": "visitors-join-a-community-choir-rehearsal",
+      "domain": "arts_events",
+      "scenario": "friends_join_an_open_community_choir_rehearsal_after_clarifying_how_visitors_can_participate",
+      "lexicalThemes": [
+        "community event",
+        "asking how to participate",
+        "following printed words",
+        "offering help",
+        "making a return plan"
+      ],
+      "targetVocabulary": [
+        "open rehearsal",
+        "join in",
+        "listen first",
+        "printed words",
+        "follow the melody",
+        "lose my place",
+        "next verse",
+        "practice",
+        "come back",
+        "take part"
+      ]
+    },
+    {
+      "date": "2026-10-28",
+      "storyId": "traveler-checks-a-passport-name-mismatch",
+      "domain": "travel_documents",
+      "scenario": "traveler_notices_a_name_difference_between_a_booking_confirmation_and_passport_and_seeks_clarification",
+      "lexicalThemes": [
+        "travel documents",
+        "names",
+        "checking details"
+      ],
+      "targetVocabulary": [
+        "passport",
+        "booking",
+        "name",
+        "letter",
+        "check",
+        "difference"
+      ]
+    },
+    {
+      "date": "2026-10-28",
+      "storyId": "job-seeker-practices-a-polite-salary-answer",
+      "domain": "employment_jobs",
+      "scenario": "job_seeker_rehearses_a_salary_question_with_a_friend_and_refines_a_calm_response",
+      "lexicalThemes": [
+        "job interviews",
+        "practice",
+        "salary"
+      ],
+      "targetVocabulary": [
+        "interview",
+        "salary",
+        "answer",
+        "practice",
+        "role",
+        "discuss"
+      ]
+    },
+    {
+      "date": "2026-10-28",
+      "storyId": "resident-asks-about-a-municipal-garden-tool",
+      "domain": "municipal_services",
+      "scenario": "resident_reports_a_loose_handle_on_a_shared_community_garden_tool_and_uses_another",
+      "lexicalThemes": [
+        "community garden",
+        "tools",
+        "reporting a problem"
+      ],
+      "targetVocabulary": [
+        "tool",
+        "handle",
+        "loose",
+        "shared",
+        "repair",
+        "another"
+      ]
+    },
+    {
+      "date": "2026-10-28",
+      "storyId": "coworkers-correct-a-mistaken-tip-entry",
+      "domain": "work_pay",
+      "scenario": "cafe_worker_and_shift_lead_correct_a_tip_entry_assigned_to_the_wrong_shift",
+      "lexicalThemes": [
+        "workplace",
+        "tips",
+        "correcting an entry"
+      ],
+      "targetVocabulary": [
+        "tip",
+        "shift",
+        "wrong",
+        "note",
+        "compare",
+        "correct"
+      ]
+    },
+    {
+      "date": "2026-10-28",
+      "storyId": "tenant-reports-a-drafty-window",
+      "domain": "housing_landlord",
+      "scenario": "tenant_shows_landlord_where_a_closed_window_is_drafty_and_agrees_on_a_temporary_measure",
+      "lexicalThemes": [
+        "renting",
+        "windows",
+        "small home problem"
+      ],
+      "targetVocabulary": [
+        "tenant",
+        "landlord",
+        "window",
+        "draft",
+        "curtain",
+        "frame"
+      ]
+    },
+    {
+      "date": "2026-10-28",
+      "storyId": "neighbor-removes-old-labels-from-a-parcel",
+      "domain": "postal_parcels",
+      "scenario": "sender_removes_an_old_address_label_and_barcode_before_reusing_a_parcel_box",
+      "lexicalThemes": [
+        "mailing parcels",
+        "reusing boxes",
+        "addresses"
+      ],
+      "targetVocabulary": [
+        "box",
+        "label",
+        "address",
+        "old",
+        "remove",
+        "barcode"
+      ]
+    },
+    {
+      "date": "2026-10-28",
+      "storyId": "friends-add-a-shared-reminder-to-a-calendar",
+      "domain": "digital_accounts",
+      "scenario": "friends_add_plant_watering_dates_to_a_shared_calendar_after_realizing_they_remember_different_dates",
+      "lexicalThemes": [
+        "shared calendars",
+        "plans",
+        "helping a neighbor"
+      ],
+      "targetVocabulary": [
+        "calendar",
+        "date",
+        "shared",
+        "water",
+        "plants",
+        "plan"
+      ]
+    },
+    {
+      "date": "2026-10-28",
+      "storyId": "shopper-returns-a-cart-with-a-loose-wheel",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_reports_a_wobbly_supermarket_cart_wheel_and_switches_to_a_steadier_cart",
+      "lexicalThemes": [
+        "shopping",
+        "carts",
+        "noticing a problem"
+      ],
+      "targetVocabulary": [
+        "cart",
+        "wheel",
+        "wobbly",
+        "employee",
+        "switch",
+        "steady"
+      ]
+    },
+    {
+      "date": "2026-10-28",
+      "storyId": "friends-rescue-a-too-thin-sauce",
+      "domain": "food_cooking",
+      "scenario": "friends_thicken_a_too_thin_sauce_by_mashing_cooked_beans_into_it",
+      "lexicalThemes": [
+        "cooking",
+        "sauce",
+        "adjusting texture"
+      ],
+      "targetVocabulary": [
+        "sauce",
+        "thin",
+        "beans",
+        "mash",
+        "stir",
+        "thicker"
+      ]
+    },
+    {
+      "date": "2026-10-28",
+      "storyId": "visitors-try-a-dance-step-at-a-community-event",
+      "domain": "arts_events",
+      "scenario": "visitor_learns_a_repeated_dance_step_from_another_dancer_at_a_community_event",
+      "lexicalThemes": [
+        "community events",
+        "dance",
+        "learning a movement"
+      ],
+      "targetVocabulary": [
+        "dance",
+        "step",
+        "turn",
+        "slowly",
+        "show",
+        "join"
+      ]
+    },
+    {
+      "date": "2026-10-28",
+      "storyId": "hikers-share-a-folding-seat-on-a-trail",
+      "domain": "nature_outdoors",
+      "scenario": "hiker_offers_a_companion_a_folding_seat_when_the_trailside_ground_is_damp",
+      "lexicalThemes": [
+        "hiking",
+        "offering help",
+        "taking a break"
+      ],
+      "targetVocabulary": [
+        "trail",
+        "damp",
+        "seat",
+        "offer",
+        "take turns",
+        "rest"
+      ]
     }
   ]
 }
