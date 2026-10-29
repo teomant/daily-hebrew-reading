@@ -11660,6 +11660,448 @@
         "take turns",
         "rest"
       ]
+    },
+    {
+      "date": "2026-10-29",
+      "storyId": "resident-and-insurer-organize-a-bicycle-repair-estimate",
+      "domain": "insurance_claims",
+      "scenario": "resident_submits_a_bicycle_repair_estimate_with_one_unconfirmed_repair_marked_for_review",
+      "lexicalThemes": [
+        "repair estimates",
+        "insurance claims",
+        "known and uncertain details",
+        "follow-up records"
+      ],
+      "targetVocabulary": [
+        "estimate",
+        "repair",
+        "damaged",
+        "still being checked",
+        "send",
+        "note",
+        "copy",
+        "claim"
+      ],
+      "brief": "After a bicycle is damaged in a fall, resident Liat gets a repair estimate from a local bike shop and wants to include it in her insurance claim without presenting it as a final bill. She calls the insurer and explains that the mechanic has listed several possible repairs, but has not started work. The representative asks which parts are definitely damaged; Liat says the bent wheel is clear, while the mechanic still needs to inspect the brake. She asks whether she should send the estimate now or wait for the inspection, and the representative explains that she can submit the current estimate with a note that the brake is still being checked. Liat asks the mechanic to mark the uncertain item clearly, sends the revised estimate, and saves a copy. The claim has a clear record of what is known and what still needs review, while the bicycle remains at the shop until Liat hears back.",
+      "storyPattern": {
+        "goal": "Submit a repair estimate without overstating uncertain damage",
+        "relationship": "Policyholder and claims representative",
+        "interaction": "Separate confirmed damage from a possible repair",
+        "outcome": "Send a clearly qualified estimate and retain a copy"
+      }
+    },
+    {
+      "date": "2026-10-29",
+      "storyId": "neighbors-coordinate-a-shared-building-tool-shelf",
+      "domain": "neighbors_building",
+      "scenario": "neighbors_set_up_a_shared_tool_area_while_identifying_owners_and_preserving_access",
+      "lexicalThemes": [
+        "shared building spaces",
+        "ownership",
+        "offering and declining",
+        "measuring and arranging"
+      ],
+      "targetVocabulary": [
+        "shared",
+        "belongs to",
+        "move",
+        "label",
+        "box",
+        "space",
+        "measure",
+        "block the door"
+      ],
+      "brief": "Fully AI-generated dialogue. Neighbors Yael and Ron are the only speakers. Yael wants to put a small shared shelf of basic tools in the building’s storage area, where residents currently leave tools in different places; Ron is a neighbor who has already been keeping a few tools there and can explain what belongs to him. Yael asks whether the tools are his and says she does not want to move anything without asking. Ron clarifies that the screwdriver set and tape measure are his, but the loose hammer was left by another resident. Yael suggests labeling the owners’ tools before putting them together, and Ron says he would rather keep his set in its own box. They discuss whether there is enough room for a shared box without blocking the door. Yael proposes measuring the clear space; Ron helps hold the tape measure and points out that the first spot would obstruct access. They choose a narrower place on the side wall. Ron will bring his labeled box there, and Yael will ask the hammer’s owner before including it. The dialogue supports 8–12 short alternating turns and ends with a practical arrangement that respects ownership.",
+      "storyPattern": {
+        "goal": "Organize a shared storage area while respecting ownership",
+        "relationship": "Neighbors coordinating a common space",
+        "interaction": "Identify owners, decline moving items, and cooperate on placement",
+        "outcome": "Choose an accessible spot and agree who will move each item"
+      }
+    },
+    {
+      "date": "2026-10-29",
+      "storyId": "friends-prepare-a-batch-of-roasted-vegetables-for-lunches",
+      "domain": "food_cooking",
+      "scenario": "friends_batch_roast_mixed_vegetables_and_pack_separate_lunch_portions",
+      "lexicalThemes": [
+        "meal preparation",
+        "cutting vegetables",
+        "oven timing",
+        "packing and storing food"
+      ],
+      "targetVocabulary": [
+        "wash",
+        "cut",
+        "tray",
+        "larger pieces",
+        "tender",
+        "leave aside",
+        "cool",
+        "portion"
+      ],
+      "brief": "Friends Tamar and Gil want to prepare roasted vegetables for several weekday lunches, so they wash and cut what is already in the refrigerator: cauliflower, carrots, and a few peppers. Tamar wants everything on one tray, but Gil notices that the cauliflower pieces are much larger and may need more time. They decide to cut some pieces smaller and keep a portion of the peppers aside so they can add them later. When the tray comes out, the carrots are tender but the cauliflower still needs a little time; they return the tray to the oven and use the pause to portion the cooked peppers into containers. They let the vegetables cool before packing them with a small separate container of dressing. The meal prep is ready, and they have lunches packed without making the vegetables soggy or overcooking the peppers.",
+      "storyPattern": {
+        "goal": "Prepare vegetables in advance for weekday meals",
+        "relationship": "Friends sharing a practical kitchen task",
+        "interaction": "Adjust the cutting and cooking order to suit different vegetables",
+        "outcome": "Pack cooled portions with dressing kept separate"
+      }
+    },
+    {
+      "date": "2026-10-29",
+      "storyId": "customer-and-bank-clerk-review-a-card-hold",
+      "domain": "banking_credit",
+      "scenario": "customer_checks_a_pending_card_hold_after_returning_a_purchase",
+      "lexicalThemes": [
+        "card transactions",
+        "pending entries",
+        "returns",
+        "receipts and follow-up"
+      ],
+      "targetVocabulary": [
+        "pending",
+        "hold",
+        "purchase",
+        "return receipt",
+        "completed",
+        "account",
+        "check again",
+        "contact"
+      ],
+      "brief": "Fully AI-generated dialogue. Customer Noa speaks with bank clerk Erez, the only two speakers. Noa sees that a card purchase at a home-goods shop appears as a pending hold in her account, although she returned the item before leaving the shop. She explains what happened and asks whether the entry means the payment has been completed. Erez asks whether she has the shop’s return receipt; Noa finds it and clarifies that the receipt shows the return, but the account entry has not changed yet. Erez checks the account view available to him and explains that the entry is still pending there, without promising when it will change. Noa asks whether she should contact the shop or wait; Erez says he cannot see the shop’s records, but can show her where the bank’s entry is marked pending. Noa asks him to confirm that no second completed purchase is listed, and Erez confirms what appears on his screen. She decides to keep the receipt and check the account again later; if the entry remains unclear, she will contact the shop with the receipt details. The conversation supports 8–12 short alternating turns and ends with a specific next step without inventing a financial rule.",
+      "storyPattern": {
+        "goal": "Understand an account entry after returning a purchase",
+        "relationship": "Bank customer and bank clerk",
+        "interaction": "Compare the visible account status with a return receipt and clarify limits",
+        "outcome": "Keep the receipt and follow up with the shop if needed"
+      }
+    },
+    {
+      "date": "2026-10-29",
+      "storyId": "friends-visit-a-small-local-history-exhibition-and-leave-a-question",
+      "domain": "arts_events",
+      "scenario": "visitors_submit_a_question_about_an_unidentified_object_in_a_local_exhibition",
+      "lexicalThemes": [
+        "museum displays",
+        "describing objects",
+        "expressing uncertainty",
+        "asking a considered question"
+      ],
+      "targetVocabulary": [
+        "display",
+        "caption",
+        "photograph",
+        "volunteer",
+        "identified",
+        "question",
+        "write down",
+        "take home"
+      ],
+      "brief": "Friends Michal and Eitan visit a small local exhibition about everyday objects from the area, where one display shows an old metal lunch tin beside a faded photograph. Eitan thinks the tin belonged to a factory worker, while Michal notices that the caption does not say who used it. They look for more information on the display card, but it only describes where the tin was found. A volunteer explains that the exhibition team is collecting visitors’ questions for a future update and points to a notebook near the exit. Michal asks Eitan what he would like to know; he suggests asking how the tin was identified and whether the photograph is connected to it. They write one concise question rather than guessing at the answer, then look at another display while they wait for a reply. Before leaving, they add their question to the notebook and choose a picture postcard of the exhibition to take home.",
+      "storyPattern": {
+        "goal": "Engage with an exhibition and ask about an unclear object",
+        "relationship": "Friends exploring a cultural event together",
+        "interaction": "Compare observations and frame an unanswered question",
+        "outcome": "Leave a concise question for the exhibition team"
+      }
+    },
+    {
+      "date": "2026-10-29",
+      "storyId": "resident-asks-about-a-duplicate-water-bill",
+      "domain": "bills_taxes",
+      "scenario": "resident_questions_two_water_bills_that_show_the_same_billing_period_and_marks_them_for_clarification",
+      "lexicalThemes": [
+        "bill",
+        "billing period",
+        "duplicate",
+        "check",
+        "mark"
+      ],
+      "targetVocabulary": [
+        "water bill",
+        "same period",
+        "copy",
+        "keep together",
+        "clarify"
+      ],
+      "brief": "A resident notices that two water bills show the same period and calls the provider to ask whether she is looking at a duplicate. The representative cannot tell from the copy alone, so she marks both bills and keeps them together while the provider checks.",
+      "storyPattern": {
+        "goal": "Clarify whether two bills refer to the same period",
+        "relationship": "Resident and billing representative",
+        "interaction": "Describe a possible duplicate without assuming the cause",
+        "outcome": "Mark both copies and leave the discrepancy for checking"
+      }
+    },
+    {
+      "date": "2026-10-29",
+      "storyId": "applicant-asks-how-to-correct-a-misspelled-name",
+      "domain": "government_documents",
+      "scenario": "applicant_reports_a_misspelled_name_on_an_issued_document_and_leaves_it_unaltered_for_review",
+      "lexicalThemes": [
+        "spelling",
+        "documents",
+        "notice",
+        "correction",
+        "review"
+      ],
+      "targetVocabulary": [
+        "misspelled name",
+        "issued document",
+        "point out",
+        "note",
+        "leave unchanged"
+      ],
+      "brief": "An applicant spots a misspelled name on a newly issued document and points it out to a clerk before leaving the counter. The clerk notes the discrepancy for review, and the applicant keeps the document rather than writing a correction on it.",
+      "storyPattern": {
+        "goal": "Flag an apparent name error on an issued document",
+        "relationship": "Applicant and service clerk",
+        "interaction": "Point out a discrepancy and avoid altering the document",
+        "outcome": "Clerk notes it for review"
+      }
+    },
+    {
+      "date": "2026-10-29",
+      "storyId": "resident-reports-a-leaking-public-tap",
+      "domain": "municipal_services",
+      "scenario": "resident_reports_a_public_drinking_fountain_that_keeps_running_after_its_handle_is_released",
+      "lexicalThemes": [
+        "public place",
+        "water",
+        "reporting",
+        "observation",
+        "choice"
+      ],
+      "targetVocabulary": [
+        "drinking fountain",
+        "handle",
+        "keeps running",
+        "location",
+        "another one"
+      ],
+      "brief": "A resident sees water running from a public drinking fountain after its handle is released and reports the location to the municipal service. She leaves the fountain alone and uses another one nearby.",
+      "storyPattern": {
+        "goal": "Report a public fixture that continues running",
+        "relationship": "Resident acting independently",
+        "interaction": "Describe an observable problem without trying to repair it",
+        "outcome": "Report its location and use another fountain"
+      }
+    },
+    {
+      "date": "2026-10-29",
+      "storyId": "applicant-declines-an-interview-time-and-offers-another",
+      "domain": "employment_jobs",
+      "scenario": "job_applicant_cannot_attend_an_offered_interview_time_and_suggests_alternatives",
+      "lexicalThemes": [
+        "availability",
+        "polite refusal",
+        "interview",
+        "alternatives",
+        "response"
+      ],
+      "targetVocabulary": [
+        "invitation",
+        "unavailable",
+        "another time",
+        "offer",
+        "check"
+      ],
+      "brief": "A job applicant receives an interview invitation for a time she cannot make and replies that she is unavailable then. She offers two other times, and the recruiter agrees to check which one works.",
+      "storyPattern": {
+        "goal": "Find an interview time that fits availability",
+        "relationship": "Job applicant and recruiter",
+        "interaction": "Decline one option politely and offer alternatives",
+        "outcome": "Recruiter checks the suggested times"
+      }
+    },
+    {
+      "date": "2026-10-29",
+      "storyId": "patient-asks-clinic-for-a-written-appointment-reminder",
+      "domain": "health_appointments",
+      "scenario": "patient_explains_that_phone_reminders_are_easy_to_miss_and_records_the_appointment_time_while_written_options_are_checked",
+      "lexicalThemes": [
+        "appointment",
+        "communication preference",
+        "reminder",
+        "calendar",
+        "clarification"
+      ],
+      "targetVocabulary": [
+        "phone reminder",
+        "hard to catch",
+        "in writing",
+        "appointment time",
+        "calendar"
+      ],
+      "brief": "A patient tells the clinic receptionist that phone reminders are hard for her to catch and asks whether the appointment details can also be sent in writing. The receptionist says she will check what message options are available, and the patient writes the appointment time in her own calendar meanwhile.",
+      "storyPattern": {
+        "goal": "Keep track of an appointment despite missed phone reminders",
+        "relationship": "Patient and clinic receptionist",
+        "interaction": "Explain a communication difficulty and ask about a written option",
+        "outcome": "Record the appointment time while options are checked"
+      }
+    },
+    {
+      "date": "2026-10-29",
+      "storyId": "shopper-returns-a-shirt-after-noticing-a-seam",
+      "domain": "shopping_returns",
+      "scenario": "shopper_brings_back_an_unworn_shirt_with_a_loose_seam_and_checks_its_replacement",
+      "lexicalThemes": [
+        "clothing",
+        "defect",
+        "return",
+        "exchange",
+        "inspection"
+      ],
+      "targetVocabulary": [
+        "seam",
+        "coming apart",
+        "unworn",
+        "receipt",
+        "exchange"
+      ],
+      "brief": "A shopper notices that the seam of an unworn shirt is coming apart and brings it back to the shop with the receipt. She explains what she found, and the clerk offers an exchange for another shirt that she checks before taking it.",
+      "storyPattern": {
+        "goal": "Replace an unworn garment with a loose seam",
+        "relationship": "Shopper and store clerk",
+        "interaction": "Show the defect and inspect a replacement",
+        "outcome": "Choose an exchange after checking it"
+      }
+    },
+    {
+      "date": "2026-10-29",
+      "storyId": "roommates-agree-to-keep-one-evening-free-of-speaker-calls",
+      "domain": "phone_internet",
+      "scenario": "roommates_agree_to_use_headphones_and_move_a_video_call_after_noise_interrupts_study",
+      "lexicalThemes": [
+        "shared home",
+        "calls",
+        "noise",
+        "request",
+        "compromise"
+      ],
+      "targetVocabulary": [
+        "video call",
+        "headphones",
+        "living room",
+        "study",
+        "quieter corner"
+      ],
+      "brief": "One roommate asks the other to take video calls with headphones after the shared living room becomes noisy during evening study. The other agrees to use headphones and moves the next call to a quieter corner.",
+      "storyPattern": {
+        "goal": "Reduce call noise during a roommate's study time",
+        "relationship": "Roommates sharing a home",
+        "interaction": "Make a considerate request and agree on a small adjustment",
+        "outcome": "Use headphones and move the call"
+      }
+    },
+    {
+      "date": "2026-10-29",
+      "storyId": "neighbors-share-a-lift-while-carrying-groceries",
+      "domain": "neighbors_building",
+      "scenario": "neighbor_offers_to_carry_one_of_another_residents_heavy_grocery_bags_upstairs",
+      "lexicalThemes": [
+        "neighbors",
+        "offer",
+        "acceptance",
+        "carrying",
+        "shared task"
+      ],
+      "targetVocabulary": [
+        "heavy bags",
+        "building entrance",
+        "offer",
+        "carry upstairs",
+        "split the load"
+      ],
+      "brief": "A neighbor sees another resident struggling with two heavy grocery bags at the building entrance and offers to carry one upstairs. The resident accepts, and they split the load between them.",
+      "storyPattern": {
+        "goal": "Make carrying groceries upstairs easier",
+        "relationship": "Neighbors in the same building",
+        "interaction": "Offer practical help and accept it",
+        "outcome": "Divide the load"
+      }
+    },
+    {
+      "date": "2026-10-29",
+      "storyId": "passenger-gives-up-a-seat-for-someone-with-a-cane",
+      "domain": "transport_fares_routes",
+      "scenario": "bus_passenger_offers_a_seat_to_a_rider_with_a_cane_and_stands_holding_the_rail",
+      "lexicalThemes": [
+        "public transport",
+        "offer",
+        "acceptance",
+        "courtesy",
+        "standing"
+      ],
+      "targetVocabulary": [
+        "crowded bus",
+        "cane",
+        "offer a seat",
+        "accept",
+        "hold the rail"
+      ],
+      "brief": "On a crowded bus, a seated passenger notices someone standing with a cane and offers her seat. The other passenger accepts, and the first rider holds the rail for the rest of the trip.",
+      "storyPattern": {
+        "goal": "Offer a seat to a passenger who may need it",
+        "relationship": "Strangers sharing a bus",
+        "interaction": "Notice a need and make a respectful offer",
+        "outcome": "Seat is accepted and the offerer stands safely"
+      }
+    },
+    {
+      "date": "2026-10-29",
+      "storyId": "friends-save-a-pot-of-overcooked-pasta",
+      "domain": "food_cooking",
+      "scenario": "friends_turn_overcooked_soft_pasta_into_a_cold_salad_after_tasting_a_small_portion",
+      "lexicalThemes": [
+        "cooking",
+        "mistake",
+        "suggestion",
+        "improvisation",
+        "taste"
+      ],
+      "targetVocabulary": [
+        "too soft",
+        "rinse",
+        "chopped vegetables",
+        "dressing",
+        "pasta salad"
+      ],
+      "brief": "Friends realize their pasta has become too soft, so one suggests rinsing it briefly and serving it cold with chopped vegetables instead. They taste a small portion with dressing and agree it works as a pasta salad.",
+      "storyPattern": {
+        "goal": "Make an overcooked ingredient usable",
+        "relationship": "Friends preparing food together",
+        "interaction": "Admit a cooking mistake and suggest a different dish",
+        "outcome": "Taste and serve it as a cold salad"
+      }
+    },
+    {
+      "date": "2026-10-29",
+      "storyId": "visitors-pause-to-listen-to-bells-on-a-day-trip",
+      "domain": "travel_day_trips",
+      "scenario": "visitors_pause_to_watch_a_craftsperson_demonstrate_small_metal_bells_after_hearing_them",
+      "lexicalThemes": [
+        "day trip",
+        "sound",
+        "noticing",
+        "guessing",
+        "demonstration"
+      ],
+      "targetVocabulary": [
+        "hear bells",
+        "pause",
+        "workshop",
+        "craftsperson",
+        "demonstrate"
+      ],
+      "brief": "During a day trip through a small town, two visitors hear bells from a workshop and pause outside to listen. One guesses they come from a clock, but the other spots a craftsperson ringing small metal pieces for a demonstration, and they stay to watch.",
+      "storyPattern": {
+        "goal": "Find the source of an unexpected sound",
+        "relationship": "Travel companions",
+        "interaction": "Share a guess and notice a nearby demonstration",
+        "outcome": "Stop to watch the craftsperson"
+      }
     }
   ]
 }
