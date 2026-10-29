@@ -190,7 +190,7 @@ def history_research_record(story_id: str, status: str = "sufficient") -> dict:
 class GenerationTests(unittest.TestCase):
     def test_default_issue_mix_matches_the_product_contract(self) -> None:
         site = read_json(ROOT / "config" / "site.json")
-        self.assertEqual(site["defaultIssueStoryCount"], 11)
+        self.assertEqual(site["defaultIssueStoryCount"], 12)
         self.assertEqual(
             (CURRENT_TARGET, HISTORY_TARGET, EVERYDAY_TARGET, DIALOG_TARGET, SHORTS_TARGET),
             (2, 3, 3, 2, 11),
@@ -844,9 +844,9 @@ class GenerationTests(unittest.TestCase):
         ordered = _ordered_issue_stories(stories)
         self.assertEqual(
             [story["id"] for story in ordered],
-            ["daily-one", "daily-two", "dialog", "shorts", "news", "history"],
+            ["shorts", "daily-one", "daily-two", "dialog", "news", "history"],
         )
-        self.assertIs(ordered[0], stories[1])
+        self.assertIs(ordered[1], stories[1])
         self.assertEqual(stories[0]["id"], "news")
 
     def test_generated_story_target_never_replaces_missing_sourced_slots(self) -> None:

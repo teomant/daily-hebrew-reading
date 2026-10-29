@@ -24,12 +24,14 @@ from .common import (
 )
 from .generation_quality import affected_groups, apply_repairs, repair_schema
 from .generation_usage import record_usage, usage_run
+from .verbs import daily_verbs, verb_batch_index, verb_seed, verbs_page
 from .validation import (
     briefs_are_near_duplicates,
     is_valid_https_url,
     is_meaningful_english,
     slugs_are_near_duplicates,
     validate_issue,
+    validate_verb_body,
 )
 
 
@@ -68,7 +70,7 @@ EVERYDAY_TARGET = 3
 DIALOG_TARGET = 2
 SHORTS_TARGET = 11
 SHORTS_REPLACEMENT_LIMIT = 11
-STORY_DISPLAY_ORDER = {"everyday": 0, "dialog": 1, "shorts": 2, "current": 3, "history": 4}
+STORY_DISPLAY_ORDER = {"verbs": 0, "shorts": 1, "everyday": 2, "dialog": 3, "current": 4, "history": 5}
 GENERATED_SCENARIO_POOLS = {
     "essential": [
         "banking_credit",
@@ -616,7 +618,7 @@ def _validated_history_research(
 
 
 def _public_story_seed(story: dict[str, Any]) -> dict[str, Any]:
-    private_keys = {HISTORY_BEAT_CONTRACT_KEY, "historyFamily", DISCOVERY_SOURCE_KEY, "_shortItem"}
+    private_keys = {HISTORY_BEAT_CONTRACT_KEY, "historyFamily", DISCOVERY_SOURCE_KEY, "_shortItem", "_targetVerb"}
     return {key: value for key, value in story.items() if key not in private_keys}
 
 
@@ -1701,6 +1703,8 @@ Create title, teaser, paragraphs, lexical segmentation, translations, and `cover
 
 When a seed has `_shortItem: true`, return exactly one compact body paragraph containing exactly two or three complete sentences at every level. Cover only one tiny practical action or question and its immediate answer or result. Do not add background, a second event, or a full-article arc. Keep all three levels similarly compact; distinguish them through wording and grammar, not length.
 
+When a seed has `_targetVerb`, its brief authorizes you to invent a fresh fictional mini-situation around that verb. Include that exact unpointed Hebrew spelling as a separate written word naturally inside the body at every level. Use an infinitive construction when the target is an infinitive; יכול is the modal exception. Other conjugated forms may appear too, but do not replace the assigned form with a synonym. A heading, label, or vocabulary list does not count as using the verb. Keep each piece concrete and varied; avoid repeating the same want-to/do-it template for every verb. Do not invent real-world news or official rules.
+
 For DIALOG, `everydayMeta.dialogSpeakers` contains the two binding Hebrew speaker labels. Start every turn with exactly one of those names and an ASCII colon, alternate them, and use the same names at every level.
 
 Configured reading levels:
@@ -2219,6 +2223,14 @@ def _adapt_story(
             story = {**_public_story_seed(seed), "levels": {level_id: value} if value is not None else {}}
             errors = validate_issue(issue_for(story, [level]), site, levels, "generated batch")
             errors += _history_adaptation_errors([seed], adaptations, [level])
+            if seed.get("_targetVerb") and isinstance(value, dict):
+                paragraphs = value.get("paragraphs")
+                if not isinstance(paragraphs, list) or len(paragraphs) != 1:
+                    errors.append(f"{seed['id']}.{level_id}: expected one verb piece")
+                else:
+                    errors.extend(validate_verb_body(
+                        paragraphs[0], seed["_targetVerb"], locales, f"{seed['id']}.{level_id}",
+                    ))
             content_errors = _adaptation_content_errors([seed], adaptations, [level])
             if not errors and (not content_errors or seed.get("type") == "dialog"):
                 usable[level_id] = copy.deepcopy(value)
@@ -2276,6 +2288,12 @@ def _adapt_story(
         repaired, errors = apply_repairs(story, groups, response, locales)
         if repaired is not None:
             errors += validate_issue(issue_for(repaired, levels), site, levels, "segmentation repair")
+            if seed.get("_targetVerb"):
+                for level_id, value in repaired["levels"].items():
+                    errors.extend(validate_verb_body(
+                        value["paragraphs"][0], seed["_targetVerb"], locales,
+                        f"segmentation repair.{level_id}",
+                    ))
         if errors or repaired is None:
             _log_validation_errors(phase, errors)
             _log(f"{phase}: quality warning; repair rejected; retaining usable article with original annotation")
@@ -2288,6 +2306,28 @@ def _adapt_story(
 def generate(root: Path, target_date: str, additional_stories: int) -> dict[str, Any] | None:
     with usage_run(_log):
         return _generate(root, target_date, additional_stories)
+
+
+def _generate_verbs_page(
+    root: Path, target_date: str, levels: list[dict[str, Any]], locales: list[str],
+    site: dict[str, Any], image_locales: list[str], instructions: str,
+) -> dict[str, Any] | None:
+    items = daily_verbs(root, target_date)
+    _log(f"VERBS batch {verb_batch_index(target_date) + 1}/5: " + ", ".join(item["verb"] for item in items))
+    completed = []
+    for item in items:
+        story = _adapt_story(
+            verb_seed(item, target_date), target_date, levels, locales, site, image_locales,
+            instructions, f"VERBS item {item['rank']}/50",
+        )
+        if story is not None:
+            completed.append(story)
+    page = verbs_page(items, completed, target_date, [level["id"] for level in levels], locales)
+    if page is None:
+        _log(f"VERBS: only {len(completed)}/10 items passed core checks; omitting this page and keeping other valid articles")
+    else:
+        _log("VERBS: collected all 10 independently adapted items")
+    return page
 
 
 def _generate(root: Path, target_date: str, additional_stories: int) -> dict[str, Any] | None:
@@ -2314,7 +2354,11 @@ def _generate(root: Path, target_date: str, additional_stories: int) -> dict[str
     maximum_count = additional_stories if existing else int(site["maximumIssueStoryCount"])
     full_issue_target = CURRENT_TARGET + HISTORY_TARGET + EVERYDAY_TARGET + DIALOG_TARGET + 1
     include_shorts_page = existing is None and target_count >= full_issue_target
-    standard_story_target = target_count - 1 if include_shorts_page else target_count
+    include_verbs_page = existing is None and target_count >= full_issue_target + 1
+    # Validate local configuration before any paid requests.
+    if include_verbs_page:
+        daily_verbs(root, target_date)
+    standard_story_target = target_count - int(include_shorts_page) - int(include_verbs_page)
     exclusions = _existing_exclusions(existing)
     recent = _recent_history(history, target, int(site["everydayHistoryDays"]))
     recent_issues = _recent_issue_context(
@@ -2858,7 +2902,7 @@ def _generate(root: Path, target_date: str, additional_stories: int) -> dict[str
         }
         for story in [*sourced_seeds, *generated_seeds, *short_seeds]
     ]
-    if not seeds:
+    if not seeds and not include_verbs_page:
         raise RuntimeError("Planning produced no usable story briefs")
     planned_standard_count = len(seeds) - len(short_seeds)
     if planned_standard_count < standard_story_target:
@@ -2977,6 +3021,13 @@ def _generate(root: Path, target_date: str, additional_stories: int) -> dict[str
                 f"No SHORTS items passed adaptation after {replacement_attempts} "
                 "replacement attempt(s); publishing the other valid stories"
             )
+
+    if include_verbs_page:
+        verb_page = _generate_verbs_page(
+            root, target_date, levels, locales, site, image_locales, adaptation_instructions,
+        )
+        if verb_page is not None:
+            new_stories.append(verb_page)
 
     if not new_stories:
         if existing is not None:

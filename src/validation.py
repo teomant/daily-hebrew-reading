@@ -8,10 +8,11 @@ from unicodedata import category as unicode_category
 from urllib.parse import urlparse
 
 from .common import issue_minutes, normalized_url, read_json, units_text
+from .verbs import VERB_BATCH_SIZE, daily_verbs, load_verbs, uses_target_verb, verb_batch_index
 
 
 SLUG_PATTERN = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
-STORY_TYPES = {"current", "everyday", "dialog", "history", "shorts"}
+STORY_TYPES = {"current", "everyday", "dialog", "history", "shorts", "verbs"}
 UNIT_TYPES = {"word", "expression", "properNoun", "separator"}
 MIN_TRANSLATION_COVERAGE = 0.75
 BRIEF_STOP_WORDS = {
@@ -153,6 +154,15 @@ def _validate_story_pattern(meta: dict[str, Any], path: str, errors: list[str]) 
         errors.append(f"{path}.storyPattern: expected goal, relationship, interaction, outcome as nonempty English strings")
 
 
+def validate_verb_body(paragraph: Any, verb: str, locales: list[str], path: str) -> list[str]:
+    errors: list[str] = []
+    if isinstance(paragraph, list) and all(isinstance(unit, dict) for unit in paragraph):
+        if not uses_target_verb(paragraph, verb):
+            errors.append(f"{path}: missing assigned verb {verb}")
+        _validate_translation_coverage({"paragraphs": [paragraph]}, path, locales, errors)
+    return errors
+
+
 def validate_issue(
     issue: Any,
     site: dict[str, Any],
@@ -259,7 +269,7 @@ def validate_issue(
         if not isinstance(sources, list):
             errors.append(f"{story_path}.sources: expected a list")
             sources = []
-        if story_type in {"everyday", "dialog", "shorts"} and sources:
+        if story_type in {"everyday", "dialog", "shorts", "verbs"} and sources:
             errors.append(f"{story_path}.sources: {story_type.upper()} stories cannot have sources")
         source_urls: set[str] = set()
         for source_index, source in enumerate(sources):
@@ -341,9 +351,33 @@ def validate_issue(
         elif short_items is not None:
             errors.append(f"{story_path}.shortItems: only SHORTS pages may contain short items")
 
+        verb_items = story.get("verbItems")
+        if story_type == "verbs":
+            if not isinstance(verb_items, list) or len(verb_items) != VERB_BATCH_SIZE:
+                errors.append(f"{story_path}.verbItems: expected exactly 10 verb records")
+                verb_items = []
+            try:
+                first_rank = verb_batch_index(date) * VERB_BATCH_SIZE + 1
+            except (TypeError, ValueError):
+                first_rank = None
+                errors.append(f"{story_path}.verbItems: requires a valid issue date")
+            seen_verbs: set[str] = set()
+            for offset, item in enumerate(verb_items):
+                if (not isinstance(item, dict) or set(item) != {"rank", "verb", "meaning"}
+                        or first_rank is None or item.get("rank") != first_rank + offset
+                        or not isinstance(item.get("verb"), str)
+                        or not re.fullmatch(r"[א-ת]+", item["verb"])
+                        or item["verb"] in seen_verbs
+                        or not isinstance(item.get("meaning"), str) or not item["meaning"].strip()):
+                    errors.append(f"{story_path}.verbItems[{offset}]: invalid, duplicate, or out-of-batch verb")
+                if isinstance(item, dict) and isinstance(item.get("verb"), str):
+                    seen_verbs.add(item["verb"])
+        elif verb_items is not None:
+            errors.append(f"{story_path}.verbItems: only VERBS pages may contain verb records")
+
         image = story.get("image")
         if image is not None:
-            if story_type in {"everyday", "dialog", "shorts"}:
+            if story_type in {"everyday", "dialog", "shorts", "verbs"}:
                 errors.append(f"{story_path}.image: {story_type.upper()} stories cannot use sourced images")
             elif not isinstance(image, dict):
                 errors.append(f"{story_path}.image: expected an object or null")
@@ -393,6 +427,14 @@ def validate_issue(
                     errors.append(f"{level_path}.paragraphs: text is empty")
                 if story_type == "shorts" and isinstance(short_items, list) and len(paragraphs) != len(short_items):
                     errors.append(f"{level_path}.paragraphs: must match shortItems count")
+                if story_type == "verbs":
+                    if len(paragraphs) != VERB_BATCH_SIZE:
+                        errors.append(f"{level_path}.paragraphs: expected exactly 10 verb pieces")
+                    for index, (paragraph, item) in enumerate(zip(paragraphs, verb_items)):
+                        if isinstance(item, dict) and isinstance(item.get("verb"), str):
+                            errors.extend(validate_verb_body(
+                                paragraph, item["verb"], locales, f"{level_path}.paragraphs[{index}]",
+                            ))
             _validate_translation_coverage(level, level_path, locales, errors)
     return errors
 
@@ -404,6 +446,10 @@ def validate_repository(root: Path) -> list[str]:
     levels = load_level_config(root)
     content_dir = root / "content"
     errors: list[str] = []
+    try:
+        load_verbs(root)
+    except (OSError, KeyError, TypeError, ValueError) as exc:
+        errors.append(f"config/common-verbs.json: {exc}")
     issue_files = sorted(content_dir.glob("????-??-??.json"))
     if not issue_files:
         return ["content: no daily issue files found"]
@@ -417,6 +463,13 @@ def validate_repository(root: Path) -> list[str]:
             continue
         issues[issue_file.stem] = issue
         errors.extend(validate_issue(issue, site, levels, issue_file.name))
+        for story in issue.get("stories", []):
+            if isinstance(story, dict) and story.get("type") == "verbs":
+                try:
+                    if story.get("verbItems") != daily_verbs(root, issue.get("date")):
+                        errors.append(f"{issue_file.name}.verbItems: must match the configured daily batch")
+                except (OSError, KeyError, TypeError, ValueError):
+                    pass  # Configuration and issue-date errors are reported above.
         if issue.get("date") != issue_file.stem:
             errors.append(f"{issue_file.name}.date: must match filename")
 

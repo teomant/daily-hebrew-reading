@@ -53,5 +53,6 @@
   "type.dialog": "DIALOG",
   "type.history": "HISTORY",
   "type.shorts": "SHORTS",
+  "type.verbs": "50 MOST USED VERBS",
   "type.aiGenerated": "FULLY AI-GENERATED"
 }

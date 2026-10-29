@@ -1,6 +1,8 @@
 # עברית היום — Daily Hebrew Reading
 
-A static daily magazine for learners reading modern spoken Israeli Hebrew. Each new issue combines sourced CURRENT stories, realistic EVERYDAY situations, natural DIALOG conversations, sourced HISTORY stories, and one grouped SHORTS page at configurable reading levels. Almost all Hebrew text is selectable for Russian or English translation.
+A static daily magazine for learners reading modern spoken Israeli Hebrew.
+Each new issue combines sourced CURRENT stories, realistic EVERYDAY situations, natural DIALOG conversations, sourced HISTORY stories, one grouped SHORTS page, and a daily common-verb practice page at configurable reading levels.
+Almost all Hebrew text is selectable for Russian or English translation.
 
 The repository contains a complete sample issue, so the site can be built and tested without an OpenAI key. The production URL is expected to be `https://teomant.github.io/daily-hebrew-reading/`.
 
@@ -12,9 +14,16 @@ The repository contains a complete sample issue, so the site can be built and te
 - Keyboard, hover, and tap translation popovers.
 - Source links and optional externally hosted, attributed source images with graceful failure.
 - Staged OpenAI Responses API generation: web-enabled CURRENT/HISTORY discovery returns compact screening records, strict duplicate review and deterministic selection choose publishable subjects, batched web-enabled requests deeply research only selected HISTORY stories, separate no-web planners create the full generated stories and SHORTS items, and adaptation handles each full story or short item independently with lexical units and contextual translations.
-- A normal 2 CURRENT / 3 HISTORY / 3 EVERYDAY / 2 DIALOG / 1 SHORTS-page target mix. Generated material draws from three pools: essential situations such as healthcare or documents, ordinary routines such as shopping or transport, and experiences such as cooking or trips. The five full generated stories target a 2 / 2 / 1 mix across these pools; eleven planned SHORTS target 5 / 4 / 2. These are editorial targets, not publication gates. Each SHORTS item is a two-or-three-sentence mini-situation planned and adapted independently. Valid items are kept, fresh replacements are planned after failures, and any remaining valid items (up to eleven) are collected on one page. Missing sourced stories reduce the issue size instead of expanding the fixed generated allocation.
+- A normal 2 CURRENT / 3 HISTORY / 3 EVERYDAY / 2 DIALOG / 1 SHORTS / 1 VERBS-page target mix (12 pages).
+  Generated material draws from three pools: essential situations such as healthcare or documents, ordinary routines such as shopping or transport, and experiences such as cooking or trips.
+  The five full generated stories target a 2 / 2 / 1 mix across these pools; eleven planned SHORTS target 5 / 4 / 2.
+  These are editorial targets, not publication gates.
+  Each SHORTS item is a two-or-three-sentence mini-situation planned and adapted independently.
+  Valid items are kept, fresh replacements are planned after failures, and any remaining valid items (up to eleven) are collected on one page.
+  Missing sourced stories reduce the issue size instead of expanding the fixed generated allocation.
 - An 18-candidate sourced discovery pool before filtering: up to six compact CURRENT and at least 12 compact HISTORY candidates. CURRENT stays within Israel on every pass, using local reporting, municipal updates, and relevant public-service announcements; nonlocal CURRENT candidates are rejected in review. The first two HISTORY attempts focus on Israeli material across varied reference, library, archive, cultural, municipal, educational, and biographical sources; a third attempt may search Jewish history and culture outside Israel for remaining HISTORY slots. Every HISTORY brief must establish an explicit Israeli or Jewish connection. No HISTORY family or source collection has a fixed quota. The strongest surviving subjects are selected in editorial order; invalid or duplicate candidates are removed individually. Reviewed but unselected HISTORY candidates remain reserves, with Israeli candidates ahead of worldwide fallbacks.
-- Safe same-day append behavior; existing stories are preserved, duplicates are rejected, and new entries are only EVERYDAY or DIALOG in any mix. The combined issue is reordered generated-first without changing story text.
+- Safe same-day append behavior; existing stories are preserved, duplicates are rejected, and new entries are only EVERYDAY or DIALOG in any mix.
+  The combined issue is ordered VERBS, SHORTS, EVERYDAY, DIALOG, CURRENT, HISTORY without changing story text.
 - Content validation, tests, daily/manual GitHub Actions, and GitHub Pages deployment.
 
 HISTORY discovery and research both receive the concrete [source guide](prompts/history-sources.md): collection URLs, search routes, evidence priorities, and observed access limitations. It prioritizes curated collections, documented original material, and scholarly context; useful explanations of everyday life and memorable supported details outrank generic biographies. MUZA, the Israel Film Archive, Project Ben-Yehuda, Posen, and NLI collections provide specific starting points. Wikipedia remains an orientation/reference route and NLI blog posts remain useful supplementary leads. Collection URLs guide navigation; only consulted content pages become citations. These are editorial priorities, not publisher quotas or new source-count gates. No additional model calls are introduced.
@@ -59,12 +68,37 @@ Difficulty remains a writing judgment, without a numeric vocabulary gate.
 New dialogue structure and lexical segmentation receive local checks and bounded repairs.
 Usable imperfect articles remain publishable with quality warnings, and archived issues remain readable.
 
+## Daily verb practice
+
+“50 most used verbs” adds one numbered page with ten independent mini-stories to each normal new issue.
+The stored [verb catalog](config/common-verbs.json) follows the default order of [HebrewPod101’s common-verb list](https://www.hebrewpod101.com/hebrew-vocabulary-lists/50-most-common-verbs).
+It is a study list, not a measured corpus ranking.
+Entries use unpointed infinitives, except the modal יכול.
+The zero-based batch is `(issue_date - date(1, 1, 1)).days % 5`.
+Each batch contains ten consecutive entries, so all fifty recur every five days without a year reset.
+The requested issue date controls the batch, including backdated runs.
+
+Each item gets one no-web adaptation request for all configured levels, with at most three content attempts and the existing bounded annotation repair.
+The body must naturally contain its assigned spelling at every level; extra conjugated forms are welcome.
+Each piece has two or three sentences and the normal Russian/English lexical translations.
+Successful levels remain intact during retries.
+If any required item still fails core checks, generation logs the incomplete count and omits only the VERBS page.
+It never publishes a partial ten-item page.
+Existing article allocations remain unchanged, and API usage stays in the normal cost logs.
+Same-day append does not regenerate or backfill the page.
+The fixed rotation is separate from the ordinary scenario repetition history.
+
+Article lists and navigation show VERBS first, then SHORTS.
+The other articles keep their existing order when the site is built, including archived issues.
+Newly generated and appended issues use EVERYDAY, DIALOG, CURRENT, HISTORY after these two pages.
+
 ## Content and configuration
 
 - `content/YYYY-MM-DD.json` — complete ordered issue.
 - `content/index.json` — dates, story counts, and estimated reading times.
 - `content/everyday-history.json` — EVERYDAY, DIALOG, and individual SHORTS scenario history used to reduce repetition.
 - `config/site.json` — base path, enabled locales, defaults, flexible new-issue count range, and prompt lookback windows: fourteen days for HISTORY, seven for CURRENT and generated scenarios.
+- `config/common-verbs.json` — 50 ordered verbs with meanings and source attribution.
 - `config/reading-levels.json` — ordered level IDs, wording guidance, and reading speeds.
 - `i18n/*.json` — interface dictionaries. Adding a locale requires a matching dictionary and adding its code to `site.json`.
 - `prompts/*.md` — sourced editorial, selected-HISTORY research, deduplication, everyday, dialogue, adaptation, and curated frequent-Hebrew guidance.

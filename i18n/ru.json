@@ -53,5 +53,6 @@
   "type.dialog": "DIALOG",
   "type.history": "HISTORY",
   "type.shorts": "КОРОТКО",
+  "type.verbs": "50 ЧАСТЫХ ГЛАГОЛОВ",
   "type.aiGenerated": "ПОЛНОСТЬЮ СОЗДАНО ИИ"
 }

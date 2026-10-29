@@ -1,5 +1,31 @@
 # Implementation log
 
+## 2026-10-29
+
+- Fetched and fast-forwarded `master` to `f370498` before implementation.
+  The owner requested a 50-verb daily rotation and first position in the article list.
+  Interpreted “sports” as the existing SHORTS page; asked for clarification and proceeded with that assumption.
+- Stored fifty common verbs in HebrewPod101's displayed order, with normalized forms, meanings, source URL, access date, and a note that this is a study list rather than a statistical ranking.
+  Added deterministic date-based selection using days since Gregorian 0001-01-01 modulo five.
+- Added independent no-web verb adaptation through the existing bounded retries and annotation repair.
+  Public VERBS pages contain ten ordered target records and ten pieces at every level.
+  Added target-word, batch, and per-piece translation checks.
+  Incomplete pages are logged and omitted without dropping other valid articles.
+  Normal issues now target twelve pages; same-day appends remain unchanged.
+- Added numbered rendering, RU/EN labels, archive counts, and client-side level support.
+  Promoted VERBS and SHORTS in article lists and navigation while preserving the remaining archive order.
+  Updated README and product contracts.
+- Verification passed all 114 tests in the full offline suite.
+  A later targeted run passed all nine verb tests, including one added regression that retains a valid SHORTS page when one verb exhausts its retries.
+  Repository validation, the production-path static build, Python compilation, JavaScript syntax checking, and whitespace checks passed.
+  No paid generation, commit, push, or deployment ran.
+  Actual generated Hebrew quality remains to be observed on a future generation run.
+- The focused direct review found that annotation repair also needed the per-piece translation check.
+  Added that check so a failed repair preserves the original usable piece.
+  Added a regression for translated titles masking an untranslated body.
+  All 19 verb and annotation-quality tests passed after the fix, as did Python compilation and whitespace checks.
+  Removed the temporary task plan before handoff.
+
 ## 2026-10-28
 
 - The owner approved fixes for beginner level fit, dialogue consistency, topic variety, and sentence-sized translation targets, with cost estimates in GitHub Actions logs.

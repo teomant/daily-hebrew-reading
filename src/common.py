@@ -31,6 +31,11 @@ def load_level_config(root: Path = ROOT) -> list[dict[str, Any]]:
     return payload["levels"]
 
 
+def prioritize_practice_pages(stories: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Promote practice pages without changing the remaining stored order."""
+    return sorted(stories, key=lambda story: {"verbs": 0, "shorts": 1}.get(story.get("type"), 2))
+
+
 def load_locales(root: Path = ROOT) -> dict[str, dict[str, str]]:
     site = load_site_config(root)
     return {

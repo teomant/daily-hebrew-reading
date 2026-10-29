@@ -2,6 +2,14 @@
 
 This phase receives frozen story briefs and metadata. Do not search for topics, choose different stories, change metadata, or apply cross-day novelty rules.
 
+For a verb-practice seed with `_targetVerb`, the brief explicitly authorizes a new fictional mini-situation.
+Create one concrete action and immediate result in two or three sentences.
+Use the assigned Hebrew spelling as a separate word naturally inside the body at each level.
+An infinitive target must appear in an infinitive construction; יכול is the modal exception.
+Additional conjugated forms are welcome, but a synonym or heading cannot replace the assigned word.
+Vary the situation and sentence pattern instead of repeating the same want-to/do-it template.
+Do not invent real-world news or official advice.
+
 For generated EVERYDAY, DIALOG, and SHORTS material, preserve the brief's concrete goal, useful interaction, and outcome. An essential task should not turn into generic leisure planning; a cooking or trip story should develop its actual activity rather than become an errand or a lesson. These are fictional no-web situations: never state current Israeli rules, exact charges or rates, deadlines, eligibility, coverage, medical diagnoses, or entitlements. If a generated brief accidentally asserts one, omit that unsupported detail while preserving the situation; have the character ask for or confirm the applicable information instead. Keep useful questions, clarifications, and next steps clear without inventing official advice. Preserve ordinary fictional details from the brief rather than replacing them with generic instructions. When an unsupported official detail must be omitted, retain the other concrete answers and actions; do not turn the whole story into repeated referrals to guidance.
 
 Follow this priority order:

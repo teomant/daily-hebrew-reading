@@ -16,16 +16,18 @@ A new issue is generated automatically every day. A typical issue contains:
 - 3 purpose-written everyday stories;
 - 2 purpose-written dialogues;
 - 3 historical stories;
+- 1 VERBS page with ten mini-stories from the daily common-verb batch;
 - 1 SHORTS page targeting 11 independently generated mini-situations, containing any valid items when the target is missed.
 
-This normally produces 11 pages. Missing sourced material may make the issue smaller, but it does not expand the fixed generated allocation.
+This normally produces 12 pages.
+Missing sourced material may make the issue smaller, but it does not expand the fixed generated allocation.
 
 Reading time is calculated from the resulting content rather than enforced as a generation quota. CURRENT articles normally contain 2–4 paragraphs as the material supports; the generation schema permits 2–12. Alef HISTORY and EVERYDAY normally use 2–4 short paragraphs, with a schema minimum of two.
 Harder versions normally use 4–5 developed paragraphs, with a schema minimum of four. DIALOG uses 8–12 short speaker turns, each on its own line. Every SHORTS item is one compact paragraph of exactly two or three complete sentences.
 
 ## 2. Content types
 
-The five public content types are CURRENT, EVERYDAY, DIALOG, HISTORY, and SHORTS.
+The six public content types are VERBS, SHORTS, EVERYDAY, DIALOG, CURRENT, and HISTORY.
 
 ### CURRENT
 
@@ -78,6 +80,46 @@ A specially generated short conversation for practical Hebrew learning. A new is
 The exchange should sound like ordinary contemporary Israeli conversation, not a classroom exercise, interview, screenplay, dramatic scene, or narrated story. Use 8–12 short turns at every reading level. Planning freezes two Hebrew speaker names, and every paragraph-array item contains exactly one direct-speech turn beginning with one of those names and a colon. Adaptation receives a dialogue-specific example and focused retries; code restores a missing colon only after an unambiguous separate name unit.
 Code must never assign a speaker by paragraph position or replace an existing identity.
 The brief binds each of the two active participants to a role and responsibility. Use natural questions, answers, clarifications, reactions, and a simple practical outcome. Do not describe the conversation in third-person prose; a mainly narrated result belongs to EVERYDAY. DIALOG uses the same scenario metadata and repetition history as EVERYDAY and has no external sources or images.
+
+### VERBS — 50 most used verbs
+
+One fully AI-generated page contains ten independent mini-stories, each assigned a different verb from `config/common-verbs.json`.
+The catalog records all fifty entries in the default order of [HebrewPod101’s common-verb list](https://www.hebrewpod101.com/hebrew-vocabulary-lists/50-most-common-verbs), accessed October 29, 2026.
+This is a common-verb study list, not a measured frequency ranking.
+Forms are normalized to unpointed infinitives, except the modal יכול.
+
+`src/verbs.py` selects batch `(issue_date - date(1, 1, 1)).days % 5`, with zero-based indexing and ten consecutive entries per batch.
+Use the requested publication date, not execution time or day of year.
+The sequence continues across leap days and year boundaries.
+The catalog must contain exactly fifty unique verbs with consecutive ranks and nonempty English meanings.
+Validate it before paid generation and during repository checks.
+
+Adapt each verb independently without web research or a separate planning call.
+Create a concrete fictional action and immediate result in two or three sentences per level.
+The assigned spelling must occur as a whole Hebrew word naturally in the body at every level.
+Additional conjugations are allowed; a heading or synonym does not satisfy the target.
+Keep successful levels during the existing three-attempt content retry loop.
+Use the existing one-request annotation repair and usage/cost logging.
+Each piece must independently meet the 75% translation-coverage contract in every language.
+If a required item fails core checks after retries, log the incomplete count and omit only this page while retaining the other valid articles.
+Quality-only segmentation warnings do not discard usable text.
+
+The public type is `verbs` and the category is `everyday`.
+The page stores exactly ten ordered `verbItems` records with `rank`, `verb`, and `meaning`.
+Each level has exactly ten corresponding body paragraphs, plus its title and teaser.
+Public validation checks the date-derived rank sequence, unique targets, target usage, and translation coverage.
+Repository validation also checks records against the stored daily batch.
+The page has no scenario metadata, sources, or image.
+The source list attribution belongs to the catalog and documentation, not to invented stories.
+Do not add this fixed rotation to ordinary scenario deduplication history.
+
+Reuse SHORTS numbering, lexical selection, level switching, and AI disclosure.
+Show this page first, SHORTS second, and then the remaining articles in their previous order.
+Build-time ordering also applies to archives without rewriting their JSON.
+New and appended issues use EVERYDAY, DIALOG, CURRENT, HISTORY after the practice pages.
+Normal new-issue targets become twelve pages; the existing allocations remain unchanged.
+Reduced custom targets below the complete twelve-page mix retain their prior behavior.
+Same-day append remains EVERYDAY/DIALOG only and does not regenerate or backfill VERBS.
 
 ### SHORTS
 
@@ -189,11 +231,23 @@ Missing legacy values remain valid.
 Preserve patterns and individual SHORTS briefs in recent and same-day append context.
 Planners compare the patterns across domains and prefer less-used interactions without fixed taxonomy quotas. Pass only the previous seven days of compact scenario records into generation prompts; older records remain stored.
 
-For a new complete issue, the generated allocation targets three EVERYDAY stories, two DIALOG stories, and one SHORTS page with eleven items; zero valid SHORTS items omit only that page. The normal sourced target is two CURRENT and three HISTORY stories. When both types are needed, discovery returns 18 screening candidates: up to six genuine CURRENT subjects and at least 12 HISTORY subjects; additional HISTORY candidates fill the pool when CURRENT is scarce. A CURRENT-only retry may return fewer candidates, even none. CURRENT candidates with no actual event, no usable source after cleanup, or no established Israeli setting are discarded, and an unfilled CURRENT slot is preferable to a placeholder article. Duplicate-reviewed but unselected HISTORY candidates remain in a reserve queue, with Israel-focused passes ordered ahead of the worldwide fallback. Deep research normally uses one batched call for the selected three. Two consecutive HISTORY research request failures abort generation rather than silently publishing an all-generated substitute issue. Missing sourced slots do not expand the generated allocation.
+For a new complete issue, the generated allocation targets one ten-item VERBS page, three EVERYDAY stories, two DIALOG stories, and one SHORTS page with eleven items; zero valid SHORTS items omit only that page.
+The normal sourced target is two CURRENT and three HISTORY stories.
+When both types are needed, discovery returns 18 screening candidates: up to six genuine CURRENT subjects and at least 12 HISTORY subjects; additional HISTORY candidates fill the pool when CURRENT is scarce.
+A CURRENT-only retry may return fewer candidates, even none.
+CURRENT candidates with no actual event, no usable source after cleanup, or no established Israeli setting are discarded, and an unfilled CURRENT slot is preferable to a placeholder article.
+Duplicate-reviewed but unselected HISTORY candidates remain in a reserve queue, with Israel-focused passes ordered ahead of the worldwide fallback.
+Deep research normally uses one batched call for the selected three.
+Two consecutive HISTORY research request failures abort generation rather than silently publishing an all-generated substitute issue.
+Missing sourced slots do not expand the generated allocation.
 
 Generated topic selection uses three non-overlapping domain pools: essential situations, ordinary routines, and worthwhile experiences. Across the five full generated stories, planning targets two essential, two routine, and one experience; eleven planned SHORTS target five, four, and two. Retry prompts account for already retained items and prioritize underrepresented pools. These are editorial targets, not publication gates: a valid story or short item is not dropped solely because the mix differs, and same-day appends have no fixed pool quota.
 
-A same-day append generates only fully AI-generated EVERYDAY or DIALOG stories, in any mix. It does not generate CURRENT or HISTORY entries and does not enable web research. The output schema and pre-adaptation validation both enforce this restriction. The combined issue keeps all existing story objects but reorders them generated-first, which updates card and article-navigation order.
+A same-day append generates only fully AI-generated EVERYDAY or DIALOG stories, in any mix.
+It does not generate CURRENT or HISTORY entries and does not enable web research.
+The output schema and pre-adaptation validation both enforce this restriction.
+The combined issue keeps all existing story objects and orders them VERBS, SHORTS, EVERYDAY, DIALOG, CURRENT, HISTORY.
+This updates card and article-navigation order.
 
 ## 12. Generated-scenario domains
 
@@ -353,7 +407,11 @@ Language adaptation must not freely invent details for real stories. A factual b
 
 ## 32. OpenAI API
 
-Use the OpenAI API for sourced discovery and selection, sourced semantic duplicate review, selected-HISTORY research, generated-scenario planning, level adaptation, lexical segmentation, and Russian and English translations. A normal issue first makes up to three web-enabled discovery requests of 18 compact candidates. A separate no-web request plans the three EVERYDAY and two DIALOG stories, and another plans the eleven SHORTS items. Each full generated story and each SHORTS item is adapted independently.
+Use the OpenAI API for sourced discovery and selection, sourced semantic duplicate review, selected-HISTORY research, generated-scenario planning, level adaptation, lexical segmentation, and Russian and English translations.
+A normal issue first makes up to three web-enabled discovery requests of 18 compact candidates.
+A separate no-web request plans the three EVERYDAY and two DIALOG stories, and another plans the eleven SHORTS items.
+Each full generated story, SHORTS item, and assigned verb is adapted independently.
+The ten verb seeds come directly from the daily catalog batch and do not need a planning call.
 
 Use `gpt-6-luna` for every discovery, research, planning, adaptation, annotation, and translation request, with low reasoning effort. Supply the key through `OPENAI_API_KEY`; a local `OPENAI_MODEL` override may be used for tests or explicit experiments. Store the key only in a GitHub Actions secret or runtime environment. It must never enter Git, frontend assets, JSON content, HTML output, logs, or error messages.
 
@@ -386,7 +444,12 @@ Keep editorial rules separate from application code. Maintain seven instruction 
 
 A GitHub Actions workflow is configured to run daily at 01:37 UTC. Its first job logs the event name, event schedule expression, runner UTC time, run identity, actors, ref, head SHA, workflow ref/SHA, resolved target date, requested append count, and issue-existence decision. This diagnostic job must not receive OpenAI credentials. If the resolved issue already exists and no positive append was explicitly requested, the remaining jobs are skipped before Python setup, dependency installation, tests, secrets, or AI calls. When generation is needed, it validates the checked-out content and runs the unit tests before calling OpenAI so repository failures do not consume generation spend. It then generates a complete issue or explicit append, validates the changed content, updates generated-scenario history, writes the JSON, commits and pushes the content, builds the site, and deploys GitHub Pages. It must also support manual execution through `workflow_dispatch`, exposed in the repository's Actions tab as a **Run workflow** button.
 
-The manual run accepts an optional target date, resolved as the current UTC date when omitted, and a requested number of additional stories from 0–10, defaulting to 0. When no issue exists for the target date, generation creates the normal complete issue regardless of the append input. When an issue already exists, zero is a no-op and a positive explicit value preserves every existing story and adds that many new stories without replacing their content. Append batches contain only EVERYDAY or DIALOG stories in any mix; the fixed new-issue counts do not apply. The combined issue is stably reordered EVERYDAY, DIALOG, SHORTS, CURRENT, HISTORY, preserving order within each type. It recalculates issue metadata and navigation, updates generated-scenario history, validates the combined issue, and only then commits it.
+The manual run accepts an optional target date, resolved as the current UTC date when omitted, and a requested number of additional stories from 0–10, defaulting to 0.
+When no issue exists for the target date, generation creates the normal complete issue regardless of the append input.
+When an issue already exists, zero is a no-op and a positive explicit value preserves every existing story and adds that many new stories without replacing their content.
+Append batches contain only EVERYDAY or DIALOG stories in any mix; the fixed new-issue counts do not apply.
+The combined issue is stably reordered VERBS, SHORTS, EVERYDAY, DIALOG, CURRENT, HISTORY, preserving order within each type.
+It recalculates issue metadata and navigation, updates generated-scenario history, validates the combined issue, and only then commits it.
 
 Generation separates sourced discovery, sourced duplicate review, selected-HISTORY research, full generated planning, SHORTS planning, and adaptation.
 Adaptation receives frozen briefs and required HISTORY beats plus level, segmentation, translation, and frequency-reference guidance.
@@ -435,7 +498,10 @@ If generation fails, do not publish a partial issue or damage earlier content. T
 
 ## 38. Sample content
 
-Include sample issue content so the frontend can be tested without an OpenAI API key. Existing archived samples remain valid without SHORTS or DIALOG backfilling; newly generated issues use the five-type mix. Do not present invented current news as factual reporting.
+Include sample issue content so the frontend can be tested without an OpenAI API key.
+Existing archived samples remain valid without SHORTS or DIALOG backfilling; newly generated issues use the six-type mix.
+Archived issues do not require a VERBS backfill.
+Do not present invented current news as factual reporting.
 
 ## 39. User experience
 
