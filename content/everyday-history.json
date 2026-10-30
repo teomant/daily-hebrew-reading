@@ -12102,6 +12102,431 @@
         "interaction": "Share a guess and notice a nearby demonstration",
         "outcome": "Stop to watch the craftsperson"
       }
+    },
+    {
+      "date": "2026-10-30",
+      "storyId": "new-employee-clarifies-a-project-handover",
+      "domain": "employment_jobs",
+      "scenario": "new_employee_prepares_a_separate_project_handover_note_without_overwriting_a_shared_draft",
+      "lexicalThemes": [
+        "workplace handovers",
+        "shared files",
+        "task ownership",
+        "open questions",
+        "clarifying preferences"
+      ],
+      "targetVocabulary": [
+        "handover",
+        "draft",
+        "shared folder",
+        "overwrite",
+        "open question",
+        "task owner",
+        "separate page",
+        "review"
+      ],
+      "brief": "Fully AI-generated dialogue. New employee Dana speaks with her team lead Amir, the only two speakers. Dana has been asked to prepare a short handover note for a project, but the shared folder contains several drafts and she is unsure which one the team is using. She explains that she does not want to overwrite anyone’s work and asks whether the note should include open questions as well as completed tasks. Amir clarifies that the latest draft is the one marked “Tuesday” and says the team wants unresolved items kept visible. Dana asks whether she should edit that draft or add a separate page; Amir prefers a separate page so the original stays unchanged. Dana notices that two tasks have no named owner and asks whether to assign them herself. Amir says not to guess; they can leave those lines marked for discussion. Dana creates the separate page, adds the confirmed tasks and questions, and shares the link with Amir. He confirms he can see it, and they agree to review the unassigned items together at their next check-in.",
+      "storyPattern": {
+        "goal": "Prepare a useful handover without changing a shared draft",
+        "relationship": "New employee and team lead",
+        "interaction": "Clarify the format and distinguish confirmed work from unresolved ownership",
+        "outcome": "Share a separate note and schedule a review of open items"
+      }
+    },
+    {
+      "date": "2026-10-30",
+      "storyId": "recipient-reuses-a-parcel-sleeve-for-a-return",
+      "domain": "postal_parcels",
+      "scenario": "sender_reuses_a_cardboard_book_sleeve_after_finding_an_old_barcode_and_address",
+      "lexicalThemes": [
+        "reusing packaging",
+        "addresses",
+        "barcodes",
+        "checking labels",
+        "sending a parcel"
+      ],
+      "targetVocabulary": [
+        "cardboard sleeve",
+        "delivery label",
+        "barcode",
+        "flap",
+        "cover",
+        "fresh label",
+        "address",
+        "send"
+      ],
+      "brief": "After receiving a book in a sturdy cardboard sleeve, resident Yael realizes that it belongs to a friend and needs to send it on rather than carry it across town. She checks the sleeve and finds that the old delivery label is attached to a removable paper pocket, while the cardboard itself is still clean and firm. At the post office, she explains that she wants to reuse the sleeve and asks whether the old label needs to come off completely. The clerk points out a faint barcode printed directly on the cardboard, which Yael had not noticed. She turns the sleeve over and sees that another address is printed beneath a flap. Rather than cover only the visible label, she removes the old pocket and covers the printed address and barcode with blank paper. She writes her friend’s address on a fresh label, checks that the flap closes securely, and sends the book in the reused sleeve.",
+      "storyPattern": {
+        "goal": "Reuse sound packaging without leaving old delivery information visible",
+        "relationship": "Parcel sender and postal clerk",
+        "interaction": "Inspect the packaging together and notice a hidden address mark",
+        "outcome": "Cover the old information and send the item in the reused sleeve"
+      }
+    },
+    {
+      "date": "2026-10-30",
+      "storyId": "visitor-sketches-textures-on-a-shaded-trail",
+      "domain": "nature_outdoors",
+      "scenario": "walker_sketches_bark_and_a_windblown_leaf_from_a_shaded_path",
+      "lexicalThemes": [
+        "walking outdoors",
+        "noticing natural textures",
+        "sketching",
+        "asking for practical help",
+        "packing up"
+      ],
+      "targetVocabulary": [
+        "sketchbook",
+        "bark",
+        "shade",
+        "pencil",
+        "leaf veins",
+        "steady",
+        "breeze",
+        "detail"
+      ],
+      "brief": "On a short walk near her town, Rina brings a small sketchbook to draw patterns she notices in bark, stones, and fallen leaves. She stops beside a rough-barked tree and begins shading the trunk, but the bright patches of sun make the pencil marks hard to see. Her walking companion, Ofer, suggests moving to the shaded side of the path, where the surface is easier to observe. Rina asks him to hold the sketchbook steady while she compares the bark with a fallen leaf nearby. When she tries to draw both at once, she realizes the leaf is curling in the breeze and keeps changing shape. Ofer places a small stone on the corner of the page, and Rina sketches the leaf’s veins before it blows away. They compare the two drawings, choose a few details to add later at home, and pack the sketchbook and stone back into her bag without disturbing the plants.",
+      "storyPattern": {
+        "goal": "Capture a few natural textures in a sketch",
+        "relationship": "Walking companions sharing a quiet observation",
+        "interaction": "Adjust the viewing spot and steady a page as conditions change",
+        "outcome": "Finish two small sketches and pack up without disturbing the surroundings"
+      }
+    },
+    {
+      "date": "2026-10-30",
+      "storyId": "patient-explains-a-change-in-a-recurring-symptom",
+      "domain": "injuries_symptoms",
+      "scenario": "patient_reports_a_change_in_the_timing_of_a_recurring_symptom_without_guessing_at_its_cause",
+      "lexicalThemes": [
+        "describing symptoms",
+        "timing and frequency",
+        "uncertainty",
+        "keeping observations",
+        "clinic communication"
+      ],
+      "targetVocabulary": [
+        "recurring",
+        "pattern",
+        "timing",
+        "notice",
+        "rough count",
+        "track",
+        "cause",
+        "appointment"
+      ],
+      "brief": "Fully AI-generated dialogue. Patient Noa speaks with clinic nurse Eyal, the only two speakers. Noa is calling about a recurring symptom she has already discussed with the clinic; she wants to explain that its pattern has changed without guessing why. Eyal asks what is different, and Noa clarifies that it used to happen only in the evening but has appeared during the day as well. He asks whether she has noticed anything else about the timing, and she says it seems more noticeable after a long walk but she is not sure the walk causes it. Eyal asks whether she can describe how often she has noticed it recently; Noa gives a rough count from her notes. She asks whether she should keep tracking the timing before her appointment, and Eyal suggests writing down when it happens and what she was doing, without treating that as an explanation. Noa asks what to do if the pattern changes again; Eyal says she should contact the clinic and explain what she observes. She adds a few dated notes to her phone, and they agree she will bring them to her appointment.",
+      "storyPattern": {
+        "goal": "Describe a changed symptom pattern accurately",
+        "relationship": "Patient and clinic nurse",
+        "interaction": "Ask focused follow-ups and separate observation from a guess about cause",
+        "outcome": "Keep dated observations and bring them to an appointment"
+      }
+    },
+    {
+      "date": "2026-10-30",
+      "storyId": "account-holder-recovers-access-after-lockout",
+      "domain": "digital_accounts",
+      "scenario": "account_holder_recovers_access_through_a_current_phone_number_after_an_old_email_blocks_recovery",
+      "lexicalThemes": [
+        "account access",
+        "verification codes",
+        "recovery options",
+        "privacy",
+        "password updates"
+      ],
+      "targetVocabulary": [
+        "sign in",
+        "locked out",
+        "recovery screen",
+        "code",
+        "old email",
+        "phone number",
+        "password",
+        "saved documents"
+      ],
+      "brief": "After several unsuccessful sign-in attempts, resident Gil finds that he can no longer access an online account he uses to manage household documents. He is with his sister, Maya, who has helped him before, but he asks her not to guess his password or take over the account. They notice that the recovery screen offers to send a code to an old email address that Gil no longer uses. Maya asks whether he still has access to the phone number listed on the account; Gil checks and confirms that he does. He chooses the phone option, receives a code, and enters it himself. When the system asks him to create a new password, Maya suggests using one he has not used elsewhere, and Gil sets it privately. He signs in successfully, checks that his saved documents are still there, and updates his recovery email while he is in the account.",
+      "storyPattern": {
+        "goal": "Regain access to an account while keeping control of credentials",
+        "relationship": "Account holder and supportive family member",
+        "interaction": "Compare recovery options and protect private information",
+        "outcome": "Sign in, verify saved content, and update recovery details"
+      }
+    },
+    {
+      "date": "2026-10-30",
+      "storyId": "resident-plans-a-pharmacy-pickup-around-a-work-break",
+      "domain": "pharmacy_prescriptions",
+      "scenario": "coworkers_exchange_break_times_so_one_can_collect_a_prescription",
+      "lexicalThemes": [
+        "work breaks",
+        "pharmacy pickup",
+        "colleague cooperation"
+      ],
+      "targetVocabulary": [
+        "break",
+        "shift",
+        "prescription",
+        "pick up",
+        "swap"
+      ],
+      "brief": "A worker realizes she cannot reach the pharmacy before her shift and tells her colleague she needs a short break to pick up a prescription. The colleague swaps break times with her, and she returns with the medication before the next task begins.",
+      "storyPattern": {
+        "goal": "Collect a prescription during a work shift",
+        "relationship": "Coworkers",
+        "interaction": "Trade break times to accommodate a practical need",
+        "outcome": "Worker picks up the prescription and returns"
+      }
+    },
+    {
+      "date": "2026-10-30",
+      "storyId": "tenant-makes-a-temporary-drip-catcher",
+      "domain": "home_repairs_utilities",
+      "scenario": "tenant_contains_a_small_sink_leak_and_moves_items_out_of_the_way",
+      "lexicalThemes": [
+        "home maintenance",
+        "small leak",
+        "temporary action"
+      ],
+      "targetVocabulary": [
+        "drip",
+        "sink",
+        "bowl",
+        "floor",
+        "move"
+      ],
+      "brief": "A tenant notices a slow drip beneath the kitchen sink and places a bowl underneath while messaging the landlord about it. Her roommate moves the cleaning supplies away, and the floor stays dry while they wait for a reply.",
+      "storyPattern": {
+        "goal": "Keep a small leak from spreading",
+        "relationship": "Roommates in a rented home",
+        "interaction": "Contain the drip and alert the landlord",
+        "outcome": "Floor stays dry while they await a response"
+      }
+    },
+    {
+      "date": "2026-10-30",
+      "storyId": "employee-asks-for-a-clearer-payslip-copy",
+      "domain": "work_pay",
+      "scenario": "employee_requests_a_legible_copy_of_a_faintly_printed_payslip",
+      "lexicalThemes": [
+        "payroll",
+        "printed documents",
+        "clarification"
+      ],
+      "targetVocabulary": [
+        "payslip",
+        "faint",
+        "readable",
+        "copy",
+        "amount"
+      ],
+      "brief": "An employee cannot read a faint line on a printed payslip and asks payroll for a clearer copy rather than guessing at the amount. The coordinator sends a readable version, and the employee compares it with the original.",
+      "storyPattern": {
+        "goal": "Read a payroll detail accurately",
+        "relationship": "Employee and payroll coordinator",
+        "interaction": "Explain a print problem and request a legible copy",
+        "outcome": "Compare the readable copy with the original"
+      }
+    },
+    {
+      "date": "2026-10-30",
+      "storyId": "resident-saves-a-draft-of-a-government-form",
+      "domain": "government_documents",
+      "scenario": "applicant_pauses_an_online_form_to_verify_a_detail_instead_of_guessing",
+      "lexicalThemes": [
+        "online forms",
+        "careful answers",
+        "pausing a task"
+      ],
+      "targetVocabulary": [
+        "form",
+        "draft",
+        "detail",
+        "save",
+        "answer"
+      ],
+      "brief": "While completing an online government form, a resident realizes she needs to find one detail before answering a question. She saves the unfinished draft and steps away to look for it, leaving the answer blank rather than guessing.",
+      "storyPattern": {
+        "goal": "Complete a form without guessing",
+        "relationship": "Applicant acting independently",
+        "interaction": "Pause and preserve unfinished work while checking a detail",
+        "outcome": "Draft remains saved with the question unanswered"
+      }
+    },
+    {
+      "date": "2026-10-30",
+      "storyId": "resident-asks-how-to-correct-a-benefit-payment-detail",
+      "domain": "social_benefits",
+      "scenario": "resident_flags_an_outdated_contact_detail_in_a_benefit_letter_without_assuming_how_to_change_it",
+      "lexicalThemes": [
+        "benefit correspondence",
+        "contact details",
+        "uncertain procedure"
+      ],
+      "targetVocabulary": [
+        "letter",
+        "old detail",
+        "change",
+        "report",
+        "write down"
+      ],
+      "brief": "A resident notices that a letter about a benefit uses an old contact detail and calls to ask how to report the change. The representative cannot confirm the right channel during the call, so the resident writes down the question and keeps the letter handy.",
+      "storyPattern": {
+        "goal": "Find out how to update a contact detail",
+        "relationship": "Benefit recipient and representative",
+        "interaction": "Describe an outdated detail without assuming the procedure",
+        "outcome": "Record the unresolved question and keep the letter accessible"
+      }
+    },
+    {
+      "date": "2026-10-30",
+      "storyId": "customer-chooses-a-quieter-checkout-line",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_patiently_switches_to_another_checkout_line_when_a_family_needs_time",
+      "lexicalThemes": [
+        "shopping",
+        "queues",
+        "patience"
+      ],
+      "targetVocabulary": [
+        "line",
+        "checkout",
+        "bags",
+        "wait",
+        "choose"
+      ],
+      "brief": "At a busy shop, a customer notices that one checkout line is moving more slowly because a family is sorting several bags. She chooses the next line instead of sighing or rushing them, and the family finishes without being interrupted.",
+      "storyPattern": {
+        "goal": "Finish shopping without adding pressure to others",
+        "relationship": "Strangers in a checkout queue",
+        "interaction": "Notice a delay and choose another line calmly",
+        "outcome": "Family finishes sorting without interruption"
+      }
+    },
+    {
+      "date": "2026-10-30",
+      "storyId": "friends-settle-a-disagreement-about-a-board-game",
+      "domain": "arts_events",
+      "scenario": "friends_resolve_a_board_game_rule_disagreement_by_checking_the_rules_together",
+      "lexicalThemes": [
+        "games",
+        "friendly disagreement",
+        "fair play"
+      ],
+      "targetVocabulary": [
+        "move",
+        "rule",
+        "rulebook",
+        "check",
+        "restart"
+      ],
+      "brief": "Two friends disagree about whether a board-game move is allowed, and one offers to check the rulebook before either continues. They find the answer together and restart the turn without making the disagreement personal.",
+      "storyPattern": {
+        "goal": "Continue a game fairly after a disputed move",
+        "relationship": "Friends playing together",
+        "interaction": "Pause and check the shared rules instead of arguing",
+        "outcome": "Restart the turn with the rule clarified"
+      }
+    },
+    {
+      "date": "2026-10-30",
+      "storyId": "visitor-returns-a-borrowed-walking-stick",
+      "domain": "nature_outdoors",
+      "scenario": "walker_lends_a_companion_a_stick_for_a_rocky_section_of_path",
+      "lexicalThemes": [
+        "walking outdoors",
+        "lending",
+        "courtesy"
+      ],
+      "targetVocabulary": [
+        "path",
+        "rocky",
+        "lend",
+        "return",
+        "thanks"
+      ],
+      "brief": "On a park path, one walker lends a companion a walking stick over a rocky stretch. When the path smooths out, the companion returns it with thanks, and they continue side by side.",
+      "storyPattern": {
+        "goal": "Make a rough stretch easier to cross",
+        "relationship": "Walking companions",
+        "interaction": "Lend a useful item and return it when no longer needed",
+        "outcome": "Continue together on smoother ground"
+      }
+    },
+    {
+      "date": "2026-10-30",
+      "storyId": "passenger-helps-a-child-find-a-dropped-glove",
+      "domain": "transport_fares_routes",
+      "scenario": "stranger_returns_a_childs_dropped_glove_to_the_parent_at_a_bus_stop",
+      "lexicalThemes": [
+        "public transport",
+        "small lost item",
+        "helpfulness"
+      ],
+      "targetVocabulary": [
+        "bus stop",
+        "drop",
+        "glove",
+        "pick up",
+        "hand back"
+      ],
+      "brief": "At a bus stop, a passenger sees a child drop a glove while reaching for a bag. She picks it up and hands it to the parent, who thanks her before the bus arrives.",
+      "storyPattern": {
+        "goal": "Return a dropped personal item",
+        "relationship": "Strangers waiting for transport",
+        "interaction": "Notice the fall and hand the item to its caretaker",
+        "outcome": "Parent recovers the glove before boarding"
+      }
+    },
+    {
+      "date": "2026-10-30",
+      "storyId": "cook-reuses-leftover-herbs-in-an-omelet",
+      "domain": "food_cooking",
+      "scenario": "home_cook_uses_leftover_herbs_in_an_omelet",
+      "lexicalThemes": [
+        "home cooking",
+        "using leftovers",
+        "taste"
+      ],
+      "targetVocabulary": [
+        "leftover",
+        "herbs",
+        "chop",
+        "omelet",
+        "fresh"
+      ],
+      "brief": "A home cook finds a small bunch of herbs left over from yesterday and chops them into an omelet instead of letting them wilt. Her partner tastes it and says the herbs give the dish a fresh flavor.",
+      "storyPattern": {
+        "goal": "Use fresh ingredients before they wilt",
+        "relationship": "Partners sharing a meal",
+        "interaction": "Add leftover herbs and invite a reaction",
+        "outcome": "Dish gains a fresh flavor"
+      }
+    },
+    {
+      "date": "2026-10-30",
+      "storyId": "friends-pick-a-shorter-queue-at-a-festival",
+      "domain": "arts_events",
+      "scenario": "friends_choose_between_two_festival_food_stalls_based_on_wait_and_preference",
+      "lexicalThemes": [
+        "festival",
+        "food choices",
+        "preferences"
+      ],
+      "targetVocabulary": [
+        "stall",
+        "line",
+        "menu",
+        "choose",
+        "wait"
+      ],
+      "brief": "At an outdoor festival, two friends see a long line for one food stall and a shorter line nearby with a different menu. They compare what they feel like eating and choose the shorter queue, glad they can sit down sooner.",
+      "storyPattern": {
+        "goal": "Choose a food stall that suits both friends",
+        "relationship": "Friends at a public event",
+        "interaction": "Compare preferences and queue lengths",
+        "outcome": "Pick the shorter line and sit down sooner"
+      }
     }
   ]
 }
