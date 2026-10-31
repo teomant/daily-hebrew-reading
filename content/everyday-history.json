@@ -12527,6 +12527,435 @@
         "interaction": "Compare preferences and queue lengths",
         "outcome": "Pick the shorter line and sit down sooner"
       }
+    },
+    {
+      "date": "2026-10-31",
+      "storyId": "employee-organizes-a-work-expense-reimbursement",
+      "domain": "work_pay",
+      "scenario": "employee_separates_a_work_purchase_from_a_personal_item_on_one_receipt_before_submitting_an_expense_request",
+      "lexicalThemes": [
+        "work expenses",
+        "itemized receipts",
+        "explaining a mixed purchase",
+        "submitting a form"
+      ],
+      "targetVocabulary": [
+        "receipt",
+        "expense",
+        "work item",
+        "personal",
+        "separate",
+        "attach",
+        "submit",
+        "copy"
+      ],
+      "brief": "After buying a replacement adapter for a work presentation, employee Yaara realizes the receipt includes a personal phone cable too. She asks her team lead which part of the purchase belongs on the expense form, and he explains that she should list only the adapter and attach the itemized receipt. Yaara worries the receipt may look confusing, so she marks the two items on a copy and adds a short note rather than altering the original. The team lead checks that the work item and amount are clear, and Yaara submits the form with both copies saved. Her reimbursement request is ready for review, and the personal purchase is kept separate.",
+      "storyPattern": {
+        "goal": "Submit a work expense without including a personal purchase",
+        "relationship": "Employee and team lead",
+        "interaction": "Explain a mixed receipt and agree how to present the work item",
+        "outcome": "Submit a clear request and keep a copy"
+      }
+    },
+    {
+      "date": "2026-10-31",
+      "storyId": "driver-adjusts-a-parking-plan-for-a-wide-load",
+      "domain": "driving_parking",
+      "scenario": "driver_chooses_a_wider_parking_space_to_unload_a_long_package_without_blocking_the_sidewalk",
+      "lexicalThemes": [
+        "parking choices",
+        "unloading a large item",
+        "brief coordination",
+        "safe access"
+      ],
+      "targetVocabulary": [
+        "space",
+        "wide",
+        "narrow",
+        "unload",
+        "package",
+        "block",
+        "wait",
+        "hold"
+      ],
+      "brief": "On the way home from a hardware shop, driver Amir notices that the long cardboard package in his car will be awkward to unload beside the narrow space he usually parks in. He circles once and spots a wider open space farther along, but a delivery van is turning into the same row. Amir waits rather than squeezing past, then asks the van driver whether he is unloading there; the driver explains that he will be gone in a moment. Amir shifts to the wider space, checks that the package can come out without blocking the sidewalk, and unloads it with a neighbor who offers to hold one end. The package reaches the building safely, and Amir parks without obstructing anyone.",
+      "storyPattern": {
+        "goal": "Unload a bulky purchase without obstructing access",
+        "relationship": "Driver coordinating briefly with another road user and a neighbor",
+        "interaction": "Wait for space, explain the need, and share the lifting task",
+        "outcome": "Move the item safely and leave access clear"
+      }
+    },
+    {
+      "date": "2026-10-31",
+      "storyId": "travelers-adjust-a-day-trip-after-a-trail-detour",
+      "domain": "travel_day_trips",
+      "scenario": "travel_companions_choose_a_shorter_marked_walk_after_a_barrier_closes_their_planned_trail",
+      "lexicalThemes": [
+        "walking routes",
+        "reading trail signs",
+        "changing plans",
+        "outdoor discoveries"
+      ],
+      "targetVocabulary": [
+        "path",
+        "barrier",
+        "map",
+        "loop",
+        "longer",
+        "shorter",
+        "viewpoint",
+        "turn back"
+      ],
+      "brief": "On a day trip, friends Orly and Nadav reach a marked walking path and find a temporary barrier across the section they planned to follow. Nadav wants to turn back, but Orly notices a side path on the map that loops toward the same viewpoint. They compare the map with the signs and realize the loop is longer than they expected; rather than rush, they decide to skip the viewpoint and follow a shorter marked path to a picnic area. Along the way, they stop to refill their water and notice a small stream beside the path, which becomes the highlight of the walk. They arrive with time to eat before heading back, pleased they changed plans instead of trying to pass the barrier.",
+      "storyPattern": {
+        "goal": "Continue an enjoyable outing when a planned route is blocked",
+        "relationship": "Friends on a day trip",
+        "interaction": "Compare route options and adjust expectations together",
+        "outcome": "Choose a shorter marked walk and discover an unexpected feature"
+      }
+    },
+    {
+      "date": "2026-10-31",
+      "storyId": "dialog-patient-and-receptionist-coordinate-a-quiet-wait",
+      "domain": "health_appointments",
+      "scenario": "patient_and_receptionist_agree_on_a_way_to_manage_a_noisy_waiting_area_without_missing_their_turn",
+      "lexicalThemes": [
+        "waiting for an appointment",
+        "noise and comfort",
+        "asking for an adjustment",
+        "staying reachable"
+      ],
+      "targetVocabulary": [
+        "waiting area",
+        "quiet",
+        "crowded",
+        "screen",
+        "seat",
+        "step outside",
+        "call",
+        "turn"
+      ],
+      "brief": "Fully AI-generated dialogue. Patient Maya speaks with clinic receptionist Erez; they are the only speakers. Maya has arrived for a routine appointment and is feeling overwhelmed by the crowded, noisy waiting area. She explains that she can wait, but asks whether there is a quieter place nearby where she can sit without missing her turn. Erez says the small side seating area is available, though the screen there is harder to see. Maya asks whether he can call her name if the screen changes; Erez explains that he can also note her seat and come get her when the clinician is ready. Maya clarifies that she may step outside briefly for air, and Erez asks her to tell him before she does. She decides to sit in the side area first, then lets him know when she steps out for a moment. Erez calls her back when it is time, and Maya returns for the appointment. The exchange supports 8–12 short alternating turns, with direct questions, clarification, and a workable arrangement. Role map: Maya is the patient who needs a quieter wait and chooses where to sit; Erez is the receptionist who can communicate when her turn comes; neither owns an object that affects the arrangement, and Erez performs the final action of calling her back.",
+      "storyPattern": {
+        "goal": "Wait comfortably without missing an appointment turn",
+        "relationship": "Patient and clinic receptionist",
+        "interaction": "Explain a comfort need and agree on a way to stay reachable",
+        "outcome": "Wait in a quieter place and return when called"
+      }
+    },
+    {
+      "date": "2026-10-31",
+      "storyId": "dialog-diners-adapt-a-shared-order",
+      "domain": "food_service_orders",
+      "scenario": "diners_customize_a_shared_meal_by_requesting_toppings_and_sauce_on_the_side",
+      "lexicalThemes": [
+        "ordering food to share",
+        "different preferences",
+        "customizing a dish",
+        "confirming serving details"
+      ],
+      "targetVocabulary": [
+        "share",
+        "raw onion",
+        "on the side",
+        "sauce",
+        "plate",
+        "prefer",
+        "order",
+        "enough"
+      ],
+      "brief": "Fully AI-generated dialogue. Friends Lior and Dana are ordering lunch at a counter-service restaurant; they are the only speakers. They want to share a large salad and a warm side, but Lior would rather avoid raw onion while Dana likes it. They ask whether the onion can be left on the side, and the server confirms directly to them that it can. Dana then notices the side dish is served with a sauce she does not enjoy; Lior suggests asking for it separately so they can both try the dish. They check that the salad and side are enough to share, choose the sauce on the side, and make clear that they need two plates. When the order arrives, the onion and sauce are separate, so each diner can add what they like. They share lunch without either having to give up their preference. The brief supports 8–12 short alternating turns with questions, reactions, and a clear decision. Role map: Lior and Dana are co-diners who jointly choose and receive the food; neither is a server, and they make the final ordering decisions themselves.",
+      "storyPattern": {
+        "goal": "Order a shared meal that suits different preferences",
+        "relationship": "Friends dining together",
+        "interaction": "Express contrasting tastes and negotiate flexible serving choices",
+        "outcome": "Share the meal with additions served separately"
+      }
+    },
+    {
+      "date": "2026-10-31",
+      "storyId": "resident-divides-a-shared-bill",
+      "domain": "bills_taxes",
+      "scenario": "housemates_separate_a_recognized_bill_amount_from_an_unfamiliar_charge_before_following_up",
+      "lexicalThemes": [
+        "household bills",
+        "shared expenses",
+        "uncertain charges"
+      ],
+      "targetVocabulary": [
+        "bill",
+        "charge",
+        "amount",
+        "together",
+        "separate",
+        "clarify"
+      ],
+      "brief": "Two housemates notice that a household bill includes a charge they do not recognize, so they agree to pay the familiar portion separately while they clarify the rest. One writes down the amount they both recognize, and they keep the bill together for a follow-up.",
+      "storyPattern": {
+        "goal": "Handle a shared bill without assuming an unclear charge",
+        "relationship": "Housemates sharing expenses",
+        "interaction": "Separate the familiar amount from the unexplained part",
+        "outcome": "Record the known amount and keep the bill for follow-up"
+      }
+    },
+    {
+      "date": "2026-10-31",
+      "storyId": "applicant-practices-explaining-a-benefit-change",
+      "domain": "social_benefits",
+      "scenario": "resident_rehearses_a_clear_explanation_of_a_change_in_circumstances_with_a_relative",
+      "lexicalThemes": [
+        "benefits",
+        "changes in circumstances",
+        "explaining clearly"
+      ],
+      "targetVocabulary": [
+        "change",
+        "date",
+        "explain",
+        "practice",
+        "clear",
+        "again"
+      ],
+      "brief": "Before contacting a benefits office, a resident practices explaining a recent change in her circumstances to her cousin. Her cousin says the explanation is clearer when she gives the date first, so she tries again with that detail included.",
+      "storyPattern": {
+        "goal": "Prepare to explain a personal change clearly",
+        "relationship": "Relative helping someone prepare",
+        "interaction": "Listen to a practice explanation and suggest a clearer order",
+        "outcome": "Revise the explanation to begin with the date"
+      }
+    },
+    {
+      "date": "2026-10-31",
+      "storyId": "traveler-checks-a-document-copy",
+      "domain": "travel_documents",
+      "scenario": "traveler_replaces_an_unclear_copy_of_a_travel_document_before_packing",
+      "lexicalThemes": [
+        "travel documents",
+        "copies",
+        "packing"
+      ],
+      "targetVocabulary": [
+        "copy",
+        "original",
+        "number",
+        "unclear",
+        "clear",
+        "pack"
+      ],
+      "brief": "A traveler finds an old photocopy of a travel document in her bag and notices that the printed number is hard to read. She puts the original safely away and makes a clearer copy before packing.",
+      "storyPattern": {
+        "goal": "Prepare a readable document copy for a trip",
+        "relationship": "Traveler acting independently",
+        "interaction": "Notice an unclear copy and replace it",
+        "outcome": "Pack a clearer copy while keeping the original safe"
+      }
+    },
+    {
+      "date": "2026-10-31",
+      "storyId": "worker-returns-a-misplaced-work-key",
+      "domain": "employment_jobs",
+      "scenario": "worker_returns_a_tagged_key_found_near_a_shared_printer_to_the_shift_lead",
+      "lexicalThemes": [
+        "workplace objects",
+        "lost and found",
+        "returning an item"
+      ],
+      "targetVocabulary": [
+        "key",
+        "tag",
+        "printer",
+        "find",
+        "return",
+        "hook"
+      ],
+      "brief": "A worker finds a key left beside the shared printer and recognizes its tag from the staff room. She gives it to the shift lead, who puts it back on the labeled hook.",
+      "storyPattern": {
+        "goal": "Get a misplaced work key back to its proper place",
+        "relationship": "Coworker and shift lead",
+        "interaction": "Recognize a tagged item and hand it over",
+        "outcome": "Put the key back on its labeled hook"
+      }
+    },
+    {
+      "date": "2026-10-31",
+      "storyId": "student-lends-a-colored-pencil",
+      "domain": "school_childcare",
+      "scenario": "student_lends_a_spare_colored_pencil_to_a_classmate_and_gets_it_back",
+      "lexicalThemes": [
+        "classroom activities",
+        "sharing supplies",
+        "returning borrowed items"
+      ],
+      "targetVocabulary": [
+        "classmate",
+        "pencil",
+        "snap",
+        "spare",
+        "borrow",
+        "return"
+      ],
+      "brief": "During a classroom activity, one student notices that a classmate’s colored pencil has snapped and offers a spare. The classmate accepts it and returns it after finishing the drawing.",
+      "storyPattern": {
+        "goal": "Help a classmate continue a classroom task",
+        "relationship": "Students working alongside each other",
+        "interaction": "Offer a spare supply and lend it briefly",
+        "outcome": "Classmate finishes and returns the borrowed item"
+      }
+    },
+    {
+      "date": "2026-10-31",
+      "storyId": "shopper-chooses-the-last-ripe-peach",
+      "domain": "supermarket_queues",
+      "scenario": "shoppers_resolve_a_brief_mixup_over_the_same_peach_and_choose_separate_fruit",
+      "lexicalThemes": [
+        "choosing produce",
+        "polite disagreement",
+        "making room"
+      ],
+      "targetVocabulary": [
+        "peach",
+        "reach",
+        "pause",
+        "already",
+        "choose",
+        "different"
+      ],
+      "brief": "At the market, a shopper reaches for a peach at the same time as another customer and pauses. The other customer says she has already picked one, so the shopper chooses a different fruit instead.",
+      "storyPattern": {
+        "goal": "Resolve a small mix-up while choosing produce",
+        "relationship": "Strangers shopping at the same stall",
+        "interaction": "Pause and let the other shopper explain their choice",
+        "outcome": "Choose a different piece of fruit"
+      }
+    },
+    {
+      "date": "2026-10-31",
+      "storyId": "user-turns-off-a-noisy-app-alert",
+      "domain": "digital_accounts",
+      "scenario": "phone_user_mutes_sound_alerts_for_one_app_while_leaving_visual_notifications_on",
+      "lexicalThemes": [
+        "app settings",
+        "notifications",
+        "personal preferences"
+      ],
+      "targetVocabulary": [
+        "app",
+        "settings",
+        "sound",
+        "alert",
+        "switch off",
+        "message"
+      ],
+      "brief": "A phone user realizes that one app keeps making a sound during a quiet meeting and opens its settings afterward. She switches off the sound but leaves the visual alerts on, and the next message appears silently.",
+      "storyPattern": {
+        "goal": "Reduce interruptions without missing app updates",
+        "relationship": "Phone user acting independently",
+        "interaction": "Adjust one notification preference",
+        "outcome": "Messages arrive without a sound"
+      }
+    },
+    {
+      "date": "2026-10-31",
+      "storyId": "passenger-makes-room-for-a-folding-walker",
+      "domain": "transport_fares_routes",
+      "scenario": "train_passenger_moves_a_backpack_to_make_space_for_a_folded_walker",
+      "lexicalThemes": [
+        "train travel",
+        "personal belongings",
+        "making space"
+      ],
+      "targetVocabulary": [
+        "train",
+        "aisle",
+        "folded",
+        "walker",
+        "backpack",
+        "space"
+      ],
+      "brief": "On a train, a passenger notices someone trying to keep a folded walker clear of the aisle. She moves her backpack onto her lap, leaving enough room beside the seat for the walker.",
+      "storyPattern": {
+        "goal": "Keep a shared aisle clear while accommodating a passenger's equipment",
+        "relationship": "Strangers sharing a train",
+        "interaction": "Notice a space problem and move personal belongings",
+        "outcome": "Leave room beside the seat for the folded item"
+      }
+    },
+    {
+      "date": "2026-10-31",
+      "storyId": "cook-serves-soup-in-small-cups",
+      "domain": "food_cooking",
+      "scenario": "family_sets_aside_extra_soup_before_serving_dinner_portions",
+      "lexicalThemes": [
+        "serving food",
+        "leftovers",
+        "sharing kitchen tasks"
+      ],
+      "targetVocabulary": [
+        "soup",
+        "extra",
+        "container",
+        "portion",
+        "cool",
+        "serve"
+      ],
+      "brief": "A cook makes more soup than the family can finish at dinner, so her brother suggests filling a few small containers before serving. They set the extra portions aside to cool, and the table gets only what everyone plans to eat.",
+      "storyPattern": {
+        "goal": "Avoid serving more food than the family will eat",
+        "relationship": "Siblings sharing a meal task",
+        "interaction": "Suggest portioning the extra before dinner",
+        "outcome": "Set aside leftovers and serve a suitable amount"
+      }
+    },
+    {
+      "date": "2026-10-31",
+      "storyId": "visitors-follow-a-sound-at-a-market",
+      "domain": "travel_day_trips",
+      "scenario": "visitors_find_market_musicians_by_following_a_drum_rhythm_and_join_the_beat",
+      "lexicalThemes": [
+        "market visits",
+        "music",
+        "spontaneous participation"
+      ],
+      "targetVocabulary": [
+        "market",
+        "drum",
+        "rhythm",
+        "follow",
+        "tap",
+        "beat"
+      ],
+      "brief": "While visiting an open-air market, two friends hear a hand drum and follow the rhythm to a small group of musicians. One friend starts tapping along on her knees, and the musicians answer with a short repeated beat.",
+      "storyPattern": {
+        "goal": "Find the source of music during an outing",
+        "relationship": "Friends exploring together",
+        "interaction": "Follow a sound and join in with a simple rhythm",
+        "outcome": "Musicians respond with a repeated beat"
+      }
+    },
+    {
+      "date": "2026-10-31",
+      "storyId": "coworker-offers-a-bandage-for-a-paper-cut",
+      "domain": "injuries_symptoms",
+      "scenario": "coworker_offers_a_clean_bandage_after_a_colleague_gets_a_small_paper_cut_while_sorting_files",
+      "lexicalThemes": [
+        "minor cuts",
+        "offering help",
+        "accepting help"
+      ],
+      "targetVocabulary": [
+        "paper cut",
+        "bandage",
+        "offer",
+        "accept"
+      ],
+      "brief": "At work, a colleague gets a small paper cut while sorting files, and another offers a clean bandage. The colleague accepts, and they get back to the task.",
+      "storyPattern": {
+        "goal": "Help a colleague with a minor cut",
+        "relationship": "Coworkers",
+        "interaction": "Offer a bandage and accept the help",
+        "outcome": "Cover the cut and resume the task"
+      }
     }
   ]
 }
