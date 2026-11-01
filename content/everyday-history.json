@@ -12956,6 +12956,430 @@
         "interaction": "Offer a bandage and accept the help",
         "outcome": "Cover the cut and resume the task"
       }
+    },
+    {
+      "date": "2026-11-01",
+      "storyId": "resident-questions-a-meter-reading",
+      "domain": "bills_taxes",
+      "scenario": "resident_compares_a_household_bill_estimate_with_a_meter_reading_and_sends_a_corrected_observation",
+      "lexicalThemes": [
+        "household bills",
+        "meter readings",
+        "estimates and actual figures",
+        "explaining a discrepancy",
+        "keeping a record"
+      ],
+      "targetVocabulary": [
+        "meter",
+        "reading",
+        "estimated",
+        "actual",
+        "last month",
+        "I noticed",
+        "I may have misread it",
+        "could you check",
+        "send a reading",
+        "keep a copy"
+      ],
+      "brief": "Resident Yaara notices that the meter reading copied onto her latest household bill does not look like the number she wrote down last month. She calls the provider and explains the two readings without assuming there is an error. The representative asks her to read the current meter aloud; Yaara spots that she had included a small red digit in her earlier note. She checks the bill’s reading type with the representative, who explains that the bill shows an estimated reading rather than the number she just read. Yaara writes down the current number and sends it through the channel the representative identifies, keeping a copy of her note. She now has a clear record of the discrepancy and a concrete follow-up if the next bill still seems inconsistent.",
+      "storyPattern": {
+        "goal": "Clarify a bill reading against a current observation",
+        "relationship": "Resident and service representative",
+        "interaction": "Compare recorded figures and identify a misunderstanding",
+        "outcome": "Send a documented reading for follow-up"
+      }
+    },
+    {
+      "date": "2026-11-01",
+      "storyId": "neighbor-helps-collect-a-large-parcel",
+      "domain": "postal_parcels",
+      "scenario": "neighbors_cooperate_to_collect_and_transport_an_awkward_parcel_using_a_shared_cart",
+      "lexicalThemes": [
+        "parcel collection",
+        "asking a neighbor for help",
+        "size and weight",
+        "carrying equipment",
+        "returning borrowed items"
+      ],
+      "targetVocabulary": [
+        "parcel",
+        "collection point",
+        "ready for pickup",
+        "awkward to carry",
+        "folding cart",
+        "could you help me",
+        "on my way",
+        "sideways",
+        "secure it",
+        "bring it back"
+      ],
+      "brief": "After receiving a message that a parcel is ready at a nearby collection point, resident Gil realizes the box contains a desk lamp he ordered and will be awkward to carry home alone. He asks his neighbor Dina whether she is heading in that direction and offers to pay for a taxi if it is too heavy. Dina is already going past the collection point and suggests they bring a folding cart from the building storage area. At pickup, the box is wider than expected, so they turn it sideways and secure it to the cart rather than trying to carry it by hand. They walk back together, and Gil brings the cart back downstairs after unpacking the lamp; the parcel gets home safely without either neighbor overexerting themselves.",
+      "storyPattern": {
+        "goal": "Bring an awkward delivery home safely",
+        "relationship": "Neighbors helping with a practical errand",
+        "interaction": "Offer help and adapt the carrying plan together",
+        "outcome": "Transport the parcel by cart and return the equipment"
+      }
+    },
+    {
+      "date": "2026-11-01",
+      "storyId": "travelers-compare-olive-oils-on-a-day-trip",
+      "domain": "travel_day_trips",
+      "scenario": "travel_companions_taste_oils_at_a_local_press_and_choose_one_for_a_meal",
+      "lexicalThemes": [
+        "day trips",
+        "tasting local food",
+        "describing flavor",
+        "asking a producer a question",
+        "making a purchase"
+      ],
+      "targetVocabulary": [
+        "olive press",
+        "taste",
+        "mild",
+        "peppery",
+        "aftertaste",
+        "variety",
+        "with bread",
+        "which one",
+        "for a salad",
+        "wrap it securely"
+      ],
+      "brief": "On a day trip, friends Roni and Adi stop at a small olive press where the owner offers them a taste of two oils. Roni prefers the milder one, while Adi notices a peppery aftertaste in the second and asks what gives it that flavor. The owner explains that the oils come from different olive varieties and invites them to try a little with bread rather than taste them alone. They compare the difference again and ask which bottle would work better for a simple salad. After hearing the owner’s suggestion, they choose a small bottle of the milder oil to take home and ask for it to be wrapped securely in their day bag. The tasting becomes a memorable stop, and they leave with a choice grounded in what they actually enjoyed.",
+      "storyPattern": {
+        "goal": "Choose a local product after comparing its qualities",
+        "relationship": "Travel companions and a local producer",
+        "interaction": "Taste, describe preferences, and ask about use",
+        "outcome": "Select a bottle to take home"
+      }
+    },
+    {
+      "date": "2026-11-01",
+      "storyId": "customer-and-clerk-plan-a-card-replacement",
+      "domain": "banking_credit",
+      "scenario": "customer_requests_a_replacement_for_a_cracked_card_while_deciding_whether_to_keep_it_active",
+      "lexicalThemes": [
+        "banking",
+        "damaged card",
+        "replacement request",
+        "clarifying options",
+        "making a cautious choice"
+      ],
+      "targetVocabulary": [
+        "debit card",
+        "cracked",
+        "still works",
+        "replace",
+        "block",
+        "in the meantime",
+        "I would rather",
+        "what if",
+        "request",
+        "submit"
+      ],
+      "brief": "Fully AI-generated dialogue. Customer Neta speaks with bank clerk Oren; they are the only two speakers. Neta’s debit card has a cracked corner, though it still works, and she wants to replace it before it becomes unusable. She explains that she is not reporting an unknown transaction and asks whether the damaged card needs to be kept until a replacement is ready. Oren clarifies that he can arrange a replacement request, but cannot say when it will arrive during their conversation. Neta asks whether she can keep using the card in the meantime; Oren explains what he can see about its current status and points out that she can choose to block it now if she is worried it may fail or be lost. Neta says she would rather keep it active for now and asks how to report it if it stops working. Oren describes the contact option available to her, and Neta repeats the next step to make sure she has understood. She asks him to submit the replacement request, then confirms that the request appears on his screen. Role map: Neta owns the damaged card and decides whether to block it; Oren is the bank clerk who can submit the request and explain the options visible to him. Neta makes the final choice, and Oren submits the request.",
+      "storyPattern": {
+        "goal": "Arrange replacement of a damaged payment card",
+        "relationship": "Customer and bank clerk",
+        "interaction": "Explain the damage and weigh whether to block the card",
+        "outcome": "Submit a replacement request while keeping the current card active"
+      }
+    },
+    {
+      "date": "2026-11-01",
+      "storyId": "passengers-choose-a-meeting-point-after-a-bus-diversion",
+      "domain": "transport_fares_routes",
+      "scenario": "bus_passengers_relocate_a_meeting_point_after_a_route_diversion",
+      "lexicalThemes": [
+        "bus diversions",
+        "recognizable landmarks",
+        "checking a route display",
+        "updating a meeting plan",
+        "clarifying directions"
+      ],
+      "targetVocabulary": [
+        "roadworks",
+        "usual stop",
+        "next stop",
+        "diversion",
+        "route display",
+        "meeting point",
+        "which side",
+        "send a message",
+        "nearby",
+        "wait by"
+      ],
+      "brief": "Fully AI-generated dialogue. Friends Liat and Yoni are the only speakers. They are traveling across town by bus to meet another friend when the driver announces that roadworks will change the route and the bus will not pass their usual stop. Liat asks whether they should get off at the next stop or stay aboard until the announced diversion point; Yoni checks the route display and says the next stop is near a familiar library. Liat worries that the other friend will wait at the original stop, so they agree to send a quick message describing the change. Yoni suggests using the library entrance as the new meeting point, but Liat asks whether it is on the same side of the road as the bus stop. They confirm that detail on the map display, get off at the next stop, and send the meeting update. When their friend replies that she is already nearby, Liat and Yoni wait beside the library entrance and meet her without needing to retrace their route. Role map: Liat and Yoni are travel companions who jointly decide where to get off and where to meet; neither provides transport service. Yoni checks the display, Liat sends the message, and they perform the final action together by walking to the agreed meeting point.",
+      "storyPattern": {
+        "goal": "Reach a companion despite a changed bus route",
+        "relationship": "Friends traveling together",
+        "interaction": "Compare landmarks and revise a meeting plan",
+        "outcome": "Get off at a recognizable stop and meet at a new location"
+      }
+    },
+    {
+      "date": "2026-11-01",
+      "storyId": "patient-brings-a-list-of-current-medicines",
+      "domain": "health_appointments",
+      "scenario": "patient_updates_a_current_medicine_list_during_an_appointment",
+      "lexicalThemes": [
+        "appointment preparation",
+        "medicine list",
+        "clarifying information"
+      ],
+      "targetVocabulary": [
+        "current medicines",
+        "write down",
+        "update",
+        "correct"
+      ],
+      "brief": "Before an appointment, a patient writes down the medicines she currently takes and brings the list along. When the clinician asks about one she stopped using, she corrects the note, and they discuss the updated list.",
+      "storyPattern": {
+        "goal": "Share an accurate current medicine list",
+        "relationship": "Patient and clinician",
+        "interaction": "Correct an outdated note during a conversation",
+        "outcome": "Discuss the updated list"
+      }
+    },
+    {
+      "date": "2026-11-01",
+      "storyId": "coworkers-switch-a-task-for-a-quiet-workspace",
+      "domain": "employment_jobs",
+      "scenario": "coworkers_exchange_tasks_to_match_different_workspace_needs",
+      "lexicalThemes": [
+        "work tasks",
+        "workspace",
+        "cooperation"
+      ],
+      "targetVocabulary": [
+        "quiet corner",
+        "trade tasks",
+        "busy floor",
+        "afternoon"
+      ],
+      "brief": "An employee needs a quiet corner to finish a detailed task, while a colleague has work that can be done on the busy floor. They trade tasks for the afternoon, and each can work where it suits them best.",
+      "storyPattern": {
+        "goal": "Match tasks to different workspace needs",
+        "relationship": "Coworkers",
+        "interaction": "Offer and accept a task exchange",
+        "outcome": "Each works in a more suitable place"
+      }
+    },
+    {
+      "date": "2026-11-01",
+      "storyId": "customer-asks-about-a-prescription-label",
+      "domain": "pharmacy_prescriptions",
+      "scenario": "customer_asks_pharmacist_to_read_an_unclear_prescription_label",
+      "lexicalThemes": [
+        "pharmacy",
+        "prescription label",
+        "clarification"
+      ],
+      "targetVocabulary": [
+        "label",
+        "read aloud",
+        "unclear",
+        "repeat"
+      ],
+      "brief": "A customer cannot make out a word on a prescription label and tells the pharmacist rather than guessing. The pharmacist reads the label aloud, and the customer repeats the instruction back to check that she heard it clearly.",
+      "storyPattern": {
+        "goal": "Understand an unclear written instruction",
+        "relationship": "Customer and pharmacist",
+        "interaction": "Admit uncertainty and repeat what was heard",
+        "outcome": "Confirm the wording aloud"
+      }
+    },
+    {
+      "date": "2026-11-01",
+      "storyId": "resident-keeps-a-box-away-from-a-painting-area",
+      "domain": "housing_landlord",
+      "scenario": "resident_moves_personal_items_before_a_shared_hallway_painting_task",
+      "lexicalThemes": [
+        "building work",
+        "personal belongings",
+        "preparation"
+      ],
+      "targetVocabulary": [
+        "hallway",
+        "painter",
+        "move aside",
+        "clear space"
+      ],
+      "brief": "A resident sees a painter preparing to work near the hallway and moves a box of family photographs out of the way. The painter thanks him, and the work area is clear without putting the photographs at risk.",
+      "storyPattern": {
+        "goal": "Protect personal belongings during building work",
+        "relationship": "Resident and painter",
+        "interaction": "Notice a possible hazard and move items proactively",
+        "outcome": "Leave the work area clear"
+      }
+    },
+    {
+      "date": "2026-11-01",
+      "storyId": "claimant-corrects-an-estimate-before-sending-it",
+      "domain": "insurance_claims",
+      "scenario": "claimant_corrects_an_inaccurate_item_description_on_a_repair_estimate",
+      "lexicalThemes": [
+        "insurance claim",
+        "repair estimate",
+        "accuracy"
+      ],
+      "targetVocabulary": [
+        "estimate",
+        "description",
+        "correct",
+        "revised"
+      ],
+      "brief": "While preparing an insurance claim, a resident notices that a repair estimate includes an item she never brought to the workshop. She calls the repairer to correct the description, then sends the revised estimate with the item described accurately.",
+      "storyPattern": {
+        "goal": "Submit an accurate repair estimate",
+        "relationship": "Claimant and repairer",
+        "interaction": "Point out and correct an inaccurate description",
+        "outcome": "Send the revised estimate"
+      }
+    },
+    {
+      "date": "2026-11-01",
+      "storyId": "friends-choose-a-quieter-table-at-a-cafe",
+      "domain": "food_service_orders",
+      "scenario": "friends_move_tables_to_continue_talking_over_cafe_noise",
+      "lexicalThemes": [
+        "café",
+        "conversation",
+        "noise"
+      ],
+      "targetVocabulary": [
+        "entrance",
+        "table",
+        "quieter",
+        "hear"
+      ],
+      "brief": "Two friends sit near the café entrance, but the noise makes it hard to hear each other. They move to an empty table farther inside and continue their conversation without raising their voices.",
+      "storyPattern": {
+        "goal": "Continue a conversation comfortably",
+        "relationship": "Friends meeting at a café",
+        "interaction": "Notice the noise and choose another seat",
+        "outcome": "Talk comfortably at a quieter table"
+      }
+    },
+    {
+      "date": "2026-11-01",
+      "storyId": "user-reads-a-message-before-deleting-it",
+      "domain": "digital_accounts",
+      "scenario": "phone_user_saves_a_useful_message_before_clearing_promotional_notifications",
+      "lexicalThemes": [
+        "messages",
+        "notifications",
+        "careful choice"
+      ],
+      "targetVocabulary": [
+        "delete",
+        "save",
+        "appointment detail",
+        "promotional"
+      ],
+      "brief": "A phone user nearly deletes a message that looks like an advertisement, then notices it contains a useful appointment detail. She saves the message and removes only the promotional notifications around it.",
+      "storyPattern": {
+        "goal": "Keep useful information while clearing clutter",
+        "relationship": "Phone user acting independently",
+        "interaction": "Notice a detail and reconsider an initial choice",
+        "outcome": "Save the message and clear other notifications"
+      }
+    },
+    {
+      "date": "2026-11-01",
+      "storyId": "passenger-returns-an-unclaimed-water-bottle",
+      "domain": "transport_fares_routes",
+      "scenario": "passenger_hands_a_left_behind_bottle_to_station_staff",
+      "lexicalThemes": [
+        "public transport",
+        "lost belongings",
+        "handover"
+      ],
+      "targetVocabulary": [
+        "train",
+        "seat",
+        "left behind",
+        "found belongings"
+      ],
+      "brief": "After a train empties at the station, a passenger spots a water bottle left on the seat and hands it to a station employee. The employee places it with the found belongings, and the passenger continues on her way.",
+      "storyPattern": {
+        "goal": "Hand over a forgotten item",
+        "relationship": "Passenger and station employee",
+        "interaction": "Notice an abandoned belonging and pass it along",
+        "outcome": "Place it with found belongings"
+      }
+    },
+    {
+      "date": "2026-11-01",
+      "storyId": "cook-makes-crispy-toast-from-stale-bread",
+      "domain": "food_cooking",
+      "scenario": "cook_uses_dry_bread_to_make_crispy_slices_for_soup",
+      "lexicalThemes": [
+        "leftover bread",
+        "cooking",
+        "texture"
+      ],
+      "targetVocabulary": [
+        "dry bread",
+        "slice thinly",
+        "toast",
+        "crispy"
+      ],
+      "brief": "A cook finds that yesterday’s bread has gone dry, so she slices it thin and toasts it with a little oil. Her brother tastes a piece and suggests serving the crisp slices with soup.",
+      "storyPattern": {
+        "goal": "Make dry bread useful for a meal",
+        "relationship": "Siblings sharing food",
+        "interaction": "Improvise a simple preparation and taste it",
+        "outcome": "Serve crisp slices with soup"
+      }
+    },
+    {
+      "date": "2026-11-01",
+      "storyId": "visitors-quietly-share-a-seat-at-a-small-performance",
+      "domain": "arts_events",
+      "scenario": "visitor_moves_a_coat_obstructing_another_audience_members_view",
+      "lexicalThemes": [
+        "performance",
+        "audience",
+        "consideration"
+      ],
+      "targetVocabulary": [
+        "stage",
+        "coat",
+        "see",
+        "fold"
+      ],
+      "brief": "At a small performance, one visitor notices that a person beside her cannot see around a tall coat draped over the chair. She folds the coat onto her lap, and the other visitor can see the stage again.",
+      "storyPattern": {
+        "goal": "Restore an audience member's view",
+        "relationship": "Strangers at a performance",
+        "interaction": "Notice an obstruction and move one's belongings",
+        "outcome": "Clear the view of the stage"
+      }
+    },
+    {
+      "date": "2026-11-01",
+      "storyId": "resident-refills-a-birdbath-with-leftover-water",
+      "domain": "nature_outdoors",
+      "scenario": "resident_refills_a_dry_birdbath_with_remaining_watering_water",
+      "lexicalThemes": [
+        "balcony garden",
+        "birds",
+        "noticing"
+      ],
+      "targetVocabulary": [
+        "birdbath",
+        "nearly dry",
+        "refill",
+        "quietly"
+      ],
+      "brief": "While watering a balcony garden, a resident notices that the birdbath is nearly dry and uses the remaining water in her jug to refill it. A small bird lands nearby, and she watches quietly from indoors.",
+      "storyPattern": {
+        "goal": "Refill a nearly dry birdbath",
+        "relationship": "Resident acting independently",
+        "interaction": "Notice the low water and use what is available",
+        "outcome": "Refill it and watch from indoors"
+      }
     }
   ]
 }
