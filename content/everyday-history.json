@@ -13380,6 +13380,439 @@
         "interaction": "Notice the low water and use what is available",
         "outcome": "Refill it and watch from indoors"
       }
+    },
+    {
+      "date": "2026-11-02",
+      "storyId": "resident-requests-a-replacement-copy-of-a-damaged-document",
+      "domain": "government_documents",
+      "scenario": "resident_replaces_a_water_damaged_copy_by_comparing_it_with_the_intact_original",
+      "lexicalThemes": [
+        "document copies",
+        "water damage",
+        "checking details",
+        "service counter",
+        "keeping originals safe"
+      ],
+      "targetVocabulary": [
+        "copy",
+        "original",
+        "damaged",
+        "missing page",
+        "compare",
+        "complete",
+        "check the details",
+        "folder"
+      ],
+      "brief": "When a resident notices that a printed copy of an important personal document has been damaged by water, she checks that the original is still intact and asks a service clerk what kind of replacement copy can be provided. The clerk explains the options available in that office and asks her to identify the document without handing over the original. She realizes the damaged copy is missing a page, so she describes what is absent and shows the intact original for comparison. The clerk prepares a fresh copy and asks her to check the printed details before leaving. She spots that the copy is complete, puts the original back in its folder, and leaves with a usable replacement.",
+      "storyPattern": {
+        "goal": "Replace a damaged copy while protecting the original",
+        "relationship": "Resident and service clerk",
+        "interaction": "Describe the damage and compare the available copy with the intact document",
+        "outcome": "Check and take away a complete replacement copy"
+      }
+    },
+    {
+      "date": "2026-11-02",
+      "storyId": "customer-and-technician-test-an-intermittent-home-internet-connection",
+      "domain": "phone_internet",
+      "scenario": "resident_and_technician_compare_connection_drops_near_and_far_from_the_router",
+      "lexicalThemes": [
+        "home internet",
+        "intermittent connection",
+        "devices",
+        "testing signal",
+        "service visit"
+      ],
+      "targetVocabulary": [
+        "connection",
+        "drops",
+        "router",
+        "device",
+        "nearby",
+        "far room",
+        "signal",
+        "follow-up visit"
+      ],
+      "brief": "Fully AI-generated dialogue. Resident Maya speaks with internet technician Ron; they are the only two speakers. Maya’s home internet keeps dropping during video calls, although her phone still connects to the network. She tells Ron what she has noticed and asks whether the problem could be limited to one device. Ron asks her to try a second device while he checks the connection status available to him; both devices disconnect at the same moment. Maya says the router lights look normal to her, and Ron clarifies that this does not rule out a brief interruption in the line. He asks her to connect her laptop near the router, and the connection holds there, but drops again from the far room. They compare the two results and decide the weak point is likely the signal in that room rather than a complete outage. Maya moves her work setup nearer the router for the afternoon, and Ron arranges a follow-up visit to assess the home signal. Role map: Maya owns the devices and describes what she observes; Ron is the technician who can check the connection status and arrange a visit. Maya moves her setup, and Ron makes the final service arrangement.",
+      "storyPattern": {
+        "goal": "Identify where an intermittent home connection fails",
+        "relationship": "Customer and service technician",
+        "interaction": "Compare results from two devices and two locations",
+        "outcome": "Temporarily move the work setup and arrange an assessment"
+      }
+    },
+    {
+      "date": "2026-11-02",
+      "storyId": "cook-and-friend-adjust-a-flatbread-dough",
+      "domain": "food_cooking",
+      "scenario": "friends_rest_and_test_sticky_flatbread_dough_before_adjusting_their_rolling_method",
+      "lexicalThemes": [
+        "cooking together",
+        "dough texture",
+        "waiting and testing",
+        "rolling flatbreads",
+        "sharing kitchen tasks"
+      ],
+      "targetVocabulary": [
+        "dough",
+        "sticky",
+        "flour",
+        "let it rest",
+        "cover",
+        "divide",
+        "roll thinner",
+        "unevenly"
+      ],
+      "brief": "Before dinner, home cook Rina mixes dough for flatbreads while her friend Erez chops vegetables for the filling. The dough feels much stickier than Rina expected, and she asks whether she should add more flour. Erez suggests waiting a few minutes first, since the flour may absorb more water as it rests; while they wait, he finishes chopping and Rina covers the bowl. When they return, the dough is easier to handle but still sticks to the counter. They dust the surface lightly, divide the dough into small pieces, and roll one as a test. The first flatbread cooks unevenly because it is too thick in the middle, so Rina rolls the next one thinner and Erez watches the pan. They finish a small batch with the vegetables ready, and save the remaining dough covered for another meal.",
+      "storyPattern": {
+        "goal": "Make workable flatbread dough for a shared meal",
+        "relationship": "Friends sharing kitchen work",
+        "interaction": "Test whether resting or a small adjustment improves the dough",
+        "outcome": "Change the rolling method and cook a successful batch"
+      }
+    },
+    {
+      "date": "2026-11-02",
+      "storyId": "neighbors-coordinate-a-dog-walk-during-a-workday",
+      "domain": "pets_veterinary",
+      "scenario": "owner_and_neighbor_adapt_a_dog_walk_to_the_neighbors_experience_and_the_dogs_reaction",
+      "lexicalThemes": [
+        "neighborly help",
+        "pet care",
+        "describing behavior",
+        "walking route",
+        "returning equipment"
+      ],
+      "targetVocabulary": [
+        "walk the dog",
+        "lead",
+        "treats",
+        "gets excited",
+        "pulls",
+        "quieter street",
+        "familiar route",
+        "put it back"
+      ],
+      "brief": "On a busy workday, resident Lior realizes he will not be home in time for his usual afternoon dog walk and asks his neighbor Dana whether she might be able to take the dog out. Dana is willing, but says she has never walked him alone and asks what he is like around other dogs. Lior explains that he gets excited and pulls when another dog comes close, so he suggests a short familiar loop rather than the crowded park. Dana asks whether the dog’s lead and treats are by the door; Lior clarifies which lead belongs to the dog and says the treats are optional. She agrees to take him around the quieter streets, and Lior messages her the route he usually takes. After the walk, Dana tells him the dog settled once they turned onto the quieter street; Lior thanks her and puts the lead back in its usual place.",
+      "storyPattern": {
+        "goal": "Arrange a safe, manageable dog walk during a scheduling conflict",
+        "relationship": "Pet owner and neighbor offering practical help",
+        "interaction": "Explain the dog’s behavior and adapt the route to the helper’s experience",
+        "outcome": "Complete a calmer walk and return the equipment"
+      }
+    },
+    {
+      "date": "2026-11-02",
+      "storyId": "friends-adjust-a-day-out-after-a-market-stall-closes",
+      "domain": "travel_day_trips",
+      "scenario": "travel_companions_turn_an_uncertain_market_stop_into_an_unplanned_lunch",
+      "lexicalThemes": [
+        "day trip",
+        "market stalls",
+        "uncertain opening",
+        "food choices",
+        "changing plans"
+      ],
+      "targetVocabulary": [
+        "stall",
+        "closed",
+        "return later",
+        "uncertain",
+        "covered seating",
+        "buy now",
+        "either way",
+        "unplanned"
+      ],
+      "brief": "Fully AI-generated dialogue. Friends Yael and Itamar are the only speakers. During a day out in a town they are visiting, they arrive at a small market hoping to buy a particular local cheese, but the stall is closed and a handwritten sign says the seller will return later. Yael says she would rather not wait without knowing how long, while Itamar notices another stall selling bread and seasonal fruit. They ask a nearby vendor whether the cheese seller has stepped away briefly; the vendor says the return time is uncertain but points out that the market has a covered seating area nearby. Yael asks whether they can come back after exploring another lane, and Itamar suggests buying bread now so they can have a simple lunch either way. They choose fruit as well, then sit in the shade and taste one variety they have not tried before. After lunch, they return to the cheese stall, which is still closed, and decide not to let the uncertain wait shape the rest of their day. They take a different route through the market and enjoy their unplanned meal. Role map: Yael and Itamar are travel companions who jointly decide how to use their time and what to buy; the vendor answers their question but does not join the conversation. Yael asks about the wait, Itamar chooses to buy lunch supplies, and they make the final decision together to continue exploring.",
+      "storyPattern": {
+        "goal": "Enjoy a market visit despite an uncertain stop",
+        "relationship": "Friends traveling together",
+        "interaction": "Weigh waiting against making use of nearby food and space",
+        "outcome": "Share an unplanned lunch and continue exploring"
+      }
+    },
+    {
+      "date": "2026-11-02",
+      "storyId": "customer-pauses-before-sharing-a-bank-code",
+      "domain": "banking_credit",
+      "scenario": "customer_ends_an_unexpected_call_requesting_a_text_code_and_contacts_the_bank_independently",
+      "lexicalThemes": [
+        "banking",
+        "phone calls",
+        "privacy",
+        "verification"
+      ],
+      "targetVocabulary": [
+        "text code",
+        "caller",
+        "share",
+        "end the call",
+        "contact"
+      ],
+      "brief": "A customer gets a call from someone claiming to be from the bank and is asked to read out a code that just arrived by text. She ends the call without sharing it and contacts the bank using the number on her card.",
+      "storyPattern": {
+        "goal": "Protect account access during an unexpected call",
+        "relationship": "Customer acting independently",
+        "interaction": "Decline to share a code and use a separate contact route",
+        "outcome": "End the call and contact the bank directly"
+      }
+    },
+    {
+      "date": "2026-11-02",
+      "storyId": "resident-leaves-an-unclear-form-field-blank",
+      "domain": "government_documents",
+      "scenario": "applicant_leaves_an_unclear_form_field_blank_and_records_the_question",
+      "lexicalThemes": [
+        "forms",
+        "uncertainty",
+        "careful answers"
+      ],
+      "targetVocabulary": [
+        "field",
+        "blank",
+        "guess",
+        "question",
+        "clarify"
+      ],
+      "brief": "While filling in a government form, a resident finds a question she does not understand and decides not to guess. She leaves that field blank and writes the question on a note to clarify later.",
+      "storyPattern": {
+        "goal": "Avoid giving an uncertain answer on a form",
+        "relationship": "Applicant acting independently",
+        "interaction": "Pause at an unclear question and record it",
+        "outcome": "Leave the field blank and keep a clarification note"
+      }
+    },
+    {
+      "date": "2026-11-02",
+      "storyId": "worker-owns-up-to-a-missed-shift-message",
+      "domain": "work_pay",
+      "scenario": "employee_apologizes_for_a_late_reply_about_an_extra_shift_and_manager_adjusts_the_rota",
+      "lexicalThemes": [
+        "work schedules",
+        "apologies",
+        "responsibility"
+      ],
+      "targetVocabulary": [
+        "extra shift",
+        "forgot",
+        "apologize",
+        "promptly",
+        "rota"
+      ],
+      "brief": "An employee realizes she forgot to tell her manager that she cannot cover an extra shift and apologizes as soon as she notices. The manager thanks her for saying so promptly and adjusts the rota.",
+      "storyPattern": {
+        "goal": "Correct a missed work-schedule reply",
+        "relationship": "Employee and manager",
+        "interaction": "Admit an oversight and apologize",
+        "outcome": "Manager adjusts the schedule"
+      }
+    },
+    {
+      "date": "2026-11-02",
+      "storyId": "resident-declines-a-relatives-offer-to-speak-for-her",
+      "domain": "social_benefits",
+      "scenario": "resident_declines_a_relatives_offer_to_speak_for_her_and_keeps_support_available",
+      "lexicalThemes": [
+        "benefits",
+        "family support",
+        "independence",
+        "polite refusal"
+      ],
+      "targetVocabulary": [
+        "on my behalf",
+        "rather",
+        "explain",
+        "respect",
+        "support"
+      ],
+      "brief": "Before calling about a social-benefits matter, a resident's aunt offers to speak on her behalf, but the resident says she would rather explain it herself. Her aunt respects that and stays nearby in case the resident wants support afterward.",
+      "storyPattern": {
+        "goal": "Speak for oneself about a personal matter",
+        "relationship": "Resident and supportive relative",
+        "interaction": "Decline an offer politely and explain a preference",
+        "outcome": "Relative gives space while remaining available"
+      }
+    },
+    {
+      "date": "2026-11-02",
+      "storyId": "driver-waits-while-a-pedestrian-finishes-crossing",
+      "domain": "driving_parking",
+      "scenario": "driver_waits_for_a_pedestrian_to_finish_crossing_before_moving",
+      "lexicalThemes": [
+        "driving",
+        "pedestrians",
+        "patience",
+        "road safety"
+      ],
+      "targetVocabulary": [
+        "crossing",
+        "stay stopped",
+        "far curb",
+        "clear",
+        "continue"
+      ],
+      "brief": "A driver sees a pedestrian still crossing as the traffic light changes and stays stopped instead of edging forward. The pedestrian reaches the far curb, and the driver continues when the way is clear.",
+      "storyPattern": {
+        "goal": "Give a pedestrian room to finish crossing",
+        "relationship": "Driver and pedestrian",
+        "interaction": "Wait without pressuring the pedestrian",
+        "outcome": "Continue once the crossing is clear"
+      }
+    },
+    {
+      "date": "2026-11-02",
+      "storyId": "customer-redirects-a-delivery-to-a-neighbor",
+      "domain": "delivery_customer_service",
+      "scenario": "customer_arranges_for_a_neighbor_to_receive_a_parcel_during_her_absence",
+      "lexicalThemes": [
+        "deliveries",
+        "neighbors",
+        "planning",
+        "consent"
+      ],
+      "targetVocabulary": [
+        "parcel",
+        "be away",
+        "receive",
+        "agree",
+        "delivery note"
+      ],
+      "brief": "A customer realizes she will be away when a parcel is due and asks a neighbor if they can receive it. The neighbor agrees, so she updates the delivery note to name the neighbor as the recipient.",
+      "storyPattern": {
+        "goal": "Ensure a parcel can be received while away",
+        "relationship": "Customer and neighbor",
+        "interaction": "Ask for help and get agreement before updating the delivery note",
+        "outcome": "Name the neighbor as recipient"
+      }
+    },
+    {
+      "date": "2026-11-02",
+      "storyId": "child-admits-she-spilled-the-classroom-paint",
+      "domain": "school_childcare",
+      "scenario": "child_admits_spilling_paint_and_helps_clean_the_classroom_table",
+      "lexicalThemes": [
+        "school",
+        "mistakes",
+        "honesty",
+        "cleaning"
+      ],
+      "targetVocabulary": [
+        "spill",
+        "paint",
+        "tell",
+        "paper towels",
+        "wipe"
+      ],
+      "brief": "A child accidentally tips over a cup of paint during an art activity and tells the teacher instead of hiding it. The teacher hands her paper towels, and they wipe the table together before the paint dries.",
+      "storyPattern": {
+        "goal": "Deal honestly with an accidental mess",
+        "relationship": "Child and teacher",
+        "interaction": "Admit the mistake and cooperate on cleanup",
+        "outcome": "Clean the table before the paint dries"
+      }
+    },
+    {
+      "date": "2026-11-02",
+      "storyId": "shopper-keeps-a-sweater-after-a-friend-spots-the-color",
+      "domain": "shopping_returns",
+      "scenario": "shopper_reconsiders_returning_a_sweater_after_comparing_its_color_in_daylight",
+      "lexicalThemes": [
+        "shopping",
+        "color",
+        "opinions",
+        "changing one's mind"
+      ],
+      "targetVocabulary": [
+        "return",
+        "dull",
+        "daylight",
+        "shade",
+        "decide"
+      ],
+      "brief": "A shopper is about to return a sweater because she thinks the color looks dull, but her friend points out that it changes in the daylight. They step near the window, and the shopper decides she likes the brighter shade after all.",
+      "storyPattern": {
+        "goal": "Decide whether to keep a purchase",
+        "relationship": "Friends shopping together",
+        "interaction": "Share an observation that changes how an item looks",
+        "outcome": "Shopper chooses to keep it"
+      }
+    },
+    {
+      "date": "2026-11-02",
+      "storyId": "cook-uses-a-pot-lid-to-steam-vegetables",
+      "domain": "food_cooking",
+      "scenario": "cook_and_partner_improvise_a_lidded_pot_method_when_the_steamer_is_missing",
+      "lexicalThemes": [
+        "cooking",
+        "improvisation",
+        "cooperation"
+      ],
+      "targetVocabulary": [
+        "steamer",
+        "missing",
+        "suggest",
+        "cover",
+        "steam"
+      ],
+      "brief": "A cook finds that the steamer basket is missing just as the vegetables are ready to cook. Her partner suggests adding a little water to the pot and covering it with a lid, so they steam the vegetables together in the pot.",
+      "storyPattern": {
+        "goal": "Cook vegetables without the expected equipment",
+        "relationship": "Partners sharing a kitchen task",
+        "interaction": "Offer a simple alternative using available equipment",
+        "outcome": "Steam the vegetables in a covered pot"
+      }
+    },
+    {
+      "date": "2026-11-02",
+      "storyId": "audience-member-lends-a-program-to-a-late-arrival",
+      "domain": "arts_events",
+      "scenario": "audience_member_shares_a_program_sheet_with_a_late_arrival_during_a_performance",
+      "lexicalThemes": [
+        "performances",
+        "sharing",
+        "politeness",
+        "cast"
+      ],
+      "targetVocabulary": [
+        "program",
+        "late arrival",
+        "offer",
+        "share",
+        "cast list"
+      ],
+      "brief": "At a small performance, an audience member notices a late arrival has missed the program sheet and offers to share hers. The newcomer reads the cast list during a pause and hands the program back with a quiet thank-you.",
+      "storyPattern": {
+        "goal": "Help a late audience member follow the performance",
+        "relationship": "Strangers at an event",
+        "interaction": "Offer to share reading material during a pause",
+        "outcome": "Newcomer checks the program and returns it"
+      }
+    },
+    {
+      "date": "2026-11-02",
+      "storyId": "resident-sorts-a-confusing-benefit-letter",
+      "domain": "social_benefits",
+      "scenario": "recipient_calls_about_an_unclear_sentence_in_a_benefit_letter_and_marks_it_for_follow_up",
+      "lexicalThemes": [
+        "benefit correspondence",
+        "unclear wording",
+        "follow-up question"
+      ],
+      "targetVocabulary": [
+        "letter",
+        "sentence",
+        "understand",
+        "clarify",
+        "mark",
+        "question"
+      ],
+      "brief": "A resident receives a benefits letter with one sentence she does not understand and calls the office to ask what it refers to. The representative cannot clarify it during the call, so the resident marks that sentence and writes down the question for a later follow-up.",
+      "storyPattern": {
+        "goal": "Clarify one confusing sentence in a benefits letter",
+        "relationship": "Benefit recipient and office representative",
+        "interaction": "Ask what the wording refers to without assuming its meaning",
+        "outcome": "Mark the sentence and keep a specific follow-up question"
+      }
     }
   ]
 }
