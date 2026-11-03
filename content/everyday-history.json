@@ -13813,6 +13813,441 @@
         "interaction": "Ask what the wording refers to without assuming its meaning",
         "outcome": "Mark the sentence and keep a specific follow-up question"
       }
+    },
+    {
+      "date": "2026-11-03",
+      "storyId": "tenant-and-electrician-label-a-confusing-breaker-panel",
+      "domain": "home_repairs_utilities",
+      "scenario": "tenant_and_electrician_test_kitchen_outlets_and_correct_misleading_breaker_labels",
+      "lexicalThemes": [
+        "home repairs",
+        "electrical controls",
+        "describing what works",
+        "checking labels",
+        "safe follow-up"
+      ],
+      "targetVocabulary": [
+        "outlet",
+        "breaker",
+        "label",
+        "switch off",
+        "still works",
+        "I expected",
+        "try again",
+        "if it happens again"
+      ],
+      "brief": "When a few kitchen outlets stop working, tenant Hila tells the electrician that the lights still work and that she has not touched the breaker panel. The electrician asks which outlets are affected, and together they test them with a small lamp rather than guessing from the handwritten labels. They discover that two labels are reversed and one outlet is on a different switch than Hila expected. The electrician corrects the labels and shows Hila how to switch off the relevant breaker safely; she repeats the steps back and asks what to do if the problem returns. He advises her to stop using the affected outlet and contact him if it happens again. Hila can use the kitchen outlets again and has a clearer panel for next time.",
+      "storyPattern": {
+        "goal": "Restore use of outlets and understand the relevant controls",
+        "relationship": "Tenant and electrician working in the home",
+        "interaction": "Test affected outlets together and correct misleading labels",
+        "outcome": "Use the outlets again and keep a clearer panel guide"
+      }
+    },
+    {
+      "date": "2026-11-03",
+      "storyId": "adult-learner-asks-a-clinic-about-a-canceled-test",
+      "domain": "health_appointments",
+      "scenario": "patient_and_receptionist_agree_on_a_check_in_time_while_a_test_room_is_unavailable",
+      "lexicalThemes": [
+        "clinic visits",
+        "uncertain waits",
+        "work commitments",
+        "checking back",
+        "changing plans"
+      ],
+      "targetVocabulary": [
+        "room",
+        "still available",
+        "roughly how long",
+        "I can't promise",
+        "check back",
+        "wait nearby",
+        "step out",
+        "ready"
+      ],
+      "brief": "Fully AI-generated dialogue. Patient Yael speaks with clinic receptionist Omer; they are the only two speakers. Yael arrives for a scheduled test and learns that the room is temporarily unavailable. She explains that she took time away from work to come and asks whether the test can still happen today. Omer checks the schedule and clarifies that the clinician is still available, but the room will not be ready for a while. Yael asks roughly how long; Omer gives an uncertain estimate and says he cannot promise an exact time. Yael explains that she has a meeting later and asks whether she can wait nearby and keep her place. Omer offers to call her when the room is ready, but Yael would rather not risk missing the call, so she asks whether she can return to the desk at an agreed time. They settle on a check-in time that leaves her enough time to get to work if the test cannot go ahead. Yael steps out for coffee and returns when agreed; Omer tells her the room is ready, and she proceeds with the test. Role map: Yael is the patient who needs the test and decides whether to wait; Omer is the receptionist who can check the schedule and call her back. Yael owns her personal schedule and makes the final choice to step out; Omer performs the final action of confirming the room is ready.",
+      "storyPattern": {
+        "goal": "Complete a scheduled test despite a temporary room problem",
+        "relationship": "Patient and clinic receptionist",
+        "interaction": "Compare an uncertain wait with a later commitment and agree on a check-in",
+        "outcome": "Patient returns at the agreed time and proceeds when the room is ready"
+      }
+    },
+    {
+      "date": "2026-11-03",
+      "storyId": "friends-compare-printmaking-techniques-at-an-open-studio",
+      "domain": "arts_events",
+      "scenario": "visitors_make_a_joint_printmaking_card_after_testing_ink_and_adjusting_pressure",
+      "lexicalThemes": [
+        "arts events",
+        "making a print",
+        "asking about materials",
+        "testing a technique",
+        "sharing a finished piece"
+      ],
+      "targetVocabulary": [
+        "print",
+        "ink",
+        "pattern",
+        "overlap",
+        "scrap paper",
+        "faint",
+        "press",
+        "layer"
+      ],
+      "brief": "Friends Ruti and Nadav visit an open printmaking studio during a neighborhood arts afternoon. Ruti wants to try a simple leaf print, while Nadav is drawn to a small geometric pattern; they ask the artist hosting the table whether they can use different designs on the same sheet. The artist explains that the ink colors may blend if the prints overlap, so they choose separate corners and test the ink on scrap paper first. Nadav’s first impression comes out faint, and Ruti notices that he lifted the block before pressing the edges. He tries again, holding the paper down while the artist steadies the block. They compare the prints, choose a contrasting color for the second layer, and make one shared card with both designs. They leave with a handmade keepsake and a clearer sense of how pressure and color change the result.",
+      "storyPattern": {
+        "goal": "Create a shared handmade keepsake at a public art activity",
+        "relationship": "Friends participating in a hosted creative activity",
+        "interaction": "Test materials, notice a weak result, and adjust the technique",
+        "outcome": "Complete a card with complementary prints"
+      }
+    },
+    {
+      "date": "2026-11-03",
+      "storyId": "neighbors-coordinate-a-shared-entryway-cleanup",
+      "domain": "neighbors_building",
+      "scenario": "neighbors_clean_a_shared_entryway_and_air_a_damp_mat_before_visitors_arrive",
+      "lexicalThemes": [
+        "shared building spaces",
+        "offering practical help",
+        "tools and ownership",
+        "small disagreement",
+        "tidying together"
+      ],
+      "targetVocabulary": [
+        "entrance",
+        "broom",
+        "dustpan",
+        "bucket",
+        "damp",
+        "move it outside",
+        "hold this",
+        "put it back"
+      ],
+      "brief": "Fully AI-generated dialogue. Neighbors Shira and Avi are the only two speakers. They notice that leaves and dust have collected in the building entrance, and Shira suggests tidying it before visitors arrive that evening. Avi says he can sweep, but he is unsure where the building broom is kept. Shira explains that she saw it beside the storage-room door, then notices the dustpan is missing. Avi offers to hold a paper bag open while she gathers the debris, but Shira says a reusable bucket would be easier and asks whether he has one. Avi brings his own bucket and makes clear that he will take it back upstairs afterward. As they work, they find a damp patch near the mat and disagree briefly about whether to move it outside. Shira suggests hanging it over the railing instead so no one trips on it, and Avi agrees. They sweep the dry leaves, leave the mat to air, and return the bucket and broom to their places before the visitors arrive. Role map: Shira and Avi are neighbors cooperating on a shared-area task; the broom belongs to the building, the bucket belongs to Avi, and neither is responsible for building maintenance. Shira organizes the cleanup and moves the mat; Avi sweeps and returns the borrowed broom, while each takes responsibility for personal belongings.",
+      "storyPattern": {
+        "goal": "Tidy a shared entrance before visitors arrive",
+        "relationship": "Neighbors caring for a common area",
+        "interaction": "Divide the cleanup and resolve a practical disagreement about a damp mat",
+        "outcome": "Clear the entrance, air the mat, and return borrowed equipment"
+      }
+    },
+    {
+      "date": "2026-11-03",
+      "storyId": "resident-and-pharmacist-clarify-a-prescription-pickup",
+      "domain": "pharmacy_prescriptions",
+      "scenario": "customer_and_pharmacist_distinguish_similarly_named_prescription_packages_before_pickup",
+      "lexicalThemes": [
+        "pharmacy pickup",
+        "checking labels",
+        "similar names",
+        "clarifying a mismatch",
+        "asking where to direct a question"
+      ],
+      "targetVocabulary": [
+        "prescription",
+        "package",
+        "label",
+        "name",
+        "form",
+        "match",
+        "set aside",
+        "check before leaving"
+      ],
+      "brief": "Resident Eitan goes to collect a prescription and learns that the pharmacy has a package with a similar name on the shelf. He explains that he wants to make sure he is taking home the right item and gives the pharmacist the name printed on his prescription. The pharmacist checks the label and asks him to confirm the name and the form listed there; Eitan notices that the package in front of them is a different form. The pharmacist sets it aside and finds the matching package, then asks Eitan to compare its label with his prescription before leaving. Eitan spots that the printed name and form match, asks what to do if he has a question about how to use it, and the pharmacist directs him to the instructions from his clinician rather than guessing. He leaves with the matching package and the right paperwork.",
+      "storyPattern": {
+        "goal": "Collect the intended prescription rather than a similar-looking package",
+        "relationship": "Customer and pharmacist at pickup",
+        "interaction": "Compare the prescription details with package labels and catch a mismatch",
+        "outcome": "Leave with the matching package and a clear route for usage questions"
+      }
+    },
+    {
+      "date": "2026-11-03",
+      "storyId": "banking-customer-names-savings-goal",
+      "domain": "banking_credit",
+      "scenario": "customer_creates_a_named_savings_pot_to_track_a_personal_purchase_goal",
+      "lexicalThemes": [
+        "saving",
+        "monthly amount",
+        "goal",
+        "account"
+      ],
+      "targetVocabulary": [
+        "save",
+        "each month",
+        "goal",
+        "name",
+        "account"
+      ],
+      "brief": "A customer decides to save a little each month for a bicycle and asks the bank how to label a separate savings pot in her account. She creates one called “Bicycle” and smiles when the goal is easy to spot.",
+      "storyPattern": {
+        "goal": "Make progress toward a personal savings goal",
+        "relationship": "Customer acting independently with bank support",
+        "interaction": "Choose a clear label for a separate savings pot",
+        "outcome": "Create a visible, named goal"
+      }
+    },
+    {
+      "date": "2026-11-03",
+      "storyId": "resident-asks-about-a-tax-bill-payment-date",
+      "domain": "bills_taxes",
+      "scenario": "resident_clarifies_what_a_date_on_a_local_tax_bill_refers_to_and_notes_the_answer",
+      "lexicalThemes": [
+        "bill",
+        "date",
+        "payment",
+        "clarification"
+      ],
+      "targetVocabulary": [
+        "bill",
+        "date",
+        "payment",
+        "refer to",
+        "write down"
+      ],
+      "brief": "A resident sees a date on a local tax bill and is unsure whether it refers to the bill or a payment. She calls the office to clarify, then writes the answer beside the date on her copy.",
+      "storyPattern": {
+        "goal": "Understand a date printed on a bill",
+        "relationship": "Resident and office representative",
+        "interaction": "Describe the ambiguity and ask what the date means",
+        "outcome": "Note the clarified meaning on the bill"
+      }
+    },
+    {
+      "date": "2026-11-03",
+      "storyId": "patient-brings-a-written-question-to-appointment",
+      "domain": "health_appointments",
+      "scenario": "patient_uses_a_written_question_card_to_raise_a_topic_during_a_routine_appointment",
+      "lexicalThemes": [
+        "appointment",
+        "question",
+        "remember",
+        "conversation"
+      ],
+      "targetVocabulary": [
+        "appointment",
+        "write down",
+        "question",
+        "remember",
+        "answer"
+      ],
+      "brief": "A patient worries she will forget one question during a routine appointment, so she writes it on a small card and brings it along. When the conversation turns to the topic, she reads it aloud and gets a clear answer from the clinician.",
+      "storyPattern": {
+        "goal": "Make sure an important question is raised",
+        "relationship": "Patient and clinician",
+        "interaction": "Use a written prompt at the relevant moment",
+        "outcome": "Ask the question and receive an answer"
+      }
+    },
+    {
+      "date": "2026-11-03",
+      "storyId": "resident-offers-to-sort-building-recycling",
+      "domain": "municipal_services",
+      "scenario": "neighbors_fold_clean_cardboard_left_by_shared_recycling_bins_and_clear_the_walkway",
+      "lexicalThemes": [
+        "recycling",
+        "cardboard",
+        "offer help",
+        "shared space"
+      ],
+      "targetVocabulary": [
+        "cardboard",
+        "bin",
+        "fold",
+        "offer",
+        "clear"
+      ],
+      "brief": "A resident notices that clean cardboard has been left beside the building recycling bins and offers to fold it down with a neighbor. They make room in the bin, and the walkway is clear again.",
+      "storyPattern": {
+        "goal": "Make better use of a shared recycling area",
+        "relationship": "Neighbors sharing a building space",
+        "interaction": "Offer and divide a small sorting task",
+        "outcome": "Fit the cardboard in the bin and clear the path"
+      }
+    },
+    {
+      "date": "2026-11-03",
+      "storyId": "traveler-checks-document-storage-before-leaving",
+      "domain": "travel_documents",
+      "scenario": "traveler_moves_a_travel_document_to_a_zipped_inner_pocket_before_departure",
+      "lexicalThemes": [
+        "travel document",
+        "packing",
+        "pocket",
+        "keeping track"
+      ],
+      "targetVocabulary": [
+        "document",
+        "pocket",
+        "zip",
+        "pack",
+        "keep track"
+      ],
+      "brief": "Before leaving home for a trip, a traveler places her travel document in a zipped inner pocket rather than the open outer pouch. Her friend notices the change and says it looks easier to keep track of.",
+      "storyPattern": {
+        "goal": "Keep an important travel item secure and easy to locate",
+        "relationship": "Traveler and accompanying friend",
+        "interaction": "Change where the document is carried",
+        "outcome": "Document is stored in a zipped inner pocket"
+      }
+    },
+    {
+      "date": "2026-11-03",
+      "storyId": "shopper-lets-another-person-go-ahead",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_with_one_item_offers_the_next_person_a_turn_at_checkout",
+      "lexicalThemes": [
+        "checkout",
+        "queue",
+        "offer",
+        "turn"
+      ],
+      "targetVocabulary": [
+        "one item",
+        "offer",
+        "go ahead",
+        "turn",
+        "line"
+      ],
+      "brief": "At the supermarket checkout, a shopper with only one item offers the person behind her a turn first. The other shopper accepts, and they both move through the line without fuss.",
+      "storyPattern": {
+        "goal": "Let another shopper finish sooner",
+        "relationship": "Strangers in a checkout line",
+        "interaction": "Offer someone else the next turn",
+        "outcome": "The offer is accepted and the queue moves on"
+      }
+    },
+    {
+      "date": "2026-11-03",
+      "storyId": "neighbor-declines-a-weekend-invitation-kindly",
+      "domain": "neighbors_building",
+      "scenario": "resident_politely_declines_a_neighbors_weekend_walk_invitation_and_suggests_another_time",
+      "lexicalThemes": [
+        "invitation",
+        "weekend",
+        "decline",
+        "another time"
+      ],
+      "targetVocabulary": [
+        "invite",
+        "already have plans",
+        "another day",
+        "agree"
+      ],
+      "brief": "A neighbor invites another resident to join a weekend walk, but she already has plans and says so warmly. She suggests they can catch up another day, and the neighbor agrees.",
+      "storyPattern": {
+        "goal": "Respond warmly despite being unavailable",
+        "relationship": "Neighbors",
+        "interaction": "Decline an invitation and suggest reconnecting later",
+        "outcome": "Both accept the alternative"
+      }
+    },
+    {
+      "date": "2026-11-03",
+      "storyId": "rider-corrects-a-missed-stop-announcement",
+      "domain": "transport_fares_routes",
+      "scenario": "rider_notices_she_missed_her_stop_and_gets_off_at_the_next_safe_pause",
+      "lexicalThemes": [
+        "stop",
+        "missed",
+        "driver",
+        "walking route"
+      ],
+      "targetVocabulary": [
+        "miss a stop",
+        "next",
+        "get off",
+        "route",
+        "walk"
+      ],
+      "brief": "A rider realizes she has passed her stop and tells the driver at the next safe pause. The driver lets her off there, and she checks the walking route back toward her destination.",
+      "storyPattern": {
+        "goal": "Recover after passing the intended stop",
+        "relationship": "Passenger and driver",
+        "interaction": "Explain the mistake and get off at the next opportunity",
+        "outcome": "Continue on foot toward the destination"
+      }
+    },
+    {
+      "date": "2026-11-03",
+      "storyId": "customer-thanks-worker-for-finding-a-misplaced-bag",
+      "domain": "food_service_orders",
+      "scenario": "cafe_customer_recovers_a_cloth_bag_left_by_her_seat",
+      "lexicalThemes": [
+        "forgotten item",
+        "counter",
+        "thanks",
+        "check"
+      ],
+      "targetVocabulary": [
+        "leave behind",
+        "counter",
+        "find",
+        "thank",
+        "inside"
+      ],
+      "brief": "A customer returns to a café after realizing she left a cloth bag beside her chair. A worker has kept it behind the counter, and she thanks him before checking that everything is inside.",
+      "storyPattern": {
+        "goal": "Recover a forgotten personal belonging",
+        "relationship": "Customer and café worker",
+        "interaction": "Describe the missing item and receive it back",
+        "outcome": "Check the bag and thank the worker"
+      }
+    },
+    {
+      "date": "2026-11-03",
+      "storyId": "friends-make-a-crunchy-salad-topping",
+      "domain": "food_cooking",
+      "scenario": "friends_use_crushed_crackers_as_a_crunchy_salad_topping_when_croutons_are_missing",
+      "lexicalThemes": [
+        "salad",
+        "substitute",
+        "crunch",
+        "taste"
+      ],
+      "targetVocabulary": [
+        "salad",
+        "crush",
+        "instead",
+        "crunchy",
+        "taste"
+      ],
+      "brief": "While making salad, one friend crushes a few crackers over the top when they realize they have no croutons. The other takes a bite and says the crunch works perfectly.",
+      "storyPattern": {
+        "goal": "Add a crunchy finish with what is available",
+        "relationship": "Friends preparing food together",
+        "interaction": "Suggest and try an improvised topping",
+        "outcome": "The topping adds a satisfying crunch"
+      }
+    },
+    {
+      "date": "2026-11-03",
+      "storyId": "walkers-notice-a-small-frog-near-the-path",
+      "domain": "nature_outdoors",
+      "scenario": "walkers_pause_to_let_a_small_frog_move_away_from_the_path",
+      "lexicalThemes": [
+        "walk",
+        "frog",
+        "notice",
+        "give space"
+      ],
+      "targetVocabulary": [
+        "frog",
+        "path",
+        "pause",
+        "hop",
+        "leave alone"
+      ],
+      "brief": "During a walk, two friends spot a small frog near the path and pause so no one steps close to it. They watch it hop into the grass, then continue without disturbing it.",
+      "storyPattern": {
+        "goal": "Avoid disturbing a small animal near a path",
+        "relationship": "Friends walking together",
+        "interaction": "Notice the animal and pause nearby",
+        "outcome": "It moves into the grass and the walkers continue"
+      }
     }
   ]
 }
