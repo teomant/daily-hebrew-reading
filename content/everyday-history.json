@@ -14248,6 +14248,442 @@
         "interaction": "Notice the animal and pause nearby",
         "outcome": "It moves into the grass and the walkers continue"
       }
+    },
+    {
+      "date": "2026-11-04",
+      "storyId": "employee-corrects-a-stock-count",
+      "domain": "employment_jobs",
+      "scenario": "employee_recounts_stock_with_a_coworker_and_documents_an_opened_box_before_correcting_the_inventory",
+      "lexicalThemes": [
+        "workplace tasks",
+        "stock and quantities",
+        "explaining a mistake",
+        "checking together",
+        "shift handover"
+      ],
+      "targetVocabulary": [
+        "stock",
+        "shelf",
+        "opened box",
+        "count",
+        "recount",
+        "number",
+        "note",
+        "shift"
+      ],
+      "brief": "At the end of a shift, employee Hadas notices that the stock count she entered does not match the number on the shelf. She tells her coworker Yossi she may have counted an opened box twice, and he suggests recounting the shelf together before changing anything. They find that a partly used box was placed behind a full one, making the total hard to see. Hadas explains the discrepancy to the shift lead, who asks her to record the physical count and leave a note about the opened box. She updates the entry with the verified number, and the next shift can see how they arrived at it.",
+      "storyPattern": {
+        "goal": "Correct an inventory count using a physical recount",
+        "relationship": "Coworkers sharing a shift task",
+        "interaction": "Compare the recorded total with the shelf and explain a confusing item",
+        "outcome": "Update the count with a note for the next shift"
+      }
+    },
+    {
+      "date": "2026-11-04",
+      "storyId": "shopper-orders-a-custom-amount-of-olives",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_adjusts_a_market_olive_order_by_weight_and_chooses_a_small_tasting_portion",
+      "lexicalThemes": [
+        "market shopping",
+        "food by weight",
+        "quantity and preference",
+        "polite adjustment",
+        "choosing produce"
+      ],
+      "targetVocabulary": [
+        "olives",
+        "by weight",
+        "a little less",
+        "portion",
+        "mostly",
+        "mixed",
+        "weigh",
+        "pack"
+      ],
+      "brief": "At a neighborhood market, Amir wants olives for a small meal and asks the vendor for a little less than the amount displayed in the case. The vendor weighs a portion, but Amir notices it is more than he needs and explains that he is shopping for just two people. The vendor offers to remove some and asks whether Amir prefers the green or mixed variety. Amir chooses mostly green olives, with a small scoop of the mixed ones to taste. The vendor adjusts the amount, weighs it again, and packs the two varieties together; Amir leaves with enough for the meal and a new variety to try.",
+      "storyPattern": {
+        "goal": "Buy a suitable quantity of food for a small meal",
+        "relationship": "Shopper and market vendor",
+        "interaction": "Explain the needed amount and choose between varieties",
+        "outcome": "Adjust the weighed portion and take home a modest mix"
+      }
+    },
+    {
+      "date": "2026-11-04",
+      "storyId": "friends-pack-a-lunch-for-a-bus-ride",
+      "domain": "food_cooking",
+      "scenario": "travel_companions_pack_separate_simple_lunch_items_to_keep_food_fresh_during_a_day_trip",
+      "lexicalThemes": [
+        "packing food",
+        "travel preparation",
+        "food textures",
+        "sharing a meal",
+        "adjusting a plan"
+      ],
+      "targetVocabulary": [
+        "lunch",
+        "container",
+        "fruit",
+        "bread",
+        "cheese",
+        "separately",
+        "squashed",
+        "napkin"
+      ],
+      "brief": "Before a long bus ride, friends Noga and Eyal pack a simple lunch to eat during a break on their day trip. Noga suggests bringing cut fruit, while Eyal points out that the soft fruit may get squashed at the bottom of the bag. They choose firmer fruit and put it in a small container; Eyal packs bread and cheese separately so the bread will not get damp. When they realize they have packed no napkins, Noga uses a clean cloth from her bag and sets aside a few pieces of fruit for the return ride. They close the containers, fit them beside the water bottles, and leave with food that is easy to carry and share.",
+      "storyPattern": {
+        "goal": "Pack a portable meal that stays easy to eat during a trip",
+        "relationship": "Friends preparing for a journey together",
+        "interaction": "Compare food choices and adapt the packing plan",
+        "outcome": "Pack a shareable lunch in separate containers"
+      }
+    },
+    {
+      "date": "2026-11-04",
+      "storyId": "friends-clarify-how-to-split-a-restaurant-bill",
+      "domain": "food_service_orders",
+      "scenario": "diners_separate_a_takeaway_item_from_shared_restaurant_charges_before_paying_individually",
+      "lexicalThemes": [
+        "restaurant bill",
+        "shared expenses",
+        "clarifying a charge",
+        "polite disagreement",
+        "paying separately"
+      ],
+      "targetVocabulary": [
+        "bill",
+        "shared",
+        "separately",
+        "takeaway",
+        "charge",
+        "item",
+        "payment slip",
+        "my share"
+      ],
+      "brief": "Fully AI-generated dialogue. Friends Roni and Amit are the only speakers, dining together at a restaurant. When the bill arrives, Roni sees that it lists their shared dishes together with each person’s drink and asks Amit how he would like to divide it. Amit says splitting everything equally would not feel right because he ordered an additional dish to take home. Roni asks whether he wants to cover that item separately, and Amit agrees, but they notice the bill does not clearly mark which charge it is. They compare the printed items with what they ordered, identify the extra dish, and calculate a simple division for the shared food and drinks. Roni asks the server to bring two payment slips; the server gives them directly to the diners. They check the amounts together, pay their own shares, and leave with the bill settled without inventing any pricing rule. Role map: Roni and Amit are co-diners who jointly verify the bill; each pays their own agreed share, and the server provides the payment slips but does not become a speaker.",
+      "storyPattern": {
+        "goal": "Divide a shared restaurant bill fairly",
+        "relationship": "Friends dining together",
+        "interaction": "Explain different preferences and identify a personal item among shared charges",
+        "outcome": "Agree on individual shares and pay separately"
+      }
+    },
+    {
+      "date": "2026-11-04",
+      "storyId": "neighbors-compare-options-for-a-balcony-screen",
+      "domain": "neighbors_building",
+      "scenario": "neighbors_compare_a_removable_balcony_screen_for_privacy_without_blocking_airflow",
+      "lexicalThemes": [
+        "neighbors and shared buildings",
+        "balcony privacy",
+        "different preferences",
+        "offering experience",
+        "temporary solutions"
+      ],
+      "targetVocabulary": [
+        "balcony",
+        "privacy screen",
+        "breeze",
+        "cloth",
+        "railing",
+        "removable",
+        "tie",
+        "loose"
+      ],
+      "brief": "Fully AI-generated dialogue. Neighbors Maya and Gil are the only speakers. Maya wants to put a light privacy screen on her balcony but does not want it to block the breeze or bother the downstairs neighbor. Gil, whose balcony faces hers, says he has tried a loose fabric panel before and can describe how it behaved on windy days. Maya asks whether it flapped loudly; Gil explains that it did when attached at only two corners, and says tying it along the edges made it steadier. Maya is concerned about drilling into the railing, and Gil suggests testing a removable tie-on panel before making any permanent change. They compare the shade and airflow from a sample cloth Maya already owns, then decide she will try it for a few days with removable ties and take it down if it becomes noisy or loose. Gil offers to look from his balcony and tell her if it shifts. Role map: Maya owns the balcony and the cloth and makes the final choice to test a removable screen; Gil is a neighbor sharing practical experience and offering an observation, not installing or approving anything.",
+      "storyPattern": {
+        "goal": "Improve privacy while preserving airflow and neighborly comfort",
+        "relationship": "Neighbors with facing balconies",
+        "interaction": "Share experience, raise concerns, and compare a reversible option",
+        "outcome": "Test a removable screen and agree to watch how it behaves"
+      }
+    },
+    {
+      "date": "2026-11-04",
+      "storyId": "customer-withdraws-cash-for-a-shared-purchase",
+      "domain": "banking_credit",
+      "scenario": "customer_recounts_cash_after_withdrawing_more_than_needed_for_a_shared_purchase",
+      "lexicalThemes": [
+        "cash",
+        "withdrawal",
+        "counting money",
+        "shared expenses"
+      ],
+      "targetVocabulary": [
+        "cash",
+        "withdraw",
+        "count",
+        "share",
+        "put back"
+      ],
+      "brief": "A customer withdraws cash for a shared household purchase, then realizes she has taken out more than her share. She counts the bills again and puts the extra back into her account rather than carrying it around.",
+      "storyPattern": {
+        "goal": "Carry only the needed amount for a shared purchase",
+        "relationship": "Housemates sharing an expense",
+        "interaction": "Recount a withdrawal and revise the amount kept",
+        "outcome": "Set aside the excess instead of carrying it"
+      }
+    },
+    {
+      "date": "2026-11-04",
+      "storyId": "resident-groups-household-bills-by-payment-method",
+      "domain": "bills_taxes",
+      "scenario": "housemates_sort_household_bills_by_payment_method_and_catch_one_misplaced_bill",
+      "lexicalThemes": [
+        "household bills",
+        "payments",
+        "sorting",
+        "shared responsibilities"
+      ],
+      "targetVocabulary": [
+        "bill",
+        "payment",
+        "automatic",
+        "sort",
+        "already paid"
+      ],
+      "brief": "A resident sorts the household bills into those already paid automatically and those she handles herself. Her partner spots one bill in the wrong pile, and they move it before deciding which payments to make that evening.",
+      "storyPattern": {
+        "goal": "See which household payments still need attention",
+        "relationship": "Partners sharing household responsibilities",
+        "interaction": "Sort bills and correct a misplaced item",
+        "outcome": "Identify the payments to handle that evening"
+      }
+    },
+    {
+      "date": "2026-11-04",
+      "storyId": "resident-separates-benefit-papers-after-a-move",
+      "domain": "social_benefits",
+      "scenario": "resident_and_relative_separate_benefit_letters_referencing_a_new_address_from_other_mail",
+      "lexicalThemes": [
+        "benefit letters",
+        "household change",
+        "address",
+        "sorting documents"
+      ],
+      "targetVocabulary": [
+        "letter",
+        "address",
+        "move",
+        "separate",
+        "keep together"
+      ],
+      "brief": "After moving, a resident finds benefit papers mixed with unrelated mail and separates the letters that mention her new address. Her brother helps her put those papers together, leaving the rest untouched until she can review it.",
+      "storyPattern": {
+        "goal": "Gather papers that relate to a household change",
+        "relationship": "Relatives helping with personal paperwork",
+        "interaction": "Sort relevant letters from unrelated mail",
+        "outcome": "Keep the relevant papers together for review"
+      }
+    },
+    {
+      "date": "2026-11-04",
+      "storyId": "tenant-and-roommate-divide-a-small-moving-task",
+      "domain": "housing_landlord",
+      "scenario": "roommates_split_clearing_a_room_corner_around_different_lifting_tasks",
+      "lexicalThemes": [
+        "shared home",
+        "moving items",
+        "dividing tasks",
+        "cooperation"
+      ],
+      "targetVocabulary": [
+        "roommate",
+        "carry",
+        "lighter",
+        "heavier",
+        "clear the space"
+      ],
+      "brief": "A tenant needs to clear a corner before a delivery, but her roommate is already carrying boxes upstairs. She takes the lighter items while the roommate moves the heavier ones, and the corner is clear without either of them stopping their task.",
+      "storyPattern": {
+        "goal": "Clear a shared area while both people are busy",
+        "relationship": "Roommates sharing a home",
+        "interaction": "Divide a task according to what each can carry",
+        "outcome": "Clear the area without interrupting either task"
+      }
+    },
+    {
+      "date": "2026-11-04",
+      "storyId": "resident-adds-a-missed-recycling-day-note",
+      "domain": "municipal_services",
+      "scenario": "resident_and_neighbor_correct_a_recycling_container_after_checking_a_building_notice",
+      "lexicalThemes": [
+        "recycling",
+        "collection day",
+        "building notice",
+        "neighbor communication"
+      ],
+      "targetVocabulary": [
+        "recycling",
+        "container",
+        "collection day",
+        "notice",
+        "bring back"
+      ],
+      "brief": "A resident notices that a neighbor has put out the wrong recycling container and mentions that the collection day may have changed on the building notice. The neighbor checks the notice, brings the container back in, and leaves a note for the other residents.",
+      "storyPattern": {
+        "goal": "Avoid leaving the wrong container out",
+        "relationship": "Neighbors sharing a building",
+        "interaction": "Point out a possible schedule change and check the posted notice",
+        "outcome": "Bring the container in and share the information"
+      }
+    },
+    {
+      "date": "2026-11-04",
+      "storyId": "user-cancels-a-subscription-after-comparing-the-charge",
+      "domain": "digital_accounts",
+      "scenario": "user_reviews_a_subscription_plan_and_cancels_an_unneeded_extra_feature_after_a_higher_charge",
+      "lexicalThemes": [
+        "subscription",
+        "unexpected charge",
+        "account settings",
+        "cancellation"
+      ],
+      "targetVocabulary": [
+        "subscription",
+        "charge",
+        "plan",
+        "cancel",
+        "confirmation"
+      ],
+      "brief": "A user notices a subscription charge that is higher than the amount she remembers and checks the service’s account page before making assumptions. She finds that the plan includes an extra feature she no longer uses, cancels that plan, and saves the confirmation message.",
+      "storyPattern": {
+        "goal": "Stop paying for an unneeded subscription feature",
+        "relationship": "Account holder acting independently",
+        "interaction": "Review the plan details before choosing what to cancel",
+        "outcome": "Cancel the unwanted plan and save confirmation"
+      }
+    },
+    {
+      "date": "2026-11-04",
+      "storyId": "shoppers-choose-how-much-produce-to-buy",
+      "domain": "supermarket_queues",
+      "scenario": "shoppers_adjust_produce_quantity_to_cover_dinner_and_a_possible_next_day_meal",
+      "lexicalThemes": [
+        "produce shopping",
+        "quantity",
+        "meal planning",
+        "preferences"
+      ],
+      "targetVocabulary": [
+        "amount",
+        "smaller",
+        "enough",
+        "tonight",
+        "tomorrow"
+      ],
+      "brief": "Two shoppers buying vegetables for dinner disagree about whether to get a large bag or just enough for tonight. They choose the smaller amount and add one extra item only after remembering they can use it for tomorrow’s lunch.",
+      "storyPattern": {
+        "goal": "Buy a suitable quantity for nearby meals",
+        "relationship": "Friends shopping together",
+        "interaction": "Compare preferences and revise the planned amount",
+        "outcome": "Choose a modest quantity with one useful extra"
+      }
+    },
+    {
+      "date": "2026-11-04",
+      "storyId": "neighbor-shares-a-parcel-pickup-lesson",
+      "domain": "postal_parcels",
+      "scenario": "neighbor_shares_how_an_abbreviated_recipient_name_was_identified_at_parcel_collection",
+      "lexicalThemes": [
+        "parcel collection",
+        "recipient name",
+        "identification",
+        "delivery details"
+      ],
+      "targetVocabulary": [
+        "parcel",
+        "name",
+        "identification",
+        "label",
+        "full name"
+      ],
+      "brief": "A neighbor returns from collecting a parcel and notices that the recipient’s name on the label is abbreviated. She tells the recipient what identification she showed, and the recipient adds the full name to a note for the next delivery.",
+      "storyPattern": {
+        "goal": "Make a recipient name easier to identify next time",
+        "relationship": "Neighbors sharing practical information",
+        "interaction": "Explain what happened during collection",
+        "outcome": "Record the full name for a future delivery"
+      }
+    },
+    {
+      "date": "2026-11-04",
+      "storyId": "roommates-compare-phone-plans-before-renewing",
+      "domain": "phone_internet",
+      "scenario": "roommates_compare_phone_plan_usage_and_choose_independent_options",
+      "lexicalThemes": [
+        "phone plans",
+        "usage",
+        "comparison",
+        "individual choices"
+      ],
+      "targetVocabulary": [
+        "plan",
+        "use",
+        "compare",
+        "feature",
+        "choose"
+      ],
+      "brief": "Two roommates compare their phone plans before renewing, and one notices that they rarely use the same features. They decide not to switch together; each keeps the plan that better fits their own use.",
+      "storyPattern": {
+        "goal": "Choose phone plans based on actual use",
+        "relationship": "Roommates comparing expenses",
+        "interaction": "Compare different usage patterns without forcing one shared choice",
+        "outcome": "Each keeps the more suitable individual plan"
+      }
+    },
+    {
+      "date": "2026-11-04",
+      "storyId": "cook-adjusts-a-salty-pot-of-rice",
+      "domain": "food_cooking",
+      "scenario": "cook_sets_aside_over_salted_rice_and_serves_a_milder_portion_with_vegetables",
+      "lexicalThemes": [
+        "cooking",
+        "tasting",
+        "seasoning",
+        "adjusting a meal"
+      ],
+      "targetVocabulary": [
+        "rice",
+        "salt",
+        "taste",
+        "milder",
+        "serve"
+      ],
+      "brief": "A cook tastes the rice and realizes she added too much salt, so she sets aside part of the pot before seasoning the rest of dinner. Her partner tastes the milder portion and agrees it is better served with the vegetables.",
+      "storyPattern": {
+        "goal": "Make an overly salty meal more balanced",
+        "relationship": "Partners preparing dinner",
+        "interaction": "Taste the food and separate a milder portion",
+        "outcome": "Serve the milder rice with the vegetables"
+      }
+    },
+    {
+      "date": "2026-11-04",
+      "storyId": "walker-shares-a-weather-warning-on-the-trail",
+      "domain": "nature_outdoors",
+      "scenario": "walker_notices_approaching_rain_and_guides_companions_toward_a_sheltered_path",
+      "lexicalThemes": [
+        "weather",
+        "walking",
+        "noticing conditions",
+        "changing course"
+      ],
+      "targetVocabulary": [
+        "clouds",
+        "rain",
+        "open path",
+        "shelter",
+        "turn back"
+      ],
+      "brief": "On a walk, one person notices dark clouds approaching and tells the group that the open section ahead has no shade. They turn toward a nearby sheltered path, reaching it before the first drops fall.",
+      "storyPattern": {
+        "goal": "Avoid being caught in rain on an exposed stretch",
+        "relationship": "People walking together",
+        "interaction": "Share an observation and choose a sheltered alternative",
+        "outcome": "Reach cover before the rain begins"
+      }
     }
   ]
 }
