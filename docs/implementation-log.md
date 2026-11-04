@@ -1,5 +1,34 @@
 # Implementation log
 
+## 2026-11-04
+
+- Fetched and fast-forwarded `master` to `a153146` before editing.
+  Reviewed recent generated scenarios and the owner-identified November 3 prescription article, `resident-and-pharmacist-clarify-a-prescription-pickup`.
+  In both Alef Plus and Bet, paragraphs 4–6 retell the complete visit from paragraphs 1–3 with different wording.
+  The same issue contains a pharmacy story, a clinic dialogue, and a medical SHORTS item.
+  Recent issues also repeat medical visits and claims-paperwork patterns across different domain labels.
+- Updated the adaptation prompt to require one final telling per level.
+  Added a check for repeated event sequences before annotation, a prohibition on appended rewrites, and guidance to distribute distinct supported beats across the existing paragraph structure.
+  Required complete replacement prose on retries while preserving required facts.
+- Added weekday topic lists in the prompt-building code for EVERYDAY, DIALOG, and SHORTS, as the owner requested.
+  Each weekday has eight common practical topic areas covering work, home, money, errands, family, food, transport, and leisure.
+  A shared helper supplies only the target publication weekday's list to both planning prompts, including retries and appends.
+  Other underrepresented topics remain available for novelty and existing pool targets.
+  A shared prompt file supplies cross-format diversity guidance.
+  Medical domains count as one topic cluster for prompt-level variety, with an editorial aim of at most one medical situation across the issue and non-medical choices after recent medical clusters.
+  Updated README and product documentation.
+  Python changes only supply prompt context and load the shared guide.
+  Validation, schemas, retries, content cleanup, and published articles are unchanged.
+- The initial offline suite passed all 116 tests, and repository content validation passed.
+  After the owner requested a lighter review, moved topic selection into code and limited final verification to a focused review and weekday prompt checks.
+  No paid generation or deployment ran.
+  Prompt effectiveness must be assessed in future generated output.
+- The owner requested fewer activities, no shared calendars, and more useful language for ordinary life in Israel.
+  Replaced activity-heavy topics with rent, bills, groceries, payments, forms, service appointments, transport, childcare, household problems, and basic phone conversations.
+  Added shared prompt guidance that excludes calendar and file-organization stories and reduces organized leisure activities.
+  Kept the weekday selection logic, existing pool targets, and all validation behavior unchanged.
+  Updated product documentation and used a focused review, topic-list smoke check, and whitespace check only.
+
 ## 2026-10-29
 
 - Fetched and fast-forwarded `master` to `f370498` before implementation.

@@ -35,6 +35,16 @@ Create every configured reading level from the same frozen factual or scenario m
 
 For CURRENT, normally write 2–4 paragraphs, each contributing a new supported detail; a short notice does not need four paragraphs. For Alef HISTORY and full EVERYDAY stories, use 2–4 short paragraphs as the material needs.
 For harder HISTORY and EVERYDAY versions, normally write 4–5 developed paragraphs when supported.
+Each level must contain one final telling of the story, with one progression from its opening to its ending.
+Never append an alternative version, expanded rewrite, or second draft to the same level's `paragraphs` array.
+After the outcome, stop; do not restart the arrival, problem, explanation, and outcome with different wording.
+Paraphrasing a passage does not make it new content.
+Before annotation, compare the events and facts in all paragraphs within each level, especially Alef Plus and Bet.
+If the later paragraphs repeat an earlier sequence, revise the draft into one coherent telling before returning it.
+For example, arrival → clarification → action → departure must not be followed by another arrival → clarification → action → departure for the same visit.
+To satisfy the supplied paragraph structure, distribute distinct supported beats across the paragraphs instead of duplicating the story or inventing another event.
+Keep every required fact and the useful answer while doing this.
+On a prose retry, return one complete corrected version for each requested level, not the original followed by a correction.
 Never make Alef longer to match the harder versions. Give each paragraph a distinct job in developing the central idea; for an informative HISTORY article, organize related facts into a clear progression of ideas without inventing a plot. DIALOG uses the separate turn-per-paragraph rule below, and `_shortItem` uses its compact one-paragraph rule from the request. Every HISTORY level must preserve the required defining facts. Easier levels may compress secondary dates, names, qualifiers, or context and use simpler syntax; they must not replace the subject with generalities. Harder versions may express the same material with broader vocabulary, more natural connectors, common fixed expressions, and moderately richer sentence structure, but the facts must remain consistent. Do not make a harder level longer merely to signal difficulty.
 
 For Alef, use common concrete words, active clauses, simple verb forms, and one event or thought per short sentence. Avoid passive constructions, abstract nominal phrases, formal connectors, unnecessary foreign terms, dense construct chains, and nested clauses. Explain a necessary less-common term immediately in ordinary words. For example, replace `בעקבות העיכוב בקבלת המשלוח, התקבלה החלטה על שינוי מועד הפגישה` with `המשלוח הגיע מאוחר. בגלל זה הם החליטו להעביר את הפגישה.`

@@ -63,6 +63,8 @@ Generation validates completed content before replacing any repository files. Ex
 Future articles target beginner Alef after alphabet decoding, with familiar words, explicit subjects, and one simple clause per sentence.
 Alef HISTORY and EVERYDAY may use 2–4 short paragraphs; harder versions normally use 4–5 developed paragraphs.
 Alef Plus connects familiar ideas, while Bet uses richer conversational language.
+Each level should tell the story once, without appending a rewritten draft or restarting the same events after the outcome.
+The adaptation prompt checks for repeated event sequences, including repeats with different wording, before annotation.
 The [wording reference](prompts/frequent-hebrew.md) includes short calibration examples.
 Difficulty remains a writing judgment, without a numeric vocabulary gate.
 New dialogue structure and lexical segmentation receive local checks and bounded repairs.
@@ -126,6 +128,13 @@ Generation logs timestamp each phase and print its complete system and user prom
 Sourced discovery has up to three attempts: CURRENT remains local, while HISTORY has two Israel-focused passes and one Jewish-history fallback.
 Selected HISTORY research normally uses one batched call; two consecutive research request failures abort generation.
 Generated scenarios keep the existing topic pools and targets.
+EVERYDAY, DIALOG, and SHORTS receive a topic list selected in `src/generate_issue.py` from the target publication weekday, plus a shared [diversity guide](prompts/scenario-diversity.md).
+Its themes rotate through work and school, housing and household needs, money and services, appointments and transport, groceries and meals, everyday problems at home, and routine family errands.
+Each weekday has eight practical topic areas; the request includes only that day's list.
+Topics prioritize language adults need for normal life in Israel, exclude shared calendars, and reduce hobbies and organized activities.
+The preferred topics guide selection; planners use other underrepresented domains when needed for novelty or the existing pool mix.
+The guide treats clinic, symptom, and pharmacy scenarios as one medical cluster, aims for at most one across the issue, and favors non-medical topics after a recent medical cluster.
+These are prompt instructions, with no new Python rejection, trimming, or validation rules.
 Fresh `everydayMeta.storyPattern` metadata records a compact English goal, relationship, interaction, and outcome.
 Recent and same-day context includes those patterns and individual SHORTS briefs so planners can compare plots across domains.
 HISTORY excludes fourteen days of recent subjects; CURRENT and generated scenarios use seven days.

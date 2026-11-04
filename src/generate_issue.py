@@ -114,6 +114,79 @@ GENERATED_SCENARIO_DOMAINS = [
 ]
 FULL_STORY_POOL_TARGETS = {"essential": 2, "routine": 2, "experience": 1}
 SHORTS_POOL_TARGETS = {"essential": 5, "routine": 4, "experience": 2}
+# Monday first, matching date.weekday(); topics are prompt preferences, not gates.
+GENERATED_WEEKDAY_TOPICS = (
+    ("Monday", (
+        "Work tasks, shift handovers, and asking a colleague for help",
+        "Job interviews, describing experience, and discussing availability",
+        "Payslips, work hours, and travel expenses",
+        "Telling a manager about lateness, an absence, or a needed day off",
+        "Understanding a school message and explaining a child's absence",
+        "Making a phone call, leaving a message, and asking someone to repeat slowly",
+        "Buying lunch near work, asking what is included, and paying",
+        "Preparing a simple lunch to take to work",
+    )),
+    ("Tuesday", (
+        "Renting a home, discussing room needs, and talking with a landlord",
+        "Household tools, small repairs, and arranging access for a worker",
+        "Rent payments, deposits, and asking what household charges include",
+        "Building fees, noise, rubbish, and talking with neighbors",
+        "Receiving deliveries and coordinating with someone at home",
+        "Choosing household items, checking sizes, and making exchanges",
+        "Laundry, cleaning supplies, and explaining an appliance problem",
+        "Using a stove or oven and preparing an ordinary meal at home",
+    )),
+    ("Wednesday", (
+        "Withdrawing cash, making a bank transfer, and a card that does not work",
+        "Reading bills, comparing charges, and organizing payments",
+        "Organizing benefit paperwork and describing a household change",
+        "Collecting a parcel, showing identification, and correcting a delivery address",
+        "Recovering account access and understanding a verification message",
+        "Cancelling a subscription and asking about an unexpected charge",
+        "Checking a receipt, asking for change, and splitting a restaurant bill",
+        "Buying food by weight and asking for a smaller or larger amount",
+    )),
+    ("Thursday", (
+        "Booking a service appointment and explaining when you can come",
+        "Finding the right service counter, taking a queue number, and asking whose turn it is",
+        "Filling in a form, spelling a name, and giving an address",
+        "Bus or train journeys, transfers, and finding a meeting point",
+        "Telling a taxi driver where to go and where to stop",
+        "Asking for directions, finding an entrance, and explaining that you are lost",
+        "Checking tickets and booking details for an ordinary journey",
+        "Ordering a sandwich or drink while away from home",
+    )),
+    ("Friday", (
+        "Comparing prices, understanding an offer, and staying within a food budget",
+        "Asking where a product is and choosing a substitute when it is unavailable",
+        "Reading food labels and asking about ingredients",
+        "Grocery lists, choosing produce, and comparing package sizes",
+        "Ordering food, stating preferences, and sharing a meal",
+        "Buying bread, meat, or cheese and asking for the amount you need",
+        "Cooking, tasting, serving food, and storing leftovers",
+        "Explaining a wrong takeaway order or a missing item",
+    )),
+    ("Saturday", (
+        "Explaining a water leak, a blocked drain, or a household power problem",
+        "A lost key, a door that will not open, and contacting the right person",
+        "An internet connection that stops working and describing what you see",
+        "Borrowing a necessary household item and agreeing when to return it",
+        "Buying pet food and explaining a pet's feeding or walking needs",
+        "Telling family when you will arrive and asking someone to wait or start without you",
+        "Using leftovers and preparing food with what is already at home",
+        "Asking for a table, ordering a simple meal, and requesting the bill",
+    )),
+    ("Sunday", (
+        "Starting a job, learning a task, and setting work priorities",
+        "Choosing a phone or internet plan and asking what the monthly price includes",
+        "Preparing documents for an appointment and asking which copy is needed",
+        "School schedules, childcare handovers, and family responsibilities",
+        "Sending mail, collecting parcels, and combining errands",
+        "Coordinating deliveries with work and family plans",
+        "Planning meals and using food already at home",
+        "Buying clothes or shoes, trying them on, and exchanging the wrong size",
+    )),
+)
 HISTORY_FAMILIES = ["person", "israeliIndustry", "culture", "event", "place", "archaeology"]
 HISTORY_FAMILY_LIMITS = {"place": 2, "archaeology": 1}
 HISTORY_BEAT_ROLES = ["setup", "action", "turningPoint", "outcome", "consequence", "detail"]
@@ -1122,6 +1195,18 @@ def _duplicate_review_findings(
     return rejected_indexes, findings
 
 
+def _weekday_topic_guidance(target_date: str) -> str:
+    weekday, topics = GENERATED_WEEKDAY_TOPICS[date.fromisoformat(target_date).weekday()]
+    return (
+        f"Target publication weekday: {weekday}.\n"
+        "PREFERRED EVERYDAY TOPICS FOR THIS DATE\n"
+        + "\n".join(f"- {topic}" for topic in topics)
+        + "\nUse these as topic areas, not fixed plots or a checklist. "
+        "Choose fresh situations within the supplied canonical domains and pool targets. "
+        "Use other underrepresented everyday topics when needed for variety."
+    )
+
+
 def _generated_planning_request(
     target_date: str,
     target_count: int,
@@ -1157,6 +1242,7 @@ def _generated_planning_request(
     return f"""
 Target publication date: {target_date}
 Task: {mode}.
+{_weekday_topic_guidance(target_date)}
 Generate exactly {target_count} new stories, using only EVERYDAY and DIALOG. {f'Return exactly {everyday_count} EVERYDAY and {dialog_count} DIALOG stories.' if not is_append else 'For this same-day append, either generated type may be used.'} Do not use web search and do not produce CURRENT or HISTORY stories.
 
 Create each scenario independently from a concrete situation in the life of someone living in Israel. Include both necessary tasks and worthwhile everyday experiences. Give every story a goal or need, an interaction or shared action, useful questions or explanations, a meaningful development, and an outcome or next step. A reader should be able to reuse language from the story in a comparable situation. Return only English scenario briefs and metadata; do not write Hebrew adaptations.
@@ -1219,6 +1305,7 @@ def _short_planning_request(
     )
     return f"""
 Target publication date: {target_date}
+{_weekday_topic_guidance(target_date)}
 Generate up to {target_count} independent mini-situations for one SHORTS page. Return them as EVERYDAY planning records; Python will mark them as short items and adapt each one separately. Do not use web search or write Hebrew prose.
 
 - Use only these canonical `domain` values: {json.dumps(GENERATED_SCENARIO_DOMAINS)}.
@@ -2381,8 +2468,8 @@ def _generate(root: Path, target_date: str, additional_stories: int) -> dict[str
     sourced_instructions = _read_prompts(root, ("editorial.md", "history-sources.md"))
     duplicate_review_instructions = _read_prompts(root, ("deduplication.md",))
     history_research_instructions = _read_prompts(root, ("history-research.md", "history-sources.md"))
-    generated_instructions = _read_prompts(root, ("everyday.md", "dialog.md"))
-    short_instructions = _read_prompts(root, ("shorts.md",))
+    generated_instructions = _read_prompts(root, ("everyday.md", "dialog.md", "scenario-diversity.md"))
+    short_instructions = _read_prompts(root, ("shorts.md", "scenario-diversity.md"))
     adaptation_instructions = _read_prompts(root, ("adaptation.md", "frequent-hebrew.md"))
     dialog_adaptation_example = _read_prompts(root, ("dialog-adaptation.md",))
     image_locales = list(dict.fromkeys([*site["interfaceLocales"], *locales]))

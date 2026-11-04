@@ -378,6 +378,22 @@ Inspect substantially more candidates than the two final CURRENT slots, filter o
 
 Read the recent scenario-history data, remove overly similar ideas, select three EVERYDAY situations, create scenario briefs, and adapt them into the configured levels. Planning uses canonical domains from the three pools and keeps the five full generated stories on distinct domains within the issue. Vary the goal, interaction, and outcome; each brief must identify reusable language and a concrete action or result. Cooking, trips, and other experiences are welcome when something happens beyond deciding to start an activity. Mark every generated story visibly as fully AI-generated.
 
+EVERYDAY, DIALOG, and SHORTS planning share `prompts/scenario-diversity.md`.
+`GENERATED_WEEKDAY_TOPICS` in `src/generate_issue.py` defines eight practical topic areas for each weekday.
+The shared `_weekday_topic_guidance` helper selects the target date's list for both planning requests, including retries and appends.
+Each request receives only its selected day's topics.
+The lists emphasize work and school on Monday, housing and household needs on Tuesday, money and services on Wednesday, appointments and transport on Thursday, groceries and meals on Friday, everyday problems at home on Saturday, and routine family errands on Sunday.
+Prioritize language adults learning Hebrew need for normal life in Israel.
+Exclude shared calendars and organizing digital files as topics, and keep hobbies, workshops, cultural outings, and organized group activities occasional.
+Use ordinary cooking, meals, and practical journey details within the existing experience pool.
+These topic areas guide selection without changing canonical domains, pool targets, requested counts, or novelty exclusions.
+Other underrepresented domains remain available when the preferred list cannot supply fresh scenarios or the requested pool mix.
+The weekday does not assert service opening hours or require that fictional events occur on that day.
+The prompt treats health appointments, symptoms, and pharmacy scenarios as one medical cluster.
+It aims for at most one medical situation across full generated stories and SHORTS in an issue, and favors non-medical topics after a recent medical cluster.
+It also compares repeated paperwork, service-call, cooking, and rescheduling patterns across formats.
+These are editorial instructions, not new validation gates or automatic content removal.
+
 ## 29. DIALOG generation
 
 Generate two short dialogues for each new issue.
@@ -455,6 +471,11 @@ Generation separates sourced discovery, sourced duplicate review, selected-HISTO
 Adaptation receives frozen briefs and required HISTORY beats plus level, segmentation, translation, and frequency-reference guidance.
 The reference includes attribution and license for its word-frequency basis, alongside editorial calibration examples.
 Difficulty remains prompt-guided; Python does not score word difficulty or require increasing length.
+Each adapted level must contain one final telling, with no appended alternative draft or restart of the same events after the outcome.
+Before annotation, the prompt asks for a comparison of event sequences within each level, including paraphrased repeats in Alef Plus and Bet.
+To meet the existing paragraph structure, the model distributes distinct supported beats instead of duplicating a completed story.
+Prose retries return one complete corrected version for each requested level.
+These instructions preserve required facts and do not add Python trimming or rejection behavior.
 Before content validation, generation removes empty units, repairs alphabetic separators, restores unambiguous missing dialogue colons, and restores missing terminal punctuation.
 Valid levels are retained across retries, while segmentation repair is isolated from prose generation.
 Generation-only dialogue and annotation checks guide bounded repairs and log unresolved quality defects.
