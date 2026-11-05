@@ -14684,6 +14684,449 @@
         "interaction": "Share an observation and choose a sheltered alternative",
         "outcome": "Reach cover before the rain begins"
       }
+    },
+    {
+      "date": "2026-11-05",
+      "storyId": "tenant-books-a-window-for-a-preventive-appliance-check",
+      "domain": "home_repairs_utilities",
+      "scenario": "tenant_books_a_preventive_appliance_check_around_work_hours_and_prepares_access",
+      "lexicalThemes": [
+        "booking a service visit",
+        "availability and time windows",
+        "describing an appliance noise",
+        "preparing access at home"
+      ],
+      "targetVocabulary": [
+        "spin cycle",
+        "vibration",
+        "morning",
+        "afternoon",
+        "time window",
+        "available",
+        "clear the space",
+        "water connection"
+      ],
+      "brief": "Tenant Maya wants to have her washing machine checked before a small vibration becomes a bigger problem. When she calls the service company, she explains that the machine still works but shakes during the spin cycle, and says she is home only before work or late in the afternoon. The scheduler offers a morning slot that Maya cannot make; she explains her schedule again and asks whether there is a later visit. They settle on an afternoon window, and the scheduler clarifies that Maya should leave the space beside the machine clear. Maya moves a laundry basket and makes sure the technician can reach the outlet and water connection. The visit is booked for a time she can attend, and the work area is ready.",
+      "storyPattern": {
+        "goal": "Arrange a preventive home service visit around work",
+        "relationship": "Resident and service scheduler",
+        "interaction": "Explain a symptom and negotiate a workable time window",
+        "outcome": "Book a visit and prepare access to the appliance"
+      }
+    },
+    {
+      "date": "2026-11-05",
+      "storyId": "traveler-uses-a-transfer-ticket-to-reach-a-meeting-point",
+      "domain": "transport_fares_routes",
+      "scenario": "traveler_checks_a_transfer_ticket_and_uses_platform_signs_to_reach_a_meeting_point",
+      "lexicalThemes": [
+        "checking journey details",
+        "transfers and platforms",
+        "asking someone to repeat",
+        "meeting near a station"
+      ],
+      "targetVocabulary": [
+        "ticket",
+        "transfer",
+        "platform",
+        "station",
+        "direction",
+        "across the hall",
+        "main entrance",
+        "meeting point"
+      ],
+      "brief": "On a trip across town, Dina is meeting a friend near a station she has never used before. She checks the journey details on her ticket and notices that it includes a transfer, but she is unsure which platform to use after getting off. At the first station, she compares the platform signs with the stop name on her ticket and asks another passenger to repeat the name of the connecting station. The passenger points out that the platform across the hall is for the opposite direction; Dina checks the sign again and heads to the correct platform. After the second ride, she comes out by the station’s main entrance, messages her friend that she is there, and reaches the meeting point without taking the wrong train.",
+      "storyPattern": {
+        "goal": "Reach a meeting point by following a transfer journey",
+        "relationship": "Traveler and fellow passenger",
+        "interaction": "Compare ticket details with signs and clarify a station name",
+        "outcome": "Board in the right direction and arrive at the agreed entrance"
+      }
+    },
+    {
+      "date": "2026-11-05",
+      "storyId": "friends-adjust-a-day-trip-after-a-viewpoint-is-busy",
+      "domain": "travel_day_trips",
+      "scenario": "travel_companions_choose_a_quieter_short_loop_when_a_viewpoint_is_crowded",
+      "lexicalThemes": [
+        "reading a route map",
+        "comparing preferences",
+        "trail markers",
+        "planning around a return journey"
+      ],
+      "targetVocabulary": [
+        "lookout",
+        "crowded",
+        "route map",
+        "short loop",
+        "marked path",
+        "overlook",
+        "bus stop",
+        "time to spare"
+      ],
+      "brief": "On a day trip, friends Ravit and Tomer arrive at a popular lookout just as a group is setting up for a guided activity, making the narrow viewing area crowded. Ravit would like to stay for the view, while Tomer worries they will miss the bus back if they wait too long. They read the posted route map and spot a short loop that passes a smaller overlook before returning to the same stop. Ravit asks whether the loop is marked clearly, and Tomer points out the colored trail markers on the map and at the path entrance. They choose the loop, pause at the quieter overlook to identify the hills in the distance, and return to the bus stop with time to spare. They have seen the landscape without crowding the activity or risking their ride home.",
+      "storyPattern": {
+        "goal": "Enjoy a scenic stop while keeping the return journey manageable",
+        "relationship": "Friends traveling together",
+        "interaction": "Balance different preferences by comparing a nearby route option",
+        "outcome": "Take a quieter loop and return to the transport stop in time"
+      }
+    },
+    {
+      "date": "2026-11-05",
+      "storyId": "applicant-and-clerk-complete-a-contact-form-at-the-counter",
+      "domain": "government_documents",
+      "scenario": "applicant_spells_and_checks_address_fields_on_a_contact_form_before_signing",
+      "lexicalThemes": [
+        "filling in a form",
+        "spelling a name or street",
+        "address fields",
+        "politely correcting a mix-up"
+      ],
+      "targetVocabulary": [
+        "form",
+        "street",
+        "building number",
+        "apartment",
+        "spell",
+        "repeat",
+        "field",
+        "sign",
+        "copy"
+      ],
+      "brief": "Fully AI-generated dialogue. Applicant Noa speaks with clerk Erez; they are the only two speakers. Noa is at a public service counter to submit a contact form and needs help making sure the address is written clearly, especially the street name, which is often misheard. Erez is the clerk who receives the form and can ask her to spell or repeat details. Noa gives her name and address, then notices that Erez has written the building number in the apartment field. She politely points out the mix-up and asks him to read the fields back before she signs. Erez corrects the entries, and Noa confirms the street spelling and apartment number. She signs the completed form and hands it back; Erez accepts it and gives her a copy. Role map: Noa supplies and owns her personal details and signs the form; Erez receives the form and records the information. Noa performs the final signing, and Erez returns a copy. The exchange supports 8–12 short alternating turns.",
+      "storyPattern": {
+        "goal": "Submit a contact form with accurate address details",
+        "relationship": "Applicant and service clerk",
+        "interaction": "Give details, catch a field mix-up, and verify the written entries",
+        "outcome": "Sign the corrected form and receive a copy"
+      }
+    },
+    {
+      "date": "2026-11-05",
+      "storyId": "friends-and-counter-worker-order-sandwiches-for-a-journey",
+      "domain": "food_service_orders",
+      "scenario": "travelers_order_takeaway_sandwiches_after_clarifying_an_unavailable_filling",
+      "lexicalThemes": [
+        "ordering food while traveling",
+        "describing preferences",
+        "clarifying a misunderstanding",
+        "takeaway packaging"
+      ],
+      "targetVocabulary": [
+        "sandwich",
+        "toasted",
+        "filling",
+        "spread",
+        "unavailable",
+        "to take away",
+        "wrap separately",
+        "which one"
+      ],
+      "brief": "Fully AI-generated dialogue. Friends Liat and Omri are ordering food at a station counter before a journey; they are the only two speakers, and the counter worker is not a speaker. They want two sandwiches to take away, but Liat needs hers without a spread that drips easily, while Omri wants to know whether the bread can be toasted. They explain their preferences and ask what fillings are available; the counter worker’s options are relayed naturally by the friends as they decide. Omri initially hears that one filling is unavailable as a statement that both sandwiches cannot be made, and Liat clarifies that only that filling has run out. They choose a different filling for one sandwich, ask for the second toasted and wrapped separately, and confirm which sandwich is whose. The order is prepared to go, and they leave with food suited to their preferences for the ride. Role map: Liat and Omri are the customers who choose and pay for their food; neither acts as staff. They make the final order together and collect the sandwiches. The brief supports 8–12 short alternating turns.",
+      "storyPattern": {
+        "goal": "Order portable food that fits different preferences",
+        "relationship": "Friends ordering together",
+        "interaction": "Compare choices and correct a misunderstanding about availability",
+        "outcome": "Collect clearly identified sandwiches prepared for the journey"
+      }
+    },
+    {
+      "date": "2026-11-05",
+      "storyId": "tenant-and-landlord-agree-on-a-painting-plan",
+      "domain": "housing_landlord",
+      "scenario": "tenant_discusses_a_reversible_wall_painting_plan_with_landlord",
+      "lexicalThemes": [
+        "renting",
+        "home changes",
+        "colors",
+        "explaining a plan"
+      ],
+      "targetVocabulary": [
+        "landlord",
+        "wall",
+        "paint",
+        "color",
+        "return",
+        "original"
+      ],
+      "brief": "A tenant tells her landlord she would like to paint one wall a different color and explains that she can return it to its original shade later. The landlord says he will think about it, and she waits before buying paint.",
+      "storyPattern": {
+        "goal": "Discuss a small change to a rented home",
+        "relationship": "Tenant and landlord",
+        "interaction": "Explain a reversible plan and hear a cautious response",
+        "outcome": "Wait for a decision before buying supplies"
+      }
+    },
+    {
+      "date": "2026-11-05",
+      "storyId": "employee-shows-a-coworker-a-faster-folding-method",
+      "domain": "employment_jobs",
+      "scenario": "coworker_demonstrates_a_practical_folding_method_to_a_new_employee",
+      "lexicalThemes": [
+        "workplace",
+        "learning a task",
+        "demonstration",
+        "teamwork"
+      ],
+      "targetVocabulary": [
+        "employee",
+        "coworker",
+        "fold",
+        "edge",
+        "show",
+        "try"
+      ],
+      "brief": "A new employee struggles to fold a stack of work aprons, so a coworker demonstrates a simple way to line up the edges first. The employee tries it and finishes the next few more neatly.",
+      "storyPattern": {
+        "goal": "Learn a practical workplace task",
+        "relationship": "Experienced coworker and new employee",
+        "interaction": "Demonstrate a simple technique",
+        "outcome": "New worker uses the method successfully"
+      }
+    },
+    {
+      "date": "2026-11-05",
+      "storyId": "resident-marks-a-loose-sidewalk-tile-for-the-city",
+      "domain": "municipal_services",
+      "scenario": "resident_reports_a_loose_sidewalk_tile_and_avoids_it",
+      "lexicalThemes": [
+        "city streets",
+        "reporting a problem",
+        "landmarks",
+        "walking safely"
+      ],
+      "targetVocabulary": [
+        "sidewalk",
+        "tile",
+        "loose",
+        "report",
+        "shelter",
+        "around"
+      ],
+      "brief": "A resident notices a loose tile on the sidewalk and reports the spot to the city, describing it as just past a blue bus shelter. She walks around it and continues on the clear side of the path.",
+      "storyPattern": {
+        "goal": "Alert the city to a sidewalk hazard",
+        "relationship": "Resident acting independently",
+        "interaction": "Describe the problem using a nearby landmark",
+        "outcome": "Avoid the spot and continue safely"
+      }
+    },
+    {
+      "date": "2026-11-05",
+      "storyId": "customer-stops-a-cash-withdrawal-after-a-counting-mistake",
+      "domain": "banking_credit",
+      "scenario": "customer_recounts_cash_at_the_counter_after_noticing_a_possible_counting_mistake",
+      "lexicalThemes": [
+        "cash",
+        "counting",
+        "correcting a mistake",
+        "banking"
+      ],
+      "targetVocabulary": [
+        "cash",
+        "count",
+        "note",
+        "pile",
+        "amount",
+        "recount"
+      ],
+      "brief": "At a bank counter, a customer notices that she has counted her cash twice and may have put one note in the wrong pile. She recounts it slowly and finds the correct amount before leaving.",
+      "storyPattern": {
+        "goal": "Make sure a cash amount is counted correctly",
+        "relationship": "Customer acting independently at a bank",
+        "interaction": "Pause and recount after spotting a possible mistake",
+        "outcome": "Leave with the correct amount"
+      }
+    },
+    {
+      "date": "2026-11-05",
+      "storyId": "housemates-divide-a-rent-payment-task",
+      "domain": "housing_landlord",
+      "scenario": "housemates_collect_their_rent_contributions_and_compare_the_amounts",
+      "lexicalThemes": [
+        "housing costs",
+        "shared responsibility",
+        "contributions",
+        "checking amounts"
+      ],
+      "targetVocabulary": [
+        "housemates",
+        "rent",
+        "contribution",
+        "amount",
+        "together",
+        "check"
+      ],
+      "brief": "Two housemates agree that one will check their shared rent account while the other gathers their individual contributions. They compare the amounts and set the money aside together, without assuming anything about payment rules.",
+      "storyPattern": {
+        "goal": "Prepare shared money for a housing expense",
+        "relationship": "Housemates sharing costs",
+        "interaction": "Divide the preparation tasks and compare contributions",
+        "outcome": "Set aside the combined amount"
+      }
+    },
+    {
+      "date": "2026-11-05",
+      "storyId": "shopper-uses-a-receipt-to-identify-a-mixed-up-bag",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_notices_and_returns_a_different_customers_grocery_bag",
+      "lexicalThemes": [
+        "shopping",
+        "receipts",
+        "mix-ups",
+        "returning an item"
+      ],
+      "targetVocabulary": [
+        "shopper",
+        "bag",
+        "groceries",
+        "receipt",
+        "wrong",
+        "return"
+      ],
+      "brief": "At a small shop, a shopper notices that she has picked up a bag with someone else’s groceries. She checks the receipt, spots the mix-up, and returns the bag before taking hers.",
+      "storyPattern": {
+        "goal": "Take home the correct shopping",
+        "relationship": "Shopper and another customer",
+        "interaction": "Notice a mix-up and use a receipt to check",
+        "outcome": "Return the other bag and take the right one"
+      }
+    },
+    {
+      "date": "2026-11-05",
+      "storyId": "child-explains-a-lost-water-bottle-at-school",
+      "domain": "school_childcare",
+      "scenario": "child_describes_her_own_water_bottle_to_find_it_among_classroom_belongings",
+      "lexicalThemes": [
+        "school",
+        "personal belongings",
+        "describing details",
+        "finding something"
+      ],
+      "targetVocabulary": [
+        "teacher",
+        "bottle",
+        "sticker",
+        "shelf",
+        "describe",
+        "find"
+      ],
+      "brief": "A child tells a teacher that a water bottle left in the classroom is not hers and describes the sticker on her own bottle. The teacher helps her find it on another shelf, and the child takes the correct one home.",
+      "storyPattern": {
+        "goal": "Find the child's own classroom belonging",
+        "relationship": "Child and teacher",
+        "interaction": "Describe distinguishing details",
+        "outcome": "Identify and take home the correct item"
+      }
+    },
+    {
+      "date": "2026-11-05",
+      "storyId": "passengers-decide-who-boards-first-at-a-bus-stop",
+      "domain": "transport_fares_routes",
+      "scenario": "passengers_resolve_a_simultaneous_boarding_moment_with_a_polite_gesture",
+      "lexicalThemes": [
+        "public transport",
+        "boarding",
+        "taking turns",
+        "polite gestures"
+      ],
+      "targetVocabulary": [
+        "passenger",
+        "bus",
+        "door",
+        "first",
+        "step aboard",
+        "room"
+      ],
+      "brief": "Two passengers reach a bus door at the same time, and one gestures for the other to board first. The other smiles, steps aboard, and leaves room for the first passenger to follow.",
+      "storyPattern": {
+        "goal": "Board without crowding another passenger",
+        "relationship": "Strangers sharing transport",
+        "interaction": "Offer the first turn with a gesture",
+        "outcome": "Both board calmly"
+      }
+    },
+    {
+      "date": "2026-11-05",
+      "storyId": "customer-chooses-to-keep-a-scratched-mug",
+      "domain": "shopping_returns",
+      "scenario": "shopper_reconsiders_returning_a_mug_after_noticing_a_small_bottom_scratch",
+      "lexicalThemes": [
+        "shopping",
+        "minor damage",
+        "family opinions",
+        "making a choice"
+      ],
+      "targetVocabulary": [
+        "mug",
+        "scratch",
+        "bottom",
+        "return",
+        "keep",
+        "decide"
+      ],
+      "brief": "A customer notices a small scratch on a mug after bringing it home and considers returning it. Her sister says the scratch is only on the bottom, so the customer decides to keep using it.",
+      "storyPattern": {
+        "goal": "Decide what to do about a minor flaw in a purchase",
+        "relationship": "Sisters discussing a purchase",
+        "interaction": "Point out where the flaw is and share an opinion",
+        "outcome": "Customer chooses to keep the item"
+      }
+    },
+    {
+      "date": "2026-11-05",
+      "storyId": "friends-use-a-warm-pan-to-soften-flatbread",
+      "domain": "food_cooking",
+      "scenario": "friends_warm_dry_flatbread_before_serving_it_with_lunch",
+      "lexicalThemes": [
+        "simple cooking",
+        "lunch",
+        "texture",
+        "sharing a task"
+      ],
+      "targetVocabulary": [
+        "flatbread",
+        "dry",
+        "warm",
+        "pan",
+        "salad",
+        "filling"
+      ],
+      "brief": "Friends find that the flatbread for lunch has become dry, so one warms it briefly in a pan while the other prepares the salad. They serve it warm, and it folds easily around the filling.",
+      "storyPattern": {
+        "goal": "Make dry bread pleasant to eat with lunch",
+        "relationship": "Friends preparing a meal",
+        "interaction": "Warm the bread while dividing kitchen tasks",
+        "outcome": "Serve flexible bread with the filling"
+      }
+    },
+    {
+      "date": "2026-11-05",
+      "storyId": "visitors-share-a-simple-counting-game-on-a-walk",
+      "domain": "nature_outdoors",
+      "scenario": "parent_and_child_count_different_leaves_during_a_short_walk",
+      "lexicalThemes": [
+        "outdoors",
+        "noticing nature",
+        "counting",
+        "family"
+      ],
+      "targetVocabulary": [
+        "walk",
+        "leaf",
+        "different",
+        "count",
+        "notice",
+        "together"
+      ],
+      "brief": "During a short walk, a parent suggests counting the different kinds of leaves they see along the path. The child spots a broad leaf the parent missed, and together they add it to their count.",
+      "storyPattern": {
+        "goal": "Pass time by noticing leaves along the way",
+        "relationship": "Parent and child outdoors together",
+        "interaction": "Start a simple counting game and correct each other's observations",
+        "outcome": "Add another kind to their shared count"
+      }
     }
   ]
 }
