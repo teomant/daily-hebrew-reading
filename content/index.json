@@ -2,6 +2,11 @@
   "schemaVersion": 1,
   "dates": [
     {
+      "date": "2026-11-06",
+      "storyCount": 12,
+      "readingMinutes": 26
+    },
+    {
       "date": "2026-11-05",
       "storyCount": 12,
       "readingMinutes": 25

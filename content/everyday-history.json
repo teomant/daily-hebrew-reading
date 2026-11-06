@@ -15127,6 +15127,406 @@
         "interaction": "Start a simple counting game and correct each other's observations",
         "outcome": "Add another kind to their shared count"
       }
+    },
+    {
+      "date": "2026-11-06",
+      "storyId": "shopper-compares-unit-prices-for-a-weekly-staple",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_compares_package_value_and_splits_a_staple_to_stay_within_budget",
+      "lexicalThemes": [
+        "unit prices",
+        "package sizes",
+        "food budget",
+        "sharing groceries"
+      ],
+      "targetVocabulary": [
+        "on offer",
+        "per unit",
+        "larger package",
+        "smaller amount",
+        "worthwhile",
+        "split it"
+      ],
+      "brief": "At a neighborhood grocery shop, Tamar is trying to keep her weekly food spending down and compares two sizes of the same staple. The larger package costs less per unit, but she points out to her friend Lihi that she may not use it all before it goes stale. Lihi notices a smaller package on offer, but its label shows a different quantity than Tamar first assumed. They compare the quantities and prices aloud, then decide the larger package is worthwhile only because Tamar can split it with her housemate. Tamar buys it, and they agree to divide it when they get home, keeping the week's shopping within their planned budget.",
+      "storyPattern": {
+        "goal": "Choose a cost-conscious quantity without buying more than can be used",
+        "relationship": "Friends comparing a household purchase",
+        "interaction": "Question an apparent bargain and calculate whether sharing makes it practical",
+        "outcome": "Buy the larger size together and divide it for use"
+      }
+    },
+    {
+      "date": "2026-11-06",
+      "storyId": "shopper-asks-about-a-label-before-choosing-a-substitute",
+      "domain": "shopping_returns",
+      "scenario": "shopper_compares_ingredient_labels_with_a_clerk_before_selecting_an_alternative",
+      "lexicalThemes": [
+        "food labels",
+        "ingredients",
+        "asking for repetition",
+        "product alternatives"
+      ],
+      "targetVocabulary": [
+        "ingredient list",
+        "contains",
+        "label",
+        "flavor",
+        "alternative",
+        "I meant"
+      ],
+      "brief": "Fully AI-generated dialogue. Shopper Dana speaks with grocery worker Eitan; they are the only two speakers. Dana is choosing a ready-made spread for a meal and wants to avoid a particular ingredient, but she is unsure about a term on one label. Eitan can read the product labels and explain which package lists the ingredient; he does not make claims about medical effects. Dana asks him to repeat the unfamiliar word and clarifies that she is checking ingredients, not asking for a health guarantee. Eitan points out that another flavor has a shorter ingredient list, though it is a different product. Dana compares the labels herself, asks whether the alternative contains the ingredient she wants to avoid, and Eitan reads the list with her. She decides the alternative suits her preference, puts the first jar back, and buys the other. The conversation supports 8–12 short alternating turns. Role map: Dana is the shopper who chooses and pays; Eitan is the store worker who can identify label text. Dana owns neither item until purchase and makes the final choice; Eitan returns the unchosen jar to the shelf.",
+      "storyPattern": {
+        "goal": "Choose a food product that fits an ingredient preference",
+        "relationship": "Shopper and grocery worker",
+        "interaction": "Clarify label wording and compare an alternative without assuming health effects",
+        "outcome": "Select the suitable product and return the other to the shelf"
+      }
+    },
+    {
+      "date": "2026-11-06",
+      "storyId": "home-cook-turns-a-large-roast-into-next-days-lunch",
+      "domain": "food_cooking",
+      "scenario": "siblings_portion_a_large_cooked_meal_and_store_components_separately_for_later",
+      "lexicalThemes": [
+        "serving a meal",
+        "leftovers",
+        "food texture",
+        "storing food"
+      ],
+      "targetVocabulary": [
+        "left over",
+        "portion",
+        "covered container",
+        "separately",
+        "dry out",
+        "save for later"
+      ],
+      "brief": "After cooking a large piece of chicken for a Friday meal, Alon realizes there will be more left than his household can eat that evening. His sister Michal suggests slicing some before it cools completely, while Alon worries it will dry out. They taste a small piece, decide to keep the rest whole for now, and set aside a portion with its cooking juices in a covered container. Michal asks whether the remaining vegetables should go in the same container; Alon says he would rather keep them separate so they do not become soft. They serve dinner, then store the portions separately for the next day's lunch, with a clear plan for using the leftovers rather than letting them go to waste.",
+      "storyPattern": {
+        "goal": "Serve a meal and preserve extra food for another use",
+        "relationship": "Siblings sharing meal preparation",
+        "interaction": "Taste, disagree about how to portion, and settle on separate storage",
+        "outcome": "Serve dinner and save distinct portions for the next day's lunch"
+      }
+    },
+    {
+      "date": "2026-11-06",
+      "storyId": "dialog-neighbors-coordinate-a-shared-kitchen-delivery",
+      "domain": "delivery_customer_service",
+      "scenario": "neighbor_temporarily_receives_groceries_and_separates_an_unidentified_bag",
+      "lexicalThemes": [
+        "delivery arrangements",
+        "temporary help",
+        "chilled groceries",
+        "clarifying ownership"
+      ],
+      "targetVocabulary": [
+        "I have to leave",
+        "keep separate",
+        "chilled",
+        "by the door",
+        "belongs to",
+        "I’ll be back"
+      ],
+      "brief": "Fully AI-generated dialogue. Neighbors Rina and Boaz are the only two speakers. Rina is expecting a grocery delivery with chilled items but realizes she must leave the building before it arrives; Boaz offers to help receive it. Rina explains which bags are hers and asks him not to leave anything in the building entrance, where it could block the way. Boaz asks whether he should bring the bags upstairs or keep them in his refrigerator; Rina clarifies that she will return shortly and that the chilled bag can stay with him, while the dry goods should remain together by his door. Boaz repeats the plan to make sure he has understood, then notices the delivery includes an extra bag that is not labeled clearly. He calls Rina, describes the contents, and she recognizes it as a neighbor's order rather than hers. Boaz keeps that bag separate and leaves it for the courier to collect; Rina returns, takes her own groceries, and thanks him. The exchange supports 8–12 short alternating turns. Role map: Rina owns the order and identifies her groceries; Boaz is the neighbor temporarily receiving them and controls his refrigerator. Rina makes the decisions about her items, and Boaz separates the unidentified bag without claiming it.",
+      "storyPattern": {
+        "goal": "Keep a delivery safe during a brief absence",
+        "relationship": "Neighbors offering practical help",
+        "interaction": "Agree on temporary storage and identify an unexpected unmarked bag",
+        "outcome": "Preserve the recipient's groceries and keep the uncertain item separate"
+      }
+    },
+    {
+      "date": "2026-11-06",
+      "storyId": "employee-and-manager-compare-shift-availability",
+      "domain": "employment_jobs",
+      "scenario": "employee_negotiates_a_partial_shift_swap_around_a_family_commitment",
+      "lexicalThemes": [
+        "work schedules",
+        "availability",
+        "family commitments",
+        "negotiating a swap"
+      ],
+      "targetVocabulary": [
+        "cover a shift",
+        "I already promised",
+        "start earlier",
+        "partial swap",
+        "works for me",
+        "confirm directly"
+      ],
+      "brief": "At a small workplace, employee Niv is asked to cover an extra shift, but he has already promised to help his father with an errand that afternoon. He explains the conflict to his manager, Sivan, and offers to take a different shift later in the week instead. Sivan says the busiest period is the afternoon, but another worker has asked to leave early on a different day. Niv asks what time that worker needs to go, then points out that he can start earlier and cover the first part of the shift. They compare the two schedules and agree on a partial swap that works for both employees. Niv updates his own note and tells Sivan he will confirm directly with the other worker, leaving the schedule settled without abandoning his family commitment.",
+      "storyPattern": {
+        "goal": "Meet a family commitment while helping cover workplace needs",
+        "relationship": "Employee and manager coordinating staffing",
+        "interaction": "Explain a conflict and negotiate a partial schedule change",
+        "outcome": "Agree on a workable shift adjustment and assign a follow-up confirmation"
+      }
+    },
+    {
+      "date": "2026-11-06",
+      "storyId": "coworkers-share-a-last-minute-task",
+      "domain": "employment_jobs",
+      "scenario": "coworkers_divide_a_last_minute_closing_task_so_each_can_finish_on_time",
+      "lexicalThemes": [
+        "work tasks",
+        "offering help",
+        "dividing responsibilities"
+      ],
+      "targetVocabulary": [
+        "משמרת",
+        "לעזור",
+        "לחלק",
+        "לסיים"
+      ],
+      "brief": "A coworker notices that a delivery arrived just before closing and offers to stay while another worker finishes the register. They divide the remaining work, and both leave on time.",
+      "storyPattern": {
+        "goal": "Finish an unexpected task before closing",
+        "relationship": "Coworkers on the same shift",
+        "interaction": "Offer help and divide the remaining work",
+        "outcome": "Complete the task and leave on time"
+      }
+    },
+    {
+      "date": "2026-11-06",
+      "storyId": "roommates-negotiate-fridge-space",
+      "domain": "housing_landlord",
+      "scenario": "roommates_make_space_for_each_others_groceries_by_rearranging_a_shared_refrigerator",
+      "lexicalThemes": [
+        "shared home",
+        "food storage",
+        "negotiating space"
+      ],
+      "targetVocabulary": [
+        "מקרר",
+        "מדף",
+        "לפנות מקום",
+        "צנצנת"
+      ],
+      "brief": "Two roommates realize they have both bought food that needs the same refrigerator shelf. One suggests moving a few jars to the door, and they make room without unpacking or discarding anything.",
+      "storyPattern": {
+        "goal": "Make room for shared household groceries",
+        "relationship": "Roommates sharing a kitchen",
+        "interaction": "Suggest a small rearrangement and agree on it",
+        "outcome": "Fit the groceries without throwing anything away"
+      }
+    },
+    {
+      "date": "2026-11-06",
+      "storyId": "resident-corrects-a-bin-mix-up-with-a-neighbor",
+      "domain": "municipal_services",
+      "scenario": "resident_explains_how_to_fit_a_cardboard_box_in_a_shared_recycling_container",
+      "lexicalThemes": [
+        "recycling",
+        "neighborly explanation",
+        "shared spaces"
+      ],
+      "targetVocabulary": [
+        "קרטון",
+        "מיחזור",
+        "לקפל",
+        "מדרכה"
+      ],
+      "brief": "A resident sees that a neighbor has left a cardboard box beside the building’s regular rubbish bin and explains that it can be folded down for the recycling container. The neighbor folds it and carries it over, clearing the walkway.",
+      "storyPattern": {
+        "goal": "Clear a shared walkway by sorting discarded packaging",
+        "relationship": "Neighbors in the same building",
+        "interaction": "Explain a practical alternative without scolding",
+        "outcome": "Fold the box and place it in the recycling container"
+      }
+    },
+    {
+      "date": "2026-11-06",
+      "storyId": "resident-practices-a-short-introduction-for-a-counter-visit",
+      "domain": "government_documents",
+      "scenario": "resident_rehearses_a_concise_opening_for_an_in_person_public_service_conversation",
+      "lexicalThemes": [
+        "explaining a need",
+        "public services",
+        "speaking clearly"
+      ],
+      "targetVocabulary": [
+        "להסביר",
+        "בקצרה",
+        "העניין",
+        "קודם"
+      ],
+      "brief": "Before visiting a public office, a resident practices a short introduction with her brother so she can explain what she needs without telling her whole story at once. He listens, and she tries again with the main point first.",
+      "storyPattern": {
+        "goal": "Prepare to explain a need clearly",
+        "relationship": "Siblings helping one another prepare",
+        "interaction": "Listen to a practice explanation and suggest a clearer order",
+        "outcome": "Begin with the main point"
+      }
+    },
+    {
+      "date": "2026-11-06",
+      "storyId": "housemates-compare-two-grocery-receipts",
+      "domain": "bills_taxes",
+      "scenario": "housemates_notice_a_duplicate_shared_grocery_purchase_and_update_their_list",
+      "lexicalThemes": [
+        "shared expenses",
+        "grocery budget",
+        "noticing a mistake"
+      ],
+      "targetVocabulary": [
+        "קבלה",
+        "תקציב",
+        "פעמיים",
+        "רשימה"
+      ],
+      "brief": "Two housemates compare their grocery receipts after noticing that the shared food budget feels tighter this week. They realize they bought the same cooking oil twice, so they mark it on their list for next time.",
+      "storyPattern": {
+        "goal": "Understand why shared food spending feels higher",
+        "relationship": "Housemates sharing grocery costs",
+        "interaction": "Compare purchases and identify a duplicate",
+        "outcome": "Mark the item to avoid buying it twice"
+      }
+    },
+    {
+      "date": "2026-11-06",
+      "storyId": "shopper-chooses-a-substitute-for-missing-lentils",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_selects_a_smaller_alternative_when_the_listed_ingredient_is_unavailable",
+      "lexicalThemes": [
+        "finding a product",
+        "substitutions",
+        "package size"
+      ],
+      "targetVocabulary": [
+        "עדשים",
+        "שעועית",
+        "שקית",
+        "במקום"
+      ],
+      "brief": "A shopper finds that the lentils on her list are sold out and compares two kinds of beans instead. She chooses the smaller bag because it fits the meal she plans to cook tonight.",
+      "storyPattern": {
+        "goal": "Choose a practical substitute for a missing ingredient",
+        "relationship": "Shopper making an independent choice",
+        "interaction": "Compare available alternatives with the meal plan",
+        "outcome": "Choose a suitable smaller package"
+      }
+    },
+    {
+      "date": "2026-11-06",
+      "storyId": "diner-clarifies-a-missing-side-dish",
+      "domain": "food_service_orders",
+      "scenario": "diner_reports_a_missing_side_item_from_a_takeaway_order_and_gets_it_prepared",
+      "lexicalThemes": [
+        "takeaway orders",
+        "describing a problem",
+        "food items"
+      ],
+      "targetVocabulary": [
+        "שקית",
+        "סלט",
+        "חסר",
+        "להכין"
+      ],
+      "brief": "A diner opens a takeaway bag and notices that the side salad is missing. She calls the restaurant, describes what is in the bag, and the worker says they will prepare the salad for her to collect.",
+      "storyPattern": {
+        "goal": "Resolve a missing item in a takeaway order",
+        "relationship": "Diner and restaurant worker",
+        "interaction": "Describe the order and identify what is missing",
+        "outcome": "Worker prepares the omitted side item"
+      }
+    },
+    {
+      "date": "2026-11-06",
+      "storyId": "shopper-asks-to-swap-an-unopened-package",
+      "domain": "shopping_returns",
+      "scenario": "shopper_exchanges_an_unopened_food_package_for_the_intended_size",
+      "lexicalThemes": [
+        "package sizes",
+        "explaining a mistake",
+        "exchanging goods"
+      ],
+      "targetVocabulary": [
+        "אריזה",
+        "קטן",
+        "גדול",
+        "להחליף"
+      ],
+      "brief": "A shopper realizes at home that she picked up a large package of rice when she meant to buy the small one. She brings the unopened package back to the shop, and the cashier exchanges it for the size she wanted.",
+      "storyPattern": {
+        "goal": "Correct a mistaken package-size choice",
+        "relationship": "Shopper and cashier",
+        "interaction": "Explain the mistake and return an unopened item",
+        "outcome": "Exchange it for the intended size"
+      }
+    },
+    {
+      "date": "2026-11-06",
+      "storyId": "cook-adjusts-a-dressing-after-tasting-it",
+      "domain": "food_cooking",
+      "scenario": "home_cook_adjusts_a_sour_salad_dressing_by_adding_oil_and_tasting_again",
+      "lexicalThemes": [
+        "cooking",
+        "tasting",
+        "adjusting flavor"
+      ],
+      "targetVocabulary": [
+        "רוטב",
+        "חמוץ",
+        "שמן",
+        "לטעום"
+      ],
+      "brief": "A cook tastes a salad dressing and finds it too sour, so she adds a little oil and stirs again. Her brother tastes it and says the flavor is more balanced now.",
+      "storyPattern": {
+        "goal": "Balance a dressing that tastes too sour",
+        "relationship": "Siblings preparing a meal",
+        "interaction": "Taste, adjust, and invite a second opinion",
+        "outcome": "The flavor becomes more balanced"
+      }
+    },
+    {
+      "date": "2026-11-06",
+      "storyId": "travelers-share-a-snack-during-a-stop",
+      "domain": "travel_day_trips",
+      "scenario": "travel_companions_share_a_simple_packed_snack_during_a_brief_drive_stop",
+      "lexicalThemes": [
+        "travel breaks",
+        "offering food",
+        "sharing"
+      ],
+      "targetVocabulary": [
+        "עצירה",
+        "קרקרים",
+        "להציע",
+        "לחלוק"
+      ],
+      "brief": "During a short stop on a drive, one traveler realizes she has packed only a large bag of crackers and offers some to her companion. He breaks them into a small bowl, and they share a snack before continuing.",
+      "storyPattern": {
+        "goal": "Share a simple snack during a journey",
+        "relationship": "Travel companions",
+        "interaction": "Offer food and portion it for sharing",
+        "outcome": "Both eat a small snack before continuing"
+      }
+    },
+    {
+      "date": "2026-11-06",
+      "storyId": "shopper-replaces-a-leaking-milk-carton",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_notices_a_leaking_milk_carton_at_checkout_and_replaces_it_before_it_soils_other_groceries",
+      "lexicalThemes": [
+        "grocery shopping",
+        "damaged packaging",
+        "checkout"
+      ],
+      "targetVocabulary": [
+        "leaking",
+        "carton",
+        "cashier",
+        "intact",
+        "wipe"
+      ],
+      "brief": "At the checkout, a shopper notices milk leaking from a carton in her basket and tells the cashier before it reaches the other groceries. The cashier brings her an intact carton, and the shopper wipes a few drops from the basket.",
+      "storyPattern": {
+        "goal": "Keep a leaking item from spoiling other groceries",
+        "relationship": "Shopper and cashier",
+        "interaction": "Point out damaged packaging and replace it",
+        "outcome": "Take an intact carton and clean the basket"
+      }
     }
   ]
 }
