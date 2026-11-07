@@ -15527,6 +15527,416 @@
         "interaction": "Point out damaged packaging and replace it",
         "outcome": "Take an intact carton and clean the basket"
       }
+    },
+    {
+      "date": "2026-11-07",
+      "storyId": "tenant-contains-a-sink-leak-with-landlord",
+      "domain": "housing_landlord",
+      "scenario": "tenant_contains_a_slow_sink_leak_and_coordinates_a_plumbing_repair_with_the_landlord",
+      "lexicalThemes": [
+        "describing a household leak",
+        "shutting off a valve",
+        "protecting belongings",
+        "coordinating a repair"
+      ],
+      "targetVocabulary": [
+        "under the sink",
+        "a drip",
+        "the pipe joint",
+        "the cabinet is damp",
+        "put a bowl underneath",
+        "move things away"
+      ],
+      "brief": "Tenant Maya notices water spreading under the kitchen sink and shuts off the small valve beneath it, but a slow drip continues from the pipe joint. She calls her landlord, describing where the water is coming from and clarifying that the tap itself still works. The landlord asks her to put a bowl under the leak and move cleaning supplies away from the wet cabinet; Maya does both and discovers the cabinet floor is already damp. They agree that the landlord will contact a plumber, while Maya leaves the cabinet empty and sends a photo of the joint so they can discuss what needs attention. The leak is contained for now, and both know what to do before the repair visit.",
+      "storyPattern": {
+        "goal": "Limit water damage and arrange a home repair",
+        "relationship": "Tenant and landlord",
+        "interaction": "Describe the leak and take immediate steps together",
+        "outcome": "Contain the drip and prepare for a plumber"
+      }
+    },
+    {
+      "date": "2026-11-07",
+      "storyId": "pet-owner-explains-feeding-needs-at-shop",
+      "domain": "pets_veterinary",
+      "scenario": "cat_owner_chooses_a_small_food_package_and_a_trial_can_when_the_usual_brand_is_unavailable",
+      "lexicalThemes": [
+        "buying pet food",
+        "describing an animal's routine",
+        "comparing package sizes",
+        "trying a small alternative"
+      ],
+      "targetVocabulary": [
+        "the usual brand",
+        "dry food",
+        "small portions",
+        "a small bag",
+        "try a can",
+        "the cat may not like it"
+      ],
+      "brief": "On Saturday, Lior goes to a pet shop for food for his older cat, whose usual brand is unavailable. He explains to the shop worker that the cat eats small portions and that he wants to avoid buying a large bag the cat may not like. The worker points out two smaller options and asks whether Lior wants dry food or a few cans; Lior clarifies that he needs the cat’s familiar dry food today and can try a small wet-food pack separately. He checks the labels for the food type he normally buys, chooses a small bag and one trial can, and asks the worker to keep the two items separate on the receipt. He goes home with enough familiar food for now and a low-risk way to see whether the cat likes the new option.",
+      "storyPattern": {
+        "goal": "Find suitable food for a pet without overbuying",
+        "relationship": "Pet owner and shop worker",
+        "interaction": "Explain the pet's routine and compare small options",
+        "outcome": "Buy familiar food plus a limited trial item"
+      }
+    },
+    {
+      "date": "2026-11-07",
+      "storyId": "friends-make-a-vegetable-frittata-from-leftovers",
+      "domain": "food_cooking",
+      "scenario": "friends_turn_roasted_vegetables_and_cooked_rice_into_a_frittata_after_testing_a_small_portion",
+      "lexicalThemes": [
+        "using leftovers",
+        "combining ingredients",
+        "testing a cooking idea",
+        "adjusting heat and texture"
+      ],
+      "targetVocabulary": [
+        "leftover vegetables",
+        "cooked rice",
+        "beaten eggs",
+        "a test portion",
+        "the center is still soft",
+        "cover the pan"
+      ],
+      "brief": "After lunch, Dana finds a bowl of roasted vegetables and a little cooked rice in the fridge, enough for a quick evening meal but not enough to serve as separate dishes. Her friend Noam is visiting and suggests turning the vegetables into a frittata, while Dana wonders whether the rice will make it too heavy. They warm the vegetables in a pan, stir the rice into beaten eggs, and cook a small test portion first. It holds together, but the center is still soft, so they lower the heat and cover the pan briefly rather than adding more egg. They cut the finished frittata into wedges and eat it with sliced tomatoes, using what was already at home without making a second meal.",
+      "storyPattern": {
+        "goal": "Turn a few leftovers into a complete meal",
+        "relationship": "Friends sharing a kitchen",
+        "interaction": "Suggest a combination, test it, and adjust the cooking",
+        "outcome": "Cook and share a simple meal from what is on hand"
+      }
+    },
+    {
+      "date": "2026-11-07",
+      "storyId": "family-coordinates-a-late-arrival-for-dinner",
+      "domain": "transport_fares_routes",
+      "scenario": "siblings_coordinate_dinner_when_one_is_delayed_on_the_bus_and_give_the_family_a_start_without_me_plan",
+      "lexicalThemes": [
+        "giving an arrival estimate",
+        "explaining a delay",
+        "revising an estimate",
+        "asking others to start without you"
+      ],
+      "targetVocabulary": [
+        "I'm still on the bus",
+        "about twenty minutes",
+        "I'm not sure",
+        "when I get off",
+        "start without me",
+        "leave me a plate"
+      ],
+      "brief": "Fully AI-generated dialogue. Siblings Roni and Gil are the only speakers. They are meeting their parents for dinner at home, but Roni is delayed on the way and wants to let Gil know when she will arrive. Roni calls and says she is still on the bus; Gil asks whether she wants him to wait before serving or start dinner with their parents. Roni estimates she will be about twenty minutes, then realizes she may need to change buses and corrects herself: she is not sure and will text when she gets off. Gil says the food can wait a little but asks her not to rush; Roni replies that they should start without her if she is not there soon. Gil checks that she means they should eat, not put her portion away, and Roni clarifies that he can leave her a plate. She messages when she is close, and Gil tells her they have started and her food is set aside. Roni arrives, joins them, and the family meal continues without anyone waiting anxiously. The exchange supports 8–12 short alternating turns. Role map: Roni is the delayed sibling who gives arrival updates and chooses whether the others should wait; Gil is at home with their parents and can decide when to serve and set aside Roni’s portion. The meal belongs to the family; Gil serves the others and keeps Roni’s plate, and Roni performs the final action of arriving and joining them.",
+      "storyPattern": {
+        "goal": "Coordinate a family meal when one person is running late",
+        "relationship": "Siblings making plans around a family dinner",
+        "interaction": "Revise an uncertain arrival estimate and negotiate whether others should wait",
+        "outcome": "The others start eating and keep a plate for the late arrival"
+      }
+    },
+    {
+      "date": "2026-11-07",
+      "storyId": "employee-clarifies-a-missing-shift-on-pay-statement",
+      "domain": "work_pay",
+      "scenario": "employee_and_payroll_coordinator_trace_a_shift_listed_under_the_following_date_on_a_pay_statement",
+      "lexicalThemes": [
+        "asking about a pay statement",
+        "describing a work shift",
+        "clarifying a date entry",
+        "agreeing on a payroll follow-up"
+      ],
+      "targetVocabulary": [
+        "pay statement",
+        "the shift is missing",
+        "closing shift",
+        "after midnight",
+        "time record",
+        "send it for review"
+      ],
+      "brief": "Fully AI-generated dialogue. Employee Yael speaks with payroll coordinator Omer; they are the only two speakers. Yael has received her pay statement and notices that a Saturday shift she worked is not listed among the shifts shown. She explains that she is not disputing the total amount yet; first she wants to understand whether the shift was recorded. Omer asks which date she means, and Yael gives the date and describes the closing shift, including the coworker who took over from her. Omer checks the time record and finds that the shift appears under the following date because the entry was saved after midnight. Yael asks whether that means the hours are included in the statement, and Omer clarifies that he can see the time entry but cannot confirm from that screen how it was included in the total. They agree that Omer will send the dated record to the payroll reviewer, while Yael keeps her own notes and waits for a clear response before assuming there is an error. The shift is found in the record, and a specific follow-up is underway. The exchange supports 8–12 short alternating turns. Role map: Yael is the employee who worked the shift and owns her notes; Omer is the payroll coordinator who can inspect the time record and forward it for review. Omer performs the final action of sending the record, while Yael waits for the review rather than claiming a particular payment outcome.",
+      "storyPattern": {
+        "goal": "Trace a worked shift that is not clearly shown on a pay statement",
+        "relationship": "Employee and payroll coordinator",
+        "interaction": "Describe the shift and compare the date with the recorded time entry",
+        "outcome": "Forward the record for review without assuming the pay result"
+      }
+    },
+    {
+      "date": "2026-11-07",
+      "storyId": "tenant-coordinates-a-lost-key",
+      "domain": "housing_landlord",
+      "scenario": "tenant_loses_apartment_key_and_contacts_building_caretaker_to_reach_the_right_person",
+      "lexicalThemes": [
+        "lost keys",
+        "building access",
+        "contacting a caretaker"
+      ],
+      "targetVocabulary": [
+        "key",
+        "door",
+        "caretaker",
+        "call",
+        "outside"
+      ],
+      "brief": "A tenant comes home and realizes the key is missing, so she calls the building caretaker and explains that she is waiting outside her apartment. The caretaker says he is nearby and comes to help her contact the right person for access.",
+      "storyPattern": {
+        "goal": "Regain access after losing a key",
+        "relationship": "Tenant and building caretaker",
+        "interaction": "Explain the problem and identify who can help",
+        "outcome": "Caretaker helps connect the tenant with the right person"
+      }
+    },
+    {
+      "date": "2026-11-07",
+      "storyId": "employee-corrects-a-missed-time-entry",
+      "domain": "work_pay",
+      "scenario": "employee_notices_a_missing_start_time_entry_and_records_when_she_arrived",
+      "lexicalThemes": [
+        "work hours",
+        "time records",
+        "admitting an oversight"
+      ],
+      "targetVocabulary": [
+        "shift",
+        "start time",
+        "record",
+        "arrive",
+        "forgot"
+      ],
+      "brief": "An employee notices that she forgot to record the start of her shift and tells her supervisor before leaving. They write down the time she arrived so she can explain the missing entry later.",
+      "storyPattern": {
+        "goal": "Document a missed work-time entry",
+        "relationship": "Employee and supervisor",
+        "interaction": "Admit an oversight and record the arrival time",
+        "outcome": "Keep a note to explain the missing entry"
+      }
+    },
+    {
+      "date": "2026-11-07",
+      "storyId": "resident-sets-aside-an-incomplete-document",
+      "domain": "government_documents",
+      "scenario": "resident_notices_a_missing_page_in_a_document_copy_and_chooses_the_complete_copy",
+      "lexicalThemes": [
+        "documents",
+        "missing pages",
+        "choosing a complete copy"
+      ],
+      "targetVocabulary": [
+        "copy",
+        "page",
+        "complete",
+        "missing",
+        "set aside"
+      ],
+      "brief": "While preparing papers for an appointment, a resident notices that one copy is missing its last page. She sets it aside and packs the complete copy instead.",
+      "storyPattern": {
+        "goal": "Avoid relying on an incomplete document",
+        "relationship": "Resident acting independently",
+        "interaction": "Notice a missing page and choose another copy",
+        "outcome": "Pack the complete copy"
+      }
+    },
+    {
+      "date": "2026-11-07",
+      "storyId": "coworkers-trade-a-short-break",
+      "domain": "employment_jobs",
+      "scenario": "coworkers_trade_the_order_of_short_breaks_to_meet_different_immediate_needs",
+      "lexicalThemes": [
+        "work breaks",
+        "making a small arrangement",
+        "different needs"
+      ],
+      "targetVocabulary": [
+        "break",
+        "call",
+        "outside",
+        "trade",
+        "in a few minutes"
+      ],
+      "brief": "One employee needs to make a quick personal call, while her coworker wants to step outside for fresh air. They trade the order of their short breaks, and each gets a few minutes away from the work area.",
+      "storyPattern": {
+        "goal": "Make room for two brief personal needs",
+        "relationship": "Coworkers on the same shift",
+        "interaction": "Trade the order of short breaks",
+        "outcome": "Each gets a brief pause"
+      }
+    },
+    {
+      "date": "2026-11-07",
+      "storyId": "resident-reports-a-blocked-drain",
+      "domain": "home_repairs_utilities",
+      "scenario": "resident_describes_a_slow_bathroom_sink_drain_and_stops_using_it_pending_repair",
+      "lexicalThemes": [
+        "household plumbing",
+        "describing a problem",
+        "temporary response"
+      ],
+      "targetVocabulary": [
+        "drain",
+        "sink",
+        "slowly",
+        "back up",
+        "stop using"
+      ],
+      "brief": "Water drains slowly from the bathroom sink, and the resident tells the landlord that it is not backing up onto the floor. The landlord says he will arrange a repair, while the resident stops using the sink for now.",
+      "storyPattern": {
+        "goal": "Describe a drainage problem and limit further use",
+        "relationship": "Resident and landlord",
+        "interaction": "Explain what is happening and agree on an immediate response",
+        "outcome": "Resident leaves the sink unused while repair is arranged"
+      }
+    },
+    {
+      "date": "2026-11-07",
+      "storyId": "user-keeps-a-copy-of-a-password-recovery-code",
+      "domain": "digital_accounts",
+      "scenario": "account_holder_stores_a_recovery_code_privately_after_updating_a_password",
+      "lexicalThemes": [
+        "account access",
+        "passwords",
+        "keeping a recovery code"
+      ],
+      "targetVocabulary": [
+        "password",
+        "account",
+        "recovery code",
+        "write down",
+        "private"
+      ],
+      "brief": "A user updates the password for an online account and notices the service offers a recovery code. She writes it on paper and puts it somewhere private so she can find it if she loses access.",
+      "storyPattern": {
+        "goal": "Keep a way to regain account access",
+        "relationship": "Account holder acting independently",
+        "interaction": "Save a recovery code in a private place",
+        "outcome": "Keep the code available for a future access problem"
+      }
+    },
+    {
+      "date": "2026-11-07",
+      "storyId": "parent-shares-a-school-pickup-change",
+      "domain": "school_childcare",
+      "scenario": "parent_explains_a_late_pickup_to_an_after_school_caregiver_and_confirms_the_plan",
+      "lexicalThemes": [
+        "childcare pickup",
+        "explaining a delay",
+        "confirming a plan"
+      ],
+      "targetVocabulary": [
+        "pickup",
+        "late",
+        "caregiver",
+        "plan",
+        "understand"
+      ],
+      "brief": "A parent learns that she will be late for pickup and calls the after-school caregiver to explain the change. The caregiver repeats the new plan, and the parent confirms that she understood.",
+      "storyPattern": {
+        "goal": "Share a change to a pickup plan",
+        "relationship": "Parent and after-school caregiver",
+        "interaction": "Explain a delay and repeat the arrangement",
+        "outcome": "Both understand the updated plan"
+      }
+    },
+    {
+      "date": "2026-11-07",
+      "storyId": "driver-uses-a-spare-tire-cover-as-a-shade",
+      "domain": "driving_parking",
+      "scenario": "driver_shades_a_parked_car_to_keep_the_steering_wheel_from_heating_in_the_sun",
+      "lexicalThemes": [
+        "parking",
+        "sunlight",
+        "car interior"
+      ],
+      "targetVocabulary": [
+        "park",
+        "sun",
+        "window",
+        "cover",
+        "steering wheel"
+      ],
+      "brief": "A driver parks in the sun and notices the steering wheel has become uncomfortably hot. She places a reflective cover across the front window, and the wheel is cooler when she returns.",
+      "storyPattern": {
+        "goal": "Reduce heat inside a parked car",
+        "relationship": "Driver acting independently",
+        "interaction": "Notice the sun heating the interior and add shade",
+        "outcome": "Return to a cooler steering wheel"
+      }
+    },
+    {
+      "date": "2026-11-07",
+      "storyId": "neighbors-lend-a-step-stool",
+      "domain": "neighbors_building",
+      "scenario": "neighbor_borrows_a_step_stool_and_agrees_to_return_it_after_dinner",
+      "lexicalThemes": [
+        "borrowing household items",
+        "neighbors",
+        "agreeing when to return something"
+      ],
+      "targetVocabulary": [
+        "borrow",
+        "step stool",
+        "shelf",
+        "return",
+        "after dinner"
+      ],
+      "brief": "A neighbor needs to reach a high shelf and borrows a step stool from the family next door. They agree she will bring it back after dinner, and she returns it that evening.",
+      "storyPattern": {
+        "goal": "Borrow a household item for a brief task",
+        "relationship": "Neighbors living nearby",
+        "interaction": "Borrow an item and agree on its return",
+        "outcome": "Return it later as agreed"
+      }
+    },
+    {
+      "date": "2026-11-07",
+      "storyId": "cook-turns-leftover-roast-vegetables-into-a-spread",
+      "domain": "food_cooking",
+      "scenario": "cook_mashes_leftover_roasted_eggplant_with_yogurt_and_herbs_into_a_spread",
+      "lexicalThemes": [
+        "using leftovers",
+        "simple food preparation",
+        "describing flavor"
+      ],
+      "targetVocabulary": [
+        "leftovers",
+        "roasted eggplant",
+        "mash",
+        "spread",
+        "smoky"
+      ],
+      "brief": "A cook mashes leftover roasted eggplant with a little yogurt and herbs for a quick spread. Her partner tastes it and says the smoky flavor works well on toast.",
+      "storyPattern": {
+        "goal": "Turn cooked leftovers into an easy meal addition",
+        "relationship": "Partners sharing food at home",
+        "interaction": "Prepare a simple spread and taste it together",
+        "outcome": "Serve the spread on toast"
+      }
+    },
+    {
+      "date": "2026-11-07",
+      "storyId": "walkers-pause-for-a-sunset-photo",
+      "domain": "nature_outdoors",
+      "scenario": "friends_notice_a_sunset_reflection_during_a_walk_and_take_a_quick_photo",
+      "lexicalThemes": [
+        "evening walk",
+        "noticing reflections",
+        "sharing an observation"
+      ],
+      "targetVocabulary": [
+        "sunset",
+        "reflection",
+        "puddle",
+        "notice",
+        "photo"
+      ],
+      "brief": "During an evening walk, one friend notices the sunset reflected in a puddle and points it out to the other. They take one quick photo, then continue along the path.",
+      "storyPattern": {
+        "goal": "Capture an unexpected outdoor detail",
+        "relationship": "Friends walking together",
+        "interaction": "Point out a reflection and pause briefly",
+        "outcome": "Take a photo and continue the walk"
+      }
     }
   ]
 }
