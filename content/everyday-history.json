@@ -15937,6 +15937,436 @@
         "interaction": "Point out a reflection and pause briefly",
         "outcome": "Take a photo and continue the walk"
       }
+    },
+    {
+      "date": "2026-11-08",
+      "storyId": "employee-learns-a-new-opening-routine",
+      "domain": "employment_jobs",
+      "scenario": "new_bakery_employee_prepares_the_counter_and_separates_a_preorder_from_regular_stock",
+      "lexicalThemes": [
+        "work routines",
+        "display and arrangement",
+        "preorders",
+        "asking for clarification",
+        "making a checklist"
+      ],
+      "targetVocabulary": [
+        "morning shift",
+        "counter",
+        "tray",
+        "price card",
+        "preorder",
+        "reserved",
+        "shelf",
+        "checklist"
+      ],
+      "brief": "On her first week at a neighborhood bakery, employee Talia is asked to prepare the counter before the morning rush. She knows how to arrange the pastries but is unsure which trays need price cards and which items are reserved for preorders. Her coworker Amir explains the distinction, then invites her to walk through the counter together rather than taking over. They find one preorder tray mixed among the regular display, and Talia asks how to mark it without moving the customer’s order. Amir shows her the labeled shelf behind the counter; she checks the order name and places the tray there. Together they finish setting up, and Talia writes a short checklist for her next opening shift.",
+      "storyPattern": {
+        "goal": "Prepare a work area accurately for opening",
+        "relationship": "New employee and experienced coworker",
+        "interaction": "Walk through a task together and distinguish two kinds of stock",
+        "outcome": "Finish the setup and create a reusable checklist"
+      }
+    },
+    {
+      "date": "2026-11-08",
+      "storyId": "siblings-sort-school-week-responsibilities",
+      "domain": "school_childcare",
+      "scenario": "siblings_redistribute_school_dropoffs_and_pickups_around_a_temporary_work_schedule",
+      "lexicalThemes": [
+        "school routine",
+        "family responsibilities",
+        "availability",
+        "trading tasks",
+        "confirming who does what"
+      ],
+      "targetVocabulary": [
+        "drop-off",
+        "pickup",
+        "school bag",
+        "morning",
+        "afternoon",
+        "I can manage",
+        "I cannot make it",
+        "swap",
+        "this week"
+      ],
+      "brief": "Fully AI-generated dialogue. Siblings Maya and Eyal are the only speakers. Their family’s usual morning arrangement has changed because Eyal’s work shift starts earlier this week, and Maya needs to coordinate school drop-offs and an afternoon pickup for her child. They compare the school schedule with their own commitments instead of assuming one person can cover everything. Maya can handle Monday and Wednesday mornings but has an early appointment on Tuesday; Eyal can do Tuesday drop-off if he takes his child to school a little earlier, but he cannot manage the afternoon pickup. Maya asks whether Eyal can swap his Friday morning responsibility for Wednesday afternoon, and he explains that a colleague is covering his later shift that day. They clarify who will pack the child’s lunch and where the school bag will be left. They agree on the revised division, write it on the kitchen note, and each takes responsibility for the days they accepted. Role map: Maya is the parent coordinating the school routine and owns the child’s school bag; Eyal is her brother and the child’s uncle, who can cover specific trips but does not decide school arrangements. Maya handles Monday and Wednesday mornings and the Tuesday afternoon pickup; Eyal handles Tuesday drop-off and Wednesday afternoon pickup. The dialogue supports 8–12 short alternating turns.",
+      "storyPattern": {
+        "goal": "Cover a changed school-week schedule",
+        "relationship": "Siblings sharing family responsibilities",
+        "interaction": "Compare availability and negotiate a task exchange",
+        "outcome": "Divide school trips clearly and record the arrangement"
+      }
+    },
+    {
+      "date": "2026-11-08",
+      "storyId": "shopper-tries-shoes-and-exchanges-the-size",
+      "domain": "shopping_returns",
+      "scenario": "shopper_compares_a_tight_shoe_size_with_a_wider_alternative_before_exchanging",
+      "lexicalThemes": [
+        "trying on shoes",
+        "describing fit",
+        "exchanging an item",
+        "comparing alternatives",
+        "explaining a preference"
+      ],
+      "targetVocabulary": [
+        "size",
+        "tight",
+        "loose",
+        "heel",
+        "toes",
+        "try on",
+        "exchange",
+        "receipt",
+        "fits better"
+      ],
+      "brief": "After buying walking shoes, Noa tries them on at home and notices that one foot feels tight near the toes. She returns to the shop with the shoes and receipt, explaining that she has only worn them indoors. The shop assistant asks her to try the next size, but that pair feels loose at the heel. Noa describes the difference and asks whether there is a half-size option; the assistant brings another model with a wider toe area. Noa walks a few steps in both shoes and decides the wider model fits better even though it is a different style. She exchanges the original pair and leaves wearing the comfortable shoes.",
+      "storyPattern": {
+        "goal": "Find comfortable footwear after a poor fit",
+        "relationship": "Shopper and shop assistant",
+        "interaction": "Describe fit differences and compare alternatives by trying them",
+        "outcome": "Exchange the original purchase for a more comfortable pair"
+      }
+    },
+    {
+      "date": "2026-11-08",
+      "storyId": "resident-and-clerk-compare-phone-plan-options",
+      "domain": "phone_internet",
+      "scenario": "customer_compares_service_only_and_device_costs_before_choosing_a_phone_plan",
+      "lexicalThemes": [
+        "phone plans",
+        "monthly charges",
+        "included features",
+        "comparing personal usage",
+        "clarifying a displayed amount"
+      ],
+      "targetVocabulary": [
+        "monthly price",
+        "included",
+        "service plan",
+        "device payment",
+        "data",
+        "calls",
+        "messages",
+        "I rarely use",
+        "without the device charge"
+      ],
+      "brief": "Fully AI-generated dialogue. Customer Yaara speaks with mobile-service clerk Omer; they are the only two speakers. Yaara is considering changing her phone plan because she mostly uses calls and messages and rarely streams video away from home. She asks what the monthly price includes and whether the displayed plan also includes a device payment. Omer explains that the amount shown is for service only and points to a separate device charge on the comparison sheet. Yaara asks him to repeat the distinction, then says she does not need the extra data allowance in the more expensive option. Omer compares the plan features with her typical use and clarifies that the lower option has less data but still includes the calling and messaging features she uses. Yaara asks whether she can keep her current phone, and Omer confirms that choosing the service plan does not require buying a new device. She chooses the lower option, asks him to show the monthly amount with the device charge excluded, and checks that the selection on the screen matches what they discussed before proceeding. Role map: Yaara is the customer who owns her phone, describes her usage, and makes the plan choice; Omer is the clerk who can explain the displayed options and enter the selection. Yaara authorizes the choice, and Omer updates it. No exact prices, fees, or current provider terms are asserted. The dialogue supports 8–12 short alternating turns.",
+      "storyPattern": {
+        "goal": "Choose a service plan that matches actual phone use",
+        "relationship": "Customer and mobile-service clerk",
+        "interaction": "Separate service costs from device costs and compare relevant features",
+        "outcome": "Select the suitable option after checking what the displayed amount covers"
+      }
+    },
+    {
+      "date": "2026-11-08",
+      "storyId": "friends-adjust-a-home-meal-around-what-is-left",
+      "domain": "food_cooking",
+      "scenario": "friends_make_a_warm_chickpea_and_cabbage_meal_by_testing_and_combining_two_textures",
+      "lexicalThemes": [
+        "planning a meal from available food",
+        "vegetable preparation",
+        "testing a cooking choice",
+        "texture and preference",
+        "serving and saving ingredients"
+      ],
+      "targetVocabulary": [
+        "leftovers",
+        "chickpeas",
+        "cabbage",
+        "carrot",
+        "slice",
+        "grate",
+        "crunchy",
+        "warm separately",
+        "save for later"
+      ],
+      "brief": "When friends Nirit and Ziv start making dinner, they find a container of cooked chickpeas, half a cabbage, and a few carrots in the refrigerator. Nirit suggests making a warm salad, while Ziv worries the cabbage will stay too crunchy if they add it at the end. They slice the vegetables and cook a small portion of cabbage first to see how quickly it softens. It stays crisp enough, so they decide to warm the chickpeas separately with spices and leave some cabbage raw for contrast. Ziv asks whether the remaining carrots should go in the pan too; Nirit suggests grating them into the raw portion instead. They serve the two textures together with bread, using the food already at home and saving one carrot for another meal.",
+      "storyPattern": {
+        "goal": "Make a satisfying meal from ingredients already at home",
+        "relationship": "Friends sharing dinner preparation",
+        "interaction": "Test a cooking choice and combine different preferences",
+        "outcome": "Serve contrasting textures and keep one ingredient for later"
+      }
+    },
+    {
+      "date": "2026-11-08",
+      "storyId": "employee-and-supervisor-set-task-priorities",
+      "domain": "employment_jobs",
+      "scenario": "new_employee_gets_help_prioritizing_three_tasks_and_starts_with_the_soonest_need",
+      "lexicalThemes": [
+        "work tasks",
+        "priorities",
+        "time"
+      ],
+      "targetVocabulary": [
+        "task",
+        "first",
+        "soon",
+        "finish",
+        "start"
+      ],
+      "brief": "A new employee has three tasks and is unsure which one to finish first. Her supervisor explains which task is needed soonest, and she starts with that one.",
+      "storyPattern": {
+        "goal": "Choose which work task to do first",
+        "relationship": "New employee and supervisor",
+        "interaction": "Explain competing tasks and set an order",
+        "outcome": "Start with the most time-sensitive task"
+      }
+    },
+    {
+      "date": "2026-11-08",
+      "storyId": "resident-prepares-a-copy-question-for-an-appointment",
+      "domain": "government_documents",
+      "scenario": "resident_sets_aside_two_document_copies_and_writes_a_question_about_which_to_bring",
+      "lexicalThemes": [
+        "documents",
+        "copies",
+        "appointments"
+      ],
+      "targetVocabulary": [
+        "copy",
+        "original",
+        "bring",
+        "appointment",
+        "which"
+      ],
+      "brief": "Before an appointment, a resident finds two different copies of a document in her folder and is unsure which one to bring. She writes down the question and sets both copies aside until she can clarify it.",
+      "storyPattern": {
+        "goal": "Prepare the right document for an appointment",
+        "relationship": "Resident acting independently",
+        "interaction": "Notice uncertainty and record a specific question",
+        "outcome": "Keep both copies ready pending clarification"
+      }
+    },
+    {
+      "date": "2026-11-08",
+      "storyId": "resident-asks-how-to-check-a-monthly-bill-change",
+      "domain": "bills_taxes",
+      "scenario": "resident_marks_an_unfamiliar_line_on_a_changed_household_bill_to_clarify_its_meaning",
+      "lexicalThemes": [
+        "household bills",
+        "changes",
+        "clarification"
+      ],
+      "targetVocabulary": [
+        "bill",
+        "line",
+        "different",
+        "month",
+        "explain"
+      ],
+      "brief": "A resident notices that a household bill looks different from the previous month but cannot tell which line explains the change. She marks the unfamiliar line and plans to ask the provider what it refers to before drawing a conclusion.",
+      "storyPattern": {
+        "goal": "Understand an unfamiliar change on a bill",
+        "relationship": "Resident acting independently",
+        "interaction": "Identify the unclear line without assuming an error",
+        "outcome": "Keep a focused question for clarification"
+      }
+    },
+    {
+      "date": "2026-11-08",
+      "storyId": "tenant-and-roommate-agree-on-a-quiet-hour",
+      "domain": "housing_landlord",
+      "scenario": "housemates_make_a_short_shared_space_plan_around_a_work_call_and_leisure",
+      "lexicalThemes": [
+        "home",
+        "work call",
+        "shared space"
+      ],
+      "targetVocabulary": [
+        "quiet",
+        "call",
+        "room",
+        "before",
+        "agree"
+      ],
+      "brief": "A tenant needs a quiet stretch to take a work call, while her roommate plans to use the living room. She explains the timing, and they agree that she can use the room briefly before the roommate starts watching a film.",
+      "storyPattern": {
+        "goal": "Find quiet space for a work call",
+        "relationship": "Housemates sharing a home",
+        "interaction": "Explain competing needs and negotiate a short turn",
+        "outcome": "Use the shared room briefly by agreement"
+      }
+    },
+    {
+      "date": "2026-11-08",
+      "storyId": "driver-chooses-a-parking-spot-with-room-to-exit",
+      "domain": "driving_parking",
+      "scenario": "driver_skips_a_narrow_parking_space_and_chooses_one_with_room_for_passengers",
+      "lexicalThemes": [
+        "parking",
+        "space",
+        "passengers"
+      ],
+      "targetVocabulary": [
+        "space",
+        "narrow",
+        "door",
+        "park",
+        "room"
+      ],
+      "brief": "A driver finds a narrow parking space beside a wall and notices there would be little room to open the passenger door. She passes it and parks in a wider space farther along, making it easier for everyone to get out.",
+      "storyPattern": {
+        "goal": "Park where passengers can get out comfortably",
+        "relationship": "Driver acting independently",
+        "interaction": "Notice a practical limitation and choose another option",
+        "outcome": "Park in a wider space"
+      }
+    },
+    {
+      "date": "2026-11-08",
+      "storyId": "customer-asks-what-is-included-in-a-monthly-internet-price",
+      "domain": "phone_internet",
+      "scenario": "customer_clarifies_what_a_displayed_monthly_internet_plan_price_includes_before_deciding",
+      "lexicalThemes": [
+        "internet plans",
+        "monthly price",
+        "included service"
+      ],
+      "targetVocabulary": [
+        "monthly",
+        "price",
+        "include",
+        "plan",
+        "compare"
+      ],
+      "brief": "A customer compares two home internet plans and notices that one monthly price is displayed without much detail. She asks the representative what the amount includes, and writes down the answer before choosing whether to compare further.",
+      "storyPattern": {
+        "goal": "Understand what a monthly plan price covers",
+        "relationship": "Customer and service representative",
+        "interaction": "Ask for clarification before making a choice",
+        "outcome": "Record the explanation and leave the decision open"
+      }
+    },
+    {
+      "date": "2026-11-08",
+      "storyId": "customer-wraps-a-parcel-before-sending-it",
+      "domain": "postal_parcels",
+      "scenario": "sender_pads_shifting_parcel_contents_with_available_packing_material_before_sending",
+      "lexicalThemes": [
+        "mail",
+        "parcels",
+        "packing"
+      ],
+      "targetVocabulary": [
+        "parcel",
+        "box",
+        "inside",
+        "wrap",
+        "send"
+      ],
+      "brief": "A customer is sending a small parcel and notices that its contents shift inside the box when she lifts it. She adds folded paper around them, and the contents stay in place when she checks again.",
+      "storyPattern": {
+        "goal": "Keep parcel contents from shifting",
+        "relationship": "Sender acting independently",
+        "interaction": "Notice loose packing and add padding",
+        "outcome": "Contents stay in place"
+      }
+    },
+    {
+      "date": "2026-11-08",
+      "storyId": "customer-clarifies-a-dine-in-order",
+      "domain": "food_service_orders",
+      "scenario": "diner_corrects_a_takeaway_packaging_mix_up_and_eats_at_a_table",
+      "lexicalThemes": [
+        "restaurant",
+        "order",
+        "dine in"
+      ],
+      "targetVocabulary": [
+        "order",
+        "here",
+        "to go",
+        "plate",
+        "table"
+      ],
+      "brief": "At a small restaurant, a customer realizes the meal she ordered was packed to go, though she planned to eat there. She explains the mix-up, and the worker opens the package so she can use a plate at a table.",
+      "storyPattern": {
+        "goal": "Eat a meal at the restaurant rather than take it away",
+        "relationship": "Diner and restaurant worker",
+        "interaction": "Explain a small order misunderstanding",
+        "outcome": "Receive the meal on a plate"
+      }
+    },
+    {
+      "date": "2026-11-08",
+      "storyId": "cook-saves-a-pot-of-pasta-water-for-the-sauce",
+      "domain": "food_cooking",
+      "scenario": "cook_saves_some_pasta_water_and_uses_it_to_help_the_sauce_coat_the_pasta",
+      "lexicalThemes": [
+        "cooking",
+        "pasta",
+        "sauce"
+      ],
+      "targetVocabulary": [
+        "drain",
+        "save",
+        "water",
+        "sauce",
+        "stir"
+      ],
+      "brief": "A cook is about to drain pasta when her brother reminds her to save a cup of the cooking water. She adds a little to the sauce, which coats the pasta more evenly.",
+      "storyPattern": {
+        "goal": "Help sauce coat cooked pasta",
+        "relationship": "Siblings preparing a meal",
+        "interaction": "Offer a timely cooking suggestion",
+        "outcome": "Add saved cooking water to the sauce"
+      }
+    },
+    {
+      "date": "2026-11-08",
+      "storyId": "walkers-pick-up-litter-near-a-bench",
+      "domain": "nature_outdoors",
+      "scenario": "parent_and_child_pick_up_a_wrapper_beside_a_bench_and_leave_the_resting_spot_tidy",
+      "lexicalThemes": [
+        "outdoors",
+        "litter",
+        "cooperation"
+      ],
+      "targetVocabulary": [
+        "wrapper",
+        "bench",
+        "bag",
+        "pick up",
+        "path"
+      ],
+      "brief": "On a walk, a parent notices an empty wrapper beside a bench and picks it up while the child holds the bag open. They leave the resting spot tidy and continue along the path.",
+      "storyPattern": {
+        "goal": "Leave a resting place tidy",
+        "relationship": "Parent and child outdoors",
+        "interaction": "Notice litter and cooperate on a small cleanup",
+        "outcome": "Carry the wrapper away and continue walking"
+      }
+    },
+    {
+      "date": "2026-11-08",
+      "storyId": "partners-postpone-a-shared-purchase",
+      "domain": "banking_credit",
+      "scenario": "partners_pause_a_joint_purchase_to_agree_on_each_persons_contribution",
+      "lexicalThemes": [
+        "shared expenses",
+        "contributions",
+        "making a joint decision"
+      ],
+      "targetVocabulary": [
+        "contribute",
+        "each",
+        "together",
+        "wait",
+        "agree",
+        "amount"
+      ],
+      "brief": "Two partners are about to buy a new kitchen appliance together, but one realizes they have not agreed on how much each will contribute. They decide to wait, talk through a comfortable amount for each, and return to the purchase with a clear plan.",
+      "storyPattern": {
+        "goal": "Agree on contributions before a joint purchase",
+        "relationship": "Partners sharing household expenses",
+        "interaction": "Raise a concern and discuss what each can contribute",
+        "outcome": "Postpone the purchase until both agree on a plan"
+      }
     }
   ]
 }
