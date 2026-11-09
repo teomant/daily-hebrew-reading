@@ -16367,6 +16367,436 @@
         "interaction": "Raise a concern and discuss what each can contribute",
         "outcome": "Postpone the purchase until both agree on a plan"
       }
+    },
+    {
+      "date": "2026-11-09",
+      "storyId": "applicant-reframes-a-job-interview-answer",
+      "domain": "employment_jobs",
+      "scenario": "applicant_clarifies_the_scope_of_her_previous_role_and_discusses_start_availability",
+      "lexicalThemes": [
+        "job interview",
+        "work experience",
+        "responsibilities",
+        "availability"
+      ],
+      "targetVocabulary": [
+        "I worked as",
+        "I was responsible for",
+        "I supported the team",
+        "I did not supervise",
+        "could you repeat that",
+        "available",
+        "give notice",
+        "next step"
+      ],
+      "brief": "Fully AI-generated dialogue. Job applicant Dana speaks with interviewer Gil; they are the only two speakers. Dana is applying for an administrative role and wants to explain her experience clearly without overstating it. Gil asks what she did in her previous position, and Dana describes coordinating appointments and answering customer emails. When she says she “handled the office,” Gil asks whether she managed the whole office; Dana clarifies that she supported the team but did not supervise anyone. Gil asks what she would bring to this role, and Dana gives a concrete example of keeping several requests organized during a busy week. She asks Gil to repeat the expected start-time range, then explains that she can begin soon but needs to give notice at her current job. They agree that she will send her available interview times for a follow-up conversation, and Gil notes the next step. Role map: Dana is the applicant who describes her own experience and availability; Gil is the interviewer who asks about the role and can explain the hiring process. Dana sends her available times, and Gil records the follow-up. The conversation supports 8–12 short alternating turns.",
+      "storyPattern": {
+        "goal": "Present relevant experience accurately and discuss availability",
+        "relationship": "Job applicant and interviewer",
+        "interaction": "Explain responsibilities, clarify scope, and ask about timing",
+        "outcome": "Agree on availability details for a follow-up"
+      }
+    },
+    {
+      "date": "2026-11-09",
+      "storyId": "parent-clarifies-a-school-absence-message",
+      "domain": "school_childcare",
+      "scenario": "parent_clarifies_a_school_absence_message_and_sends_a_brief_note",
+      "lexicalThemes": [
+        "school message",
+        "child absence",
+        "written note",
+        "asking someone to repeat"
+      ],
+      "targetVocabulary": [
+        "I read the message",
+        "I’m not sure whether",
+        "could you repeat that slowly",
+        "absence",
+        "written note",
+        "brief explanation",
+        "name and class",
+        "I understood"
+      ],
+      "brief": "Fully AI-generated dialogue. Parent Yael speaks with school office coordinator Amir; they are the only two speakers. Yael has read a message from school about reporting absences but is unsure whether it asks her to call or send a written note. She explains that her child was home that morning with a mild, ordinary complaint and asks Amir to repeat the options slowly. Amir clarifies what the message requests for this particular absence and says a short written note is enough for the school’s record; he does not give medical advice. Yael checks that she should include the child’s name and class, then asks whether she needs to explain the whole morning. Amir says a brief explanation is fine. Yael writes the note while they are on the call and reads it back to check she has understood. Amir confirms he can pass it along to the teacher, and Yael sends the note. Role map: Yael is the parent who knows what happened and writes the absence note; Amir is the school coordinator who can explain the message and pass the note to the teacher. Yael sends the note, and Amir passes it along. The conversation supports 8–12 short alternating turns.",
+      "storyPattern": {
+        "goal": "Report a child’s absence in the requested way",
+        "relationship": "Parent and school coordinator",
+        "interaction": "Explain uncertainty, clarify the message, and check the needed details",
+        "outcome": "Send a concise note for the school record"
+      }
+    },
+    {
+      "date": "2026-11-09",
+      "storyId": "cook-prepares-a-work-lunch-without-a-microwave",
+      "domain": "food_cooking",
+      "scenario": "cook_packs_grain_salad_components_separately_for_a_cold_work_lunch",
+      "lexicalThemes": [
+        "preparing lunch",
+        "workday food",
+        "keeping ingredients fresh",
+        "sharing kitchen tasks"
+      ],
+      "targetVocabulary": [
+        "pack lunch",
+        "microwave",
+        "eat cold",
+        "cook",
+        "cool",
+        "chopped vegetables",
+        "dressing",
+        "separate containers",
+        "add a portion"
+      ],
+      "brief": "Before a workday, Liat packs lunch and remembers that the office microwave is being replaced, so she plans for food she can eat cold. Her partner suggests a grain salad, but Liat would rather not pack anything that will make the greens soggy. They cook a small pot of bulgur, spread it out to cool, and keep the chopped vegetables and dressing in separate containers. Liat asks whether the chickpeas should go in with the grains; her partner suggests packing them separately too, so she can add only as much as she wants. In the morning, she combines a portion in her lunch box and keeps the rest apart. The meal travels well, and she has a simple lunch ready without relying on a microwave.",
+      "storyPattern": {
+        "goal": "Prepare a portable lunch that works without reheating",
+        "relationship": "Partners sharing meal preparation",
+        "interaction": "Discuss texture preferences and pack ingredients separately",
+        "outcome": "Assemble a fresh, flexible lunch for work"
+      }
+    },
+    {
+      "date": "2026-11-09",
+      "storyId": "shopper-asks-to-reweigh-a-vegetable-bag",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_adjusts_a_bag_of_tomatoes_after_checking_the_weight",
+      "lexicalThemes": [
+        "buying produce",
+        "quantity",
+        "checking a weight",
+        "planning a meal"
+      ],
+      "targetVocabulary": [
+        "on the scale",
+        "heavier than I expected",
+        "how much do I need",
+        "take a few out",
+        "enough for two",
+        "weigh it again",
+        "I’ll keep this amount"
+      ],
+      "brief": "At a neighborhood shop, Amir notices that a bag of tomatoes on the scale seems heavier than the amount he intended to buy. He tells the cashier he only needs enough for tonight and asks if they can check the weight together. The cashier points out that the bag includes a few large tomatoes at the bottom, which Amir had not noticed. Amir takes two out and asks whether the smaller ones will be enough for a meal for two. The cashier says they should be, and Amir chooses to keep the smaller portion rather than pay for extra produce he may not use. They weigh it again, and Amir leaves with a quantity that suits his plan.",
+      "storyPattern": {
+        "goal": "Buy a produce quantity suited to an immediate meal",
+        "relationship": "Shopper and cashier",
+        "interaction": "Explain the intended amount and revise the selection after noticing the contents",
+        "outcome": "Reweigh and buy a smaller suitable portion"
+      }
+    },
+    {
+      "date": "2026-11-09",
+      "storyId": "friends-adjust-a-picnic-after-finding-a-windy-spot",
+      "domain": "nature_outdoors",
+      "scenario": "friends_move_a_picnic_to_a_wind_sheltered_spot_without_losing_the_view",
+      "lexicalThemes": [
+        "outdoor meal",
+        "wind",
+        "suggesting an alternative",
+        "settling in outdoors"
+      ],
+      "targetVocabulary": [
+        "picnic spot",
+        "the wind keeps lifting",
+        "move behind",
+        "blocks the wind",
+        "keep the view",
+        "weigh it down",
+        "roll away",
+        "sheltered side"
+      ],
+      "brief": "Two friends arrive at a quiet outdoor picnic spot with sandwiches and a light cloth, but a steady breeze keeps lifting the corners of the cloth. One friend suggests moving behind a low stone wall, while the other worries they will lose the view. They try sitting there briefly and discover that the wall blocks the wind without hiding the open landscape. They weigh down the cloth with their water bottles and move the food out of the breeze. One bottle rolls away, so they place it on the sheltered side instead. They settle in, eat their lunch, and enjoy the view without chasing napkins or holding the cloth down.",
+      "storyPattern": {
+        "goal": "Enjoy an outdoor meal in a comfortable spot",
+        "relationship": "Friends spending time outdoors together",
+        "interaction": "Test a suggested location and adjust to a practical drawback",
+        "outcome": "Settle in a sheltered place and enjoy the meal"
+      }
+    },
+    {
+      "date": "2026-11-09",
+      "storyId": "customer-pauses-a-joint-transfer-to-clarify-the-recipient",
+      "domain": "banking_credit",
+      "scenario": "siblings_pause_a_shared_gift_transfer_to_confirm_the_recipient",
+      "lexicalThemes": [
+        "money transfer",
+        "recipient",
+        "shared gift",
+        "confirm"
+      ],
+      "targetVocabulary": [
+        "transfer",
+        "recipient",
+        "abbreviated",
+        "pause",
+        "confirm"
+      ],
+      "brief": "Two siblings are about to send money toward a shared family gift when one notices that the recipient name is abbreviated. They pause the transfer, call their sibling to confirm the intended recipient, and proceed only after they agree.",
+      "storyPattern": {
+        "goal": "Avoid sending a shared contribution to the wrong recipient",
+        "relationship": "Siblings contributing to a gift",
+        "interaction": "Notice an ambiguous name and verify it together",
+        "outcome": "Proceed after agreeing on the recipient"
+      }
+    },
+    {
+      "date": "2026-11-09",
+      "storyId": "tenant-tells-landlord-about-a-stairwell-light",
+      "domain": "housing_landlord",
+      "scenario": "tenant_describes_a_dark_stairwell_section_to_the_landlord_and_uses_the_lit_side",
+      "lexicalThemes": [
+        "building",
+        "stairwell",
+        "light",
+        "describe a problem"
+      ],
+      "targetVocabulary": [
+        "stairwell",
+        "landing",
+        "light",
+        "dark",
+        "describe"
+      ],
+      "brief": "A tenant notices that the building stairwell light goes out before she reaches the next landing and tells the landlord which section is dark. The landlord thanks her for the specific description, and she uses the lit side of the stairs on her way home.",
+      "storyPattern": {
+        "goal": "Report a specific shared-area problem",
+        "relationship": "Tenant and landlord",
+        "interaction": "Describe where the problem occurs",
+        "outcome": "Use the safer visible route for now"
+      }
+    },
+    {
+      "date": "2026-11-09",
+      "storyId": "housemates-decide-who-will-call-about-a-shared-bill",
+      "domain": "bills_taxes",
+      "scenario": "housemates_divide_a_call_and_note_gathering_task_about_a_shared_bill",
+      "lexicalThemes": [
+        "household bill",
+        "divide a task",
+        "call",
+        "shared notes"
+      ],
+      "targetVocabulary": [
+        "bill",
+        "housemates",
+        "call",
+        "notes",
+        "compare"
+      ],
+      "brief": "Two housemates find a household bill on the table and neither remembers whether they already discussed it. One offers to call the provider while the other gathers their shared notes, so they can compare what they learn afterward.",
+      "storyPattern": {
+        "goal": "Clarify a shared household bill together",
+        "relationship": "Housemates sharing expenses",
+        "interaction": "Divide the call and information-gathering tasks",
+        "outcome": "Plan to compare the information afterward"
+      }
+    },
+    {
+      "date": "2026-11-09",
+      "storyId": "customer-orders-a-work-lunch-and-checks-the-side",
+      "domain": "food_service_orders",
+      "scenario": "worker_near_an_office_checks_what_comes_with_a_lunch_plate_and_adds_a_side",
+      "lexicalThemes": [
+        "lunch order",
+        "what is included",
+        "side salad",
+        "pay"
+      ],
+      "targetVocabulary": [
+        "lunch",
+        "comes with",
+        "side salad",
+        "bread",
+        "pay"
+      ],
+      "brief": "Near her workplace, a customer orders a lunch plate and asks whether it comes with a side salad or only bread. The worker says it includes bread, so she chooses a small salad separately and pays for both.",
+      "storyPattern": {
+        "goal": "Choose a lunch with the desired side",
+        "relationship": "Customer and food-service worker",
+        "interaction": "Ask what accompanies a meal and choose an addition",
+        "outcome": "Pay for the meal and selected side"
+      }
+    },
+    {
+      "date": "2026-11-09",
+      "storyId": "child-corrects-a-misunderstood-school-reminder",
+      "domain": "school_childcare",
+      "scenario": "child_corrects_a_parent_misreading_a_school_reminder_about_a_book",
+      "lexicalThemes": [
+        "school message",
+        "reminder",
+        "correct a misunderstanding",
+        "school bag"
+      ],
+      "targetVocabulary": [
+        "reminder",
+        "bring",
+        "return",
+        "message",
+        "book"
+      ],
+      "brief": "A child tells her father that the school reminder was about bringing a book, not returning one. He checks the message again, thanks her for catching the mistake, and puts the book in her bag.",
+      "storyPattern": {
+        "goal": "Prepare the right item for school",
+        "relationship": "Child and parent",
+        "interaction": "Correct a mistaken interpretation of a reminder",
+        "outcome": "Pack the needed book"
+      }
+    },
+    {
+      "date": "2026-11-09",
+      "storyId": "stranger-repeats-a-phone-number-slowly",
+      "domain": "phone_internet",
+      "scenario": "stranger_repeats_a_phone_number_slowly_for_someone_calling_about_a_lost_item",
+      "lexicalThemes": [
+        "phone call",
+        "repeat slowly",
+        "missed digits",
+        "write down"
+      ],
+      "targetVocabulary": [
+        "number",
+        "repeat",
+        "slowly",
+        "digits",
+        "write down"
+      ],
+      "brief": "At a community noticeboard, one person gives another a phone number to call about a lost scarf. The listener admits she missed the last digits, and the stranger repeats the number slowly while she writes it down.",
+      "storyPattern": {
+        "goal": "Get a phone number accurately",
+        "relationship": "Strangers sharing information",
+        "interaction": "Admit what was missed and ask for a slower repetition",
+        "outcome": "Write down the complete number"
+      }
+    },
+    {
+      "date": "2026-11-09",
+      "storyId": "shopper-returns-a-basket-left-at-the-checkout",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_returns_an_abandoned_empty_basket_to_the_stack",
+      "lexicalThemes": [
+        "shopping basket",
+        "checkout",
+        "notice",
+        "return"
+      ],
+      "targetVocabulary": [
+        "basket",
+        "empty",
+        "checkout",
+        "stack",
+        "return"
+      ],
+      "brief": "A shopper notices an empty basket left beside the checkout and brings it back to the stack near the entrance. The next customer reaches for a basket without having to search for one.",
+      "storyPattern": {
+        "goal": "Put a stray basket back for other shoppers",
+        "relationship": "Shopper helping other customers",
+        "interaction": "Notice an unattended basket and return it",
+        "outcome": "Make a basket available at the entrance"
+      }
+    },
+    {
+      "date": "2026-11-09",
+      "storyId": "cook-packs-a-wrap-so-the-filling-stays-inside",
+      "domain": "food_cooking",
+      "scenario": "cook_folds_a_hummus_and_cucumber_wrap_to_keep_the_filling_inside",
+      "lexicalThemes": [
+        "simple lunch",
+        "flatbread",
+        "filling",
+        "fold and roll"
+      ],
+      "targetVocabulary": [
+        "flatbread",
+        "hummus",
+        "filling",
+        "edge",
+        "wrap"
+      ],
+      "brief": "Before work, a cook spreads hummus on a flatbread but keeps the cucumber filling away from the edge. She folds the sides in before rolling, and the wrap holds together in her lunch container.",
+      "storyPattern": {
+        "goal": "Pack a lunch that is easy to carry",
+        "relationship": "Person preparing food independently",
+        "interaction": "Adjust filling placement and fold before rolling",
+        "outcome": "Keep the wrap together in its container"
+      }
+    },
+    {
+      "date": "2026-11-09",
+      "storyId": "day-trippers-share-a-window-seat-for-a-short-ride",
+      "domain": "travel_day_trips",
+      "scenario": "friends_take_turns_at_a_window_seat_during_a_short_train_ride",
+      "lexicalThemes": [
+        "short journey",
+        "window seat",
+        "take turns",
+        "friendly negotiation"
+      ],
+      "targetVocabulary": [
+        "train",
+        "window seat",
+        "few stops",
+        "switch",
+        "turn"
+      ],
+      "brief": "On a short train ride, two friends both reach for the window seat, then laugh when they realize it is only a few stops. One takes the window seat for the first part, and they switch at the next stop.",
+      "storyPattern": {
+        "goal": "Share a preferred seat during a short trip",
+        "relationship": "Friends traveling together",
+        "interaction": "Notice a shared preference and take turns",
+        "outcome": "Both get a window view"
+      }
+    },
+    {
+      "date": "2026-11-09",
+      "storyId": "coworkers-share-a-small-work-task-before-a-call",
+      "domain": "employment_jobs",
+      "scenario": "coworkers_split_a_folder_labeling_task_so_both_can_join_a_scheduled_call_on_time",
+      "lexicalThemes": [
+        "work tasks",
+        "offering help",
+        "sharing a task",
+        "time"
+      ],
+      "targetVocabulary": [
+        "label",
+        "folder",
+        "half",
+        "offer to help",
+        "finish on time",
+        "call"
+      ],
+      "brief": "Before a scheduled call, one employee realizes she has not finished labeling a stack of folders. Her colleague offers to label half, and they finish in time to join the call together.",
+      "storyPattern": {
+        "goal": "Finish a small task before a work commitment",
+        "relationship": "Coworkers sharing responsibility",
+        "interaction": "Offer and accept help dividing the task",
+        "outcome": "Complete it in time to join together"
+      }
+    },
+    {
+      "date": "2026-11-09",
+      "storyId": "employee-offers-to-cover-a-short-opening",
+      "domain": "employment_jobs",
+      "scenario": "coworker_takes_over_a_brief_front_desk_duty_after_getting_a_quick_handover",
+      "lexicalThemes": [
+        "workplace duties",
+        "offering help",
+        "brief handover"
+      ],
+      "targetVocabulary": [
+        "take over",
+        "for a few minutes",
+        "waiting",
+        "return"
+      ],
+      "brief": "An employee notices that her colleague has to step away just as a line begins to form, and offers to take over the front desk for a few minutes. Her colleague explains the one request still waiting, and the employee handles it until she returns.",
+      "storyPattern": {
+        "goal": "Cover a brief gap in a coworker's duties",
+        "relationship": "Coworkers on the same shift",
+        "interaction": "Offer help and receive a concise handover",
+        "outcome": "Handle the waiting request until the coworker returns"
+      }
     }
   ]
 }
