@@ -16797,6 +16797,463 @@
         "interaction": "Offer help and receive a concise handover",
         "outcome": "Handle the waiting request until the coworker returns"
       }
+    },
+    {
+      "date": "2026-11-10",
+      "storyId": "renter-and-landlord-compare-room-uses-before-signing",
+      "domain": "housing_landlord",
+      "scenario": "prospective_tenant_and_landlord_match_room_layout_to_work_and_dining_needs",
+      "lexicalThemes": [
+        "renting a home",
+        "room layout",
+        "working from home",
+        "measuring furniture",
+        "items included in a rental"
+      ],
+      "targetVocabulary": [
+        "quiet room",
+        "desk",
+        "bookcase",
+        "dining table",
+        "measure",
+        "fit",
+        "shelves",
+        "included",
+        "lease"
+      ],
+      "brief": "During a viewing, prospective tenant Lior explains to the landlord, Neta, that he works from home and needs a quiet place for calls, but also wants room for a dining table. Neta shows him that the smaller bedroom faces the courtyard while the larger room is beside the building entrance. Lior asks whether the smaller room can fit a desk and a narrow bookcase; they measure the wall together and discover the desk will fit if the bookcase goes in the living room. Neta clarifies which shelves will remain in the apartment, and Lior explains that he can work with the existing ones. He chooses the apartment, and they agree to note the included shelves and room arrangement when they discuss the lease.",
+      "storyPattern": {
+        "goal": "Choose a rental layout that supports work and everyday home life",
+        "relationship": "Prospective tenant and landlord",
+        "interaction": "Explain competing room needs and measure a practical arrangement together",
+        "outcome": "Choose the home and record what furnishings are included"
+      }
+    },
+    {
+      "date": "2026-11-10",
+      "storyId": "neighbors-negotiate-a-shared-noise-plan",
+      "domain": "neighbors_building",
+      "scenario": "neighbors_adjust_bookcase_assembly_around_a_work_call_and_share_the_later_task",
+      "lexicalThemes": [
+        "neighbors",
+        "household noise",
+        "work calls",
+        "furniture assembly",
+        "negotiating timing"
+      ],
+      "targetVocabulary": [
+        "drilling",
+        "shelves",
+        "brackets",
+        "quiet",
+        "meeting",
+        "about how long",
+        "afterward",
+        "hold steady",
+        "wait",
+        "finish"
+      ],
+      "brief": "Fully AI-generated dialogue. Neighbors Yaara and Erez are the only speakers. Erez is assembling a bookcase at home and expects to make some noise; Yaara has an online work meeting in the next room. Yaara explains that she does not mind ordinary household sounds but asks whether he can avoid drilling during her call. Erez says he planned to drill then because the room is empty, and asks how long the meeting will last. Yaara gives an approximate end time and offers to help hold the bookcase steady afterward. Erez points out that he can assemble the shelves by hand first, but needs the drill only for the wall brackets. They agree he will do the quiet assembly now and wait until Yaara’s call is over to drill; she will message him when she is finished. Yaara takes her meeting, and Erez completes the louder part later with her help holding the furniture. Role map: Yaara needs quiet for her meeting and offers practical help; Erez owns the bookcase and performs the assembly. They are neighbors negotiating timing, not building management or service staff.",
+      "storyPattern": {
+        "goal": "Balance a household task with a neighbor's need for quiet",
+        "relationship": "Neighbors living nearby",
+        "interaction": "Explain different needs and divide quiet and noisy parts of a task",
+        "outcome": "Complete the assembly after the work call with practical help"
+      }
+    },
+    {
+      "date": "2026-11-10",
+      "storyId": "resident-and-insurer-document-a-window-incident",
+      "domain": "insurance_claims",
+      "scenario": "resident_reports_wind_damaged_window_and_sends_photos_without_assuming_coverage",
+      "lexicalThemes": [
+        "describing property damage",
+        "insurance report",
+        "timeline",
+        "photos",
+        "uncertain review"
+      ],
+      "targetVocabulary": [
+        "crack",
+        "window frame",
+        "sill",
+        "wind",
+        "noticed",
+        "still closed",
+        "report",
+        "photo",
+        "send",
+        "review"
+      ],
+      "brief": "Fully AI-generated dialogue. Resident Amir speaks with insurance representative Liat; they are the only two speakers. After strong wind rattles a window in Amir’s rented apartment, he notices a crack in the outer pane and a small piece of frame lying on the sill. He calls to describe what he saw and asks what information would help them record the incident. Liat asks when he noticed the damage and whether the window is still closed; Amir explains that he found it that morning and has not tried to open it. Liat clarifies that she can record the report and request photos, but cannot decide from the call whether anything is covered. Amir asks whether he should move the loose piece; Liat suggests he leave it in place if it is safe and send a clear photo of the window and frame. Amir takes the photos without handling the piece and emails them while they are speaking. Liat confirms that the images arrived and says the report is recorded for review; Amir also tells his landlord about the window. Role map: Amir is the resident who observed the damage and owns the photos; Liat is the representative who records the report and can confirm receipt, not coverage. Amir sends the photos and contacts the landlord; no coverage decision or entitlement is invented.",
+      "storyPattern": {
+        "goal": "Document newly noticed home damage for review",
+        "relationship": "Resident and insurance representative",
+        "interaction": "Describe the damage and clarify what can be recorded without promising a decision",
+        "outcome": "Send photos, record the report, and notify the landlord"
+      }
+    },
+    {
+      "date": "2026-11-10",
+      "storyId": "shopper-tests-a-folding-chair-before-choosing",
+      "domain": "shopping_returns",
+      "scenario": "shopper_compares_folded_chairs_for_balcony_space_and_floor_stability",
+      "lexicalThemes": [
+        "choosing household items",
+        "balcony space",
+        "trying a display item",
+        "comparing stability and weight",
+        "making a purchase"
+      ],
+      "targetVocabulary": [
+        "folding chair",
+        "display model",
+        "open",
+        "fit",
+        "slide",
+        "rubber tips",
+        "steady",
+        "heavy",
+        "carry",
+        "decide"
+      ],
+      "brief": "At a home-goods shop, Dana is choosing a folding chair for her small balcony and asks a store worker whether she can open the display model. The chair fits beside the balcony door, but Dana notices that its feet slide slightly on the smooth floor. The worker brings a second model with rubber tips; Dana tests it and finds it steadier, though it is heavier to carry upstairs. She asks whether the first model has replacement tips, and the worker says the display chair’s tips are part of its design rather than removable. Dana decides the steadier chair is more useful at home and buys it, carrying the folded chair out herself.",
+      "storyPattern": {
+        "goal": "Choose a practical household item for a limited space",
+        "relationship": "Shopper and store worker",
+        "interaction": "Test two options and compare a useful feature with a carrying drawback",
+        "outcome": "Buy the steadier option after trying it"
+      }
+    },
+    {
+      "date": "2026-11-10",
+      "storyId": "friends-adjust-seating-at-a-small-concert",
+      "domain": "arts_events",
+      "scenario": "friends_find_balanced_seats_after_noticing_speaker_and_pillar_at_a_small_concert",
+      "lexicalThemes": [
+        "attending a concert",
+        "seating preferences",
+        "sound",
+        "sightlines",
+        "adjusting plans"
+      ],
+      "targetVocabulary": [
+        "acoustic concert",
+        "tune",
+        "speaker",
+        "sharp sound",
+        "row",
+        "pillar",
+        "view",
+        "move over",
+        "sound check",
+        "settle in"
+      ],
+      "brief": "Friends Orly and Nadav arrive early for a small acoustic concert in a community hall and choose seats near the front. When the musicians begin tuning, Nadav realizes that a speaker beside them makes the sound too sharp, while Orly likes being close enough to see the instruments. They move a few rows back and listen to a short sound check; the music is clearer there, though a pillar partly blocks Orly’s view. Orly suggests shifting one seat to the side, and they find a pair with a good view and balanced sound. They settle in before the performance starts and enjoy the concert without blocking anyone’s sightline.",
+      "storyPattern": {
+        "goal": "Enjoy a live performance with a clear view and comfortable sound",
+        "relationship": "Friends attending an event together",
+        "interaction": "Compare listening and viewing preferences by trying nearby seats",
+        "outcome": "Find seats with balanced sound and an unobstructed view"
+      }
+    },
+    {
+      "date": "2026-11-10",
+      "storyId": "tenant-and-landlord-clarify-a-shared-charge",
+      "domain": "housing_landlord",
+      "scenario": "tenant_asks_landlord_what_a_shared_water_charge_covers_and_notes_the_explanation",
+      "lexicalThemes": [
+        "rent",
+        "shared charge",
+        "water use",
+        "common areas"
+      ],
+      "targetVocabulary": [
+        "rent",
+        "charge",
+        "shared",
+        "water",
+        "common area",
+        "explain",
+        "note"
+      ],
+      "brief": "A tenant sees a charge for the building’s shared water use alongside the rent and asks the landlord what the amount refers to. The landlord explains that it covers the common areas, and the tenant notes the explanation beside the charge.",
+      "storyPattern": {
+        "goal": "Understand a household charge",
+        "relationship": "Tenant and landlord",
+        "interaction": "Ask what a shared charge covers",
+        "outcome": "Note the landlord’s explanation"
+      }
+    },
+    {
+      "date": "2026-11-10",
+      "storyId": "resident-and-housemate-compare-electricity-use",
+      "domain": "bills_taxes",
+      "scenario": "housemates_agree_to_switch_off_a_shared_heater_when_leaving_the_room",
+      "lexicalThemes": [
+        "electricity",
+        "heater",
+        "shared home",
+        "household habit"
+      ],
+      "targetVocabulary": [
+        "electricity",
+        "heater",
+        "switch off",
+        "room",
+        "reminder",
+        "agree"
+      ],
+      "brief": "Two housemates notice that they have been using the heater at different times and agree to switch it off when they leave the room. They put a small reminder by the switch and decide to see whether the habit is easy to keep.",
+      "storyPattern": {
+        "goal": "Reduce unnecessary household energy use",
+        "relationship": "Housemates sharing a home",
+        "interaction": "Agree on a simple change in routine",
+        "outcome": "Place a reminder by the switch"
+      }
+    },
+    {
+      "date": "2026-11-10",
+      "storyId": "customer-labels-a-savings-envelope-for-a-household-goal",
+      "domain": "banking_credit",
+      "scenario": "customer_sets_aside_cash_for_a_replacement_household_appliance",
+      "lexicalThemes": [
+        "saving",
+        "cash",
+        "household purchase",
+        "explaining a goal"
+      ],
+      "targetVocabulary": [
+        "save",
+        "cash",
+        "envelope",
+        "kettle",
+        "separate",
+        "goal"
+      ],
+      "brief": "A customer sets aside a little cash each week for a replacement kettle and writes the goal on an envelope. When a friend asks whether the money is for groceries, she explains that she is keeping it separate for the household purchase.",
+      "storyPattern": {
+        "goal": "Save gradually for a household purchase",
+        "relationship": "Customer and friend",
+        "interaction": "Explain why money is being kept separate",
+        "outcome": "Keep the savings set aside for the purchase"
+      }
+    },
+    {
+      "date": "2026-11-10",
+      "storyId": "employee-admits-a-small-workplace-mistake",
+      "domain": "employment_jobs",
+      "scenario": "employee_owns_a_sorting_mistake_and_corrects_the_order_placement",
+      "lexicalThemes": [
+        "workplace",
+        "mistake",
+        "apology",
+        "correcting an error"
+      ],
+      "targetVocabulary": [
+        "mistake",
+        "wrong",
+        "tray",
+        "move",
+        "correct",
+        "label"
+      ],
+      "brief": "An employee realizes she placed a completed order in the wrong tray and tells her coworker before the next shift begins. They move it to the correct tray, and she adds a clear label to avoid another mix-up.",
+      "storyPattern": {
+        "goal": "Correct a small work error before it causes confusion",
+        "relationship": "Coworkers sharing a workplace",
+        "interaction": "Admit the mistake and fix it together",
+        "outcome": "Put the order in the right place and label it clearly"
+      }
+    },
+    {
+      "date": "2026-11-10",
+      "storyId": "resident-prepares-a-document-for-a-trip",
+      "domain": "travel_documents",
+      "scenario": "traveler_reorganizes_a_paper_confirmation_with_other_travel_documents",
+      "lexicalThemes": [
+        "travel papers",
+        "preparation",
+        "finding a document"
+      ],
+      "targetVocabulary": [
+        "trip",
+        "paper",
+        "confirmation",
+        "folder",
+        "find",
+        "easily"
+      ],
+      "brief": "Before a short trip, a traveler notices that a paper confirmation is folded into a small pocket of her bag and might be hard to find. She moves it to the folder with her other travel papers, so she can reach it easily.",
+      "storyPattern": {
+        "goal": "Keep a travel paper easy to find",
+        "relationship": "Traveler acting independently",
+        "interaction": "Notice the paper is inconveniently stored and move it",
+        "outcome": "Keep it with the other travel documents"
+      }
+    },
+    {
+      "date": "2026-11-10",
+      "storyId": "neighbor-and-resident-quietly-adjust-a-door",
+      "domain": "neighbors_building",
+      "scenario": "neighbors_find_a_quieter_way_to_close_a_shared_entrance_door",
+      "lexicalThemes": [
+        "neighbors",
+        "shared entrance",
+        "noise",
+        "polite suggestion"
+      ],
+      "targetVocabulary": [
+        "neighbor",
+        "door",
+        "shared",
+        "noise",
+        "gently",
+        "try"
+      ],
+      "brief": "A neighbor mentions that the shared entrance door has been banging shut in the evening. Another resident suggests pulling it closed gently, and they try it together; the door shuts without a loud bang.",
+      "storyPattern": {
+        "goal": "Reduce a repeated noise in a shared space",
+        "relationship": "Neighbors in the same building",
+        "interaction": "Mention the disturbance and test a simple adjustment",
+        "outcome": "Close the door more quietly"
+      }
+    },
+    {
+      "date": "2026-11-10",
+      "storyId": "shopper-keeps-a-household-item-after-a-size-check",
+      "domain": "shopping_returns",
+      "scenario": "shopper_compares_two_lampshade_sizes_at_home_and_decides_to_exchange",
+      "lexicalThemes": [
+        "household shopping",
+        "size",
+        "opinion",
+        "exchange"
+      ],
+      "targetVocabulary": [
+        "lampshade",
+        "large",
+        "small",
+        "compare",
+        "suit",
+        "exchange"
+      ],
+      "brief": "A shopper brings home a lampshade and finds it looks larger than expected beside the table. Her sister holds it up while they compare the two sizes, and the shopper decides the smaller one will suit the room better before arranging an exchange.",
+      "storyPattern": {
+        "goal": "Choose a household item that fits the room",
+        "relationship": "Sisters discussing a purchase",
+        "interaction": "Compare sizes in the intended space",
+        "outcome": "Decide to exchange for a smaller option"
+      }
+    },
+    {
+      "date": "2026-11-10",
+      "storyId": "resident-leaves-delivery-accessible-for-a-housemate",
+      "domain": "delivery_customer_service",
+      "scenario": "resident_keeps_a_housemates_parcel_visible_and_tells_them_where_it_is",
+      "lexicalThemes": [
+        "parcel",
+        "housemates",
+        "receiving a delivery",
+        "letting someone know"
+      ],
+      "targetVocabulary": [
+        "parcel",
+        "receive",
+        "table",
+        "leave",
+        "home",
+        "take"
+      ],
+      "brief": "A resident receives a parcel for her housemate and leaves it on the dining table instead of putting it away. When the housemate comes home, she points out where it is, and he takes it to his room.",
+      "storyPattern": {
+        "goal": "Keep a delivery easy for its recipient to find",
+        "relationship": "Housemates sharing a home",
+        "interaction": "Leave the parcel visible and point it out",
+        "outcome": "Recipient finds and takes the parcel"
+      }
+    },
+    {
+      "date": "2026-11-10",
+      "storyId": "driver-repositions-a-car-after-a-delivery",
+      "domain": "driving_parking",
+      "scenario": "driver_moves_a_car_from_a_loading_area_entrance",
+      "lexicalThemes": [
+        "parking",
+        "access",
+        "delivery vehicle",
+        "making room"
+      ],
+      "targetVocabulary": [
+        "car",
+        "park",
+        "entrance",
+        "loading area",
+        "move",
+        "room"
+      ],
+      "brief": "A driver notices that her parked car is partly blocking the entrance to a building’s loading area. She moves it to an open spot nearby, leaving enough room for a delivery vehicle to pull in.",
+      "storyPattern": {
+        "goal": "Clear access for a delivery",
+        "relationship": "Driver acting independently",
+        "interaction": "Notice an obstruction and move the car",
+        "outcome": "Leave the loading entrance clear"
+      }
+    },
+    {
+      "date": "2026-11-10",
+      "storyId": "cook-adjusts-the-heat-under-a-pan",
+      "domain": "food_cooking",
+      "scenario": "home_cook_lowers_heat_and_covers_pan_when_omelet_cooks_unevenly",
+      "lexicalThemes": [
+        "stove",
+        "omelet",
+        "heat",
+        "cooking adjustment"
+      ],
+      "targetVocabulary": [
+        "omelet",
+        "pan",
+        "heat",
+        "lower",
+        "cover",
+        "edge",
+        "middle"
+      ],
+      "brief": "While making an omelet, a cook sees that the edges are browning before the middle has set. She lowers the heat and covers the pan briefly, and the center cooks without the bottom getting too dark.",
+      "storyPattern": {
+        "goal": "Cook an omelet evenly",
+        "relationship": "Person cooking independently",
+        "interaction": "Notice uneven cooking and adjust the heat",
+        "outcome": "Set the center without overbrowning the bottom"
+      }
+    },
+    {
+      "date": "2026-11-10",
+      "storyId": "friends-choose-a-short-shady-walk",
+      "domain": "nature_outdoors",
+      "scenario": "friends_choose_a_shady_alternative_path_during_a_walk",
+      "lexicalThemes": [
+        "walking",
+        "shade",
+        "preferences",
+        "choosing a path"
+      ],
+      "targetVocabulary": [
+        "walk",
+        "sunny",
+        "shade",
+        "path",
+        "turn",
+        "continue"
+      ],
+      "brief": "Two friends begin walking on a sunny path, but one says she would rather stay in the shade. They turn onto a nearby tree-lined path and continue at an easy pace.",
+      "storyPattern": {
+        "goal": "Continue a walk in a more comfortable place",
+        "relationship": "Friends outdoors together",
+        "interaction": "Express a preference and choose another path",
+        "outcome": "Walk along a shaded route"
+      }
     }
   ]
 }
