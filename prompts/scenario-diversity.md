@@ -9,11 +9,19 @@ Then use other underrepresented allowed domains when the preferred choices repea
 Do not reduce the requested batch to fit the topic list.
 
 Prioritize common needs of adults who live in Israel and are learning Hebrew.
+Before choosing each scenario, identify what a learner would need to say or understand in that situation.
+If the answer is only describing a pleasant activity, choose a more useful situation.
+Prefer paying, returning an item, explaining a problem, understanding a bill, arranging childcare, describing availability, or asking for directions.
+Build the brief around an actual answer or action and the everyday spoken exchange that gets there.
 Use situations where the reader needs to understand or say something at work, in a shop, at home, on transport, at school, or with a service provider.
 Include asking someone to repeat, explaining a need, describing what happened, comparing options, and understanding an answer when they fit the situation.
 Do not use shared calendars or organizing digital files as story topics.
 Keep hobbies, workshops, cultural outings, and organized group activities occasional rather than central to the daily selection.
-For the existing experience pool, prefer ordinary cooking, meals, and practical details during a journey over elaborate leisure plans.
+Experience domains have no reserved daily slots.
+They may replace a targeted essential or routine item when they offer a distinct useful exchange and improve variety.
+Cooking is one optional topic, not the default alternative to leisure activities or a recurring recipe adjustment.
+Compare cooking scenarios across full stories and SHORTS, and favor another domain when recent issues already contain several.
+For occasional experience stories, prefer ordinary meals and practical details during a journey over elaborate leisure plans.
 An ordinary need can produce a useful story without a dramatic problem or an invented activity.
 
 The publication weekday does not imply that an office, shop, or service is open that day.

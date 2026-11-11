@@ -61,10 +61,12 @@ python -m src.generate_issue --date 2026-09-04 --additional-stories 2
 Generation validates completed content before replacing any repository files. Exhausted API/request failures, unusable planning or research, and invalid final combined content exit with an error and leave the published site unchanged. An individual adaptation that remains invalid after its retry is omitted instead, and later articles continue.
 
 Future articles target beginner Alef after alphabet decoding, with familiar words, explicit subjects, and one simple clause per sentence.
-Alef HISTORY and EVERYDAY may use 2–4 short paragraphs; harder versions normally use 4–5 developed paragraphs.
+HISTORY and EVERYDAY allow 2–12 paragraphs at every level; Alef normally uses 2–4 short paragraphs.
+Alef Plus and Bet may finish in two or three paragraphs, with 4–5 used only when distinct supported details need the space.
 Alef Plus connects familiar ideas, while Bet uses richer conversational language.
+All levels favor natural spoken Hebrew, familiar verbs, direct requests, and replies that answer the preceding turn.
 Each level should tell the story once, without appending a rewritten draft or restarting the same events after the outcome.
-The adaptation prompt checks for repeated event sequences, including repeats with different wording, before annotation.
+Before annotation, one final prose check covers repeated events, complete sentences, blank paragraphs, drafting fragments, grammar, and consistent roles across levels.
 The [wording reference](prompts/frequent-hebrew.md) includes short calibration examples.
 Difficulty remains a writing judgment, without a numeric vocabulary gate.
 New dialogue structure and lexical segmentation receive local checks and bounded repairs.
@@ -127,7 +129,9 @@ The OpenAI API is billed separately from ChatGPT Plus. The API uses the credits 
 Generation logs timestamp each phase and print its complete system and user prompts safely.
 Sourced discovery has up to three attempts: CURRENT remains local, while HISTORY has two Israel-focused passes and one Jewish-history fallback.
 Selected HISTORY research normally uses one batched call; two consecutive research request failures abort generation.
-Generated scenarios keep the existing topic pools and targets.
+Generated scenarios keep all three topic pools, but full stories now target two essential and three routine situations; SHORTS target five essential and six routine situations.
+Experience topics have no reserved daily slots and remain optional when they add useful spoken language and variety.
+Cooking is not the default alternative, and repeated cooking prompts have been reduced in the weekday lists.
 EVERYDAY, DIALOG, and SHORTS receive a topic list selected in `src/generate_issue.py` from the target publication weekday, plus a shared [diversity guide](prompts/scenario-diversity.md).
 Its themes rotate through work and school, housing and household needs, money and services, appointments and transport, groceries and meals, everyday problems at home, and routine family errands.
 Each weekday has eight practical topic areas; the request includes only that day's list.

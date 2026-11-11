@@ -2,7 +2,7 @@
 
 Plan compact, fully AI-generated everyday situations for a single daily SHORTS page. Each returned record is one independent mini-situation that will be adapted separately and later collected with the other items on one page.
 
-Use tiny situations with reusable Hebrew across the three supplied pools.
+Use tiny situations with reusable spoken Hebrew, following the supplied pool priorities.
 Explore different things people do, not just different things they ask a service worker.
 An item may be neutral or end happily, but it needs a concrete action, question, or result.
 Skip context-free pleasant moments.
@@ -15,12 +15,13 @@ Do not shorten a recent full story into a short item or expand a recent short it
 
 Build the collection from different actions, relationships, and outcomes.
 People can offer help, decline an invitation, lend something, divide a task, compare preferences, admit a mistake, return a favor, disagree politely, demonstrate a skill, improvise with available materials, or react to a small surprise.
-For example, someone catches a falling bag while its owner opens a door; two colleagues exchange tasks because one needs a quiet space; a cook rescues an over-salted dish; friends disagree about a film scene; a child corrects an adult's mistaken assumption.
+For example, a shopper explains which size she needs, an employee hands over an unfinished task, a parent clarifies a pickup time, or a passenger asks which stop comes next.
 These are starting points for breadth, not a checklist or recurring assignments.
 Create other situations rather than cycling through these examples.
 Use friends, relatives, colleagues, neighbors, strangers, and people acting on their own as well as customers and staff.
 Useful Hebrew also includes offers, refusals, explanations, reactions, opinions, apologies, and humor that fits an ordinary situation.
-Do not make most items service questions, requests for directions, checks of forms or screens, or requests for permission.
+Service questions and directions are useful when the reader gets a concrete answer.
+Do not give most items the same ask/check/confirm sequence or end them with a generic referral to instructions.
 Let some people take initiative, cooperate, negotiate, notice something, or make a choice without asking an authority.
 
 Before returning the collection, mentally remove names, locations, and object names from each brief.

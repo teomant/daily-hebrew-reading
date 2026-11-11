@@ -232,7 +232,7 @@ class GenerationTests(unittest.TestCase):
         )
         self.assertEqual(non_dialog_paragraphs["minItems"], 2)
 
-        for story_type, minimum in (("current", 2), ("history", 4)):
+        for story_type in ("current", "everyday", "history"):
             with self.subTest(story_type=story_type):
                 prose_schema = _adaptation_batch_schema(
                     [{"id": "sourced-story", "type": story_type}],
@@ -246,7 +246,7 @@ class GenerationTests(unittest.TestCase):
                 )
                 for level_id, level_schema in level_properties.items():
                     prose_paragraphs = level_schema["properties"]["paragraphs"]
-                    self.assertEqual(prose_paragraphs["minItems"], 2 if level_id == "alef" else minimum)
+                    self.assertEqual(prose_paragraphs["minItems"], 2)
                     self.assertEqual(prose_paragraphs["maxItems"], 12)
 
         short_schema = _adaptation_batch_schema(
@@ -1033,7 +1033,7 @@ class GenerationTests(unittest.TestCase):
         self.assertNotIn("canonical HTTPS", request)
         self.assertNotIn("Configured reading levels", request)
 
-    def test_generated_pool_targets_cover_all_three_lists_and_retry_overfill(self) -> None:
+    def test_generated_pool_targets_prioritize_practical_domains_and_retry_overfill(self) -> None:
         self.assertEqual(set(GENERATED_SCENARIO_DOMAINS), {
             domain for domains in GENERATED_SCENARIO_POOLS.values() for domain in domains
         })
@@ -1041,6 +1041,8 @@ class GenerationTests(unittest.TestCase):
         self.assertTrue({"food_cooking", "travel_day_trips"} <= set(GENERATED_SCENARIO_POOLS["experience"]))
         self.assertEqual(_requested_pool_counts(FULL_STORY_POOL_TARGETS, [], 5), FULL_STORY_POOL_TARGETS)
         self.assertEqual(_requested_pool_counts(SHORTS_POOL_TARGETS, [], 11), SHORTS_POOL_TARGETS)
+        self.assertEqual(FULL_STORY_POOL_TARGETS, {"essential": 2, "routine": 3})
+        self.assertEqual(SHORTS_POOL_TARGETS, {"essential": 5, "routine": 6})
 
         retained = [
             {"everydayMeta": {"domain": domain}}
@@ -1049,22 +1051,33 @@ class GenerationTests(unittest.TestCase):
         self.assertEqual(_generated_pool_counts(retained), {"essential": 3, "routine": 1, "experience": 0})
         self.assertEqual(
             _requested_pool_counts(FULL_STORY_POOL_TARGETS, retained, 1),
-            {"essential": 0, "routine": 0, "experience": 1},
+            {"essential": 0, "routine": 1},
         )
         retry_request = _generated_planning_request(
             "2026-10-09", 1, 1, 0, False, [], [], [], retained_generated=retained,
         )
-        self.assertIn('aim for {"essential": 0, "routine": 0, "experience": 1}', retry_request)
+        self.assertIn('aim for {"essential": 0, "routine": 1}', retry_request)
+        retained.append({"everydayMeta": {"domain": "food_cooking"}})
+        self.assertEqual(
+            _requested_pool_counts(FULL_STORY_POOL_TARGETS, retained, 1),
+            {"essential": 0, "routine": 1},
+        )
+        # Extra fallback slots still use positive targets after all quotas are met.
+        filled = retained + [{"everydayMeta": {"domain": "shopping_returns"}}] * 2
+        extra = _requested_pool_counts(FULL_STORY_POOL_TARGETS, filled, 2)
+        self.assertEqual(sum(extra.values()), 2)
+        self.assertNotIn("experience", extra)
 
-    def test_append_has_no_fixed_pool_quota_and_shorts_use_all_pools(self) -> None:
+    def test_append_has_no_fixed_pool_quota_and_shorts_allow_optional_experiences(self) -> None:
         append_request = _generated_planning_request(
             "2026-10-09", 2, 0, 0, True, [], [], [],
         )
         self.assertIn("there is no fixed pool quota", append_request)
         self.assertNotIn("normal five-story issue targets", append_request)
         shorts_request = _short_planning_request("2026-10-09", 11, [], [], [])
-        self.assertIn('target {"essential": 5, "routine": 4, "experience": 2}', shorts_request)
+        self.assertIn('target {"essential": 5, "routine": 6}', shorts_request)
         self.assertIn("food_cooking", shorts_request)
+        self.assertIn("optional alternatives, not reserved daily slots", shorts_request)
 
     def test_generated_domain_diversity_keeps_first_story_per_current_issue_domain(self) -> None:
         def generated(story_id: str, domain: str) -> dict:

@@ -1,5 +1,24 @@
 # Implementation log
 
+## 2026-11-12
+
+- The owner approved all four improvements from the November 8–11 article review and requested a stronger emphasis on real spoken Hebrew.
+  Kept communication and documentation in English and limited review to one focused direct pass.
+- Lowered the adaptation response-schema minimum to two paragraphs for EVERYDAY and HISTORY at every level.
+  CURRENT, DIALOG, SHORTS, and verb-practice format requirements remain unchanged.
+  Consolidated prose checking around distinct content, complete sentences, no repeated endings or drafting fragments, grammatical agreement, required prepositions, and consistent roles.
+- Added ordinary spoken phrasing and dialogue-response guidance, with simpler correct constructions preferred over formal vocabulary.
+  Preserved factual coverage and prohibited invented conversations in sourced stories.
+- Changed editorial pool targets to two essential and three routine full stories, and five essential and six routine SHORTS.
+  Experience domains remain available as optional alternatives without reserved slots.
+  Reduced repeated cooking suggestions in weekday lists and aligned SHORTS and DIALOG planning with practical conversational needs.
+  Updated README and product documentation.
+  Public validation, automatic cleanup, published content, model calls, and retry budgets are unchanged.
+- Four focused offline tests passed for prose/DIALOG/SHORTS response schemas, planning exclusions, revised pool targets, retained items, extra slots, and append behavior.
+  Whitespace checks passed, and one direct review found no remaining issues in the change.
+  No full-suite rerun, paid generation, or deployment was performed.
+  The effect on generated Hebrew must be assessed in the next normal issues.
+
 ## 2026-11-04
 
 - Fetched and fast-forwarded `master` to `a153146` before editing.

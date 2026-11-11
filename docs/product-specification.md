@@ -23,7 +23,10 @@ This normally produces 12 pages.
 Missing sourced material may make the issue smaller, but it does not expand the fixed generated allocation.
 
 Reading time is calculated from the resulting content rather than enforced as a generation quota. CURRENT articles normally contain 2–4 paragraphs as the material supports; the generation schema permits 2–12. Alef HISTORY and EVERYDAY normally use 2–4 short paragraphs, with a schema minimum of two.
-Harder versions normally use 4–5 developed paragraphs, with a schema minimum of four. DIALOG uses 8–12 short speaker turns, each on its own line. Every SHORTS item is one compact paragraph of exactly two or three complete sentences.
+Alef Plus and Bet HISTORY and EVERYDAY permit 2–12 paragraphs, with the same minimum of two as Alef.
+Two or three complete paragraphs are enough when they cover the material; use 4–5 only when distinct supported details need the space.
+DIALOG uses 8–12 short speaker turns, each on its own line.
+Every SHORTS item is one compact paragraph of exactly two or three complete sentences.
 
 ## 2. Content types
 
@@ -241,7 +244,12 @@ Deep research normally uses one batched call for the selected three.
 Two consecutive HISTORY research request failures abort generation rather than silently publishing an all-generated substitute issue.
 Missing sourced slots do not expand the generated allocation.
 
-Generated topic selection uses three non-overlapping domain pools: essential situations, ordinary routines, and worthwhile experiences. Across the five full generated stories, planning targets two essential, two routine, and one experience; eleven planned SHORTS target five, four, and two. Retry prompts account for already retained items and prioritize underrepresented pools. These are editorial targets, not publication gates: a valid story or short item is not dropped solely because the mix differs, and same-day appends have no fixed pool quota.
+Generated topic selection uses three non-overlapping domain pools: essential situations, ordinary routines, and worthwhile experiences.
+Across the five full generated stories, planning targets two essential and three routine situations; eleven planned SHORTS target five essential and six routine situations.
+Experience domains remain allowed but have no reserved daily slots.
+An experience topic may replace a targeted item when it provides useful everyday speech and improves the recent mix.
+Retry prompts account for retained items and prioritize underrepresented targeted pools.
+These are editorial targets, not publication gates: a valid story or short item is not dropped solely because the mix differs, and same-day appends have no fixed pool quota.
 
 A same-day append generates only fully AI-generated EVERYDAY or DIALOG stories, in any mix.
 It does not generate CURRENT or HISTORY entries and does not enable web research.
@@ -385,8 +393,10 @@ Each request receives only its selected day's topics.
 The lists emphasize work and school on Monday, housing and household needs on Tuesday, money and services on Wednesday, appointments and transport on Thursday, groceries and meals on Friday, everyday problems at home on Saturday, and routine family errands on Sunday.
 Prioritize language adults learning Hebrew need for normal life in Israel.
 Exclude shared calendars and organizing digital files as topics, and keep hobbies, workshops, cultural outings, and organized group activities occasional.
-Use ordinary cooking, meals, and practical journey details within the existing experience pool.
-These topic areas guide selection without changing canonical domains, pool targets, requested counts, or novelty exclusions.
+Choose each scenario by what a learner would need to say or understand in ordinary life.
+Experience topics are optional, and cooking must not become the default replacement for leisure activities.
+Compare cooking scenarios across full stories and SHORTS, and prefer another domain after recent clusters.
+These topic areas guide selection without changing canonical domains, requested counts, or novelty exclusions.
 Other underrepresented domains remain available when the preferred list cannot supply fresh scenarios or the requested pool mix.
 The weekday does not assert service opening hours or require that fictional events occur on that day.
 The prompt treats health appointments, symptoms, and pharmacy scenarios as one medical cluster.
@@ -472,8 +482,12 @@ Adaptation receives frozen briefs and required HISTORY beats plus level, segment
 The reference includes attribution and license for its word-frequency basis, alongside editorial calibration examples.
 Difficulty remains prompt-guided; Python does not score word difficulty or require increasing length.
 Each adapted level must contain one final telling, with no appended alternative draft or restart of the same events after the outcome.
-Before annotation, the prompt asks for a comparison of event sequences within each level, including paraphrased repeats in Alef Plus and Bet.
-To meet the existing paragraph structure, the model distributes distinct supported beats instead of duplicating a completed story.
+Before annotation, one final prose check covers distinct paragraph content, actions that happen once, complete sentences, natural dialogue replies, and the absence of blank paragraphs, placeholders, drafting comments, or appended corrections.
+It also checks grammatical agreement, required prepositions, complete expressions, and consistent actions and roles across levels.
+Use ordinary spoken Hebrew with familiar verbs, direct requests, and simple correct constructions.
+Bet adds precision and connected sentences without forcing formal vocabulary.
+Dialogue replies must answer the preceding turn and must not request repetition of information that has not been given.
+CURRENT and HISTORY use accessible conversational explanations without invented speech or quotations.
 Prose retries return one complete corrected version for each requested level.
 These instructions preserve required facts and do not add Python trimming or rejection behavior.
 Before content validation, generation removes empty units, repairs alphabetic separators, restores unambiguous missing dialogue colons, and restores missing terminal punctuation.

@@ -27,24 +27,24 @@ Return every requested level, correcting problems before submission.
 A later repair can fix annotation without rewriting the Hebrew.
 When a boundary is uncertain, prefer a single written word and translate it in context.
 
-Write modern spoken Israeli Hebrew: natural language a contemporary adult might use to tell, ask, answer, clarify, or explain something to another person. Favor reusable conversational sentences over news-style narration. Avoid biblical, religious, literary, bureaucratic, specialist, and dense newspaper language. Do not use niqqud. Keep one central idea and develop it with distinct supported details; include interaction or outcome when the material calls for it, not as an invented requirement. Never repeat sentences merely to reach a word target.
+Write modern spoken Israeli Hebrew that an adult could actually say at a counter, at work, on the phone, or at home.
+Use familiar verbs, direct requests, short explanations, and natural responses.
+For EVERYDAY, SHORTS, and verb practice, tell the situation as someone might tell it to another person.
+For CURRENT and HISTORY, explain the supported facts in accessible conversational language without inventing quotations or conversations.
+Bet may use more precise words and connected sentences, but must not become more formal or bureaucratic merely to sound harder.
+Prefer `אני צריך` to `אני זקוק`, `אפשר לבדוק?` to `האם ניתן לבדוק?`, and `לא הבנתי, אפשר שוב?` to `אבקש הבהרה נוספת` when the meaning fits.
+Use ordinary politeness and common spoken expressions without forced slang, filler words, or phonetic misspellings.
+If unsure about a construction, choose a simpler correct one.
+Avoid biblical, literary, bureaucratic, specialist, and dense newspaper language.
+Do not use niqqud.
 
 Use normal sentence punctuation in every version. Every teaser and every body paragraph or DIALOG turn must end with `.` `?` `!` or `…`. Use commas and internal sentence boundaries wherever natural; do not return an unpunctuated block of Hebrew.
 
 Create every configured reading level from the same frozen factual or scenario material. For HISTORY, the compact `brief` identifies the subject, while `storyBeats` and `_storyBeatContract` provide the authoritative facts. Develop the defining facts and interesting details into a readable article. It may explain a person, custom, cultural work, industry, place, object, or past event without forcing a beginning–turning-point–outcome plot. Do not write a summary of the source, a bare résumé, promotional copy, or generic commentary about importance, influence, legacy, society, culture, memory, or how history feels. Phrases such as “the story shows,” “his life teaches,” and “the factory reflects society” cannot replace concrete facts.
 
 For CURRENT, normally write 2–4 paragraphs, each contributing a new supported detail; a short notice does not need four paragraphs. For Alef HISTORY and full EVERYDAY stories, use 2–4 short paragraphs as the material needs.
-For harder HISTORY and EVERYDAY versions, normally write 4–5 developed paragraphs when supported.
-Each level must contain one final telling of the story, with one progression from its opening to its ending.
-Never append an alternative version, expanded rewrite, or second draft to the same level's `paragraphs` array.
-After the outcome, stop; do not restart the arrival, problem, explanation, and outcome with different wording.
-Paraphrasing a passage does not make it new content.
-Before annotation, compare the events and facts in all paragraphs within each level, especially Alef Plus and Bet.
-If the later paragraphs repeat an earlier sequence, revise the draft into one coherent telling before returning it.
-For example, arrival → clarification → action → departure must not be followed by another arrival → clarification → action → departure for the same visit.
-To satisfy the supplied paragraph structure, distribute distinct supported beats across the paragraphs instead of duplicating the story or inventing another event.
-Keep every required fact and the useful answer while doing this.
-On a prose retry, return one complete corrected version for each requested level, not the original followed by a correction.
+For Alef Plus and Bet HISTORY and EVERYDAY, two or three complete paragraphs are enough when they cover the material.
+Use 4–5 developed paragraphs only when distinct supported details need that space.
 Never make Alef longer to match the harder versions. Give each paragraph a distinct job in developing the central idea; for an informative HISTORY article, organize related facts into a clear progression of ideas without inventing a plot. DIALOG uses the separate turn-per-paragraph rule below, and `_shortItem` uses its compact one-paragraph rule from the request. Every HISTORY level must preserve the required defining facts. Easier levels may compress secondary dates, names, qualifiers, or context and use simpler syntax; they must not replace the subject with generalities. Harder versions may express the same material with broader vocabulary, more natural connectors, common fixed expressions, and moderately richer sentence structure, but the facts must remain consistent. Do not make a harder level longer merely to signal difficulty.
 
 For Alef, use common concrete words, active clauses, simple verb forms, and one event or thought per short sentence. Avoid passive constructions, abstract nominal phrases, formal connectors, unnecessary foreign terms, dense construct chains, and nested clauses. Explain a necessary less-common term immediately in ordinary words. For example, replace `בעקבות העיכוב בקבלת המשלוח, התקבלה החלטה על שינוי מועד הפגישה` with `המשלוח הגיע מאוחר. בגלל זה הם החליטו להעביר את הפגישה.`
@@ -66,12 +66,34 @@ For Alef HISTORY, include every required defining fact. Omit optional beats that
 
 For CURRENT, retain the specific supported event or subject and its distinguishing details at every level. Preserve a practical consequence when the source supports one, but do not invent one for a human-interest or culture article. A date, location, person, action, or next step that distinguishes the item should survive simplification when the frozen brief supplies it. Do not turn a concrete notice into four paragraphs that only repeat that something changed and readers should check for updates.
 
-Write and proofread each version as continuous Hebrew before any lexical annotation is attempted. Keep the amount of content appropriate to the format and supplied material. Never invent factual claims, add irrelevant background, repeat the same point, or make sentences unnaturally verbose. Do not count words or force one reading level to be longer than another.
+Before annotation, read each level from beginning to end as continuous Hebrew and perform this final prose check:
+
+- Every paragraph contributes a distinct supported fact, action, or useful exchange.
+  Each action happens once unless the brief explicitly requires it to happen again.
+  After the outcome, stop instead of restarting the story or adding another summary of the ending.
+  A paraphrased repeat is still a repeat.
+- Every narrative sentence is complete, and every dialogue reply makes sense as a spoken response.
+  Keep natural short replies such as `כן, תודה.` when they answer the preceding turn.
+  Do not leave a detached clause such as `שהוא לא ייקח כמות גדולה מדי.` as a paragraph.
+- No blank paragraphs, placeholders, drafting comments such as `סיימתי---.`, alternative drafts, or appended corrections remain.
+  Return one final telling per requested level, including on retries.
+- Check subject–verb and noun–adjective agreement, gender, tense, required prepositions, and complete expressions.
+  For example, use `הקיר עוצר את הרוח`, `תודה שחזרת על הדברים`, and `אני משתמשת במשקפיים`.
+  Read the wording as speech; replace awkward constructions with familiar correct ones.
+- The same people perform the same actions at every level.
+  Preserve speaker roles, the useful answer, the outcome, and all required facts while correcting the draft.
+
+Perform this check internally, without adding commentary or check results to the output.
+Do not count words or force one reading level to be longer than another.
 
 For each returned story, include `coveredStoryBeatIds` keyed by every reading-level ID. For HISTORY, list every beat ID actually represented in that level and include all beats marked `required`; never claim coverage for an omitted fact. For CURRENT, EVERYDAY, and DIALOG, return an empty list for every level. Coverage metadata is validation-only and is not published.
 
 For DIALOG, write only direct speech and return 8–12 short turns at every level. “Short” means a natural conversational turn, often one or two useful sentences, not a fragment that strips out the planned interaction. Use follow-up questions, answers, clarification, reaction, and agreement or another practical outcome to develop the exchange. Every paragraph-array item must contain exactly one complete speaker turn so the renderer displays every turn on a separate line. Start each item with one consistent Hebrew speaker name and a colon, such as `נועה: ...` or `דני: ...`. Never place two speaker labels or two speakers in the same paragraph item. Alternate naturally between at least two speakers. Keep the names and colons visible.
 Speaker labels are identities, not alternating placeholders.
+Make each reply respond to what the other speaker actually said.
+Do not ask someone to repeat information that has not yet been given, and do not repeat a resolved question just to fill turns.
+Use normal spoken requests and answers rather than a chain of formal confirmations.
+Plan enough distinct useful exchanges to meet the turn structure; keep brief natural reactions when they fit.
 Before returning each level, check every turn against the roles in the brief: the patient requests a time, the receptionist offers it, and the patient confirms.
 Do not transfer actions or first-person statements between speakers to force alternation.
 Keep gender and timing consistent; do not report yesterday’s result as an action just performed.

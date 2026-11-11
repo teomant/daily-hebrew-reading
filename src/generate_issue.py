@@ -112,8 +112,9 @@ GENERATED_SCENARIO_POOLS = {
 GENERATED_SCENARIO_DOMAINS = [
     domain for domains in GENERATED_SCENARIO_POOLS.values() for domain in domains
 ]
-FULL_STORY_POOL_TARGETS = {"essential": 2, "routine": 2, "experience": 1}
-SHORTS_POOL_TARGETS = {"essential": 5, "routine": 4, "experience": 2}
+# Experience domains remain allowed, but no daily slot is reserved for them.
+FULL_STORY_POOL_TARGETS = {"essential": 2, "routine": 3}
+SHORTS_POOL_TARGETS = {"essential": 5, "routine": 6}
 # Monday first, matching date.weekday(); topics are prompt preferences, not gates.
 GENERATED_WEEKDAY_TOPICS = (
     ("Monday", (
@@ -124,7 +125,7 @@ GENERATED_WEEKDAY_TOPICS = (
         "Understanding a school message and explaining a child's absence",
         "Making a phone call, leaving a message, and asking someone to repeat slowly",
         "Buying lunch near work, asking what is included, and paying",
-        "Preparing a simple lunch to take to work",
+        "Asking where work supplies are kept and who handles a customer's request",
     )),
     ("Tuesday", (
         "Renting a home, discussing room needs, and talking with a landlord",
@@ -134,7 +135,7 @@ GENERATED_WEEKDAY_TOPICS = (
         "Receiving deliveries and coordinating with someone at home",
         "Choosing household items, checking sizes, and making exchanges",
         "Laundry, cleaning supplies, and explaining an appliance problem",
-        "Using a stove or oven and preparing an ordinary meal at home",
+        "Moving into a flat, arranging keys, and checking which furniture is included",
     )),
     ("Wednesday", (
         "Withdrawing cash, making a bank transfer, and a card that does not work",
@@ -173,7 +174,7 @@ GENERATED_WEEKDAY_TOPICS = (
         "Borrowing a necessary household item and agreeing when to return it",
         "Buying pet food and explaining a pet's feeding or walking needs",
         "Telling family when you will arrive and asking someone to wait or start without you",
-        "Using leftovers and preparing food with what is already at home",
+        "Buying a replacement household item and describing the size or model needed",
         "Asking for a table, ordering a simple meal, and requesting the bill",
     )),
     ("Sunday", (
@@ -183,7 +184,7 @@ GENERATED_WEEKDAY_TOPICS = (
         "School schedules, childcare handovers, and family responsibilities",
         "Sending mail, collecting parcels, and combining errands",
         "Coordinating deliveries with work and family plans",
-        "Planning meals and using food already at home",
+        "Changing or cancelling a service appointment and confirming the new time",
         "Buying clothes or shoes, trying them on, and exchanging the wrong size",
     )),
 )
@@ -805,14 +806,12 @@ def _adaptation_batch_schema(
                 paragraphs = level_map["properties"][level_id]["properties"]["paragraphs"]
                 paragraphs["minItems"] = 1
                 paragraphs["maxItems"] = 1
-        elif story.get("type") == "current":
+        elif story.get("type") in {"current", "everyday", "history"}:
             for level_id in level_ids:
                 level_map["properties"][level_id]["properties"]["paragraphs"]["minItems"] = 2
         elif story.get("type") == "dialog":
             for level_id in level_ids:
                 level_map["properties"][level_id]["properties"]["paragraphs"]["minItems"] = 8
-        if story.get("type") in {"everyday", "history"} and not story.get("_shortItem") and "alef" in level_ids:
-            level_map["properties"]["alef"]["properties"]["paragraphs"]["minItems"] = 2
         contract = story.get(HISTORY_BEAT_CONTRACT_KEY)
         beat_ids = [beat["id"] for beat in contract] if isinstance(contract, list) else []
         coverage = {
@@ -1245,7 +1244,7 @@ Task: {mode}.
 {_weekday_topic_guidance(target_date)}
 Generate exactly {target_count} new stories, using only EVERYDAY and DIALOG. {f'Return exactly {everyday_count} EVERYDAY and {dialog_count} DIALOG stories.' if not is_append else 'For this same-day append, either generated type may be used.'} Do not use web search and do not produce CURRENT or HISTORY stories.
 
-Create each scenario independently from a concrete situation in the life of someone living in Israel. Include both necessary tasks and worthwhile everyday experiences. Give every story a goal or need, an interaction or shared action, useful questions or explanations, a meaningful development, and an outcome or next step. A reader should be able to reuse language from the story in a comparable situation. Return only English scenario briefs and metadata; do not write Hebrew adaptations.
+Create each scenario independently from a concrete situation in the life of someone living in Israel. Prioritize what a learner needs to say or understand in ordinary life. Give every story a goal or need, an interaction or shared action, useful questions or explanations, a meaningful development, and an outcome or next step. A reader should be able to reuse language from the story in a comparable situation. Return only English scenario briefs and metadata; do not write Hebrew adaptations.
 
 TOPIC POOLS AND STORY VALUE
 - Use only these canonical `domain` values: {json.dumps(GENERATED_SCENARIO_DOMAINS)}.
@@ -1253,7 +1252,7 @@ TOPIC POOLS AND STORY VALUE
 - {pool_guidance}
 - Give every scenario in this batch a different domain, including from generated stories already selected for this issue. Recent history may reuse a broad domain; it forbids repeated situations, not the domain itself.
 - Essential covers health, money, documents, housing, and work problems. Routine covers shopping, transport, services, pets, and family logistics. Experience covers cooking, day trips, cultural events, and outdoor activities. The owner's examples are not a fixed or exhaustive list.
-- Cooking and trip stories are welcome even when nothing goes wrong: show actual preparation, travel, discovery, or adjustment and a concrete outcome. Do not stop at friends deciding to try a hobby or assemble a shared album.
+- Experience topics are optional alternatives to the essential/routine targets, not reserved daily slots. Choose one only when it offers useful everyday speech and improves the recent mix. Do not default to cooking or leisure when filling a slot.
 - Vary goals, people, services, questions, and outcomes. Delays, mistakes, missing items, and repairs are useful when the response teaches a specific action; avoid five copies of the same phone-call-and-wait plot.
 - For banking, tax, medical, government, insurance, and pricing situations, the no-web brief must not assert current Israeli rules, exact fees or rates, deadlines, eligibility, coverage, diagnoses, or entitlements. Use concrete ordinary fictional observations, answers, choices, and actions. Refer to applicable terms only when needed, not as the default plot or ending. Keep speaker roles and who pays or does what consistent. Vary the interactions across the batch; do not hide an explanation behind “they read it and understood.”
 
@@ -1310,7 +1309,7 @@ Generate up to {target_count} independent mini-situations for one SHORTS page. R
 
 - Use only these canonical `domain` values: {json.dumps(GENERATED_SCENARIO_DOMAINS)}.
 - Pool membership: {json.dumps(GENERATED_SCENARIO_POOLS)}. Across eleven planned items, target {json.dumps(SHORTS_POOL_TARGETS)}; for these {target_count} remaining items, aim for {json.dumps(requested_pools)}. This is an editorial target, not a reason to discard a useful short item.
-- Give each item one tiny interaction or action and its immediate result, suitable for one compact paragraph of exactly two or three complete sentences. Cover essential questions, routine errands, and moments during cooking, trips, events, or outdoor activities.
+- Give each item one tiny interaction or action and its immediate result, suitable for one compact paragraph of exactly two or three complete sentences. Prioritize useful spoken language for essential needs and routine errands. Experience topics remain optional alternatives, not reserved daily slots; do not default to cooking or leisure to fill the collection.
 - Skip context-free pleasant moments. Vary situations, relationships, useful wording, and outcomes. A broad domain may repeat when the scenario itself is different.
 - Do not invent current rules, fees, deadlines, diagnoses, or entitlements in these no-web items; ask how to check or clarify them.
 - Include `storyPattern` with compact English goal, relationship, interaction, and outcome phrases without names or replaceable objects. Compare patterns across full stories and SHORTS; favor underrepresented interactions.
