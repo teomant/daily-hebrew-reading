@@ -17254,6 +17254,420 @@
         "interaction": "Express a preference and choose another path",
         "outcome": "Walk along a shaded route"
       }
+    },
+    {
+      "date": "2026-11-11",
+      "storyId": "shopper-switches-payment-after-card-declines",
+      "domain": "banking_credit",
+      "scenario": "shopper_pays_in_cash_after_a_card_payment_fails_at_a_small_purchase",
+      "lexicalThemes": [
+        "payment trouble",
+        "cash and cards",
+        "explaining a mistake",
+        "checkout interaction"
+      ],
+      "targetVocabulary": [
+        "the card was declined",
+        "try again",
+        "pay in cash",
+        "receipt",
+        "I thought it was working",
+        "check later"
+      ],
+      "brief": "At a neighborhood shop, Leora’s card is declined while she is paying for a few household items. She tells the cashier she thought the card was working and checks that she has not accidentally chosen a different account. The cashier explains that the terminal has not completed the payment and asks whether she wants to try once more. Leora notices she has another card in her wallet, but first checks that she has enough cash for the small purchase. She chooses to pay in cash rather than hold up the line, asks for a receipt, and puts the declined card away to check later. The purchase is settled, and she leaves with a clear note to investigate the card separately.",
+      "storyPattern": {
+        "goal": "Complete a small purchase when a card payment fails",
+        "relationship": "Shopper and cashier",
+        "interaction": "Clarify that payment did not go through and choose another way to pay",
+        "outcome": "Pay in cash, take a receipt, and investigate the card later"
+      }
+    },
+    {
+      "date": "2026-11-11",
+      "storyId": "friends-discuss-an-exhibit-label",
+      "domain": "arts_events",
+      "scenario": "friends_interpret_a_photograph_caption_and_revise_their_guess_about_the_scene",
+      "lexicalThemes": [
+        "visiting an exhibition",
+        "describing visual details",
+        "asking for repetition",
+        "sharing an interpretation"
+      ],
+      "targetVocabulary": [
+        "caption",
+        "photograph",
+        "sign",
+        "in the background",
+        "I thought that",
+        "maybe",
+        "at first"
+      ],
+      "brief": "At a small local photography exhibition, friends Yael and Nadav pause at a picture whose caption describes a familiar-looking street from an unfamiliar point of view. Yael reads the caption aloud, but Nadav hears one phrase differently and asks her to repeat it. They compare the caption with details in the image, noticing a shop sign and a partly hidden bus stop that change how they understand the scene. Yael thinks the photograph was taken early in the morning; Nadav points out that the shop is already open, so they revise their guess to later in the day. They move on still unsure of the exact hour, but each chooses a favorite detail to mention over coffee afterward.",
+      "storyPattern": {
+        "goal": "Make sense of an ambiguous scene at a cultural outing",
+        "relationship": "Friends sharing an exhibition visit",
+        "interaction": "Read a caption, compare observations, and revise an interpretation",
+        "outcome": "Leave with distinct details to discuss afterward"
+      }
+    },
+    {
+      "date": "2026-11-11",
+      "storyId": "account-holder-uses-a-new-verification-method",
+      "domain": "digital_accounts",
+      "scenario": "account_holder_moves_verification_from_an_old_device_to_her_current_phone",
+      "lexicalThemes": [
+        "account access",
+        "verification messages",
+        "clarifying a confusing prompt",
+        "digital privacy"
+      ],
+      "targetVocabulary": [
+        "sign in",
+        "verification code",
+        "message",
+        "old phone",
+        "current phone",
+        "update the contact method",
+        "privately"
+      ],
+      "brief": "Fully AI-generated dialogue. Account holder Noa and her brother Itai are the only speakers. Noa is trying to sign in to an online account on her own phone, but the verification message appears on an older phone she rarely uses. She asks Itai, who is sitting with her, to help her understand which device received the message; he can explain what he sees, but he does not know or handle her password. Noa initially thinks the message is a sign-in alert, then reads it again and realizes it contains a verification code. Itai reminds her not to read the code aloud, and Noa enters it privately on her own device. When the page asks whether to keep using the old phone for verification, she asks what that would mean. Itai explains that the choice is for her to make, and Noa decides to update the contact method to her current phone using the on-screen steps. She checks that the new method is listed and signs in successfully. Role map: Noa owns the account and both phones, enters the private code, and makes the update; Itai is her brother, offering help interpreting the message without accessing the account. Noa performs the final account update and sign-in. The exchange supports 8–12 short alternating turns.",
+      "storyPattern": {
+        "goal": "Regain access and use a current verification device",
+        "relationship": "Siblings helping with an account owner's task",
+        "interaction": "Interpret a message, clarify a prompt, and protect private access details",
+        "outcome": "Update the verification method and sign in"
+      }
+    },
+    {
+      "date": "2026-11-11",
+      "storyId": "patient-clarifies-what-to-bring-to-an-eye-appointment",
+      "domain": "health_appointments",
+      "scenario": "patient_clarifies_which_existing_eye_documents_and_glasses_to_bring",
+      "lexicalThemes": [
+        "preparing for an appointment",
+        "describing a practical need",
+        "clarifying what is optional",
+        "personal belongings"
+      ],
+      "targetVocabulary": [
+        "appointment",
+        "glasses",
+        "reading",
+        "prescription note",
+        "bring",
+        "optional",
+        "either is fine"
+      ],
+      "brief": "Fully AI-generated dialogue. Patient Maya speaks with clinic receptionist Oren; they are the only speakers. Maya is preparing for an eye appointment and has a pair of glasses she uses for reading as well as an older prescription note. She wants to know what would be useful to bring, not to ask for medical advice. Oren can clarify what the clinic prefers patients to bring, but cannot assess her eyesight. Maya explains that she has been taking off the glasses to read small print and asks whether she should bring both the glasses and the note. Oren says bringing the glasses she currently uses would help the clinician, and that she may bring the old note if she has it, but it is not necessary to search for it. Maya asks him to repeat the distinction between useful and required; he clarifies that she should bring the glasses, while the note is optional. She checks whether she should arrive wearing the glasses or carry them, and Oren says either is fine. Maya puts the glasses in their case and adds the note she already has to her bag, then confirms the appointment details. Role map: Maya owns the glasses and note and prepares them; Oren is the receptionist who can answer practical questions about the appointment, not diagnose or advise on symptoms. Maya performs the final packing action. The conversation supports 8–12 short alternating turns.",
+      "storyPattern": {
+        "goal": "Prepare useful items for an upcoming appointment",
+        "relationship": "Patient and clinic receptionist",
+        "interaction": "Describe what the patient already has and clarify what is useful versus optional",
+        "outcome": "Pack the glasses and available note for the visit"
+      }
+    },
+    {
+      "date": "2026-11-11",
+      "storyId": "friends-adjust-a-stew-after-the-beans-stay-firm",
+      "domain": "food_cooking",
+      "scenario": "friends_finish_a_bean_stew_by_adjusting_heat_and_setting_soft_vegetables_aside",
+      "lexicalThemes": [
+        "cooking together",
+        "describing texture",
+        "expressing a different preference",
+        "adjusting a meal"
+      ],
+      "targetVocabulary": [
+        "still firm",
+        "soft",
+        "add water",
+        "lower the heat",
+        "cover the pot",
+        "set aside",
+        "stir back in"
+      ],
+      "brief": "Friends Liron and Shai are making a simple bean stew at home for dinner. After tasting a spoonful, they find the beans are still firm while the vegetables are already soft. Shai suggests adding more water and keeping the pot on high heat, but Liron worries the vegetables will fall apart. They check how much liquid remains and agree to lower the heat, cover the pot, and give it a little more time rather than adding a lot of water. While it simmers, they take out some of the softer vegetables and set them aside. The beans soften without the vegetables disappearing, and they stir the vegetables back in before serving the stew with bread.",
+      "storyPattern": {
+        "goal": "Finish a meal with ingredients cooking at different rates",
+        "relationship": "Friends preparing dinner together",
+        "interaction": "Taste, disagree about an adjustment, and choose a gentler approach",
+        "outcome": "Soften the firm ingredient and return the tender pieces before serving"
+      }
+    },
+    {
+      "date": "2026-11-11",
+      "storyId": "coworkers-label-leftover-supplies",
+      "domain": "employment_jobs",
+      "scenario": "coworkers_offer_and_reallocate_unopened_supplies_left_after_a_team_order",
+      "lexicalThemes": [
+        "offering",
+        "work supplies",
+        "leftovers",
+        "labeling"
+      ],
+      "targetVocabulary": [
+        "offer",
+        "unopened",
+        "useful",
+        "label"
+      ],
+      "brief": "At work, an employee finds a few unopened supplies left after a team order and offers them to a coworker in another area. The coworker takes what is useful, and they label the rest for the next order.",
+      "storyPattern": {
+        "goal": "Reuse spare supplies instead of ordering duplicates",
+        "relationship": "Coworkers in different work areas",
+        "interaction": "Offer what remains and choose what is useful",
+        "outcome": "Use some supplies and label the rest"
+      }
+    },
+    {
+      "date": "2026-11-11",
+      "storyId": "resident-sets-up-a-payment-reminder",
+      "domain": "bills_taxes",
+      "scenario": "housemates_create_a_shared_paper_reminder_for_a_separately_arriving_household_bill",
+      "lexicalThemes": [
+        "household bills",
+        "reminders",
+        "shared expenses",
+        "monthly review"
+      ],
+      "targetVocabulary": [
+        "bill",
+        "separate",
+        "reminder",
+        "expenses"
+      ],
+      "brief": "A resident notices that a household payment is easy to forget because its bill arrives separately from the others. She places it beside her usual payment notes, and her housemate agrees to check it with her when they review the month's expenses.",
+      "storyPattern": {
+        "goal": "Keep a separately arriving bill from being overlooked",
+        "relationship": "Housemates sharing expenses",
+        "interaction": "Suggest a reminder and agree to review it together",
+        "outcome": "Add the bill to their regular review"
+      }
+    },
+    {
+      "date": "2026-11-11",
+      "storyId": "resident-describes-a-household-change",
+      "domain": "social_benefits",
+      "scenario": "resident_notes_a_household_composition_change_for_benefit_paperwork_without_assuming_requirements",
+      "lexicalThemes": [
+        "benefit paperwork",
+        "household change",
+        "factual description",
+        "uncertainty"
+      ],
+      "targetVocabulary": [
+        "household",
+        "change",
+        "describe",
+        "paperwork"
+      ],
+      "brief": "A resident preparing benefit paperwork realizes that a recent change in who lives at home may need to be described. She writes a short factual note about the change and sets it with the papers, leaving the question of what else is needed open.",
+      "storyPattern": {
+        "goal": "Describe a household change clearly",
+        "relationship": "Resident handling personal paperwork",
+        "interaction": "Write a concise factual note without guessing what is required",
+        "outcome": "Keep the note with the relevant papers"
+      }
+    },
+    {
+      "date": "2026-11-11",
+      "storyId": "employee-declines-an-extra-shift",
+      "domain": "employment_jobs",
+      "scenario": "employee_politely_declines_an_extra_shift_and_offers_an_alternative_day",
+      "lexicalThemes": [
+        "work schedule",
+        "declining politely",
+        "availability",
+        "alternative"
+      ],
+      "targetVocabulary": [
+        "extra shift",
+        "commitment",
+        "cannot",
+        "different day"
+      ],
+      "brief": "A coworker offers an employee an extra shift, but she already has a personal commitment that evening. She explains that she cannot take it and offers to cover a different day instead; the coworker thanks her and checks the alternative.",
+      "storyPattern": {
+        "goal": "Protect a personal commitment while offering work help",
+        "relationship": "Coworkers discussing coverage",
+        "interaction": "Decline clearly and propose another option",
+        "outcome": "Coworker considers the alternative day"
+      }
+    },
+    {
+      "date": "2026-11-11",
+      "storyId": "resident-uses-a-towel-to-catch-a-drip",
+      "domain": "home_repairs_utilities",
+      "scenario": "housemates_contain_a_small_radiator_drip_and_clear_nearby_items",
+      "lexicalThemes": [
+        "home maintenance",
+        "dripping water",
+        "moving belongings",
+        "repair"
+      ],
+      "targetVocabulary": [
+        "drip",
+        "bowl",
+        "move",
+        "repair"
+      ],
+      "brief": "A resident notices a small drip beneath a radiator and places a shallow bowl under it. Her housemate moves nearby books out of the way, and they leave the area clear while deciding who to contact about the repair.",
+      "storyPattern": {
+        "goal": "Keep a small leak from reaching belongings",
+        "relationship": "Housemates sharing a home",
+        "interaction": "Catch the drip and move nearby items",
+        "outcome": "Keep the area clear while arranging follow-up"
+      }
+    },
+    {
+      "date": "2026-11-11",
+      "storyId": "neighbor-collects-a-parcel-with-identification",
+      "domain": "postal_parcels",
+      "scenario": "recipient_explains_an_initial_only_parcel_label_when_showing_identification",
+      "lexicalThemes": [
+        "parcel collection",
+        "identification",
+        "name mismatch",
+        "delivery"
+      ],
+      "targetVocabulary": [
+        "parcel",
+        "label",
+        "identification",
+        "initial"
+      ],
+      "brief": "A neighbor collecting a parcel notices that the label uses only an initial instead of the recipient’s full name. She shows her identification and explains the mismatch; after the parcel is handed over, she tells the recipient to use the full name on a future delivery.",
+      "storyPattern": {
+        "goal": "Collect a parcel despite an abbreviated label",
+        "relationship": "Recipient and collection clerk",
+        "interaction": "Show identification and explain the name mismatch",
+        "outcome": "Collect the parcel and note a clearer name for next time"
+      }
+    },
+    {
+      "date": "2026-11-11",
+      "storyId": "passenger-asks-for-change-on-the-bus",
+      "domain": "transport_fares_routes",
+      "scenario": "passenger_accepts_coins_from_another_rider_to_pay_a_bus_fare",
+      "lexicalThemes": [
+        "bus fare",
+        "change",
+        "offering help",
+        "thanks"
+      ],
+      "targetVocabulary": [
+        "fare",
+        "change",
+        "coins",
+        "accept"
+      ],
+      "brief": "A passenger realizes she has only a large note when she boards and tells the driver she does not have smaller change. Another passenger offers a few coins, and she accepts them and thanks them before paying the fare.",
+      "storyPattern": {
+        "goal": "Pay a fare despite lacking smaller change",
+        "relationship": "Passenger and fellow rider",
+        "interaction": "Explain the difficulty and accept an offer of coins",
+        "outcome": "Pay the fare and thank the helper"
+      }
+    },
+    {
+      "date": "2026-11-11",
+      "storyId": "shopper-corrects-a-delivery-address",
+      "domain": "delivery_customer_service",
+      "scenario": "customer_supplies_a_missing_apartment_number_to_correct_a_delivery_address",
+      "lexicalThemes": [
+        "delivery address",
+        "apartment number",
+        "correction",
+        "repeating details"
+      ],
+      "targetVocabulary": [
+        "address",
+        "missing",
+        "apartment",
+        "confirm"
+      ],
+      "brief": "While confirming a delivery, a customer spots that the apartment number is missing from the address. She gives the missing detail to the customer-service worker, who repeats it back, and the customer confirms the corrected address.",
+      "storyPattern": {
+        "goal": "Correct an incomplete delivery address",
+        "relationship": "Customer and service worker",
+        "interaction": "Provide the missing detail and hear it repeated",
+        "outcome": "Confirm the complete address"
+      }
+    },
+    {
+      "date": "2026-11-11",
+      "storyId": "friends-choose-a-simple-route-for-a-day-trip",
+      "domain": "travel_day_trips",
+      "scenario": "friends_choose_a_direct_day_trip_route_over_a_faster_route_with_multiple_changes",
+      "lexicalThemes": [
+        "journey planning",
+        "routes",
+        "connections",
+        "preferences"
+      ],
+      "targetVocabulary": [
+        "route",
+        "direct",
+        "change",
+        "prefer"
+      ],
+      "brief": "Two friends heading out for a day trip notice that one suggested route has several changes, while a simpler route takes a little longer. They compare what matters to them and choose the direct route so they can travel together without rushing between connections.",
+      "storyPattern": {
+        "goal": "Choose a comfortable route for a shared journey",
+        "relationship": "Friends traveling together",
+        "interaction": "Compare convenience with travel time",
+        "outcome": "Choose the simpler route"
+      }
+    },
+    {
+      "date": "2026-11-11",
+      "storyId": "cook-adjusts-a-sauce-with-water",
+      "domain": "food_cooking",
+      "scenario": "cook_thins_a_pan_sauce_with_a_small_amount_of_water_after_it_thickens",
+      "lexicalThemes": [
+        "cooking",
+        "sauce",
+        "texture",
+        "adjustment"
+      ],
+      "targetVocabulary": [
+        "thick",
+        "spoonful",
+        "stir",
+        "loosen"
+      ],
+      "brief": "A cook finds that a pan sauce has become too thick while warming. Her brother suggests adding a spoonful of water, and she stirs it in; the sauce loosens enough to coat the vegetables.",
+      "storyPattern": {
+        "goal": "Make an overly thick sauce easier to serve",
+        "relationship": "Siblings sharing a kitchen",
+        "interaction": "Offer a small adjustment and try it",
+        "outcome": "Loosen the sauce for serving"
+      }
+    },
+    {
+      "date": "2026-11-11",
+      "storyId": "friends-share-a-water-bottle-on-a-walk",
+      "domain": "nature_outdoors",
+      "scenario": "walker_offers_a_thirsty_companion_a_drink_from_a_shared_water_bottle",
+      "lexicalThemes": [
+        "walking",
+        "thirst",
+        "offering",
+        "sharing"
+      ],
+      "targetVocabulary": [
+        "water bottle",
+        "thirsty",
+        "offer",
+        "sip"
+      ],
+      "brief": "During a walk, one friend realizes she left her water bottle at home and mentions that she is thirsty. Her companion offers a drink from his bottle, and she takes a small sip before they continue together.",
+      "storyPattern": {
+        "goal": "Help a companion who forgot water",
+        "relationship": "Friends walking together",
+        "interaction": "Mention a need and offer a drink",
+        "outcome": "Share a sip and continue walking"
+      }
     }
   ]
 }
