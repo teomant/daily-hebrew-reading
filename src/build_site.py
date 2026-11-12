@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import html
 import json
 import shutil
@@ -32,6 +33,12 @@ def esc(value: Any) -> str:
 
 def json_script(value: Any) -> str:
     return json.dumps(value, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+
+
+def asset_url(filename: str, site: dict[str, Any]) -> str:
+    url = site_url("assets/" + filename, site["basePath"])
+    version = site.get("assetVersions", {}).get(filename)
+    return f"{url}?v={version}" if version else url
 
 
 def format_date(value: str, locale: str = "") -> str:
@@ -92,7 +99,6 @@ def shell(
     locales: dict[str, dict[str, str]],
     payload: dict[str, Any] | None = None,
 ) -> str:
-    base = ensure_base_path(site["basePath"])
     default_locale = site["defaultInterfaceLocale"]
     copy = locales[default_locale]
     locale_options = "".join(
@@ -112,7 +118,7 @@ def shell(
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="color-scheme" content="light">
   <title>{esc(title)} · {esc(site['siteName'])}</title>
-  <link rel="stylesheet" href="{esc(site_url('assets/styles.css', base))}">
+  <link rel="stylesheet" href="{esc(asset_url('styles.css', site))}">
 </head>
 <body data-page="{esc(page)}">
   <a class="skip-link" href="#main" data-i18n="accessibility.skipContent">{esc(copy['accessibility.skipContent'])}</a>
@@ -123,7 +129,7 @@ def shell(
   <main id="main">{body}</main>
   <footer class="site-footer"><strong>{esc(site['siteName'])}</strong><a href="{esc(edition_url('archive/', site))}" data-i18n="nav.archive">{esc(copy['nav.archive'])}</a></footer>
   <script id="dhr-data" type="application/json">{json_script(runtime)}</script>
-  <script src="{esc(site_url('assets/app.js', base))}" defer></script>
+  <script src="{esc(asset_url('app.js', site))}" defer></script>
 </body>
 </html>"""
 
@@ -304,6 +310,10 @@ def build(root: Path = ROOT, output: Path | None = None, base_path: str | None =
     if errors:
         raise RuntimeError("Content validation failed:\n- " + "\n- ".join(errors))
     site = load_site_config(root)
+    site = {**site, "assetVersions": {
+        filename: hashlib.sha256((root / "static" / filename).read_bytes()).hexdigest()[:16]
+        for filename in ("styles.css", "app.js")
+    }}
     if base_path is not None:
         site = {**site, "basePath": ensure_base_path(base_path)}
     levels = load_level_config(root)

@@ -2,6 +2,14 @@
 
 ## 2026-11-12
 
+- Investigated the mobile screenshot showing unstyled edition links below the home actions.
+  The published stylesheet exactly matched the new local stylesheet, while the screenshot showed the earlier layout rules.
+  Added content hashes to CSS and JavaScript URLs to prevent old cached assets from styling newly deployed pages.
+  The build computes each hash once and uses it on edition pages and legacy redirect pages.
+  Added a focused offline check for versioned asset paths, matching versions across pages, and URL changes when stylesheet content changes.
+  The focused check and whitespace check passed; one direct review found no remaining issues.
+  Local preview remains skipped at the owner's request.
+
 - Implemented the approved separate Alef, Alef Plus, and Bet editions.
   Fetched and fast-forwarded `master` to `ffe03ea` before implementation.
   Removed the November 12 issue, its index entry, and its sixteen scenario-history records so the date can be regenerated.

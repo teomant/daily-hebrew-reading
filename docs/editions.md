@@ -77,6 +77,8 @@ Successful appends preserve all existing article content and add new topics per 
 - Articles: `/{edition}/YYYY-MM-DD/{slug}/`.
 
 All paths support the configured GitHub Pages base path.
+CSS and JavaScript URLs include a version derived from each file's content.
+Changed assets receive new URLs so browsers do not combine updated pages with cached styles or scripts from an earlier release.
 Home, archive, and day edition controls are ordinary navigation links.
 Day controls list only editions available on that date.
 An article displays a fixed edition badge and retains the translation-language controls.

@@ -168,6 +168,38 @@ class EditionTests(unittest.TestCase):
             self.assertIn('"page":"redirect"', legacy)
             self.assertIn('/project/alef-plus/2024-01-26/late-furniture-delivery/', legacy)
 
+    def test_asset_urls_change_only_when_asset_content_changes(self):
+        from urllib.parse import urlparse
+        from tests.test_build import LinkCollector
+
+        with tempfile.TemporaryDirectory() as directory:
+            root = self.root(Path(directory))
+
+            def asset_links():
+                output = build(root, root / "output", "/project/")
+                result = []
+                for route in ("index.html", "alef/index.html",
+                              "alef/2024-01-26/late-furniture-delivery/index.html"):
+                    collector = LinkCollector()
+                    collector.feed((output / route).read_text())
+                    links = [link for link in collector.links if "/assets/" in link]
+                    self.assertEqual(len(links), 2)
+                    for link in links:
+                        parsed = urlparse(link)
+                        self.assertRegex(parsed.query, r"^v=[0-9a-f]{16}$")
+                        self.assertTrue((output / parsed.path.removeprefix("/project/")).is_file())
+                    result.append(links)
+                self.assertEqual(result[0], result[1])
+                self.assertEqual(result[1], result[2])
+                return result[0]
+
+            before = asset_links()
+            stylesheet = root / "static/styles.css"
+            stylesheet.write_text(stylesheet.read_text() + "\n/* Updated mobile styles. */\n")
+            after = asset_links()
+            self.assertNotEqual(before[0], after[0])
+            self.assertEqual(before[1], after[1])
+
 
 if __name__ == "__main__":
     unittest.main()
