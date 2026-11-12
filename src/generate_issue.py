@@ -23,6 +23,7 @@ from .common import (
     units_text,
 )
 from .generation_quality import affected_groups, apply_repairs, repair_schema
+from .editions import build_index, to_editions, topic_records
 from .generation_usage import record_usage, usage_run
 from .verbs import daily_verbs, verb_batch_index, verb_seed, verbs_page
 from .validation import (
@@ -693,7 +694,7 @@ def _validated_history_research(
 
 def _public_story_seed(story: dict[str, Any]) -> dict[str, Any]:
     private_keys = {HISTORY_BEAT_CONTRACT_KEY, "historyFamily", DISCOVERY_SOURCE_KEY, "_shortItem", "_targetVerb"}
-    return {key: value for key, value in story.items() if key not in private_keys}
+    return {key: value for key, value in story.items() if key not in private_keys and not key.startswith("_")}
 
 
 def _pop_history_reserve(
@@ -837,6 +838,15 @@ def _adaptation_batch_schema(
             "required": ["id", "levels", "coveredStoryBeatIds"],
             "additionalProperties": False,
         })
+        if story.get("_independentEdition"):
+            properties = full["properties"]["stories"]["items"]["properties"]
+            adaptations[-1]["properties"]["scenario"] = {
+                "type": "object",
+                "properties": {"brief": properties["brief"],
+                               "everydayMeta": properties["everydayMeta"]["anyOf"][0]},
+                "required": ["brief", "everydayMeta"], "additionalProperties": False,
+            }
+            adaptations[-1]["required"].append("scenario")
     adaptation = adaptations[0] if len(adaptations) == 1 else {"anyOf": adaptations}
     return {
         "type": "object",
@@ -928,7 +938,7 @@ def _recent_issue_context(
     for issue_date, path in sorted(dated_paths, reverse=True):
         issue = read_json(path)
         stories = []
-        for story in issue.get("stories", []):
+        for story in topic_records(issue):
             if not isinstance(story, dict):
                 continue
             story_cutoff = history_cutoff if story.get("type") == "history" else cutoff
@@ -945,7 +955,7 @@ def _recent_issue_context(
 
 def _existing_exclusions(issue: dict[str, Any] | None) -> dict[str, Any]:
     records = []
-    for story in (issue or {}).get("stories", []):
+    for story in topic_records(issue):
         if story.get("type") == "shorts":
             records.extend(_compact_story_record({**item, "type": "everyday"}) for item in story.get("shortItems", []))
         else:
@@ -1712,7 +1722,7 @@ def _remove_redundant_sources(
     """Discard unverified and repeated sources, allowing an empty source list."""
     seen = {
         normalized_url(source["url"])
-        for story in (existing["stories"] if existing else [])
+        for story in topic_records(existing)
         for source in story.get("sources", [])
         if isinstance(source, dict) and isinstance(source.get("url"), str)
     }
@@ -1784,21 +1794,23 @@ def _adaptation_request(
     ]
     retry = f"\nCorrect these validation problems from the previous adaptation: {json.dumps(feedback, ensure_ascii=False)}" if feedback else ""
     return f"""
-This is the adaptation phase. The story metadata, briefs, and any HISTORY storyBeats below are frozen results of completed sourced discovery and generated-scenario planning.
-Create title, teaser, paragraphs, lexical segmentation, translations, and `coveredStoryBeatIds` for every listed story and level. Do not change, extend, or infer beyond the supplied brief, scenario metadata, or HISTORY story-beat contract. For generated no-web stories only, omit any current official rule, exact fee or rate, deadline, eligibility, coverage, diagnosis, or entitlement accidentally asserted in a brief; retain its practical task and show the character asking how to confirm the real detail. Reading levels differ through vocabulary, grammar, sentence shape, and natural constructions—not through a requirement that a harder level be longer. Every researched HISTORY level must still cover every required beat ID or it will be retried. Return each story ID exactly once and no other IDs. For non-HISTORY stories, return an empty covered-story-beat list for every level.
+This is independent article writing for the requested edition. Topic selection and sourced research are complete. Write only the requested level, as a standalone article for its reader; no other edition's text is supplied or needs to be matched.
+Create title, teaser, paragraphs, lexical segmentation, translations, and `coveredStoryBeatIds` for every listed story and requested level. For CURRENT and HISTORY, the subject, factual brief, sources, and HISTORY story-beat contract are frozen. Keep the central event and all required facts, attribution, and uncertainty. Choose optional detail and explanation to fit this reader; do not invent facts, quotations, or dialogue. Every researched HISTORY edition must cover every required beat ID. Return each story ID exactly once and no other IDs. For non-HISTORY stories, return an empty covered-story-beat list.
 
-When a seed has `_shortItem: true`, return exactly one compact body paragraph containing exactly two or three complete sentences at every level. Cover only one tiny practical action or question and its immediate answer or result. Do not add background, a second event, or a full-article arc. Keep all three levels similarly compact; distinguish them through wording and grammar, not length.
+For a seed with `_independentEdition: true`, the brief is a selected fictional topic and example situation, not a script that every level must retell. Keep the same practical topic, domain, and the two supplied DIALOG speaker identities and roles. You may change the fictional sequence, complication, useful answer, and outcome to fit this level. Make Alef concrete and mainly present-focused, Alef Plus actively practice common past forms, and Bet use connected language and future forms where natural. Return `scenario` with an English brief and complete everydayMeta describing the ACTUAL finished story, including its scenario name, lexical themes, target vocabulary, and storyPattern. Do not silently retain metadata for a different story. Do not drift into another selected topic or generic service advice. Never invent current official rules, exact fees, rates, deadlines, eligibility, diagnoses, or entitlements; show a useful ordinary interaction and ask how to confirm any such detail when needed.
+
+When a seed has `_shortItem: true`, return exactly one compact body paragraph containing exactly two or three complete sentences. Cover only one tiny practical action or question and its immediate answer or result. Do not add background, a second event, or a full-article arc. Each edition remains compact.
 
 When a seed has `_targetVerb`, its brief authorizes you to invent a fresh fictional mini-situation around that verb. Include that exact unpointed Hebrew spelling as a separate written word naturally inside the body at every level. Use an infinitive construction when the target is an infinitive; יכול is the modal exception. Other conjugated forms may appear too, but do not replace the assigned form with a synonym. A heading, label, or vocabulary list does not count as using the verb. Keep each piece concrete and varied; avoid repeating the same want-to/do-it template for every verb. Do not invent real-world news or official rules.
 
-For DIALOG, `everydayMeta.dialogSpeakers` contains the two binding Hebrew speaker labels. Start every turn with exactly one of those names and an ASCII colon, alternate them, and use the same names at every level.
+For DIALOG, `everydayMeta.dialogSpeakers` contains the two binding Hebrew speaker labels. Start every turn with exactly one of those names and an ASCII colon, alternate them, and preserve each person's role within this article.
 
 Configured reading levels:
 {json.dumps(level_payload, ensure_ascii=False, indent=2)}
 
 Required translation locales: {json.dumps(locales)}
 
-Frozen story briefs and metadata:
+Selected topics and binding sourced research:
 {json.dumps(seeds, ensure_ascii=False, indent=2)}
 {retry}
 """.strip()
@@ -1860,7 +1872,7 @@ def _duplicate_findings(
 ) -> tuple[list[str], set[int]]:
     errors: list[str] = []
     old_stories = [
-        *(existing["stories"] if existing else []),
+        *topic_records(existing),
         *(recent_stories or []),
     ]
     all_previous = list(old_stories)
@@ -2086,19 +2098,7 @@ def _build_index(
         if path.stem != candidate["date"]:
             issues[path.stem] = read_json(path)
     issues[candidate["date"]] = candidate
-    dates = []
-    for issue_date in sorted(issues, reverse=True):
-        issue = issues[issue_date]
-        preferred_level = site["defaultReadingLevel"]
-        level_id = preferred_level if preferred_level in issue["availableLevels"] else issue["availableLevels"][0]
-        dates.append(
-            {
-                "date": issue_date,
-                "storyCount": len(issue["stories"]),
-                "readingMinutes": issue_minutes(issue, level_id, levels),
-            }
-        )
-    return {"schemaVersion": 1, "dates": dates}
+    return build_index(issues, levels)
 
 
 def _updated_history(history: dict[str, Any], stories: list[dict[str, Any]], target_date: str) -> dict[str, Any]:
@@ -2148,7 +2148,21 @@ def _shorts_page(
     level_ids: list[str],
     locales: list[str],
 ) -> dict[str, Any] | None:
-    selected = short_stories[:SHORTS_TARGET]
+    if len(level_ids) > 1:
+        pages = {}
+        for level_id in level_ids:
+            selected = [story.get("_editionStories", {}).get(level_id, story)
+                        for story in short_stories if level_id in story.get("levels", {})]
+            page = _shorts_page(selected, target_date, [level_id], locales)
+            if page:
+                pages[level_id] = page
+        if not pages:
+            return None
+        first = next(iter(pages.values()))
+        return {**first, "_editionStories": pages,
+                "levels": {level_id: page["levels"][level_id] for level_id, page in pages.items()}}
+    selected = [story.get("_editionStories", {}).get(level_ids[0], story)
+                for story in short_stories[:SHORTS_TARGET]]
     if not selected:
         return None
 
@@ -2261,6 +2275,8 @@ def _adapt_story(
     coverage: dict[str, Any] = {}
     usable: dict[str, Any] = {}
     usable_coverage: dict[str, Any] = {}
+    accepted_metadata: dict[str, Any] = {}
+    usable_metadata: dict[str, Any] = {}
     feedback = None
     attempts = GENERATED_ADAPTATION_ATTEMPTS if seed.get("type") == "dialog" or seed.get("_shortItem") else ADAPTATION_ATTEMPTS
 
@@ -2292,6 +2308,17 @@ def _adapt_story(
             _log_validation_errors(phase, feedback)
             continue
         adaptation = adaptations[0]
+        attempt_seed = seed
+        scenario_errors = []
+        if seed.get("_independentEdition"):
+            scenario = adaptation.get("scenario")
+            if not isinstance(scenario, dict) or not isinstance(scenario.get("everydayMeta"), dict):
+                scenario_errors.append("Return the actual English scenario brief and everydayMeta for this edition")
+            else:
+                attempt_seed = {**seed, "brief": scenario.get("brief"), "everydayMeta": scenario["everydayMeta"]}
+                for field in ("domain", "dialogSpeakers"):
+                    if scenario["everydayMeta"].get(field) != seed["everydayMeta"].get(field, []):
+                        scenario_errors.append(f"scenario.everydayMeta.{field}: preserve the selected topic domain and speaker identities")
         returned = adaptation.get("levels")
         if not isinstance(returned, dict) or set(returned) - requested_ids:
             feedback = ["return only the requested level IDs; do not replace retained levels"]
@@ -2300,14 +2327,14 @@ def _adapt_story(
         # Missing levels remain pending; valid siblings can still be retained.
         _remove_empty_lexical_units(adaptations)
         _repair_alphabetic_separator_units(adaptations)
-        _repair_dialog_labels([seed], adaptations, locales)
+        _repair_dialog_labels([attempt_seed], adaptations, locales)
         _restore_terminal_punctuation(adaptations, locales)
         feedback = []
         for level in pending:
             level_id = level["id"]
             value = returned.get(level_id)
-            story = {**_public_story_seed(seed), "levels": {level_id: value} if value is not None else {}}
-            errors = validate_issue(issue_for(story, [level]), site, levels, "generated batch")
+            story = {**_public_story_seed(attempt_seed), "levels": {level_id: value} if value is not None else {}}
+            errors = scenario_errors + validate_issue(issue_for(story, [level]), site, levels, "generated batch")
             errors += _history_adaptation_errors([seed], adaptations, [level])
             if seed.get("_targetVerb") and isinstance(value, dict):
                 paragraphs = value.get("paragraphs")
@@ -2317,16 +2344,18 @@ def _adapt_story(
                     errors.extend(validate_verb_body(
                         paragraphs[0], seed["_targetVerb"], locales, f"{seed['id']}.{level_id}",
                     ))
-            content_errors = _adaptation_content_errors([seed], adaptations, [level])
+            content_errors = _adaptation_content_errors([attempt_seed], adaptations, [level])
             if not errors and (not content_errors or seed.get("type") == "dialog"):
                 usable[level_id] = copy.deepcopy(value)
                 usable_coverage[level_id] = adaptation.get("coveredStoryBeatIds", {}).get(level_id, [])
+                usable_metadata[level_id] = copy.deepcopy(attempt_seed)
             errors += content_errors
             if errors:
                 feedback.extend(errors)
             else:
                 accepted[level_id] = copy.deepcopy(value)
                 coverage[level_id] = usable_coverage[level_id]
+                accepted_metadata[level_id] = usable_metadata[level_id]
         if not feedback:
             break
         _log_validation_errors(phase, feedback)
@@ -2336,11 +2365,13 @@ def _adapt_story(
         if level_id not in accepted:
             accepted[level_id] = value
             coverage[level_id] = usable_coverage[level_id]
+            accepted_metadata[level_id] = usable_metadata[level_id]
             _log(f"{phase_prefix}: quality warning; retaining usable {level_id} after bounded content retries")
     if len(accepted) != len(levels):
         _log(f"{phase_prefix}: omitting story {seed['id']} after content retries")
         return None
-    story = {**_public_story_seed(seed), "levels": {level["id"]: accepted[level["id"]] for level in levels}}
+    story = {**_public_story_seed(accepted_metadata[levels[0]["id"]]),
+             "levels": {level["id"]: accepted[level["id"]] for level in levels}}
     aggregate = {"id": seed["id"], "levels": story["levels"], "coveredStoryBeatIds": coverage}
     errors = _adaptation_content_errors([seed], [aggregate], levels)
     if errors:
@@ -2389,6 +2420,28 @@ def _adapt_story(
     return story
 
 
+def _adapt_editions(seed, target_date, levels, locales, site, image_locales, instructions, phase_prefix):
+    """Write and repair each level independently; one failed edition cannot remove another."""
+    stories = {}
+    for level in levels:
+        edition_seed = copy.deepcopy(seed)
+        if seed.get("type") in {"everyday", "dialog"} and not seed.get("_targetVerb"):
+            edition_seed["_independentEdition"] = True
+        phase = f"{phase_prefix}, edition {level['id']}"
+        try:
+            story = _adapt_story(edition_seed, target_date, [level], locales, site,
+                                 image_locales, instructions, phase)
+        except RuntimeError as exc:
+            _log(f"{phase}: writing requests exhausted; retaining other editions ({_safe_log_text(exc)})")
+            continue
+        if story is not None:
+            stories[level["id"]] = story
+    if not stories:
+        return None
+    return {**_public_story_seed(seed), "_editionStories": stories,
+            "levels": {level_id: story["levels"][level_id] for level_id, story in stories.items()}}
+
+
 def generate(root: Path, target_date: str, additional_stories: int) -> dict[str, Any] | None:
     with usage_run(_log):
         return _generate(root, target_date, additional_stories)
@@ -2402,17 +2455,19 @@ def _generate_verbs_page(
     _log(f"VERBS batch {verb_batch_index(target_date) + 1}/5: " + ", ".join(item["verb"] for item in items))
     completed = []
     for item in items:
-        story = _adapt_story(
+        story = _adapt_editions(
             verb_seed(item, target_date), target_date, levels, locales, site, image_locales,
             instructions, f"VERBS item {item['rank']}/50",
         )
         if story is not None:
             completed.append(story)
     page = verbs_page(items, completed, target_date, [level["id"] for level in levels], locales)
-    if page is None:
-        _log(f"VERBS: only {len(completed)}/10 items passed core checks; omitting this page and keeping other valid articles")
-    else:
-        _log("VERBS: collected all 10 independently adapted items")
+    for level in levels:
+        count = sum(level["id"] in story["levels"] for story in completed)
+        if count < 10:
+            _log(f"VERBS {level['id']}: only {count}/10 items passed core checks; omitting this edition's page and keeping other valid articles")
+        else:
+            _log(f"VERBS {level['id']}: collected all 10 independently written items")
     return page
 
 
@@ -2799,7 +2854,7 @@ def _generate(root: Path, target_date: str, additional_stories: int) -> dict[str
             *(
                 [
                     story
-                    for story in existing.get("stories", [])
+                    for story in topic_records(existing)
                     if isinstance(story, dict) and story.get("type") in {"everyday", "dialog"}
                 ]
                 if existing else []
@@ -3017,7 +3072,8 @@ def _generate(root: Path, target_date: str, additional_stories: int) -> dict[str
         batch_index < len(adaptation_batches)
         or (
             include_shorts_page
-            and len(adapted_short_items) < SHORTS_TARGET
+            and any(sum(level_id in item["levels"] for item in adapted_short_items) < SHORTS_TARGET
+                    for level_id in level_ids)
             and replacement_attempts < SHORTS_REPLACEMENT_LIMIT
         )
     ):
@@ -3085,8 +3141,10 @@ def _generate(root: Path, target_date: str, additional_stories: int) -> dict[str
         batch_seeds = adaptation_batches[batch_index]
         batch_index += 1
         for seed in batch_seeds:
-            completed = _adapt_story(
-                seed, target_date, levels, locales, site, image_locales,
+            writing_levels = [level for level in levels if not seed.get("_shortItem")
+                              or sum(level["id"] in item["levels"] for item in adapted_short_items) < SHORTS_TARGET]
+            completed = _adapt_editions(
+                seed, target_date, writing_levels, locales, site, image_locales,
                 adaptation_instructions + (f"\n\n{dialog_adaptation_example}" if seed.get("type") == "dialog" else ""),
                 f"Adaptation batch {batch_index}/{len(adaptation_batches)}",
             )
@@ -3122,21 +3180,33 @@ def _generate(root: Path, target_date: str, additional_stories: int) -> dict[str
         _log("No articles passed adaptation validation; no issue file was created")
         return None
 
-    combined = _ordered_issue_stories(list(existing["stories"]) + new_stories if existing else new_stories)
-    issue = {
+    added = to_editions({
         "schemaVersion": 1,
         "date": target_date,
         "generatedAt": datetime.now(UTC).replace(microsecond=0).isoformat(),
         "availableLevels": level_ids,
         "translationLocales": locales,
-        "stories": combined,
-    }
+        "stories": _ordered_issue_stories(new_stories),
+    })
+    issue = to_editions(existing) if existing else copy.deepcopy(added)
+    if existing:
+        for level_id, edition in added["editions"].items():
+            previous = issue["editions"].setdefault(level_id, {"stories": []})
+            previous["stories"] = _ordered_issue_stories(previous["stories"] + edition["stories"])
+        issue["availableLevels"] = [level_id for level_id in level_ids if level_id in issue["editions"]]
+        issue["generatedAt"] = added["generatedAt"]
     errors = validate_issue(issue, site, configured_levels, issue_path.name)
     if errors:
         raise RuntimeError("Combined issue failed validation:\n- " + _error_report(errors))
-    _log(f"Combined issue validation passed with {len(issue['stories'])} total stories")
+    _log("Combined issue validation passed: " + ", ".join(
+        f"{level_id}: {len(edition['stories'])} articles" for level_id, edition in issue["editions"].items()))
 
-    next_history = _updated_history(history, new_stories, target_date)
+    next_history = history
+    for level_id, edition in added["editions"].items():
+        offset = len(next_history.get("items", []))
+        next_history = _updated_history(next_history, edition["stories"], target_date)
+        for item in next_history["items"][offset:]:
+            item["edition"] = level_id
     next_index = _build_index(content_dir, issue, site, configured_levels)
     _log("Writing issue, index, and generated-scenario history transactionally")
     _transactional_write(

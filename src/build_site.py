@@ -23,6 +23,7 @@ from .common import (
     units_text,
 )
 from .validation import validate_repository
+from .editions import build_index, edition_index, edition_issue, edition_route, to_editions
 
 
 def esc(value: Any) -> str:
@@ -44,7 +45,7 @@ def minutes_label(minutes: int, locale: str, copy: dict[str, str]) -> str:
 
 
 def issue_level(issue: dict[str, Any], site: dict[str, Any]) -> str:
-    preferred = site["defaultReadingLevel"]
+    preferred = site.get("edition", site["defaultReadingLevel"])
     return preferred if preferred in issue["availableLevels"] else issue["availableLevels"][0]
 
 
@@ -102,7 +103,7 @@ def shell(
         "levels": levels,
         "locales": locales,
         "page": page,
-        "payload": payload or {},
+        "payload": {**(payload or {}), "readingLevel": site.get("edition")},
     }
     return f"""<!doctype html>
 <html lang="{esc(default_locale)}">
@@ -116,24 +117,37 @@ def shell(
 <body data-page="{esc(page)}">
   <a class="skip-link" href="#main" data-i18n="accessibility.skipContent">{esc(copy['accessibility.skipContent'])}</a>
   <header class="site-header">
-    <a class="brand" href="{esc(base)}"><span class="brand-mark">א</span><span><strong>{esc(site['siteName'])}</strong><small data-i18n="siteTagline">{esc(copy['siteTagline'])}</small></span></a>
-    <nav class="site-nav" aria-label="{esc(copy['accessibility.primaryNavigation'])}"><a href="{esc(base)}" data-i18n="nav.today">{esc(copy['nav.today'])}</a><a href="{esc(site_url('archive/', base))}" data-i18n="nav.archive">{esc(copy['nav.archive'])}</a><label class="locale-control"><span class="sr-only" data-i18n="accessibility.interfaceLanguage">{esc(copy['accessibility.interfaceLanguage'])}</span><select id="interface-locale">{locale_options}</select></label></nav>
+    <a class="brand" href="{esc(edition_url('', site))}"><span class="brand-mark">א</span><span><strong>{esc(site['siteName'])}</strong><small data-i18n="siteTagline">{esc(copy['siteTagline'])}</small></span></a>
+    <nav class="site-nav" aria-label="{esc(copy['accessibility.primaryNavigation'])}"><a href="{esc(edition_url('', site))}" data-i18n="nav.today">{esc(copy['nav.today'])}</a><a href="{esc(edition_url('archive/', site))}" data-i18n="nav.archive">{esc(copy['nav.archive'])}</a><label class="locale-control"><span class="sr-only" data-i18n="accessibility.interfaceLanguage">{esc(copy['accessibility.interfaceLanguage'])}</span><select id="interface-locale">{locale_options}</select></label></nav>
   </header>
   <main id="main">{body}</main>
-  <footer class="site-footer"><strong>{esc(site['siteName'])}</strong><a href="{esc(site_url('archive/', base))}" data-i18n="nav.archive">{esc(copy['nav.archive'])}</a></footer>
+  <footer class="site-footer"><strong>{esc(site['siteName'])}</strong><a href="{esc(edition_url('archive/', site))}" data-i18n="nav.archive">{esc(copy['nav.archive'])}</a></footer>
   <script id="dhr-data" type="application/json">{json_script(runtime)}</script>
   <script src="{esc(site_url('assets/app.js', base))}" defer></script>
 </body>
 </html>"""
 
 
-def level_controls(issue: dict[str, Any], levels: list[dict[str, Any]], label_key: str) -> str:
-    available = set(issue["availableLevels"])
+def edition_url(path: str, site: dict[str, Any]) -> str:
+    prefix = edition_route(site["edition"]) + "/" if site.get("edition") else ""
+    return site_url(prefix + path, site["basePath"])
+
+
+def level_controls(issue: dict[str, Any], levels: list[dict[str, Any]], label_key: str,
+                   site: dict[str, Any]) -> str:
+    links = site.get("editionLinks") or {
+        level_id: site_url(edition_route(level_id) + "/", site["basePath"])
+        for level_id in issue["availableLevels"]
+    }
+    selected = issue_level(issue, site)
     buttons = "".join(
-        f'<button type="button" data-level="{esc(level["id"])}" title="{esc(level["name"])} · {esc(level["approximateCefr"])}">{esc(level["label"])}</button>'
-        for level in levels if level["id"] in available
+        f'<a href="{esc(links[level["id"]])}" data-edition="{esc(level["id"])}"'
+        f'{" aria-current=page" if level["id"] == selected else ""}>'
+        f'<bdi>{esc(level["label"])}</bdi> · {esc(level["name"])}'
+        f'<small data-i18n="edition.{esc(level["id"])}"></small></a>'
+        for level in levels if level["id"] in links
     )
-    return f'<div class="level-control"><span data-i18n="{label_key}"></span><div>{buttons}</div></div>'
+    return f'<nav class="edition-control" aria-label="Reading editions"><span data-i18n="edition.choose"></span><div>{buttons}</div></nav>'
 
 
 def story_kind(story: dict[str, Any], copy: dict[str, str]) -> str:
@@ -144,7 +158,7 @@ def story_kind(story: dict[str, Any], copy: dict[str, str]) -> str:
 def story_card(story: dict[str, Any], index: int, issue: dict[str, Any], site: dict[str, Any], levels: list[dict[str, Any]], copy: dict[str, str], lead: bool = False) -> str:
     level_id = issue_level(issue, site)
     level = story["levels"][level_id]
-    url = site_url(f"{issue['date']}/{story['slug']}/", site["basePath"])
+    url = edition_url(f"{issue['date']}/{story['slug']}/", site)
     image = ""
     if lead and story.get("image"):
         img = story["image"]
@@ -157,7 +171,7 @@ def story_card(story: dict[str, Any], index: int, issue: dict[str, Any], site: d
 
 def article_routes(index: dict[str, Any], issues: dict[str, dict[str, Any]], site: dict[str, Any]) -> list[str]:
     return [
-        site_url(f"{item['date']}/{story['slug']}/", site["basePath"])
+        edition_url(f"{item['date']}/{story['slug']}/", site)
         for item in index["dates"]
         for story in issues.get(item["date"], {}).get("stories", [])
     ]
@@ -177,21 +191,21 @@ def build_home(
     first = issue["stories"][0]
     available_issues = issues or {issue["date"]: issue}
     random_articles = article_routes(index, available_issues, site)
-    random_fallback = random_articles[0] if random_articles else site_url("archive/", site["basePath"])
+    random_fallback = random_articles[0] if random_articles else edition_url("archive/", site)
     cards = "".join(story_card(story, i, issue, site, levels, copy) for i, story in enumerate(issue["stories"]))
     image = ""
     if first.get("image"):
         image = f'''<figure class="hero-image"><img src="{esc(first["image"]["url"])}" alt="{esc(image_alt(first["image"], site["defaultInterfaceLocale"]))}" referrerpolicy="no-referrer"><figcaption>{esc(first["image"]["credit"])} · <a href="{esc(first["image"]["sourceUrl"])}" rel="noopener noreferrer" target="_blank" data-i18n="article.imageSource">{esc(copy['article.imageSource'])}</a> · <a href="{esc(first["image"]["rightsUrl"])}" rel="noopener noreferrer" target="_blank" data-i18n="article.imageRights">{esc(copy['article.imageRights'])}</a></figcaption></figure>'''
     old = "".join(
-        f'<a class="past-issue" href="{esc(site_url(item["date"] + "/", site["basePath"]))}"><time data-date="{esc(item["date"])}">{esc(format_date(item["date"], site["defaultInterfaceLocale"]))}</time><b>{item["storyCount"]} <span data-i18n="meta.materials">{esc(copy["meta.materials"])}</span></b></a>'
+        f'<a class="past-issue" href="{esc(edition_url(item["date"] + "/", site))}"><time data-date="{esc(item["date"])}">{esc(format_date(item["date"], site["defaultInterfaceLocale"]))}</time><b>{item["storyCount"]} <span data-i18n="meta.materials">{esc(copy["meta.materials"])}</span></b></a>'
         for item in index["dates"][1:4]
-    ) or f'<a class="past-issue" href="{esc(site_url("archive/", site["basePath"]))}" data-i18n="archive.open">{esc(copy["archive.open"])}</a>'
+    ) or f'<a class="past-issue" href="{esc(edition_url("archive/", site))}" data-i18n="archive.open">{esc(copy["archive.open"])}</a>'
     body = f'''
 <section class="page home-page">
   <div class="home-kicker"><span data-i18n="home.dailyIssue">{esc(copy['home.dailyIssue'])}</span><time data-date="{esc(issue['date'])}">{esc(format_date(issue['date'], site['defaultInterfaceLocale']))}</time></div>
-  <section class="home-hero{' has-image' if image else ''}"><div class="hero-copy"><p class="overline"><span data-date="{esc(issue['date'])}">{esc(format_date(issue['date'], site['defaultInterfaceLocale']))}</span> · {len(issue['stories'])} <span data-i18n="meta.materials">{esc(copy['meta.materials'])}</span> · <span data-i18n="meta.about">{esc(copy['meta.about'])}</span> <span data-issue-minutes>{minutes}</span> <span data-minutes-word>{esc(copy['meta.minutesMany'])}</span></p><h1><span data-i18n="home.heroTitle">{esc(copy['home.heroTitle'])}</span></h1><p class="hero-summary" data-i18n="home.heroSummary">{esc(copy['home.heroSummary'])}</p><div class="hero-actions"><a class="primary-action" href="{esc(site_url(issue['date'] + '/', site['basePath']))}" data-i18n="home.startIssue">{esc(copy['home.startIssue'])}</a><a class="random-action" href="{esc(random_fallback)}" data-random-article data-i18n="home.randomArticle">{esc(copy['home.randomArticle'])}</a>{level_controls(issue, levels, 'article.level')}</div></div>{image}</section>
-  <section class="story-section"><header class="section-heading"><div><span data-i18n="home.inIssue">{esc(copy['home.inIssue'])}</span><h2 data-i18n="home.chooseStory">{esc(copy['home.chooseStory'])}</h2></div><a href="{esc(site_url(issue['date'] + '/', site['basePath']))}" data-i18n="home.allStories">{esc(copy['home.allStories'])}</a></header><div class="story-list">{cards}</div></section>
-  <section class="home-bottom"><div><span class="small-label" data-i18n="home.previousIssues">{esc(copy['home.previousIssues'])}</span>{old}</div><a class="archive-link" href="{esc(site_url('archive/', site['basePath']))}" data-i18n="nav.archive">{esc(copy['nav.archive'])}</a></section>
+  <section class="home-hero{' has-image' if image else ''}"><div class="hero-copy"><p class="overline"><span data-date="{esc(issue['date'])}">{esc(format_date(issue['date'], site['defaultInterfaceLocale']))}</span> · {len(issue['stories'])} <span data-i18n="meta.materials">{esc(copy['meta.materials'])}</span> · <span data-i18n="meta.about">{esc(copy['meta.about'])}</span> <span data-issue-minutes>{minutes}</span> <span data-minutes-word>{esc(copy['meta.minutesMany'])}</span></p><h1><span data-i18n="home.heroTitle">{esc(copy['home.heroTitle'])}</span></h1><p class="hero-summary" data-i18n="home.heroSummary">{esc(copy['home.heroSummary'])}</p><div class="hero-actions"><a class="primary-action" href="{esc(edition_url(issue['date'] + '/', site))}" data-i18n="home.startIssue">{esc(copy['home.startIssue'])}</a><a class="random-action" href="{esc(random_fallback)}" data-random-article data-i18n="home.randomArticle">{esc(copy['home.randomArticle'])}</a>{level_controls(issue, levels, 'article.level', site)}</div></div>{image}</section>
+  <section class="story-section"><header class="section-heading"><div><span data-i18n="home.inIssue">{esc(copy['home.inIssue'])}</span><h2 data-i18n="home.chooseStory">{esc(copy['home.chooseStory'])}</h2></div><a href="{esc(edition_url(issue['date'] + '/', site))}" data-i18n="home.allStories">{esc(copy['home.allStories'])}</a></header><div class="story-list">{cards}</div></section>
+  <section class="home-bottom"><div><span class="small-label" data-i18n="home.previousIssues">{esc(copy['home.previousIssues'])}</span>{old}</div><a class="archive-link" href="{esc(edition_url('archive/', site))}" data-i18n="nav.archive">{esc(copy['nav.archive'])}</a></section>
 </section>'''
     return shell(
         title=format_date(issue["date"], site["defaultInterfaceLocale"]),
@@ -208,7 +222,7 @@ def build_day(issue: dict[str, Any], site: dict[str, Any], levels: list[dict[str
     copy = locales[site["defaultInterfaceLocale"]]
     minutes = issue_minutes(issue, issue_level(issue, site), levels)
     cards = "".join(story_card(story, i, issue, site, levels, copy, i == 0) for i, story in enumerate(issue["stories"]))
-    body = f'''<section class="page day-page"><header class="day-heading"><a href="{esc(site_url('archive/', site['basePath']))}">← <span data-i18n="nav.archive">{esc(copy['nav.archive'])}</span></a><div><p class="overline" data-i18n="day.issue">{esc(copy['day.issue'])}</p><h1 data-date="{esc(issue['date'])}">{esc(format_date(issue['date'], site['defaultInterfaceLocale']))}</h1><p>{len(issue['stories'])} <span data-i18n="meta.materials">{esc(copy['meta.materials'])}</span> · <span data-i18n="meta.about">{esc(copy['meta.about'])}</span> <span data-issue-minutes>{minutes}</span> <span data-minutes-word>{esc(copy['meta.minutesMany'])}</span></p></div>{level_controls(issue, levels, 'day.readingLevel')}</header><div class="day-grid">{cards}</div></section>'''
+    body = f'''<section class="page day-page"><header class="day-heading"><a href="{esc(edition_url('archive/', site))}">← <span data-i18n="nav.archive">{esc(copy['nav.archive'])}</span></a><div><p class="overline" data-i18n="day.issue">{esc(copy['day.issue'])}</p><h1 data-date="{esc(issue['date'])}">{esc(format_date(issue['date'], site['defaultInterfaceLocale']))}</h1><p>{len(issue['stories'])} <span data-i18n="meta.materials">{esc(copy['meta.materials'])}</span> · <span data-i18n="meta.about">{esc(copy['meta.about'])}</span> <span data-issue-minutes>{minutes}</span> <span data-minutes-word>{esc(copy['meta.minutesMany'])}</span></p></div>{level_controls(issue, levels, 'day.readingLevel', site)}</header><div class="day-grid">{cards}</div></section>'''
     return shell(title=format_date(issue["date"], site["defaultInterfaceLocale"]), body=body, page="day", site=site, levels=levels, locales=locales, payload={"issue": issue})
 
 
@@ -218,8 +232,8 @@ def build_archive(index: dict[str, Any], issues: dict[str, dict[str, Any]], site
     for position, item in enumerate(index["dates"]):
         counts = Counter(story["type"] for story in issues[item["date"]]["stories"])
         tags = "".join(f'<span data-type-count="{kind}" data-count="{counts[kind]}">{counts[kind]} {copy["type." + kind]}</span>' for kind in ("verbs", "shorts", "current", "everyday", "dialog", "history") if counts[kind])
-        cards.append(f'''<article class="issue-card{' current-issue' if position == 0 else ''}"><time datetime="{esc(item['date'])}" data-date="{esc(item['date'])}">{esc(format_date(item['date'], site['defaultInterfaceLocale']))}</time><div><p>{item['storyCount']} <span data-i18n="meta.materials">{esc(copy['meta.materials'])}</span> · <span data-i18n="meta.about">{esc(copy['meta.about'])}</span> {item['readingMinutes']} <span data-minutes-word data-minutes="{item['readingMinutes']}">{esc(copy['meta.minutesMany'])}</span></p><div class="issue-tags">{tags}</div></div><a href="{esc(site_url(item['date'] + '/', site['basePath']))}" data-i18n="archive.open">{esc(copy['archive.open'])}</a></article>''')
-    body = f'''<section class="page archive-page"><header class="page-title"><p class="overline" data-i18n="nav.archive">{esc(copy['nav.archive'])}</p><h1 data-i18n="archive.title">{esc(copy['archive.title'])}</h1><p data-i18n="archive.summary">{esc(copy['archive.summary'])}</p></header><div class="archive-list">{''.join(cards)}</div></section>'''
+        cards.append(f'''<article class="issue-card{' current-issue' if position == 0 else ''}"><time datetime="{esc(item['date'])}" data-date="{esc(item['date'])}">{esc(format_date(item['date'], site['defaultInterfaceLocale']))}</time><div><p>{item['storyCount']} <span data-i18n="meta.materials">{esc(copy['meta.materials'])}</span> · <span data-i18n="meta.about">{esc(copy['meta.about'])}</span> {item['readingMinutes']} <span data-minutes-word data-minutes="{item['readingMinutes']}">{esc(copy['meta.minutesMany'])}</span></p><div class="issue-tags">{tags}</div></div><a href="{esc(edition_url(item['date'] + '/', site))}" data-i18n="archive.open">{esc(copy['archive.open'])}</a></article>''')
+    body = f'''<section class="page archive-page"><header class="page-title"><p class="overline" data-i18n="nav.archive">{esc(copy['nav.archive'])}</p><h1 data-i18n="archive.title">{esc(copy['archive.title'])}</h1><p data-i18n="archive.summary">{esc(copy['archive.summary'])}</p>{level_controls({'availableLevels': list(site.get('editionLinks', {})) or [site['defaultReadingLevel']]}, levels, 'edition.choose', site)}</header><div class="archive-list">{''.join(cards)}</div></section>'''
     return shell(title=copy["archive.title"], body=body, page="archive", site=site, levels=levels, locales=locales)
 
 
@@ -257,21 +271,32 @@ def build_article(
         if 0 <= target < len(issue["stories"]):
             other = issue["stories"][target]
             other_title = units_text(other["levels"][level_id]["title"])
-            nav.append(f'<a href="{esc(site_url(issue["date"] + "/" + other["slug"] + "/", site["basePath"]))}" data-story-target="{target}"><span>{arrow} <i data-i18n="{key}">{esc(copy[key])}</i></span><b dir="rtl">{esc(other_title)}</b></a>')
+            nav.append(f'<a href="{esc(edition_url(issue["date"] + "/" + other["slug"] + "/", site))}" data-story-target="{target}"><span>{arrow} <i data-i18n="{key}">{esc(copy[key])}</i></span><b dir="rtl">{esc(other_title)}</b></a>')
         else:
             nav.append('<span class="pagination-placeholder" aria-hidden="true"></span>')
-    current_url = site_url(f"{issue['date']}/{story['slug']}/", site["basePath"])
+    current_url = edition_url(f"{issue['date']}/{story['slug']}/", site)
     available_random_articles = random_articles or [
-        site_url(f"{issue['date']}/{item['slug']}/", site["basePath"])
+        edition_url(f"{issue['date']}/{item['slug']}/", site)
         for item in issue["stories"]
     ]
     random_choices = [url for url in available_random_articles if url != current_url]
-    random_fallback = random_choices[0] if random_choices else site_url(f"{issue['date']}/", site["basePath"])
+    random_fallback = random_choices[0] if random_choices else edition_url(f"{issue['date']}/", site)
     random_nav = f'<a class="article-random" href="{esc(random_fallback)}" data-random-article data-i18n="home.randomArticle">{esc(copy["home.randomArticle"])}</a>'
     level = next(item for item in levels if item["id"] == level_id)
     article_class = "hebrew-article shorts-list" if story["type"] in {"shorts", "verbs"} else "hebrew-article"
-    body = f'''<article class="page article-page"><div class="article-progress"><span style="width:{round((position + 1) / len(issue['stories']) * 100)}%"></span></div><header class="article-topline"><a href="{esc(site_url(issue['date'] + '/', site['basePath']))}">← <span data-i18n="nav.backToIssue">{esc(copy['nav.backToIssue'])}</span></a><span>{position + 1} <span data-i18n="article.of">{esc(copy['article.of'])}</span> {len(issue['stories'])}</span></header><div class="article-layout"><aside class="article-tools">{level_controls(issue, levels, 'article.level')}<div class="translation-control"><span data-i18n="article.translation">{esc(copy['article.translation'])}</span><div>{translation_buttons}</div></div><p data-i18n="article.translationHelp">{esc(copy['article.translationHelp'])}</p></aside><div class="article-main"><header class="article-heading"><span class="story-kind" data-story-kind>{esc(story_kind(story, copy))}</span><h1 dir="rtl" data-article-title>{render_units(story['levels'][level_id]['title'], True)}</h1><p class="article-dek" dir="rtl" data-article-teaser>{render_units(story['levels'][level_id]['teaser'], True)}</p><div class="article-meta"><span data-date="{esc(issue['date'])}">{esc(format_date(issue['date'], site['defaultInterfaceLocale']))}</span><span data-article-minutes>{minutes_label(story_minutes(story, level_id, levels), site['defaultInterfaceLocale'], copy)}</span><span data-article-level>{esc(level['label'])} · {esc(level['approximateCefr'])}</span></div></header>{image}<div class="{article_class}" dir="rtl" data-article-body>{paragraphs}</div>{sources}<nav class="article-pagination">{nav[0]}{random_nav}{nav[1]}</nav></div></div></article>'''
+    body = f'''<article class="page article-page"><div class="article-progress"><span style="width:{round((position + 1) / len(issue['stories']) * 100)}%"></span></div><header class="article-topline"><a href="{esc(edition_url(issue['date'] + '/', site))}">← <span data-i18n="nav.backToIssue">{esc(copy['nav.backToIssue'])}</span></a><span>{position + 1} <span data-i18n="article.of">{esc(copy['article.of'])}</span> {len(issue['stories'])}</span></header><div class="article-layout"><aside class="article-tools"><div class="edition-badge"><span data-i18n="edition.label">{esc(copy['edition.label'])}</span><strong>{esc(level['label'])} · {esc(level['name'])}</strong></div><div class="translation-control"><span data-i18n="article.translation">{esc(copy['article.translation'])}</span><div>{translation_buttons}</div></div><p data-i18n="article.translationHelp">{esc(copy['article.translationHelp'])}</p></aside><div class="article-main"><header class="article-heading"><span class="story-kind" data-story-kind>{esc(story_kind(story, copy))}</span><h1 dir="rtl" data-article-title>{render_units(story['levels'][level_id]['title'], True)}</h1><p class="article-dek" dir="rtl" data-article-teaser>{render_units(story['levels'][level_id]['teaser'], True)}</p><div class="article-meta"><span data-date="{esc(issue['date'])}">{esc(format_date(issue['date'], site['defaultInterfaceLocale']))}</span><span data-article-minutes>{minutes_label(story_minutes(story, level_id, levels), site['defaultInterfaceLocale'], copy)}</span><span data-article-level>{esc(level['label'])} · {esc(level['approximateCefr'])}</span></div></header>{image}<div class="{article_class}" dir="rtl" data-article-body>{paragraphs}</div>{sources}<nav class="article-pagination">{nav[0]}{random_nav}{nav[1]}</nav></div></div></article>'''
     return shell(title=units_text(story["levels"][level_id]["title"]), body=body, page="article", site=site, levels=levels, locales=locales, payload={"issue": issue, "storyIndex": position, "randomArticles": random_choices})
+
+
+def compatibility_page(destinations, site, levels, locales):
+    copy = locales[site["defaultInterfaceLocale"]]
+    choices = "".join(
+        f'<a href="{esc(destinations[level["id"]])}">{esc(level["label"])} · {esc(level["name"])}</a>'
+        for level in levels if level["id"] in destinations
+    )
+    body = f'<section class="page"><h1 data-i18n="edition.choose">{esc(copy["edition.choose"])}</h1><nav class="edition-control"><div>{choices}</div></nav></section>'
+    return shell(title=copy["edition.choose"], body=body, page="redirect", site=site,
+                 levels=levels, locales=locales, payload={"editionDestinations": destinations})
 
 
 def build(root: Path = ROOT, output: Path | None = None, base_path: str | None = None) -> Path:
@@ -283,31 +308,52 @@ def build(root: Path = ROOT, output: Path | None = None, base_path: str | None =
         site = {**site, "basePath": ensure_base_path(base_path)}
     levels = load_level_config(root)
     locales = load_locales(root)
-    index = read_json(root / "content" / "index.json")
-    issues = {item["date"]: read_json(root / "content" / f"{item['date']}.json") for item in index["dates"]}
+    issues = {path.stem: to_editions(read_json(path)) for path in (root / "content").glob("????-??-??.json")}
+    index = build_index(issues, levels)
     for issue in issues.values():
-        issue["stories"] = prioritize_practice_pages(issue["stories"])
-    random_articles = article_routes(index, issues, site)
+        for edition in issue["editions"].values():
+            edition["stories"] = prioritize_practice_pages(edition["stories"])
     output = output or root / "dist"
     if output.exists():
         shutil.rmtree(output)
     output.mkdir(parents=True)
     shutil.copytree(root / "static", output / "assets")
-    latest = issues[index["dates"][0]["date"]]
-    (output / "index.html").write_text(build_home(latest, index, site, levels, locales, issues), encoding="utf-8")
-    (output / "archive").mkdir()
-    (output / "archive" / "index.html").write_text(build_archive(index, issues, site, levels, locales), encoding="utf-8")
-    for issue in issues.values():
-        day_dir = output / issue["date"]
-        day_dir.mkdir()
-        (day_dir / "index.html").write_text(build_day(issue, site, levels, locales), encoding="utf-8")
-        for position, story in enumerate(issue["stories"]):
-            article_dir = day_dir / story["slug"]
-            article_dir.mkdir()
-            (article_dir / "index.html").write_text(
-                build_article(issue, position, site, levels, locales, random_articles),
-                encoding="utf-8",
-            )
+    def write_page(path, text):
+        directory = output / path
+        directory.mkdir(parents=True, exist_ok=True)
+        (directory / "index.html").write_text(text, encoding="utf-8")
+
+    active_levels = [level["id"] for level in levels if any(level["id"] in issue["editions"] for issue in issues.values())]
+    homes = {level_id: site_url(edition_route(level_id) + "/", site["basePath"]) for level_id in active_levels}
+    archives = {level_id: url + "archive/" for level_id, url in homes.items()}
+    write_page("", compatibility_page(homes, site, levels, locales))
+    write_page("archive", compatibility_page(archives, site, levels, locales))
+    for level_id in active_levels:
+        route = edition_route(level_id)
+        scoped_index = edition_index(index, level_id)
+        scoped_issues = {day: edition_issue(issue, level_id) for day, issue in issues.items() if level_id in issue["editions"]}
+        scoped_site = {**site, "edition": level_id, "editionLinks": homes}
+        random_articles = article_routes(scoped_index, scoped_issues, scoped_site)
+        latest = scoped_issues[scoped_index["dates"][0]["date"]]
+        write_page(route, build_home(latest, scoped_index, scoped_site, levels, locales, scoped_issues))
+        write_page(route + "/archive", build_archive(scoped_index, scoped_issues,
+                   {**scoped_site, "editionLinks": archives}, levels, locales))
+        for day, issue in scoped_issues.items():
+            day_links = {other: homes[other] + day + "/" for other in issues[day]["availableLevels"]}
+            day_site = {**scoped_site, "editionLinks": day_links}
+            write_page(f"{route}/{day}", build_day(issue, day_site, levels, locales))
+            for position, story in enumerate(issue["stories"]):
+                write_page(f"{route}/{day}/{story['slug']}",
+                           build_article(issue, position, day_site, levels, locales, random_articles))
+    for day, issue in issues.items():
+        destinations = {level_id: homes[level_id] + day + "/" for level_id in issue["availableLevels"]}
+        write_page(day, compatibility_page(destinations, site, levels, locales))
+        slugs = {story["slug"] for edition in issue["editions"].values() for story in edition["stories"]}
+        for slug in slugs:
+            links = {level_id: destinations[level_id] + slug + "/"
+                     for level_id, edition in issue["editions"].items()
+                     if any(story["slug"] == slug for story in edition["stories"])}
+            write_page(f"{day}/{slug}", compatibility_page(links, site, levels, locales))
     return output
 
 

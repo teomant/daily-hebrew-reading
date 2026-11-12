@@ -68,6 +68,18 @@ def verbs_page(
     items: list[dict[str, Any]], stories: list[dict[str, Any]], target_date: str,
     level_ids: list[str], locales: list[str],
 ) -> dict[str, Any] | None:
+    if len(level_ids) > 1:
+        pages = {}
+        for level_id in level_ids:
+            selected = [story.get("_editionStories", {}).get(level_id, story)
+                        for story in stories if level_id in story.get("levels", {})]
+            page = verbs_page(items, selected, target_date, [level_id], locales)
+            if page:
+                pages[level_id] = page
+        if not pages:
+            return None
+        return {**next(iter(pages.values())), "_editionStories": pages,
+                "levels": {level_id: page["levels"][level_id] for level_id, page in pages.items()}}
     if len(items) != VERB_BATCH_SIZE or len(stories) != VERB_BATCH_SIZE:
         return None
 

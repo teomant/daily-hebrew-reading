@@ -2,6 +2,33 @@
 
 ## 2026-11-12
 
+- Implemented the approved separate Alef, Alef Plus, and Bet editions.
+  Fetched and fast-forwarded `master` to `ffe03ea` before implementation.
+  Removed the November 12 issue, its index entry, and its sixteen scenario-history records so the date can be regenerated.
+- Added issue and index schema version 2, with independent article content and metadata per edition and a shared topic ID.
+  Added the offline `src.migrate_editions` script with dry-run default, validation, transactional writes, and repeat-run stability.
+  Migrated seventy retained issues containing 2,457 edition articles.
+  Compared every migrated issue with the original Git content through the lossless conversion; all text, translations, and metadata were preserved.
+- Kept topic selection and sourced research shared, then split writing into one request per level.
+  Fiction can use different situations within the selected topic and records its actual scenario metadata per edition.
+  News and history keep shared research and required factual coverage.
+  Retained successful editions when another edition fails, including separate SHORTS collection and the complete-ten-item VERBS rule per edition.
+  Updated the A1.1, A1.2, and A2 writing profiles and retained the emphasis on everyday spoken Hebrew.
+- Added separate edition home, archive, day, and article routes.
+  Removed article level switching and added a fixed edition badge.
+  Navigation stays within the edition, while legacy URLs select an available edition using the saved preference.
+  Preserved translation controls and added safe preference handling when browser storage is unavailable.
+  Updated README, product documentation, and `docs/editions.md`.
+- Ran the offline suite once: 123 tests, with seven test methods initially needing fixture updates or fixes for compact planning records.
+  All seven affected methods passed their focused rerun.
+  The seven edition tests also passed after the final append-context correction.
+  Added a focused regression check for a stale legacy index, which now returns a validation error instead of raising a key error.
+  The static build, archive link checks, Python compilation, JavaScript syntax check, and whitespace checks passed.
+  Completed one direct review and removed the temporary task plan.
+  Stopped local preview work at the owner's request after the homepage check.
+  No paid generation or deployment was run for verification.
+  The owner subsequently requested staging, committing, and pushing the migration with the message `Migration to a new format`.
+
 - The owner approved all four improvements from the November 8–11 article review and requested a stronger emphasis on real spoken Hebrew.
   Kept communication and documentation in English and limited review to one focused direct pass.
 - Lowered the adaptation response-schema minimum to two paragraphs for EVERYDAY and HISTORY at every level.

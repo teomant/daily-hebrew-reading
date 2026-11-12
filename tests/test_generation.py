@@ -78,6 +78,9 @@ from src.generate_issue import (
 from src.validation import validate_issue, validate_repository
 from src.generation_quality import segmentation_errors
 
+from tests.legacy_support import read_legacy_view as read_json
+from tests.legacy_support import generate_legacy_view as generate
+
 
 def adaptation_payload(
     story_id: str,
@@ -188,6 +191,14 @@ def history_research_record(story_id: str, status: str = "sufficient") -> dict:
 
 
 class GenerationTests(unittest.TestCase):
+    def setUp(self):
+        # These tests isolate topic planning and the established repair helper.
+        # tests.test_editions exercises independent edition orchestration itself.
+        from src.generate_issue import _adapt_story
+        patcher = patch("src.generate_issue._adapt_editions", side_effect=_adapt_story)
+        patcher.start()
+        self.addCleanup(patcher.stop)
+
     def test_default_issue_mix_matches_the_product_contract(self) -> None:
         site = read_json(ROOT / "config" / "site.json")
         self.assertEqual(site["defaultIssueStoryCount"], 12)
@@ -273,7 +284,7 @@ class GenerationTests(unittest.TestCase):
         self.assertIn("GOOD", dialog_example)
         self.assertIn("8–12 items", dialog_example)
         self.assertIn("Do not count words", prompt)
-        self.assertIn("Difficulty is determined by wording", read_json(ROOT / "config" / "reading-levels.json")["levels"][0]["guidance"])
+        self.assertIn("Do not pad to a word", read_json(ROOT / "config" / "reading-levels.json")["levels"][0]["guidance"])
         self.assertIn("Publishing a usable article is the goal", prompt)
         self.assertIn("BAD: one meaningful unit", prompt)
         self.assertIn("GOOD: four units", prompt)
@@ -1505,7 +1516,7 @@ class GenerationTests(unittest.TestCase):
                     self.assertEqual(sum(phase.startswith("SHORTS replacement") for phase in calls),
                                      3 if replacements_work is True else 33)
                     self.assertEqual(len(read_json(root / "content" / "everyday-history.json")["items"]),
-                                     len(read_json(ROOT / "content" / "everyday-history.json")["items"]) + expected_count + 1)
+                                     len(read_json(ROOT / "content" / "everyday-history.json")["items"]) + 3 * (expected_count + 1))
 
     def test_append_rejects_a_rephrased_existing_topic(self) -> None:
         site = read_json(ROOT / "config" / "site.json")

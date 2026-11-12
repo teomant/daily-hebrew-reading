@@ -6,6 +6,8 @@ import unittest
 from src.common import ROOT, load_level_config, load_site_config, read_json
 from src.validation import validate_issue, validate_repository
 
+from tests.legacy_support import read_legacy_view as read_json
+
 
 class ValidationTests(unittest.TestCase):
     def test_sample_repository_is_valid(self) -> None:

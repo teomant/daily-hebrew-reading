@@ -6,7 +6,7 @@
       "name": "Alef",
       "approximateCefr": "A1.1",
       "learnerWordsPerMinute": 45,
-      "guidance": "Write for a beginner Alef reader who can decode unpointed Hebrew, not an end-of-Alef graduate. Use familiar concrete words, explicit subjects, and one simple clause per sentence. Prefer present tense in fictional situations; use familiar simple past or future only when the facts or practical exchange require it. Avoid passive forms, abstract action nouns, construct chains, embedded clauses, and several verb forms in one sentence. Prefer repeating a clear noun to an ambiguous pronoun. Introduce only a few necessary unfamiliar terms in the whole article and explain each immediately with familiar words. Do not cluster new vocabulary. Keep adult, natural Hebrew. Difficulty is determined by wording and grammar, not word count. Keep the central situation, required facts, useful answer, and outcome; omit optional names, dates, and technical detail. A shorter clear article is preferable to a dense four-paragraph retelling."
+      "guidance": "Write for early Alef after alphabet decoding (approximately A1.1). Use frequent concrete everyday words, explicit subjects, simple questions, and mostly one clause per sentence. Prefer present tense for everyday fiction; use limited familiar past forms where facts require them, especially news and history. Use common infinitives and practical requests. Avoid passive forms, abstract action nouns, dense construct chains, and nested clauses. Introduce only essential unfamiliar terms, explained in simple context. Choose one concrete situation, immediate need, and clear result. Keep adult natural spoken Hebrew. Do not pad to a word or paragraph target, and do not distort facts to avoid a tense."
     },
     {
       "id": "alefPlus",
@@ -14,7 +14,7 @@
       "name": "Alef Plus",
       "approximateCefr": "A1.2",
       "learnerWordsPerMinute": 55,
-      "guidance": "Write for advanced Alef. Use a broader but still common vocabulary than Alef, past and future forms where natural, simple cause and effect, everyday connectors, common fixed expressions, and occasional short subordinate clauses. Keep the story easy to follow. Difficulty is determined by wording and grammar, not word count. Connect familiar ideas with כי, אבל, אז, אם, and short clauses with ש when natural. Introduce a few less familiar words in clear context, without piling them into the same sentence. Keep the same useful answer, outcome, and memorable detail as the other levels."
+      "guidance": "Write for advanced Alef (approximately A1.2). Use common everyday vocabulary and useful spoken expressions. Actively practice common past-tense verbs in stories about completed events, alongside present tense where natural. Future tense is not a teaching focus at this stage. Link short sentences with כי, אבל, אז, and אחר כך; use occasional simple ש clauses without nesting. Tell a clear sequence with a practical problem and response. Practice explaining what happened, clarifying a reply, and correcting a misunderstanding. Write an independent fictional situation within the selected topic; do not match another edition's plot. Keep sourced core facts and required historical beats. Length is not the measure of difficulty."
     },
     {
       "id": "bet",
@@ -22,7 +22,7 @@
       "name": "Bet",
       "approximateCefr": "A2",
       "learnerWordsPerMinute": 65,
-      "guidance": "Write reasonably natural contemporary Hebrew for a Bet learner. Use a wider everyday vocabulary, more precise verbs and adjectives, natural connectors, comparisons, reactions, common colloquial constructions, and moderately more complex sentences than Alef Plus. Avoid dense journalistic syntax and specialist vocabulary. Difficulty is determined by wording and grammar, not word count. Use connected sentences to explain reasons, contrasts, intentions, and reactions. Richer Hebrew should sound conversational, not more official: do not replace ordinary verbs with bureaucratic noun phrases just to raise the level. Keep the same useful answer, outcome, and memorable detail as the other levels."
+      "guidance": "Write for Bet (approximately A2, not CEFR B1). Use present, past, and future forms naturally, including future plans and practical conditions where appropriate. Use more precise everyday words, connected sentences, comparisons, simple relative clauses, and limited subordinate clauses without nesting. Explain preferences, reasons, choices, and consequences. Write real conversational Hebrew with familiar verbs and ordinary politeness; do not substitute formal or bureaucratic language to sound harder. Write an independent fictional situation within the selected topic; keep the core facts and required historical beats in sourced articles. Keep optional detail proportionate to the reader. Length is not the measure of difficulty."
     }
   ]
 }

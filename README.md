@@ -1,22 +1,24 @@
 # עברית היום — Daily Hebrew Reading
 
 A static daily magazine for learners reading modern spoken Israeli Hebrew.
-Each new issue combines sourced CURRENT stories, realistic EVERYDAY situations, natural DIALOG conversations, sourced HISTORY stories, one grouped SHORTS page, and a daily common-verb practice page at configurable reading levels.
+Each new issue has separate Alef, Alef Plus, and Bet editions with sourced CURRENT stories, realistic EVERYDAY situations, natural DIALOG conversations, sourced HISTORY stories, one grouped SHORTS page, and a daily common-verb practice page at configurable reading levels.
 Almost all Hebrew text is selectable for Russian or English translation.
 
 The repository contains a complete sample issue, so the site can be built and tested without an OpenAI key. The production URL is expected to be `https://teomant.github.io/daily-hebrew-reading/`.
 
 ## What is included
 
-- Static home, archive, day, and article pages in the selected “Jerusalem Journal” design.
+- Separate edition homes, archives, dated issues, and fixed-level article pages in the selected “Jerusalem Journal” design.
+- Offline archive migration with preserved text and translations, plus compatibility for old links.
+  See [Separate reading editions](docs/editions.md) for the format, routes, language profiles, and migration commands.
 - Configurable reading levels (`א`, `א+`, `ב` initially) and interface/translation locale registries (`ru`, `en` initially).
 - Persisted reading level, translation language, and interface language preferences.
 - Keyboard, hover, and tap translation popovers.
 - Source links and optional externally hosted, attributed source images with graceful failure.
-- Staged OpenAI Responses API generation: web-enabled CURRENT/HISTORY discovery returns compact screening records, strict duplicate review and deterministic selection choose publishable subjects, batched web-enabled requests deeply research only selected HISTORY stories, separate no-web planners create the full generated stories and SHORTS items, and adaptation handles each full story or short item independently with lexical units and contextual translations.
-- A normal 2 CURRENT / 3 HISTORY / 3 EVERYDAY / 2 DIALOG / 1 SHORTS / 1 VERBS-page target mix (12 pages).
+- Staged OpenAI Responses API generation: web-enabled CURRENT/HISTORY discovery returns compact screening records, strict duplicate review and deterministic selection choose publishable subjects, batched web-enabled requests deeply research only selected HISTORY stories, separate no-web planners create the full generated stories and SHORTS items, and writing handles each full story or short item separately for each level with lexical units and contextual translations.
+- A normal 2 CURRENT / 3 HISTORY / 3 EVERYDAY / 2 DIALOG / 1 SHORTS / 1 VERBS-page target mix (12 pages per edition).
   Generated material draws from three pools: essential situations such as healthcare or documents, ordinary routines such as shopping or transport, and experiences such as cooking or trips.
-  The five full generated stories target a 2 / 2 / 1 mix across these pools; eleven planned SHORTS target 5 / 4 / 2.
+  The five full generated stories target two essential and three routine topics; eleven planned SHORTS target five essential and six routine topics.
   These are editorial targets, not publication gates.
   Each SHORTS item is a two-or-three-sentence mini-situation planned and adapted independently.
   Valid items are kept, fresh replacements are planned after failures, and any remaining valid items (up to eleven) are collected on one page.
@@ -58,7 +60,8 @@ If that date does not exist, the generator creates a normal full issue. If it al
 python -m src.generate_issue --date 2026-09-04 --additional-stories 2
 ```
 
-Generation validates completed content before replacing any repository files. Exhausted API/request failures, unusable planning or research, and invalid final combined content exit with an error and leave the published site unchanged. An individual adaptation that remains invalid after its retry is omitted instead, and later articles continue.
+Generation validates completed content before replacing any repository files. Unusable planning or research and invalid final combined content exit with an error before writing content.
+An individual edition article that remains unusable after bounded writing attempts is omitted while other editions and topics continue.
 
 Future articles target beginner Alef after alphabet decoding, with familiar words, explicit subjects, and one simple clause per sentence.
 HISTORY and EVERYDAY allow 2–12 paragraphs at every level; Alef normally uses 2–4 short paragraphs.
@@ -66,7 +69,7 @@ Alef Plus and Bet may finish in two or three paragraphs, with 4–5 used only wh
 Alef Plus connects familiar ideas, while Bet uses richer conversational language.
 All levels favor natural spoken Hebrew, familiar verbs, direct requests, and replies that answer the preceding turn.
 Each level should tell the story once, without appending a rewritten draft or restarting the same events after the outcome.
-Before annotation, one final prose check covers repeated events, complete sentences, blank paragraphs, drafting fragments, grammar, and consistent roles across levels.
+Before annotation, one final prose check covers repeated events, complete sentences, blank paragraphs, drafting fragments, grammar, and consistent roles within each article.
 The [wording reference](prompts/frequent-hebrew.md) includes short calibration examples.
 Difficulty remains a writing judgment, without a numeric vocabulary gate.
 New dialogue structure and lexical segmentation receive local checks and bounded repairs.
@@ -82,11 +85,12 @@ The zero-based batch is `(issue_date - date(1, 1, 1)).days % 5`.
 Each batch contains ten consecutive entries, so all fifty recur every five days without a year reset.
 The requested issue date controls the batch, including backdated runs.
 
-Each item gets one no-web adaptation request for all configured levels, with at most three content attempts and the existing bounded annotation repair.
+Each item gets one no-web writing request per configured level, with at most three content attempts and the existing bounded annotation repair.
 The body must naturally contain its assigned spelling at every level; extra conjugated forms are welcome.
 Each piece has two or three sentences and the normal Russian/English lexical translations.
 Successful levels remain intact during retries.
-If any required item still fails core checks, generation logs the incomplete count and omits only the VERBS page.
+If a required item still fails core checks, generation omits only that edition's VERBS page.
+Other editions can publish their complete ten-item pages.
 It never publishes a partial ten-item page.
 Existing article allocations remain unchanged, and API usage stays in the normal cost logs.
 Same-day append does not regenerate or backfill the page.
@@ -98,8 +102,8 @@ Newly generated and appended issues use EVERYDAY, DIALOG, CURRENT, HISTORY after
 
 ## Content and configuration
 
-- `content/YYYY-MM-DD.json` — complete ordered issue.
-- `content/index.json` — dates, story counts, and estimated reading times.
+- `content/YYYY-MM-DD.json` — schema-2 issue with ordered articles under `editions[levelId].stories`.
+- `content/index.json` — schema-2 dates with story counts and reading times per edition.
 - `content/everyday-history.json` — EVERYDAY, DIALOG, and individual SHORTS scenario history used to reduce repetition.
 - `config/site.json` — base path, enabled locales, defaults, flexible new-issue count range, and prompt lookback windows: fourteen days for HISTORY, seven for CURRENT and generated scenarios.
 - `config/common-verbs.json` — 50 ordered verbs with meanings and source attribution.
@@ -107,7 +111,7 @@ Newly generated and appended issues use EVERYDAY, DIALOG, CURRENT, HISTORY after
 - `i18n/*.json` — interface dictionaries. Adding a locale requires a matching dictionary and adding its code to `site.json`.
 - `prompts/*.md` — sourced editorial, selected-HISTORY research, deduplication, everyday, dialogue, adaptation, and curated frequent-Hebrew guidance.
 
-Old issues list their own available levels/locales and remain readable when new levels, locales, or story types are configured later. The validator rejects missing adaptations and requires at least 75% contextual translation coverage per story level and language; individual units may remain untranslated when no useful direct translation exists.
+Old issues list their own available levels/locales and remain readable when new levels, locales, or story types are configured later. The validator checks each available edition separately and requires at least 75% contextual translation coverage per story level and language; individual units may remain untranslated when no useful direct translation exists.
 
 ## GitHub setup
 
@@ -144,13 +148,16 @@ Recent and same-day context includes those patterns and individual SHORTS briefs
 HISTORY excludes fourteen days of recent subjects; CURRENT and generated scenarios use seven days.
 Older stored content without pattern metadata remains supported.
 
-Adaptation runs one story or SHORTS item at a time.
+Writing runs one story or SHORTS item for one level at a time.
+Topic selection and research run once.
+Fictional editions may use different stories within the selected topic and record their actual scenario metadata.
+News and history retain a shared factual contract.
 Valid levels are retained; only unresolved levels are requested again within the existing two-attempt limit, or three for DIALOG and SHORTS.
 DIALOG planning identifies exactly two speakers and their roles in the brief.
 Code can restore a colon after an unambiguous separate name unit, but never assigns identities by paragraph position.
 Unknown labels, nonalternating turns, and detectable third-person narration receive correction attempts.
 After retries, retain the latest usable level with a warning if public structure, translation coverage, identity, and required factual coverage pass.
-Only failures of those core contracts omit the article or item.
+Only failures of those core contracts omit that edition's article or item.
 Semantic role consistency and reading-level fit still require observation of future output.
 
 Local generation checks flag oversized units and whole multiword sentence targets, including punctuation stored separately.

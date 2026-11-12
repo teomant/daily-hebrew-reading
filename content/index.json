@@ -1,360 +1,1195 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "dates": [
     {
-      "date": "2026-11-12",
-      "storyCount": 12,
-      "readingMinutes": 25
-    },
-    {
       "date": "2026-11-11",
-      "storyCount": 12,
-      "readingMinutes": 26
+      "editions": {
+        "alef": {
+          "storyCount": 12,
+          "readingMinutes": 26
+        },
+        "alefPlus": {
+          "storyCount": 12,
+          "readingMinutes": 30
+        },
+        "bet": {
+          "storyCount": 12,
+          "readingMinutes": 28
+        }
+      }
     },
     {
       "date": "2026-11-10",
-      "storyCount": 12,
-      "readingMinutes": 27
+      "editions": {
+        "alef": {
+          "storyCount": 12,
+          "readingMinutes": 27
+        },
+        "alefPlus": {
+          "storyCount": 12,
+          "readingMinutes": 31
+        },
+        "bet": {
+          "storyCount": 12,
+          "readingMinutes": 30
+        }
+      }
     },
     {
       "date": "2026-11-09",
-      "storyCount": 12,
-      "readingMinutes": 26
+      "editions": {
+        "alef": {
+          "storyCount": 12,
+          "readingMinutes": 26
+        },
+        "alefPlus": {
+          "storyCount": 12,
+          "readingMinutes": 27
+        },
+        "bet": {
+          "storyCount": 12,
+          "readingMinutes": 28
+        }
+      }
     },
     {
       "date": "2026-11-08",
-      "storyCount": 12,
-      "readingMinutes": 27
+      "editions": {
+        "alef": {
+          "storyCount": 12,
+          "readingMinutes": 27
+        },
+        "alefPlus": {
+          "storyCount": 12,
+          "readingMinutes": 30
+        },
+        "bet": {
+          "storyCount": 12,
+          "readingMinutes": 30
+        }
+      }
     },
     {
       "date": "2026-11-07",
-      "storyCount": 11,
-      "readingMinutes": 28
+      "editions": {
+        "alef": {
+          "storyCount": 11,
+          "readingMinutes": 28
+        },
+        "alefPlus": {
+          "storyCount": 11,
+          "readingMinutes": 28
+        },
+        "bet": {
+          "storyCount": 11,
+          "readingMinutes": 26
+        }
+      }
     },
     {
       "date": "2026-11-06",
-      "storyCount": 12,
-      "readingMinutes": 26
+      "editions": {
+        "alef": {
+          "storyCount": 12,
+          "readingMinutes": 26
+        },
+        "alefPlus": {
+          "storyCount": 12,
+          "readingMinutes": 31
+        },
+        "bet": {
+          "storyCount": 12,
+          "readingMinutes": 29
+        }
+      }
     },
     {
       "date": "2026-11-05",
-      "storyCount": 12,
-      "readingMinutes": 25
+      "editions": {
+        "alef": {
+          "storyCount": 12,
+          "readingMinutes": 25
+        },
+        "alefPlus": {
+          "storyCount": 12,
+          "readingMinutes": 27
+        },
+        "bet": {
+          "storyCount": 12,
+          "readingMinutes": 27
+        }
+      }
     },
     {
       "date": "2026-11-04",
-      "storyCount": 12,
-      "readingMinutes": 28
+      "editions": {
+        "alef": {
+          "storyCount": 12,
+          "readingMinutes": 28
+        },
+        "alefPlus": {
+          "storyCount": 12,
+          "readingMinutes": 29
+        },
+        "bet": {
+          "storyCount": 12,
+          "readingMinutes": 30
+        }
+      }
     },
     {
       "date": "2026-11-03",
-      "storyCount": 12,
-      "readingMinutes": 27
+      "editions": {
+        "alef": {
+          "storyCount": 12,
+          "readingMinutes": 27
+        },
+        "alefPlus": {
+          "storyCount": 12,
+          "readingMinutes": 32
+        },
+        "bet": {
+          "storyCount": 12,
+          "readingMinutes": 32
+        }
+      }
     },
     {
       "date": "2026-11-02",
-      "storyCount": 12,
-      "readingMinutes": 31
+      "editions": {
+        "alef": {
+          "storyCount": 12,
+          "readingMinutes": 31
+        },
+        "alefPlus": {
+          "storyCount": 12,
+          "readingMinutes": 31
+        },
+        "bet": {
+          "storyCount": 12,
+          "readingMinutes": 30
+        }
+      }
     },
     {
       "date": "2026-11-01",
-      "storyCount": 12,
-      "readingMinutes": 26
+      "editions": {
+        "alef": {
+          "storyCount": 12,
+          "readingMinutes": 26
+        },
+        "alefPlus": {
+          "storyCount": 12,
+          "readingMinutes": 29
+        },
+        "bet": {
+          "storyCount": 12,
+          "readingMinutes": 28
+        }
+      }
     },
     {
       "date": "2026-10-31",
-      "storyCount": 12,
-      "readingMinutes": 26
+      "editions": {
+        "alef": {
+          "storyCount": 12,
+          "readingMinutes": 26
+        },
+        "alefPlus": {
+          "storyCount": 12,
+          "readingMinutes": 30
+        },
+        "bet": {
+          "storyCount": 12,
+          "readingMinutes": 28
+        }
+      }
     },
     {
       "date": "2026-10-30",
-      "storyCount": 12,
-      "readingMinutes": 32
+      "editions": {
+        "alef": {
+          "storyCount": 12,
+          "readingMinutes": 32
+        },
+        "alefPlus": {
+          "storyCount": 12,
+          "readingMinutes": 30
+        },
+        "bet": {
+          "storyCount": 12,
+          "readingMinutes": 29
+        }
+      }
     },
     {
       "date": "2026-10-29",
-      "storyCount": 11,
-      "readingMinutes": 27
+      "editions": {
+        "alef": {
+          "storyCount": 11,
+          "readingMinutes": 27
+        },
+        "alefPlus": {
+          "storyCount": 11,
+          "readingMinutes": 27
+        },
+        "bet": {
+          "storyCount": 11,
+          "readingMinutes": 25
+        }
+      }
     },
     {
       "date": "2026-10-28",
-      "storyCount": 11,
-      "readingMinutes": 30
+      "editions": {
+        "alef": {
+          "storyCount": 11,
+          "readingMinutes": 30
+        },
+        "alefPlus": {
+          "storyCount": 11,
+          "readingMinutes": 30
+        },
+        "bet": {
+          "storyCount": 11,
+          "readingMinutes": 30
+        }
+      }
     },
     {
       "date": "2026-10-27",
-      "storyCount": 10,
-      "readingMinutes": 29
+      "editions": {
+        "alef": {
+          "storyCount": 10,
+          "readingMinutes": 29
+        },
+        "alefPlus": {
+          "storyCount": 10,
+          "readingMinutes": 27
+        },
+        "bet": {
+          "storyCount": 10,
+          "readingMinutes": 24
+        }
+      }
     },
     {
       "date": "2026-10-26",
-      "storyCount": 11,
-      "readingMinutes": 27
+      "editions": {
+        "alef": {
+          "storyCount": 11,
+          "readingMinutes": 27
+        },
+        "alefPlus": {
+          "storyCount": 11,
+          "readingMinutes": 26
+        },
+        "bet": {
+          "storyCount": 11,
+          "readingMinutes": 26
+        }
+      }
     },
     {
       "date": "2026-10-25",
-      "storyCount": 11,
-      "readingMinutes": 31
+      "editions": {
+        "alef": {
+          "storyCount": 11,
+          "readingMinutes": 31
+        },
+        "alefPlus": {
+          "storyCount": 11,
+          "readingMinutes": 29
+        },
+        "bet": {
+          "storyCount": 11,
+          "readingMinutes": 29
+        }
+      }
     },
     {
       "date": "2026-10-24",
-      "storyCount": 11,
-      "readingMinutes": 28
+      "editions": {
+        "alef": {
+          "storyCount": 11,
+          "readingMinutes": 28
+        },
+        "alefPlus": {
+          "storyCount": 11,
+          "readingMinutes": 28
+        },
+        "bet": {
+          "storyCount": 11,
+          "readingMinutes": 28
+        }
+      }
     },
     {
       "date": "2026-10-23",
-      "storyCount": 11,
-      "readingMinutes": 26
+      "editions": {
+        "alef": {
+          "storyCount": 11,
+          "readingMinutes": 26
+        },
+        "alefPlus": {
+          "storyCount": 11,
+          "readingMinutes": 26
+        },
+        "bet": {
+          "storyCount": 11,
+          "readingMinutes": 25
+        }
+      }
     },
     {
       "date": "2026-10-22",
-      "storyCount": 11,
-      "readingMinutes": 31
+      "editions": {
+        "alef": {
+          "storyCount": 11,
+          "readingMinutes": 31
+        },
+        "alefPlus": {
+          "storyCount": 11,
+          "readingMinutes": 30
+        },
+        "bet": {
+          "storyCount": 11,
+          "readingMinutes": 27
+        }
+      }
     },
     {
       "date": "2026-10-21",
-      "storyCount": 11,
-      "readingMinutes": 27
+      "editions": {
+        "alef": {
+          "storyCount": 11,
+          "readingMinutes": 27
+        },
+        "alefPlus": {
+          "storyCount": 11,
+          "readingMinutes": 26
+        },
+        "bet": {
+          "storyCount": 11,
+          "readingMinutes": 23
+        }
+      }
     },
     {
       "date": "2026-10-20",
-      "storyCount": 11,
-      "readingMinutes": 29
+      "editions": {
+        "alef": {
+          "storyCount": 11,
+          "readingMinutes": 29
+        },
+        "alefPlus": {
+          "storyCount": 11,
+          "readingMinutes": 29
+        },
+        "bet": {
+          "storyCount": 11,
+          "readingMinutes": 29
+        }
+      }
     },
     {
       "date": "2026-10-19",
-      "storyCount": 11,
-      "readingMinutes": 28
+      "editions": {
+        "alef": {
+          "storyCount": 11,
+          "readingMinutes": 28
+        },
+        "alefPlus": {
+          "storyCount": 11,
+          "readingMinutes": 27
+        },
+        "bet": {
+          "storyCount": 11,
+          "readingMinutes": 27
+        }
+      }
     },
     {
       "date": "2026-10-18",
-      "storyCount": 11,
-      "readingMinutes": 27
+      "editions": {
+        "alef": {
+          "storyCount": 11,
+          "readingMinutes": 27
+        },
+        "alefPlus": {
+          "storyCount": 11,
+          "readingMinutes": 27
+        },
+        "bet": {
+          "storyCount": 11,
+          "readingMinutes": 26
+        }
+      }
     },
     {
       "date": "2026-10-17",
-      "storyCount": 11,
-      "readingMinutes": 29
+      "editions": {
+        "alef": {
+          "storyCount": 11,
+          "readingMinutes": 29
+        },
+        "alefPlus": {
+          "storyCount": 11,
+          "readingMinutes": 29
+        },
+        "bet": {
+          "storyCount": 11,
+          "readingMinutes": 28
+        }
+      }
     },
     {
       "date": "2026-10-16",
-      "storyCount": 11,
-      "readingMinutes": 27
+      "editions": {
+        "alef": {
+          "storyCount": 11,
+          "readingMinutes": 27
+        },
+        "alefPlus": {
+          "storyCount": 11,
+          "readingMinutes": 28
+        },
+        "bet": {
+          "storyCount": 11,
+          "readingMinutes": 26
+        }
+      }
     },
     {
       "date": "2026-10-15",
-      "storyCount": 11,
-      "readingMinutes": 30
+      "editions": {
+        "alef": {
+          "storyCount": 11,
+          "readingMinutes": 30
+        },
+        "alefPlus": {
+          "storyCount": 11,
+          "readingMinutes": 28
+        },
+        "bet": {
+          "storyCount": 11,
+          "readingMinutes": 26
+        }
+      }
     },
     {
       "date": "2026-10-14",
-      "storyCount": 11,
-      "readingMinutes": 29
+      "editions": {
+        "alef": {
+          "storyCount": 11,
+          "readingMinutes": 29
+        },
+        "alefPlus": {
+          "storyCount": 11,
+          "readingMinutes": 29
+        },
+        "bet": {
+          "storyCount": 11,
+          "readingMinutes": 28
+        }
+      }
     },
     {
       "date": "2026-10-13",
-      "storyCount": 11,
-      "readingMinutes": 28
+      "editions": {
+        "alef": {
+          "storyCount": 11,
+          "readingMinutes": 28
+        },
+        "alefPlus": {
+          "storyCount": 11,
+          "readingMinutes": 26
+        },
+        "bet": {
+          "storyCount": 11,
+          "readingMinutes": 27
+        }
+      }
     },
     {
       "date": "2026-10-12",
-      "storyCount": 11,
-      "readingMinutes": 31
+      "editions": {
+        "alef": {
+          "storyCount": 11,
+          "readingMinutes": 31
+        },
+        "alefPlus": {
+          "storyCount": 11,
+          "readingMinutes": 28
+        },
+        "bet": {
+          "storyCount": 11,
+          "readingMinutes": 26
+        }
+      }
     },
     {
       "date": "2026-10-11",
-      "storyCount": 11,
-      "readingMinutes": 33
+      "editions": {
+        "alef": {
+          "storyCount": 11,
+          "readingMinutes": 33
+        },
+        "alefPlus": {
+          "storyCount": 11,
+          "readingMinutes": 32
+        },
+        "bet": {
+          "storyCount": 11,
+          "readingMinutes": 28
+        }
+      }
     },
     {
       "date": "2026-10-10",
-      "storyCount": 10,
-      "readingMinutes": 25
+      "editions": {
+        "alef": {
+          "storyCount": 10,
+          "readingMinutes": 25
+        },
+        "alefPlus": {
+          "storyCount": 10,
+          "readingMinutes": 23
+        },
+        "bet": {
+          "storyCount": 10,
+          "readingMinutes": 23
+        }
+      }
     },
     {
       "date": "2026-10-09",
-      "storyCount": 11,
-      "readingMinutes": 29
+      "editions": {
+        "alef": {
+          "storyCount": 11,
+          "readingMinutes": 29
+        },
+        "alefPlus": {
+          "storyCount": 11,
+          "readingMinutes": 28
+        },
+        "bet": {
+          "storyCount": 11,
+          "readingMinutes": 29
+        }
+      }
     },
     {
       "date": "2026-10-08",
-      "storyCount": 11,
-      "readingMinutes": 26
+      "editions": {
+        "alef": {
+          "storyCount": 11,
+          "readingMinutes": 26
+        },
+        "alefPlus": {
+          "storyCount": 11,
+          "readingMinutes": 26
+        },
+        "bet": {
+          "storyCount": 11,
+          "readingMinutes": 25
+        }
+      }
     },
     {
       "date": "2026-10-07",
-      "storyCount": 11,
-      "readingMinutes": 26
+      "editions": {
+        "alef": {
+          "storyCount": 11,
+          "readingMinutes": 26
+        },
+        "alefPlus": {
+          "storyCount": 11,
+          "readingMinutes": 24
+        },
+        "bet": {
+          "storyCount": 11,
+          "readingMinutes": 23
+        }
+      }
     },
     {
       "date": "2026-10-06",
-      "storyCount": 11,
-      "readingMinutes": 26
+      "editions": {
+        "alef": {
+          "storyCount": 11,
+          "readingMinutes": 26
+        },
+        "alefPlus": {
+          "storyCount": 11,
+          "readingMinutes": 24
+        },
+        "bet": {
+          "storyCount": 11,
+          "readingMinutes": 24
+        }
+      }
     },
     {
       "date": "2026-10-05",
-      "storyCount": 9,
-      "readingMinutes": 23
+      "editions": {
+        "alef": {
+          "storyCount": 9,
+          "readingMinutes": 23
+        },
+        "alefPlus": {
+          "storyCount": 9,
+          "readingMinutes": 22
+        },
+        "bet": {
+          "storyCount": 9,
+          "readingMinutes": 19
+        }
+      }
     },
     {
       "date": "2026-10-04",
-      "storyCount": 11,
-      "readingMinutes": 25
+      "editions": {
+        "alef": {
+          "storyCount": 11,
+          "readingMinutes": 25
+        },
+        "alefPlus": {
+          "storyCount": 11,
+          "readingMinutes": 25
+        },
+        "bet": {
+          "storyCount": 11,
+          "readingMinutes": 23
+        }
+      }
     },
     {
       "date": "2026-10-03",
-      "storyCount": 11,
-      "readingMinutes": 26
+      "editions": {
+        "alef": {
+          "storyCount": 11,
+          "readingMinutes": 26
+        },
+        "alefPlus": {
+          "storyCount": 11,
+          "readingMinutes": 27
+        },
+        "bet": {
+          "storyCount": 11,
+          "readingMinutes": 25
+        }
+      }
     },
     {
       "date": "2026-10-02",
-      "storyCount": 11,
-      "readingMinutes": 31
+      "editions": {
+        "alef": {
+          "storyCount": 11,
+          "readingMinutes": 31
+        },
+        "alefPlus": {
+          "storyCount": 11,
+          "readingMinutes": 28
+        },
+        "bet": {
+          "storyCount": 11,
+          "readingMinutes": 27
+        }
+      }
     },
     {
       "date": "2026-10-01",
-      "storyCount": 11,
-      "readingMinutes": 33
+      "editions": {
+        "alef": {
+          "storyCount": 11,
+          "readingMinutes": 33
+        },
+        "alefPlus": {
+          "storyCount": 11,
+          "readingMinutes": 30
+        },
+        "bet": {
+          "storyCount": 11,
+          "readingMinutes": 27
+        }
+      }
     },
     {
       "date": "2026-09-30",
-      "storyCount": 11,
-      "readingMinutes": 30
+      "editions": {
+        "alef": {
+          "storyCount": 11,
+          "readingMinutes": 30
+        },
+        "alefPlus": {
+          "storyCount": 11,
+          "readingMinutes": 30
+        },
+        "bet": {
+          "storyCount": 11,
+          "readingMinutes": 27
+        }
+      }
     },
     {
       "date": "2026-09-29",
-      "storyCount": 11,
-      "readingMinutes": 29
+      "editions": {
+        "alef": {
+          "storyCount": 11,
+          "readingMinutes": 29
+        },
+        "alefPlus": {
+          "storyCount": 11,
+          "readingMinutes": 26
+        },
+        "bet": {
+          "storyCount": 11,
+          "readingMinutes": 27
+        }
+      }
     },
     {
       "date": "2026-09-28",
-      "storyCount": 14,
-      "readingMinutes": 30
+      "editions": {
+        "alef": {
+          "storyCount": 14,
+          "readingMinutes": 30
+        },
+        "alefPlus": {
+          "storyCount": 14,
+          "readingMinutes": 29
+        },
+        "bet": {
+          "storyCount": 14,
+          "readingMinutes": 28
+        }
+      }
     },
     {
       "date": "2026-09-27",
-      "storyCount": 10,
-      "readingMinutes": 21
+      "editions": {
+        "alef": {
+          "storyCount": 10,
+          "readingMinutes": 21
+        },
+        "alefPlus": {
+          "storyCount": 10,
+          "readingMinutes": 19
+        },
+        "bet": {
+          "storyCount": 10,
+          "readingMinutes": 22
+        }
+      }
     },
     {
       "date": "2026-09-26",
-      "storyCount": 13,
-      "readingMinutes": 30
+      "editions": {
+        "alef": {
+          "storyCount": 13,
+          "readingMinutes": 30
+        },
+        "alefPlus": {
+          "storyCount": 13,
+          "readingMinutes": 27
+        },
+        "bet": {
+          "storyCount": 13,
+          "readingMinutes": 29
+        }
+      }
     },
     {
       "date": "2026-09-25",
-      "storyCount": 13,
-      "readingMinutes": 29
+      "editions": {
+        "alef": {
+          "storyCount": 13,
+          "readingMinutes": 29
+        },
+        "alefPlus": {
+          "storyCount": 13,
+          "readingMinutes": 27
+        },
+        "bet": {
+          "storyCount": 13,
+          "readingMinutes": 28
+        }
+      }
     },
     {
       "date": "2026-09-24",
-      "storyCount": 13,
-      "readingMinutes": 24
+      "editions": {
+        "alef": {
+          "storyCount": 13,
+          "readingMinutes": 24
+        },
+        "alefPlus": {
+          "storyCount": 13,
+          "readingMinutes": 26
+        },
+        "bet": {
+          "storyCount": 13,
+          "readingMinutes": 29
+        }
+      }
     },
     {
       "date": "2026-09-23",
-      "storyCount": 13,
-      "readingMinutes": 20
+      "editions": {
+        "alef": {
+          "storyCount": 13,
+          "readingMinutes": 20
+        },
+        "alefPlus": {
+          "storyCount": 13,
+          "readingMinutes": 22
+        },
+        "bet": {
+          "storyCount": 13,
+          "readingMinutes": 25
+        }
+      }
     },
     {
       "date": "2026-09-22",
-      "storyCount": 13,
-      "readingMinutes": 29
+      "editions": {
+        "alef": {
+          "storyCount": 13,
+          "readingMinutes": 29
+        },
+        "alefPlus": {
+          "storyCount": 13,
+          "readingMinutes": 26
+        },
+        "bet": {
+          "storyCount": 13,
+          "readingMinutes": 29
+        }
+      }
     },
     {
       "date": "2026-09-21",
-      "storyCount": 15,
-      "readingMinutes": 24
+      "editions": {
+        "alef": {
+          "storyCount": 15,
+          "readingMinutes": 24
+        },
+        "alefPlus": {
+          "storyCount": 15,
+          "readingMinutes": 24
+        },
+        "bet": {
+          "storyCount": 15,
+          "readingMinutes": 26
+        }
+      }
     },
     {
       "date": "2026-09-20",
-      "storyCount": 15,
-      "readingMinutes": 26
+      "editions": {
+        "alef": {
+          "storyCount": 15,
+          "readingMinutes": 26
+        },
+        "alefPlus": {
+          "storyCount": 15,
+          "readingMinutes": 31
+        },
+        "bet": {
+          "storyCount": 15,
+          "readingMinutes": 35
+        }
+      }
     },
     {
       "date": "2026-09-19",
-      "storyCount": 14,
-      "readingMinutes": 28
+      "editions": {
+        "alef": {
+          "storyCount": 14,
+          "readingMinutes": 28
+        },
+        "alefPlus": {
+          "storyCount": 14,
+          "readingMinutes": 29
+        },
+        "bet": {
+          "storyCount": 14,
+          "readingMinutes": 32
+        }
+      }
     },
     {
       "date": "2026-09-18",
-      "storyCount": 14,
-      "readingMinutes": 26
+      "editions": {
+        "alef": {
+          "storyCount": 14,
+          "readingMinutes": 26
+        },
+        "alefPlus": {
+          "storyCount": 14,
+          "readingMinutes": 30
+        },
+        "bet": {
+          "storyCount": 14,
+          "readingMinutes": 30
+        }
+      }
     },
     {
       "date": "2026-09-17",
-      "storyCount": 14,
-      "readingMinutes": 25
+      "editions": {
+        "alef": {
+          "storyCount": 14,
+          "readingMinutes": 25
+        },
+        "alefPlus": {
+          "storyCount": 14,
+          "readingMinutes": 28
+        },
+        "bet": {
+          "storyCount": 14,
+          "readingMinutes": 30
+        }
+      }
     },
     {
       "date": "2026-09-16",
-      "storyCount": 15,
-      "readingMinutes": 23
+      "editions": {
+        "alef": {
+          "storyCount": 15,
+          "readingMinutes": 23
+        },
+        "alefPlus": {
+          "storyCount": 15,
+          "readingMinutes": 25
+        },
+        "bet": {
+          "storyCount": 15,
+          "readingMinutes": 28
+        }
+      }
     },
     {
       "date": "2026-09-15",
-      "storyCount": 12,
-      "readingMinutes": 23
+      "editions": {
+        "alef": {
+          "storyCount": 12,
+          "readingMinutes": 23
+        },
+        "alefPlus": {
+          "storyCount": 12,
+          "readingMinutes": 25
+        },
+        "bet": {
+          "storyCount": 12,
+          "readingMinutes": 23
+        }
+      }
     },
     {
       "date": "2026-09-14",
-      "storyCount": 12,
-      "readingMinutes": 20
+      "editions": {
+        "alef": {
+          "storyCount": 12,
+          "readingMinutes": 20
+        },
+        "alefPlus": {
+          "storyCount": 12,
+          "readingMinutes": 21
+        },
+        "bet": {
+          "storyCount": 12,
+          "readingMinutes": 22
+        }
+      }
     },
     {
       "date": "2026-09-13",
-      "storyCount": 12,
-      "readingMinutes": 18
+      "editions": {
+        "alef": {
+          "storyCount": 12,
+          "readingMinutes": 18
+        },
+        "alefPlus": {
+          "storyCount": 12,
+          "readingMinutes": 20
+        },
+        "bet": {
+          "storyCount": 12,
+          "readingMinutes": 20
+        }
+      }
     },
     {
       "date": "2026-09-12",
-      "storyCount": 12,
-      "readingMinutes": 23
+      "editions": {
+        "alef": {
+          "storyCount": 12,
+          "readingMinutes": 23
+        },
+        "alefPlus": {
+          "storyCount": 12,
+          "readingMinutes": 22
+        },
+        "bet": {
+          "storyCount": 12,
+          "readingMinutes": 23
+        }
+      }
     },
     {
       "date": "2026-09-11",
-      "storyCount": 12,
-      "readingMinutes": 24
+      "editions": {
+        "alef": {
+          "storyCount": 12,
+          "readingMinutes": 24
+        },
+        "alefPlus": {
+          "storyCount": 12,
+          "readingMinutes": 23
+        },
+        "bet": {
+          "storyCount": 12,
+          "readingMinutes": 24
+        }
+      }
     },
     {
       "date": "2026-09-10",
-      "storyCount": 12,
-      "readingMinutes": 23
+      "editions": {
+        "alef": {
+          "storyCount": 12,
+          "readingMinutes": 23
+        },
+        "alefPlus": {
+          "storyCount": 12,
+          "readingMinutes": 22
+        },
+        "bet": {
+          "storyCount": 12,
+          "readingMinutes": 20
+        }
+      }
     },
     {
       "date": "2026-09-09",
-      "storyCount": 15,
-      "readingMinutes": 27
+      "editions": {
+        "alef": {
+          "storyCount": 15,
+          "readingMinutes": 27
+        },
+        "alefPlus": {
+          "storyCount": 15,
+          "readingMinutes": 28
+        },
+        "bet": {
+          "storyCount": 15,
+          "readingMinutes": 31
+        }
+      }
     },
     {
       "date": "2026-09-08",
-      "storyCount": 12,
-      "readingMinutes": 23
+      "editions": {
+        "alef": {
+          "storyCount": 12,
+          "readingMinutes": 23
+        },
+        "alefPlus": {
+          "storyCount": 12,
+          "readingMinutes": 22
+        },
+        "bet": {
+          "storyCount": 12,
+          "readingMinutes": 23
+        }
+      }
     },
     {
       "date": "2026-09-07",
-      "storyCount": 12,
-      "readingMinutes": 16
+      "editions": {
+        "alef": {
+          "storyCount": 12,
+          "readingMinutes": 16
+        },
+        "alefPlus": {
+          "storyCount": 12,
+          "readingMinutes": 19
+        },
+        "bet": {
+          "storyCount": 12,
+          "readingMinutes": 18
+        }
+      }
     },
     {
       "date": "2026-09-06",
-      "storyCount": 15,
-      "readingMinutes": 16
+      "editions": {
+        "alef": {
+          "storyCount": 15,
+          "readingMinutes": 16
+        },
+        "alefPlus": {
+          "storyCount": 15,
+          "readingMinutes": 16
+        },
+        "bet": {
+          "storyCount": 15,
+          "readingMinutes": 17
+        }
+      }
     },
     {
       "date": "2026-09-05",
-      "storyCount": 12,
-      "readingMinutes": 17
+      "editions": {
+        "alef": {
+          "storyCount": 12,
+          "readingMinutes": 17
+        },
+        "alefPlus": {
+          "storyCount": 12,
+          "readingMinutes": 18
+        },
+        "bet": {
+          "storyCount": 12,
+          "readingMinutes": 17
+        }
+      }
     },
     {
       "date": "2026-09-04",
-      "storyCount": 10,
-      "readingMinutes": 17
+      "editions": {
+        "alef": {
+          "storyCount": 10,
+          "readingMinutes": 17
+        },
+        "alefPlus": {
+          "storyCount": 10,
+          "readingMinutes": 14
+        },
+        "bet": {
+          "storyCount": 10,
+          "readingMinutes": 14
+        }
+      }
     },
     {
       "date": "2024-01-26",
-      "storyCount": 3,
-      "readingMinutes": 3
+      "editions": {
+        "alef": {
+          "storyCount": 3,
+          "readingMinutes": 3
+        },
+        "alefPlus": {
+          "storyCount": 3,
+          "readingMinutes": 5
+        },
+        "bet": {
+          "storyCount": 3,
+          "readingMinutes": 6
+        }
+      }
     }
   ]
 }

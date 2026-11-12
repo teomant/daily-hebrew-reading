@@ -1,6 +1,12 @@
 # Adaptation and annotation instructions
 
-This phase receives frozen story briefs and metadata. Do not search for topics, choose different stories, change metadata, or apply cross-day novelty rules.
+This phase writes one independent article for one requested edition after topic selection.
+Do not search for new topics or repeat research.
+CURRENT and HISTORY facts and metadata are frozen.
+For fictional seeds marked `_independentEdition`, the brief supplies a topic and example situation.
+Choose a level-appropriate fictional story within that topic and return its actual scenario metadata.
+Keep its domain and the planned DIALOG speaker names and roles.
+Other editions may have different actions, complications, and outcomes.
 
 For a verb-practice seed with `_targetVerb`, the brief explicitly authorizes a new fictional mini-situation.
 Create one concrete action and immediate result in two or three sentences.
@@ -10,12 +16,12 @@ Additional conjugated forms are welcome, but a synonym or heading cannot replace
 Vary the situation and sentence pattern instead of repeating the same want-to/do-it template.
 Do not invent real-world news or official advice.
 
-For generated EVERYDAY, DIALOG, and SHORTS material, preserve the brief's concrete goal, useful interaction, and outcome. An essential task should not turn into generic leisure planning; a cooking or trip story should develop its actual activity rather than become an errand or a lesson. These are fictional no-web situations: never state current Israeli rules, exact charges or rates, deadlines, eligibility, coverage, medical diagnoses, or entitlements. If a generated brief accidentally asserts one, omit that unsupported detail while preserving the situation; have the character ask for or confirm the applicable information instead. Keep useful questions, clarifications, and next steps clear without inventing official advice. Preserve ordinary fictional details from the brief rather than replacing them with generic instructions. When an unsupported official detail must be omitted, retain the other concrete answers and actions; do not turn the whole story into repeated referrals to guidance.
+For generated EVERYDAY, DIALOG, and SHORTS material, preserve the selected practical topic and write a concrete goal, useful interaction, and outcome suited to this reader. An essential task should not turn into generic leisure planning; a cooking or trip story should develop its actual activity rather than become an errand or a lesson. These are fictional no-web situations: never state current Israeli rules, exact charges or rates, deadlines, eligibility, coverage, medical diagnoses, or entitlements. If a generated brief accidentally asserts one, omit that unsupported detail while preserving the situation; have the character ask for or confirm the applicable information instead. Keep useful questions, clarifications, and next steps clear without inventing official advice. Use ordinary fictional details rather than generic instructions. When an unsupported official detail must be omitted, retain the other concrete answers and actions; do not turn the whole story into repeated referrals to guidance.
 
 Follow this priority order:
 
-1. Return a complete, usable adaptation for every requested story and every configured level.
-2. Preserve the frozen story, required HISTORY beats, correct Hebrew, and required DIALOG structure.
+1. Return a complete, usable adaptation for every requested story and the requested level.
+2. Preserve the selected topic, frozen sourced facts, required HISTORY beats, correct Hebrew, and required DIALOG structure.
 3. Add useful lexical segmentation and contextual translations.
 
 Publishing a usable article is the goal.
@@ -23,7 +29,7 @@ Write the Hebrew for the requested learner before annotating it.
 Level fit, speaker identity, and word-level translation targets are important writing goals.
 Return the best usable article even if some polish remains; publishing usable imperfect articles is better than publishing nothing.
 Preserve supported facts and complete translations while improving the wording and annotation.
-Return every requested level, correcting problems before submission.
+Return the requested level, correcting problems before submission.
 A later repair can fix annotation without rewriting the Hebrew.
 When a boundary is uncertain, prefer a single written word and translate it in context.
 
@@ -40,7 +46,7 @@ Do not use niqqud.
 
 Use normal sentence punctuation in every version. Every teaser and every body paragraph or DIALOG turn must end with `.` `?` `!` or `…`. Use commas and internal sentence boundaries wherever natural; do not return an unpunctuated block of Hebrew.
 
-Create every configured reading level from the same frozen factual or scenario material. For HISTORY, the compact `brief` identifies the subject, while `storyBeats` and `_storyBeatContract` provide the authoritative facts. Develop the defining facts and interesting details into a readable article. It may explain a person, custom, cultural work, industry, place, object, or past event without forcing a beginning–turning-point–outcome plot. Do not write a summary of the source, a bare résumé, promotional copy, or generic commentary about importance, influence, legacy, society, culture, memory, or how history feels. Phrases such as “the story shows,” “his life teaches,” and “the factory reflects society” cannot replace concrete facts.
+Write a standalone article for this edition from the selected topic and any frozen research. For HISTORY, the compact `brief` identifies the subject, while `storyBeats` and `_storyBeatContract` provide the authoritative facts. Develop the defining facts and interesting details into a readable article. It may explain a person, custom, cultural work, industry, place, object, or past event without forcing a beginning–turning-point–outcome plot. Do not write a summary of the source, a bare résumé, promotional copy, or generic commentary about importance, influence, legacy, society, culture, memory, or how history feels. Phrases such as “the story shows,” “his life teaches,” and “the factory reflects society” cannot replace concrete facts.
 
 For CURRENT, normally write 2–4 paragraphs, each contributing a new supported detail; a short notice does not need four paragraphs. For Alef HISTORY and full EVERYDAY stories, use 2–4 short paragraphs as the material needs.
 For Alef Plus and Bet HISTORY and EVERYDAY, two or three complete paragraphs are enough when they cover the material.
@@ -53,11 +59,13 @@ Treat Alef as beginner reading after alphabet decoding.
 Use the beginner grammar profile in the configured level and the reference examples.
 Prefer present tense for fictional situations; keep the correct historical time in sourced stories.
 Use a direct subject and one clause per sentence, with few unfamiliar terms across the entire article.
-Do not make the reader decode several new verbs or specialist concepts in one paragraph. Draft it as a standalone retelling before looking at the harder versions. Use familiar verbs and direct subjects; give each short sentence one action or thought. Replace an abstract noun with the concrete action when the facts allow it. Read the continuous Hebrew aloud before segmenting, and simplify any sentence that makes the reader hold several new facts at once.
+Do not make the reader decode several new verbs or specialist concepts in one paragraph. Draft it as a standalone article for this reader. Use familiar verbs and direct subjects; give each short sentence one action or thought. Replace an abstract noun with the concrete action when the facts allow it. Read the continuous Hebrew aloud before segmenting, and simplify any sentence that makes the reader hold several new facts at once.
 
-Across all levels, preserve the central situation, useful answer, outcome, and a memorable concrete detail when the material supplies them. Simplify how the interesting part is told instead of saving it only for Bet. Alef Plus should connect familiar ideas using כי, אבל, אז, אם, and short clauses with ש; Bet can express reasons, contrasts, and reactions in more connected sentences without sounding official.
+For sourced stories, preserve the core event and required defining facts across editions.
+For fiction, choose a situation that fits the requested level and give it a useful answer and outcome.
+Do not force the same fictional plot across editions. Alef Plus should connect familiar ideas using כי, אבל, אז, אם, and short clauses with ש; Bet can express reasons, contrasts, and reactions in more connected sentences without sounding official.
 
-Same-meaning level contrast (wording guidance only; do not reuse this situation unless supplied):
+Grammar contrast (wording guidance only; independent editions need not retell this same situation):
 - א: `רציתי להכין מרק. לא היו לי עדשים. אז הכנתי חביתה.`
 - א+: `רציתי להכין מרק, אבל לא היו לי עדשים, אז הכנתי חביתה.`
 - ב: `התכוונתי להכין מרק, אבל כשגיליתי שנגמרו העדשים, החלטתי להכין חביתה במקום.`
@@ -80,8 +88,9 @@ Before annotation, read each level from beginning to end as continuous Hebrew an
 - Check subject–verb and noun–adjective agreement, gender, tense, required prepositions, and complete expressions.
   For example, use `הקיר עוצר את הרוח`, `תודה שחזרת על הדברים`, and `אני משתמשת במשקפיים`.
   Read the wording as speech; replace awkward constructions with familiar correct ones.
-- The same people perform the same actions at every level.
-  Preserve speaker roles, the useful answer, the outcome, and all required facts while correcting the draft.
+- Each person keeps a consistent role within this article.
+  Preserve all required sourced facts while correcting the draft.
+  Keep the returned fictional scenario metadata consistent with the final Hebrew.
 
 Perform this check internally, without adding commentary or check results to the output.
 Do not count words or force one reading level to be longer than another.

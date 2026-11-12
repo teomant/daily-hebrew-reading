@@ -104,7 +104,7 @@ Additional conjugations are allowed; a heading or synonym does not satisfy the t
 Keep successful levels during the existing three-attempt content retry loop.
 Use the existing one-request annotation repair and usage/cost logging.
 Each piece must independently meet the 75% translation-coverage contract in every language.
-If a required item fails core checks after retries, log the incomplete count and omit only this page while retaining the other valid articles.
+If a required item fails core checks after retries, log the incomplete count and omit only this edition's page while retaining other complete editions and valid articles.
 Quality-only segmentation warnings do not discard usable text.
 
 The public type is `verbs` and the category is `everyday`.
@@ -116,7 +116,7 @@ The page has no scenario metadata, sources, or image.
 The source list attribution belongs to the catalog and documentation, not to invented stories.
 Do not add this fixed rotation to ordinary scenario deduplication history.
 
-Reuse SHORTS numbering, lexical selection, level switching, and AI disclosure.
+Reuse SHORTS numbering, lexical selection, fixed-edition reading, and AI disclosure.
 Show this page first, SHORTS second, and then the remaining articles in their previous order.
 Build-time ordering also applies to archives without rewriting their JSON.
 New and appended issues use EVERYDAY, DIALOG, CURRENT, HISTORY after the practice pages.
@@ -187,13 +187,23 @@ The wording reference contains editorial calibration examples; it is not a certi
 
 ### Alef Plus — א+
 
-Use a broader but still common everyday vocabulary than Alef, more past and future forms, simple cause and effect, natural connectors, fixed expressions, and occasional short subordinate clauses.
+Use common everyday vocabulary, actively practice common past forms alongside present tense, and connect short sentences naturally.
+Future tense is not the teaching focus.
+Use practical expressions and occasional short subordinate clauses without nesting.
 
 ### Bet — ב
 
-Use a wider everyday vocabulary, more precise verbs and adjectives, natural connectors, comparisons, reactions, common colloquial constructions, and moderately more complex sentences without becoming dense newspaper prose.
+Use present, past, and future forms naturally.
+Add precise everyday vocabulary, simple conditions, comparisons, reasons, and plans.
+Bet targets A2, not B1.
+Keep connected sentences conversational and avoid dense newspaper prose.
 
-The three levels preserve the central situation, useful answer, outcome, and a memorable concrete detail when supplied. Alef simplifies the wording of interesting details instead of removing the substance. Alef Plus connects familiar ideas with everyday causal, conditional, and short relative clauses. Bet expresses reasons, contrasts, and reactions with richer conversational wording, without replacing simple verbs with bureaucratic noun phrases. Proofreading checks agreement, speaker roles, missing words, stray English drafting fragments, and accidental repeated punctuation before and after lexical annotation.
+Sourced editions preserve the central subject and required facts.
+Fictional editions may have different actions and outcomes within the selected practical topic.
+Use simple correct Hebrew at every level.
+Proofread agreement, speaker roles, tense, prepositions, sentence completeness, and lexical annotation.
+The standards and writing profiles are documented in [Separate reading editions](editions.md).
+
 
 ## 8. Do not pad articles
 
@@ -213,17 +223,24 @@ Avoid biblical or religious language, elevated literary prose, bureaucracy, dens
 
 The MVP does not need niqqud. Consequently, even the Alef band assumes the reader has moved beyond initial alphabet and decoding instruction.
 
-## 10. All configured levels tell the same story
+## 10. Shared topics and independent editions
 
-Do not generate level adaptations independently in ways that introduce different facts. The initial Alef, Alef Plus, and Bet versions—and any future configured versions—must share one frozen factual contract. Every HISTORY level preserves its required defining facts; simpler levels may compress secondary dates, names, qualifiers, and context, but must not replace the subject with generalities. Keep successful levels across content retries and request only unresolved levels.
-Allow two attempts, or three for DIALOG and SHORTS.
-After retries, retain the latest usable level that meets public structure, translation coverage, identity, and required factual coverage.
-Unresolved failures of those core contracts omit the article or item.
-Exhausted full-story API request failures abort only when no usable fallback exists for the pending levels.
+Select topics and complete sourced research once.
+Write one independent article per requested level in separate no-web calls.
+CURRENT and HISTORY editions share the subject, sources, factual brief, and required defining facts.
+Optional detail and explanation may vary with the reader's level.
+Keep historical time, attribution, and uncertainty accurate.
 
-For CURRENT, the pipeline is: sources → factual brief → level adaptation with lexical units and contextual translations. For HISTORY, it is: compact sourced screening brief → duplicate review and selection → selected-only batched deep research → 8–12 ordered factual story beats → retold level adaptation with lexical units and contextual translations. For EVERYDAY and DIALOG, it is: scenario brief → level adaptation with lexical units and contextual translations. Within adaptation, Hebrew prose is written and proofread before it is segmented.
+EVERYDAY, DIALOG, and SHORTS can use different fictional situations within the selected topic.
+Keep the domain and planned dialogue participants and roles.
+Return the actual English brief and scenario metadata for each finished article.
+Write and proofread Hebrew before segmentation and translation.
 
-Alef may omit details and Bet may expand them, but central facts and events must remain consistent.
+Allow two content attempts per article, or three for DIALOG, SHORTS, and verb pieces.
+Retain usable content after bounded quality repairs when structure, translation coverage, identity, and required factual coverage pass.
+A failed article or request omits only that edition's article or item.
+Keep successful editions and continue with the other topics.
+SHORTS and VERBS are assembled separately for each edition.
 
 ## 11. Generated-scenario diversity history
 
@@ -306,21 +323,39 @@ The site interface itself also has an independent language selector, initially w
 
 ## 19. Site structure and URLs
 
-The site is fully static. Navigation follows Home → Day → Article. Example paths are `/`, `/2026-09-04/`, and `/2026-09-04/sheep-save-glaciers/`. Every article has its own page.
+The site is fully static.
+Each edition has a home, archive, dated issue, and article pages.
+The initial edition roots are `/alef/`, `/alef-plus/`, and `/bet/`.
+Article URLs use `/{edition}/YYYY-MM-DD/{slug}/` under the configured base path.
+Old root, archive, dated issue, and article URLs select an available edition using the saved preference.
+Compatibility pages also provide ordinary links when JavaScript is disabled.
 
 ## 20. Home page
 
-The home page shows the latest available issue, its date, story count, approximate reading time, story list, access to earlier days or the archive, and a localized button that selects a random article from any available issue. It must not advertise a fixed 40–50-minute duration or claim a publication time. It is not a large marketing landing page; its purpose is to let the reader start quickly.
+Each edition home shows its latest available issue, date, page count, reading time, and complete story list.
+Keep the cream, teal, and rust editorial design with a compact introduction and prominent edition links.
+An edition link navigates to a separate page.
+Archive and random links remain within the edition.
+Do not advertise a fixed reading duration or publication time.
 
 ## 21. Day page
 
-The page for a date is that issue's table of contents. It shows the date, story count, approximate total reading time, and article cards. Each card contains the Hebrew title, category, short teaser, and approximate reading time, and links to the article page.
+The dated page shows the selected edition's table of contents.
+Cards contain Hebrew titles, categories, teasers, reading times, and fixed-edition article links.
+Edition navigation lists only editions available on that date.
+Counts and reading times are computed for the selected edition.
 
 ## 22. Article page
 
-An article page contains a link back to the issue, date, category and content type, title, reading time, level selector (`א`, `א+`, `ב`), translation-language selector (`RU`, `EN`), interface-language selector (`RU`, `EN`), text with lexical popovers, available sources for CURRENT and HISTORY, and previous/random/next article navigation. The random control selects from every available issue while excluding the article currently open.
-
-Persist the selected level, translation language, and interface language between pages using `localStorage` for the MVP. Translation language and interface language are separate preferences.
+Show the article's fixed edition, date, type, title, reading time, and text.
+Do not show a reading-level switch.
+Retain translation-language and interface-language controls, lexical popovers, and available sources.
+Back, previous, next, random, brand, and archive navigation remain in the edition.
+Random selection excludes the current article.
+Direct URLs determine the edition regardless of browser preferences.
+Persist the chosen edition for future visits through old links.
+Translation and interface languages remain separate preferences.
+Reading must work when browser storage is unavailable.
 
 ## 23. Reading time
 
@@ -350,33 +385,23 @@ i18n/
   ru.json
 ```
 
-A daily JSON file contains its date, available reading-level IDs, available translation-locale codes, and ordered pages. Ordinary stories contain their type, category, English internal brief, sources, optional image, configured level variants, teaser, title, paragraphs, and lexical annotations. EVERYDAY and DIALOG store scenario metadata. A SHORTS page stores 1–11 ordered `shortItems` metadata records and one corresponding paragraph per item at every level. Newly researched HISTORY stories retain 8–12 ordered English `storyBeats` as their factual contract. `index.json` lists available dates, while `everyday-history.json` tracks full generated stories and each SHORTS item independently.
+Issue schema 2 stores date, generation timestamp, available levels, translation locales, and `editions[levelId].stories`.
+Each article stores its metadata, a shared `topicId`, and a single `content` object containing lexical title, teaser, and paragraph arrays.
+There is no stored article `levels` map.
+Fictional editions store their actual scenario metadata.
+Sourced editions keep consistent research metadata.
+SHORTS stores its own successful `shortItems`; VERBS stores the complete daily ten-verb batch.
+The index records counts and reading times per edition.
+Scenario history includes the edition for newly generated records and continues to accept archived records without it.
 
-## 26. Illustrative story shape
+## 26. Migration and compatibility
 
-The precise schema may differ, but it must retain the meaning of the following structure:
-
-```json
-{
-  "id": "late-furniture-delivery",
-  "slug": "late-furniture-delivery",
-  "type": "everyday",
-  "category": "everyday",
-  "everydayMeta": {
-    "domain": "delivery_customer_service",
-    "scenario": "late_delivery",
-    "targetVocabulary": ["לחכות", "להגיע", "עדיין", "בערך"]
-  },
-  "sources": [],
-  "levels": {
-    "alef": {"teaser": "...", "title": [], "paragraphs": []},
-    "alefPlus": {"teaser": "...", "title": [], "paragraphs": []},
-    "bet": {"teaser": "...", "title": [], "paragraphs": []}
-  }
-}
-```
-
-CURRENT and HISTORY use real sources rather than scenario metadata. DIALOG reuses `everydayMeta` and adds two planned Hebrew `dialogSpeakers`. A SHORTS page stores ordered `shortItems` metadata so each mini-situation remains independently traceable in scenario history.
+`python -m src.migrate_editions` validates and previews conversion.
+Add `--write` to apply it transactionally.
+The migration preserves every existing text unit, translation, source, image, and metadata record.
+It is idempotent and makes no API calls.
+Schema 1 remains accepted as migration input; new generation writes schema 2.
+See [Separate reading editions](editions.md) for exact storage and route contracts.
 
 ## 27. CURRENT generation
 
@@ -429,14 +454,15 @@ Return at least 12 distinct compact HISTORY screening candidates from a substant
 
 ## 31. Facts and generation
 
-Language adaptation must not freely invent details for real stories. A factual brief must precede all CURRENT versions; a compact brief and distinct factual beats must precede new HISTORY versions. HISTORY adaptation develops those facts rather than describing the source or offering generic commentary about the subject. Every level of a newly researched HISTORY story must report coverage of all required beat IDs; missing coverage retries the adaptation and then prevents that article from being published without blocking the rest of the issue. Word count remains non-blocking. Never hallucinate details, repeat facts, or add filler to meet a length target.
+Language adaptation must not freely invent details for real stories. A factual brief must precede all CURRENT versions; a compact brief and distinct factual beats must precede new HISTORY versions. HISTORY adaptation develops those facts rather than describing the source or offering generic commentary about the subject. Every level of a newly researched HISTORY story must report coverage of all required beat IDs; missing coverage retries the adaptation and then prevents that edition's article from being published without blocking the rest of the issue. Word count remains non-blocking. Never hallucinate details, repeat facts, or add filler to meet a length target.
 
 ## 32. OpenAI API
 
 Use the OpenAI API for sourced discovery and selection, sourced semantic duplicate review, selected-HISTORY research, generated-scenario planning, level adaptation, lexical segmentation, and Russian and English translations.
 A normal issue first makes up to three web-enabled discovery requests of 18 compact candidates.
 A separate no-web request plans the three EVERYDAY and two DIALOG stories, and another plans the eleven SHORTS items.
-Each full generated story, SHORTS item, and assigned verb is adapted independently.
+Each selected full topic, SHORTS item, and assigned verb receives one separate writing request per level.
+Research and topic selection are shared across editions.
 The ten verb seeds come directly from the daily catalog batch and do not need a planning call.
 
 Use `gpt-6-luna` for every discovery, research, planning, adaptation, annotation, and translation request, with low reasoning effort. Supply the key through `OPENAI_API_KEY`; a local `OPENAI_MODEL` override may be used for tests or explicit experiments. Store the key only in a GitHub Actions secret or runtime environment. It must never enter Git, frontend assets, JSON content, HTML output, logs, or error messages.
@@ -478,12 +504,13 @@ The combined issue is stably reordered VERBS, SHORTS, EVERYDAY, DIALOG, CURRENT,
 It recalculates issue metadata and navigation, updates generated-scenario history, validates the combined issue, and only then commits it.
 
 Generation separates sourced discovery, sourced duplicate review, selected-HISTORY research, full generated planning, SHORTS planning, and adaptation.
-Adaptation receives frozen briefs and required HISTORY beats plus level, segmentation, translation, and frequency-reference guidance.
+Writing receives shared topic context, frozen sourced briefs and required HISTORY beats, and only the requested level's guidance.
+Fictional writers return metadata for the actual edition-specific scenario.
 The reference includes attribution and license for its word-frequency basis, alongside editorial calibration examples.
 Difficulty remains prompt-guided; Python does not score word difficulty or require increasing length.
 Each adapted level must contain one final telling, with no appended alternative draft or restart of the same events after the outcome.
 Before annotation, one final prose check covers distinct paragraph content, actions that happen once, complete sentences, natural dialogue replies, and the absence of blank paragraphs, placeholders, drafting comments, or appended corrections.
-It also checks grammatical agreement, required prepositions, complete expressions, and consistent actions and roles across levels.
+It also checks grammatical agreement, required prepositions, complete expressions, and consistent actions and roles within each article.
 Use ordinary spoken Hebrew with familiar verbs, direct requests, and simple correct constructions.
 Bet adds precision and connected sentences without forcing formal vocabulary.
 Dialogue replies must answer the preceding turn and must not request repetition of information that has not been given.
@@ -521,7 +548,7 @@ Before publishing generated content, validate at least:
 
 - valid JSON;
 - an ID and slug for every story;
-- every level declared by the issue;
+- a non-empty article list for every edition declared by the issue;
 - non-empty text;
 - at least 75% contextual translation coverage per story level and configured translation language;
 - valid source metadata when a story has sources;
@@ -540,7 +567,7 @@ Do not present invented current news as factual reporting.
 
 ## 39. User experience
 
-The product should feel like a small daily magazine for a full commute. A day page shows the date, story count, approximate reading time, a level selector, and concise cards for locally relevant CURRENT, practical EVERYDAY, natural DIALOG, and relatable HISTORY entries. Opening one should provide a calm reading experience followed by a simple move to the next.
+The product should feel like a small daily magazine for a full commute. A day page shows the date, story count, approximate reading time, edition navigation links, and concise cards for locally relevant CURRENT, practical EVERYDAY, natural DIALOG, and relatable HISTORY entries. Opening one should provide a calm reading experience followed by a simple move to the next.
 
 ## 40. Product philosophy
 
@@ -548,7 +575,7 @@ The experience is a daily collection of short, interesting stories, real-life si
 
 ## 41. Required MVP delivery
 
-Deliver a complete MVP containing daily generation and safe same-day appends; CURRENT research and selection; HISTORY research; EVERYDAY, DIALOG, and grouped SHORTS generation with repetition protection; the three initial configurable Hebrew levels; extensible interface and translation locales; lexical annotation; Russian and English translations; Git-based content storage; validation; optional externally linked source images; static-site building; home, archive/day, and separate article pages; level and locale switches; hover/tap translations; sources; previous/next navigation; GitHub Actions; GitHub Pages deployment; sample content; basic tests; and a README.
+Deliver a complete MVP containing daily generation and safe same-day appends; CURRENT research and selection; HISTORY research; EVERYDAY, DIALOG, and grouped SHORTS generation with repetition protection; the three initial configurable Hebrew levels; extensible interface and translation locales; lexical annotation; Russian and English translations; Git-based content storage; validation; optional externally linked source images; static-site building; home, archive/day, and separate article pages; edition navigation and locale switches; hover/tap translations; sources; previous/next navigation; GitHub Actions; GitHub Pages deployment; sample content; basic tests; and a README.
 
 After implementation, run tests, validate content, build the static site, inspect the principal pages, and fix discovered defects. The handoff report must state what was implemented, major decisions, successful checks, and manual GitHub configuration required from the repository owner.
 

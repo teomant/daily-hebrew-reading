@@ -1,0 +1,304 @@
+{
+  "schemaVersion": 1,
+  "date": "2024-01-26",
+  "generatedAt": "2024-01-26T06:00:00+00:00",
+  "availableLevels": ["alef", "alefPlus", "bet"],
+  "translationLocales": ["ru", "en"],
+  "stories": [
+    {
+      "id": "ingenuity-final-flight",
+      "slug": "ingenuity-final-flight",
+      "type": "current",
+      "category": "science",
+      "brief": "NASA sent the small Ingenuity helicopter to Mars with the Perseverance rover to demonstrate powered, controlled flight in the planet's thin atmosphere. The original 30-day demonstration called for five flights, but Ingenuity exceeded expectations, operated for almost three years, completed 72 flights, and later helped the team scout routes ahead of the rover. On January 18, 2024, its final landing was rough; images showed damage to a rotor blade, so NASA announced one week later that the flight mission had ended.",
+      "everydayMeta": null,
+      "sources": [
+        {"publisher": "NASA Jet Propulsion Laboratory", "title": "After Three Years on Mars, NASA’s Ingenuity Helicopter Mission Ends", "url": "https://www.jpl.nasa.gov/news/after-three-years-on-mars-nasas-ingenuity-helicopter-mission-ends/"},
+        {"publisher": "NASA Jet Propulsion Laboratory", "title": "Perseverance Checks Out Ingenuity", "url": "https://www.jpl.nasa.gov/images/pia25968-perseverance-checks-out-ingenuity/"}
+      ],
+      "image": {
+        "url": "https://d2pn8kiwq2w21t.cloudfront.net/original_images/PIA25968.jpg",
+        "sourceUrl": "https://www.jpl.nasa.gov/images/pia25968-perseverance-checks-out-ingenuity/",
+        "credit": "NASA/JPL-Caltech/ASU/MSSS",
+        "rightsUrl": "https://www.jpl.nasa.gov/jpl-image-use-policy/",
+        "rightsLabel": "JPL Image Use Policy",
+        "alt": {"ru": "Вертолёт Ingenuity на поверхности Марса", "en": "The Ingenuity helicopter on the surface of Mars"}
+      },
+      "levels": {
+        "alef": {
+          "title": [{"text": "המסוק הקטן סיים לטוס במאדים", "type": "expression", "translations": {"ru": "маленький вертолёт закончил летать на Марсе", "en": "the small helicopter finished flying on Mars"}}],
+          "teaser": [{"text": "נאס״א תכננה חמש טיסות, אבל המסוק טס שבעים ושתיים פעמים.", "type": "expression", "translations": {"ru": "NASA планировало пять полётов, но вертолёт летал 72 раза", "en": "NASA planned five flights, but the helicopter flew 72 times"}}],
+          "paragraphs": [
+            [
+              {"text": "לנאס״א היה ", "type": "expression", "translations": {"ru": "у NASA был", "en": "NASA had"}},
+              {"text": "מסוק קטן ", "type": "expression", "translations": {"ru": "маленький вертолёт", "en": "a small helicopter"}},
+              {"text": "על מאדים. ", "type": "expression", "translations": {"ru": "на Марсе", "en": "on Mars"}},
+              {"text": "קוראים לו אינג׳ניואיטי. ", "type": "expression", "translations": {"ru": "его зовут Ingenuity", "en": "it is called Ingenuity"}},
+              {"text": "הוא הגיע לשם ", "type": "expression", "translations": {"ru": "он прибыл туда", "en": "it arrived there"}},
+              {"text": "עם רכב חלל גדול.", "type": "expression", "translations": {"ru": "с большим марсоходом", "en": "with a large space rover"}}
+            ],
+            [
+              {"text": "בהתחלה ", "type": "expression", "translations": {"ru": "сначала", "en": "at first"}},
+              {"text": "המסוק היה צריך ", "type": "expression", "translations": {"ru": "вертолёт должен был", "en": "the helicopter was supposed to"}},
+              {"text": "לטוס רק חמש פעמים. ", "type": "expression", "translations": {"ru": "летать только пять раз", "en": "fly only five times"}},
+              {"text": "בסוף ", "type": "expression", "translations": {"ru": "в итоге", "en": "in the end"}},
+              {"text": "הוא טס 72 פעמים. ", "type": "expression", "translations": {"ru": "он летал 72 раза", "en": "it flew 72 times"}},
+              {"text": "בטיסה האחרונה ", "type": "expression", "translations": {"ru": "в последнем полёте", "en": "on the last flight"}},
+              {"text": "אחד הלהבים נפגע, ", "type": "expression", "translations": {"ru": "одна из лопастей была повреждена", "en": "one rotor blade was damaged"}},
+              {"text": "ולכן הוא לא יכול לטוס יותר.", "type": "expression", "translations": {"ru": "поэтому он больше не может летать", "en": "so it cannot fly anymore"}}
+            ]
+          ]
+        },
+        "alefPlus": {
+          "title": [{"text": "המסוק שהפתיע את נאס״א סיים את המשימה", "type": "expression", "translations": {"ru": "вертолёт, удививший NASA, завершил миссию", "en": "the helicopter that surprised NASA completed its mission"}}],
+          "teaser": [{"text": "אינג׳ניואיטי היה אמור לטוס חמש פעמים במאדים, אבל המשיך כמעט שלוש שנים.", "type": "expression", "translations": {"ru": "Ingenuity должен был пять раз слетать на Марсе, но продолжал почти три года", "en": "Ingenuity was meant to fly five times on Mars but continued for almost three years"}}],
+          "paragraphs": [
+            [
+              {"text": "אינג׳ניואיטי הוא ", "type": "expression", "translations": {"ru": "Ingenuity — это", "en": "Ingenuity is"}},
+              {"text": "מסוק קטן ", "type": "expression", "translations": {"ru": "маленький вертолёт", "en": "a small helicopter"}},
+              {"text": "שנאס״א שלחה למאדים ", "type": "expression", "translations": {"ru": "который NASA отправило на Марс", "en": "that NASA sent to Mars"}},
+              {"text": "עם הרכב פרסווירנס. ", "type": "expression", "translations": {"ru": "с марсоходом Perseverance", "en": "with the Perseverance rover"}},
+              {"text": "המטרה הייתה לבדוק ", "type": "expression", "translations": {"ru": "целью было проверить", "en": "the goal was to test"}},
+              {"text": "אם אפשר לטוס ", "type": "expression", "translations": {"ru": "можно ли летать", "en": "whether it is possible to fly"}},
+              {"text": "באוויר הדק של מאדים.", "type": "expression", "translations": {"ru": "в разреженном воздухе Марса", "en": "in Mars's thin air"}}
+            ],
+            [
+              {"text": "התוכנית המקורית כללה ", "type": "expression", "translations": {"ru": "первоначальный план включал", "en": "the original plan included"}},
+              {"text": "רק חמש טיסות, ", "type": "expression", "translations": {"ru": "только пять полётов", "en": "only five flights"}},
+              {"text": "אבל המסוק הצליח ", "type": "expression", "translations": {"ru": "но вертолёт смог", "en": "but the helicopter managed"}},
+              {"text": "הרבה יותר מהצפוי. ", "type": "expression", "translations": {"ru": "намного больше ожидаемого", "en": "far more than expected"}},
+              {"text": "הוא השלים 72 טיסות ", "type": "expression", "translations": {"ru": "он выполнил 72 полёта", "en": "it completed 72 flights"}},
+              {"text": "בכמעט שלוש שנים. ", "type": "expression", "translations": {"ru": "почти за три года", "en": "over almost three years"}},
+              {"text": "אחרי הנחיתה האחרונה ", "type": "expression", "translations": {"ru": "после последней посадки", "en": "after the final landing"}},
+              {"text": "התברר שאחד הלהבים נפגע. ", "type": "expression", "translations": {"ru": "выяснилось, что одна лопасть повреждена", "en": "it became clear that one blade was damaged"}},
+              {"text": "נאס״א הודיעה ", "type": "expression", "translations": {"ru": "NASA объявило", "en": "NASA announced"}},
+              {"text": "שהמסוק לא יטוס שוב.", "type": "expression", "translations": {"ru": "что вертолёт больше не полетит", "en": "that the helicopter would not fly again"}}
+            ]
+          ]
+        },
+        "bet": {
+          "title": [{"text": "אחרי 72 טיסות: אינג׳ניואיטי סיים את דרכו במאדים", "type": "expression", "translations": {"ru": "после 72 полётов: Ingenuity завершил свой путь на Марсе", "en": "after 72 flights: Ingenuity ended its journey on Mars"}}],
+          "teaser": [{"text": "המסוק הניסיוני של נאס״א פעל הרבה מעבר לתכנון, עד שלהב נפגע בנחיתה האחרונה.", "type": "expression", "translations": {"ru": "экспериментальный вертолёт NASA работал намного дольше плана, пока лопасть не пострадала при последней посадке", "en": "NASA's experimental helicopter operated far beyond plan until a blade was damaged in its final landing"}}],
+          "paragraphs": [
+            [
+              {"text": "כשנאס״א שלחה ", "type": "expression", "translations": {"ru": "когда NASA отправило", "en": "when NASA sent"}},
+              {"text": "את אינג׳ניואיטי למאדים, ", "type": "expression", "translations": {"ru": "Ingenuity на Марс", "en": "Ingenuity to Mars"}},
+              {"text": "הציפיות היו צנועות. ", "type": "expression", "translations": {"ru": "ожидания были скромными", "en": "expectations were modest"}},
+              {"text": "המסוק הקטן נועד ", "type": "expression", "translations": {"ru": "маленький вертолёт предназначался", "en": "the small helicopter was intended"}},
+              {"text": "להדגים טיסה ממונעת ומבוקרת ", "type": "expression", "translations": {"ru": "продемонстрировать управляемый полёт с двигателем", "en": "to demonstrate powered, controlled flight"}},
+              {"text": "בכוכב אחר. ", "type": "expression", "translations": {"ru": "на другой планете", "en": "on another planet"}},
+              {"text": "לפי התוכנית ", "type": "expression", "translations": {"ru": "по плану", "en": "according to the plan"}},
+              {"text": "הוא היה אמור לבצע חמש טיסות ", "type": "expression", "translations": {"ru": "он должен был выполнить пять полётов", "en": "it was supposed to make five flights"}},
+              {"text": "בתוך שלושים יום.", "type": "expression", "translations": {"ru": "за тридцать дней", "en": "within thirty days"}}
+            ],
+            [
+              {"text": "בפועל, ", "type": "expression", "translations": {"ru": "на деле", "en": "in practice"}},
+              {"text": "אינג׳ניואיטי המשיך לפעול ", "type": "expression", "translations": {"ru": "Ingenuity продолжал работать", "en": "Ingenuity kept operating"}},
+              {"text": "כמעט שלוש שנים ", "type": "expression", "translations": {"ru": "почти три года", "en": "for almost three years"}},
+              {"text": "והשלים 72 טיסות. ", "type": "expression", "translations": {"ru": "и совершил 72 полёта", "en": "and completed 72 flights"}},
+              {"text": "הוא גם עזר לצוות ", "type": "expression", "translations": {"ru": "он также помогал команде", "en": "it also helped the team"}},
+              {"text": "לבדוק את הדרך לפני הרכב. ", "type": "expression", "translations": {"ru": "проверять путь перед марсоходом", "en": "check the route ahead of the rover"}},
+              {"text": "ב־18 בינואר ", "type": "expression", "translations": {"ru": "18 января", "en": "on January 18"}},
+              {"text": "המסוק נחת בצורה קשה, ", "type": "expression", "translations": {"ru": "вертолёт совершил жёсткую посадку", "en": "the helicopter landed roughly"}},
+              {"text": "ותמונות הראו ", "type": "expression", "translations": {"ru": "и снимки показали", "en": "and images showed"}},
+              {"text": "שאחד מלהבי הרוטור נפגע. ", "type": "expression", "translations": {"ru": "что одна из лопастей ротора повреждена", "en": "that one rotor blade was damaged"}},
+              {"text": "כעבור שבוע ", "type": "expression", "translations": {"ru": "через неделю", "en": "a week later"}},
+              {"text": "נאס״א סיימה את משימת הטיסה.", "type": "expression", "translations": {"ru": "NASA завершило лётную миссию", "en": "NASA ended the flight mission"}}
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "late-furniture-delivery",
+      "slug": "late-furniture-delivery",
+      "type": "everyday",
+      "category": "everyday",
+      "brief": "Dana waits for a furniture delivery, calls the store when it has not arrived by the promised time, and reschedules it because she cannot wait another hour.",
+      "everydayMeta": {"domain": "delivery", "scenario": "late_furniture_delivery_and_reschedule", "lexicalThemes": ["waiting", "asking for an estimate", "changing plans"], "targetVocabulary": ["עדיין לא", "הבטיחו לי", "מתי בערך", "בסוף החלטתי"]},
+      "sources": [],
+      "image": null,
+      "levels": {
+        "alef": {
+          "title": [{"text": "המשלוח שלא הגיע בזמן", "type": "expression", "translations": {"ru": "доставка, которая не пришла вовремя", "en": "the delivery that did not arrive on time"}}],
+          "teaser": [{"text": "דנה חיכתה לארון חדש, אבל בשתיים הוא עדיין לא הגיע.", "type": "expression", "translations": {"ru": "Дана ждала новый шкаф, но в два часа он всё ещё не приехал", "en": "Dana waited for a new cabinet, but at two it still had not arrived"}}],
+          "paragraphs": [
+            [
+              {"text": "דנה הזמינה ", "type": "expression", "translations": {"ru": "Дана заказала", "en": "Dana ordered"}},
+              {"text": "ארון חדש. ", "type": "expression", "translations": {"ru": "новый шкаф", "en": "a new cabinet"}},
+              {"text": "אמרו לה ", "type": "expression", "translations": {"ru": "ей сказали", "en": "they told her"}},
+              {"text": "שהמשלוח יגיע ", "type": "expression", "translations": {"ru": "что доставка приедет", "en": "that the delivery would arrive"}},
+              {"text": "בין עשר לשתיים. ", "type": "expression", "translations": {"ru": "между десятью и двумя", "en": "between ten and two"}},
+              {"text": "היא חיכתה בבית ", "type": "expression", "translations": {"ru": "она ждала дома", "en": "she waited at home"}},
+              {"text": "כל הבוקר.", "type": "expression", "translations": {"ru": "всё утро", "en": "all morning"}}
+            ],
+            [
+              {"text": "בשעה שתיים ", "type": "expression", "translations": {"ru": "в два часа", "en": "at two o'clock"}},
+              {"text": "המשלוח עדיין לא הגיע. ", "type": "expression", "translations": {"ru": "доставка всё ещё не приехала", "en": "the delivery still had not arrived"}},
+              {"text": "דנה התקשרה לחנות ", "type": "expression", "translations": {"ru": "Дана позвонила в магазин", "en": "Dana called the store"}},
+              {"text": "ושאלה מתי הנהג יגיע. ", "type": "expression", "translations": {"ru": "и спросила, когда приедет водитель", "en": "and asked when the driver would arrive"}},
+              {"text": "אמרו לה: בעוד שעה. ", "type": "expression", "translations": {"ru": "ей сказали: через час", "en": "they told her: in an hour"}},
+              {"text": "לא היה לה זמן לחכות, ", "type": "expression", "translations": {"ru": "у неё не было времени ждать", "en": "she did not have time to wait"}},
+              {"text": "אז היא ביקשה יום אחר.", "type": "expression", "translations": {"ru": "поэтому она попросила другой день", "en": "so she asked for another day"}}
+            ]
+          ]
+        },
+        "alefPlus": {
+          "title": [{"text": "המשלוח שאיחר ושינה את כל התוכניות", "type": "expression", "translations": {"ru": "доставка, которая опоздала и изменила все планы", "en": "the delivery that was late and changed all the plans"}}],
+          "teaser": [{"text": "דנה חיכתה ארבע שעות לארון, ואז גילתה שהנהג רק בדרך.", "type": "expression", "translations": {"ru": "Дана четыре часа ждала шкаф, а потом узнала, что водитель только в пути", "en": "Dana waited four hours for a cabinet, then learned the driver was only on the way"}}],
+          "paragraphs": [
+            [
+              {"text": "דנה הזמינה ארון חדש ", "type": "expression", "translations": {"ru": "Дана заказала новый шкаф", "en": "Dana ordered a new cabinet"}},
+              {"text": "לחדר השינה. ", "type": "expression", "translations": {"ru": "для спальни", "en": "for the bedroom"}},
+              {"text": "בחנות הבטיחו לה ", "type": "expression", "translations": {"ru": "в магазине ей обещали", "en": "the store promised her"}},
+              {"text": "שהמשלוח יגיע ", "type": "expression", "translations": {"ru": "что доставка приедет", "en": "that the delivery would arrive"}},
+              {"text": "בין עשר בבוקר לשתיים. ", "type": "expression", "translations": {"ru": "между десятью утра и двумя", "en": "between ten in the morning and two"}},
+              {"text": "היא עבדה מהבית ", "type": "expression", "translations": {"ru": "она работала из дома", "en": "she worked from home"}},
+              {"text": "כדי לא לפספס אותו.", "type": "expression", "translations": {"ru": "чтобы его не пропустить", "en": "so she would not miss it"}}
+            ],
+            [
+              {"text": "קצת לפני שתיים ", "type": "expression", "translations": {"ru": "незадолго до двух", "en": "shortly before two"}},
+              {"text": "דנה שמה לב ", "type": "expression", "translations": {"ru": "Дана заметила", "en": "Dana noticed"}},
+              {"text": "שאף אחד עדיין לא התקשר. ", "type": "expression", "translations": {"ru": "что никто всё ещё не позвонил", "en": "that nobody had called yet"}},
+              {"text": "היא התקשרה לשירות הלקוחות ", "type": "expression", "translations": {"ru": "она позвонила в поддержку", "en": "she called customer service"}},
+              {"text": "ושאלה מתי בערך ", "type": "expression", "translations": {"ru": "и спросила, примерно когда", "en": "and asked approximately when"}},
+              {"text": "הנהג אמור להגיע. ", "type": "expression", "translations": {"ru": "должен приехать водитель", "en": "the driver was expected to arrive"}},
+              {"text": "הנציג אמר ", "type": "expression", "translations": {"ru": "представитель сказал", "en": "the representative said"}},
+              {"text": "שצריך לחכות עוד שעה. ", "type": "expression", "translations": {"ru": "что нужно подождать ещё час", "en": "that she needed to wait another hour"}},
+              {"text": "לדנה כבר הייתה פגישה, ", "type": "expression", "translations": {"ru": "у Даны уже была встреча", "en": "Dana already had an appointment"}},
+              {"text": "ולכן היא החליטה ", "type": "expression", "translations": {"ru": "поэтому она решила", "en": "so she decided"}},
+              {"text": "להעביר את המשלוח ליום אחר.", "type": "expression", "translations": {"ru": "перенести доставку на другой день", "en": "to move the delivery to another day"}}
+            ]
+          ]
+        },
+        "bet": {
+          "title": [{"text": "ארבע שעות בבית — והמשלוח רק יצא לדרך", "type": "expression", "translations": {"ru": "четыре часа дома — а доставка только выехала", "en": "four hours at home — and the delivery had only just left"}}],
+          "teaser": [{"text": "כשהארון לא הגיע בחלון הזמן שהובטח, דנה הייתה צריכה לבחור בין עוד המתנה לבין שינוי המועד.", "type": "expression", "translations": {"ru": "когда шкаф не приехал в обещанный интервал, Дане пришлось выбирать между дальнейшим ожиданием и переносом", "en": "when the cabinet missed the promised window, Dana had to choose between waiting longer and rescheduling"}}],
+          "paragraphs": [
+            [
+              {"text": "דנה הזמינה ארון ", "type": "expression", "translations": {"ru": "Дана заказала шкаф", "en": "Dana ordered a cabinet"}},
+              {"text": "מאתר של חנות רהיטים. ", "type": "expression", "translations": {"ru": "на сайте мебельного магазина", "en": "from a furniture store's website"}},
+              {"text": "יום לפני המשלוח ", "type": "expression", "translations": {"ru": "за день до доставки", "en": "the day before delivery"}},
+              {"text": "שלחו לה הודעה ", "type": "expression", "translations": {"ru": "ей прислали сообщение", "en": "they sent her a message"}},
+              {"text": "עם חלון זמן ", "type": "expression", "translations": {"ru": "с временным интервалом", "en": "with a time window"}},
+              {"text": "בין עשר לשתיים. ", "type": "expression", "translations": {"ru": "между десятью и двумя", "en": "between ten and two"}},
+              {"text": "היא שינתה את תוכניות העבודה ", "type": "expression", "translations": {"ru": "она изменила рабочие планы", "en": "she changed her work plans"}},
+              {"text": "ונשארה בבית ", "type": "expression", "translations": {"ru": "и осталась дома", "en": "and stayed home"}},
+              {"text": "כדי לקבל את הארון.", "type": "expression", "translations": {"ru": "чтобы принять шкаф", "en": "to receive the cabinet"}}
+            ],
+            [
+              {"text": "כשהשעה התקרבה לשתיים, ", "type": "expression", "translations": {"ru": "когда время приблизилось к двум", "en": "as the time approached two"}},
+              {"text": "היא הבינה ", "type": "expression", "translations": {"ru": "она поняла", "en": "she realized"}},
+              {"text": "שהנהג עדיין לא יצר קשר. ", "type": "expression", "translations": {"ru": "что водитель всё ещё не связался", "en": "that the driver still had not made contact"}},
+              {"text": "נציג שירות הלקוחות בדק ", "type": "expression", "translations": {"ru": "сотрудник поддержки проверил", "en": "a customer service representative checked"}},
+              {"text": "ואמר שהמשאית רק יצאה מהמחסן. ", "type": "expression", "translations": {"ru": "и сказал, что грузовик только выехал со склада", "en": "and said the truck had only just left the warehouse"}},
+              {"text": "לדבריו, ", "type": "expression", "translations": {"ru": "по его словам", "en": "according to him"}},
+              {"text": "הנהג יגיע בתוך כשעה. ", "type": "expression", "translations": {"ru": "водитель приедет примерно через час", "en": "the driver would arrive within about an hour"}},
+              {"text": "דנה הסבירה ", "type": "expression", "translations": {"ru": "Дана объяснила", "en": "Dana explained"}},
+              {"text": "שאין לה אפשרות להמשיך לחכות ", "type": "expression", "translations": {"ru": "что у неё нет возможности ждать дальше", "en": "that she could not continue waiting"}},
+              {"text": "כי היא צריכה לצאת לפגישה. ", "type": "expression", "translations": {"ru": "потому что ей нужно выйти на встречу", "en": "because she had to leave for an appointment"}},
+              {"text": "בסוף היא ביקשה ", "type": "expression", "translations": {"ru": "в итоге она попросила", "en": "in the end she asked"}},
+              {"text": "לקבוע מועד חדש ", "type": "expression", "translations": {"ru": "назначить новую дату", "en": "to set a new date"}},
+              {"text": "ולקבל הודעה שעה מראש.", "type": "expression", "translations": {"ru": "и получить сообщение за час", "en": "and receive a message an hour beforehand"}}
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "baird-first-television-demo",
+      "slug": "baird-first-television-demo",
+      "type": "history",
+      "category": "history",
+      "brief": "On 26 January 1926 John Logie Baird demonstrated an early television system to members of the Royal Institution in a London attic, showing recognizable moving images.",
+      "everydayMeta": null,
+      "sources": [
+        {"publisher": "Science Museum Group Collection", "title": "Experimental television receiver used by J. L. Baird in demonstration, made 1925–1926", "url": "https://collection.sciencemuseumgroup.org.uk/objects/co34789/experimental-television-receiver-used-by-jl-baird-in-demonstration-at-royal-institution-1926-television-receiver"}
+      ],
+      "image": null,
+      "levels": {
+        "alef": {
+          "title": [{"text": "היום שבו אנשים ראו טלוויזיה בפעם הראשונה", "type": "expression", "translations": {"ru": "день, когда люди впервые увидели телевидение", "en": "the day people saw television for the first time"}}],
+          "teaser": [{"text": "בשנת 1926 ג׳ון ביירד הראה בלונדון תמונות שזזו על מסך.", "type": "expression", "translations": {"ru": "в 1926 году Джон Бэрд показал в Лондоне движущиеся изображения на экране", "en": "in 1926 John Baird showed moving images on a screen in London"}}],
+          "paragraphs": [
+            [
+              {"text": "לפני מאה שנה ", "type": "expression", "translations": {"ru": "сто лет назад", "en": "a hundred years ago"}},
+              {"text": "לא הייתה טלוויזיה בבית. ", "type": "expression", "translations": {"ru": "дома не было телевизора", "en": "there was no television at home"}},
+              {"text": "הממציא ג׳ון ביירד ", "type": "expression", "translations": {"ru": "изобретатель Джон Бэрд", "en": "the inventor John Baird"}},
+              {"text": "עבד על מכונה חדשה ", "type": "expression", "translations": {"ru": "работал над новой машиной", "en": "worked on a new machine"}},
+              {"text": "בחדר קטן בלונדון.", "type": "expression", "translations": {"ru": "в маленькой комнате в Лондоне", "en": "in a small room in London"}}
+            ],
+            [
+              {"text": "ב־26 בינואר 1926 ", "type": "expression", "translations": {"ru": "26 января 1926 года", "en": "on January 26, 1926"}},
+              {"text": "הגיעו אנשים לראות אותה. ", "type": "expression", "translations": {"ru": "люди пришли её посмотреть", "en": "people came to see it"}},
+              {"text": "על המסך הופיעו ", "type": "expression", "translations": {"ru": "на экране появились", "en": "on the screen appeared"}},
+              {"text": "פנים שזזו. ", "type": "expression", "translations": {"ru": "движущиеся лица", "en": "moving faces"}},
+              {"text": "התמונה הייתה קטנה, ", "type": "expression", "translations": {"ru": "изображение было маленьким", "en": "the image was small"}},
+              {"text": "אבל אנשים יכלו לזהות אותה. ", "type": "expression", "translations": {"ru": "но люди могли её узнать", "en": "but people could recognize it"}},
+              {"text": "כך התחיל ", "type": "expression", "translations": {"ru": "так начался", "en": "this is how began"}},
+              {"text": "סיפור הטלוויזיה.", "type": "expression", "translations": {"ru": "рассказ о телевидении", "en": "the story of television"}}
+            ]
+          ]
+        },
+        "alefPlus": {
+          "title": [{"text": "התמונה הקטנה ששינתה את הדרך שבה אנחנו רואים את העולם", "type": "expression", "translations": {"ru": "маленькое изображение, изменившее то, как мы видим мир", "en": "the small image that changed how we see the world"}}],
+          "teaser": [{"text": "בעליית גג בלונדון, ג׳ון ביירד הציג לאורחים מערכת מוקדמת של טלוויזיה.", "type": "expression", "translations": {"ru": "на чердаке в Лондоне Джон Бэрд представил гостям раннюю телевизионную систему", "en": "in a London attic, John Baird showed visitors an early television system"}}],
+          "paragraphs": [
+            [
+              {"text": "בתחילת שנות העשרים ", "type": "expression", "translations": {"ru": "в начале двадцатых годов", "en": "in the early 1920s"}},
+              {"text": "ג׳ון לוגי ביירד ניסה ", "type": "expression", "translations": {"ru": "Джон Логи Бэрд пытался", "en": "John Logie Baird tried"}},
+              {"text": "להעביר תמונות בתנועה ", "type": "expression", "translations": {"ru": "передавать движущиеся изображения", "en": "to transmit moving images"}},
+              {"text": "ממקום למקום. ", "type": "expression", "translations": {"ru": "с места на место", "en": "from one place to another"}},
+              {"text": "הוא בנה את המכשירים שלו ", "type": "expression", "translations": {"ru": "он строил свои устройства", "en": "he built his devices"}},
+              {"text": "ועבד בחדר קטן ", "type": "expression", "translations": {"ru": "и работал в маленькой комнате", "en": "and worked in a small room"}},
+              {"text": "ברחוב פרית בלונדון.", "type": "expression", "translations": {"ru": "на Фрит-стрит в Лондоне", "en": "on Frith Street in London"}}
+            ],
+            [
+              {"text": "ב־26 בינואר 1926 ", "type": "expression", "translations": {"ru": "26 января 1926 года", "en": "on January 26, 1926"}},
+              {"text": "הוא הזמין אורחים ", "type": "expression", "translations": {"ru": "он пригласил гостей", "en": "he invited guests"}},
+              {"text": "מהמוסד המלכותי הבריטי. ", "type": "properNoun", "translations": {"ru": "из британского Королевского института", "en": "from Britain's Royal Institution"}},
+              {"text": "הם ראו על מסך ", "type": "expression", "translations": {"ru": "они увидели на экране", "en": "they saw on a screen"}},
+              {"text": "תמונה קטנה של פנים ", "type": "expression", "translations": {"ru": "маленькое изображение лица", "en": "a small image of a face"}},
+              {"text": "שזזו בזמן אמת. ", "type": "expression", "translations": {"ru": "двигавшегося в реальном времени", "en": "moving in real time"}},
+              {"text": "האיכות הייתה רחוקה ", "type": "expression", "translations": {"ru": "качество было далеко", "en": "the quality was far"}},
+              {"text": "מהטלוויזיה של היום, ", "type": "expression", "translations": {"ru": "от современного телевидения", "en": "from today's television"}},
+              {"text": "אבל זו הייתה הוכחה ", "type": "expression", "translations": {"ru": "но это было доказательством", "en": "but it was proof"}},
+              {"text": "שהרעיון יכול לעבוד.", "type": "expression", "translations": {"ru": "что идея может работать", "en": "that the idea could work"}}
+            ]
+          ]
+        },
+        "bet": {
+          "title": [{"text": "עליית הגג בלונדון שבה הטלוויזיה הפכה מרעיון למציאות", "type": "expression", "translations": {"ru": "лондонский чердак, где телевидение превратилось из идеи в реальность", "en": "the London attic where television went from idea to reality"}}],
+          "teaser": [{"text": "ב־1926 הזמין ג׳ון לוגי ביירד אנשי מדע לצפות בפנים שנעו בשידור חי על מסך קטן.", "type": "expression", "translations": {"ru": "в 1926 году Джон Логи Бэрд пригласил учёных увидеть лицо, двигавшееся в прямом эфире на маленьком экране", "en": "in 1926 John Logie Baird invited scientists to watch a face moving live on a small screen"}}],
+          "paragraphs": [
+            [
+              {"text": "בשנות העשרים של המאה הקודמת ", "type": "expression", "translations": {"ru": "в двадцатые годы прошлого века", "en": "in the 1920s"}},
+              {"text": "הרעיון של תמונה משודרת ", "type": "expression", "translations": {"ru": "идея передаваемого изображения", "en": "the idea of a transmitted image"}},
+              {"text": "עדיין נשמע דמיוני. ", "type": "expression", "translations": {"ru": "всё ещё звучала фантастически", "en": "still sounded imaginary"}},
+              {"text": "הממציא הסקוטי ג׳ון לוגי ביירד ", "type": "properNoun", "translations": {"ru": "шотландский изобретатель Джон Логи Бэрд", "en": "the Scottish inventor John Logie Baird"}},
+              {"text": "ניסה להפוך אותו למערכת עובדת. ", "type": "expression", "translations": {"ru": "пытался превратить её в работающую систему", "en": "tried to turn it into a working system"}},
+              {"text": "הציוד שלו היה מכני ומסורבל, ", "type": "expression", "translations": {"ru": "его оборудование было механическим и громоздким", "en": "his equipment was mechanical and cumbersome"}},
+              {"text": "והתמונה שהפיק ", "type": "expression", "translations": {"ru": "а создаваемое им изображение", "en": "and the image it produced"}},
+              {"text": "הייתה קטנה ולא ברורה.", "type": "expression", "translations": {"ru": "было маленьким и нечётким", "en": "was small and unclear"}}
+            ],
+            [
+              {"text": "ב־26 בינואר 1926 ", "type": "expression", "translations": {"ru": "26 января 1926 года", "en": "on January 26, 1926"}},
+              {"text": "הגיעו לעליית הגג שלו ", "type": "expression", "translations": {"ru": "на его чердак пришли", "en": "came to his attic"}},
+              {"text": "אנשי המוסד המלכותי. ", "type": "properNoun", "translations": {"ru": "сотрудники Королевского института", "en": "members of the Royal Institution"}},
+              {"text": "מולם הופיעו ", "type": "expression", "translations": {"ru": "перед ними появились", "en": "before them appeared"}},
+              {"text": "פנים אנושיות שנעו ", "type": "expression", "translations": {"ru": "движущиеся человеческие лица", "en": "moving human faces"}},
+              {"text": "על מסך בזמן אמת. ", "type": "expression", "translations": {"ru": "на экране в реальном времени", "en": "on a screen in real time"}},
+              {"text": "ההדגמה לא נראתה ", "type": "expression", "translations": {"ru": "демонстрация не выглядела", "en": "the demonstration did not look"}},
+              {"text": "כמו שידור מודרני, ", "type": "expression", "translations": {"ru": "как современная трансляция", "en": "like a modern broadcast"}},
+              {"text": "אבל הקהל הצליח לזהות ", "type": "expression", "translations": {"ru": "но зрители смогли распознать", "en": "but the audience could recognize"}},
+              {"text": "את מה שראה. ", "type": "expression", "translations": {"ru": "то, что видел", "en": "what it saw"}},
+              {"text": "הרגע הזה הראה ", "type": "expression", "translations": {"ru": "этот момент показал", "en": "that moment showed"}},
+              {"text": "שטלוויזיה יכולה להפוך ", "type": "expression", "translations": {"ru": "что телевидение может стать", "en": "that television could become"}},
+              {"text": "לטכנולוגיה שימושית ולא רק לניסוי.", "type": "expression", "translations": {"ru": "полезной технологией, а не только экспериментом", "en": "a useful technology and not just an experiment"}}
+            ]
+          ]
+        }
+      }
+    }
+  ]
+}

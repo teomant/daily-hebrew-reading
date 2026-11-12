@@ -22,6 +22,8 @@ def words(text: str) -> list[dict]:
     return [lexical_unit(part, "separator" if part in '.!?…:;' else "word")
             for part in re.findall(r"[^\s.!?…:;]+|[.!?…:;]", text)]
 
+from tests.legacy_support import read_legacy_view as read_json
+
 
 class QualityTests(unittest.TestCase):
     def setUp(self):

@@ -5,13 +5,22 @@
   const runtime = JSON.parse(runtimeNode.textContent);
   const {site, levels, locales, payload, page} = runtime;
   const keys = {interface: "dhr.interfaceLocale", translation: "dhr.translationLocale", level: "dhr.readingLevel"};
+  const saved = key => { try { return localStorage.getItem(key); } catch { return null; } };
+  const save = (key, value) => { try { localStorage.setItem(key, value); } catch { /* Reading works without storage. */ } };
   const allowed = (values, saved, fallback) => values.includes(saved) ? saved : (values.includes(fallback) ? fallback : values[0]);
-  let interfaceLocale = allowed(site.interfaceLocales, localStorage.getItem(keys.interface), site.defaultInterfaceLocale);
+  if (page === "redirect") {
+    const destinations = payload.editionDestinations || {};
+    const edition = allowed(Object.keys(destinations), saved(keys.level), site.defaultReadingLevel);
+    if (destinations[edition]) window.location.replace(destinations[edition]);
+    return;
+  }
+  let interfaceLocale = allowed(site.interfaceLocales, saved(keys.interface), site.defaultInterfaceLocale);
   const issue = payload.issue;
   const availableTranslations = issue ? issue.translationLocales : site.translationLocales;
-  let translationLocale = allowed(availableTranslations, localStorage.getItem(keys.translation), site.defaultTranslationLocale);
+  let translationLocale = allowed(availableTranslations, saved(keys.translation), site.defaultTranslationLocale);
   const availableLevels = issue ? issue.availableLevels : levels.map(level => level.id);
-  let readingLevel = allowed(availableLevels, localStorage.getItem(keys.level), site.defaultReadingLevel);
+  const readingLevel = allowed(availableLevels, payload.readingLevel, site.defaultReadingLevel);
+  save(keys.level, readingLevel);
 
   const copy = key => (locales[interfaceLocale] || {})[key] || key;
   const unitsNeedSpace = (previous, current) => {
@@ -52,10 +61,6 @@
   };
 
   function activateControls() {
-    document.querySelectorAll("[data-level]").forEach(button => {
-      button.classList.toggle("active", button.dataset.level === readingLevel);
-      button.setAttribute("aria-pressed", String(button.dataset.level === readingLevel));
-    });
     document.querySelectorAll("[data-translation]").forEach(button => {
       button.classList.toggle("active", button.dataset.translation === translationLocale);
       button.setAttribute("aria-pressed", String(button.dataset.translation === translationLocale));
@@ -188,17 +193,10 @@
   }
 
   document.addEventListener("click", event => {
-    const levelButton = event.target.closest("[data-level]");
-    if (levelButton) {
-      readingLevel = levelButton.dataset.level;
-      localStorage.setItem(keys.level, readingLevel);
-      closePopover(); activateControls(); renderCards(); renderArticle();
-      return;
-    }
     const translationButton = event.target.closest("[data-translation]");
     if (translationButton) {
       translationLocale = translationButton.dataset.translation;
-      localStorage.setItem(keys.translation, translationLocale);
+      save(keys.translation, translationLocale);
       closePopover(); activateControls(); renderArticle();
       return;
     }
@@ -222,7 +220,7 @@
   document.addEventListener("keydown", event => { if (event.key === "Escape") closePopover(); });
   document.getElementById("interface-locale")?.addEventListener("change", event => {
     interfaceLocale = allowed(site.interfaceLocales, event.target.value, site.defaultInterfaceLocale);
-    localStorage.setItem(keys.interface, interfaceLocale);
+    save(keys.interface, interfaceLocale);
     closePopover(); renderLocale();
   });
   document.querySelectorAll("figure img").forEach(img => {

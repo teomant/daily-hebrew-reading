@@ -19,6 +19,9 @@ from src.generate_issue import _adapt_story, _generate_verbs_page, _ordered_issu
 from src.validation import validate_issue, validate_repository
 from src.verbs import daily_verbs, load_verbs, uses_target_verb, verb_batch_index, verb_seed, verbs_page
 
+from tests.legacy_support import read_legacy_view as read_json
+from tests.legacy_support import generate_legacy_view as generate
+
 
 def units(text):
     return [{"text": word, "type": "separator" if word in '.!?' else "word",
@@ -123,7 +126,7 @@ class VerbTests(unittest.TestCase):
         with patch.dict(os.environ, OPENAI_MODEL='test'), patch('src.generate_issue._call_openai', side_effect=fail) as call, redirect_stdout(StringIO()):
             result = _generate_verbs_page(ROOT, self.day, self.levels, self.locales, self.site, self.locales, '')
         self.assertIsNone(result)
-        self.assertEqual(call.call_count, 30)
+        self.assertEqual(call.call_count, 90)  # Ten items, three editions, three bounded attempts.
 
     def test_annotation_repair_cannot_hide_missing_body_translations_behind_title(self):
         item = daily_verbs(ROOT, self.day)[0]
@@ -174,9 +177,11 @@ class VerbTests(unittest.TestCase):
                             value['paragraphs'] = [units('אני כאן. זה טוב.')]
                     return result
                 self.assertTrue(phase.startswith('Adaptation batch'), phase)
+                ids = schema['properties']['adaptations']['items']['properties']['levels']['required']
                 return {'adaptations': [{'id': short['id'],
-                                        'levels': {level['id']: level_text(item['verb']) for level in self.levels},
-                                        'coveredStoryBeatIds': {level['id']: [] for level in self.levels}}]}
+                                        'levels': {level_id: level_text(item['verb']) for level_id in ids},
+                                        'coveredStoryBeatIds': {level_id: [] for level_id in ids},
+                                        'scenario': {'brief': short['brief'], 'everydayMeta': short['everydayMeta']}}]}
 
             with (patch.dict(os.environ, OPENAI_MODEL='test'), patch('src.generate_issue.CURRENT_TARGET', 0),
                   patch('src.generate_issue.HISTORY_TARGET', 0), patch('src.generate_issue.EVERYDAY_TARGET', 0),
@@ -184,7 +189,7 @@ class VerbTests(unittest.TestCase):
                   patch('src.generate_issue._call_openai', side_effect=respond), redirect_stdout(StringIO()) as log):
                 issue = generate(root, self.day, 0)
             self.assertEqual([story['type'] for story in issue['stories']], ['shorts'])
-            self.assertEqual(sum(phase.startswith('VERBS item') for phase in calls), 12)
+            self.assertEqual(sum(phase.startswith('VERBS item') for phase in calls), 36)
             self.assertIn('only 9/10 items passed core checks', log.getvalue())
             self.assertEqual(len(issue['stories'][0]['shortItems']), 1)
 

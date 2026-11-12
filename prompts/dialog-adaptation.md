@@ -17,4 +17,4 @@ GOOD — eight paragraph-array items, one complete direct-speech turn in each it
 7. `נועה: מצוין. ניפגש ליד הכניסה בעוד רבע שעה.`
 8. `דני: סגור. ככה נסיים הכול בלי לחץ.`
 
-Return 8–12 items like the GOOD example at every level. Keep the same speaker names across levels. Every item starts with a speaker name and colon, contains only that speaker's direct words, alternates speakers, and ends with normal sentence punctuation.
+Return 8–12 items like the GOOD example for the requested edition. Keep its two planned speaker names consistent. Every item starts with a speaker name and colon, contains only that speaker's direct words, alternates speakers, and ends with normal sentence punctuation.

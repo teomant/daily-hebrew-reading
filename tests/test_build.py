@@ -11,6 +11,8 @@ from urllib.parse import urlparse
 from src.build_site import build, build_article, build_day, build_home, render_units
 from src.common import ROOT, load_level_config, load_locales, load_site_config, read_json, units_text
 
+from tests.legacy_support import read_legacy_view as read_json
+
 
 class LinkCollector(HTMLParser):
     def __init__(self) -> None:
@@ -166,8 +168,8 @@ class BuildTests(unittest.TestCase):
         site = {**load_site_config(), "defaultReadingLevel": "gimel"}
         levels = [*load_level_config(), {"id": "gimel", "label": "ג", "name": "Gimel", "approximateCefr": "B1", "learnerWordsPerMinute": 75}]
         rendered = build_day(issue, site, levels, load_locales())
-        self.assertIn('data-level="alef"', rendered)
-        self.assertNotIn('data-level="gimel"', rendered)
+        self.assertIn('data-edition="alef"', rendered)
+        self.assertNotIn('data-edition="gimel"', rendered)
 
     def test_build_creates_every_page_with_project_paths(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
@@ -185,7 +187,7 @@ class BuildTests(unittest.TestCase):
             for relative in expected:
                 self.assertTrue((output / relative).is_file(), relative)
             home = (output / "index.html").read_text(encoding="utf-8")
-            article = (output / expected[3]).read_text(encoding="utf-8")
+            article = (output / "alef" / expected[3]).read_text(encoding="utf-8")
             styles = (output / "assets/styles.css").read_text(encoding="utf-8")
             self.assertIn('/daily-hebrew-reading/assets/styles.css', home)
             self.assertIn('id="interface-locale"', home)

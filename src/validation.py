@@ -172,6 +172,8 @@ def validate_issue(
     errors: list[str] = []
     if not isinstance(issue, dict):
         return [f"{label}: expected an object"]
+    if issue.get("schemaVersion") == 2:
+        return _validate_editions(issue, site, configured_levels, label)
     if issue.get("schemaVersion") != 1:
         errors.append(f"{label}.schemaVersion: expected 1")
     date = issue.get("date")
@@ -439,8 +441,59 @@ def validate_issue(
     return errors
 
 
+def _validate_editions(issue, site, configured_levels, label):
+    from .editions import edition_issue
+
+    errors = []
+    level_ids = issue.get("availableLevels")
+    known = {level["id"] for level in configured_levels}
+    if (not isinstance(level_ids, list) or not level_ids
+            or any(not isinstance(value, str) for value in level_ids)
+            or len(set(level_ids)) != len(level_ids) or not set(level_ids) <= known):
+        return [f"{label}.availableLevels: expected unique configured level IDs"]
+    editions = issue.get("editions")
+    if not isinstance(editions, dict) or set(editions) != set(level_ids):
+        return [f"{label}.editions: must exactly match availableLevels"]
+    if "stories" in issue:
+        errors.append(f"{label}.stories: schema 2 stores articles inside editions")
+    sourced_topics = {}
+    topic_types = {}
+    for level_id, edition in editions.items():
+        path = f"{label}.editions.{level_id}"
+        if not isinstance(edition, dict) or not isinstance(edition.get("stories"), list) or not edition["stories"]:
+            errors.append(f"{path}.stories: expected at least one article")
+            continue
+        seen_topics = set()
+        shape_ok = True
+        for article in edition["stories"]:
+            if not isinstance(article, dict) or not isinstance(article.get("content"), dict):
+                errors.append(f"{path}.stories: each article needs a content object")
+                shape_ok = False
+                continue
+            if "levels" in article:
+                errors.append(f"{path}: an article must contain only its own content")
+            topic = article.get("topicId")
+            if not isinstance(topic, str) or not SLUG_PATTERN.fullmatch(topic) or topic in seen_topics:
+                errors.append(f"{path}.topicId: expected a unique kebab-case topic ID")
+                continue
+            seen_topics.add(topic)
+            kind = article.get("type")
+            if topic in topic_types and topic_types[topic] != kind:
+                errors.append(f"{path}.{topic}: linked articles must have the same type")
+            topic_types[topic] = kind
+            if kind in {"current", "history"}:
+                facts = {key: article.get(key) for key in ("brief", "sources", "storyBeats", "image")}
+                if topic in sourced_topics and sourced_topics[topic] != facts:
+                    errors.append(f"{path}.{topic}: shared research metadata differs between editions")
+                sourced_topics[topic] = facts
+        if shape_ok:
+            errors.extend(validate_issue(edition_issue(issue, level_id), site, configured_levels, path))
+    return errors
+
+
 def validate_repository(root: Path) -> list[str]:
     from .common import load_level_config, load_site_config
+    from .editions import build_index, topic_records
 
     site = load_site_config(root)
     levels = load_level_config(root)
@@ -462,8 +515,11 @@ def validate_repository(root: Path) -> list[str]:
             errors.append(f"{issue_file.name}: invalid JSON ({exc})")
             continue
         issues[issue_file.stem] = issue
-        errors.extend(validate_issue(issue, site, levels, issue_file.name))
-        for story in issue.get("stories", []):
+        issue_errors = validate_issue(issue, site, levels, issue_file.name)
+        errors.extend(issue_errors)
+        if issue_errors:
+            continue
+        for story in topic_records(issue):
             if isinstance(story, dict) and story.get("type") == "verbs":
                 try:
                     if story.get("verbItems") != daily_verbs(root, issue.get("date")):
@@ -482,12 +538,20 @@ def validate_repository(root: Path) -> list[str]:
         if not isinstance(dates, list):
             errors.append("index.json.dates: expected a list")
         else:
+            if index.get("schemaVersion") not in {1, 2}:
+                errors.append("index.json.schemaVersion: expected 1 or 2")
             indexed_dates = [item.get("date") for item in dates if isinstance(item, dict)]
             expected_dates = sorted(issues, reverse=True)
             if indexed_dates != expected_dates:
                 errors.append("index.json.dates: must list every issue newest first")
-            for item in dates:
+            if index.get("schemaVersion") == 2 and not errors:
+                if index != build_index(issues, levels):
+                    errors.append("index.json: edition counts or reading minutes do not match content")
+            for item in dates if index.get("schemaVersion") == 1 else []:
                 if not isinstance(item, dict) or item.get("date") not in issues:
+                    continue
+                if issues[item["date"]].get("schemaVersion") == 2:
+                    errors.append(f"index.json: schema 2 is required for edition content ({item['date']})")
                     continue
                 if item.get("storyCount") != len(issues[item["date"]]["stories"]):
                     errors.append(f"index.json: storyCount mismatch for {item['date']}")
@@ -511,18 +575,20 @@ def validate_repository(root: Path) -> list[str]:
             errors.append("everyday-history.json.items: expected a list")
         else:
             history_ids = {
-                (item.get("date"), item.get("storyId"))
+                (item.get("date"), item.get("storyId"), item.get("edition"))
                 for item in items
                 if isinstance(item, dict)
             }
             for issue in issues.values():
-                for story in issue.get("stories", []):
-                    history_key = (issue.get("date"), story.get("id"))
-                    if story.get("type") in {"everyday", "dialog"} and history_key not in history_ids:
-                        errors.append(f"everyday-history.json: missing {story.get('id')}")
-                    if story.get("type") == "shorts":
-                        for short_item in story.get("shortItems", []):
-                            short_key = (issue.get("date"), short_item.get("id"))
-                            if short_key not in history_ids:
-                                errors.append(f"everyday-history.json: missing {short_item.get('id')}")
+                if errors:
+                    break
+                editions = issue.get("editions", {None: {"stories": issue.get("stories", [])}})
+                for level_id, edition in editions.items():
+                    for story in edition["stories"]:
+                        records = story.get("shortItems", []) if story.get("type") == "shorts" else (
+                            [story] if story.get("type") in {"everyday", "dialog"} else [])
+                        for record in records:
+                            key = (issue.get("date"), record.get("id"))
+                            if (*key, level_id) not in history_ids and (*key, None) not in history_ids:
+                                errors.append(f"everyday-history.json: missing {record.get('id')} ({level_id})")
     return errors
