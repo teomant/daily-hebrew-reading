@@ -17668,6 +17668,1301 @@
         "interaction": "Mention a need and offer a drink",
         "outcome": "Share a sip and continue walking"
       }
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "tenant-books-service-visit-around-childcare",
+      "domain": "housing_landlord",
+      "scenario": "tenant_books_a_window_repair_visit_after_school_pickup",
+      "lexicalThemes": [
+        "service visit",
+        "availability",
+        "time window",
+        "booking"
+      ],
+      "targetVocabulary": [
+        "book a visit",
+        "I can come after",
+        "morning",
+        "afternoon"
+      ],
+      "brief": "A tenant calls to arrange a window repair visit, explains she is unavailable in the morning but can be home after picking up her child, and books an afternoon visit offered by the scheduler.",
+      "storyPattern": {
+        "goal": "Schedule a home service around a fixed responsibility",
+        "relationship": "Tenant and service scheduler",
+        "interaction": "The tenant explains when she is home; the scheduler offers an afternoon visit and she agrees",
+        "outcome": "They book an afternoon visit"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "resident-clarifies-which-waste-counter-handles-a-request",
+      "domain": "municipal_services",
+      "scenario": "resident_finds_the_municipal_counter_for_a_bulky_item_collection_question",
+      "lexicalThemes": [
+        "municipal service",
+        "counter",
+        "queue number",
+        "bulky item"
+      ],
+      "targetVocabulary": [
+        "which counter",
+        "queue number",
+        "broken cabinet",
+        "collection"
+      ],
+      "brief": "A resident asks where to ask about collecting a broken cabinet. A service-center worker points her to the counter for large items, where she takes a queue number.",
+      "storyPattern": {
+        "goal": "Reach the appropriate municipal service counter",
+        "relationship": "Resident and service-center worker",
+        "interaction": "Describe a need and follow a direct pointer",
+        "outcome": "Take a number at the relevant desk"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "worker-corrects-a-misheard-availability-time",
+      "domain": "employment_jobs",
+      "scenario": "employee_corrects_a_supervisor_who_misheard_her_shift_availability",
+      "lexicalThemes": [
+        "work schedule",
+        "availability",
+        "clarifying",
+        "repeating"
+      ],
+      "targetVocabulary": [
+        "I can cover",
+        "morning shift",
+        "I said",
+        "repeat"
+      ],
+      "brief": "A worker clarifies to her supervisor that she can work in the morning, not the afternoon, and he updates the schedule for the morning.",
+      "storyPattern": {
+        "goal": "Make work availability clear",
+        "relationship": "Employee and supervisor",
+        "interaction": "The employee repeats her available time after her supervisor misunderstands it",
+        "outcome": "The supervisor changes the schedule to show the morning availability"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "resident-asks-what-a-tax-form-field-means",
+      "domain": "bills_taxes",
+      "scenario": "resident_clarifies_an_uncertain_address_field_on_a_tax_form_before_entering_it",
+      "lexicalThemes": [
+        "tax form",
+        "address",
+        "field",
+        "clarification"
+      ],
+      "targetVocabulary": [
+        "form field",
+        "current address",
+        "what does this mean",
+        "check"
+      ],
+      "brief": "A resident filling out a tax form asks a clerk whether an address field means her current address or the address on an earlier document. She leaves it blank until she can check the document.",
+      "storyPattern": {
+        "goal": "Avoid entering uncertain information on a form",
+        "relationship": "Resident and clerk",
+        "interaction": "Ask the clerk what address the field means",
+        "outcome": "Leave the answer blank until checking the source document"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "resident-keeps-a-copy-of-a-benefit-letter",
+      "domain": "social_benefits",
+      "scenario": "resident_edits_a_letter_about_changed_circumstances_with_a_friends_feedback",
+      "lexicalThemes": [
+        "benefit paperwork",
+        "letter",
+        "explanation",
+        "editing"
+      ],
+      "targetVocabulary": [
+        "change in circumstances",
+        "read this",
+        "shorter sentence",
+        "draft"
+      ],
+      "brief": "A resident writes a letter about a change in her circumstances. A friend reads it, suggests shortening one sentence, and the resident edits the letter while keeping the original draft.",
+      "storyPattern": {
+        "goal": "Make a personal paperwork explanation clearer",
+        "relationship": "Resident and friend",
+        "interaction": "The friend reads the letter and suggests shortening one sentence",
+        "outcome": "The resident edits the sentence and keeps the original draft"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "shopper-asks-to-keep-a-receipt-for-a-return",
+      "domain": "shopping_returns",
+      "scenario": "shopper_requests_receipt_after_it_falls_under_counter",
+      "lexicalThemes": [
+        "purchase",
+        "receipt",
+        "cashier",
+        "request"
+      ],
+      "targetVocabulary": [
+        "קבלה",
+        "אני מבקשת את הקבלה",
+        "מתחת לדלפק",
+        "לפני שאני יוצאת"
+      ],
+      "brief": "A shopper buys a bowl, notices that the receipt fell under the counter, asks the cashier for it, and receives it before leaving.",
+      "storyPattern": {
+        "goal": "Keep proof of a purchase",
+        "relationship": "Shopper and cashier",
+        "interaction": "The shopper notices the receipt under the counter and asks the cashier for it",
+        "outcome": "The cashier gives her the receipt before she leaves"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "parent-clarifies-a-childs-pickup-person",
+      "domain": "school_childcare",
+      "scenario": "parent_corrects_the_name_of_the_person_picking_up_a_child",
+      "lexicalThemes": [
+        "school pickup",
+        "family member",
+        "correcting a detail",
+        "name"
+      ],
+      "targetVocabulary": [
+        "pick up",
+        "my aunt",
+        "I gave the wrong name",
+        "correct name"
+      ],
+      "brief": "A mother tells a school office worker that her aunt will pick up her daughter today, corrects the aunt's name, and the worker writes down the right name.",
+      "storyPattern": {
+        "goal": "Make a pickup detail accurate",
+        "relationship": "Parent and school office worker",
+        "interaction": "The parent notices and corrects a spoken mistake",
+        "outcome": "The office worker writes down the correct pickup person's name"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "passenger-asks-which-stop-is-next",
+      "domain": "transport_fares_routes",
+      "scenario": "passenger_checks_the_next_bus_stop_by_asking_a_fellow_rider",
+      "lexicalThemes": [
+        "bus stop",
+        "next stop",
+        "asking someone to repeat",
+        "directions"
+      ],
+      "targetVocabulary": [
+        "which stop",
+        "next stop",
+        "say that again",
+        "get off"
+      ],
+      "brief": "A passenger on a bus is unsure whether the next stop is hers. She asks another rider to repeat the stop name, sees the stop sign, and gets off at the right place.",
+      "storyPattern": {
+        "goal": "Identify the correct stop during a ride",
+        "relationship": "Passenger and fellow rider",
+        "interaction": "Ask for a repeated stop name and use the visible sign",
+        "outcome": "Get off at the intended stop"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "customer-orders-a-drink-without-ice",
+      "domain": "food_service_orders",
+      "scenario": "Noa orders a cold drink without ice at a café counter",
+      "lexicalThemes": [
+        "drink order",
+        "preference",
+        "repeating a request",
+        "payment"
+      ],
+      "targetVocabulary": [
+        "משקה קר",
+        "בלי קרח",
+        "מהנהנת",
+        "משלמת"
+      ],
+      "brief": "At a café counter, Noa asks for a cold drink without ice. The worker repeats the request, and she nods and pays.",
+      "storyPattern": {
+        "goal": "Order a cold drink without ice",
+        "relationship": "Customer and café worker",
+        "interaction": "Noa states her preference, and the worker repeats the request",
+        "outcome": "Noa nods to confirm the order and pays"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "sender-spells-a-street-name-at-the-post-office",
+      "domain": "postal_parcels",
+      "scenario": "sender_spells_a_street_name_for_a_parcel_label_at_the_post_office",
+      "lexicalThemes": [
+        "postal parcel",
+        "address",
+        "spelling",
+        "label"
+      ],
+      "targetVocabulary": [
+        "spell the street name",
+        "slowly",
+        "parcel label",
+        "address"
+      ],
+      "brief": "A sender gives a postal clerk a parcel address, spells the street name slowly when asked, and the clerk writes it correctly on the parcel label.",
+      "storyPattern": {
+        "goal": "Make a parcel address legible",
+        "relationship": "Sender and postal clerk",
+        "interaction": "Spell an unclear street name aloud",
+        "outcome": "The clerk writes the address correctly on the label"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "driver-gives-a-taxi-a-clear-landmark",
+      "domain": "driving_parking",
+      "scenario": "taxi_passenger_adds_flower_shop_landmark_to_clarify_entrance",
+      "lexicalThemes": [
+        "taxi ride",
+        "destination",
+        "flower shop landmark",
+        "entrance and stopping point"
+      ],
+      "targetVocabulary": [
+        "take me to",
+        "next to",
+        "entrance",
+        "stop here"
+      ],
+      "brief": "A passenger gives a taxi driver the name of a small street and adds the flower shop as a landmark. The driver recognizes the place and stops by the entrance the passenger means.",
+      "storyPattern": {
+        "goal": "Guide the driver to the intended entrance",
+        "relationship": "Taxi passenger and driver",
+        "interaction": "The passenger adds the flower shop as a clear landmark",
+        "outcome": "The driver recognizes the place and stops by the entrance"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "customer-asks-for-a-queue-number-at-a-busy-service-center",
+      "domain": "banking_credit",
+      "scenario": "rina_selects_the_card_service_queue_and_checks_a_faulty_card",
+      "lexicalThemes": [
+        "service counters and queue numbers",
+        "explaining a card problem",
+        "taking turns",
+        "using a card while awaiting a replacement"
+      ],
+      "targetVocabulary": [
+        "service center",
+        "queue number",
+        "whose turn",
+        "card",
+        "replace",
+        "screen",
+        "in the meantime",
+        "works"
+      ],
+      "brief": "On her way to work, Rina asks which queue to use to replace a bank card that does not always work. She takes a number, yields to a customer with an earlier number, and has the old card checked before arranging a replacement.",
+      "storyPattern": {
+        "goal": "Replace a bank card that does not always work.",
+        "relationship": "Customer and bank clerk.",
+        "interaction": "Rina asks which queue to use, takes a number, and explains the card problem at the counter.",
+        "outcome": "The clerk checks the old card and arranges a replacement; Rina can use the old card for now."
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "traveler-finds-the-correct-entrance-for-a-pickup",
+      "domain": "transport_fares_routes",
+      "scenario": "eli_and_friend_identify_the_eastern_station_exit_and_agree_on_a_pickup_spot",
+      "lexicalThemes": [
+        "station entrances and exits",
+        "describing nearby landmarks",
+        "clarifying a meeting point",
+        "where a vehicle can stop"
+      ],
+      "targetVocabulary": [
+        "entrance",
+        "exit",
+        "eastern exit",
+        "bus stop",
+        "taxi rank",
+        "nearby stopping place",
+        "block the road"
+      ],
+      "brief": "Eli arrives by train and is unsure which station exit his friend means. He describes nearby signs and landmarks over the phone, checks the eastern exit, and walks to a nearby place where the car can stop safely.",
+      "storyPattern": {
+        "goal": "Meet a friend picking him up after a train ride",
+        "relationship": "Traveler and friend providing a ride",
+        "interaction": "Describe visible landmarks, identify the eastern exit, and ask where the car can stop",
+        "outcome": "Walk with his bag to a nearby stopping place and meet his friend"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "neighbors-help-a-resident-sort-a-misdelivered-letter",
+      "domain": "neighbors_building",
+      "scenario": "resident_uses_the_building_directory_to_hand_an_unopened_misdelivered_letter_to_its_neighbor",
+      "lexicalThemes": [
+        "building mail and apartment numbers",
+        "explaining a delivery mistake",
+        "asking about a neighbor",
+        "handling someone else's letter"
+      ],
+      "targetVocabulary": [
+        "letter",
+        "wrong apartment",
+        "unopened",
+        "surname",
+        "building directory",
+        "moved",
+        "hand over"
+      ],
+      "brief": "Moran finds a neighbor's unopened letter among her mail, checks the building directory with another resident, and hands the letter to its intended recipient.",
+      "storyPattern": {
+        "goal": "Get misdelivered mail to its intended recipient",
+        "relationship": "Neighbors in the same building",
+        "interaction": "Compare the envelope details with shared knowledge and locate the recipient",
+        "outcome": "Hand over the unopened letter directly"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "coworkers-coordinate-a-short-handover-before-an-appointment",
+      "domain": "employment_jobs",
+      "scenario": "yael_leaves_client_request_notes_for_amir_before_appointment",
+      "lexicalThemes": [
+        "work handovers",
+        "client requests",
+        "measurements and estimates",
+        "brief coverage during an absence"
+      ],
+      "targetVocabulary": [
+        "measurements",
+        "estimate",
+        "update the client",
+        "shared work table",
+        "take a message",
+        "follow up when I return"
+      ],
+      "brief": "Coworkers Yael and Amir arrange a brief handover before Yael leaves for an appointment. Yael has received a client's measurements but has not sent an estimate; Amir agrees to give a limited update and take a message if the client calls.",
+      "storyPattern": {
+        "goal": "Keep the client's request moving while Yael is away briefly",
+        "relationship": "Coworkers sharing responsibility for a client request",
+        "interaction": "Yael explains what is done and what remains; Amir agrees to give a limited update and handle a returning call",
+        "outcome": "Yael leaves her notes, and Amir takes responsibility for the interim update"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "friends-negotiate-a-shared-taxi-stop",
+      "domain": "driving_parking",
+      "scenario": "friends_choose_a_well_lit_corner_for_neta_to_get_out_before_ron_continues_by_taxi",
+      "lexicalThemes": [
+        "telling a driver where to stop",
+        "different destinations",
+        "offering and declining company",
+        "checking that a corner is clear and well lit"
+      ],
+      "targetVocabulary": [
+        "לרדת",
+        "פינה",
+        "רחבה",
+        "מוארת",
+        "לעצור",
+        "לבד",
+        "בפינה",
+        "להמשיך"
+      ],
+      "brief": "After an evening visit, friends Neta and Ron agree on a well-lit, clear corner near Neta's building as their shared taxi's first stop. Neta gets out with her bag, and Ron continues to his own stop.",
+      "storyPattern": {
+        "goal": "Choose a practical first stop on a shared taxi ride",
+        "relationship": "Friends traveling together",
+        "interaction": "Neta suggests a wide, lit corner; Ron checks that she will be safe and offers to get out with her",
+        "outcome": "They ask the driver to stop at the clear corner; Neta gets out and Ron continues to his stop"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "tenant-books-service-visit-around-childcare",
+      "domain": "housing_landlord",
+      "scenario": "tenant_books_a_window_repair_visit_after_school_pickup",
+      "lexicalThemes": [
+        "service visit",
+        "availability",
+        "time window",
+        "booking"
+      ],
+      "targetVocabulary": [
+        "לתאם ביקור",
+        "אחרי שאאסוף",
+        "בבוקר",
+        "אחר הצהריים"
+      ],
+      "brief": "A tenant called to arrange a window repair visit. She explained that she was unavailable in the morning because she needed to pick up the children, but would be home afterward. The scheduler offered an afternoon visit, and they booked it.",
+      "storyPattern": {
+        "goal": "Schedule a home service around school pickup",
+        "relationship": "Tenant and service scheduler",
+        "interaction": "The tenant explained her availability, and the scheduler offered a suitable time",
+        "outcome": "They booked an afternoon visit"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "resident-clarifies-which-waste-counter-handles-a-request",
+      "domain": "municipal_services",
+      "scenario": "resident_finds_the_municipal_counter_for_a_bulky_item_collection_question",
+      "lexicalThemes": [
+        "municipal service",
+        "counter",
+        "queue number",
+        "bulky item"
+      ],
+      "targetVocabulary": [
+        "which counter",
+        "queue number",
+        "broken cabinet",
+        "collection"
+      ],
+      "brief": "At a municipal service center, a resident asked where to inquire about collecting a broken cabinet. A worker pointed her to the bulky-item desk, where she took a queue number.",
+      "storyPattern": {
+        "goal": "Find the municipal counter for a broken-cabinet collection question",
+        "relationship": "Resident and service-center worker",
+        "interaction": "The resident asks where to inquire, and the worker points her to the bulky-item desk",
+        "outcome": "The resident takes a queue number at the relevant desk"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "worker-corrects-a-misheard-availability-time",
+      "domain": "employment_jobs",
+      "scenario": "employee_corrects_a_supervisor_who_misheard_her_shift_availability",
+      "lexicalThemes": [
+        "work schedule",
+        "availability",
+        "clarifying",
+        "repeating"
+      ],
+      "targetVocabulary": [
+        "I can cover",
+        "morning shift",
+        "I said",
+        "repeat"
+      ],
+      "brief": "A worker tells her supervisor she can work the morning shift, but the supervisor hears afternoon. The worker repeats the time clearly, and the supervisor updates the work schedule for the morning.",
+      "storyPattern": {
+        "goal": "Make work availability clear",
+        "relationship": "Employee and supervisor",
+        "interaction": "Correct a misheard time directly",
+        "outcome": "The schedule reflects the available morning shift"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "resident-asks-what-a-tax-form-field-means",
+      "domain": "bills_taxes",
+      "scenario": "resident_clarifies_an_uncertain_address_field_on_a_tax_form_before_entering_it",
+      "lexicalThemes": [
+        "tax form",
+        "address",
+        "field",
+        "clarification"
+      ],
+      "targetVocabulary": [
+        "form field",
+        "current address",
+        "what does this mean",
+        "check"
+      ],
+      "brief": "Ruth was filling out a tax form and was unsure whether an address field asked for her current address or the address on an older document. She asked the clerk what the field meant; the clerk told her not to guess and to check the document, so she left the field blank until she could verify it.",
+      "storyPattern": {
+        "goal": "Avoid entering uncertain information on a form",
+        "relationship": "Resident and clerk",
+        "interaction": "Ask the clerk what the address field means without guessing",
+        "outcome": "Leave the field blank until checking the source document"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "resident-keeps-a-copy-of-a-benefit-letter",
+      "domain": "social_benefits",
+      "scenario": "resident_edits_a_letter_about_changed_circumstances_with_a_friends_feedback",
+      "lexicalThemes": [
+        "benefit paperwork",
+        "letter",
+        "explanation",
+        "editing"
+      ],
+      "targetVocabulary": [
+        "change in circumstances",
+        "read this",
+        "shorter sentence",
+        "draft"
+      ],
+      "brief": "A resident writes a letter about a change in her circumstances, asks a friend to read it, shortens one sentence with her friend's feedback, and keeps the original draft.",
+      "storyPattern": {
+        "goal": "Make a personal paperwork explanation clearer",
+        "relationship": "Resident and friend",
+        "interaction": "The resident asks her friend to read the letter; the friend suggests a shorter sentence",
+        "outcome": "The resident revises the sentence and keeps the original draft"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "shopper-asks-to-keep-a-receipt-for-a-return",
+      "domain": "shopping_returns",
+      "scenario": "shopper_requests_a_slipped_receipt_after_buying_a_kitchen_bowl",
+      "lexicalThemes": [
+        "purchase",
+        "receipt",
+        "cashier",
+        "request"
+      ],
+      "targetVocabulary": [
+        "receipt",
+        "I need the receipt",
+        "under the counter",
+        "before I go"
+      ],
+      "brief": "A shopper buys a kitchen bowl, notices that the receipt slipped under the counter, asks the cashier for it before leaving, and receives it.",
+      "storyPattern": {
+        "goal": "Keep proof of a purchase",
+        "relationship": "Shopper and cashier",
+        "interaction": "The shopper notices the receipt slipped under the counter and asks the cashier for it",
+        "outcome": "The cashier gives her the receipt before she leaves"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "parent-clarifies-a-childs-pickup-person",
+      "domain": "school_childcare",
+      "scenario": "parent_corrects_the_name_of_the_person_picking_up_a_child",
+      "lexicalThemes": [
+        "school pickup",
+        "family member",
+        "correcting a detail",
+        "name"
+      ],
+      "targetVocabulary": [
+        "pick up",
+        "my aunt",
+        "I gave the wrong name",
+        "correct name"
+      ],
+      "brief": "A parent told the school secretary that her aunt would pick up her son that day, realized she had given the wrong name, corrected it, and the secretary wrote down the right name.",
+      "storyPattern": {
+        "goal": "Make a pickup detail accurate",
+        "relationship": "Parent and school office worker",
+        "interaction": "Notice and correct a spoken mistake",
+        "outcome": "The school secretary records the correct pickup person's name"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "passenger-asks-which-stop-is-next",
+      "domain": "transport_fares_routes",
+      "scenario": "passenger_confirms_market_bus_stop_with_fellow_rider",
+      "lexicalThemes": [
+        "bus stop",
+        "next stop",
+        "asking someone to repeat",
+        "directions"
+      ],
+      "targetVocabulary": [
+        "which stop",
+        "next stop",
+        "say that again",
+        "get off"
+      ],
+      "brief": "A passenger was unsure whether the market stop was next, asked another rider to repeat its name, used the stop sign to confirm it, and got off there.",
+      "storyPattern": {
+        "goal": "Identify the correct stop during a bus ride",
+        "relationship": "Passenger and fellow rider",
+        "interaction": "Ask the rider to repeat the stop name and use the visible sign to confirm it",
+        "outcome": "Get off at the intended stop"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "customer-orders-a-drink-without-ice",
+      "domain": "food_service_orders",
+      "scenario": "customer_orders_a_cold_drink_without_ice_at_a_cafe_counter",
+      "lexicalThemes": [
+        "drink order",
+        "preference",
+        "repeating a request",
+        "payment"
+      ],
+      "targetVocabulary": [
+        "cold drink",
+        "without ice",
+        "that’s right",
+        "pay"
+      ],
+      "brief": "A customer ordered a cold drink at a café, asked for it without ice, confirmed when the worker repeated the request, and then paid.",
+      "storyPattern": {
+        "goal": "Order a cold drink without ice",
+        "relationship": "Customer and café worker",
+        "interaction": "The customer stated her preference, and the worker repeated the request for confirmation",
+        "outcome": "The customer nodded to confirm the order and paid"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "sender-spells-a-street-name-at-the-post-office",
+      "domain": "postal_parcels",
+      "scenario": "sender_spells_a_street_name_for_a_parcel_label_at_the_post_office",
+      "lexicalThemes": [
+        "postal parcel",
+        "address",
+        "spelling",
+        "label"
+      ],
+      "targetVocabulary": [
+        "spell the street name",
+        "slowly",
+        "parcel label",
+        "address"
+      ],
+      "brief": "At the post office, a sender hands over a parcel. The clerk asks her to spell the street name, and she spells it slowly so he can write the address correctly on the label.",
+      "storyPattern": {
+        "goal": "Make a parcel address legible",
+        "relationship": "Sender and postal clerk",
+        "interaction": "The clerk asks the sender to spell the street name, and she spells it slowly",
+        "outcome": "The clerk writes the address correctly on the parcel label"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "driver-gives-a-taxi-a-clear-landmark",
+      "domain": "driving_parking",
+      "scenario": "taxi_passenger_adds_flower_shop_landmark_to_find_the_entrance",
+      "lexicalThemes": [
+        "taxi ride",
+        "destination",
+        "landmark",
+        "stopping point"
+      ],
+      "targetVocabulary": [
+        "take me to",
+        "next to",
+        "entrance",
+        "stop here"
+      ],
+      "brief": "A passenger gives a taxi driver the name of a small street, then adds that the intended entrance is beside a flower shop. The driver recognizes the landmark and stops beside the correct entrance.",
+      "storyPattern": {
+        "goal": "Reach the intended entrance on a small street",
+        "relationship": "Passenger and taxi driver",
+        "interaction": "The passenger adds the flower shop as a visible landmark",
+        "outcome": "The driver recognizes the landmark and stops by the intended entrance"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "customer-asks-for-a-queue-number-at-a-busy-service-center",
+      "domain": "banking_credit",
+      "scenario": "rina_selects_card_service_and_replaces_an_unreliable_card",
+      "lexicalThemes": [
+        "service counters and queue numbers",
+        "explaining a card problem",
+        "turn-taking",
+        "using the old card while waiting for a replacement"
+      ],
+      "targetVocabulary": [
+        "counter",
+        "queue number",
+        "whose turn",
+        "card",
+        "replace",
+        "in the meantime",
+        "still works"
+      ],
+      "brief": "Rina asks for the correct service queue, gives way to a customer with an earlier number, and gets her unreliable card checked and replaced.",
+      "storyPattern": {
+        "goal": "Resolve a card-use problem during a service visit",
+        "relationship": "Customer and bank clerk",
+        "interaction": "Choose the card-services queue, clarify turn order, and explain the issue at the counter",
+        "outcome": "The clerk checks the old card, arranges a replacement, and explains that Rina can use the old card in the meantime"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "traveler-finds-the-correct-entrance-for-a-pickup",
+      "domain": "transport_fares_routes",
+      "scenario": "traveler_calls_friend_to_identify_eastern_station_exit_and_nearby_pickup_spot",
+      "lexicalThemes": [
+        "station entrances and exits",
+        "describing nearby landmarks",
+        "clarifying a meeting point",
+        "where a vehicle can stop"
+      ],
+      "targetVocabulary": [
+        "entrance",
+        "exit",
+        "eastern side",
+        "nearby",
+        "taxi rank",
+        "where can you stop",
+        "I am on my way"
+      ],
+      "brief": "After arriving by train, Eli called his friend to clarify which station exit to use for the pickup. He described the nearby landmarks, found the eastern exit, and walked to a mutually chosen nearby stopping place where they met.",
+      "storyPattern": {
+        "goal": "Meet a friend picking him up after arriving by train",
+        "relationship": "Traveler and friend providing a ride",
+        "interaction": "Describe visible landmarks, clarify the eastern exit, and agree on a nearby place to stop",
+        "outcome": "Eli walks to the agreed stopping place and meets his friend"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "neighbors-help-a-resident-sort-a-misdelivered-letter",
+      "domain": "neighbors_building",
+      "scenario": "resident_uses_the_building_directory_to_hand_an_unopened_misdelivered_letter_to_its_neighbor",
+      "lexicalThemes": [
+        "building mail and apartment numbers",
+        "explaining a delivery mistake",
+        "asking about a neighbor",
+        "handling someone else's letter"
+      ],
+      "targetVocabulary": [
+        "letter",
+        "wrong apartment",
+        "unopened",
+        "surname",
+        "building directory",
+        "moved",
+        "hand over"
+      ],
+      "brief": "Moran found a neighbor's misdelivered letter, and with another resident used the building directory to locate the neighbor and hand over the unopened envelope.",
+      "storyPattern": {
+        "goal": "Get misdelivered mail to its intended recipient",
+        "relationship": "Neighbors in the same building",
+        "interaction": "Compare the envelope details with shared knowledge and locate the recipient",
+        "outcome": "Hand over the unopened letter directly"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "coworkers-coordinate-a-short-handover-before-an-appointment",
+      "domain": "employment_jobs",
+      "scenario": "coworkers_handover_an_unfinished_client_request_before_one_leaves_for_an_appointment",
+      "lexicalThemes": [
+        "work handovers",
+        "describing what is finished and pending",
+        "availability and timing",
+        "offering limited coverage"
+      ],
+      "targetVocabulary": [
+        "still in progress",
+        "measurements",
+        "estimate",
+        "before the end of the day",
+        "take a message",
+        "follow up",
+        "when I return"
+      ],
+      "brief": "Before leaving for an appointment, Yael handed Amir the organized measurements and notes for an unfinished client request. Amir agreed to tell the client that the estimate was still being prepared, without guessing at figures, and to take a message if the client called back.",
+      "storyPattern": {
+        "goal": "Keep a client request moving during a brief absence",
+        "relationship": "Coworkers sharing a work responsibility",
+        "interaction": "Explain the current status and agree on a limited handover",
+        "outcome": "Amir gives an interim update while Yael is away and takes a message if the client calls back"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "friends-negotiate-a-shared-taxi-stop",
+      "domain": "driving_parking",
+      "scenario": "friends_agree_on_a_well_lit_corner_as_the_first_dropoff_point_on_a_shared_taxi_ride",
+      "lexicalThemes": [
+        "telling a taxi driver where to stop",
+        "different drop-off needs",
+        "offering and declining company",
+        "checking a stopping place"
+      ],
+      "targetVocabulary": [
+        "צר",
+        "פינה רחבה",
+        "לפני",
+        "מוארת",
+        "לרדת",
+        "אין צורך"
+      ],
+      "brief": "After an evening visit, friends Neta and Ron agreed to stop at a well-lit wide corner near Neta's building. Neta got out with her bag, and Ron continued to his own stop.",
+      "storyPattern": {
+        "goal": "Choose a convenient first drop-off on a shared taxi ride",
+        "relationship": "Friends traveling together",
+        "interaction": "Neta suggests a wide, lit corner; Ron checks that she will be safe and offers to accompany her",
+        "outcome": "They tell the driver where to stop; Neta gets out with her bag, and Ron continues to his stop"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "tenant-books-service-visit-around-childcare",
+      "domain": "housing_landlord",
+      "scenario": "tenant_books_a_window_repair_visit_after_school_pickup",
+      "lexicalThemes": [
+        "service visit",
+        "availability",
+        "time window",
+        "booking"
+      ],
+      "targetVocabulary": [
+        "book a visit",
+        "I can come after",
+        "morning",
+        "afternoon"
+      ],
+      "brief": "A tenant calls to arrange a window repair visit. She explains that she can be home after picking up the children from school but is unavailable in the morning, so she books an afternoon visit.",
+      "storyPattern": {
+        "goal": "Schedule a home service around school pickup",
+        "relationship": "Tenant and service scheduler",
+        "interaction": "The tenant states when she is available, and the scheduler offers an afternoon time",
+        "outcome": "They book the window repair visit for the afternoon"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "resident-clarifies-which-waste-counter-handles-a-request",
+      "domain": "municipal_services",
+      "scenario": "resident_finds_the_municipal_counter_for_a_bulky_item_collection_question",
+      "lexicalThemes": [
+        "municipal service",
+        "counter",
+        "queue number",
+        "bulky item"
+      ],
+      "targetVocabulary": [
+        "which counter",
+        "queue number",
+        "broken cabinet",
+        "collection"
+      ],
+      "brief": "At a municipal service center, a resident asks where to inquire about removing a broken cabinet. A worker directs her to the large-items desk, where she takes a queue number.",
+      "storyPattern": {
+        "goal": "Find the municipal counter for a question about removing a broken cabinet",
+        "relationship": "Resident and service-center worker",
+        "interaction": "The resident explains her question, and the worker points her to the large-items desk",
+        "outcome": "The resident takes a queue number at that desk"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "worker-corrects-a-misheard-availability-time",
+      "domain": "employment_jobs",
+      "scenario": "employee_corrects_a_supervisor_who_misheard_her_shift_availability",
+      "lexicalThemes": [
+        "work schedule",
+        "availability",
+        "clarifying",
+        "repeating"
+      ],
+      "targetVocabulary": [
+        "I can cover",
+        "morning shift",
+        "I said",
+        "repeat"
+      ],
+      "brief": "An employee tells her supervisor she can cover the morning shift, but the supervisor hears afternoon. The employee repeats the time clearly, and the supervisor updates the schedule for the morning.",
+      "storyPattern": {
+        "goal": "Make work availability clear",
+        "relationship": "Employee and supervisor",
+        "interaction": "The employee corrects a misheard time directly",
+        "outcome": "The supervisor updates the schedule to show the morning shift"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "resident-asks-what-a-tax-form-field-means",
+      "domain": "bills_taxes",
+      "scenario": "resident_asks_clerk_about_unclear_address_field_and_leaves_it_blank_to_check_old_document",
+      "lexicalThemes": [
+        "tax form",
+        "address",
+        "form field",
+        "clarification"
+      ],
+      "targetVocabulary": [
+        "טופס מס",
+        "שדה כתובת",
+        "הכתובת הנוכחית",
+        "מה פירוש הניסוח",
+        "לבדוק"
+      ],
+      "brief": "A resident filling out a tax form is unsure which address a field asks for. She asks a clerk to clarify the wording; because the source is unclear, she leaves the field blank until she can check an earlier document.",
+      "storyPattern": {
+        "goal": "Avoid entering uncertain information on a tax form",
+        "relationship": "Resident and clerk",
+        "interaction": "Ask the clerk what the field wording means and avoid guessing",
+        "outcome": "Leave the answer blank until checking the earlier document"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "resident-keeps-a-copy-of-a-benefit-letter",
+      "domain": "social_benefits",
+      "scenario": "resident_edits_a_letter_about_changed_circumstances_with_a_friends_feedback",
+      "lexicalThemes": [
+        "benefit paperwork",
+        "letter",
+        "explanation",
+        "editing"
+      ],
+      "targetVocabulary": [
+        "change in circumstances",
+        "read this",
+        "shorter sentence",
+        "draft"
+      ],
+      "brief": "A resident writes a letter about a change in her circumstances, asks a friend to read it, shortens one sentence based on her feedback, and keeps the original draft.",
+      "storyPattern": {
+        "goal": "Make a personal paperwork explanation clearer",
+        "relationship": "Resident and friend",
+        "interaction": "Ask for feedback and revise one sentence",
+        "outcome": "Keep the revised letter and the original draft"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "shopper-asks-to-keep-a-receipt-for-a-return",
+      "domain": "shopping_returns",
+      "scenario": "shopper_requests_a_receipt_that_slipped_under_the_counter_after_buying_a_kettle",
+      "lexicalThemes": [
+        "purchase",
+        "receipt",
+        "cashier",
+        "request"
+      ],
+      "targetVocabulary": [
+        "קבלה (receipt)",
+        "לבקש את הקבלה (ask for the receipt)",
+        "מתחת לדלפק (under the counter)",
+        "לפני שיצאתי (before I left)"
+      ],
+      "brief": "A shopper buys a small kettle, notices that the receipt has slipped under the counter, asks the cashier for it, and leaves with the receipt.",
+      "storyPattern": {
+        "goal": "Keep proof of the kettle purchase.",
+        "relationship": "Shopper and cashier.",
+        "interaction": "The shopper notices the receipt under the counter and asks the cashier to get it.",
+        "outcome": "The cashier gives her the receipt, and she leaves with it."
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "parent-clarifies-a-childs-pickup-person",
+      "domain": "school_childcare",
+      "scenario": "parent_calls_school_office_and_corrects_aunts_pickup_name",
+      "lexicalThemes": [
+        "school pickup",
+        "family member",
+        "correcting a detail",
+        "name"
+      ],
+      "targetVocabulary": [
+        "לקחת",
+        "הדודה שלי",
+        "טעיתי",
+        "השם הנכון"
+      ],
+      "brief": "A mother calls the school office to say her aunt will pick up her son, notices she gave the wrong first name, corrects it, and the office worker records the correct name.",
+      "storyPattern": {
+        "goal": "Make the pickup person's name accurate",
+        "relationship": "Parent and school office worker",
+        "interaction": "The parent notices and corrects a spoken name mistake",
+        "outcome": "The office worker records the aunt's correct name"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "passenger-asks-which-stop-is-next",
+      "domain": "transport_fares_routes",
+      "scenario": "passenger_checks_the_next_bus_stop_by_asking_a_fellow_rider",
+      "lexicalThemes": [
+        "bus stop",
+        "next stop",
+        "asking someone to repeat",
+        "directions"
+      ],
+      "targetVocabulary": [
+        "which stop",
+        "next stop",
+        "say that again",
+        "get off"
+      ],
+      "brief": "On a bus, a passenger is unsure whether the next stop is the one near her destination. She asks another rider to repeat its name; the rider points out the stop sign, and she gets off at the right place.",
+      "storyPattern": {
+        "goal": "Identify the correct stop during a ride",
+        "relationship": "Passenger and fellow rider",
+        "interaction": "Ask for a repeated stop name and use the visible sign",
+        "outcome": "Get off at the intended stop"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "customer-orders-a-drink-without-ice",
+      "domain": "food_service_orders",
+      "scenario": "customer_orders_a_cold_drink_without_ice_at_a_cafe_counter",
+      "lexicalThemes": [
+        "drink order",
+        "preference",
+        "repeating a request",
+        "payment"
+      ],
+      "targetVocabulary": [
+        "משקה קר",
+        "בלי קרח",
+        "נכון",
+        "לשלם"
+      ],
+      "brief": "At a café counter, a customer orders a cold drink without ice. The worker repeats the request, the customer confirms it, and then pays.",
+      "storyPattern": {
+        "goal": "Order a cold drink without ice",
+        "relationship": "Customer and café worker",
+        "interaction": "The customer states her preference, and the worker repeats the request for confirmation",
+        "outcome": "The customer confirms the order and pays"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "sender-spells-a-street-name-at-the-post-office",
+      "domain": "postal_parcels",
+      "scenario": "sender_spells_a_street_name_for_a_parcel_label_at_the_post_office",
+      "lexicalThemes": [
+        "postal parcel",
+        "address",
+        "spelling",
+        "label"
+      ],
+      "targetVocabulary": [
+        "spell the street name",
+        "slowly",
+        "parcel label",
+        "address"
+      ],
+      "brief": "At the post office, a sender gives an address for a parcel. The clerk asks her to spell the street name slowly, then writes it correctly on the parcel label.",
+      "storyPattern": {
+        "goal": "Make a parcel address legible",
+        "relationship": "Sender and postal clerk",
+        "interaction": "The clerk asks the sender to spell an unclear street name aloud, and she spells it slowly.",
+        "outcome": "The clerk writes the address correctly on the parcel label."
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "driver-gives-a-taxi-a-clear-landmark",
+      "domain": "driving_parking",
+      "scenario": "taxi_passenger_adds_a_flower_shop_landmark_to_clarify_the_entrance",
+      "lexicalThemes": [
+        "taxi ride",
+        "destination",
+        "landmark",
+        "entrance"
+      ],
+      "targetVocabulary": [
+        "take me to",
+        "next to",
+        "entrance",
+        "stop here"
+      ],
+      "brief": "A passenger asks a taxi driver to take them to a small street, then identifies the entrance by mentioning the nearby flower shop. The driver recognizes the landmark and stops at the intended place.",
+      "storyPattern": {
+        "goal": "Reach the intended entrance on a small street",
+        "relationship": "Passenger and taxi driver",
+        "interaction": "The passenger adds a nearby flower shop as a landmark",
+        "outcome": "The driver recognizes the place and stops at the correct entrance"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "customer-asks-for-a-queue-number-at-a-busy-service-center",
+      "domain": "banking_credit",
+      "scenario": "customer_selects_the_card_services_queue_and_arranges_a_replacement_after_the_old_card_is_checked",
+      "lexicalThemes": [
+        "service counters and queue numbers",
+        "explaining a bank-card problem",
+        "turn-taking in a queue",
+        "using the old card while waiting for a replacement"
+      ],
+      "targetVocabulary": [
+        "service center",
+        "queue number",
+        "card-services option",
+        "whose turn",
+        "bank card",
+        "replace",
+        "in the meantime",
+        "still works"
+      ],
+      "brief": "Rina stops at a service center on her way to work because her bank card does not always read. A staff member helps her choose the card-services queue. After another customer with an earlier number goes first, the clerk checks Rina's old card, arranges a replacement, and tells her she can use the old card until the new one is ready.",
+      "storyPattern": {
+        "goal": "Resolve a bank-card reading problem during a service visit",
+        "relationship": "Customer and bank clerk, with a staff member helping at the entrance",
+        "interaction": "Select the correct queue, respect an earlier ticket number, and explain the card problem at the counter",
+        "outcome": "The clerk checks the old card and arranges a replacement; Rina knows she can use the old card until the new one is ready"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "traveler-finds-the-correct-entrance-for-a-pickup",
+      "domain": "transport_fares_routes",
+      "scenario": "traveler_and_driver_clarify_station_exit_and_nearby_pickup_spot",
+      "lexicalThemes": [
+        "station entrances and exits",
+        "describing nearby landmarks",
+        "clarifying a meeting point",
+        "where a vehicle can stop"
+      ],
+      "targetVocabulary": [
+        "entrance",
+        "exit",
+        "eastern side",
+        "nearby",
+        "taxi rank",
+        "where can you stop",
+        "I am on my way"
+      ],
+      "brief": "After getting off a train, Eli and his friend clarify which station entrance to use and agree on a nearby place for the car to stop. Eli walks there with his bag, and they meet without circling the station.",
+      "storyPattern": {
+        "goal": "Meet a friend picking him up after arriving at an unfamiliar station",
+        "relationship": "Traveler and friend providing a ride",
+        "interaction": "Describe visible landmarks and clarify the correct exit and a suitable stopping point",
+        "outcome": "Walk to an agreed nearby pickup spot and meet there"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "neighbors-help-a-resident-sort-a-misdelivered-letter",
+      "domain": "neighbors_building",
+      "scenario": "resident_uses_the_building_directory_to_hand_an_unopened_misdelivered_letter_to_its_neighbor",
+      "lexicalThemes": [
+        "building mail and apartment numbers",
+        "explaining a delivery mistake",
+        "asking about a neighbor",
+        "handling someone else's letter"
+      ],
+      "targetVocabulary": [
+        "letter",
+        "wrong apartment",
+        "unopened",
+        "surname",
+        "building directory",
+        "moved",
+        "hand over"
+      ],
+      "brief": "Moran finds a neighbor's misdelivered letter, checks the building directory with another resident, and hands the unopened envelope to its intended recipient.",
+      "storyPattern": {
+        "goal": "Get misdelivered mail to its intended recipient",
+        "relationship": "Neighbors in the same building",
+        "interaction": "Compare the envelope details with shared knowledge and locate the recipient",
+        "outcome": "Hand over the unopened letter directly"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "coworkers-coordinate-a-short-handover-before-an-appointment",
+      "domain": "employment_jobs",
+      "scenario": "coworkers_handover_an_unfinished_client_request_before_one_leaves_for_an_appointment",
+      "lexicalThemes": [
+        "work handovers",
+        "describing what is finished and pending",
+        "availability and timing",
+        "offering limited coverage"
+      ],
+      "targetVocabulary": [
+        "still in progress",
+        "measurements",
+        "estimate",
+        "before the end of the day",
+        "take a message",
+        "follow up",
+        "when I return"
+      ],
+      "brief": "Yael needs to leave for an appointment while a client's request is still in progress. She leaves the measurements and notes for Amir, who gives the client a brief update without guessing the estimate and takes a message if the client calls back.",
+      "storyPattern": {
+        "goal": "Keep a client request moving during a brief absence",
+        "relationship": "Coworkers sharing a work responsibility",
+        "interaction": "Explain the current status and agree on a limited handover",
+        "outcome": "Amir gives an interim update and handles any returning call while Yael is away"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "friends-negotiate-a-shared-taxi-stop",
+      "domain": "driving_parking",
+      "scenario": "friends_choose_a_wide_well_lit_corner_for_the_first_taxi_dropoff_before_the_ride_continues",
+      "lexicalThemes": [
+        "giving a driver a stopping location",
+        "different drop-off needs",
+        "offering and declining company",
+        "checking that a stopping place is practical"
+      ],
+      "targetVocabulary": [
+        "stop here",
+        "just before",
+        "corner",
+        "further on",
+        "well lit",
+        "get out",
+        "no need"
+      ],
+      "brief": "Friends Neta and Ron share a taxi after an evening visit. They choose a wide, well-lit corner near Neta's building for her first drop-off, check that it is clear, and Ron continues to his own stop.",
+      "storyPattern": {
+        "goal": "Choose a practical first drop-off on a shared ride",
+        "relationship": "Friends traveling together",
+        "interaction": "Neta suggests a wide corner; Ron raises a concern about her walking alone, and they agree on the stop",
+        "outcome": "They tell the driver where to stop, check that the corner is clear, and Neta gets out while Ron continues"
+      },
+      "edition": "bet"
     }
   ]
 }

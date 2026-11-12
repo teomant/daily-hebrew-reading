@@ -2,6 +2,23 @@
   "schemaVersion": 2,
   "dates": [
     {
+      "date": "2026-11-12",
+      "editions": {
+        "alef": {
+          "storyCount": 12,
+          "readingMinutes": 29
+        },
+        "alefPlus": {
+          "storyCount": 12,
+          "readingMinutes": 28
+        },
+        "bet": {
+          "storyCount": 12,
+          "readingMinutes": 27
+        }
+      }
+    },
+    {
       "date": "2026-11-11",
       "editions": {
         "alef": {
