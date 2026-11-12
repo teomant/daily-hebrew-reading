@@ -17668,6 +17668,433 @@
         "interaction": "Mention a need and offer a drink",
         "outcome": "Share a sip and continue walking"
       }
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "customer-replaces-a-worn-bank-card",
+      "domain": "banking_credit",
+      "scenario": "customer_requests_replacement_after_a_worn_bank_card_fails_at_a_terminal",
+      "lexicalThemes": [
+        "explaining a card problem",
+        "asking about replacement options",
+        "clarifying what to do next"
+      ],
+      "targetVocabulary": [
+        "bank card",
+        "chip",
+        "terminal",
+        "worn",
+        "replace",
+        "option",
+        "until",
+        "instructions"
+      ],
+      "brief": "After her bank card stops working reliably at a shop terminal, Leora checks that the card itself is damaged rather than assuming her account is the problem. At the bank, she explains that the chip is scratched and asks what she can do with the card she has. A clerk confirms that the card looks worn and explains the replacement options available in this fictional situation without discussing fees or timing as general rules. Leora chooses a replacement and asks whether she can keep using the old card until it arrives; the clerk clarifies that she should follow the instructions given for her specific card. Leora takes the information, makes a note of the next step, and leaves with a clear plan to request a replacement rather than repeatedly trying the unreliable card.",
+      "storyPattern": {
+        "goal": "Replace a payment card that has become unreliable",
+        "relationship": "Bank customer and clerk",
+        "interaction": "Describe visible wear and clarify the available next step",
+        "outcome": "Choose a replacement path and stop relying on the damaged card"
+      }
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "coworkers-coordinate-a-client-room-setup",
+      "domain": "employment_jobs",
+      "scenario": "coworkers_adjust_a_meeting_room_layout_after_confirming_a_smaller_client_group",
+      "lexicalThemes": [
+        "describing a work setup",
+        "checking group size",
+        "suggesting and testing an alternative"
+      ],
+      "targetVocabulary": [
+        "meeting room",
+        "client",
+        "booking",
+        "layout",
+        "screen",
+        "power cable",
+        "chairs",
+        "samples"
+      ],
+      "brief": "At a small workplace, an employee is preparing a meeting room for a client visit but discovers that the room is already set up for a larger group than expected. She checks with a coworker who arranged the booking and learns that the client is bringing only two colleagues. They compare the room layout with the materials already prepared: the large table would make it hard to see the screen, but moving everything would take time. The coworker suggests turning the table and using the smaller screen; the employee points out that the power cable will not reach from that position. They test another arrangement, move the chairs closer, and leave a clear place for the client’s samples. The room is ready, and both coworkers know which materials to bring in when the visitors arrive.",
+      "storyPattern": {
+        "goal": "Prepare a suitable space for a scheduled work meeting",
+        "relationship": "Coworkers sharing responsibility for a client visit",
+        "interaction": "Compare needs, test an arrangement, and adapt around a practical constraint",
+        "outcome": "Set up a usable room and divide the remaining preparation"
+      }
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "passenger-guides-a-taxi-to-a-side-entrance",
+      "domain": "driving_parking",
+      "scenario": "taxi_passenger_changes_dropoff_point_after_side_street_is_blocked",
+      "lexicalThemes": [
+        "giving a destination",
+        "distinguishing entrances",
+        "revising a drop-off point"
+      ],
+      "targetVocabulary": [
+        "taxi",
+        "entrance",
+        "side street",
+        "courtyard",
+        "gate",
+        "blocked",
+        "corner",
+        "stop"
+      ],
+      "brief": "Fully AI-generated dialogue. Passenger Yael and taxi driver Amir are the only speakers. Yael needs to reach a building where the main entrance is on a busy street, but she would rather be dropped near the side entrance because she is carrying a box. Amir can drive and stop where the road allows, while Yael knows which entrance she needs. She first gives the building name, then realizes there are two entrances and explains which one is beside the small courtyard. Amir asks her to clarify whether she means the narrow street behind the building; Yael says yes, but adds that the gate is for pedestrians only. When they reach the turn, Amir points out that the street is blocked for vehicles, so Yael changes the plan and asks him to stop at the next corner instead. She checks that the corner is near the courtyard entrance, pays the fare, and carries the box the short remaining distance. Role map: Yael is the passenger, owns the box, gives the destination and chooses the alternative stop; Amir is the driver, controls the taxi and explains where he can drive and stop. Yael performs the final walk to the entrance. The exchange supports 8–12 short alternating turns.",
+      "storyPattern": {
+        "goal": "Reach a convenient entrance with a carried item",
+        "relationship": "Passenger and taxi driver",
+        "interaction": "Clarify the destination and revise the stop after a road constraint appears",
+        "outcome": "Stop at a workable nearby corner and walk the last stretch"
+      }
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "customer-exchanges-a-bag-with-a-broken-strap",
+      "domain": "shopping_returns",
+      "scenario": "shopper_exchanges_a_work_bag_after_its_strap_seam_starts_to_open",
+      "lexicalThemes": [
+        "describing a product defect",
+        "explaining what is not the problem",
+        "comparing replacement options"
+      ],
+      "targetVocabulary": [
+        "strap",
+        "stitching",
+        "seam",
+        "receipt",
+        "exchange",
+        "model",
+        "wider",
+        "fit"
+      ],
+      "brief": "A shopper notices that the strap on a newly purchased work bag is coming loose after she has carried it only a few times. She brings the bag and receipt to the shop and explains that the stitching is opening, not that the bag is too small. The assistant examines the seam and offers to show her another bag in the same style. The replacement feels comfortable, but the strap sits differently on her shoulder; she asks whether there is another model with a wider strap. They compare two options, and the shopper chooses a sturdier bag that still fits her laptop. The shop exchanges the original, and she leaves with the new bag after checking the strap before putting her things inside.",
+      "storyPattern": {
+        "goal": "Replace a recently bought item with a failing seam",
+        "relationship": "Shopper and store assistant",
+        "interaction": "Describe the defect and compare alternatives by trying them",
+        "outcome": "Exchange the item for a more suitable replacement"
+      }
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "pet-owner-arranges-a-neighbor-check-in",
+      "domain": "pets_veterinary",
+      "scenario": "pet_owner_and_neighbor_agree_on_a_cat_check_in_and_adjust_a_home_detail",
+      "lexicalThemes": [
+        "asking a neighbor for help",
+        "giving simple pet-care details",
+        "clarifying what to do and what to leave alone"
+      ],
+      "targetVocabulary": [
+        "check on",
+        "cat",
+        "measured portion",
+        "food bowl",
+        "water dish",
+        "hide",
+        "balcony door",
+        "message"
+      ],
+      "brief": "Fully AI-generated dialogue. Pet owner Tamar and her neighbor Gil are the only speakers. Tamar will be away for an evening and asks Gil to check on her cat, which is staying at home. Gil is willing to help but has never fed the cat and wants to avoid giving it the wrong amount. Tamar explains that the food is already measured in a small container and points out where it is kept; she also says the cat usually hides when someone enters. Gil asks whether he should search for the cat, and Tamar explains that he can leave the food by its bowl and check that the water dish is full without trying to pull the cat out of its hiding place. Gil notices that the balcony door is ajar and asks whether it should stay open; Tamar says she had left it that way for air but agrees it is safer to close it while he is there. They settle the plan, and Gil agrees to send a brief message after the visit. Role map: Tamar owns the cat and the food and decides how she wants the check-in handled; Gil is the neighbor offering help and carries out the agreed visit. Gil performs the final action of checking the food and water and messaging Tamar. The conversation supports 8–12 short alternating turns.",
+      "storyPattern": {
+        "goal": "Arrange a brief pet check during an absence",
+        "relationship": "Pet owner and helpful neighbor",
+        "interaction": "Explain the pet's routine, clarify a question, and adapt a home detail",
+        "outcome": "Neighbor completes a limited check and reports back"
+      }
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "resident-takes-a-number-at-the-right-counter",
+      "domain": "municipal_services",
+      "scenario": "resident_checks_counter_signage_and_moves_to_the_queue_for_a_parking_permit_inquiry",
+      "lexicalThemes": [
+        "service counter",
+        "queue number",
+        "whose turn",
+        "sign",
+        "parking permit"
+      ],
+      "targetVocabulary": [
+        "counter",
+        "number",
+        "line",
+        "turn",
+        "sign"
+      ],
+      "brief": "At a municipal service center, a resident is unsure which counter handles a parking permit question, so she takes a queue number and asks the person beside her whether it is the right line. The person points to the sign for permit inquiries, and she moves to that counter before her number is called.",
+      "storyPattern": {
+        "goal": "Find the correct service counter",
+        "relationship": "Residents waiting at a public service center",
+        "interaction": "Ask a fellow visitor to interpret counter signage",
+        "outcome": "Move to the appropriate queue"
+      }
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "housemates-compare-a-meter-reading-with-the-bill",
+      "domain": "bills_taxes",
+      "scenario": "housemates_record_a_difference_between_a_bill_reading_and_the_home_meter",
+      "lexicalThemes": [
+        "household bill",
+        "meter reading",
+        "compare numbers",
+        "clarify a discrepancy"
+      ],
+      "targetVocabulary": [
+        "bill",
+        "meter",
+        "reading",
+        "number",
+        "difference"
+      ],
+      "brief": "Two housemates look at their electricity bill and compare its meter reading with the number on the meter at home. The numbers differ, so they write both down and agree to ask the provider how to interpret them before assuming there is a mistake.",
+      "storyPattern": {
+        "goal": "Understand a difference in household billing information",
+        "relationship": "Housemates sharing household expenses",
+        "interaction": "Compare a written reading with a physical meter",
+        "outcome": "Record both readings and seek clarification"
+      }
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "applicant-asks-for-a-name-to-be-spelled-again",
+      "domain": "government_documents",
+      "scenario": "applicant_catches_and_corrects_a_misspelled_name_during_a_document_request",
+      "lexicalThemes": [
+        "name spelling",
+        "document request",
+        "read back",
+        "correct an entry"
+      ],
+      "targetVocabulary": [
+        "name",
+        "spell",
+        "letter",
+        "write",
+        "correct"
+      ],
+      "brief": "At a public office, an applicant gives her name for a document request but sees that the clerk has written one letter incorrectly. She asks the clerk to read the name back, spells the unfamiliar part slowly, and the clerk corrects the entry before continuing.",
+      "storyPattern": {
+        "goal": "Have a personal name recorded accurately",
+        "relationship": "Applicant and public-service clerk",
+        "interaction": "Request a read-back and spell the unclear part",
+        "outcome": "Correct the written name before proceeding"
+      }
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "worker-books-a-service-visit-around-her-shift",
+      "domain": "home_repairs_utilities",
+      "scenario": "resident_describes_work_availability_and_books_a_later_home_service_window",
+      "lexicalThemes": [
+        "service appointment",
+        "work availability",
+        "time window",
+        "call before arrival"
+      ],
+      "targetVocabulary": [
+        "appointment",
+        "available",
+        "morning",
+        "later",
+        "call"
+      ],
+      "brief": "A worker calls to book a home service visit and explains that she cannot be there during her morning shift but is free later in the day. The scheduler offers a later window, and she books it while making clear that she will need a call before the technician arrives.",
+      "storyPattern": {
+        "goal": "Arrange a home service visit around a work shift",
+        "relationship": "Resident and service scheduler",
+        "interaction": "State unavailable hours and choose a workable window",
+        "outcome": "Book a visit with an agreed arrival call"
+      }
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "resident-divides-a-shared-cleaning-task",
+      "domain": "housing_landlord",
+      "scenario": "neighbors_split_a_brief_shared_stairwell_cleaning_task_by_available_time",
+      "lexicalThemes": [
+        "shared building",
+        "cleaning",
+        "divide a task",
+        "time available"
+      ],
+      "targetVocabulary": [
+        "landing",
+        "sweep",
+        "wipe",
+        "together",
+        "finish"
+      ],
+      "brief": "Two neighbors agree to clean the shared stair landing, but one has only a few minutes before leaving. They divide the work: one sweeps the landing while the other wipes the handrail, and they finish the small job together.",
+      "storyPattern": {
+        "goal": "Tidy a shared building area",
+        "relationship": "Neighbors sharing a building",
+        "interaction": "Divide a small task according to available time",
+        "outcome": "Complete the cleanup together"
+      }
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "passenger-checks-which-stop-is-next",
+      "domain": "transport_fares_routes",
+      "scenario": "passenger_asks_a_fellow_rider_to_repeat_the_next_bus_stop_name",
+      "lexicalThemes": [
+        "bus journey",
+        "stop announcement",
+        "repeat a name",
+        "prepare to exit"
+      ],
+      "targetVocabulary": [
+        "stop",
+        "next",
+        "repeat",
+        "name",
+        "door"
+      ],
+      "brief": "A passenger on a bus hears the stop announcement but does not recognize the name, so she asks a nearby rider to repeat it. The rider says it is the next stop, and the passenger gathers her bag and stands near the door.",
+      "storyPattern": {
+        "goal": "Know when to get off the bus",
+        "relationship": "Passenger and fellow rider",
+        "interaction": "Ask for a stop name to be repeated",
+        "outcome": "Prepare to leave at the next stop"
+      }
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "traveler-finds-the-meeting-point-after-taking-the-wrong-exit",
+      "domain": "travel_day_trips",
+      "scenario": "traveler_explains_she_is_at_the_wrong_station_exit_and_follows_a_landmark_to_meet_a_friend",
+      "lexicalThemes": [
+        "station exit",
+        "meeting point",
+        "landmark",
+        "directions"
+      ],
+      "targetVocabulary": [
+        "exit",
+        "wrong side",
+        "bakery",
+        "cross",
+        "meet"
+      ],
+      "brief": "A traveler comes out of a station exit on the wrong side and tells her friend she cannot see the meeting point. Her friend describes the nearby bakery and says to cross at the light; the traveler spots the bakery and walks over.",
+      "storyPattern": {
+        "goal": "Reach a planned meeting point after exiting in the wrong place",
+        "relationship": "Friends meeting during a journey",
+        "interaction": "Describe the location and give directions using a landmark",
+        "outcome": "Find the landmark and walk to the meeting point"
+      }
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "driver-asks-the-taxi-to-stop-before-the-corner",
+      "domain": "driving_parking",
+      "scenario": "taxi_passenger_gives_a_landmark_and_requests_a_safe_stop_before_the_next_corner",
+      "lexicalThemes": [
+        "taxi destination",
+        "where to stop",
+        "building entrance",
+        "landmark"
+      ],
+      "targetVocabulary": [
+        "stop",
+        "before",
+        "corner",
+        "entrance",
+        "here"
+      ],
+      "brief": "A taxi passenger recognizes her building sooner than expected and asks the driver to stop before the next corner, beside the clear entrance. The driver pulls over there, and she thanks him before getting out.",
+      "storyPattern": {
+        "goal": "Get out near the intended entrance",
+        "relationship": "Taxi passenger and driver",
+        "interaction": "Give a precise stop request using a nearby landmark",
+        "outcome": "Stop at the requested place"
+      }
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "traveler-notices-the-ticket-has-the-wrong-date",
+      "domain": "travel_documents",
+      "scenario": "traveler_spots_a_date_mismatch_on_a_ticket_and_pauses_to_verify_booking_details",
+      "lexicalThemes": [
+        "train ticket",
+        "booking details",
+        "travel date",
+        "verify"
+      ],
+      "targetVocabulary": [
+        "ticket",
+        "date",
+        "booking",
+        "check",
+        "different"
+      ],
+      "brief": "Before boarding a train, a traveler checks her ticket and notices it shows a different travel date from the one she expected. She steps aside from the boarding line and asks the station worker how to check the booking details before deciding what to do.",
+      "storyPattern": {
+        "goal": "Verify ticket details before boarding",
+        "relationship": "Traveler and station worker",
+        "interaction": "Point out a date mismatch and ask how to verify it",
+        "outcome": "Pause boarding plans until the booking is checked"
+      }
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "customer-orders-a-drink-without-ice",
+      "domain": "food_service_orders",
+      "scenario": "customer_orders_a_cold_drink_without_ice_while_buying_a_sandwich",
+      "lexicalThemes": [
+        "sandwich counter",
+        "drink order",
+        "without ice",
+        "repeat a request"
+      ],
+      "targetVocabulary": [
+        "drink",
+        "without",
+        "ice",
+        "please",
+        "order"
+      ],
+      "brief": "At a sandwich counter away from home, a customer orders a cold drink and says she would like it without ice. The worker repeats the request, and the customer pays and takes the drink with her sandwich.",
+      "storyPattern": {
+        "goal": "Order a drink prepared to a simple preference",
+        "relationship": "Customer and food-service worker",
+        "interaction": "State a preference and hear it repeated",
+        "outcome": "Receive the requested drink with the meal"
+      }
+    },
+    {
+      "date": "2026-11-12",
+      "storyId": "customer-sorts-out-a-queue-number-mix-up",
+      "domain": "shopping_returns",
+      "scenario": "customers_resolve_a_queue_number_mix_up_by_comparing_ticket_times",
+      "lexicalThemes": [
+        "queue number",
+        "whose turn",
+        "printed ticket",
+        "polite clarification"
+      ],
+      "targetVocabulary": [
+        "number",
+        "turn",
+        "ticket",
+        "first",
+        "after"
+      ],
+      "brief": "At a repair shop, two customers notice they have the same queue number and neither is sure whose turn it is. One checks the printed ticket time, realizes she took the later ticket, and lets the other go first.",
+      "storyPattern": {
+        "goal": "Establish the order in a shared queue",
+        "relationship": "Customers waiting together",
+        "interaction": "Compare ticket details and acknowledge a mix-up",
+        "outcome": "Let the earlier customer proceed"
+      }
     }
   ]
 }
