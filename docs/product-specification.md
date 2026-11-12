@@ -179,7 +179,9 @@ Reading levels are configuration-driven, ordered definitions with stable IDs, di
 
 Target a beginner who can decode unpointed Hebrew, not an end-of-Alef graduate.
 Use familiar concrete words, explicit subjects, and one simple clause per sentence.
-Prefer present tense in fictional situations; use familiar past or future forms only when facts or the exchange require them.
+Keep fictional situations mainly in the present tense, with occasional familiar past forms for completed actions or brief background.
+Use clear time cues when switching tense.
+Keep the correct time in sourced articles; use familiar future forms only when facts or the exchange require them.
 Avoid passive forms, abstract action nouns, construct chains, nested clauses, and clusters of unfamiliar terms.
 Explain a few necessary unfamiliar terms immediately in simple words.
 Omit optional names, dates, and specialist details while preserving the central situation and required facts.
@@ -188,7 +190,9 @@ The wording reference contains editorial calibration examples; it is not a certi
 ### Alef Plus — א+
 
 Use common everyday vocabulary, actively practice common past forms alongside present tense, and connect short sentences naturally.
-Future tense is not the teaching focus.
+Allow occasional common future forms for simple plans, next steps, and practical requests.
+Use clear time cues when switching tense, and avoid complex future constructions.
+Do not force the additional tense into every Alef or Alef Plus article.
 Use practical expressions and occasional short subordinate clauses without nesting.
 
 ### Bet — ב

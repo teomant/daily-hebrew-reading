@@ -2,6 +2,14 @@
 
 ## 2026-11-12
 
+- Updated master to `e05d738` before adjusting the reading profiles at the owner's request.
+  Alef fiction remains mainly in the present tense and now permits occasional familiar past forms for completed actions or brief background.
+  Alef Plus keeps present and past as its main tenses and now permits occasional common future forms for simple plans, next steps, and practical requests.
+  Updated the configured guidance, adaptation prompt, generated request instructions, and reading-profile documentation.
+  Clear time cues support tense changes; no per-article tense quota or validation change was added.
+  The focused offline edition-request test and whitespace check passed.
+  Completed one focused direct review; no paid generation or deployment was run.
+
 - Implemented the owner's approved research-cost and recovery trial.
   Research now permits at most 25 built-in web-tool calls, including at most ten during discovery and eight per response.
   The API receives `max_tool_calls`; budgeted web requests disable SDK retries so uncertain retries cannot bypass the allowance.

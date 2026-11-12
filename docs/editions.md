@@ -8,14 +8,16 @@ An article belongs to one edition and cannot change level in place.
 
 | Edition | Approximate level | Writing profile |
 |---|---|---|
-| Alef — א | A1.1 | Familiar concrete words, explicit subjects, simple questions, and mainly single-clause sentences. Everyday fiction mainly uses present tense. Sourced articles retain the correct time. |
-| Alef Plus — א+ | A1.2 | Common past forms alongside present tense, useful expressions, short connected sentences, and clear sequences. Future tense is not the teaching focus. |
+| Alef — א | A1.1 | Familiar concrete words, explicit subjects, simple questions, and mainly single-clause sentences. Everyday fiction mainly uses present tense, with occasional familiar past forms for completed actions or brief background. Sourced articles retain the correct time. |
+| Alef Plus — א+ | A1.2 | Common past forms alongside present tense, useful expressions, short connected sentences, and clear sequences. Occasional common future forms introduce simple plans, next steps, and practical requests. |
 | Bet — ב | A2 | Present, past, and future forms, precise everyday words, simple conditions and relative clauses, comparisons, reasons, and plans. Avoid dense or formal prose. |
 
 The mapping follows the [Hebrew University descriptors](https://overseas.huji.ac.il/wp-content/uploads/2019/07/ENGLISH-EVAL.pdf).
 The [Alef syllabus](https://overseas.huji.ac.il/wp-content/uploads/2023/07/Syllabus-Level-Aleph-2023-REVISED.pdf) includes present and past tense.
 The [Bet syllabus](https://overseas.huji.ac.il/wp-content/uploads/2023/01/Syllabus-Level-Bet-2022.pdf) adds future tense.
 These are editorial targets, not certification or a placement test.
+Alef permits limited past-tense practice, and Alef Plus introduces limited future-tense practice before Bet.
+Use clear time cues when switching tense, without a tense quota for each article.
 The site assumes that readers can decode unpointed Hebrew.
 No word-count target or automatic difficulty gate is added.
 

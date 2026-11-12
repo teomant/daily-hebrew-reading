@@ -6,7 +6,7 @@
       "name": "Alef",
       "approximateCefr": "A1.1",
       "learnerWordsPerMinute": 45,
-      "guidance": "Write for early Alef after alphabet decoding (approximately A1.1). Use frequent concrete everyday words, explicit subjects, simple questions, and mostly one clause per sentence. Prefer present tense for everyday fiction; use limited familiar past forms where facts require them, especially news and history. Use common infinitives and practical requests. Avoid passive forms, abstract action nouns, dense construct chains, and nested clauses. Introduce only essential unfamiliar terms, explained in simple context. Choose one concrete situation, immediate need, and clear result. Keep adult natural spoken Hebrew. Do not pad to a word or paragraph target, and do not distort facts to avoid a tense."
+      "guidance": "Write for early Alef after alphabet decoding (approximately A1.1). Use frequent concrete everyday words, explicit subjects, simple questions, and mostly one clause per sentence. Keep everyday fiction mainly in the present tense, but allow occasional familiar past-tense verbs for a simple completed action or brief background. Use clear time cues when switching tense. Keep the correct time in news and history. Use common infinitives and practical requests. Avoid passive forms, abstract action nouns, dense construct chains, and nested clauses. Introduce only essential unfamiliar terms, explained in simple context. Choose one concrete situation, immediate need, and clear result. Keep adult natural spoken Hebrew. Do not pad to a word or paragraph target, and do not distort facts to avoid a tense."
     },
     {
       "id": "alefPlus",
@@ -14,7 +14,7 @@
       "name": "Alef Plus",
       "approximateCefr": "A1.2",
       "learnerWordsPerMinute": 55,
-      "guidance": "Write for advanced Alef (approximately A1.2). Use common everyday vocabulary and useful spoken expressions. Actively practice common past-tense verbs in stories about completed events, alongside present tense where natural. Future tense is not a teaching focus at this stage. Link short sentences with כי, אבל, אז, and אחר כך; use occasional simple ש clauses without nesting. Tell a clear sequence with a practical problem and response. Practice explaining what happened, clarifying a reply, and correcting a misunderstanding. Write an independent fictional situation within the selected topic; do not match another edition's plot. Keep sourced core facts and required historical beats. Length is not the measure of difficulty."
+      "guidance": "Write for advanced Alef (approximately A1.2). Use common everyday vocabulary and useful spoken expressions. Actively practice common past-tense verbs in stories about completed events, alongside present tense where natural. Keep present and past as the main tenses, but allow occasional common future-tense forms for simple plans, next steps, or practical requests. Use clear time cues when switching tense. Do not force future tense into every article or introduce complex future constructions. Link short sentences with כי, אבל, אז, and אחר כך; use occasional simple ש clauses without nesting. Tell a clear sequence with a practical problem and response. Practice explaining what happened, clarifying a reply, and correcting a misunderstanding. Write an independent fictional situation within the selected topic; do not match another edition's plot. Keep sourced core facts and required historical beats. Length is not the measure of difficulty."
     },
     {
       "id": "bet",

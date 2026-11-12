@@ -57,12 +57,16 @@ For Alef, use common concrete words, active clauses, simple verb forms, and one 
 
 Treat Alef as beginner reading after alphabet decoding.
 Use the beginner grammar profile in the configured level and the reference examples.
-Prefer present tense for fictional situations; keep the correct historical time in sourced stories.
+Keep Alef fiction mainly in the present tense, with occasional familiar past-tense verbs for a completed action or brief background.
+Use clear time cues when switching tense, and keep the correct time in sourced stories.
 Use a direct subject and one clause per sentence, with few unfamiliar terms across the entire article.
 Do not make the reader decode several new verbs or specialist concepts in one paragraph. Draft it as a standalone article for this reader. Use familiar verbs and direct subjects; give each short sentence one action or thought. Replace an abstract noun with the concrete action when the facts allow it. Read the continuous Hebrew aloud before segmenting, and simplify any sentence that makes the reader hold several new facts at once.
 
 For sourced stories, preserve the core event and required defining facts across editions.
 For fiction, choose a situation that fits the requested level and give it a useful answer and outcome.
+For Alef Plus, keep present and past as the main tenses, but allow occasional common future-tense forms for simple plans, next steps, or practical requests.
+Use clear time cues when switching tense.
+Do not force the additional tense into every Alef or Alef Plus article, and avoid complex tense constructions.
 Do not force the same fictional plot across editions. Alef Plus should connect familiar ideas using כי, אבל, אז, אם, and short clauses with ש; Bet can express reasons, contrasts, and reactions in more connected sentences without sounding official.
 
 Grammar contrast (wording guidance only; independent editions need not retell this same situation):
