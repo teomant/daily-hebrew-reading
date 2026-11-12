@@ -25,6 +25,7 @@ from .common import (
 from .generation_quality import affected_groups, apply_repairs, repair_schema
 from .editions import build_index, to_editions, topic_records
 from .generation_usage import record_usage, usage_run
+from .generation_state import current_state, digest, generation_session, ResearchBudgetExhausted
 from .verbs import daily_verbs, verb_batch_index, verb_seed, verbs_page
 from .validation import (
     briefs_are_near_duplicates,
@@ -482,7 +483,7 @@ def _sourced_candidate_batch_schema(
             "stories": {
                 "type": "array",
                 "items": candidate,
-                "minItems": 0 if story_types == ["current"] else SOURCED_CANDIDATE_COUNT,
+                "minItems": 0,
                 "maxItems": SOURCED_CANDIDATE_COUNT,
             }
         },
@@ -728,10 +729,10 @@ def _sourced_candidate_mix_errors(
     current = [story for story in candidates if story.get("type") == "current"]
     history = [story for story in candidates if story.get("type") == "history"]
     if set(requested_types) == {"current", "history"}:
-        if len(candidates) != SOURCED_CANDIDATE_COUNT or len(current) > CURRENT_CANDIDATE_TARGET or len(history) < HISTORY_CANDIDATE_TARGET:
+        if len(candidates) > SOURCED_CANDIDATE_COUNT or len(current) > CURRENT_CANDIDATE_TARGET:
             errors.append(
-                f"candidate mix must contain {SOURCED_CANDIDATE_COUNT} stories with up to "
-                f"{CURRENT_CANDIDATE_TARGET} CURRENT and at least {HISTORY_CANDIDATE_TARGET} HISTORY stories"
+                f"candidate mix may contain at most {SOURCED_CANDIDATE_COUNT} stories with up to "
+                f"{CURRENT_CANDIDATE_TARGET} CURRENT stories"
             )
     if any(story.get("historyFamily") != "current" for story in current):
         errors.append("CURRENT candidates must use historyFamily=current")
@@ -1010,9 +1011,9 @@ def _sourced_discovery_request(
 ) -> str:
     if current_count and history_count:
         candidate_mix = (
-            f"Return up to {CURRENT_CANDIDATE_TARGET} genuine CURRENT candidates and at least "
-            f"{HISTORY_CANDIDATE_TARGET} HISTORY candidates; use extra HISTORY candidates "
-            f"to fill the {SOURCED_CANDIDATE_COUNT}-candidate pool when CURRENT is scarce."
+            f"Return up to {CURRENT_CANDIDATE_TARGET} genuine CURRENT candidates and up to "
+            f"{HISTORY_CANDIDATE_TARGET} well-supported HISTORY candidates within the research budget. "
+            "A smaller useful pool is better than weak candidates added to fill it."
         )
     elif current_count:
         candidate_mix = f"Return up to {SOURCED_CANDIDATE_COUNT} genuine CURRENT candidates; fewer, including zero, is valid because only CURRENT slots remain."
@@ -1046,7 +1047,7 @@ def _sourced_discovery_request(
         "English. HISTORY does not need a connection to the target date or current news. Use the source page as a lead to "
         "a person, company, work, decision, event, institution, invention, or ordinary-life development—not as a reason "
         "to write about an article, photograph, archive record, museum object, or exhibition page.\n"
-        f"- Build at least {HISTORY_CANDIDATE_TARGET} Israel-focused HISTORY candidates. Search varied leads: "
+        f"- Find up to {HISTORY_CANDIDATE_TARGET} Israel-focused HISTORY candidates within the budget. Search varied leads: "
         "Hebrew or English Wikipedia/Wikidata (`wikimedia`); the National Library of Israel or Historical Jewish Press "
         "(`nationalLibraryPress`); the Israel State Archives, National Photo Collection, or PikiWiki Israel "
         "(`stateVisualArchives`); the Israel Film Archive or Project Ben-Yehuda (`cultureArchives`); and suitable "
@@ -1058,11 +1059,7 @@ def _sourced_discovery_request(
         f"rejected candidates again. Correct these problems while continuing the search: {json.dumps(feedback, ensure_ascii=False)}"
         if feedback else ""
     )
-    candidate_count_instruction = (
-        f"Return up to {SOURCED_CANDIDATE_COUNT} distinct screening candidates"
-        if current_count and not history_count else
-        f"Return exactly {SOURCED_CANDIDATE_COUNT} distinct screening candidates"
-    )
+    candidate_count_instruction = f"Return up to {SOURCED_CANDIDATE_COUNT} distinct screening candidates"
     return f"""
 Target publication date: {target_date}
 The issue still needs up to {current_count} CURRENT and up to {history_count} HISTORY stories. {candidate_count_instruction} even though fewer final slots remain. These are candidates for later deduplication and selection, not final stories. {candidate_mix}
@@ -1077,7 +1074,9 @@ SEARCH PROCESS
 - Historical people (including historical politicians), culture, industry, places, holidays and customs, institutions, inventions, objects, and past events are all acceptable. No family has a quota or fixed daily slot. `person` covers a specific historical person's work, choices, and significance; a newly published obituary or current death report is CURRENT, not HISTORY. `israeliIndustry` covers the history of an Israeli company, manufacturer, brand, cooperative, factory, trade, product, or industrial development—not today's startup, high-tech unicorn, funding round, valuation, product launch, or executive profile. `culture` covers literature, music, theater, cinema, visual art, dance, design, architecture, food culture, publishing, broadcasting, or a cultural movement, work, or institution. A museum qualifies when its cultural creation, collection, or influence is the subject, not merely its building or visitor appeal. `event` covers concrete past events, customs, education, infrastructure, transport, institutions, or everyday objects.
 - `place` is optional, not a required family. Return at most two `place` candidates and reject generic park-preservation, tourist-guide, trail, viewpoint, fortress-visit, or “a place where nature and history meet” pitches. A place candidate needs distinctive, researched historical facts that could not be told by swapping in another location. Return at most one `archaeology` candidate.
 - Every HISTORY brief must establish an explicit Israeli or Jewish connection and a concrete historical hook. Order HISTORY candidates by evidence, interest, everyday-language usefulness, readability, and distinctness rather than by family or search order. The first surviving candidates are selected. Avoid returning several subjects with the same article shape even when their names differ.
-- Search substantially more than {SOURCED_CANDIDATE_COUNT} source pages. A rejected page does not count; continue searching for another candidate.
+- Work within the supplied web-tool allowance. Stop once enough strong candidates and useful reserves are supported; fewer candidates, including zero, are valid.
+- Prefer well-documented historical developments in ordinary life, such as the growth of neighborhood grocery shops, over a single grocery poster or archive photograph. Use the poster as a lead to a precisely bounded underlying subject, not as the whole subject. Never broaden an already selected subject during research or reuse a forbidden subject under a broader label.
+- Check that each HISTORY lead has enough substantive evidence for 8–12 distinct factual beats before selecting it. Discard isolated captions, thin event listings, and subjects that require speculative facts. Do not perform exhaustive research at screening time.
 - Do not formulate searches from forbidden IDs, briefs, subjects, or URLs. They are comparison data only.
 - Return only compact screening candidates, not search notes or adaptations.
 
@@ -1347,13 +1346,24 @@ def _call_openai(
     use_web_search: bool = True,
     phase: str = "OpenAI request",
 ) -> dict[str, Any]:
+    state = current_state.get()
+    key = digest([model, instructions, request, schema, use_web_search, phase])
+    if state is not None:
+        cached = state.cached(key)
+        if cached is not None:
+            _log(f"{phase}: restored completed response from checkpoint; no API request")
+            return cached
+        if state.data["failures"].get(key):
+            _log(f"{phase}: replaying earlier failed attempt to reach saved progress; no API request")
+            raise RuntimeError("Replayed earlier failed request from checkpoint")
+    allowance = state.reserve(phase) if state is not None and use_web_search else None
     started = monotonic()
     usage_recorded = False
     _log(f"{phase}: started with model {model}")
     try:
         from openai import OpenAI
 
-        client = OpenAI(max_retries=2, timeout=300.0)
+        client = OpenAI(max_retries=0 if allowance is not None else 2, timeout=300.0)
         parameters: dict[str, Any] = dict(
             model=model,
             input=[
@@ -1376,10 +1386,20 @@ def _call_openai(
         if use_web_search:
             parameters["tools"] = [{"type": "web_search", "search_context_size": "medium"}]
             parameters["include"] = ["web_search_call.action.sources"]
-        _log_prompt(phase, instructions, request)
+        if allowance is not None:
+            parameters["max_tool_calls"] = allowance
+            parameters["input"][1]["content"] += (
+                f"\nRESEARCH BUDGET: Use at most {allowance} web-tool calls in this response. "
+                "Stop early when evidence is sufficient. Return fewer screening candidates or mark "
+                "unsupported HISTORY subjects insufficient when the allowance cannot establish the facts."
+            )
+            _log(f"{phase}: reserved {allowance} web-tool calls within the run budget")
+        _log_prompt(phase, instructions, parameters["input"][1]["content"])
         response = client.responses.create(**parameters)
         _log(f"{phase}: response received after {monotonic() - started:.1f}s")
         response_data = response.model_dump() or {}
+        if allowance is not None:
+            state.settle(phase, allowance, response_data)
         record_usage(model, phase, response_data, _log)
         usage_recorded = True
         if not response.output_text:
@@ -1404,12 +1424,18 @@ def _call_openai(
             result[PROVENANCE_ERRORS_KEY] = unverified
             _log(f"{phase}: will discard {len(unverified)} unverified URL(s)")
         _log(f"{phase}: completed after {monotonic() - started:.1f}s")
-        return result
+    except OSError:
+        raise  # Checkpoint write failures must not trigger another paid request.
     except Exception as exc:
         if not usage_recorded:
             record_usage(model, phase, None, _log)
         _log(f"{phase}: failed after {monotonic() - started:.1f}s ({type(exc).__name__})")
+        if state is not None:
+            state.remember_failure(key)
         raise RuntimeError(f"OpenAI generation failed ({type(exc).__name__})") from exc
+    if state is not None:
+        state.remember(key, result)
+    return result
 
 
 def _remove_empty_lexical_units(adaptations: list[dict[str, Any]]) -> int:
@@ -2442,9 +2468,24 @@ def _adapt_editions(seed, target_date, levels, locales, site, image_locales, ins
             "levels": {level_id: story["levels"][level_id] for level_id, story in stories.items()}}
 
 
-def generate(root: Path, target_date: str, additional_stories: int) -> dict[str, Any] | None:
-    with usage_run(_log):
-        return _generate(root, target_date, additional_stories)
+def generate(root: Path, target_date: str, additional_stories: int, *, resume=False) -> dict[str, Any] | None:
+    with usage_run(_log), generation_session(
+        root, target_date, additional_stories, os.environ.get("OPENAI_MODEL", DEFAULT_OPENAI_MODEL), resume=resume,
+    ) as state:
+        completed = state.data["completed"]
+        if completed is not None:
+            issue = completed[f"{target_date}.json"]
+            errors = validate_issue(issue, load_site_config(root), load_level_config(root))
+            if errors:
+                raise RuntimeError("Recovered issue failed validation:\n- " + _error_report(errors))
+            _transactional_write({root / "content" / name: value for name, value in completed.items()})
+            _log("Restored completed issue, index, and history; no API requests needed")
+            return issue
+        try:
+            return _generate(root, target_date, additional_stories)
+        finally:
+            _log(f"Research budget used or reserved: {state.data['searches']}/25 web-tool calls; "
+                 f"discovery {state.data['discoverySearches']}/10")
 
 
 def _generate_verbs_page(
@@ -2593,6 +2634,9 @@ def _generate(root: Path, target_date: str, additional_stories: int) -> dict[str
                     use_web_search=True,
                     phase=phase,
                 )
+            except ResearchBudgetExhausted:
+                _log(f"{phase}: discovery budget exhausted; keeping selected subjects")
+                break
             except RuntimeError:
                 sourced_feedback = ["The previous sourced-discovery request failed; retry the search for all remaining slots."]
                 _log(f"{phase}: request failed; continuing sourced discovery")
@@ -2761,6 +2805,11 @@ def _generate(root: Path, target_date: str, additional_stories: int) -> dict[str
                     use_web_search=True,
                     phase=phase,
                 )
+            except ResearchBudgetExhausted:
+                unresolved = set(requested_ids)
+                sourced_seeds = [story for story in sourced_seeds if story["id"] not in unresolved]
+                _log(f"{phase}: research budget exhausted; omitting {len(unresolved)} unresolved HISTORY subjects and keeping supported articles")
+                break
             except RuntimeError:
                 consecutive_failed_research_requests += 1
                 research_feedback = ["The previous HISTORY research request failed; retry every unresolved subject."]
@@ -3209,13 +3258,11 @@ def _generate(root: Path, target_date: str, additional_stories: int) -> dict[str
             item["edition"] = level_id
     next_index = _build_index(content_dir, issue, site, configured_levels)
     _log("Writing issue, index, and generated-scenario history transactionally")
-    _transactional_write(
-        {
-            issue_path: issue,
-            history_path: next_history,
-            content_dir / "index.json": next_index,
-        }
-    )
+    payloads = {issue_path: issue, history_path: next_history, content_dir / "index.json": next_index}
+    state = current_state.get()
+    if state is not None:
+        state.stage(payloads)
+    _transactional_write(payloads)
     _log("Content files updated successfully")
     return issue
 
@@ -3225,6 +3272,7 @@ def main() -> int:
     parser.add_argument("--date", default="", help="Publication date (YYYY-MM-DD); defaults to current UTC date.")
     parser.add_argument("--additional-stories", type=int, default=None, help="Stories to append when the date already exists.")
     parser.add_argument("--root", type=Path, default=ROOT)
+    parser.add_argument("--resume", action="store_true", help="Resume this date's saved generation checkpoint.")
     args = parser.parse_args()
     target_date = args.date or datetime.now(UTC).date().isoformat()
     site = load_site_config(args.root.resolve())
@@ -3234,11 +3282,15 @@ def main() -> int:
     if not os.environ.get("OPENAI_API_KEY"):
         parser.error("OPENAI_API_KEY is required")
     os.environ.setdefault("OPENAI_MODEL", DEFAULT_OPENAI_MODEL)
-    issue = generate(args.root.resolve(), target_date, additional)
+    issue = generate(args.root.resolve(), target_date, additional, resume=args.resume)
     if issue is None:
         print(f"No valid articles remained for {target_date}; no issue was created.")
         return 0
-    print(f"Prepared {issue['date']} with {len(issue['stories'])} stories using {os.environ['OPENAI_MODEL']}.")
+    counts = ", ".join(
+        f"{level_id}: {len(edition['stories'])} articles"
+        for level_id, edition in to_editions(issue)["editions"].items()
+    )
+    print(f"Prepared {issue['date']} ({counts}) using {os.environ['OPENAI_MODEL']}.")
     return 0
 
 

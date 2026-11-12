@@ -67,6 +67,7 @@ The internal view uses a singleton `levels` map.
 It does not expose other editions' article text to the browser.
 Schema-1 input remains readable for legacy fixtures and migration.
 New generation always writes schema 2.
+The generation command reports the article count for each available edition after saving the issue.
 Successful appends preserve all existing article content and add new topics per edition.
 
 ## Routes and preferences
@@ -117,3 +118,41 @@ No API call is made.
 The November 12, 2026 issue and its index/history entries were removed before this migration at the owner's request.
 The date is ready for a fresh generation after this code is published.
 Local verification does not trigger paid generation or deployment.
+
+## Generation recovery
+
+Each normal generation starts a fresh checkpoint at `build/generation-state/YYYY-MM-DD.json`.
+The checkpoint saves completed structured responses, provenance warnings, research-budget counters, and final content payloads.
+It stores no credentials or environment variables.
+The directory is ignored by Git and is not included in the public site.
+
+To resume locally, use the original date and append count:
+
+```bash
+python -m src.generate_issue --date 2026-11-12 --resume
+```
+
+For an append, include its original `--additional-stories` value.
+Resume requires matching model, prompts, configuration, and baseline content.
+It rejects conflicting content changes instead of overwriting them.
+If the saved final content was already written, resume returns that content without appending it again.
+Completed API responses are reused and still pass the normal validation.
+Earlier failed attempts are replayed when later progress was saved, so resume follows the same selection path to the completed work.
+Terminal request failures remain retryable within the remaining budget.
+Usage logs count only new requests; restored responses are logged separately.
+Unknown or interrupted requests retain their search reservations.
+
+GitHub Actions saves `generation-state-YYYY-MM-DD` as an artifact for seven days, even when generation fails.
+To recover, start a new manual generation run on current master, enter the original date and append count, and set `resume_run_id` to the failed run's numeric ID.
+The workflow downloads the checkpoint and passes `--resume`.
+Use a new manual run rather than GitHub's rerun button so the fixed code is used.
+Runs made before this recovery feature have no checkpoint to restore.
+A runner termination that prevents artifact upload can still lose its local checkpoint.
+
+Research permits at most 25 built-in web-tool calls per saved run, including at most ten during discovery and eight in one response.
+The API enforces the per-response allowance through `max_tool_calls`.
+Budgeted web requests disable SDK retries; the caller's bounded attempts remain.
+Page-opening actions can also consume the allowance, so this is a conservative limit rather than a billing guarantee.
+When the budget is exhausted, keep supported articles and omit unresolved HISTORY subjects.
+Do not invent missing facts or increase the fixed generated allocation to fill those slots.
+Each sufficient HISTORY subject still needs 8–12 supported facts and all required facts in each edition.

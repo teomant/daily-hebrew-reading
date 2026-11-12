@@ -526,9 +526,9 @@ class GenerationTests(unittest.TestCase):
         )
         self.assertIn("begin from the target date", request)
         self.assertIn("Do not formulate searches from forbidden", request)
-        self.assertIn("exactly 18 distinct screening candidates", request)
-        self.assertIn("up to 6 genuine CURRENT candidates and at least 12 HISTORY", request)
-        self.assertIn("Search substantially more than 18 source pages", request)
+        self.assertIn("up to 18 distinct screening candidates", request)
+        self.assertIn("up to 6 genuine CURRENT candidates and up to 12 well-supported HISTORY", request)
+        self.assertIn("Work within the supplied web-tool allowance", request)
         self.assertIn("whole country", request)
         self.assertIn("do not default to Jerusalem", request)
         self.assertIn("HISTORY does not need a connection to the target date", request)
@@ -539,7 +539,7 @@ class GenerationTests(unittest.TestCase):
         self.assertIn("generic park-preservation", request)
         self.assertIn("at most one `archaeology`", request)
         self.assertIn("first surviving candidates are selected", request)
-        self.assertIn("continue searching for another candidate", request)
+        self.assertIn("fewer candidates, including zero, are valid", request)
         self.assertIn("continuing the search", request)
         self.assertIn("final rejection pass", request)
         self.assertIn("RETRY ISRAEL-FOCUSED SOURCE SEARCH", request)
@@ -590,7 +590,7 @@ class GenerationTests(unittest.TestCase):
             ["wikimedia", "nationalLibraryPress", "stateVisualArchives", "cultureArchives", "otherArchive"],
         )
         stories = schema["properties"]["stories"]
-        self.assertEqual(stories["minItems"], 18)
+        self.assertEqual(stories["minItems"], 0)
         self.assertEqual(stories["maxItems"], 18)
         variants = {
             variant["properties"]["type"]["enum"][0]: variant
@@ -976,7 +976,7 @@ class GenerationTests(unittest.TestCase):
         self.assertEqual(rejected, {0})
         self.assertIn("no actual current story", findings[0])
         self.assertEqual(_sourced_candidate_batch_schema(["current"])["properties"]["stories"]["minItems"], 0)
-        self.assertEqual(_sourced_candidate_batch_schema(["current", "history"])["properties"]["stories"]["minItems"], 18)
+        self.assertEqual(_sourced_candidate_batch_schema(["current", "history"])["properties"]["stories"]["minItems"], 0)
 
     def test_current_review_rejects_an_overseas_story(self) -> None:
         candidates = [{"id": "foreign-price-change", "type": "current"}]
@@ -2621,6 +2621,21 @@ class GenerationTests(unittest.TestCase):
             self.assertFalse(issue_path.exists())
             self.assertEqual((root / "content" / "everyday-history.json").read_bytes(), history_before)
             self.assertEqual((root / "content" / "index.json").read_bytes(), index_before)
+
+    def test_main_reports_success_for_separate_editions(self) -> None:
+        output = StringIO()
+        issue = {"schemaVersion": 2, "date": "2099-01-01", "editions": {
+            "alef": {"stories": [{}, {}]}, "bet": {"stories": [{}]},
+        }}
+        with patch.dict(os.environ, {"OPENAI_API_KEY": "test-key", "OPENAI_MODEL": "test-model"}), patch(
+            "src.generate_issue.generate", return_value=issue,
+        ), patch.object(
+            sys, "argv", ["generate_issue", "--date", "2099-01-01", "--root", str(ROOT)],
+        ), redirect_stdout(output):
+            exit_code = main()
+
+        self.assertEqual(exit_code, 0)
+        self.assertIn("Prepared 2099-01-01 (alef: 2 articles, bet: 1 articles) using test-model.", output.getvalue())
 
     def test_main_reports_success_when_no_valid_articles_remain(self) -> None:
         output = StringIO()

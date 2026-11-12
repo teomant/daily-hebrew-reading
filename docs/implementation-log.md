@@ -2,6 +2,35 @@
 
 ## 2026-11-12
 
+- Implemented the owner's approved research-cost and recovery trial.
+  Research now permits at most 25 built-in web-tool calls, including at most ten during discovery and eight per response.
+  The API receives `max_tool_calls`; budgeted web requests disable SDK retries so uncertain retries cannot bypass the allowance.
+  Unknown or interrupted requests keep their reserved budget.
+  Discovery can return fewer than eighteen candidates, and prompts prefer well-documented historical developments over isolated posters, photographs, and poorly documented events.
+  Exhaustion retains supported articles and omits unresolved history subjects without weakening factual contracts or increasing the generated allocation.
+- Added `src/generation_state.py` and atomic checkpoints under the ignored `build/generation-state/` directory.
+  Explicit resume reuses completed structured responses with provenance findings, retains budget counters, and follows earlier failed branches when later progress was saved.
+  Final issue/index/history payloads are saved before the transactional write and can be restored without paid requests.
+  Resume rejects conflicting content, configuration, prompts, model, or append count.
+  Checkpoints contain no credentials or environment variables.
+- Added the workflow's `resume_run_id` input and seven-day recovery-artifact upload, including failed generation steps.
+  A new manual run on current master can recover a compatible failed run's saved work.
+  Runs made before this feature have no recovery artifacts.
+  Updated README, product specifications, and the recovery procedure.
+- Verification passed 25 relevant existing generation checks, nine edition checks, and seven focused recovery/budget checks.
+  Workflow YAML, embedded shell syntax, Python compilation, and whitespace checks passed.
+  Completed one focused direct review and removed the temporary plan.
+  No paid generation, deployment, commit, or push was performed; actual cost and article yield remain to be measured in the next normal run.
+
+- Fixed the generation command's final success message after run `43208561889` failed with `KeyError: 'stories'`.
+  Generation had saved and validated twelve articles per edition, but the CLI summary still read the schema-1 top-level stories list.
+  The summary now reads the available editions and reports each article count.
+  Added a regression test that calls the CLI entry point with a schema-2 result and different edition counts.
+  Both CLI outcome tests and the whitespace check passed.
+  Completed one focused direct review without paid generation or deployment.
+  The failed run's observed cost estimate was $0.7897; sourced discovery and history research accounted for $0.5920, including 54 web-search calls.
+  The owner subsequently approved the research-cost and recovery trial recorded above.
+
 - Investigated the mobile screenshot showing unstyled edition links below the home actions.
   The published stylesheet exactly matched the new local stylesheet, while the screenshot showed the earlier layout rules.
   Added content hashes to CSS and JavaScript URLs to prevent old cached assets from styling newly deployed pages.

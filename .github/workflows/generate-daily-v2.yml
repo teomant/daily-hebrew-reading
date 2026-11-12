@@ -14,6 +14,10 @@ on:
         required: true
         default: "0"
         type: string
+      resume_run_id:
+        description: "Failed run ID whose saved generation should be resumed; use the same date and append count"
+        required: false
+        type: string
 
 concurrency:
   group: daily-content-generation
@@ -37,6 +41,7 @@ jobs:
           EVENT_SCHEDULE: ${{ github.event.schedule || '' }}
           INPUT_TARGET_DATE: ${{ inputs.date || '' }}
           INPUT_ADDITIONAL_STORIES: ${{ inputs.additional_stories || '0' }}
+          RESUME_RUN_ID: ${{ inputs.resume_run_id || '' }}
           RUN_ID: ${{ github.run_id }}
           RUN_ATTEMPT: ${{ github.run_attempt }}
           ACTOR: ${{ github.actor }}
@@ -72,9 +77,15 @@ jobs:
             echo "additional_stories must be between 0 and 10" >&2
             exit 1
           fi
+          if [[ -n "$RESUME_RUN_ID" && ! "$RESUME_RUN_ID" =~ ^[0-9]+$ ]]; then
+            echo "resume_run_id must be a numeric workflow run ID" >&2
+            exit 1
+          fi
 
           should_generate=true
-          if [[ -f "content/$target_date.json" && "$additional_stories" -eq 0 ]]; then
+          if [[ -n "$RESUME_RUN_ID" ]]; then
+            echo "Explicitly resuming saved generation from run $RESUME_RUN_ID."
+          elif [[ -f "content/$target_date.json" && "$additional_stories" -eq 0 ]]; then
             should_generate=false
             echo "Issue content/$target_date.json already exists and no append was requested; stopping before setup, secrets, or AI calls."
           elif [[ -f "content/$target_date.json" ]]; then
@@ -94,6 +105,7 @@ jobs:
     environment: daily-hebrew-reading
     permissions:
       contents: write
+      actions: read
     steps:
       - uses: actions/checkout@v6
         with:
@@ -109,17 +121,34 @@ jobs:
           python -m src.validate_content
           python -m unittest discover -s tests -v
       - name: Generate or append stories
+        id: generate
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_MODEL: gpt-6-luna
           TARGET_DATE: ${{ needs.inspect-trigger.outputs.target_date }}
           ADDITIONAL_STORIES: ${{ needs.inspect-trigger.outputs.additional_stories }}
+          RESUME_RUN_ID: ${{ inputs.resume_run_id || '' }}
+          GH_TOKEN: ${{ github.token }}
         run: |
-          if [ "$ADDITIONAL_STORIES" -gt 0 ]; then
-            python -m src.generate_issue --date "$TARGET_DATE" --additional-stories "$ADDITIONAL_STORIES"
-          else
-            python -m src.generate_issue --date "$TARGET_DATE"
+          resume_args=()
+          if [ -n "$RESUME_RUN_ID" ]; then
+            gh run download "$RESUME_RUN_ID" --name "generation-state-$TARGET_DATE" --dir build/generation-state
+            resume_args=(--resume)
           fi
+          if [ "$ADDITIONAL_STORIES" -gt 0 ]; then
+            python -m src.generate_issue --date "$TARGET_DATE" --additional-stories "$ADDITIONAL_STORIES" "${resume_args[@]}"
+          else
+            python -m src.generate_issue --date "$TARGET_DATE" "${resume_args[@]}"
+          fi
+      - name: Save generation recovery artifact
+        if: ${{ always() && steps.generate.outcome != 'skipped' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: generation-state-${{ needs.inspect-trigger.outputs.target_date }}
+          path: build/generation-state/${{ needs.inspect-trigger.outputs.target_date }}.json
+          if-no-files-found: ignore
+          retention-days: 7
+          overwrite: true
       - name: Validate generated content and build
         run: |
           python -m src.validate_content

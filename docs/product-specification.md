@@ -130,7 +130,7 @@ One fully AI-generated page targeting eleven independent mini-situations from or
 
 ### HISTORY
 
-A real historical reading article, normally three per issue. The normal sourced pool contains at least 12 HISTORY candidates gathered from substantially more source pages before filtering. People (including historical politicians), culture, industry, places, holidays and customs, institutions, objects, and past events are all acceptable. No family has a fixed daily slot or quota; the most interesting distinct, well-supported subjects are selected in editorial order. Present-day startup funding rounds, valuations, launches, and executive profiles do not qualify as HISTORY.
+A real historical reading article, normally three per issue. HISTORY discovery prefers up to twelve well-supported leads within the research budget; a smaller pool is valid. People (including historical politicians), culture, industry, places, holidays and customs, institutions, objects, and past events are all acceptable. No family has a fixed daily slot or quota; the most interesting distinct, well-supported subjects are selected in editorial order. Present-day startup funding rounds, valuations, launches, and executive profiles do not qualify as HISTORY.
 
 A historical person, company, factory, institution, cultural work, event, or place is a subject, not yet an article. Discovery screens subjects compactly; after duplicate review and selection, a separate batched web-research phase gathers distinct concrete facts about each selected subject. The article may follow actions and changes or explain several interesting facets without a forced turning point and outcome. A shallow profile, roundup, exhibition page, anniversary program, or event listing is only a lead and must not survive unless independent research supports a substantive article. Do not replace historical material with generic claims that the subject “shows,” “reflects,” or “represents” society, culture, memory, influence, or importance.
 
@@ -253,8 +253,8 @@ Planners compare the patterns across domains and prefer less-used interactions w
 
 For a new complete issue, the generated allocation targets one ten-item VERBS page, three EVERYDAY stories, two DIALOG stories, and one SHORTS page with eleven items; zero valid SHORTS items omit only that page.
 The normal sourced target is two CURRENT and three HISTORY stories.
-When both types are needed, discovery returns 18 screening candidates: up to six genuine CURRENT subjects and at least 12 HISTORY subjects; additional HISTORY candidates fill the pool when CURRENT is scarce.
-A CURRENT-only retry may return fewer candidates, even none.
+Discovery returns up to eighteen screening candidates, including up to six genuine CURRENT subjects.
+All discovery passes may return fewer candidates, even none, within the research budget.
 CURRENT candidates with no actual event, no usable source after cleanup, or no established Israeli setting are discarded, and an unfilled CURRENT slot is preferable to a placeholder article.
 Duplicate-reviewed but unselected HISTORY candidates remain in a reserve queue, with Israel-focused passes ordered ahead of the worldwide fallback.
 Deep research normally uses one batched call for the selected three.
@@ -450,7 +450,10 @@ Both sourced discovery and selected-HISTORY research load `prompts/history-sourc
 
 Every HISTORY brief identifies its Israeli or Jewish connection and concrete historical hook. Rank useful explanations of everyday practices, objects, work, and culture with memorable supported details above generic biographies and achievements lists. People remain eligible subjects. The first two passes stay Israel-focused; the final pass may use Jewish communities worldwide. Source location alone does not establish subject relevance.
 
-Return at least 12 distinct compact HISTORY screening candidates from a substantially larger search and normally select three. The first two passes use varied Israeli reference, library, state, cultural, official, municipal, educational, archival, and biographical leads without source-lane quotas. Families describe subjects but do not allocate slots. Retain reviewed reserves and deeply research only selected subjects. Each sufficient pack has 8–12 distinct factual beats with at least two defining facts marked required; reduced total research must not weaken evidence for an individual published HISTORY article.
+Prefer up to twelve well-supported HISTORY screening candidates and normally select three.
+Use a smaller pool when the research budget cannot support more.
+Prefer precisely bounded historical developments in ordinary life over isolated posters, photographs, and poorly documented one-day events.
+Use those archive objects as leads rather than requiring an entire article about one object. The first two passes use varied Israeli reference, library, state, cultural, official, municipal, educational, archival, and biographical leads without source-lane quotas. Families describe subjects but do not allocate slots. Retain reviewed reserves and deeply research only selected subjects. Each sufficient pack has 8–12 distinct factual beats with at least two defining facts marked required; reduced total research must not weaken evidence for an individual published HISTORY article.
 
 ## 31. Facts and generation
 
@@ -459,7 +462,11 @@ Language adaptation must not freely invent details for real stories. A factual b
 ## 32. OpenAI API
 
 Use the OpenAI API for sourced discovery and selection, sourced semantic duplicate review, selected-HISTORY research, generated-scenario planning, level adaptation, lexical segmentation, and Russian and English translations.
-A normal issue first makes up to three web-enabled discovery requests of 18 compact candidates.
+A normal issue makes up to three web-enabled discovery requests, each returning at most eighteen compact candidates.
+The whole run permits at most twenty-five built-in web-tool calls, including at most ten for discovery and at most eight per response.
+Unknown or interrupted web requests consume their reserved allowance, and budgeted web requests disable SDK retries.
+Budget exhaustion stops further research, omits unresolved HISTORY subjects, and retains supported articles without expanding the generated allocation.
+Factual and public-content contracts remain unchanged.
 A separate no-web request plans the three EVERYDAY and two DIALOG stories, and another plans the eleven SHORTS items.
 Each selected full topic, SHORTS item, and assigned verb receives one separate writing request per level.
 Research and topic selection are shared across editions.
@@ -524,7 +531,8 @@ Public structure, translation coverage, identity, and required factual coverage 
 
 Each planning stage receives only its relevant compact forbidden records from the existing issue and previous fourteen days for HISTORY, or seven days for CURRENT and generated stories. `historyIssueContextDays` configures HISTORY separately and falls back to `recentIssueContextDays` when absent. The lower date bound is inclusive; target and future dates are excluded, while same-day exclusions come from the existing issue. Older issues and scenario records remain stored but are not sent as prompt exclusions. Sourced discovery defines a CURRENT duplicate as the same central subject and underlying event, action, announcement, change, project, or outcome; equivalent URLs, alternate coverage, cosmetic rewrites, later status reports, continuing consequences, changed statistics, and minor follow-ups remain duplicates within that window. For HISTORY, reuse of the same named primary subject—such as a street, building, archaeological site, institution, person, event, object, or custom—is a duplicate even when another source, period, excavation, archaeological layer, fact, or angle is used within the window. Generated planning defines a duplicate by the practical problem or goal, interaction, and resolution; an identical recent scenario ID is always a duplicate, while sharing only a domain or vocabulary is allowed. Forbidden records are comparison data, never search suggestions or templates.
 
-For the normal five sourced slots, each discovery attempt returns 18 compact candidates: up to six CURRENT and at least 12 HISTORY. CURRENT searches across Israeli local news, municipal resident updates, relevant gov.il notices, and suitable Israeli consumer, culture, food, education, and community reporting on every pass. The first two HISTORY passes search across Israel using any of the five documented discovery-route labels, including `otherArchive`; no route is mandatory. The third pass is a Jewish-history fallback outside Israel only for still-open HISTORY slots; it has no country quota and retains the internal `worldwideFallback` route label. The HISTORY pool has no family quotas; `place` is capped at two and `archaeology` at one to discourage generic tourist/excavation repetition. Selection takes the strongest surviving candidates in editorial order. Candidate-level failures remove only affected candidates; pool-mix findings become retry guidance.
+For the normal five sourced slots, each discovery attempt returns up to eighteen compact candidates, with up to six CURRENT subjects and no minimum pool size.
+Prefer up to twelve well-supported HISTORY leads within the available budget. CURRENT searches across Israeli local news, municipal resident updates, relevant gov.il notices, and suitable Israeli consumer, culture, food, education, and community reporting on every pass. The first two HISTORY passes search across Israel using any of the five documented discovery-route labels, including `otherArchive`; no route is mandatory. The third pass is a Jewish-history fallback outside Israel only for still-open HISTORY slots; it has no country quota and retains the internal `worldwideFallback` route label. The HISTORY pool has no family quotas; `place` is capped at two and `archaeology` at one to discourage generic tourist/excavation repetition. Selection takes the strongest surviving candidates in editorial order. Candidate-level failures remove only affected candidates; pool-mix findings become retry guidance.
 
 The separate LLM reviewer must classify every surviving candidate exactly once from its compact brief and URLs, comparing underlying events and named historical subjects rather than wording. Its duplicate, empty-CURRENT, and nonlocal-CURRENT verdicts are binding and removed candidates are never selected, reserved, adapted, or published. Missing, malformed, or failed review coverage fails closed by discarding the unreviewed batch, but does not fail publication. The second discovery pass remains Israel-focused and must search new leads rather than alternate coverage, translations, updates, or renamed versions of rejected stories. Only HISTORY gets a replacement search outside Israel on the third and final pass, restricted to Jewish history and culture. All editorial, safety, source, and novelty rules remain active. A remaining sourced shortfall reduces issue size rather than expanding the generated allocation.
 
@@ -584,3 +592,18 @@ After implementation, run tests, validate content, build the static site, inspec
 Before frontend implementation begins, prepare 3–4 distinct visual directions for owner review. Each direction must demonstrate the complete page family—home, archive, day, and article—as well as representative desktop and mobile states and the translation popover. The owner chooses a direction and may request adjustments; frontend work begins only after that approval.
 
 The owner selected Direction 1, **Jerusalem Journal**, on 4 September 2026. The production frontend should carry forward its restrained editorial typography, warm paper background, deep teal structure, coral accent, fine rules, square controls, calm reading width, and source-image treatment. The prototype is a visual reference rather than production markup.
+
+## Generation recovery
+
+Generation writes an atomic checkpoint to `build/generation-state/YYYY-MM-DD.json`.
+Completed structured responses, source-provenance findings, research-budget counters, and final issue/index/history payloads survive a later failure.
+The checkpoint contains no API keys or environment variables.
+A normal invocation starts a fresh checkpoint; `--resume` explicitly reuses the saved run.
+Resume checks the date, append count, model, configuration, prompts, and original content before using it.
+Changed content is rejected unless it matches the completed saved output.
+Restored responses still pass the normal validation and do not incur new API requests.
+The final payload is saved before the transactional content write so a later CLI or publishing failure does not require regeneration.
+GitHub Actions uploads a seven-day recovery artifact after generation, including failed runs.
+A manual run can supply `resume_run_id` with the original date and append count.
+Only runs made with the checkpoint implementation have recovery artifacts.
+See [the recovery procedure](editions.md#generation-recovery).
