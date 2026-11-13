@@ -18963,6 +18963,1318 @@
         "outcome": "They tell the driver where to stop, check that the corner is clear, and Neta gets out while Ron continues"
       },
       "edition": "bet"
+    },
+    {
+      "date": "2026-11-13",
+      "storyId": "employee-asks-to-see-a-pay-breakdown",
+      "domain": "work_pay",
+      "scenario": "employee_asks_about_an_unfamiliar_pay_statement_entry",
+      "lexicalThemes": [
+        "pay statement",
+        "reimbursement",
+        "line item",
+        "clarification"
+      ],
+      "targetVocabulary": [
+        "pay statement",
+        "reimbursement",
+        "What does this mean?",
+        "separate"
+      ],
+      "brief": "An employee sees a small additional amount on her pay statement and asks the payroll clerk what the unfamiliar entry means. The clerk identifies it as a separate reimbursement entry.",
+      "storyPattern": {
+        "goal": "Understand an unfamiliar entry on a pay statement",
+        "relationship": "Employee and payroll clerk",
+        "interaction": "Ask the payroll clerk what the additional amount means",
+        "outcome": "The clerk identifies it as a separate reimbursement entry"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-13",
+      "storyId": "traveler-asks-about-a-name-difference-on-a-booking",
+      "domain": "travel_documents",
+      "scenario": "traveler_asks_about_a_missing_middle_initial_on_a_booking_confirmation",
+      "lexicalThemes": [
+        "booking confirmation",
+        "name",
+        "middle initial",
+        "checking a difference"
+      ],
+      "targetVocabulary": [
+        "booking confirmation",
+        "travel document",
+        "middle initial",
+        "difference in the name",
+        "check"
+      ],
+      "brief": "A traveler notices that the booking confirmation is missing the middle initial shown on her travel document. She asks a customer-service representative whether the difference needs checking, and the representative records the question for review without guessing at a requirement.",
+      "storyPattern": {
+        "goal": "Clarify a difference between the name on a booking confirmation and a travel document",
+        "relationship": "Traveler and customer-service representative",
+        "interaction": "The traveler describes the missing middle initial and asks whether the difference needs checking",
+        "outcome": "The representative records the question for review without asserting a rule"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-13",
+      "storyId": "resident-asks-how-to-read-a-water-meter",
+      "domain": "municipal_services",
+      "scenario": "resident_learns_which_digits_to_note_from_a_shared_water_meter",
+      "lexicalThemes": [
+        "water meter",
+        "reading",
+        "digits",
+        "write down"
+      ],
+      "targetVocabulary": [
+        "meter",
+        "reading",
+        "Which numbers should I write down?",
+        "compare"
+      ],
+      "brief": "Rina asks building representative Dani which digits to copy from the shared water meter. Dani points out the displayed reading, and Rina writes it down.",
+      "storyPattern": {
+        "goal": "Record a shared meter reading accurately",
+        "relationship": "Resident and building representative",
+        "interaction": "Rina asks which numbers to note, and Dani points out the displayed reading",
+        "outcome": "Rina writes down the displayed reading"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-13",
+      "storyId": "customer-asks-what-to-include-in-a-damage-report",
+      "domain": "insurance_claims",
+      "scenario": "traveler_reports_a_cracked_suitcase_and_sends_a_photo_for_review",
+      "lexicalThemes": [
+        "crack",
+        "suitcase",
+        "report",
+        "photo"
+      ],
+      "targetVocabulary": [
+        "damage",
+        "report",
+        "I noticed it after the trip",
+        "send a photo"
+      ],
+      "brief": "After a trip, a traveler notices a small crack in her suitcase, calls the insurance company, sends a photo, and the report is recorded for review without a coverage decision.",
+      "storyPattern": {
+        "goal": "Record damage to a travel item for review",
+        "relationship": "Customer and insurance representative",
+        "interaction": "The customer describes the damage and provides a photo",
+        "outcome": "The report is recorded for review without a coverage decision"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-13",
+      "storyId": "employee-checks-which-training-costs-are-reimbursed",
+      "domain": "employment_jobs",
+      "scenario": "employee_and_manager_label_training_expense_receipts_for_submission",
+      "lexicalThemes": [
+        "receipt",
+        "training",
+        "expense form",
+        "label"
+      ],
+      "targetVocabulary": [
+        "receipt",
+        "expense",
+        "Which one is for the course?",
+        "label"
+      ],
+      "brief": "An employee asks her manager which of two receipts from a short work training is for the course. They write on each receipt what she paid for, without deciding whether either cost will be reimbursed.",
+      "storyPattern": {
+        "goal": "Organize two receipts from a short work training",
+        "relationship": "Employee and manager",
+        "interaction": "The employee asks which receipt is for the course, and they label each receipt by what she paid for",
+        "outcome": "Both receipts are labeled clearly"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-13",
+      "storyId": "shopper-chooses-produce-by-ripeness",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_selects_fruit_at_different_stages_of_ripeness_for_different_days",
+      "lexicalThemes": [
+        "produce",
+        "ripe",
+        "firm",
+        "today"
+      ],
+      "targetVocabulary": [
+        "ripe",
+        "firm",
+        "I need one for today",
+        "a few days"
+      ],
+      "brief": "At a fruit stand, a shopper asks for fruit for today and for a few days later. The seller shows her a soft, ripe fruit and a firmer one, and she chooses one of each.",
+      "storyPattern": {
+        "goal": "Choose fruit for immediate and later use",
+        "relationship": "Shopper and fruit seller",
+        "interaction": "The shopper explains when she needs the fruit, and the seller shows her fruit at different stages of ripeness",
+        "outcome": "The shopper chooses one soft, ripe fruit and one firmer fruit"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-13",
+      "storyId": "customer-returns-a-food-container-with-a-loose-lid",
+      "domain": "shopping_returns",
+      "scenario": "customer_exchanges_a_food_container_with_a_lid_that_will_not_close",
+      "lexicalThemes": [
+        "container",
+        "lid",
+        "close",
+        "exchange"
+      ],
+      "targetVocabulary": [
+        "lid",
+        "It won't close",
+        "exchange",
+        "another one"
+      ],
+      "brief": "At home, a customer opens a newly bought food container and finds that its lid will not stay closed. She shows the problem to a shop worker, who exchanges it for another container with a lid that closes securely.",
+      "storyPattern": {
+        "goal": "Replace a container that does not close properly",
+        "relationship": "Customer and shop worker",
+        "interaction": "Show the faulty lid to the shop worker",
+        "outcome": "Receive another container with a lid that closes securely"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-13",
+      "storyId": "parent-and-child-compare-school-snack-options",
+      "domain": "school_childcare",
+      "scenario": "parent_and_child_choose_crackers_and_a_napkin_for_a_short_school_break",
+      "lexicalThemes": [
+        "school snack",
+        "short break",
+        "messy fruit",
+        "napkin"
+      ],
+      "targetVocabulary": [
+        "snack",
+        "messy",
+        "short break",
+        "crackers",
+        "napkin"
+      ],
+      "brief": "A parent packs a school snack, but the child says the apple is hard to eat during the short break and makes their hands messy. The parent packs small crackers and a napkin instead.",
+      "storyPattern": {
+        "goal": "Pack a practical snack for a short school break",
+        "relationship": "Parent and child",
+        "interaction": "The child explains that the apple is hard to eat and makes their hands messy",
+        "outcome": "The parent packs small crackers and a napkin instead"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-13",
+      "storyId": "customer-asks-a-neighbor-to-watch-a-queue-place",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_asks_another_customer_to_hold_her_place_while_retrieving_her_bag",
+      "lexicalThemes": [
+        "queue",
+        "asking for a favor",
+        "shopping bag",
+        "returning"
+      ],
+      "targetVocabulary": [
+        "תור",
+        "לשמור מקום",
+        "תיק",
+        "לחזור"
+      ],
+      "brief": "At a busy shop, Noa notices her bag by the door and asks the woman behind her to save her place in line. The woman agrees, and Noa quickly returns to the queue.",
+      "storyPattern": {
+        "goal": "Retrieve a bag left by the door without losing her place in line",
+        "relationship": "Two shoppers waiting in line",
+        "interaction": "Noa asks the woman behind her to save her place, and the woman agrees",
+        "outcome": "Noa quickly returns to the queue"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-13",
+      "storyId": "customer-asks-for-a-small-bread-loaf",
+      "domain": "food_service_orders",
+      "scenario": "customer_chooses_two_rolls_instead_of_a_large_loaf_for_one_person",
+      "lexicalThemes": [
+        "bread",
+        "loaf",
+        "rolls",
+        "amount"
+      ],
+      "targetVocabulary": [
+        "small loaf",
+        "two rolls",
+        "for one person",
+        "That will be enough"
+      ],
+      "brief": "A woman needs bread for one person. The bakery has no small loaf, so she chooses two rolls and decides that they are enough.",
+      "storyPattern": {
+        "goal": "Buy an appropriate amount of bread",
+        "relationship": "Customer and baker",
+        "interaction": "The customer needs bread for one person; the bakery has no small loaf but has rolls.",
+        "outcome": "She chooses two rolls, which are enough for her."
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-13",
+      "storyId": "passenger-offers-a-seat-to-someone-with-a-heavy-bag",
+      "domain": "transport_fares_routes",
+      "scenario": "passenger_offers_a_seat_to_a_rider_carrying_a_heavy_bag",
+      "lexicalThemes": [
+        "seat",
+        "heavy bag",
+        "offer",
+        "accept"
+      ],
+      "targetVocabulary": [
+        "Would you like to sit?",
+        "heavy bag",
+        "Thank you",
+        "I'll stand here"
+      ],
+      "brief": "On a crowded bus, one passenger offers her seat to a woman standing with a heavy shopping bag. The woman accepts and sits, while the first passenger stands by the door.",
+      "storyPattern": {
+        "goal": "Offer a seat to a passenger carrying a heavy bag",
+        "relationship": "Passengers on the same bus",
+        "interaction": "Offer help and accept it politely",
+        "outcome": "One passenger sits while the other stands by the door"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-13",
+      "storyId": "customer-separates-a-pending-card-transaction-from-a-completed-payment",
+      "domain": "banking_credit",
+      "scenario": "customer_checks_whether_a_pending_card_entry_is_a_duplicate_charge",
+      "lexicalThemes": [
+        "card transactions",
+        "pending and completed payments",
+        "receipts",
+        "explaining a concern",
+        "following up"
+      ],
+      "targetVocabulary": [
+        "pending transaction",
+        "completed payment",
+        "receipt",
+        "charged twice",
+        "transaction details",
+        "check again"
+      ],
+      "brief": "Mia notices two entries for one grocery purchase in her banking app. She compares the amounts with the receipt, contacts bank support, and learns that the pending entry has not become a second payment. She asks what to do if both entries complete, saves her receipt and a screenshot, then checks later and sees that only one payment remains.",
+      "storyPattern": {
+        "goal": "Understand whether a card purchase was charged twice",
+        "relationship": "Customer and bank support representative",
+        "interaction": "Compare the app entries with the receipt and ask what to do if both entries complete",
+        "outcome": "Keep the receipt and screenshot, then verify that only one payment remains"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-13",
+      "storyId": "roommates-negotiate-a-one-time-rent-payment-change",
+      "domain": "housing_landlord",
+      "scenario": "roommates_agree_on_a_temporary_rent_shortfall_and_record_repayment_between_themselves",
+      "lexicalThemes": [
+        "rent shares",
+        "explaining a shortfall",
+        "temporary help",
+        "repayment",
+        "keeping a clear record"
+      ],
+      "targetVocabulary": [
+        "rent",
+        "my share",
+        "shortfall",
+        "transfer",
+        "cover the difference",
+        "pay back",
+        "write it down"
+      ],
+      "brief": "Two roommates live together and normally transfer their rent shares on the same day. Noa has an unexpected large expense and can send only part of her share now. Dana explains that the landlord expects the household payment together, checks the missing amount with Noa, and temporarily covers it. Noa records the loan and agrees to repay Dana after her salary arrives; they pay the rent together.",
+      "storyPattern": {
+        "goal": "Cover a temporary shortfall in a shared household payment",
+        "relationship": "Roommates sharing rent responsibilities",
+        "interaction": "Explain a cash-flow problem and negotiate a temporary advance",
+        "outcome": "Pay the household amount and record the repayment between roommates"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-13",
+      "storyId": "shopper-chooses-a-repair-instead-of-replacing-a-bag",
+      "domain": "shopping_returns",
+      "scenario": "customer_chooses_reinforcement_for_both_worn_backpack_straps",
+      "lexicalThemes": [
+        "describing wear and damage",
+        "repair options",
+        "comparing repair and replacement",
+        "agreeing on work",
+        "collection"
+      ],
+      "targetVocabulary": [
+        "strap",
+        "seam",
+        "frayed",
+        "reinforce",
+        "repair",
+        "replace",
+        "repair slip"
+      ],
+      "brief": "Michal brings a backpack with a loose shoulder-strap seam to a repair shop. After learning that the other strap is fraying too and that a small inner patch will be added, she chooses to have both straps reinforced and keeps the repair slip until the work is ready.",
+      "storyPattern": {
+        "goal": "Keep a useful backpack in service through a repair",
+        "relationship": "Customer and repair worker",
+        "interaction": "Describe the damaged strap, learn about the second worn strap, and compare the repair option",
+        "outcome": "Choose reinforcement for both straps, keep the repair slip, and return when the work is ready"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-13",
+      "storyId": "friends-ask-a-cafe-to-split-a-shared-meal-differently",
+      "domain": "food_service_orders",
+      "scenario": "friends_order_two_shared_dishes_with_sauce_separate_on_one",
+      "lexicalThemes": [
+        "ordering together",
+        "sharing dishes",
+        "stating food preferences",
+        "polite disagreement",
+        "clarifying how food is served"
+      ],
+      "targetVocabulary": [
+        "להזמין",
+        "לחלוק",
+        "הרוטב בצד",
+        "כמו בתפריט",
+        "שתי המנות",
+        "זה מתאים"
+      ],
+      "brief": "At lunch in a casual café, friends Maya and Lior order two dishes to share. Maya prefers sauce on the side, while Lior prefers the dish as listed. They agree to order one dish as listed and ask for sauce separately with the other; when the food arrives, they share both dishes.",
+      "storyPattern": {
+        "goal": "Order two shared dishes in a way that respects different sauce preferences",
+        "relationship": "Friends dining together",
+        "interaction": "Maya asks for sauce on the side, and Lior explains his preference for the listed preparation; they agree on a combination",
+        "outcome": "They share both dishes, with sauce served separately for one"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-13",
+      "storyId": "neighbors-coordinate-a-grocery-basket-for-an-elderly-resident",
+      "domain": "neighbors_building",
+      "scenario": "neighbor_brings_a_small_grocery_order_and_noa_reimburses_him_from_the_receipt",
+      "lexicalThemes": [
+        "asking for and offering help",
+        "grocery items",
+        "unavailable bread",
+        "choosing a smaller loaf",
+        "sharing a receipt and reimbursing a neighbor"
+      ],
+      "targetVocabulary": [
+        "אפשר להביא לי",
+        "אני צריכה רק",
+        "נגמר",
+        "מה לקנות",
+        "הלחם הקטן",
+        "תמונה של החשבון",
+        "שלחתי לך את הסכום"
+      ],
+      "brief": "Noa has trouble going downstairs because her leg hurts, so she asks her neighbor Erez to pick up a few groceries while he is going to the nearby grocery store. When her usual bread is unavailable, Erez offers two sizes and Noa chooses the smaller loaf. Erez brings the items and sends a photo of the receipt; Noa transfers the amount shown.",
+      "storyPattern": {
+        "goal": "Get a few groceries while Noa has trouble going downstairs",
+        "relationship": "Neighbors offering practical help",
+        "interaction": "Noa lists a few items, chooses a bread substitute, and asks for a receipt photo",
+        "outcome": "Erez brings the groceries and receipt; Noa transfers the amount shown"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-13",
+      "storyId": "employee-asks-to-see-a-pay-breakdown",
+      "domain": "work_pay",
+      "scenario": "employee_asks_about_an_unfamiliar_reimbursement_line",
+      "lexicalThemes": [
+        "pay statement",
+        "unfamiliar line item",
+        "reimbursement",
+        "asking for clarification"
+      ],
+      "targetVocabulary": [
+        "תלוש השכר",
+        "שורה",
+        "החזר הוצאות",
+        "נפרד"
+      ],
+      "brief": "Yesterday, an employee noticed a small extra line on her pay statement and asked the payroll clerk what it meant. The clerk explained that it was a separate reimbursement entry.",
+      "storyPattern": {
+        "goal": "Understand an unfamiliar entry on a pay statement",
+        "relationship": "Employee and payroll clerk",
+        "interaction": "Ask what an extra line refers to",
+        "outcome": "Learn that it is a separate reimbursement entry"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-13",
+      "storyId": "traveler-asks-about-a-name-difference-on-a-booking",
+      "domain": "travel_documents",
+      "scenario": "traveler_flags_a_missing_middle_initial_on_booking_confirmation",
+      "lexicalThemes": [
+        "booking confirmation",
+        "name",
+        "middle initial",
+        "checking a difference"
+      ],
+      "targetVocabulary": [
+        "booking",
+        "confirmation",
+        "travel document",
+        "There is a difference in the name"
+      ],
+      "brief": "A traveler notices that her booking confirmation leaves out a middle initial shown on her travel document. She asks customer service whether it should be checked, and the agent records her question for review without guessing at a requirement.",
+      "storyPattern": {
+        "goal": "Clarify a name difference between travel records",
+        "relationship": "Traveler and customer-service agent",
+        "interaction": "Describe the missing middle initial and ask whether it needs review",
+        "outcome": "The agent records the question for review without asserting a rule"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-13",
+      "storyId": "resident-asks-how-to-read-a-water-meter",
+      "domain": "municipal_services",
+      "scenario": "resident_learns_which_digits_to_note_from_a_shared_water_meter",
+      "lexicalThemes": [
+        "water meter",
+        "reading",
+        "digits",
+        "write down"
+      ],
+      "targetVocabulary": [
+        "meter",
+        "reading",
+        "Which numbers should I write down?",
+        "compare"
+      ],
+      "brief": "A resident asks the building representative which digits to record from the shared water meter, then writes down the displayed number to compare with her own note later.",
+      "storyPattern": {
+        "goal": "Record a shared meter reading accurately",
+        "relationship": "Resident and building representative",
+        "interaction": "Ask which digits to note and get a demonstration",
+        "outcome": "Write down the displayed reading for later comparison"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-13",
+      "storyId": "customer-asks-what-to-include-in-a-damage-report",
+      "domain": "insurance_claims",
+      "scenario": "customer_reports_a_suitcase_crack_and_sends_a_photo",
+      "lexicalThemes": [
+        "crack",
+        "suitcase",
+        "report",
+        "photo"
+      ],
+      "targetVocabulary": [
+        "damage",
+        "report",
+        "I noticed it after the trip",
+        "send a photo"
+      ],
+      "brief": "After a trip, a customer finds a small crack in her suitcase, calls the insurance company to ask what to include in a report, and sends a photo at the representative's request. The report is recorded for review without a coverage decision.",
+      "storyPattern": {
+        "goal": "Record damage to a suitcase for review",
+        "relationship": "Customer and insurance representative",
+        "interaction": "The customer explains when she found the crack and sends a photo after the representative asks about one",
+        "outcome": "The report is recorded for review without a decision about coverage"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-13",
+      "storyId": "employee-checks-which-training-costs-are-reimbursed",
+      "domain": "employment_jobs",
+      "scenario": "employee_and_manager_label_training_expense_receipts_for_submission",
+      "lexicalThemes": [
+        "receipt",
+        "training",
+        "expense form",
+        "label"
+      ],
+      "targetVocabulary": [
+        "receipt",
+        "expense",
+        "Which one is for the course?",
+        "label"
+      ],
+      "brief": "An employee and her manager sort two receipts from a short work training, label each receipt by what it paid for, and leave the reimbursement decision open.",
+      "storyPattern": {
+        "goal": "Organize two receipts from a short work training",
+        "relationship": "Employee and manager",
+        "interaction": "Ask which receipt is for the course and label each by what it paid for",
+        "outcome": "Both receipts are labeled, while the reimbursement decision remains open"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-13",
+      "storyId": "shopper-chooses-produce-by-ripeness",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_selects_peaches_at_different_stages_of_ripeness_for_different_days",
+      "lexicalThemes": [
+        "produce",
+        "ripe",
+        "firm",
+        "today"
+      ],
+      "targetVocabulary": [
+        "ripe",
+        "firm",
+        "I need one for today",
+        "a few days"
+      ],
+      "brief": "A shopper tells a produce seller she needs fruit for today and for a few days later. The seller shows her which peaches are softer, and she chooses one ripe peach for today and a firmer one for later.",
+      "storyPattern": {
+        "goal": "Choose fruit for immediate and later use",
+        "relationship": "Shopper and produce seller",
+        "interaction": "Explain when the fruit is needed and compare peaches by softness",
+        "outcome": "Choose one ripe peach for today and one firmer peach for a few days later"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-13",
+      "storyId": "customer-returns-a-food-container-with-a-loose-lid",
+      "domain": "shopping_returns",
+      "scenario": "customer_returns_a_new_food_container_and_exchanges_it_for_one_with_a_secure_lid",
+      "lexicalThemes": [
+        "container",
+        "lid",
+        "closing a lid",
+        "shop exchange"
+      ],
+      "targetVocabulary": [
+        "קופסה (container)",
+        "מכסה (lid)",
+        "לא נסגר טוב (doesn’t close properly)",
+        "החליפה לי (exchanged for me)",
+        "קופסה אחרת (another container)"
+      ],
+      "brief": "A customer discovers at home that a newly bought food container will not close properly, returns to the shop, and exchanges it for one with a lid that closes securely.",
+      "storyPattern": {
+        "goal": "Replace a newly bought food container whose lid does not close properly.",
+        "relationship": "Customer and shop worker.",
+        "interaction": "The customer explains the problem after noticing it at home; the shop worker exchanges the container.",
+        "outcome": "The customer gets another container with a lid that closes securely."
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-13",
+      "storyId": "parent-and-child-compare-school-snack-options",
+      "domain": "school_childcare",
+      "scenario": "parent_and_child_choose_a_less_messy_snack_for_a_short_school_break",
+      "lexicalThemes": [
+        "school snack",
+        "messy food",
+        "short break",
+        "crackers",
+        "napkin"
+      ],
+      "targetVocabulary": [
+        "snack",
+        "messy",
+        "short break",
+        "compare",
+        "napkin"
+      ],
+      "brief": "A parent packs an apple for Noa, who explains that it is messy to eat during the short school break. They compare it with crackers, and the parent packs a small packet of crackers and a napkin.",
+      "storyPattern": {
+        "goal": "Pack a practical snack for a short school break",
+        "relationship": "Parent and child",
+        "interaction": "The child explains why the apple is messy, and they compare it with crackers",
+        "outcome": "The parent packs a small packet of crackers and a napkin"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-13",
+      "storyId": "customer-asks-a-neighbor-to-watch-a-queue-place",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_briefly_retrieves_a_forgotten_bag_with_another_customer_holding_her_place",
+      "lexicalThemes": [
+        "queue",
+        "hold my place",
+        "shopping bag",
+        "be right back"
+      ],
+      "targetVocabulary": [
+        "queue",
+        "Could you hold my place?",
+        "I'll be right back",
+        "Thanks"
+      ],
+      "brief": "At a crowded bakery, a shopper realizes she left her shopping bag by the door and asks the person behind her to hold her place while she retrieves it. The person agrees, and she returns quickly to continue the queue.",
+      "storyPattern": {
+        "goal": "Retrieve a forgotten bag without losing a place in line",
+        "relationship": "Two shoppers waiting in line",
+        "interaction": "Ask a stranger for a brief favor",
+        "outcome": "Return to the same place in the queue"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-13",
+      "storyId": "customer-asks-for-a-small-bread-loaf",
+      "domain": "food_service_orders",
+      "scenario": "customer_chooses_two_rolls_instead_of_a_large_loaf_for_one_person",
+      "lexicalThemes": [
+        "bread",
+        "loaf",
+        "rolls",
+        "amount"
+      ],
+      "targetVocabulary": [
+        "small loaf",
+        "two rolls",
+        "for one person",
+        "That will be enough"
+      ],
+      "brief": "At a bakery, a customer who is alone asks for a small loaf of bread. The baker offers rolls, and she takes two, which will be enough for her.",
+      "storyPattern": {
+        "goal": "Buy an appropriate amount of bread",
+        "relationship": "Customer and baker",
+        "interaction": "Explain the quantity needed and consider an alternative",
+        "outcome": "Choose two rolls instead of a large loaf"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-13",
+      "storyId": "passenger-offers-a-seat-to-someone-with-a-heavy-bag",
+      "domain": "transport_fares_routes",
+      "scenario": "passenger_offers_a_seat_to_a_rider_carrying_a_heavy_bag",
+      "lexicalThemes": [
+        "seat",
+        "heavy bag",
+        "offer",
+        "accept"
+      ],
+      "targetVocabulary": [
+        "Would you like to sit?",
+        "heavy bag",
+        "Thank you",
+        "I'll stand here"
+      ],
+      "brief": "On a crowded bus, a passenger offers her seat to a woman standing with a heavy shopping bag. The woman accepts, and the passenger stands by the door.",
+      "storyPattern": {
+        "goal": "Offer a seat to a passenger carrying a heavy bag",
+        "relationship": "Passengers on the same bus",
+        "interaction": "Offer help and accept it politely",
+        "outcome": "The woman sits while the passenger stands by the door"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-13",
+      "storyId": "customer-separates-a-pending-card-transaction-from-a-completed-payment",
+      "domain": "banking_credit",
+      "scenario": "customer_checks_pending_and_completed_entries_for_one_grocery_purchase",
+      "lexicalThemes": [
+        "card transactions",
+        "pending and completed payments",
+        "receipts",
+        "explaining a concern",
+        "following up"
+      ],
+      "targetVocabulary": [
+        "pending transaction",
+        "completed payment",
+        "receipt",
+        "charged twice",
+        "transaction details",
+        "check again"
+      ],
+      "brief": "A customer checks with bank support after seeing a pending and a completed card entry for one grocery purchase, then saves the receipt and screenshot and confirms that only one payment completed.",
+      "storyPattern": {
+        "goal": "Understand whether a card transaction was charged twice",
+        "relationship": "Customer and bank support representative",
+        "interaction": "Compare the amounts and receipt, then ask what to do if both entries complete",
+        "outcome": "Save the receipt and screenshot and confirm that only one payment completed"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-13",
+      "storyId": "roommates-negotiate-a-one-time-rent-payment-change",
+      "domain": "housing_landlord",
+      "scenario": "roommates_check_their_records_and_agree_on_a_temporary_rent_advance",
+      "lexicalThemes": [
+        "rent shares",
+        "unexpected expenses",
+        "temporary help",
+        "repayment after salary arrives",
+        "keeping a written record"
+      ],
+      "targetVocabulary": [
+        "rent",
+        "my share",
+        "missing amount",
+        "transfer",
+        "cover the difference",
+        "pay back",
+        "write it down"
+      ],
+      "brief": "Two roommates discovered that one could not transfer her full rent share because of an unexpected expense. They checked their records, agreed that the other would temporarily cover the missing part, and wrote down how and when they would settle the loan between themselves. The household payment was then sent.",
+      "storyPattern": {
+        "goal": "Arrange the full household rent payment despite one roommate's temporary shortfall",
+        "relationship": "Two roommates sharing rent responsibilities",
+        "interaction": "Compare their records and agree that one roommate will temporarily cover the missing part",
+        "outcome": "Send the household payment and write down the amount and repayment arrangement"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-13",
+      "storyId": "shopper-chooses-a-repair-instead-of-replacing-a-bag",
+      "domain": "shopping_returns",
+      "scenario": "dana_chooses_reinforcement_for_both_backpack_straps",
+      "lexicalThemes": [
+        "describing wear and damage",
+        "repair options",
+        "comparing a repair with replacement",
+        "agreeing on repair work",
+        "repair slip and collection"
+      ],
+      "targetVocabulary": [
+        "backpack",
+        "strap",
+        "seam",
+        "fray",
+        "reinforce",
+        "patch",
+        "repair slip"
+      ],
+      "brief": "Dana takes her worn backpack to a small repair shop, asks about reinforcing both straps, and chooses the repair after learning a small patch will be added inside each strap. She receives a repair slip and plans to use the backpack carefully until it is ready.",
+      "storyPattern": {
+        "goal": "Keep a useful backpack in service by repairing its worn straps",
+        "relationship": "Customer and repair worker",
+        "interaction": "Dana describes the loose strap, asks about reinforcing both straps, and learns what the repair involves",
+        "outcome": "Dana agrees to reinforce both straps, takes a repair slip, and uses the bag carefully until it is ready"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-13",
+      "storyId": "friends-ask-a-cafe-to-split-a-shared-meal-differently",
+      "domain": "food_service_orders",
+      "scenario": "friends_order_two_shared_dishes_with_sauce_separate_on_one",
+      "lexicalThemes": [
+        "ordering together",
+        "sharing dishes",
+        "stating food preferences",
+        "polite disagreement",
+        "clarifying how food is served"
+      ],
+      "targetVocabulary": [
+        "to share",
+        "on the side",
+        "as listed",
+        "both dishes",
+        "I’d rather",
+        "do you mind",
+        "that works"
+      ],
+      "brief": "At lunch in a casual café, friends Maya and Lior order two dishes to share. Maya prefers sauce on the side, while Lior prefers one dish served as listed. They ask for the sauce separately with the other dish, then share both plates when the food arrives as requested.",
+      "storyPattern": {
+        "goal": "Order shared dishes that accommodate different preferences",
+        "relationship": "Friends dining together",
+        "interaction": "Maya and Lior state their different preferences and agree to order one dish as listed and sauce separately with the other",
+        "outcome": "They share both dishes, with one sauce served in a small bowl"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-13",
+      "storyId": "neighbors-coordinate-a-grocery-basket-for-an-elderly-resident",
+      "domain": "neighbors_building",
+      "scenario": "neighbor_shops_for_a_neighbor_and_checks_a_bread_substitute_before_buying",
+      "lexicalThemes": [
+        "asking for and offering help",
+        "grocery items",
+        "unavailable products",
+        "choosing a substitute",
+        "reimbursing a neighbor"
+      ],
+      "targetVocabulary": [
+        "could you bring",
+        "I only need",
+        "usual bread is unavailable",
+        "a smaller loaf",
+        "receipt",
+        "transfer the exact amount"
+      ],
+      "brief": "Neighbor Erez is on his way to the market when Noa, who has strained a muscle, asks him to bring bread, tomatoes, and milk. When her usual bread is unavailable, he offers two sizes; Noa chooses the smaller loaf, and after he brings the groceries upstairs and shows her the receipt, she transfers him the exact amount.",
+      "storyPattern": {
+        "goal": "Get a few groceries while it is difficult to go downstairs",
+        "relationship": "Neighbors offering practical help",
+        "interaction": "Noa limits the shopping list, chooses a smaller bread substitute, and agrees to reimburse Erez after seeing the receipt",
+        "outcome": "Erez brings the groceries upstairs, and Noa transfers the exact amount"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-13",
+      "storyId": "employee-asks-to-see-a-pay-breakdown",
+      "domain": "work_pay",
+      "scenario": "employee_clarifies_an_unfamiliar_reimbursement_line_on_a_pay_statement",
+      "lexicalThemes": [
+        "pay statement",
+        "reimbursement",
+        "line item",
+        "clarification"
+      ],
+      "targetVocabulary": [
+        "pay statement",
+        "reimbursement",
+        "What does this line mean?",
+        "separate"
+      ],
+      "brief": "An employee sees a small extra amount on her pay statement and asks the payroll clerk what it refers to. The clerk explains that it is a separate reimbursement entry.",
+      "storyPattern": {
+        "goal": "Understand an unfamiliar entry on a pay statement",
+        "relationship": "Employee and payroll clerk",
+        "interaction": "Point to a line and ask what it refers to",
+        "outcome": "Identify it as a separate reimbursement entry"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-13",
+      "storyId": "traveler-asks-about-a-name-difference-on-a-booking",
+      "domain": "travel_documents",
+      "scenario": "traveler_calls_customer_service_about_a_missing_middle_initial_in_booking_confirmation",
+      "lexicalThemes": [
+        "booking confirmation",
+        "name",
+        "middle initial",
+        "customer service",
+        "review"
+      ],
+      "targetVocabulary": [
+        "booking",
+        "confirmation",
+        "travel document",
+        "middle initial",
+        "record a question for review"
+      ],
+      "brief": "Noa notices that the middle initial in her name is missing from her booking confirmation, though it appears in her travel document. She calls customer service, explains the difference, and the agent records her question for review without guessing whether a change is needed.",
+      "storyPattern": {
+        "goal": "Clarify a difference between the name on a booking confirmation and a travel document",
+        "relationship": "Traveler and customer-service agent",
+        "interaction": "The traveler describes the missing middle initial and asks whether it needs checking",
+        "outcome": "The agent records the question for review without asserting a requirement"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-13",
+      "storyId": "resident-asks-how-to-read-a-water-meter",
+      "domain": "municipal_services",
+      "scenario": "resident_learns_which_digits_to_note_from_a_shared_water_meter",
+      "lexicalThemes": [
+        "water meter",
+        "reading",
+        "digits",
+        "write down"
+      ],
+      "targetVocabulary": [
+        "meter",
+        "reading",
+        "Which numbers should I write down?",
+        "compare"
+      ],
+      "brief": "A resident is unsure which digits to copy from the shared water meter. The building representative points out the displayed reading, and the resident writes it down to compare with her own note later.",
+      "storyPattern": {
+        "goal": "Record a shared meter reading accurately",
+        "relationship": "Resident and building representative",
+        "interaction": "The resident is unsure which digits to copy; the representative points out the displayed reading",
+        "outcome": "The resident writes down the displayed reading to compare with her own note later"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-13",
+      "storyId": "customer-asks-what-to-include-in-a-damage-report",
+      "domain": "insurance_claims",
+      "scenario": "traveler_reports_a_cracked_suitcase_and_sends_a_photo_for_review",
+      "lexicalThemes": [
+        "crack",
+        "suitcase",
+        "report",
+        "photo"
+      ],
+      "targetVocabulary": [
+        "damage",
+        "report",
+        "I noticed it after the trip",
+        "send a photo"
+      ],
+      "brief": "Michal notices a small crack in her suitcase after a trip, calls the insurer to ask what to include in a report, answers questions about when she noticed it, sends a photo, and learns that the report has been recorded for review without a coverage decision.",
+      "storyPattern": {
+        "goal": "Record damage to a travel item for review",
+        "relationship": "Customer and insurance representative",
+        "interaction": "Ask what to include in the report, explain when the crack was noticed, and provide a photo",
+        "outcome": "The report is recorded for review without a coverage decision"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-13",
+      "storyId": "employee-checks-which-training-costs-are-reimbursed",
+      "domain": "employment_jobs",
+      "scenario": "employee_and_manager_label_training_expense_receipts_for_submission",
+      "lexicalThemes": [
+        "receipt",
+        "training",
+        "expense form",
+        "label"
+      ],
+      "targetVocabulary": [
+        "receipt",
+        "expense",
+        "Which one is for the course?",
+        "label"
+      ],
+      "brief": "After a short work training, employee Maya brings two receipts to her manager. Together they identify what each receipt paid for and label them for the expense form, without deciding whether either cost will be reimbursed.",
+      "storyPattern": {
+        "goal": "Organize receipts for a work expense submission",
+        "relationship": "Employee and manager",
+        "interaction": "Sort receipts by purpose together",
+        "outcome": "Label the receipts clearly before submission"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-13",
+      "storyId": "shopper-chooses-produce-by-ripeness",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_selects_fruit_at_different_stages_of_ripeness_for_different_days",
+      "lexicalThemes": [
+        "produce",
+        "ripe",
+        "firm",
+        "today"
+      ],
+      "targetVocabulary": [
+        "ripe",
+        "firm",
+        "I need one for today",
+        "a few days"
+      ],
+      "brief": "At a fruit stand, a shopper tells the seller she needs one piece of fruit for today and another for a few days later. The seller shows her a soft, ripe fruit and a firmer one, and she chooses one of each.",
+      "storyPattern": {
+        "goal": "Choose fruit for immediate and later use",
+        "relationship": "Shopper and produce seller",
+        "interaction": "Explain when the fruit is needed and compare ripeness",
+        "outcome": "Choose one ripe fruit and one firmer fruit"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-13",
+      "storyId": "parent-and-child-compare-school-snack-options",
+      "domain": "school_childcare",
+      "scenario": "parent_and_child_choose_a_less_messy_snack_for_a_short_school_break",
+      "lexicalThemes": [
+        "school snack",
+        "messy",
+        "short break",
+        "napkin"
+      ],
+      "targetVocabulary": [
+        "snack",
+        "messy",
+        "short break",
+        "Let's pack this instead"
+      ],
+      "brief": "A parent packs an apple for Yael's school snack, but Yael says it is messy to eat during the short break. They consider a small packet of crackers, so the parent packs the crackers with a napkin instead.",
+      "storyPattern": {
+        "goal": "Pack a practical snack for a short school break",
+        "relationship": "Parent and child",
+        "interaction": "Explain a practical difficulty and compare options",
+        "outcome": "Pack an easier-to-eat snack with a napkin"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-13",
+      "storyId": "customer-asks-a-neighbor-to-watch-a-queue-place",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_briefly_retrieves_a_forgotten_bag_with_another_customer_holding_her_place",
+      "lexicalThemes": [
+        "queue",
+        "holding a place",
+        "shopping bag",
+        "returning quickly"
+      ],
+      "targetVocabulary": [
+        "queue",
+        "hold my place",
+        "right away",
+        "thanks"
+      ],
+      "brief": "At a crowded bakery, Dana realizes she left her shopping bag by the door and asks the woman behind her to hold her place. She returns right away and thanks her.",
+      "storyPattern": {
+        "goal": "Retrieve a forgotten shopping bag without losing a place in line",
+        "relationship": "Two shoppers waiting in line",
+        "interaction": "Ask the person behind her for a brief favor",
+        "outcome": "Return right away to the same place and thank her"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-13",
+      "storyId": "customer-asks-for-a-small-bread-loaf",
+      "domain": "food_service_orders",
+      "scenario": "customer_chooses_two_rolls_instead_of_a_large_loaf_for_one_person",
+      "lexicalThemes": [
+        "bread",
+        "loaf",
+        "rolls",
+        "amount"
+      ],
+      "targetVocabulary": [
+        "small loaf",
+        "two rolls",
+        "for one person",
+        "That will be enough"
+      ],
+      "brief": "A customer needs bread for one person, asks for a smaller loaf at a bakery, and chooses two rolls offered by the baker because that amount will be enough.",
+      "storyPattern": {
+        "goal": "Buy an appropriate amount of bread",
+        "relationship": "Customer and baker",
+        "interaction": "Explain the quantity needed and consider an alternative",
+        "outcome": "Choose two rolls instead of a large loaf"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-13",
+      "storyId": "passenger-offers-a-seat-to-someone-with-a-heavy-bag",
+      "domain": "transport_fares_routes",
+      "scenario": "passenger_offers_a_seat_to_a_rider_carrying_a_heavy_bag",
+      "lexicalThemes": [
+        "seat",
+        "heavy bag",
+        "offer",
+        "accept"
+      ],
+      "targetVocabulary": [
+        "Would you like to sit?",
+        "heavy bag",
+        "Thank you",
+        "I'll stand here"
+      ],
+      "brief": "On a crowded bus, I noticed a woman standing with a heavy shopping bag and offered her my seat. She thanked me and sat down, while I moved to stand by the door.",
+      "storyPattern": {
+        "goal": "Offer a seat to a passenger carrying a heavy bag",
+        "relationship": "Passengers on the same bus",
+        "interaction": "Offer help and accept it politely",
+        "outcome": "One passenger sits while the other moves aside"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-13",
+      "storyId": "resident-clarifies-a-word-in-a-benefit-letter",
+      "domain": "social_benefits",
+      "scenario": "resident_reads_a_benefits_letter_and_writes_down_a_word_after_a_slow_repetition",
+      "lexicalThemes": [
+        "reading a letter",
+        "asking someone to repeat",
+        "writing a note"
+      ],
+      "targetVocabulary": [
+        "letter",
+        "word",
+        "repeat",
+        "slowly",
+        "page",
+        "write down",
+        "notebook"
+      ],
+      "brief": "A resident reads a benefits letter, asks a service worker to repeat an unclear word slowly, and writes it in her notebook.",
+      "storyPattern": {
+        "goal": "Understand an unclear word in a benefits letter",
+        "relationship": "Resident and service worker",
+        "interaction": "Ask the worker to repeat the word slowly; the worker points to it on the page",
+        "outcome": "Write the word in her notebook for later"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-13",
+      "storyId": "customer-separates-a-pending-card-transaction-from-a-completed-payment",
+      "domain": "banking_credit",
+      "scenario": "customer_checks_whether_a_pending_card_entry_is_a_duplicate_charge",
+      "lexicalThemes": [
+        "card transactions",
+        "pending and completed payments",
+        "receipts",
+        "explaining a concern",
+        "following up"
+      ],
+      "targetVocabulary": [
+        "pending transaction",
+        "completed payment",
+        "receipt",
+        "charged twice",
+        "transaction details",
+        "check again"
+      ],
+      "brief": "A customer notices pending and completed entries for the same grocery purchase, checks the receipt and amounts with bank support, and later confirms that only one charge completed.",
+      "storyPattern": {
+        "goal": "Understand whether a card transaction was charged twice",
+        "relationship": "Customer and bank support representative",
+        "interaction": "Compare the receipt with the transaction statuses and ask what to do if both appear completed",
+        "outcome": "Save the receipt and screenshot, then verify that only one charge completed"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-13",
+      "storyId": "roommates-negotiate-a-one-time-rent-payment-change",
+      "domain": "housing_landlord",
+      "scenario": "roommates_agree_on_a_temporary_rent_shortfall_and_record_repayment_between_themselves",
+      "lexicalThemes": [
+        "rent shares",
+        "explaining a shortfall",
+        "temporary help",
+        "repayment",
+        "keeping a clear record"
+      ],
+      "targetVocabulary": [
+        "rent",
+        "my share",
+        "shortfall",
+        "transfer",
+        "cover the difference",
+        "pay back",
+        "write it down"
+      ],
+      "brief": "Noa cannot transfer her full rent share after an unexpected expense. She tells her roommate Lia what she can pay and says she will transfer the rest when her salary arrives, without promising a date. Lia explains that the landlord expects the household rent together, asks how much is missing, and agrees to cover the shortfall temporarily. They write down that Noa will repay Lia when her salary arrives, then transfer the rent payment.",
+      "storyPattern": {
+        "goal": "Cover a temporary shortfall in a shared household payment",
+        "relationship": "Roommates sharing rent responsibilities",
+        "interaction": "Explain a cash-flow problem and negotiate a temporary advance",
+        "outcome": "Pay the household amount and record the repayment between roommates"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-13",
+      "storyId": "shopper-chooses-a-repair-instead-of-replacing-a-bag",
+      "domain": "shopping_returns",
+      "scenario": "shopper_compares_reinforcing_worn_backpack_straps_with_replacing_the_bag",
+      "lexicalThemes": [
+        "describing wear and damage",
+        "repair options",
+        "comparing repair and replacement",
+        "agreeing on work",
+        "collection"
+      ],
+      "targetVocabulary": [
+        "strap",
+        "seam",
+        "frayed",
+        "reinforce",
+        "repair",
+        "replace",
+        "repair slip"
+      ],
+      "brief": "Michal brings her worn backpack to a small repair shop, compares reinforcing both straps with replacing the bag, and chooses the repair. She receives a collection slip and uses the bag carefully while she waits.",
+      "storyPattern": {
+        "goal": "Keep a useful possession in service through a repair",
+        "relationship": "Customer and repair worker",
+        "interaction": "Describe the worn straps, compare repair options, and choose the scope of the work",
+        "outcome": "Michal authorizes reinforcement of both straps, gets a collection slip, and uses the backpack carefully while she waits"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-13",
+      "storyId": "friends-ask-a-cafe-to-split-a-shared-meal-differently",
+      "domain": "food_service_orders",
+      "scenario": "friends_order_two_shared_dishes_with_sauce_separate_on_one",
+      "lexicalThemes": [
+        "ordering together",
+        "sharing dishes",
+        "stating food preferences",
+        "polite disagreement",
+        "clarifying how food is served"
+      ],
+      "targetVocabulary": [
+        "to share",
+        "on the side",
+        "as listed",
+        "both dishes",
+        "I’d rather",
+        "do you mind",
+        "that works"
+      ],
+      "brief": "Maya and Lior order two café dishes to share despite different sauce preferences. They agree to have one dish served as listed and ask for the sauce separately with the other, then share both plates.",
+      "storyPattern": {
+        "goal": "Order shared dishes that accommodate different preferences",
+        "relationship": "Friends dining together",
+        "interaction": "State contrasting preferences and agree on a workable combination",
+        "outcome": "Share both dishes while keeping one sauce separate"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-13",
+      "storyId": "neighbors-coordinate-a-grocery-basket-for-an-elderly-resident",
+      "domain": "neighbors_building",
+      "scenario": "neighbor_buys_a_short_grocery_list_and_checks_a_bread_substitute",
+      "lexicalThemes": [
+        "asking for and offering help",
+        "grocery items",
+        "unavailable products",
+        "choosing a substitute",
+        "sharing a receipt and reimbursing a neighbor"
+      ],
+      "targetVocabulary": [
+        "מתאוששת",
+        "שקית",
+        "עגבניות",
+        "קבלה",
+        "כיכר קטנה",
+        "להחזיר כסף",
+        "להעביר סכום"
+      ],
+      "brief": "Noa, recovering from a minor strain, asks her neighbor Erez to bring a few groceries from the nearby market. She specifies bread, tomatoes, and milk and asks him not to cover the cost. When her usual bread is unavailable, Erez offers two choices; Noa chooses the smaller loaf. He brings the groceries upstairs and shows her the receipt, and she transfers the exact amount.",
+      "storyPattern": {
+        "goal": "Get a few groceries while recovering from a minor strain",
+        "relationship": "Neighbors offering practical help",
+        "interaction": "Noa sets limits on the shopping and payment, then chooses a bread substitute",
+        "outcome": "Erez brings the groceries upstairs, and Noa reimburses him after seeing the receipt"
+      },
+      "edition": "bet"
     }
   ]
 }
