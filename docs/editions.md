@@ -151,8 +151,13 @@ Use a new manual run rather than GitHub's rerun button so the fixed code is used
 Runs made before this recovery feature have no checkpoint to restore.
 A runner termination that prevents artifact upload can still lose its local checkpoint.
 
-Research permits at most 25 built-in web-tool calls per saved run, including at most ten during discovery and eight in one response.
-The API enforces the per-response allowance through `max_tool_calls`.
+Research allocates 25 built-in web-tool calls per saved run and requests at most eight in one response through `max_tool_calls`.
+Discovery can use up to 17 calls while protecting eight for selected-HISTORY research and three for each later discovery pass.
+Full use of each allowance produces discovery allocations of eight, six, and three calls.
+Unused allowances remain available to later requests.
+If the API reports more calls than requested, generation logs a warning, charges the actual usage, and reduces later allowances.
+The allocator stops new requests at budget exhaustion but cannot undo reported excess calls.
+Checkpoints from the former ten-call discovery policy cannot resume under this policy.
 Budgeted web requests disable SDK retries; the caller's bounded attempts remain.
 Page-opening actions can also consume the allowance, so this is a conservative limit rather than a billing guarantee.
 When the budget is exhausted, keep supported articles and omit unresolved HISTORY subjects.

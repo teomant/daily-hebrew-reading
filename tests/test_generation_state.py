@@ -42,17 +42,50 @@ class GenerationStateTests(unittest.TestCase):
         client = Mock()
         client.return_value.responses.create.side_effect = lambda **kw: self.response(kw["max_tool_calls"])
         with self.session() as state, patch.dict(sys.modules, {"openai": SimpleNamespace(OpenAI=client)}), redirect_stdout(StringIO()):
-            for phase in ("Sourced discovery 1", "Sourced discovery 2"):
-                _call_openai("test-model", "instructions", phase, {}, phase=phase)
+            for attempt in range(3):
+                phase = f"Sourced discovery {attempt + 1}"
+                _call_openai("test-model", "instructions", phase, {}, phase=phase,
+                             discovery_attempts_remaining=2 - attempt)
             with self.assertRaises(ResearchBudgetExhausted):
-                _call_openai("test-model", "instructions", "extra", {}, phase="Sourced discovery 3")
-            for phase in ("HISTORY research 1", "HISTORY research 2"):
-                _call_openai("test-model", "instructions", phase, {}, phase=phase)
+                _call_openai("test-model", "instructions", "extra", {}, phase="Sourced discovery 4")
+            _call_openai("test-model", "instructions", "research", {}, phase="HISTORY research 1")
             with self.assertRaises(ResearchBudgetExhausted):
-                _call_openai("test-model", "instructions", "extra", {}, phase="HISTORY research 3")
+                _call_openai("test-model", "instructions", "extra", {}, phase="HISTORY research 2")
             self.assertEqual(state.data["searches"], 25)
-        self.assertEqual([call.kwargs["max_tool_calls"] for call in client.return_value.responses.create.call_args_list], [8, 2, 8, 7])
+        self.assertEqual([call.kwargs["max_tool_calls"] for call in client.return_value.responses.create.call_args_list], [8, 6, 3, 8])
         self.assertTrue(all(call.kwargs["max_retries"] == 0 for call in client.call_args_list))
+
+    def test_reported_overage_keeps_later_passes_and_research_available(self):
+        client = Mock()
+        client.return_value.responses.create.side_effect = [self.response(9), self.response(5), self.response(3)]
+        with self.session() as state, patch.dict(sys.modules, {"openai": SimpleNamespace(OpenAI=client)}), \
+                redirect_stdout(StringIO()) as output:
+            for attempt in range(3):
+                _call_openai("test-model", "instructions", str(attempt), {},
+                             phase=f"Sourced discovery attempt {attempt + 1}/3",
+                             discovery_attempts_remaining=2 - attempt)
+            self.assertEqual(state.data["searches"], 17)
+            self.assertEqual(state.reserve("HISTORY research"), 8)
+        self.assertEqual([c.kwargs["max_tool_calls"] for c in client.return_value.responses.create.call_args_list], [8, 5, 3])
+        self.assertIn("response reported 9 web-tool calls against an allowance of 8", output.getvalue())
+
+    def test_unused_discovery_allowance_remains_available_after_resume(self):
+        with self.session() as state:
+            allowance = state.reserve("Sourced discovery 1", discovery_attempts_remaining=2)
+            state.settle("Sourced discovery 1", allowance, self.response(2).model_dump())
+        with self.session(resume=True) as state:
+            self.assertEqual(state.reserve("Sourced discovery 2", discovery_attempts_remaining=1), 8)
+            self.assertEqual(state.reserve("Sourced discovery 3"), 7)
+            self.assertEqual(state.reserve("HISTORY research"), 8)
+
+    def test_old_budget_policy_checkpoint_is_rejected(self):
+        with self.session() as state:
+            state.data["identity"]["discoveryLimit"] = 10
+            state.data["identity"].pop("laterDiscoveryReserve")
+            state.save()
+        with self.assertRaisesRegex(ValueError, "does not match"):
+            with self.session(resume=True):
+                pass
 
     def test_resume_reuses_results_without_requests_or_extra_search_charges(self):
         client = Mock()

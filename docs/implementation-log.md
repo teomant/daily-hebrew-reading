@@ -1,5 +1,32 @@
 # Implementation log
 
+## 2026-11-13
+
+- Adjusted discovery allocation at the owner's request after the latest run exhausted its ten-call discovery allowance with two HISTORY slots still empty.
+  Kept the overall 25-call allocation and requested eight-call response limit.
+  Discovery now protects eight calls for history research and three for each later discovery pass.
+  It can use up to 17 calls; full-use discovery allocations are eight, six, and three.
+  Actual overages reduce later allowances and produce a visible warning in logs and summaries.
+  Checkpoint identity includes the new allocation policy to prevent incompatible resume behavior.
+  Updated budget documentation and summary fields.
+  All 15 focused budget, recovery, and summary tests and the whitespace check passed.
+  Completed one focused direct review.
+  No full-suite rerun, paid generation, deployment, commit, or push was performed.
+
+- Added compact generation reports after the latest run required reading a large log to explain its missing HISTORY slots.
+  The generator saves JSON and Markdown with targets, counts by edition and type, history IDs, research decisions, omissions, bounded diagnostics, web budgets, API usage, and estimated cost.
+  Prompt logging bypasses report collection.
+  Reports include normal failure paths and distinguish current-invocation costs from resumed budget counters.
+  Report write errors do not invalidate generated content.
+  Added candidate counts by type and explicit unresolved-history replacement or omission messages.
+  GitHub Actions displays the report and uploads a separate 90-day summary artifact after successful or failed generation.
+  Updated README retrieval instructions and product documentation.
+  All 18 focused summary, recovery, usage, and workflow tests passed.
+  The whitespace check passed.
+  Stopped the broader test run after the owner requested no further broad verification.
+  Completed one focused direct diff review without another review cycle.
+  No paid generation or deployment was run.
+
 ## 2026-11-12
 
 - Updated master to `e05d738` before adjusting the reading profiles at the owner's request.

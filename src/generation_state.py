@@ -12,8 +12,10 @@ from pathlib import Path
 
 
 SEARCH_LIMIT = 25
-DISCOVERY_LIMIT = 10
 RESPONSE_SEARCH_LIMIT = 8
+HISTORY_RESEARCH_RESERVE = 8
+DISCOVERY_LATER_PASS_RESERVE = 3
+DISCOVERY_LIMIT = SEARCH_LIMIT - HISTORY_RESEARCH_RESERVE
 current_state: ContextVar[GenerationState | None] = ContextVar("generation_state", default=None)
 
 
@@ -40,7 +42,8 @@ class GenerationState:
                     if path.is_file()}
         identity = {"date": target_date, "additional": additional, "model": model,
                     "settings": digest(settings), "searchLimit": SEARCH_LIMIT,
-                    "discoveryLimit": DISCOVERY_LIMIT}
+                    "discoveryLimit": DISCOVERY_LIMIT,
+                    "laterDiscoveryReserve": DISCOVERY_LATER_PASS_RESERVE}
         if resume:
             if not self.path.exists():
                 raise ValueError("No generation checkpoint exists for this date")
@@ -95,11 +98,14 @@ class GenerationState:
         self.data["failures"][key] = False
         self.save()
 
-    def reserve(self, phase):
+    def reserve(self, phase, *, discovery_attempts_remaining=0):
         discovery = phase.startswith("Sourced discovery")
         remaining = SEARCH_LIMIT - self.data["searches"]
         if discovery:
-            remaining = min(remaining, DISCOVERY_LIMIT - self.data["discoverySearches"])
+            # Keep a research batch and useful later discovery passes available.
+            remaining = min(remaining - HISTORY_RESEARCH_RESERVE,
+                            DISCOVERY_LIMIT - self.data["discoverySearches"])
+            remaining -= discovery_attempts_remaining * DISCOVERY_LATER_PASS_RESERVE
         allowance = min(RESPONSE_SEARCH_LIMIT, remaining)
         if allowance <= 0:
             raise ResearchBudgetExhausted("Research web-tool budget exhausted")
@@ -118,6 +124,7 @@ class GenerationState:
         if phase.startswith("Sourced discovery"):
             self.data["discoverySearches"] += used - allowance
         self.save()
+        return used
 
     def stage(self, payloads):
         if {path.name for path in payloads} != self.output_names:

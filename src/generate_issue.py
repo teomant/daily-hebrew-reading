@@ -25,7 +25,8 @@ from .common import (
 from .generation_quality import affected_groups, apply_repairs, repair_schema
 from .editions import build_index, to_editions, topic_records
 from .generation_usage import record_usage, usage_run
-from .generation_state import current_state, digest, generation_session, ResearchBudgetExhausted
+from .generation_summary import observe, record_targets, summary_run
+from .generation_state import current_state, digest, generation_session, ResearchBudgetExhausted, SEARCH_LIMIT, DISCOVERY_LIMIT
 from .verbs import daily_verbs, verb_batch_index, verb_seed, verbs_page
 from .validation import (
     briefs_are_near_duplicates,
@@ -210,19 +211,21 @@ ISRAELI_HISTORY_SOURCES = [
 WORLDWIDE_HISTORY_SOURCE = "worldwideFallback"
 
 
-def _log(message: str) -> None:
+def _log(message: str, *, summarize: bool = True) -> None:
     timestamp = datetime.now(UTC).strftime("%H:%M:%S UTC")
     print(f"[{timestamp}] {_safe_log_text(message)}", flush=True)
+    if summarize:
+        observe(message)
 
 
 def _log_prompt(phase: str, instructions: str, request: str) -> None:
     """Log the exact role messages safely while retaining readable line breaks."""
-    _log(f"{phase}: full LLM prompt follows")
+    _log(f"{phase}: full LLM prompt follows", summarize=False)
     for role, content in (("SYSTEM", instructions), ("USER", request)):
-        _log(f"{phase}: ----- {role} -----")
+        _log(f"{phase}: ----- {role} -----", summarize=False)
         for line in content.split("\n"):
-            _log(f"{phase}: {line}")
-    _log(f"{phase}: ----- END PROMPT -----")
+            _log(f"{phase}: {line}", summarize=False)
+    _log(f"{phase}: ----- END PROMPT -----", summarize=False)
 
 
 def _safe_log_text(value: object) -> str:
@@ -248,6 +251,8 @@ def _error_report(errors: list[str]) -> str:
 def _log_validation_errors(phase: str, errors: list[str], limit: int = 20) -> None:
     unique_errors = list(dict.fromkeys(errors))
     _log(f"{phase}: validation failed with {len(unique_errors)} unique error(s)")
+    for error in unique_errors[:3]:
+        observe(f"{phase}: validation failed: {_safe_log_text(error)}")
     for error in unique_errors[:limit]:
         print(f"  - {_safe_log_text(error)}", flush=True)
     if len(unique_errors) > limit:
@@ -1345,6 +1350,7 @@ def _call_openai(
     schema: dict[str, Any],
     use_web_search: bool = True,
     phase: str = "OpenAI request",
+    discovery_attempts_remaining: int = 0,
 ) -> dict[str, Any]:
     state = current_state.get()
     key = digest([model, instructions, request, schema, use_web_search, phase])
@@ -1356,7 +1362,7 @@ def _call_openai(
         if state.data["failures"].get(key):
             _log(f"{phase}: replaying earlier failed attempt to reach saved progress; no API request")
             raise RuntimeError("Replayed earlier failed request from checkpoint")
-    allowance = state.reserve(phase) if state is not None and use_web_search else None
+    allowance = state.reserve(phase, discovery_attempts_remaining=discovery_attempts_remaining) if state is not None and use_web_search else None
     started = monotonic()
     usage_recorded = False
     _log(f"{phase}: started with model {model}")
@@ -1399,7 +1405,10 @@ def _call_openai(
         _log(f"{phase}: response received after {monotonic() - started:.1f}s")
         response_data = response.model_dump() or {}
         if allowance is not None:
-            state.settle(phase, allowance, response_data)
+            used = state.settle(phase, allowance, response_data)
+            if used is not None and used > allowance:
+                _log(f"{phase}: budget warning; response reported {used} web-tool calls "
+                     f"against an allowance of {allowance}; charged actual usage to the remaining budget")
         record_usage(model, phase, response_data, _log)
         usage_recorded = True
         if not response.output_text:
@@ -2469,23 +2478,27 @@ def _adapt_editions(seed, target_date, levels, locales, site, image_locales, ins
 
 
 def generate(root: Path, target_date: str, additional_stories: int, *, resume=False) -> dict[str, Any] | None:
-    with usage_run(_log), generation_session(
-        root, target_date, additional_stories, os.environ.get("OPENAI_MODEL", DEFAULT_OPENAI_MODEL), resume=resume,
+    model = os.environ.get("OPENAI_MODEL", DEFAULT_OPENAI_MODEL)
+    with summary_run(root, target_date, additional_stories, resume, model) as report, usage_run(_log), generation_session(
+        root, target_date, additional_stories, model, resume=resume,
     ) as state:
-        completed = state.data["completed"]
-        if completed is not None:
-            issue = completed[f"{target_date}.json"]
-            errors = validate_issue(issue, load_site_config(root), load_level_config(root))
-            if errors:
-                raise RuntimeError("Recovered issue failed validation:\n- " + _error_report(errors))
-            _transactional_write({root / "content" / name: value for name, value in completed.items()})
-            _log("Restored completed issue, index, and history; no API requests needed")
-            return issue
         try:
-            return _generate(root, target_date, additional_stories)
+            completed = state.data["completed"]
+            if completed is not None:
+                issue = completed[f"{target_date}.json"]
+                errors = validate_issue(issue, load_site_config(root), load_level_config(root))
+                if errors:
+                    raise RuntimeError("Recovered issue failed validation:\n- " + _error_report(errors))
+                _transactional_write({root / "content" / name: value for name, value in completed.items()})
+                _log("Restored completed issue, index, and history; no API requests needed")
+            else:
+                issue = _generate(root, target_date, additional_stories)
+            report.finish(issue, state)
+            return issue
         finally:
-            _log(f"Research budget used or reserved: {state.data['searches']}/25 web-tool calls; "
-                 f"discovery {state.data['discoverySearches']}/10")
+            report.budget(state)
+            _log(f"Research budget used or reserved: {state.data['searches']}/{SEARCH_LIMIT} web-tool calls; "
+                 f"discovery {state.data['discoverySearches']}/{DISCOVERY_LIMIT}")
 
 
 def _generate_verbs_page(
@@ -2537,6 +2550,14 @@ def _generate(root: Path, target_date: str, additional_stories: int) -> dict[str
     full_issue_target = CURRENT_TARGET + HISTORY_TARGET + EVERYDAY_TARGET + DIALOG_TARGET + 1
     include_shorts_page = existing is None and target_count >= full_issue_target
     include_verbs_page = existing is None and target_count >= full_issue_target + 1
+    record_targets(
+        mode="append" if existing else "new issue", total=target_count,
+        minimum=minimum_count, maximum=maximum_count,
+        **({} if existing else {"current": min(CURRENT_TARGET, target_count),
+                               "history": min(HISTORY_TARGET, max(0, target_count - CURRENT_TARGET)),
+                               "everyday": EVERYDAY_TARGET, "dialog": DIALOG_TARGET,
+                               "shorts": int(include_shorts_page), "verbs": int(include_verbs_page)}),
+    )
     # Validate local configuration before any paid requests.
     if include_verbs_page:
         daily_verbs(root, target_date)
@@ -2633,6 +2654,7 @@ def _generate(root: Path, target_date: str, additional_stories: int) -> dict[str
                     ),
                     use_web_search=True,
                     phase=phase,
+                    discovery_attempts_remaining=SOURCED_DISCOVERY_ATTEMPTS - attempt_number,
                 )
             except ResearchBudgetExhausted:
                 _log(f"{phase}: discovery budget exhausted; keeping selected subjects")
@@ -2648,6 +2670,10 @@ def _generate(root: Path, target_date: str, additional_stories: int) -> dict[str
                 for candidate in returned_candidates
                 if isinstance(candidate, dict)
             ]
+            _log(f"{phase}: returned candidates by type: " + json.dumps({
+                kind: sum(story.get("type") == kind for story in returned_seeds)
+                for kind in ("current", "history")
+            }))
             removed_sources, removed_images = _remove_redundant_sources(
                 returned_seeds,
                 {"stories": reviewed_sourced} if reviewed_sourced else None,
@@ -2781,6 +2807,10 @@ def _generate(root: Path, target_date: str, additional_stories: int) -> dict[str
                 f"{phase}: selected {len(sourced_seeds) - before_count} candidate(s); "
                 f"{len(sourced_seeds)} sourced story brief(s) retained"
             )
+            _log(f"{phase}: retained totals by type: " + json.dumps({
+                kind: sum(story.get("type") == kind for story in sourced_seeds)
+                for kind in ("current", "history")
+            }))
             sourced_feedback = list(dict.fromkeys(attempt_feedback))[:20] or None
             if len(sourced_seeds) < sourced_target and sourced_feedback is None:
                 sourced_feedback = [
@@ -2861,9 +2891,11 @@ def _generate(root: Path, target_date: str, additional_stories: int) -> dict[str
                     [story for story in sourced_seeds if story.get("id") != unresolved_id],
                 )
                 if replacement is not None:
+                    _log(f"{phase}: replacing unresolved {unresolved_id} with reserve {replacement['id']}")
                     sourced_seeds[story_index] = replacement
                     next_pending.append(replacement)
                     continue
+                _log(f"{phase}: omitting unresolved {unresolved_id}; no eligible reserve remains")
                 sourced_seeds.pop(story_index)
             pending_history = next_pending
             research_feedback = list(dict.fromkeys(research_errors))[:20] or None

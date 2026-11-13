@@ -24,7 +24,11 @@ The repository contains a complete sample issue, so the site can be built and te
   Valid items are kept, fresh replacements are planned after failures, and any remaining valid items (up to eleven) are collected on one page.
   Missing sourced stories reduce the issue size instead of expanding the fixed generated allocation.
 - A sourced discovery pool of up to 18 candidates, with no minimum: up to six compact CURRENT and twelve preferred HISTORY leads within the research budget. CURRENT stays within Israel on every pass, using local reporting, municipal updates, and relevant public-service announcements; nonlocal CURRENT candidates are rejected in review. The first two HISTORY attempts focus on Israeli material across varied reference, library, archive, cultural, municipal, educational, and biographical sources; a third attempt may search Jewish history and culture outside Israel for remaining HISTORY slots. Every HISTORY brief must establish an explicit Israeli or Jewish connection. No HISTORY family or source collection has a fixed quota. The strongest surviving subjects are selected in editorial order; invalid or duplicate candidates are removed individually. Reviewed but unselected HISTORY candidates remain reserves, with Israeli candidates ahead of worldwide fallbacks.
-- Research uses at most 25 web-tool calls, with at most ten for discovery and eight per response.
+- Research allocates 25 web-tool calls, with a requested maximum of eight per response.
+  Discovery can use up to 17 calls while keeping eight for history research and three for each later discovery pass.
+  If each response uses its full allowance, the three discovery passes receive eight, six, and three calls.
+  Unused allowances remain available to later requests.
+  Reported usage above a requested allowance produces a budget warning and reduces the remaining budget.
   Prefer well-documented historical developments over isolated archive objects.
   Budget exhaustion keeps supported articles and can reduce the issue size.
 - Completed responses and final content are saved for [generation recovery](docs/editions.md#generation-recovery).
@@ -135,6 +139,17 @@ The OpenAI API is billed separately from ChatGPT Plus. The API uses the credits 
 - **Validate and deploy site** runs on an ordinary push to `master` and never calls OpenAI.
 
 Generation logs timestamp each phase and print its complete system and user prompts safely.
+For routine diagnosis, read the generation summary on the GitHub Actions run page first.
+Each generation invocation saves `build/generation-summary/YYYY-MM-DD.json` and `.md`, including failed invocations that reach the Python generator.
+The workflow uploads both files as `generation-summary-YYYY-MM-DD` with 90-day retention, separate from the seven-day recovery checkpoint.
+Download the small report with `gh run download RUN_ID --name generation-summary-YYYY-MM-DD --dir /tmp/generation-summary-RUN_ID`.
+The report records run identity, requested targets, final counts by type and edition, history IDs, discovery and research decisions, omissions, bounded warning samples, web budgets, API usage, and estimated cost.
+It excludes full prompts and article bodies; omitted event counts point to the full log when further detail is needed.
+Counts cover the complete resulting issue, including earlier articles on append runs.
+Usage and cost cover only the current invocation; resumed budgets include earlier saved reservations.
+Generation success does not imply that the later build, commit, or deployment succeeded.
+Local invocations replace that date's summary; each Actions run has its own artifact.
+Skipped generation and failures before the generator starts have no report artifact.
 Sourced discovery has up to three attempts: CURRENT remains local, while HISTORY has two Israel-focused passes and one Jewish-history fallback.
 Selected HISTORY research normally uses one batched call; two consecutive research request failures abort generation.
 Generated scenarios keep all three topic pools, but full stories now target two essential and three routine situations; SHORTS target five essential and six routine situations.

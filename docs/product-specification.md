@@ -467,7 +467,12 @@ Language adaptation must not freely invent details for real stories. A factual b
 
 Use the OpenAI API for sourced discovery and selection, sourced semantic duplicate review, selected-HISTORY research, generated-scenario planning, level adaptation, lexical segmentation, and Russian and English translations.
 A normal issue makes up to three web-enabled discovery requests, each returning at most eighteen compact candidates.
-The whole run permits at most twenty-five built-in web-tool calls, including at most ten for discovery and at most eight per response.
+The whole run allocates twenty-five built-in web-tool calls and requests at most eight per response.
+Discovery can use up to seventeen calls while protecting eight calls for selected-HISTORY research and three calls for each later discovery pass.
+With full use of each allowance, the three discovery passes receive eight, six, and three calls.
+Unused allowances remain available to later requests; the third pass keeps its existing worldwide HISTORY fallback scope.
+Actual usage above a requested allowance produces a logged budget warning and reduces later allowances.
+The allocator stops new web requests once the remaining budget is exhausted; it cannot undo excess calls already reported by the API.
 Unknown or interrupted web requests consume their reserved allowance, and budgeted web requests disable SDK retries.
 Budget exhaustion stops further research, omits unresolved HISTORY subjects, and retains supported articles without expanding the generated allocation.
 Factual and public-content contracts remain unchanged.
@@ -599,11 +604,25 @@ The owner selected Direction 1, **Jerusalem Journal**, on 4 September 2026. The 
 
 ## Generation recovery
 
+Each generator invocation saves a compact JSON and Markdown report under `build/generation-summary/YYYY-MM-DD` with the corresponding file extension.
+The report includes generation status, run identity, targets, final article counts by edition and type, history subject IDs, discovery and research decisions, omissions, bounded diagnostic samples, research budgets, observed API usage, and estimated cost.
+Reports exclude full prompts, full article bodies, and raw exception details.
+Diagnostic groups retain at most 20 events of 350 characters each and count further omitted events.
+Handled generation failures still produce a report; interruption of the process can prevent report creation.
+A report write failure must not invalidate saved content or replace the generation error.
+GitHub Actions displays the Markdown on the run page and uploads both formats as a separate `generation-summary-YYYY-MM-DD` artifact for 90 days.
+The report describes generation only; later validation, commit, and deployment have separate workflow outcomes.
+Append counts describe the complete resulting issue.
+Resume usage and cost describe only the current invocation, while budget counters include saved reservations.
+Local invocations replace the report for that date; Actions artifacts belong to their respective runs.
+Skipped generation and failures before generator startup have no report artifact.
+
 Generation writes an atomic checkpoint to `build/generation-state/YYYY-MM-DD.json`.
 Completed structured responses, source-provenance findings, research-budget counters, and final issue/index/history payloads survive a later failure.
 The checkpoint contains no API keys or environment variables.
 A normal invocation starts a fresh checkpoint; `--resume` explicitly reuses the saved run.
 Resume checks the date, append count, model, configuration, prompts, and original content before using it.
+Resume also checks the discovery budget policy; checkpoints from the former ten-call discovery policy are incompatible.
 Changed content is rejected unless it matches the completed saved output.
 Restored responses still pass the normal validation and do not incur new API requests.
 The final payload is saved before the transactional content write so a later CLI or publishing failure does not require regeneration.

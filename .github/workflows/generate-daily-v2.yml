@@ -140,6 +140,26 @@ jobs:
           else
             python -m src.generate_issue --date "$TARGET_DATE" "${resume_args[@]}"
           fi
+      - name: Show generation summary
+        if: ${{ always() && steps.generate.outcome != 'skipped' }}
+        env:
+          TARGET_DATE: ${{ needs.inspect-trigger.outputs.target_date }}
+        run: |
+          report="build/generation-summary/$TARGET_DATE.md"
+          if [ -f "$report" ]; then
+            cat "$report" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "Generation summary unavailable; generation did not reach report creation. See the job log." >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Save generation summary artifact
+        if: ${{ always() && steps.generate.outcome != 'skipped' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: generation-summary-${{ needs.inspect-trigger.outputs.target_date }}
+          path: build/generation-summary/${{ needs.inspect-trigger.outputs.target_date }}.*
+          if-no-files-found: ignore
+          retention-days: 90
+          overwrite: true
       - name: Save generation recovery artifact
         if: ${{ always() && steps.generate.outcome != 'skipped' }}
         uses: actions/upload-artifact@v4
