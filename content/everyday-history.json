@@ -20275,6 +20275,1349 @@
         "outcome": "Erez brings the groceries upstairs, and Noa reimburses him after seeing the receipt"
       },
       "edition": "bet"
+    },
+    {
+      "date": "2026-11-14",
+      "storyId": "employee-demonstrates-a-label-printer",
+      "domain": "employment_jobs",
+      "scenario": "coworker_demonstrates_changing_a_label_roll_to_a_new_employee",
+      "lexicalThemes": [
+        "workplace equipment",
+        "asking for help",
+        "trying a task"
+      ],
+      "targetVocabulary": [
+        "label",
+        "roll",
+        "open",
+        "feed",
+        "try"
+      ],
+      "brief": "At work, new employee Maya is unsure how to change the label roll in a small printer. Her coworker Dana opens the cover and shows her how to feed the paper straight. Maya tries it, and the label comes out correctly.",
+      "storyPattern": {
+        "goal": "Learn how to change the label roll in a small workplace printer",
+        "relationship": "New employee and coworker",
+        "interaction": "The coworker demonstrates how to open the cover and feed the paper straight",
+        "outcome": "The new employee tries it and prints a label correctly"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-14",
+      "storyId": "resident-reports-a-streetlight-out",
+      "domain": "municipal_services",
+      "scenario": "resident_reports_a_dark_streetlight_at_a_crossing",
+      "lexicalThemes": [
+        "street lighting",
+        "describing a location",
+        "reporting a problem"
+      ],
+      "targetVocabulary": [
+        "streetlight",
+        "crossing",
+        "corner",
+        "dark",
+        "location"
+      ],
+      "brief": "A resident reports a streetlight that is out beside a pedestrian crossing. A municipal worker notes the dark corner, and the resident walks home by a lit route.",
+      "storyPattern": {
+        "goal": "Report a problem in a public area",
+        "relationship": "Resident and municipal worker",
+        "interaction": "Describe the exact location",
+        "outcome": "The worker records the issue, and the resident takes a lit route home"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-14",
+      "storyId": "resident-sorts-two-official-letters",
+      "domain": "government_documents",
+      "scenario": "resident_dates_and_sorts_an_old_and_new_letter",
+      "lexicalThemes": [
+        "personal paperwork",
+        "dates",
+        "sorting documents"
+      ],
+      "targetVocabulary": [
+        "letter",
+        "old copy",
+        "date",
+        "envelope",
+        "newer"
+      ],
+      "brief": "A resident finds two letters in her folder, notices that one is an old copy, writes the date on each envelope, and puts the newer letter at the front.",
+      "storyPattern": {
+        "goal": "Distinguish two versions of a document",
+        "relationship": "Resident acting independently",
+        "interaction": "Compare dates and label the copies",
+        "outcome": "Keep the newer letter easy to find"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-14",
+      "storyId": "coworkers-correct-a-mistyped-order",
+      "domain": "work_pay",
+      "scenario": "coworkers_correct_a_quantity_error_before_sending_an_order",
+      "lexicalThemes": [
+        "workplace mistake",
+        "admitting an error",
+        "checking an order"
+      ],
+      "targetVocabulary": [
+        "wrong number",
+        "quantity",
+        "correct",
+        "reread",
+        "save"
+      ],
+      "brief": "A worker notices that she entered the wrong quantity on a customer's order, tells her coworker before it is sent, and they correct it together. She rereads the order and saves it.",
+      "storyPattern": {
+        "goal": "Fix an order before it goes out",
+        "relationship": "Coworkers sharing a task",
+        "interaction": "Admit an error and correct it together",
+        "outcome": "Review and save the accurate order"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-14",
+      "storyId": "tenant-asks-roommate-to-clear-the-hallway",
+      "domain": "housing_landlord",
+      "scenario": "roommate_moves_shoes_and_bag_to_clear_hallway_for_box",
+      "lexicalThemes": [
+        "shared home",
+        "explaining a practical need",
+        "clearing a path"
+      ],
+      "targetVocabulary": [
+        "hallway",
+        "in the way",
+        "carry",
+        "move",
+        "beside"
+      ],
+      "brief": "A tenant needs to carry a large box through the hallway, but her roommate has left shoes and a bag in the way. She explains that she cannot get through, and the roommate moves the belongings beside the wall, clearing a path.",
+      "storyPattern": {
+        "goal": "Make a shared passage clear to carry a large box through.",
+        "relationship": "Two housemates sharing a home.",
+        "interaction": "One housemate explains that shoes and a bag block her way; the other moves them beside the wall.",
+        "outcome": "There is room to carry the box through the hallway."
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-14",
+      "storyId": "shopper-asks-for-a-different-bag-size",
+      "domain": "shopping_returns",
+      "scenario": "shopper_describes_the_width_needed_for_a_blanket_storage_bag",
+      "lexicalThemes": [
+        "shopping",
+        "describing dimensions",
+        "choosing a size"
+      ],
+      "targetVocabulary": [
+        "storage bag",
+        "blanket",
+        "narrow",
+        "wide",
+        "fit"
+      ],
+      "brief": "A shopper buying a storage bag for a folded blanket finds that her first choice is too narrow. A shop worker brings a wider bag, and the blanket fits inside without being forced.",
+      "storyPattern": {
+        "goal": "Choose a bag that fits a household item",
+        "relationship": "Shopper and shop worker",
+        "interaction": "The shopper finds her first choice too narrow, and the worker brings a wider alternative",
+        "outcome": "The folded blanket fits in the wider bag without being forced"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-14",
+      "storyId": "passenger-asks-driver-to-lower-the-window",
+      "domain": "transport_fares_routes",
+      "scenario": "taxi_passenger_requests_a_slightly_open_window_for_fresh_air",
+      "lexicalThemes": [
+        "taxi ride",
+        "making a polite request",
+        "comfort"
+      ],
+      "targetVocabulary": [
+        "warm",
+        "window",
+        "open a little",
+        "air",
+        "better"
+      ],
+      "brief": "A passenger feels warm in a taxi, asks the driver to open the window a little, and feels more comfortable when fresh air comes in.",
+      "storyPattern": {
+        "goal": "Feel more comfortable during a ride",
+        "relationship": "Taxi passenger and driver",
+        "interaction": "The passenger asks for the window to be opened a little, and the driver does so.",
+        "outcome": "The passenger says the air feels more pleasant."
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-14",
+      "storyId": "customer-asks-delivery-worker-to-leave-box-with-doorman",
+      "domain": "delivery_customer_service",
+      "scenario": "customer_arranges_for_a_delivery_to_be_left_with_the_doorman",
+      "lexicalThemes": [
+        "delivery",
+        "explaining availability",
+        "leaving a parcel"
+      ],
+      "targetVocabulary": [
+        "delivery",
+        "come downstairs",
+        "box",
+        "doorman",
+        "leave"
+      ],
+      "brief": "A customer hears the delivery worker at the entrance but cannot come downstairs right away. She asks whether the box can be left with the doorman, and the worker leaves it there.",
+      "storyPattern": {
+        "goal": "Receive a delivery while temporarily unavailable",
+        "relationship": "Customer and delivery worker",
+        "interaction": "Explain that she cannot come downstairs and ask for a handoff to the doorman",
+        "outcome": "The delivery worker leaves the box with the doorman"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-14",
+      "storyId": "neighbor-asks-to-turn-down-music",
+      "domain": "neighbors_building",
+      "scenario": "neighbor_politely_requests_lower_music_volume",
+      "lexicalThemes": [
+        "neighbors",
+        "polite complaint",
+        "volume"
+      ],
+      "targetVocabulary": [
+        "loud",
+        "music",
+        "wall",
+        "turn down",
+        "quieter"
+      ],
+      "brief": "A neighbor knocks because loud music comes through the shared wall while he is trying to rest. The other neighbor apologizes, turns down the music, and the room becomes quieter.",
+      "storyPattern": {
+        "goal": "Reduce noise through a shared wall",
+        "relationship": "Neighbors in the same building",
+        "interaction": "One neighbor politely explains that the music is loud and he wants to rest; the other apologizes and turns it down",
+        "outcome": "The music is quieter and the room is calmer"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-14",
+      "storyId": "diner-asks-for-the-bill-to-be-split",
+      "domain": "food_service_orders",
+      "scenario": "coworkers_request_separate_checks_after_lunch",
+      "lexicalThemes": [
+        "eating out",
+        "paying",
+        "making a request"
+      ],
+      "targetVocabulary": [
+        "bill",
+        "separate",
+        "split",
+        "server",
+        "check"
+      ],
+      "brief": "Two coworkers eat lunch together and ask the waiter for separate bills. He brings them two bills.",
+      "storyPattern": {
+        "goal": "Pay separately after a shared meal",
+        "relationship": "Coworkers dining together",
+        "interaction": "One coworker asks the waiter for separate bills",
+        "outcome": "The waiter brings them two bills"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-14",
+      "storyId": "account-holder-finds-a-quiet-place-for-a-call",
+      "domain": "digital_accounts",
+      "scenario": "customer_moves_to_a_quiet_spot_to_continue_a_support_call",
+      "lexicalThemes": [
+        "phone call",
+        "explaining a difficulty",
+        "finding a quieter place"
+      ],
+      "targetVocabulary": [
+        "hear",
+        "call",
+        "nearby",
+        "quiet",
+        "continue"
+      ],
+      "brief": "A customer cannot hear a support call clearly because people nearby are talking. She asks the representative to wait a moment, moves to a quiet corner, and continues the call.",
+      "storyPattern": {
+        "goal": "Hear a support conversation clearly",
+        "relationship": "Customer and support representative",
+        "interaction": "Explain the difficulty and ask for a moment to move somewhere quieter",
+        "outcome": "Continue the call from a quiet corner"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-14",
+      "storyId": "tenant-and-landlord-agree-on-removable-shelves",
+      "domain": "housing_landlord",
+      "scenario": "tenant_and_landlord_choose_a_freestanding_kitchen_shelf_instead_of_drilling_into_tile",
+      "lexicalThemes": [
+        "rental home",
+        "household storage",
+        "asking before making changes",
+        "measuring space",
+        "alternatives"
+      ],
+      "targetVocabulary": [
+        "shelf",
+        "counter",
+        "wall",
+        "tile",
+        "measure",
+        "fit",
+        "freestanding",
+        "attach",
+        "instead"
+      ],
+      "brief": "Noa, a tenant, wants more kitchen space and asks her landlord before making holes in the tiled wall. They measure the space beside the refrigerator, choose a small freestanding shelf that fits, and Noa assembles it that evening.",
+      "storyPattern": {
+        "goal": "Add storage without altering a rental home",
+        "relationship": "Tenant and landlord",
+        "interaction": "Explain a household need and compare installation options together",
+        "outcome": "Choose and assemble a fitting freestanding unit"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-14",
+      "storyId": "resident-troubleshoots-home-internet-dropouts",
+      "domain": "phone_internet",
+      "scenario": "resident_traces_home_internet_dropouts_to_a_loose_cable_and_obstructed_router",
+      "lexicalThemes": [
+        "home internet",
+        "describing what is visible",
+        "troubleshooting",
+        "connection quality",
+        "device placement"
+      ],
+      "targetVocabulary": [
+        "connection",
+        "router",
+        "cable",
+        "loose",
+        "disconnect",
+        "signal",
+        "behind",
+        "shelf",
+        "test"
+      ],
+      "brief": "Noa's home internet disconnects during a video call. She describes what she sees to the service desk, secures a loose cable, then moves the router from behind a cabinet to an open shelf. The connection stays stable and she finishes her work call.",
+      "storyPattern": {
+        "goal": "Restore a dependable home internet connection",
+        "relationship": "Resident and service representative",
+        "interaction": "Describe symptoms and test possible causes step by step",
+        "outcome": "Reposition the equipment and complete the call online"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-14",
+      "storyId": "dog-owner-arranges-a-walkers-first-visit",
+      "domain": "pets_veterinary",
+      "scenario": "neighbor_takes_lola_on_a_first_short_walk_after_owner_shows_how_to_wait_when_she_stops",
+      "lexicalThemes": [
+        "pet care",
+        "asking for help",
+        "walking routine",
+        "describing behavior",
+        "demonstrating a task"
+      ],
+      "targetVocabulary": [
+        "dog walker",
+        "lead",
+        "harness",
+        "pull",
+        "other dogs",
+        "quiet route",
+        "wait",
+        "walk",
+        "message"
+      ],
+      "brief": "A dog owner who has to work late asks her neighbor Noa to take Lola for a first short, quiet walk. She explains that Lola pulls toward other dogs, shows the harness and lead, and suggests waiting calmly when Lola pauses at the entrance. They agree on a message after the walk.",
+      "storyPattern": {
+        "goal": "Arrange suitable care during a work commitment",
+        "relationship": "Dog owner and nearby neighbor helping with a walk",
+        "interaction": "Explain Lola's habits and show a calm response when she stops",
+        "outcome": "Agree on a short, quiet first walk and a message afterward"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-14",
+      "storyId": "resident-and-clerk-correct-a-misfiled-document",
+      "domain": "government_documents",
+      "scenario": "resident_replaces_an_outdated_document_scan_while_keeping_both_versions_labeled",
+      "lexicalThemes": [
+        "personal documents",
+        "correcting a file",
+        "dates and versions",
+        "clarifying a process",
+        "checking a scan"
+      ],
+      "targetVocabulary": [
+        "document",
+        "copy",
+        "scan",
+        "file",
+        "older",
+        "current",
+        "address",
+        "label",
+        "keep both",
+        "confirm"
+      ],
+      "brief": "Yael notices an outdated scan in her personal file and asks document-desk clerk Amir to add the current paper copy. They clarify that both versions can remain, labeled with their dates. Amir scans the new copy, Yael checks that it is marked as current, and she takes her original paper with her.",
+      "storyPattern": {
+        "goal": "Make the current version clear in a personal file",
+        "relationship": "Resident Yael and document-desk clerk Amir",
+        "interaction": "Compare versions and clarify that both can stay, labeled by date",
+        "outcome": "Attach and label the current copy while preserving the older one"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-14",
+      "storyId": "friends-split-a-restaurant-bill-after-sharing-dishes",
+      "domain": "food_service_orders",
+      "scenario": "friends_check_bill_split_shared_food_evenly_and_separate_personal_drink",
+      "lexicalThemes": [
+        "restaurant bill",
+        "shared dishes",
+        "personal extras",
+        "agreeing on a split",
+        "settling up"
+      ],
+      "targetVocabulary": [
+        "bill",
+        "shared",
+        "split evenly",
+        "extra",
+        "drink",
+        "side dish",
+        "pay",
+        "half",
+        "transfer"
+      ],
+      "brief": "Friends Neta and Gil check a restaurant bill together, agree to split the shared food evenly while each pays for personal extras, and settle up after checking the amounts.",
+      "storyPattern": {
+        "goal": "Settle a restaurant bill fairly after sharing food",
+        "relationship": "Friends dining together",
+        "interaction": "Compare assumptions, identify the shared side dish, and agree to split shared food while covering personal extras separately",
+        "outcome": "Gil pays the bill and Neta transfers her agreed half after they check the amount"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-14",
+      "storyId": "employee-demonstrates-a-label-printer",
+      "domain": "employment_jobs",
+      "scenario": "new_employee_learns_to_change_a_label_printer_roll",
+      "lexicalThemes": [
+        "workplace equipment",
+        "asking for a demonstration",
+        "trying a task"
+      ],
+      "targetVocabulary": [
+        "מדבקה",
+        "גליל",
+        "לפתוח",
+        "להכניס",
+        "לנסות"
+      ],
+      "brief": "At work, a new employee asks her coworker Noa for help changing the roll in the label printer. Noa shows her how to open the cover and feed the paper straight; the employee tries it and prints a label correctly.",
+      "storyPattern": {
+        "goal": "Learn how to change the roll in the workplace label printer",
+        "relationship": "New employee and coworker",
+        "interaction": "The coworker demonstrates how to open the cover and feed the paper straight",
+        "outcome": "The employee tries the task and the label prints correctly"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-14",
+      "storyId": "resident-reports-a-streetlight-out",
+      "domain": "municipal_services",
+      "scenario": "resident_reports_a_dark_streetlight_at_a_crossing",
+      "lexicalThemes": [
+        "street lighting",
+        "describing a location",
+        "reporting a problem"
+      ],
+      "targetVocabulary": [
+        "streetlight",
+        "crossing",
+        "corner",
+        "dark",
+        "location"
+      ],
+      "brief": "A resident notices a streetlight beside a crosswalk is out, tells a municipal worker which corner is dark, and walks home by a brighter route.",
+      "storyPattern": {
+        "goal": "Report a problem in a public area",
+        "relationship": "Resident and municipal worker",
+        "interaction": "Describe the exact location",
+        "outcome": "The worker records the issue, and the resident chooses a brighter route home"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-14",
+      "storyId": "resident-sorts-two-official-letters",
+      "domain": "government_documents",
+      "scenario": "resident_dates_and_sorts_two_letters",
+      "lexicalThemes": [
+        "personal paperwork",
+        "dates",
+        "sorting documents"
+      ],
+      "targetVocabulary": [
+        "letter",
+        "old copy",
+        "date",
+        "envelope",
+        "newer"
+      ],
+      "brief": "A resident found two letters in her folder, noticed that one was an old copy, wrote the dates on their envelopes, and put the newer letter at the front.",
+      "storyPattern": {
+        "goal": "Distinguish two versions of a document",
+        "relationship": "Resident acting independently",
+        "interaction": "Compare the letters and write the dates on their envelopes",
+        "outcome": "Keep the newer letter easy to find at the front of the folder"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-14",
+      "storyId": "coworkers-correct-a-mistyped-order",
+      "domain": "work_pay",
+      "scenario": "coworkers_correct_a_quantity_error_before_sending_an_order",
+      "lexicalThemes": [
+        "workplace mistake",
+        "admitting an error",
+        "checking an order"
+      ],
+      "targetVocabulary": [
+        "wrong number",
+        "quantity",
+        "correct",
+        "reread",
+        "save"
+      ],
+      "brief": "A worker accidentally enters twelve items instead of two on a customer's order. Before it is sent, she tells her coworker; they correct the quantity together, and she rereads and saves the order.",
+      "storyPattern": {
+        "goal": "Fix an order before it goes out",
+        "relationship": "Coworkers sharing a task",
+        "interaction": "Admit an error and correct it together",
+        "outcome": "Review and save the accurate order"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-14",
+      "storyId": "tenant-asks-roommate-to-clear-the-hallway",
+      "domain": "housing_landlord",
+      "scenario": "housemates_clear_a_shared_hallway_for_carrying_a_large_box",
+      "lexicalThemes": [
+        "shared home",
+        "explaining a practical need",
+        "clearing a path"
+      ],
+      "targetVocabulary": [
+        "hallway",
+        "in the way",
+        "carry",
+        "move",
+        "beside"
+      ],
+      "brief": "A tenant needs to carry a large box through the hallway. Her roommate's shoes and bag are blocking the path, so she explains that she cannot get through safely. The roommate moves them beside the wall, clearing the way.",
+      "storyPattern": {
+        "goal": "Make a shared passage clear",
+        "relationship": "Housemates sharing a home",
+        "interaction": "Explain that shoes and a bag block the way, then move them aside",
+        "outcome": "The passage is clear for carrying a large box"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-14",
+      "storyId": "shopper-asks-for-a-different-bag-size",
+      "domain": "shopping_returns",
+      "scenario": "shopper_finds_a_wider_storage_bag_for_a_folded_blanket",
+      "lexicalThemes": [
+        "shopping",
+        "describing dimensions",
+        "choosing a size"
+      ],
+      "targetVocabulary": [
+        "storage bag",
+        "blanket",
+        "folded",
+        "wide",
+        "fit"
+      ],
+      "brief": "A shopper looks for a storage bag for a folded blanket. The first bag is too narrow, so the shop worker brings a wider one that fits the blanket without forcing it inside.",
+      "storyPattern": {
+        "goal": "Choose a bag that fits a folded blanket",
+        "relationship": "Shopper and shop worker",
+        "interaction": "The worker offers a wider bag as an alternative",
+        "outcome": "The blanket fits inside without being forced"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-14",
+      "storyId": "passenger-asks-driver-to-lower-the-window",
+      "domain": "transport_fares_routes",
+      "scenario": "taxi_passenger_requests_a_slightly_open_window_for_fresh_air",
+      "lexicalThemes": [
+        "taxi ride",
+        "making a polite request",
+        "comfort"
+      ],
+      "targetVocabulary": [
+        "warm",
+        "window",
+        "open a little",
+        "air",
+        "better"
+      ],
+      "brief": "During a taxi ride, the passenger felt warm, asked the driver to open the window a little, and felt more comfortable when fresh air came in.",
+      "storyPattern": {
+        "goal": "Feel more comfortable during a taxi ride",
+        "relationship": "Taxi passenger and driver",
+        "interaction": "The passenger asks to open the window a little, and the driver opens it slightly",
+        "outcome": "Fresh air comes in and the passenger feels more comfortable"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-14",
+      "storyId": "customer-asks-delivery-worker-to-leave-box-with-doorman",
+      "domain": "delivery_customer_service",
+      "scenario": "customer_arranges_for_a_delivery_to_be_left_with_the_doorman",
+      "lexicalThemes": [
+        "delivery",
+        "explaining availability",
+        "leaving a parcel"
+      ],
+      "targetVocabulary": [
+        "delivery",
+        "come downstairs",
+        "box",
+        "doorman",
+        "leave"
+      ],
+      "brief": "A customer could not come downstairs right away when the delivery worker arrived, so she asked him to leave the box with the doorman, and he handed it over there.",
+      "storyPattern": {
+        "goal": "Receive a delivery while temporarily unavailable",
+        "relationship": "Customer and delivery worker",
+        "interaction": "Explain that she cannot come downstairs right away and ask for a handoff to the doorman",
+        "outcome": "The delivery worker gives the box to the doorman"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-14",
+      "storyId": "neighbor-asks-to-turn-down-music",
+      "domain": "neighbors_building",
+      "scenario": "neighbor_politely_requests_lower_music_volume",
+      "lexicalThemes": [
+        "neighbors",
+        "polite complaint",
+        "volume"
+      ],
+      "targetVocabulary": [
+        "loud",
+        "music",
+        "wall",
+        "turn down",
+        "quieter"
+      ],
+      "brief": "In the evening, a neighbor resting at home hears loud music through the shared wall, politely asks the next-door neighbor to turn it down, and the neighbor apologizes and lowers it.",
+      "storyPattern": {
+        "goal": "Reduce noise through a shared wall",
+        "relationship": "Neighbors in the same building",
+        "interaction": "Raise a concern politely and respond",
+        "outcome": "The neighbor apologizes and lowers the music, making the room quieter"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-14",
+      "storyId": "diner-asks-for-the-bill-to-be-split",
+      "domain": "food_service_orders",
+      "scenario": "coworkers_request_separate_checks_after_lunch",
+      "lexicalThemes": [
+        "eating out",
+        "paying",
+        "making a request"
+      ],
+      "targetVocabulary": [
+        "bill",
+        "separate",
+        "split",
+        "server",
+        "check"
+      ],
+      "brief": "Two coworkers share a simple lunch, then ask the server for separate checks and receive them.",
+      "storyPattern": {
+        "goal": "Pay separately after a shared meal",
+        "relationship": "Coworkers dining together",
+        "interaction": "One coworker asks the server for separate checks",
+        "outcome": "The server brings two separate checks"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-14",
+      "storyId": "account-holder-finds-a-quiet-place-for-a-call",
+      "domain": "digital_accounts",
+      "scenario": "customer_moves_to_a_quiet_spot_to_continue_a_support_call",
+      "lexicalThemes": [
+        "phone call",
+        "explaining a difficulty",
+        "finding a quieter place"
+      ],
+      "targetVocabulary": [
+        "hear",
+        "call",
+        "nearby",
+        "quiet",
+        "continue"
+      ],
+      "brief": "A customer has trouble hearing a support representative because people nearby are talking. She explains the problem, moves to a quiet corner, and continues the call there.",
+      "storyPattern": {
+        "goal": "Hear a support conversation clearly",
+        "relationship": "Customer and support representative",
+        "interaction": "Explain the difficulty and pause to change surroundings",
+        "outcome": "Continue the call in a quieter place"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-14",
+      "storyId": "tenant-and-landlord-agree-on-removable-shelves",
+      "domain": "housing_landlord",
+      "scenario": "tenant_and_landlord_choose_a_freestanding_kitchen_shelf_instead_of_drilling_into_tile",
+      "lexicalThemes": [
+        "rental home",
+        "household storage",
+        "asking before making changes",
+        "measuring space",
+        "alternatives"
+      ],
+      "targetVocabulary": [
+        "shelf",
+        "counter",
+        "wall",
+        "tile",
+        "measure",
+        "fit",
+        "freestanding",
+        "attach",
+        "instead"
+      ],
+      "brief": "Roni wanted more kitchen storage in her rented apartment but asked her landlord before making holes. They chose a small freestanding unit that fit beside the refrigerator, and she assembled it without attaching it to the wall.",
+      "storyPattern": {
+        "goal": "Add storage without altering a rental home",
+        "relationship": "Tenant and landlord",
+        "interaction": "Explain a household need and compare installation options together",
+        "outcome": "Choose and assemble a fitting freestanding unit"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-14",
+      "storyId": "resident-troubleshoots-home-internet-dropouts",
+      "domain": "phone_internet",
+      "scenario": "resident_finds_a_loose_cable_and_moves_router_to_an_open_shelf",
+      "lexicalThemes": [
+        "home internet",
+        "describing what is visible",
+        "troubleshooting",
+        "connection quality",
+        "device placement"
+      ],
+      "targetVocabulary": [
+        "connection",
+        "router",
+        "cable",
+        "loose",
+        "disconnect",
+        "signal",
+        "behind",
+        "shelf",
+        "test"
+      ],
+      "brief": "During a video call, a resident called the service desk about home internet that kept disconnecting. She described the router lights and a loose cable, then moved the router away from a cabinet after the connection dropped again. On an open shelf, the connection stayed stable and she finished her work call.",
+      "storyPattern": {
+        "goal": "Restore a dependable home internet connection",
+        "relationship": "Resident and service representative",
+        "interaction": "Describe the connection problem, check the cable, and test a new router position",
+        "outcome": "The connection stays stable on an open shelf, allowing the resident to finish her work call"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-14",
+      "storyId": "dog-owner-arranges-a-walkers-first-visit",
+      "domain": "pets_veterinary",
+      "scenario": "owner_shows_nearby_walker_how_to_start_a_calm_first_walk",
+      "lexicalThemes": [
+        "pet care",
+        "asking for help",
+        "walking routine",
+        "describing dog behavior",
+        "showing how to use a harness and lead"
+      ],
+      "targetVocabulary": [
+        "dog walker",
+        "lead",
+        "harness",
+        "pull",
+        "other dogs",
+        "quiet route",
+        "wait",
+        "walk",
+        "message"
+      ],
+      "brief": "A dog owner works late and arranges a first short walk for her dog with a nearby walker. She explains the dog's tendency to pull toward other dogs, demonstrates the harness and lead, and suggests waiting when the dog hesitates. The walker succeeds, and they agree on a brief walk and a message afterward.",
+      "storyPattern": {
+        "goal": "Arrange a suitable walk while the owner works late",
+        "relationship": "Dog owner and nearby dog walker",
+        "interaction": "Explain the dog's habits and show how to handle the harness and lead",
+        "outcome": "The dog starts calmly, and they agree on a short walk and a follow-up message"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-14",
+      "storyId": "resident-and-clerk-correct-a-misfiled-document",
+      "domain": "government_documents",
+      "scenario": "resident_replaces_an_outdated_document_scan_while_keeping_both_versions_labeled",
+      "lexicalThemes": [
+        "personal documents",
+        "correcting a file",
+        "dates and versions",
+        "clarifying a process",
+        "checking a scan"
+      ],
+      "targetVocabulary": [
+        "document",
+        "copy",
+        "scan",
+        "file",
+        "older",
+        "current",
+        "address",
+        "label",
+        "keep both",
+        "confirm"
+      ],
+      "brief": "Yael brings the current paper version of a personal document to the document desk. She and clerk Amir clarify that both dated versions can remain in the file, identify the current one, and check the new scan together.",
+      "storyPattern": {
+        "goal": "Make the current version clear in a personal file",
+        "relationship": "Resident and document-desk clerk",
+        "interaction": "Compare versions and clarify what can be retained",
+        "outcome": "Attach and label the current copy while preserving the older one"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-14",
+      "storyId": "friends-split-a-restaurant-bill-after-sharing-dishes",
+      "domain": "food_service_orders",
+      "scenario": "friends_agree_to_split_shared_dishes_evenly_and_pay_for_personal_extras_separately",
+      "lexicalThemes": [
+        "restaurant bill",
+        "shared dishes",
+        "personal extras",
+        "polite disagreement",
+        "settling up"
+      ],
+      "targetVocabulary": [
+        "bill",
+        "shared",
+        "split evenly",
+        "extra",
+        "drink",
+        "side dish",
+        "separately",
+        "pay",
+        "share",
+        "transfer"
+      ],
+      "brief": "Neta and Gil shared several restaurant dishes, compared the bill, agreed to split shared items evenly and cover personal extras separately, then Gil paid and Neta transferred her checked share.",
+      "storyPattern": {
+        "goal": "Settle a bill fairly after sharing a meal",
+        "relationship": "Friends dining together",
+        "interaction": "Explain different assumptions and negotiate how to divide shared and personal items",
+        "outcome": "Gil pays the bill and Neta transfers her agreed share after they check the amounts together"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-14",
+      "storyId": "employee-demonstrates-a-label-printer",
+      "domain": "employment_jobs",
+      "scenario": "coworker_demonstrates_changing_a_label_roll_to_a_new_employee",
+      "lexicalThemes": [
+        "workplace equipment",
+        "asking for a demonstration",
+        "trying a task"
+      ],
+      "targetVocabulary": [
+        "label",
+        "roll",
+        "open",
+        "feed",
+        "try"
+      ],
+      "brief": "A new employee learns to change the label roll in a small workplace printer. A coworker demonstrates how to open the cover and feed the paper straight; the employee tries it and prints the next label correctly.",
+      "storyPattern": {
+        "goal": "Learn how to change the label roll in a small workplace printer.",
+        "relationship": "A new employee and her coworker Yael.",
+        "interaction": "Yael opens the printer cover and demonstrates how to feed the paper straight; the new employee tries it herself.",
+        "outcome": "The next label prints correctly."
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-14",
+      "storyId": "resident-reports-a-streetlight-out",
+      "domain": "municipal_services",
+      "scenario": "resident_reports_a_dark_streetlight_at_a_crossing",
+      "lexicalThemes": [
+        "street lighting",
+        "describing a location",
+        "reporting a problem"
+      ],
+      "targetVocabulary": [
+        "streetlight",
+        "crossing",
+        "corner",
+        "dark",
+        "location"
+      ],
+      "brief": "A resident notices a streetlight beside a crossing is out, tells a municipal worker which corner is dark, and takes a brighter route home after the worker records the location.",
+      "storyPattern": {
+        "goal": "Report a problem in a public area",
+        "relationship": "Resident and municipal worker",
+        "interaction": "Describe the exact location",
+        "outcome": "The worker records the issue and the resident chooses a brighter route home"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-14",
+      "storyId": "resident-sorts-two-official-letters",
+      "domain": "government_documents",
+      "scenario": "resident_dates_and_sorts_an_old_and_new_letter",
+      "lexicalThemes": [
+        "personal paperwork",
+        "dates",
+        "sorting documents"
+      ],
+      "targetVocabulary": [
+        "letter",
+        "old copy",
+        "date",
+        "envelope",
+        "newer"
+      ],
+      "brief": "A resident finds two letters in her folder, notices that one is an old copy, writes the dates on their envelopes, and places the newer letter at the front so she can find it easily.",
+      "storyPattern": {
+        "goal": "Distinguish two versions of a document",
+        "relationship": "Resident acting independently",
+        "interaction": "Compare dates and label the copies",
+        "outcome": "Keep the newer letter easy to find"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-14",
+      "storyId": "coworkers-correct-a-mistyped-order",
+      "domain": "work_pay",
+      "scenario": "coworkers_correct_a_quantity_error_before_sending_an_order",
+      "lexicalThemes": [
+        "workplace mistake",
+        "admitting an error",
+        "checking an order"
+      ],
+      "targetVocabulary": [
+        "wrong number",
+        "quantity",
+        "correct",
+        "reread",
+        "save"
+      ],
+      "brief": "At work, a worker notices that she entered the wrong quantity on a customer's order. Before it is sent, she tells her coworker Noa, they enter the correct quantity together, and she rereads and saves the order.",
+      "storyPattern": {
+        "goal": "Fix an order before it goes out",
+        "relationship": "Coworkers sharing a task",
+        "interaction": "Admit an error and correct it together",
+        "outcome": "Review and save the accurate order"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-14",
+      "storyId": "tenant-asks-roommate-to-clear-the-hallway",
+      "domain": "housing_landlord",
+      "scenario": "housemates_clear_a_shared_hallway_for_carrying_a_large_box",
+      "lexicalThemes": [
+        "shared home",
+        "explaining a practical need",
+        "clearing a path"
+      ],
+      "targetVocabulary": [
+        "hallway",
+        "in the way",
+        "carry",
+        "move",
+        "beside"
+      ],
+      "brief": "A tenant asks her roommate to move shoes and a bag that block the hallway so she can carry a large box through; the roommate moves them beside the wall, clearing the path.",
+      "storyPattern": {
+        "goal": "Make a shared passage clear",
+        "relationship": "Housemates sharing a home",
+        "interaction": "Explain the obstacle and move belongings aside",
+        "outcome": "Clear a path for carrying a large item"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-14",
+      "storyId": "shopper-asks-for-a-different-bag-size",
+      "domain": "shopping_returns",
+      "scenario": "shopper_finds_a_wider_storage_bag_for_a_folded_blanket",
+      "lexicalThemes": [
+        "shopping",
+        "describing dimensions",
+        "choosing a size"
+      ],
+      "targetVocabulary": [
+        "storage bag",
+        "blanket",
+        "narrow",
+        "wide",
+        "fit"
+      ],
+      "brief": "A shopper tries to put a folded blanket into a storage bag she picked, but it is too narrow. The shop worker brings a wider bag, and the blanket fits inside without being forced.",
+      "storyPattern": {
+        "goal": "Choose a storage bag that fits a folded blanket",
+        "relationship": "Shopper and shop worker",
+        "interaction": "The shopper tries the bag she picked and explains that it is too narrow; the worker brings a wider option",
+        "outcome": "The folded blanket fits inside the wider bag without being forced"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-14",
+      "storyId": "passenger-asks-driver-to-lower-the-window",
+      "domain": "transport_fares_routes",
+      "scenario": "taxi_passenger_requests_a_slightly_open_window_for_fresh_air",
+      "lexicalThemes": [
+        "taxi ride",
+        "making a polite request",
+        "comfort"
+      ],
+      "targetVocabulary": [
+        "warm",
+        "window",
+        "open a little",
+        "air",
+        "better"
+      ],
+      "brief": "A taxi passenger feels warm, asks the driver to open the window a little, and feels more comfortable when fresh air comes in.",
+      "storyPattern": {
+        "goal": "Feel more comfortable during a ride",
+        "relationship": "Taxi passenger and driver",
+        "interaction": "The passenger makes a polite request, and the driver opens the window slightly",
+        "outcome": "The passenger feels that the air is more pleasant"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-14",
+      "storyId": "customer-asks-delivery-worker-to-leave-box-with-doorman",
+      "domain": "delivery_customer_service",
+      "scenario": "customer_arranges_for_a_delivery_to_be_left_with_the_doorman",
+      "lexicalThemes": [
+        "delivery",
+        "explaining availability",
+        "leaving a parcel"
+      ],
+      "targetVocabulary": [
+        "delivery",
+        "come downstairs",
+        "box",
+        "doorman",
+        "leave"
+      ],
+      "brief": "A customer hears the delivery worker at the entrance but cannot come downstairs right away. She asks whether the box can be left with the doorman, and the worker hands it over there.",
+      "storyPattern": {
+        "goal": "Receive a delivery while temporarily unavailable",
+        "relationship": "Customer and delivery worker",
+        "interaction": "Explain the constraint and suggest a handoff",
+        "outcome": "The delivery worker leaves the box with the doorman"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-14",
+      "storyId": "neighbor-asks-to-turn-down-music",
+      "domain": "neighbors_building",
+      "scenario": "neighbor_politely_requests_lower_music_volume",
+      "lexicalThemes": [
+        "neighbors",
+        "polite complaint",
+        "volume"
+      ],
+      "targetVocabulary": [
+        "loud",
+        "music",
+        "wall",
+        "turn down",
+        "quieter"
+      ],
+      "brief": "In the evening, a neighbor asks for loud music to be turned down through the shared wall. The narrator apologizes and lowers the volume, making the room quieter.",
+      "storyPattern": {
+        "goal": "Reduce noise through a shared wall",
+        "relationship": "Neighbors in the same building",
+        "interaction": "A neighbor politely raises a concern, and the other apologizes and responds",
+        "outcome": "The music is turned down, and the room becomes quieter"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-14",
+      "storyId": "diner-asks-for-the-bill-to-be-split",
+      "domain": "food_service_orders",
+      "scenario": "coworkers_request_separate_checks_after_lunch",
+      "lexicalThemes": [
+        "eating out",
+        "paying",
+        "making a request"
+      ],
+      "targetVocabulary": [
+        "bill",
+        "separate",
+        "split",
+        "server",
+        "check"
+      ],
+      "brief": "After lunch together, two coworkers ask the server for separate checks, and each pays separately.",
+      "storyPattern": {
+        "goal": "Pay separately after a shared meal",
+        "relationship": "Coworkers dining together",
+        "interaction": "One coworker asks the server for separate checks",
+        "outcome": "The server brings two checks, and each coworker pays separately"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-14",
+      "storyId": "account-holder-finds-a-quiet-place-for-a-call",
+      "domain": "digital_accounts",
+      "scenario": "customer_moves_to_a_quiet_spot_to_continue_a_support_call",
+      "lexicalThemes": [
+        "phone call",
+        "explaining a difficulty",
+        "finding a quieter place"
+      ],
+      "targetVocabulary": [
+        "hear",
+        "call",
+        "nearby",
+        "quiet",
+        "continue"
+      ],
+      "brief": "A customer has trouble hearing a support representative because people nearby are talking. She explains that she needs a moment, moves to a quiet corner, and continues the call there.",
+      "storyPattern": {
+        "goal": "Hear a support conversation clearly",
+        "relationship": "Customer and support representative",
+        "interaction": "Explain the difficulty and pause briefly to change surroundings",
+        "outcome": "Continue the call in a quieter place"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-14",
+      "storyId": "tenant-and-landlord-agree-on-removable-shelves",
+      "domain": "housing_landlord",
+      "scenario": "tenant_and_landlord_choose_a_freestanding_kitchen_shelf_instead_of_drilling_into_tile",
+      "lexicalThemes": [
+        "rental home",
+        "household storage",
+        "asking before making changes",
+        "measuring space",
+        "alternatives"
+      ],
+      "targetVocabulary": [
+        "shelf",
+        "counter",
+        "wall",
+        "tile",
+        "measure",
+        "fit",
+        "freestanding",
+        "attach",
+        "instead"
+      ],
+      "brief": "Dana, a tenant with little counter space, checks with her landlord before drilling into the tiled kitchen wall. They measure the gap by the refrigerator, choose a small freestanding unit, and she assembles it without attaching anything to the wall.",
+      "storyPattern": {
+        "goal": "Add storage without altering a rental home",
+        "relationship": "Tenant and landlord",
+        "interaction": "The tenant explains her storage need; she and the landlord compare options and measure the available space.",
+        "outcome": "They choose a fitting freestanding unit, which the tenant assembles without attaching it to the wall."
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-14",
+      "storyId": "resident-troubleshoots-home-internet-dropouts",
+      "domain": "phone_internet",
+      "scenario": "resident_restores_video_call_by_securing_cable_and_repositioning_router",
+      "lexicalThemes": [
+        "home internet",
+        "describing visible symptoms",
+        "troubleshooting",
+        "connection quality",
+        "router placement"
+      ],
+      "targetVocabulary": [
+        "connection",
+        "router",
+        "cable",
+        "loose",
+        "disconnect",
+        "signal",
+        "behind",
+        "shelf",
+        "test"
+      ],
+      "brief": "Dana is working from home when her video call repeatedly disconnects. She calls support, checks a loose cable, then moves the router from behind a cabinet to an open shelf. The connection stays stable and she finishes her work without arranging a service visit.",
+      "storyPattern": {
+        "goal": "Restore a dependable home internet connection for a work call",
+        "relationship": "Resident and service representative",
+        "interaction": "Describe what is visible, check the cable, and test a change in router placement",
+        "outcome": "The connection stays stable and the resident finishes work without arranging a service visit"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-14",
+      "storyId": "dog-owner-arranges-a-walkers-first-visit",
+      "domain": "pets_veterinary",
+      "scenario": "owner_introduces_lula_to_a_new_walker_and_agrees_on_a_short_quiet_first_walk",
+      "lexicalThemes": [
+        "pet care",
+        "asking for help",
+        "walking routine",
+        "describing dog behavior",
+        "demonstrating how to use a harness and lead"
+      ],
+      "targetVocabulary": [
+        "dog walker",
+        "lead",
+        "harness",
+        "pull",
+        "other dogs",
+        "quiet route",
+        "wait",
+        "walk",
+        "message"
+      ],
+      "brief": "A dog owner had to stay late at work, so she asked a nearby dog walker to take her dog, Lula, out for a first short walk. She explained that Lula pulls toward other dogs, showed the walker how to attach the lead to the harness, and suggested waiting calmly when Lula hesitated at the entrance. They agreed on a quiet route and a message afterward.",
+      "storyPattern": {
+        "goal": "Arrange a suitable dog walk while the owner stays late at work",
+        "relationship": "Dog owner and nearby dog walker",
+        "interaction": "Explain Lula’s habits, demonstrate how to attach the lead, and suggest waiting calmly when she hesitates",
+        "outcome": "Agree on a short quiet first walk and a message afterward"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-14",
+      "storyId": "resident-and-clerk-correct-a-misfiled-document",
+      "domain": "government_documents",
+      "scenario": "resident_adds_and_labels_a_current_document_scan_while_preserving_the_older_version",
+      "lexicalThemes": [
+        "personal documents",
+        "correcting a file",
+        "dates and versions",
+        "clarifying a process",
+        "checking a scan"
+      ],
+      "targetVocabulary": [
+        "document",
+        "copy",
+        "scan",
+        "file",
+        "older",
+        "current",
+        "address",
+        "label",
+        "keep both",
+        "confirm"
+      ],
+      "brief": "Yael notices that the scan in her personal file shows an older address. She asks document-desk clerk Amir to add her current paper copy without changing anything else. Amir explains that both dated versions can remain in the file, and Yael confirms that she wants to keep both. He scans and labels the new copy, Yael checks the preview and confirms it is marked current, and she leaves with her original paper.",
+      "storyPattern": {
+        "goal": "Make the current address version clear in a personal file",
+        "relationship": "Resident Yael and document-desk clerk Amir",
+        "interaction": "Compare versions, clarify which copies remain, and check the scan preview",
+        "outcome": "Keep both dated copies, mark the new one as current, and return Yael's original paper"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-14",
+      "storyId": "friends-split-a-restaurant-bill-after-sharing-dishes",
+      "domain": "food_service_orders",
+      "scenario": "friends_split_shared_dishes_and_side_dish_evenly_and_cover_personal_extras",
+      "lexicalThemes": [
+        "restaurant bill",
+        "shared dishes",
+        "personal extras",
+        "polite disagreement",
+        "settling up"
+      ],
+      "targetVocabulary": [
+        "bill",
+        "shared",
+        "split evenly",
+        "extra",
+        "drink",
+        "side dish",
+        "separately",
+        "pay",
+        "share",
+        "transfer"
+      ],
+      "brief": "Friends Neta and Gil compare the restaurant bill, agree to split the shared dishes and side dish evenly while each pays for a personal extra, and settle up after checking the amounts.",
+      "storyPattern": {
+        "goal": "Settle a bill fairly after sharing a meal",
+        "relationship": "Friends dining together",
+        "interaction": "Compare the bill and clarify how shared items and personal extras should be divided",
+        "outcome": "Gil pays the bill, and Neta transfers her agreed share after they check the amounts"
+      },
+      "edition": "bet"
     }
   ]
 }
