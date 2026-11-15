@@ -21618,6 +21618,1310 @@
         "outcome": "Gil pays the bill, and Neta transfers her agreed share after they check the amounts"
       },
       "edition": "bet"
+    },
+    {
+      "date": "2026-11-15",
+      "storyId": "coworker-shows-new-hire-how-to-flag-a-delayed-task",
+      "domain": "employment_jobs",
+      "scenario": "new_employee_tells_coworker_about_unfinished_customer_request_and_leaves_note_for_next_shift",
+      "lexicalThemes": [
+        "work handovers",
+        "explaining a delay",
+        "status notes"
+      ],
+      "targetVocabulary": [
+        "shift",
+        "finish",
+        "delay",
+        "note",
+        "continue"
+      ],
+      "brief": "A new employee sees that she cannot finish a customer's request before her shift ends. She tells her coworker, Ido, who shows her where to leave a short note so the next shift can continue the request.",
+      "storyPattern": {
+        "goal": "Pass on an unfinished customer request clearly",
+        "relationship": "New employee and coworker",
+        "interaction": "The employee tells her coworker she will not finish in time, and he shows her where to leave a short note",
+        "outcome": "The next shift can continue the request"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-15",
+      "storyId": "tenant-and-roommate-agree-to-label-their-household-supplies",
+      "domain": "housing_landlord",
+      "scenario": "roommates_label_laundry_soap_bottles",
+      "lexicalThemes": [
+        "shared housing",
+        "household supplies",
+        "polite agreement"
+      ],
+      "targetVocabulary": [
+        "bottle",
+        "laundry soap",
+        "almost empty",
+        "write a name",
+        "belong to"
+      ],
+      "brief": "Two roommates notice that they use different laundry soap and that one bottle is almost empty. They write their names on the bottles so each can identify her own.",
+      "storyPattern": {
+        "goal": "Keep personal laundry soap distinct in a shared home",
+        "relationship": "Roommates sharing a household",
+        "interaction": "Notice a nearly empty bottle and write names on the bottles",
+        "outcome": "Each roommate knows which bottle is hers"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-15",
+      "storyId": "resident-asks-what-to-do-with-an-unclear-benefit-letter",
+      "domain": "social_benefits",
+      "scenario": "resident_and_service_worker_read_an_unclear_benefits_letter_sentence_together",
+      "lexicalThemes": [
+        "benefits correspondence",
+        "asking for clarification",
+        "unclear wording"
+      ],
+      "targetVocabulary": [
+        "מכתב",
+        "משפט",
+        "להבין",
+        "להסביר",
+        "יחד"
+      ],
+      "brief": "A resident asks a service worker to explain a sentence in a benefits letter that she does not understand. The worker offers to read that sentence together without guessing what it means.",
+      "storyPattern": {
+        "goal": "Understand a sentence in a benefits letter",
+        "relationship": "Resident and service worker",
+        "interaction": "The resident asks for an explanation, and the worker offers to read the specific sentence together",
+        "outcome": "They focus on the sentence without inventing an interpretation"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-15",
+      "storyId": "resident-sets-aside-a-question-about-a-water-bill-reading",
+      "domain": "bills_taxes",
+      "scenario": "housemates_mark_and_compare_water_bill_numbers",
+      "lexicalThemes": [
+        "household bills",
+        "comparing numbers",
+        "checking a detail"
+      ],
+      "targetVocabulary": [
+        "water bill",
+        "number",
+        "note",
+        "mark",
+        "check"
+      ],
+      "brief": "A resident compares the number on her water bill with the number in her home note, marks both, and asks her housemate to check them with her before deciding what the difference means.",
+      "storyPattern": {
+        "goal": "Compare the water bill number with a number in a home note before drawing a conclusion.",
+        "relationship": "Housemates sharing a home.",
+        "interaction": "She marks both numbers and asks her housemate to check them together.",
+        "outcome": "They keep the question open until they check the numbers."
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-15",
+      "storyId": "resident-rehearses-a-clear-description-for-a-municipal-call",
+      "domain": "municipal_services",
+      "scenario": "resident_writes_down_two_landmarks_to_describe_a_running_public_tap_by_phone",
+      "lexicalThemes": [
+        "municipal services",
+        "describing a location",
+        "preparing a report"
+      ],
+      "targetVocabulary": [
+        "tap",
+        "running water",
+        "near",
+        "grocery store",
+        "garden",
+        "landmark",
+        "location"
+      ],
+      "brief": "A resident notices that a public tap near her building keeps running. She writes down two nearby landmarks and uses them to describe the tap's location during a phone call.",
+      "storyPattern": {
+        "goal": "Describe a public issue so it can be located",
+        "relationship": "Resident acting independently",
+        "interaction": "Write down nearby landmarks and give a precise location by phone",
+        "outcome": "Make the report with a clear description of the tap"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-15",
+      "storyId": "shopper-chooses-a-clothing-size-by-sitting-and-reaching",
+      "domain": "shopping_returns",
+      "scenario": "shopper_tests_jacket_mobility_in_two_sizes_before_choosing",
+      "lexicalThemes": [
+        "trying on clothes",
+        "describing fit",
+        "comparing sizes"
+      ],
+      "targetVocabulary": [
+        "jacket",
+        "sleeve",
+        "tight",
+        "reach",
+        "size"
+      ],
+      "brief": "A shopper tries on a jacket, finds its sleeves tight when she reaches, then tries a larger size while sitting and reaching and chooses the comfortable one.",
+      "storyPattern": {
+        "goal": "Choose a jacket that allows comfortable movement",
+        "relationship": "Shopper acting independently",
+        "interaction": "Try the jacket, reach, and compare a larger size while sitting",
+        "outcome": "Choose the jacket that feels comfortable while moving"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-15",
+      "storyId": "parent-and-child-practice-a-new-school-bus-stop",
+      "domain": "school_childcare",
+      "scenario": "father_shows_child_the_correct_sign_for_a_new_school_bus_stop",
+      "lexicalThemes": [
+        "school transport",
+        "finding a stop",
+        "giving a clear explanation"
+      ],
+      "targetVocabulary": [
+        "bus stop",
+        "sign",
+        "opposite side",
+        "stand",
+        "arrive"
+      ],
+      "brief": "A father and child go to the child’s new school-bus stop. The child first stands on the other side of the street, so the father points out the correct sign. They wait together beside it until the bus arrives.",
+      "storyPattern": {
+        "goal": "Help a child identify the correct school-bus stop",
+        "relationship": "Father and child",
+        "interaction": "The father notices the child waiting on the other side of the street and points out the correct sign",
+        "outcome": "They wait together beside the correct sign until the bus arrives"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-15",
+      "storyId": "sender-asks-the-postal-clerk-to-weigh-a-parcel-again",
+      "domain": "postal_parcels",
+      "scenario": "sender_asks_clerk_to_reweigh_parcel_and_correct_label",
+      "lexicalThemes": [
+        "sending a parcel",
+        "weights and numbers",
+        "correcting a label"
+      ],
+      "targetVocabulary": [
+        "חבילה",
+        "משקל",
+        "לשקול",
+        "שוב",
+        "לתקן"
+      ],
+      "brief": "A sender notices that a parcel label shows a number that does not match what she expected. She asks the postal clerk to weigh the parcel again, and the clerk corrects the label to match the scale.",
+      "storyPattern": {
+        "goal": "Make sure the parcel label matches its measured weight.",
+        "relationship": "A sender and a postal clerk.",
+        "interaction": "The sender points out that the number on the label does not match and asks for another weighing.",
+        "outcome": "The clerk checks the parcel and corrects the label to match the scale."
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-15",
+      "storyId": "neighbor-leaves-a-note-about-a-shared-tool",
+      "domain": "neighbors_building",
+      "scenario": "neighbor_tightens_a_shared_screwdriver_handle",
+      "lexicalThemes": [
+        "neighbors",
+        "shared items",
+        "describing a small repair"
+      ],
+      "targetVocabulary": [
+        "מברג",
+        "ידית",
+        "רופפת",
+        "מחזקת",
+        "מוכן"
+      ],
+      "brief": "A neighbor takes a screwdriver from the building's shared shelf, notices its handle is loose, tightens the screw, and returns the tool ready to use.",
+      "storyPattern": {
+        "goal": "Return a shared tool in usable condition",
+        "relationship": "A neighbor using a shared building item",
+        "interaction": "Notice a loose handle and tighten its screw",
+        "outcome": "The screwdriver is returned ready to use"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-15",
+      "storyId": "passenger-asks-another-rider-to-watch-a-stroller-briefly",
+      "domain": "transport_fares_routes",
+      "scenario": "train_passenger_gets_brief_help_repositioning_a_stroller_away_from_the_doorway",
+      "lexicalThemes": [
+        "public transport",
+        "asking for brief help",
+        "stroller placement"
+      ],
+      "targetVocabulary": [
+        "train",
+        "stroller",
+        "doorway",
+        "for a moment",
+        "move"
+      ],
+      "brief": "On a train, Noa asks a fellow passenger to watch her stroller briefly while she moves it away from the doorway, then thanks him when she has placed it safely in a clearer space.",
+      "storyPattern": {
+        "goal": "Move the stroller away from the train doorway",
+        "relationship": "Passenger and fellow rider",
+        "interaction": "Ask a nearby rider to watch the stroller briefly while repositioning it",
+        "outcome": "Place the stroller in a clearer space away from the door"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-15",
+      "storyId": "customer-asks-which-cable-fits-a-phone-charger",
+      "domain": "phone_internet",
+      "scenario": "customer_identifies_a_compatible_replacement_charging_cable_by_comparing_connectors",
+      "lexicalThemes": [
+        "phone accessories",
+        "describing a problem",
+        "matching connectors"
+      ],
+      "targetVocabulary": [
+        "charger",
+        "cable",
+        "frayed",
+        "connector",
+        "fit"
+      ],
+      "brief": "A customer brings a charger with a frayed cable to a shop. The shop worker compares the connector with her phone, and she buys a matching replacement cable.",
+      "storyPattern": {
+        "goal": "Find a replacement cable that fits an existing charger",
+        "relationship": "Customer and shop worker",
+        "interaction": "Show the damaged cable and compare connector shapes",
+        "outcome": "Choose a matching replacement"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-15",
+      "storyId": "shopper-builds-a-weeknight-shopping-list-around-pantry-staples",
+      "domain": "supermarket_queues",
+      "scenario": "rina_chooses_rice_and_tomatoes_that_fit_her_storage_and_meal_plans",
+      "lexicalThemes": [
+        "grocery quantities",
+        "pantry staples",
+        "storage space",
+        "ripeness",
+        "planning meals"
+      ],
+      "targetVocabulary": [
+        "almost out",
+        "still have",
+        "smaller bag",
+        "take up space",
+        "firmer",
+        "later in the week"
+      ],
+      "brief": "At a neighborhood supermarket, Rina checks her cupboard space before choosing a small bag of rice, then swaps soft tomatoes for firmer ones to use later in the week.",
+      "storyPattern": {
+        "goal": "Choose groceries that fit household needs and storage",
+        "relationship": "Two shoppers exchange practical advice",
+        "interaction": "Rina asks whether a small rice bag is enough, then checks her cupboard space and swaps soft tomatoes for firmer ones",
+        "outcome": "She chooses a manageable bag of rice and tomatoes suitable for later in the week"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-15",
+      "storyId": "employee-prepares-two-copies-for-an-appointment",
+      "domain": "employment_jobs",
+      "scenario": "noa_checks_and_reprints_faint_work_document_before_appointment",
+      "lexicalThemes": [
+        "workplace paperwork",
+        "copy clarity",
+        "appointment preparation",
+        "asking what to keep"
+      ],
+      "targetVocabulary": [
+        "signed paper",
+        "printed copy",
+        "faint",
+        "clear",
+        "print a new copy",
+        "keep separate",
+        "ask"
+      ],
+      "brief": "Noa checks paperwork from work with her colleague Dani before an appointment. They notice a line is hard to read on the printout, so she makes a clearer copy, keeps the signed original separate, and writes a reminder to ask which version the office wants to keep.",
+      "storyPattern": {
+        "goal": "Prepare readable workplace paperwork for an appointment",
+        "relationship": "Colleagues sharing practical experience",
+        "interaction": "Compare the printout with the original and notice that a line is unclear",
+        "outcome": "Make a clearer copy, keep the signed original separate, and note a question for the office"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-15",
+      "storyId": "owner-gets-a-reluctant-cat-into-its-carrier",
+      "domain": "pets_veterinary",
+      "scenario": "dana_patiently_prepares_her_cat_for_a_routine_checkup",
+      "lexicalThemes": [
+        "pet care",
+        "preparing for an appointment",
+        "neighborly help",
+        "patience"
+      ],
+      "targetVocabulary": [
+        "carrier",
+        "blanket",
+        "go inside",
+        "sniff",
+        "gently",
+        "checkup"
+      ],
+      "brief": "Dana's cat is reluctant to enter its carrier before a routine checkup. With neighbor Yael's suggestion to leave the carrier open and put a familiar blanket inside, Dana gives the cat time; it eventually settles in, and she gently closes the door so they can leave for the checkup.",
+      "storyPattern": {
+        "goal": "Get a reluctant cat into its carrier before a routine checkup",
+        "relationship": "Cat owner Dana and neighbor Yael, who has cared for cats",
+        "interaction": "Yael suggests an open carrier and a familiar blanket; Dana tries it and gives the cat time",
+        "outcome": "The cat settles inside, and Dana gently closes the carrier door so they can leave for the checkup"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-15",
+      "storyId": "coworkers-clarify-a-missing-workday-entry",
+      "domain": "work_pay",
+      "scenario": "employee_and_payroll_clerk_trace_a_shift_listed_under_another_date",
+      "lexicalThemes": [
+        "pay statement",
+        "work shifts",
+        "dates",
+        "explaining a discrepancy",
+        "follow-up"
+      ],
+      "targetVocabulary": [
+        "pay statement",
+        "shift",
+        "wrong date",
+        "message",
+        "check the record",
+        "write down",
+        "follow up"
+      ],
+      "brief": "Yael compares her work calendar with her pay statement and asks payroll clerk Eitan to check a missing workday. Her message shows that she covered a colleague's shift on Tuesday, but the record lists it under another date. Eitan records the discrepancy for follow-up, and Yael keeps the message with her pay statement.",
+      "storyPattern": {
+        "goal": "Clarify why a workday appears under a different date",
+        "relationship": "Employee and payroll clerk",
+        "interaction": "Compare a personal message with the recorded work entry",
+        "outcome": "Record the discrepancy for follow-up and keep the supporting message with the pay statement"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-15",
+      "storyId": "neighbors-coordinate-use-of-a-shared-delivery-window",
+      "domain": "delivery_customer_service",
+      "scenario": "neighbors_message_each_other_and_bring_two_deliveries_inside_in_sequence",
+      "lexicalThemes": [
+        "furniture deliveries",
+        "shared entrance",
+        "uncertain arrival times",
+        "messaging a neighbor",
+        "keeping a hallway clear"
+      ],
+      "targetVocabulary": [
+        "delivery",
+        "boxes",
+        "table",
+        "entrance",
+        "hallway",
+        "driver",
+        "message",
+        "bring inside",
+        "keep clear"
+      ],
+      "brief": "Neighbors Michal and Oren coordinate the arrival of their separate furniture deliveries. Oren brings his boxes inside first, then Michal brings in her long table; they keep the shared entrance and hallway clear.",
+      "storyPattern": {
+        "goal": "Receive two large deliveries without blocking the shared entrance",
+        "relationship": "Neighbors coordinating their separate furniture deliveries",
+        "interaction": "They explain the delivery timing uncertainty, agree to message each other, and offer practical help",
+        "outcome": "Oren brings his boxes inside first, then Michal brings in her table; the entrance remains clear"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-15",
+      "storyId": "coworker-shows-new-hire-how-to-flag-a-delayed-task",
+      "domain": "employment_jobs",
+      "scenario": "new_employee_tells_coworker_about_unfinished_customer_request_and_leaves_a_note_for_next_shift",
+      "lexicalThemes": [
+        "work handovers",
+        "explaining a delay",
+        "status notes"
+      ],
+      "targetVocabulary": [
+        "shift",
+        "finish",
+        "delay",
+        "note",
+        "continue"
+      ],
+      "brief": "A new employee cannot finish a customer's request before her shift ends, so she tells a coworker and learns where to leave a short note for the next shift.",
+      "storyPattern": {
+        "goal": "Pass on an unfinished customer request clearly",
+        "relationship": "New employee and coworker",
+        "interaction": "She explains that she has not finished the request, and her coworker shows her where to write a short note",
+        "outcome": "The next shift can continue the customer's request"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-15",
+      "storyId": "tenant-and-roommate-agree-to-label-their-household-supplies",
+      "domain": "housing_landlord",
+      "scenario": "roommates_label_laundry_soap_bottles_after_noticing_one_is_almost_empty",
+      "lexicalThemes": [
+        "shared housing",
+        "household supplies",
+        "polite agreement"
+      ],
+      "targetVocabulary": [
+        "bottle",
+        "laundry soap",
+        "almost empty",
+        "label",
+        "belong to"
+      ],
+      "brief": "Two roommates notice that they use different laundry soap and one bottle is almost empty, so they label the bottles to identify whose is whose.",
+      "storyPattern": {
+        "goal": "Keep personal laundry soap distinct in their shared home",
+        "relationship": "Roommates sharing a household",
+        "interaction": "One roommate notices a bottle is almost empty, and they label their bottles",
+        "outcome": "Each roommate can identify her own bottle"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-15",
+      "storyId": "resident-asks-what-to-do-with-an-unclear-benefit-letter",
+      "domain": "social_benefits",
+      "scenario": "resident_asks_a_service_worker_to_read_an_unclear_benefits_letter_sentence_together",
+      "lexicalThemes": [
+        "benefits correspondence",
+        "asking for clarification",
+        "unclear wording"
+      ],
+      "targetVocabulary": [
+        "letter",
+        "benefit",
+        "sentence",
+        "understand",
+        "explain",
+        "together"
+      ],
+      "brief": "A resident receives a benefits letter, does not understand one sentence, and asks a service worker to explain it. The worker points to the sentence and offers to read it together without guessing beyond the wording.",
+      "storyPattern": {
+        "goal": "Understand a sentence in a benefits letter",
+        "relationship": "Resident and service worker",
+        "interaction": "The resident asks for help; the worker points to the unclear sentence and offers to read it together",
+        "outcome": "They focus on the specific sentence without guessing what the letter means beyond its text"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-15",
+      "storyId": "resident-sets-aside-a-question-about-a-water-bill-reading",
+      "domain": "bills_taxes",
+      "scenario": "noa_and_housemate_mark_and_check_different_water_bill_readings",
+      "lexicalThemes": [
+        "household bills",
+        "comparing figures",
+        "checking a detail"
+      ],
+      "targetVocabulary": [
+        "bill",
+        "reading",
+        "number",
+        "compare",
+        "check"
+      ],
+      "brief": "Noa compares the water reading on her bill with her note from home, sees that the figures differ, and asks her housemate to check them with her before they decide what the difference means.",
+      "storyPattern": {
+        "goal": "Compare the bill's water reading with Noa's home note before deciding what the difference means",
+        "relationship": "Housemates sharing a household",
+        "interaction": "Noa marks both figures and asks her housemate to check them with her",
+        "outcome": "They keep the question open until they check the numbers together"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-15",
+      "storyId": "resident-rehearses-a-clear-description-for-a-municipal-call",
+      "domain": "municipal_services",
+      "scenario": "resident_writes_down_two_landmarks_to_describe_a_running_public_tap_during_a_municipal_call",
+      "lexicalThemes": [
+        "municipal services",
+        "describing a location",
+        "preparing a report"
+      ],
+      "targetVocabulary": [
+        "tap",
+        "running",
+        "near",
+        "landmark",
+        "location"
+      ],
+      "brief": "A resident noticed that a public tap near her home kept running. She wrote down two nearby landmarks and used them to describe its location when she called the municipality.",
+      "storyPattern": {
+        "goal": "Describe a public issue so it can be located",
+        "relationship": "Resident acting independently",
+        "interaction": "Write down two nearby landmarks and give a precise location during a call",
+        "outcome": "Make the report with a clear description"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-15",
+      "storyId": "shopper-chooses-a-clothing-size-by-sitting-and-reaching",
+      "domain": "shopping_returns",
+      "scenario": "shopper_tests_jacket_mobility_in_two_sizes_before_choosing",
+      "lexicalThemes": [
+        "trying on clothes",
+        "describing fit",
+        "comparing sizes"
+      ],
+      "targetVocabulary": [
+        "jacket",
+        "sleeve",
+        "tight",
+        "reach",
+        "size"
+      ],
+      "brief": "A shopper tried on a jacket, noticed that its sleeves felt tight when she reached forward, then tested the next size while sitting and reaching before choosing the more comfortable fit.",
+      "storyPattern": {
+        "goal": "Choose clothing that allows comfortable movement",
+        "relationship": "Shopper acting independently",
+        "interaction": "Test fit through ordinary movements and compare sizes",
+        "outcome": "Choose the size that feels comfortable in motion"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-15",
+      "storyId": "parent-and-child-practice-a-new-school-bus-stop",
+      "domain": "school_childcare",
+      "scenario": "parent_points_out_the_correct_school_bus_stop_sign",
+      "lexicalThemes": [
+        "school transport",
+        "finding a stop",
+        "giving a clear explanation"
+      ],
+      "targetVocabulary": [
+        "bus stop",
+        "sign",
+        "opposite side",
+        "stand",
+        "arrive"
+      ],
+      "brief": "A parent walks with their son to his new school-bus stop. The child waits across the street, so the parent points out the correct sign, and they wait together until the bus arrives.",
+      "storyPattern": {
+        "goal": "Help a child identify the correct school-bus stop",
+        "relationship": "Parent and child",
+        "interaction": "Notice that the child is waiting across the street and point out the correct sign",
+        "outcome": "Wait together at the correct stop until the bus arrives"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-15",
+      "storyId": "sender-asks-the-postal-clerk-to-weigh-a-parcel-again",
+      "domain": "postal_parcels",
+      "scenario": "sender_and_postal_clerk_recheck_a_parcel_weight_and_correct_the_label",
+      "lexicalThemes": [
+        "sending a parcel",
+        "weights and numbers",
+        "correcting a label"
+      ],
+      "targetVocabulary": [
+        "parcel",
+        "weight",
+        "scale",
+        "again",
+        "correct"
+      ],
+      "brief": "At the post office, a sender notices that the weight on her parcel label does not match what she expected. She asks the clerk to weigh it again; they check the scale together, and the clerk corrects the label to match the displayed weight.",
+      "storyPattern": {
+        "goal": "Make sure a parcel label reflects its measured weight",
+        "relationship": "Sender and postal clerk",
+        "interaction": "Point out a mismatch and recheck the measurement together",
+        "outcome": "Correct the label to match the scale"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-15",
+      "storyId": "neighbor-leaves-a-note-about-a-shared-tool",
+      "domain": "neighbors_building",
+      "scenario": "neighbor_fixes_and_returns_a_shared_screwdriver",
+      "lexicalThemes": [
+        "neighbors",
+        "shared items",
+        "describing a small repair"
+      ],
+      "targetVocabulary": [
+        "screwdriver",
+        "handle",
+        "loose",
+        "tighten",
+        "ready"
+      ],
+      "brief": "A neighbor borrows the shared building screwdriver, notices that its handle is loose, tightens the screw, returns it, and leaves a note that it is ready to use.",
+      "storyPattern": {
+        "goal": "Return a shared tool in usable condition",
+        "relationship": "A neighbor using a shared building item",
+        "interaction": "Notice a loose handle, tighten its screw, and leave a brief update",
+        "outcome": "The screwdriver is returned ready to use"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-15",
+      "storyId": "passenger-asks-another-rider-to-watch-a-stroller-briefly",
+      "domain": "transport_fares_routes",
+      "scenario": "train_passenger_gets_brief_help_repositioning_a_stroller_away_from_the_doorway",
+      "lexicalThemes": [
+        "public transport",
+        "asking for brief help",
+        "stroller placement"
+      ],
+      "targetVocabulary": [
+        "train",
+        "stroller",
+        "doorway",
+        "for a moment",
+        "move"
+      ],
+      "brief": "On a train, a passenger asks the rider beside her to watch her stroller briefly while she moves it away from the doorway to a clearer space.",
+      "storyPattern": {
+        "goal": "Move the stroller away from the doorway",
+        "relationship": "Passenger and fellow rider",
+        "interaction": "The passenger explains that she cannot see the space well and asks the rider to watch the stroller briefly",
+        "outcome": "The rider agrees, and she moves the stroller to a clear space"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-15",
+      "storyId": "customer-asks-which-cable-fits-a-phone-charger",
+      "domain": "phone_internet",
+      "scenario": "customer_finds_a_matching_replacement_cable_after_showing_a_frayed_charger_cable",
+      "lexicalThemes": [
+        "phone accessories",
+        "describing a problem",
+        "matching connectors"
+      ],
+      "targetVocabulary": [
+        "מטען",
+        "כבל",
+        "נפרם",
+        "חיבור",
+        "מתאים"
+      ],
+      "brief": "A customer brings a frayed phone-charger cable to a shop, asks which replacement fits her phone, and buys a cable with a matching connector after the worker compares it with the phone.",
+      "storyPattern": {
+        "goal": "Find a replacement cable that fits an existing phone charger and phone.",
+        "relationship": "Customer and shop worker",
+        "interaction": "The customer shows the frayed cable and asks which one fits; the worker compares the connector with her phone.",
+        "outcome": "The customer buys a cable with a matching connector."
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-15",
+      "storyId": "shopper-builds-a-weeknight-shopping-list-around-pantry-staples",
+      "domain": "supermarket_queues",
+      "scenario": "rina_chooses_rice_and_tomatoes_for_weeknight_meals",
+      "lexicalThemes": [
+        "grocery quantities",
+        "pantry staples",
+        "storage space",
+        "ripeness",
+        "planning meals"
+      ],
+      "targetVocabulary": [
+        "almost out",
+        "still have",
+        "smaller bag",
+        "take up space",
+        "firmer",
+        "later in the week"
+      ],
+      "brief": "Rina shops at her neighborhood supermarket for several evening meals. After checking what she has at home and how much cupboard space is available, she chooses a smaller bag of rice despite hearing that the larger bag is on promotion. She swaps very soft tomatoes for firmer ones for later meals.",
+      "storyPattern": {
+        "goal": "Choose groceries that fit her household needs and cupboard space.",
+        "relationship": "Two shoppers exchange practical advice.",
+        "interaction": "Rina asks about the smaller rice bag, hears that the larger one is on promotion, and checks her cupboard space; she also replaces very soft tomatoes with firmer ones.",
+        "outcome": "She chooses the smaller rice bag and suitable tomatoes for later in the week."
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-15",
+      "storyId": "employee-prepares-two-copies-for-an-appointment",
+      "domain": "employment_jobs",
+      "scenario": "resident_checks_and_reprints_faint_work_document_for_appointment",
+      "lexicalThemes": [
+        "workplace documents",
+        "copy quality",
+        "appointment preparation",
+        "clarifying a request"
+      ],
+      "targetVocabulary": [
+        "signed original",
+        "scan",
+        "printout",
+        "faint",
+        "hard to read",
+        "make another copy",
+        "keep separate"
+      ],
+      "brief": "A resident prepared workplace paperwork for an appointment, asked a colleague to check a faint printout, made a clearer copy, and kept the signed original separate while noting that she would ask which copy the office wanted to keep.",
+      "storyPattern": {
+        "goal": "Prepare clear workplace paperwork for an appointment",
+        "relationship": "Colleagues sharing practical experience",
+        "interaction": "Compare the printout with its original and notice that a line is hard to read",
+        "outcome": "Make a clearer copy, keep the original separate, and note a question for the office"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-15",
+      "storyId": "owner-gets-a-reluctant-cat-into-its-carrier",
+      "domain": "pets_veterinary",
+      "scenario": "dana_lets_her_cat_approach_an_open_carrier_with_a_familiar_blanket",
+      "lexicalThemes": [
+        "pet care",
+        "preparing for an appointment",
+        "offering practical help",
+        "patience and choice"
+      ],
+      "targetVocabulary": [
+        "carrier",
+        "familiar blanket",
+        "step inside",
+        "back away",
+        "gently",
+        "routine checkup"
+      ],
+      "brief": "Before a routine checkup, Dana places the carrier where her cat can see the room and puts a familiar blanket inside. After the cat briefly investigates and leaves, Dana gives it time; it returns and settles in, allowing her to close the carrier gently and leave for the appointment.",
+      "storyPattern": {
+        "goal": "Get a reluctant cat into its carrier before a routine checkup",
+        "relationship": "Pet owner Dana and her neighbor Yael, who has cared for cats",
+        "interaction": "Yael suggests an open carrier and familiar blanket; Dana asks about its position and follows the suggestion",
+        "outcome": "After briefly investigating and leaving, the cat returns and settles inside, and Dana gently closes the carrier before leaving for the checkup"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-15",
+      "storyId": "coworkers-clarify-a-missing-workday-entry",
+      "domain": "work_pay",
+      "scenario": "employee_and_payroll_clerk_compare_a_shift_message_with_a_wrong_date_in_the_work_record",
+      "lexicalThemes": [
+        "pay statements",
+        "work shifts",
+        "dates",
+        "explaining a discrepancy",
+        "follow-up"
+      ],
+      "targetVocabulary": [
+        "pay statement",
+        "shift",
+        "wrong date",
+        "I may have",
+        "check the record",
+        "message",
+        "write down",
+        "follow up"
+      ],
+      "brief": "Yael notices that a day she worked appears under the wrong date on her pay statement. She and payroll clerk Eitan compare her message about covering a colleague’s shift with the recorded entry, identify the mismatch, and agree to request a correction. Eitan records it for follow-up, and Yael keeps the message with her pay papers.",
+      "storyPattern": {
+        "goal": "Clarify a workday that appears under an incorrect date",
+        "relationship": "Employee Yael and payroll clerk Eitan",
+        "interaction": "Compare a message about a shift with the recorded entry and identify a date mismatch",
+        "outcome": "Eitan records the discrepancy for follow-up, and Yael keeps the supporting message with her pay papers"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-15",
+      "storyId": "neighbors-coordinate-use-of-a-shared-delivery-window",
+      "domain": "delivery_customer_service",
+      "scenario": "neighbors_coordinate_two_furniture_deliveries_and_keep_the_shared_entrance_clear",
+      "lexicalThemes": [
+        "furniture deliveries",
+        "shared entrance",
+        "uncertain arrival times",
+        "neighbor coordination",
+        "offering help"
+      ],
+      "targetVocabulary": [
+        "משלוח",
+        "ארגזים",
+        "שולחן",
+        "כניסה",
+        "לחסום",
+        "להחזיק את הדלת",
+        "הודעה",
+        "פנוי"
+      ],
+      "brief": "Neighbors Michal and Oren coordinate their separate furniture deliveries to keep their building entrance clear. Oren's boxes arrive first and he takes them inside; Michal later receives her table with the entrance unobstructed.",
+      "storyPattern": {
+        "goal": "Receive separate furniture deliveries without blocking shared access",
+        "relationship": "Neighbors coordinating household deliveries",
+        "interaction": "Discuss the uncertain arrival times, agree to message each other, and offer practical help",
+        "outcome": "Oren brings his boxes inside first, then Michal brings in her table while keeping the entrance clear"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-15",
+      "storyId": "coworker-shows-new-hire-how-to-flag-a-delayed-task",
+      "domain": "employment_jobs",
+      "scenario": "new_employee_reports_a_delayed_customer_request_and_leaves_a_status_note_for_the_next_shift",
+      "lexicalThemes": [
+        "work handovers",
+        "explaining a delay",
+        "status notes"
+      ],
+      "targetVocabulary": [
+        "shift",
+        "finish",
+        "delay",
+        "note",
+        "continue"
+      ],
+      "brief": "A new employee realizes near the end of her shift that she will not finish a customer's request. She tells coworker Yoav early, and he shows her where to leave a short status note so the next shift can continue the request.",
+      "storyPattern": {
+        "goal": "Pass on an unfinished customer request clearly",
+        "relationship": "New employee and coworker",
+        "interaction": "She explains the delay early, and he shows her where to leave a concise status update",
+        "outcome": "The next shift can continue the customer's request"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-15",
+      "storyId": "tenant-and-roommate-agree-to-label-their-household-supplies",
+      "domain": "housing_landlord",
+      "scenario": "roommates_label_laundry_soap_bottles_to_tell_them_apart",
+      "lexicalThemes": [
+        "shared housing",
+        "laundry supplies",
+        "polite agreement"
+      ],
+      "targetVocabulary": [
+        "bottle",
+        "soap",
+        "similar",
+        "label",
+        "belong to"
+      ],
+      "brief": "Two roommates use different laundry soaps kept in similar bottles. They write their names on the bottles so each can identify her own.",
+      "storyPattern": {
+        "goal": "Keep each roommate's laundry soap distinct",
+        "relationship": "Roommates sharing a household",
+        "interaction": "Notice that the soap bottles look alike and agree to mark them",
+        "outcome": "Each roommate can identify her own bottle"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-15",
+      "storyId": "resident-asks-what-to-do-with-an-unclear-benefit-letter",
+      "domain": "social_benefits",
+      "scenario": "resident_and_service_worker_review_one_unclear_sentence_in_a_benefits_letter",
+      "lexicalThemes": [
+        "benefits correspondence",
+        "asking for clarification",
+        "unclear wording"
+      ],
+      "targetVocabulary": [
+        "מכתב",
+        "משפט",
+        "להבין",
+        "להסביר",
+        "יחד"
+      ],
+      "brief": "A resident reads a benefits letter and finds one sentence unclear. She points it out, and a service worker offers to examine that sentence with her while sticking to what the letter actually says.",
+      "storyPattern": {
+        "goal": "Understand an unclear sentence in a benefits letter",
+        "relationship": "Resident and service worker",
+        "interaction": "The resident points to the sentence; the worker offers to look at it together and sticks to its written wording",
+        "outcome": "They focus on the specific sentence without guessing what it means beyond the text"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-15",
+      "storyId": "resident-sets-aside-a-question-about-a-water-bill-reading",
+      "domain": "bills_taxes",
+      "scenario": "housemates_compare_a_water_bill_reading_with_a_personal_note_before_deciding_what_it_means",
+      "lexicalThemes": [
+        "household bills",
+        "comparing figures",
+        "checking a detail"
+      ],
+      "targetVocabulary": [
+        "bill",
+        "reading",
+        "number",
+        "compare",
+        "check"
+      ],
+      "brief": "A resident compares the reading on her water bill with a note she made at home, marks the different figures, and asks her housemate to check them together before deciding whether there is a problem.",
+      "storyPattern": {
+        "goal": "Compare two household readings before concluding there is a problem",
+        "relationship": "Housemates sharing a household",
+        "interaction": "Mark a discrepancy and agree to check the figures together",
+        "outcome": "Keep the question specific until the numbers are checked"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-15",
+      "storyId": "resident-rehearses-a-clear-description-for-a-municipal-call",
+      "domain": "municipal_services",
+      "scenario": "resident_writes_down_landmarks_and_reports_a_running_public_tap",
+      "lexicalThemes": [
+        "municipal services",
+        "describing a location",
+        "preparing a report"
+      ],
+      "targetVocabulary": [
+        "public tap",
+        "running",
+        "near",
+        "landmark",
+        "location"
+      ],
+      "brief": "A resident writes down two nearby landmarks before calling the municipality, then uses them to describe the location of a public tap that keeps running.",
+      "storyPattern": {
+        "goal": "Describe a running public tap so its location is clear",
+        "relationship": "Resident acting independently",
+        "interaction": "Write down two nearby landmarks and use them in a municipal call",
+        "outcome": "Make the report with a clear description of the location"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-15",
+      "storyId": "shopper-chooses-a-clothing-size-by-sitting-and-reaching",
+      "domain": "shopping_returns",
+      "scenario": "shopper_tests_jacket_mobility_in_two_sizes_before_choosing",
+      "lexicalThemes": [
+        "trying on clothes",
+        "describing fit",
+        "comparing sizes"
+      ],
+      "targetVocabulary": [
+        "jacket",
+        "sleeve",
+        "tight",
+        "reach",
+        "size"
+      ],
+      "brief": "A shopper compares two jacket sizes by sitting and reaching, then chooses the size that lets her move comfortably.",
+      "storyPattern": {
+        "goal": "Choose clothing that allows comfortable movement",
+        "relationship": "Shopper acting independently",
+        "interaction": "Test fit through ordinary movements and compare sizes",
+        "outcome": "Choose the size that feels comfortable in motion"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-15",
+      "storyId": "parent-and-child-practice-a-new-school-bus-stop",
+      "domain": "school_childcare",
+      "scenario": "mother_shows_son_the_correct_sign_for_his_new_school_bus_stop",
+      "lexicalThemes": [
+        "school transport",
+        "finding a stop",
+        "giving a clear explanation"
+      ],
+      "targetVocabulary": [
+        "bus stop",
+        "sign",
+        "opposite side",
+        "stand",
+        "arrive"
+      ],
+      "brief": "A mother walks with her son to his new school-bus stop. He waits on the opposite side of the street, so she points out the correct sign and they stand together beside it until the bus arrives.",
+      "storyPattern": {
+        "goal": "Help a child identify the correct school-bus stop",
+        "relationship": "Mother and son",
+        "interaction": "Notice the child waiting on the opposite side of the street and point out the right sign",
+        "outcome": "Stand together beside the correct sign until the bus arrives"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-15",
+      "storyId": "sender-asks-the-postal-clerk-to-weigh-a-parcel-again",
+      "domain": "postal_parcels",
+      "scenario": "sender_and_postal_clerk_recheck_a_parcel_weight_and_correct_the_label",
+      "lexicalThemes": [
+        "sending a parcel",
+        "weights and numbers",
+        "correcting a label"
+      ],
+      "targetVocabulary": [
+        "parcel",
+        "weight",
+        "scale",
+        "again",
+        "correct"
+      ],
+      "brief": "Noa notices that the parcel label shows a different weight than she expected. She asks the postal clerk to weigh the parcel again. They check the scale together, and the clerk corrects the label to match the displayed weight.",
+      "storyPattern": {
+        "goal": "Make sure a parcel label reflects its measured weight",
+        "relationship": "Sender and postal clerk",
+        "interaction": "Point out a mismatch and recheck the measurement together",
+        "outcome": "Correct the label to match the scale"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-15",
+      "storyId": "neighbor-leaves-a-note-about-a-shared-tool",
+      "domain": "neighbors_building",
+      "scenario": "neighbor_repairs_a_loose_handle_on_a_shared_screwdriver_and_leaves_a_note",
+      "lexicalThemes": [
+        "neighbors",
+        "shared items",
+        "describing a small repair"
+      ],
+      "targetVocabulary": [
+        "screwdriver",
+        "handle",
+        "loose",
+        "tighten",
+        "ready"
+      ],
+      "brief": "A neighbor borrows a screwdriver from the building’s shared shelf, notices its handle is loose, tightens the screw, returns it, and leaves a note that it is ready to use.",
+      "storyPattern": {
+        "goal": "Return a shared tool in usable condition",
+        "relationship": "Neighbor using a shared building item",
+        "interaction": "Notice a minor problem, fix it, and leave a brief update",
+        "outcome": "The tool is returned ready to use"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-15",
+      "storyId": "passenger-asks-another-rider-to-watch-a-stroller-briefly",
+      "domain": "transport_fares_routes",
+      "scenario": "train_passenger_gets_brief_help_repositioning_a_stroller_away_from_the_doorway",
+      "lexicalThemes": [
+        "public transport",
+        "asking for brief help",
+        "stroller placement"
+      ],
+      "targetVocabulary": [
+        "train",
+        "stroller",
+        "doorway",
+        "for a moment",
+        "move"
+      ],
+      "brief": "A passenger on a train cannot see the space around her stroller well and asks the passenger beside her to keep an eye on it briefly while she moves it away from the doorway to a clear space. The other passenger agrees.",
+      "storyPattern": {
+        "goal": "Move a stroller away from a doorway to a clear space",
+        "relationship": "Passenger and fellow rider",
+        "interaction": "Explain that she cannot see the space around the stroller well and ask for someone to watch it briefly",
+        "outcome": "The fellow passenger agrees while she moves the stroller to a clear space"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-15",
+      "storyId": "customer-asks-which-cable-fits-a-phone-charger",
+      "domain": "phone_internet",
+      "scenario": "customer_identifies_a_compatible_replacement_charging_cable_by_comparing_connectors",
+      "lexicalThemes": [
+        "phone accessories",
+        "describing a problem",
+        "matching connectors"
+      ],
+      "targetVocabulary": [
+        "charger",
+        "cable",
+        "frayed",
+        "connector",
+        "fit"
+      ],
+      "brief": "Dana brings her phone charger to a shop because its cable is frayed. The shop worker compares the connectors with her phone, and she buys a matching replacement cable.",
+      "storyPattern": {
+        "goal": "Find a replacement cable that fits an existing charger",
+        "relationship": "Customer and shop worker",
+        "interaction": "Show the damaged cable and compare connector shapes",
+        "outcome": "Choose a matching replacement"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-15",
+      "storyId": "shopper-builds-a-weeknight-shopping-list-around-pantry-staples",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_adjusts_weeknight_groceries_to_existing_pantry_and_storage_space",
+      "lexicalThemes": [
+        "grocery quantities",
+        "pantry staples",
+        "storage space",
+        "ripeness",
+        "planning meals"
+      ],
+      "targetVocabulary": [
+        "almost out",
+        "still have",
+        "smaller bag",
+        "take up space",
+        "firmer",
+        "later in the week"
+      ],
+      "brief": "At a neighborhood supermarket, Rina plans a few evening meals around the food and cupboard space she has at home. She checks with another shopper about rice bag sizes, chooses the smaller one, and swaps very soft tomatoes for firmer tomatoes she can use later in the week.",
+      "storyPattern": {
+        "goal": "Choose groceries for several evening meals that fit the food already at home and the available cupboard space.",
+        "relationship": "Two shoppers exchange practical advice.",
+        "interaction": "Rina asks whether a smaller bag of rice will be enough, hears about the larger bag and its storage needs, and checks her cupboard space; she also replaces very soft tomatoes with firmer ones.",
+        "outcome": "Rina chooses the smaller bag of rice and suitable tomatoes for later in the week."
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-15",
+      "storyId": "employee-prepares-two-copies-for-an-appointment",
+      "domain": "employment_jobs",
+      "scenario": "resident_reprints_faint_work_document_and_keeps_original_separate_for_appointment",
+      "lexicalThemes": [
+        "workplace documents",
+        "copy quality",
+        "appointment preparation",
+        "clarifying a request"
+      ],
+      "targetVocabulary": [
+        "signed original",
+        "scan",
+        "printout",
+        "faint",
+        "hard to read",
+        "make another copy",
+        "keep separate"
+      ],
+      "brief": "Mia prepares workplace paperwork for an appointment. She and her colleague Ori compare a faint printout with the signed original, make a clearer copy, and keep the original separate while she notes to ask which version the office wants to retain.",
+      "storyPattern": {
+        "goal": "Prepare clear workplace paperwork for an appointment",
+        "relationship": "Colleagues sharing practical experience",
+        "interaction": "Compare a copy with its original and discover a readability issue",
+        "outcome": "Prepare a clearer copy and preserve the original while noting to ask which version the office wants to retain"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-15",
+      "storyId": "owner-gets-a-reluctant-cat-into-its-carrier",
+      "domain": "pets_veterinary",
+      "scenario": "owner_coaxes_a_reluctant_cat_into_its_carrier_before_a_routine_checkup",
+      "lexicalThemes": [
+        "pet care",
+        "preparing for an appointment",
+        "offering practical help",
+        "patience and choice"
+      ],
+      "targetVocabulary": [
+        "carrier",
+        "familiar blanket",
+        "step inside",
+        "back away",
+        "gently",
+        "routine checkup"
+      ],
+      "brief": "Before a routine checkup, Dana prepares her reluctant cat's carrier with a familiar blanket after her neighbor Yael suggests leaving it open and facing the room. The cat explores, leaves, then returns and settles inside; Dana gently closes the carrier and heads to the appointment.",
+      "storyPattern": {
+        "goal": "Prepare a reluctant pet for a routine trip",
+        "relationship": "Pet owner and neighbor with relevant experience",
+        "interaction": "Offer a suggestion, try it, and adjust after observing the pet",
+        "outcome": "The pet enters calmly and the owner leaves for the appointment"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-15",
+      "storyId": "coworkers-clarify-a-missing-workday-entry",
+      "domain": "work_pay",
+      "scenario": "employee_and_payroll_clerk_trace_a_workday_listed_under_the_wrong_date",
+      "lexicalThemes": [
+        "pay statement",
+        "work shifts",
+        "dates",
+        "explaining a discrepancy",
+        "follow-up"
+      ],
+      "targetVocabulary": [
+        "pay statement",
+        "shift",
+        "wrong date",
+        "I may have",
+        "check the record",
+        "message",
+        "write down",
+        "follow up"
+      ],
+      "brief": "Yael compares her work calendar with her pay statement and finds that a shift she covered for a colleague appears under the wrong date. Payroll clerk Eitan checks the record against Yael's message, notes the discrepancy for correction, and Yael keeps the message with her pay papers.",
+      "storyPattern": {
+        "goal": "Clarify a workday that appears under an incorrect date",
+        "relationship": "Employee and payroll clerk",
+        "interaction": "Compare a personal message confirming a shift swap with a recorded entry and identify the date mismatch",
+        "outcome": "The clerk records the discrepancy and requests a correction; the employee keeps the supporting message with her pay papers"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-15",
+      "storyId": "neighbors-coordinate-use-of-a-shared-delivery-window",
+      "domain": "delivery_customer_service",
+      "scenario": "neighbors_coordinate_two_large_deliveries_to_keep_a_shared_building_entrance_clear",
+      "lexicalThemes": [
+        "delivery windows",
+        "shared entrance",
+        "uncertain timing",
+        "coordination",
+        "offering help"
+      ],
+      "targetVocabulary": [
+        "חלון הגעה",
+        "בערך מתי",
+        "כניסה",
+        "לחסום",
+        "ברגע ש",
+        "לשלוח הודעה",
+        "לשמור פנוי"
+      ],
+      "brief": "Neighbors Michal and Oren coordinate separate furniture deliveries to their building. They acknowledge that the arrival times are uncertain, agree to message each other when drivers call, and keep the shared entrance and hallway clear. Oren's boxes arrive first and he brings them inside; Michal's table arrives afterward without blocking the entrance.",
+      "storyPattern": {
+        "goal": "Receive separate large deliveries without blocking shared access",
+        "relationship": "Neighbors coordinating household deliveries",
+        "interaction": "Explain competing needs, acknowledge uncertain timing, and agree on mutual updates",
+        "outcome": "Oren brings his boxes inside first, then Michal receives her table with the entrance kept clear"
+      },
+      "edition": "bet"
     }
   ]
 }
