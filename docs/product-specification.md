@@ -203,7 +203,7 @@ Bet targets A2, not B1.
 Keep connected sentences conversational and avoid dense newspaper prose.
 
 Sourced editions preserve the central subject and required facts.
-Fictional editions may have different actions and outcomes within the selected practical topic.
+Fictional editions retain the selected practical topic, goal, relationship, and interaction while varying details, complications, and outcomes.
 Use simple correct Hebrew at every level.
 Proofread agreement, speaker roles, tense, prepositions, sentence completeness, and lexical annotation.
 The standards and writing profiles are documented in [Separate reading editions](editions.md).
@@ -235,7 +235,9 @@ CURRENT and HISTORY editions share the subject, sources, factual brief, and requ
 Optional detail and explanation may vary with the reader's level.
 Keep historical time, attribution, and uncertainty accurate.
 
-EVERYDAY, DIALOG, and SHORTS can use different fictional situations within the selected topic.
+EVERYDAY, DIALOG, and SHORTS retain the selected topic, goal, relationship, and interaction from `everydayMeta.storyPattern`.
+Use the goal and interaction in the brief when pattern metadata is absent.
+Details, complications, useful answers, and outcomes may differ by level.
 Keep the domain and planned dialogue participants and roles.
 Return the actual English brief and scenario metadata for each finished article.
 Write and proofread Hebrew before segmentation and translation.
@@ -417,16 +419,22 @@ Read the recent scenario-history data, remove overly similar ideas, select three
 
 EVERYDAY, DIALOG, and SHORTS planning share `prompts/scenario-diversity.md`.
 `GENERATED_WEEKDAY_TOPICS` in `src/generate_issue.py` defines eight practical topic areas for each weekday.
-The shared `_weekday_topic_guidance` helper selects the target date's list for both planning requests, including retries and appends.
+The shared `_weekday_topic_guidance` helper selects the target date's list for both planning requests, including retries and appends, and for VERBS writing.
 Each request receives only its selected day's topics.
-The lists emphasize work and school on Monday, housing and household needs on Tuesday, money and services on Wednesday, appointments and transport on Thursday, groceries and meals on Friday, everyday problems at home on Saturday, and routine family errands on Sunday.
+The lists emphasize work and school on Monday, housing and household needs on Tuesday, money and services on Wednesday, appointments and transport on Thursday, groceries and meals on Friday, household life on Saturday, and routine family errands on Sunday.
 Prioritize language adults learning Hebrew need for normal life in Israel.
 Exclude shared calendars and organizing digital files as topics, and keep hobbies, workshops, cultural outings, and organized group activities occasional.
 Choose each scenario by what a learner would need to say or understand in ordinary life.
 Experience topics are optional, and cooking must not become the default replacement for leisure activities.
 Compare cooking scenarios across full stories and SHORTS, and prefer another domain after recent clusters.
-These topic areas guide selection without changing canonical domains, requested counts, or novelty exclusions.
-Other underrepresented domains remain available when the preferred list cannot supply fresh scenarios or the requested pool mix.
+These broad areas are the main direction for selection, not fixed scenarios or recurring weekly plots.
+Choose another underrepresented area only when the preferred areas cannot supply fresh scenarios or the requested pool mix.
+Keep canonical domains, requested counts, and novelty exclusions unchanged.
+Do not add a theme quota or reject a usable article solely for departing from the preferred areas.
+Before expanding briefs, select each `everydayMeta.storyPattern` and compare goals, relationships, interactions, and outcomes across the proposed batch and supplied records.
+Changing objects, locations, or formats alone does not create a fresh plot.
+Useful speech includes cooperation, preferences, offers, refusals, explanations, and reactions, without requiring a service problem.
+The interaction categories are possibilities, not a fixed rotation.
 The weekday does not assert service opening hours or require that fictional events occur on that day.
 The prompt treats health appointments, symptoms, and pharmacy scenarios as one medical cluster.
 It aims for at most one medical situation across full generated stories and SHORTS in an issue, and favors non-medical topics after a recent medical cluster.
@@ -480,6 +488,13 @@ A separate no-web request plans the three EVERYDAY and two DIALOG stories, and a
 Each selected full topic, SHORTS item, and assigned verb receives one separate writing request per level.
 Research and topic selection are shared across editions.
 The ten verb seeds come directly from the daily catalog batch and do not need a planning call.
+Their existing writing requests receive the target weekday areas and compact completed EVERYDAY, DIALOG, and individual SHORTS records from the same issue and edition.
+Each later item also receives earlier completed verb bodies from that edition, without translations.
+The writer chooses a goal, relationship, interaction, and outcome internally before composing the text.
+The `verb_practice` domain and five-day rotation remain unchanged; planning-domain and pool quotas do not apply to verb items.
+The private `_scenarioContextByLevel` seed field is narrowed to `_scenarioContext` for the requested edition before writing.
+Only successful items enter the context, and private context is excluded from stored articles.
+This reuses existing writing calls and adds current-issue input tokens, with no additional historical data, planning calls, or review calls.
 
 Use `gpt-6-luna` for every discovery, research, planning, adaptation, annotation, and translation request, with low reasoning effort. Supply the key through `OPENAI_API_KEY`; a local `OPENAI_MODEL` override may be used for tests or explicit experiments. Store the key only in a GitHub Actions secret or runtime environment. It must never enter Git, frontend assets, JSON content, HTML output, logs, or error messages.
 

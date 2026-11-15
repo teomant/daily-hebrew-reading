@@ -9,8 +9,8 @@ Keep the situation simple and useful, with questions, answers, clarifications, r
 Avoid dramatic plots, artificial repetition, exaggerated slang, and vocabulary included only to teach a rule.
 
 Use the canonical domain values supplied in the request and a different domain for each generated story in the current issue.
-Vary practical goals: clarify a bill, return an item, explain a work task, arrange childcare, or find the correct bus stop.
-Include situations beyond these examples and follow the supplied pool priorities.
+Use the shared diversity guide to select the goal, relationship, interaction, and outcome before expanding the conversation.
+Follow the supplied pool priorities.
 A positive exchange can carry a dialogue when it leads to a concrete action or outcome.
 Do not fill eight turns with abstract plans to start a hobby or make a shared album.
 Avoid repeating the same delay, missing-item, or phone-call plot under new names.
@@ -31,5 +31,4 @@ State who needs help, who can answer, who owns each object, and who performs the
 Use only those two active participants.
 If a server must explain the bill, make the server one of the two speakers rather than making two diners report the server's words.
 Plan the order of questions and answers so neither person changes roles halfway through.
-Include `everydayMeta.storyPattern` with compact English goal, relationship, interaction, and outcome phrases.
-Compare patterns after removing names and replaceable objects.
+Return the selected `everydayMeta.storyPattern` with the brief.

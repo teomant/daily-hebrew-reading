@@ -13,7 +13,7 @@ from io import StringIO
 from pathlib import Path
 from unittest.mock import patch
 
-from src.common import ROOT, load_level_config, load_locales, load_site_config, prioritize_practice_pages, read_json
+from src.common import ROOT, load_level_config, load_locales, load_site_config, prioritize_practice_pages, read_json, units_text
 from src.build_site import build, build_article, build_archive
 from src.generate_issue import _adapt_story, _generate_verbs_page, _ordered_issue_stories, generate
 from src.validation import validate_issue, validate_repository
@@ -127,6 +127,65 @@ class VerbTests(unittest.TestCase):
             result = _generate_verbs_page(ROOT, self.day, self.levels, self.locales, self.site, self.locales, '')
         self.assertIsNone(result)
         self.assertEqual(call.call_count, 90)  # Ten items, three editions, three bounded attempts.
+
+    def test_writing_uses_weekday_and_only_completed_same_edition_scenarios(self):
+        items = daily_verbs(ROOT, self.day)
+        level_ids = [level["id"] for level in self.levels]
+        selected = []
+        for story_type in ("everyday", "shorts", "current"):
+            editions = {}
+            for level_id in level_ids:
+                record = {
+                    "id": f"selected-{story_type}-{level_id}", "type": story_type,
+                    "brief": f"Selected {story_type} situation for {level_id}.",
+                    "everydayMeta": {"domain": "employment_jobs", "scenario": f"selected_{level_id}",
+                                     "storyPattern": {"goal": "finish a task", "relationship": "colleagues",
+                                                      "interaction": "demonstrate a skill", "outcome": "work completed"}},
+                    "sources": [],
+                }
+                editions[level_id] = (record if story_type != "shorts" else
+                                      {"type": "shorts", "shortItems": [record]})
+            selected.append({"type": story_type, "levels": dict.fromkeys(level_ids),
+                             "_editionStories": editions})
+        original = copy.deepcopy(selected)
+        for fail_first_bet in (False, True):
+            with self.subTest(fail_first_bet=fail_first_bet):
+                previous = {level_id: [] for level_id in level_ids}
+
+                def respond(model, instructions, request, schema, **kwargs):
+                    self.assertFalse(kwargs["use_web_search"])
+                    self.assertIn("Target publication weekday: Thursday.", instructions)
+                    self.assertNotIn("Target publication weekday: Friday.", instructions)
+                    seeds, _ = json.JSONDecoder().raw_decode(
+                        request.split("Selected topics and binding sourced research:\n", 1)[1].lstrip())
+                    seed = seeds[0]
+                    level_id, = schema["properties"]["adaptations"]["items"]["properties"]["levels"]["required"]
+                    self.assertNotIn("_scenarioContextByLevel", seed)
+                    context = seed["_scenarioContext"]
+                    self.assertEqual([record["id"] for record in context[:2]],
+                                     [f"selected-everyday-{level_id}", f"selected-shorts-{level_id}"])
+                    self.assertEqual(context[0]["storyPattern"]["interaction"], "demonstrate a skill")
+                    self.assertEqual(context[2:], previous[level_id])
+                    if fail_first_bet and level_id == "bet" and seed["_targetVerb"] == items[0]["verb"]:
+                        raise RuntimeError("offline simulated writing failure")
+                    value = level_text(seed["_targetVerb"])
+                    # Distinct valid text makes cross-edition context leaks observable.
+                    prefix = {"alef": "היום", "alefPlus": "אתמול", "bet": "מחר"}[level_id]
+                    value["paragraphs"][0] = units(prefix) + value["paragraphs"][0]
+                    previous[level_id].append({"verb": seed["_targetVerb"],
+                                               "text": units_text(value["paragraphs"][0])})
+                    return {"adaptations": [{"id": seed["id"], "levels": {level_id: value},
+                                              "coveredStoryBeatIds": {level_id: []}}]}
+
+                with patch.dict(os.environ, OPENAI_MODEL="test"), patch(
+                    "src.generate_issue._call_openai", side_effect=respond,
+                ) as call, redirect_stdout(StringIO()):
+                    result = _generate_verbs_page(ROOT, self.day, self.levels, self.locales,
+                                                  self.site, self.locales, "", selected)
+                self.assertEqual(call.call_count, 32 if fail_first_bet else 30)
+                self.assertEqual(set(result["levels"]), {"alef", "alefPlus"} if fail_first_bet else set(level_ids))
+                self.assertNotIn("_scenarioContext", json.dumps(result))
+                self.assertEqual(selected, original)
 
     def test_annotation_repair_cannot_hide_missing_body_translations_behind_title(self):
         item = daily_verbs(ROOT, self.day)[0]

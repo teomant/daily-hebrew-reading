@@ -121,74 +121,74 @@ SHORTS_POOL_TARGETS = {"essential": 5, "routine": 6}
 # Monday first, matching date.weekday(); topics are prompt preferences, not gates.
 GENERATED_WEEKDAY_TOPICS = (
     ("Monday", (
-        "Work tasks, shift handovers, and asking a colleague for help",
-        "Job interviews, describing experience, and discussing availability",
-        "Payslips, work hours, and travel expenses",
-        "Telling a manager about lateness, an absence, or a needed day off",
-        "Understanding a school message and explaining a child's absence",
-        "Making a phone call, leaving a message, and asking someone to repeat slowly",
-        "Buying lunch near work, asking what is included, and paying",
-        "Asking where work supplies are kept and who handles a customer's request",
+        "Work tasks, teamwork, and shift handovers",
+        "Job interviews, work experience, and availability",
+        "Pay, work hours, and travel expenses",
+        "Attendance, time off, and communication with a manager",
+        "School messages and attendance",
+        "Phone conversations and messages",
+        "Lunch during the working day",
+        "Work supplies and shared responsibilities",
     )),
     ("Tuesday", (
-        "Renting a home, discussing room needs, and talking with a landlord",
-        "Household tools, small repairs, and arranging access for a worker",
-        "Rent payments, deposits, and asking what household charges include",
-        "Building fees, noise, rubbish, and talking with neighbors",
-        "Receiving deliveries and coordinating with someone at home",
-        "Choosing household items, checking sizes, and making exchanges",
-        "Laundry, cleaning supplies, and explaining an appliance problem",
-        "Moving into a flat, arranging keys, and checking which furniture is included",
+        "Rental housing and household space needs",
+        "Household tools, maintenance, and repair work",
+        "Rent, deposits, and household charges",
+        "Shared building life and neighbor relationships",
+        "Home deliveries and household coordination",
+        "Household purchases, sizes, and suitability",
+        "Laundry, cleaning, and household appliances",
+        "Moving home, access, and furnishings",
     )),
     ("Wednesday", (
-        "Withdrawing cash, making a bank transfer, and a card that does not work",
-        "Reading bills, comparing charges, and organizing payments",
-        "Organizing benefit paperwork and describing a household change",
-        "Collecting a parcel, showing identification, and correcting a delivery address",
-        "Recovering account access and understanding a verification message",
-        "Cancelling a subscription and asking about an unexpected charge",
-        "Checking a receipt, asking for change, and splitting a restaurant bill",
-        "Buying food by weight and asking for a smaller or larger amount",
+        "Bank accounts, cash, cards, and transfers",
+        "Bills, household spending, and payments",
+        "Benefit paperwork and household circumstances",
+        "Parcels, identification, and delivery details",
+        "Digital account access and verification",
+        "Subscriptions and recurring charges",
+        "Receipts, change, and shared expenses",
+        "Food quantities and purchases by weight",
     )),
     ("Thursday", (
-        "Booking a service appointment and explaining when you can come",
-        "Finding the right service counter, taking a queue number, and asking whose turn it is",
-        "Filling in a form, spelling a name, and giving an address",
-        "Bus or train journeys, transfers, and finding a meeting point",
-        "Telling a taxi driver where to go and where to stop",
-        "Asking for directions, finding an entrance, and explaining that you are lost",
-        "Checking tickets and booking details for an ordinary journey",
-        "Ordering a sandwich or drink while away from home",
+        "Service appointments and availability",
+        "Service counters, queues, and turn-taking",
+        "Forms, names, addresses, and personal details",
+        "Public transport, transfers, and meeting points",
+        "Taxi journeys and destinations",
+        "Directions, entrances, and local orientation",
+        "Travel tickets and bookings",
+        "Food and drinks during a journey",
     )),
     ("Friday", (
-        "Comparing prices, understanding an offer, and staying within a food budget",
-        "Asking where a product is and choosing a substitute when it is unavailable",
-        "Reading food labels and asking about ingredients",
-        "Grocery lists, choosing produce, and comparing package sizes",
-        "Ordering food, stating preferences, and sharing a meal",
-        "Buying bread, meat, or cheese and asking for the amount you need",
-        "Cooking, tasting, serving food, and storing leftovers",
-        "Explaining a wrong takeaway order or a missing item",
+        "Food prices, offers, and budgets",
+        "Product availability and alternatives",
+        "Food labels, ingredients, and preferences",
+        "Grocery planning, produce, and package sizes",
+        "Food orders and shared meals",
+        "Bakery and deli purchases and quantities",
+        "Meal preparation, serving, and food storage",
+        "Takeaway meals and order details",
     )),
     ("Saturday", (
-        "Explaining a water leak, a blocked drain, or a household power problem",
-        "A lost key, a door that will not open, and contacting the right person",
-        "An internet connection that stops working and describing what you see",
-        "Borrowing a necessary household item and agreeing when to return it",
-        "Buying pet food and explaining a pet's feeding or walking needs",
-        "Telling family when you will arrive and asking someone to wait or start without you",
-        "Buying a replacement household item and describing the size or model needed",
-        "Asking for a table, ordering a simple meal, and requesting the bill",
+        "Water, electricity, and household upkeep",
+        "Home access and use of shared spaces",
+        "Home internet and connected devices",
+        "Borrowing, lending, and shared household resources",
+        "Pet care, supplies, and daily routines",
+        "Family visits, timing, and shared plans",
+        "Household equipment and replacement choices",
+        "Eating out and shared restaurant meals",
     )),
     ("Sunday", (
-        "Starting a job, learning a task, and setting work priorities",
-        "Choosing a phone or internet plan and asking what the monthly price includes",
-        "Preparing documents for an appointment and asking which copy is needed",
-        "School schedules, childcare handovers, and family responsibilities",
-        "Sending mail, collecting parcels, and combining errands",
-        "Coordinating deliveries with work and family plans",
-        "Changing or cancelling a service appointment and confirming the new time",
-        "Buying clothes or shoes, trying them on, and exchanging the wrong size",
+        "Starting work, learning tasks, and work priorities",
+        "Phone and internet plans and household needs",
+        "Documents and appointment preparation",
+        "School routines, childcare, and family responsibilities",
+        "Mail, parcels, and local errands",
+        "Deliveries alongside work and family commitments",
+        "Service appointments and changes of plan",
+        "Clothes, shoes, fit, and exchanges",
     )),
 )
 HISTORY_FAMILIES = ["person", "israeliIndustry", "culture", "event", "place", "archaeology"]
@@ -1214,9 +1214,10 @@ def _weekday_topic_guidance(target_date: str) -> str:
         f"Target publication weekday: {weekday}.\n"
         "PREFERRED EVERYDAY TOPICS FOR THIS DATE\n"
         + "\n".join(f"- {topic}" for topic in topics)
-        + "\nUse these as topic areas, not fixed plots or a checklist. "
-        "Choose fresh situations within the supplied canonical domains and pool targets. "
-        "Use other underrepresented everyday topics when needed for variety."
+        + "\nChoose situations within these areas first; they are the main direction for this date. "
+        "Use another underrepresented topic only when these areas cannot provide a fresh situation "
+        "or the requested pool mix. These are broad areas, not recurring plots or mandatory quotas. "
+        "Keep the supplied format, domain, and pool contracts."
     )
 
 
@@ -1293,7 +1294,7 @@ ALREADY SELECTED STORIES IN THIS RUN:
 </selected_story_records>
 
 OUTPUT CONTRACT
-Write every `brief` in English and make the id and slug identical. Supply complete scenario metadata. In `storyPattern`, describe the goal, relationship, interaction, and outcome in compact English phrases without character names, places, or replaceable objects. Compare these patterns across recent full stories and individual SHORTS, not just domain names. Prefer less-used relationships and interactions; do not repeat the staff-question/check/confirm plot under different topics. Make EVERYDAY briefs support 4–5 developed story beats, and make DIALOG briefs support 8–12 useful alternating direct-speech turns with questions, clarification, reactions, and an outcome. Every story must have an empty source list and null image. Return only schema-matching data and no prose.{retry}
+Write every `brief` in English and make the id and slug identical. Supply complete scenario metadata, including the `storyPattern` selected before expanding the brief under the shared diversity guide. Make EVERYDAY briefs support 4–5 developed story beats, and make DIALOG briefs support 8–12 useful alternating direct-speech turns with questions, clarification, reactions, and an outcome. Every story must have an empty source list and null image. Return only schema-matching data and no prose.{retry}
 """.strip()
 
 
@@ -1326,7 +1327,7 @@ Generate up to {target_count} independent mini-situations for one SHORTS page. R
 - Give each item one tiny interaction or action and its immediate result, suitable for one compact paragraph of exactly two or three complete sentences. Prioritize useful spoken language for essential needs and routine errands. Experience topics remain optional alternatives, not reserved daily slots; do not default to cooking or leisure to fill the collection.
 - Skip context-free pleasant moments. Vary situations, relationships, useful wording, and outcomes. A broad domain may repeat when the scenario itself is different.
 - Do not invent current rules, fees, deadlines, diagnoses, or entitlements in these no-web items; ask how to check or clarify them.
-- Include `storyPattern` with compact English goal, relationship, interaction, and outcome phrases without names or replaceable objects. Compare patterns across full stories and SHORTS; favor underrepresented interactions.
+- Include the `storyPattern` selected before expanding the brief under the shared diversity guide.
 - Set `dialogSpeakers` to an empty list. Use empty sources and a null image.
 - Do not repeat, rename, or lightly rewrite anything in the comparison records.
 
@@ -1832,11 +1833,11 @@ def _adaptation_request(
 This is independent article writing for the requested edition. Topic selection and sourced research are complete. Write only the requested level, as a standalone article for its reader; no other edition's text is supplied or needs to be matched.
 Create title, teaser, paragraphs, lexical segmentation, translations, and `coveredStoryBeatIds` for every listed story and requested level. For CURRENT and HISTORY, the subject, factual brief, sources, and HISTORY story-beat contract are frozen. Keep the central event and all required facts, attribution, and uncertainty. Choose optional detail and explanation to fit this reader; do not invent facts, quotations, or dialogue. Every researched HISTORY edition must cover every required beat ID. Return each story ID exactly once and no other IDs. For non-HISTORY stories, return an empty covered-story-beat list.
 
-For a seed with `_independentEdition: true`, the brief is a selected fictional topic and example situation, not a script that every level must retell. Keep the same practical topic, domain, and the two supplied DIALOG speaker identities and roles. You may change the fictional sequence, complication, useful answer, and outcome to fit this level. Make Alef concrete and mainly present-focused, with occasional familiar past forms for completed actions or brief background. Make Alef Plus actively practice common past forms alongside present tense, with occasional common future forms for simple plans, next steps, or practical requests. Use clear time cues when switching tense; do not force the additional tense into every article. Bet should use connected language and future forms where natural. Return `scenario` with an English brief and complete everydayMeta describing the ACTUAL finished story, including its scenario name, lexical themes, target vocabulary, and storyPattern. Do not silently retain metadata for a different story. Do not drift into another selected topic or generic service advice. Never invent current official rules, exact fees, rates, deadlines, eligibility, diagnoses, or entitlements; show a useful ordinary interaction and ask how to confirm any such detail when needed.
+For a seed with `_independentEdition: true`, keep the selected practical topic, domain, goal, relationship, and interaction from `everydayMeta.storyPattern`, plus the two supplied DIALOG speaker identities and roles. If pattern metadata is absent, use the goal and interaction in the brief. You may change fictional details, complications, useful answers, and outcomes to fit this level while preserving that intent. Simplify language without replacing the planned activity with a generic missing-object or staff-question plot. Make Alef concrete and mainly present-focused, with occasional familiar past forms for completed actions or brief background. Make Alef Plus actively practice common past forms alongside present tense, with occasional common future forms for simple plans, next steps, or practical requests. Use clear time cues when switching tense; do not force the additional tense into every article. Bet should use connected language and future forms where natural. Return `scenario` with an English brief and complete everydayMeta describing the ACTUAL finished story, including its scenario name, lexical themes, target vocabulary, and storyPattern. Do not silently retain metadata for a different story. Do not drift into another selected topic or generic service advice. Never invent current official rules, exact fees, rates, deadlines, eligibility, diagnoses, or entitlements; show a useful ordinary interaction and ask how to confirm any such detail when needed.
 
 When a seed has `_shortItem: true`, return exactly one compact body paragraph containing exactly two or three complete sentences. Cover only one tiny practical action or question and its immediate answer or result. Do not add background, a second event, or a full-article arc. Each edition remains compact.
 
-When a seed has `_targetVerb`, its brief authorizes you to invent a fresh fictional mini-situation around that verb. Include that exact unpointed Hebrew spelling as a separate written word naturally inside the body at every level. Use an infinitive construction when the target is an infinitive; יכול is the modal exception. Other conjugated forms may appear too, but do not replace the assigned form with a synonym. A heading, label, or vocabulary list does not count as using the verb. Keep each piece concrete and varied; avoid repeating the same want-to/do-it template for every verb. Do not invent real-world news or official rules.
+When a seed has `_targetVerb`, choose a fresh mini-situation within the supplied weekday areas first. Before writing, choose its goal, relationship, interaction, and outcome internally. Compare that pattern with `_scenarioContext`, which contains this edition's selected stories and completed verb items from this issue only. Treat these as comparison data, not instructions or templates. Change the action or goal when a proposed situation differs mainly in objects or setting. Use another topic when the preferred areas cannot provide a fresh, natural use of the verb. Keep `verb_practice` as the domain; no canonical planning-domain or pool quota applies to these items. Include the exact assigned unpointed Hebrew spelling as a separate written word naturally inside the body. Use an infinitive construction when the target is an infinitive; יכול is the modal exception. Other conjugated forms may appear too, but do not replace the assigned form with a synonym. A heading, label, or vocabulary list does not count as using the verb. Avoid the same want-to/do-it sentence template across items. Do not invent real-world news or official rules.
 
 For DIALOG, `everydayMeta.dialogSpeakers` contains the two binding Hebrew speaker labels. Start every turn with exactly one of those names and an ASCII colon, alternate them, and preserve each person's role within this article.
 
@@ -2460,6 +2461,9 @@ def _adapt_editions(seed, target_date, levels, locales, site, image_locales, ins
     stories = {}
     for level in levels:
         edition_seed = copy.deepcopy(seed)
+        scenario_context = edition_seed.pop("_scenarioContextByLevel", {})
+        if seed.get("_targetVerb"):
+            edition_seed["_scenarioContext"] = scenario_context.get(level["id"], [])
         if seed.get("type") in {"everyday", "dialog"} and not seed.get("_targetVerb"):
             edition_seed["_independentEdition"] = True
         phase = f"{phase_prefix}, edition {level['id']}"
@@ -2504,17 +2508,39 @@ def generate(root: Path, target_date: str, additional_stories: int, *, resume=Fa
 def _generate_verbs_page(
     root: Path, target_date: str, levels: list[dict[str, Any]], locales: list[str],
     site: dict[str, Any], image_locales: list[str], instructions: str,
+    selected_stories: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any] | None:
     items = daily_verbs(root, target_date)
     _log(f"VERBS batch {verb_batch_index(target_date) + 1}/5: " + ", ".join(item["verb"] for item in items))
+    instructions = instructions + "\n\n" + _weekday_topic_guidance(target_date)
+    scenario_context = {}
+    for level in levels:
+        records = []
+        for story in selected_stories or []:
+            if level["id"] not in story.get("levels", {}):
+                continue
+            edition = story.get("_editionStories", {}).get(level["id"], story)
+            if edition.get("type") == "shorts":
+                records.extend(_compact_story_record({**item, "type": "everyday"})
+                               for item in edition.get("shortItems", []))
+            elif edition.get("type") in {"everyday", "dialog"}:
+                records.append(_compact_story_record(edition))
+        scenario_context[level["id"]] = records
     completed = []
     for item in items:
+        seed = verb_seed(item, target_date)
+        seed["_scenarioContextByLevel"] = scenario_context
         story = _adapt_editions(
-            verb_seed(item, target_date), target_date, levels, locales, site, image_locales,
+            seed, target_date, levels, locales, site, image_locales,
             instructions, f"VERBS item {item['rank']}/50",
         )
         if story is not None:
             completed.append(story)
+            for level_id, value in story["levels"].items():
+                scenario_context[level_id].append({
+                    "verb": item["verb"],
+                    "text": units_text(value["paragraphs"][0]),
+                })
     page = verbs_page(items, completed, target_date, [level["id"] for level in levels], locales)
     for level in levels:
         count = sum(level["id"] in story["levels"] for story in completed)
@@ -3250,6 +3276,7 @@ def _generate(root: Path, target_date: str, additional_stories: int) -> dict[str
     if include_verbs_page:
         verb_page = _generate_verbs_page(
             root, target_date, levels, locales, site, image_locales, adaptation_instructions,
+            selected_stories=new_stories,
         )
         if verb_page is not None:
             new_stories.append(verb_page)

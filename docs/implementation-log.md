@@ -1,5 +1,21 @@
 # Implementation log
 
+## 2026-11-16
+
+- Replaced weekday plot examples with broad practical topic areas while preserving eight areas per day.
+  Made the selected weekday the primary direction, with other areas available for novelty or the requested pool mix.
+  Consolidated repeated diversity guidance around selecting `storyPattern` before detailed briefs.
+  Independent editions now preserve the selected goal, relationship, and interaction while varying details and outcomes.
+- Added weekday guidance and private current-issue comparison context to existing VERBS writing requests.
+  Each edition receives compact completed fictional scenario records and its own earlier completed verb bodies.
+  Failed items and other editions are excluded, and private context is not published.
+  Kept the five-day verb rotation, historical windows, schemas, publication checks, and request limits unchanged.
+  Updated generation and edition documentation.
+- Verification: ten focused offline tests passed, including successful and partially failed verb batches, edition isolation, private-context removal, rotation, and existing planning exclusions and pool contracts.
+  Weekday routing checks passed for all seven days, retries, and appends.
+  Completed one focused direct review and the whitespace check.
+  No paid generation or deployment was run.
+
 ## 2026-11-13
 
 - Adjusted discovery allocation at the owner's request after the latest run exhausted its ten-call discovery allowance with two HISTORY slots still empty.

@@ -32,8 +32,11 @@ Do not invent conversations in sourced articles.
 
 Write each topic separately for each configured level.
 Each writing request receives only that level's guidance and response fields.
-EVERYDAY, DIALOG, and SHORTS may use different fictional actions, complications, and outcomes within the selected topic.
+EVERYDAY, DIALOG, and SHORTS keep the selected topic, goal, relationship, and interaction from `everydayMeta.storyPattern`.
+When a seed has no pattern metadata, use the goal and interaction in its brief.
+Details, complications, useful answers, and outcomes may differ by level.
 Keep the topic domain and the planned dialogue participants and roles.
+Simplify the language without replacing the selected activity with a generic plot.
 Return the actual English brief and scenario metadata for the finished fictional article.
 Record each edition's scenario in repetition history.
 Past archived records without an edition remain valid and continue to inform topic selection.
@@ -41,6 +44,9 @@ Past archived records without an edition remain valid and continue to inform top
 Keep the existing bounded content retries and annotation repair for each article.
 If writing fails for one edition, retain successful articles in other editions.
 SHORTS collects up to eleven successful items separately in each edition.
+VERBS writing receives the target weekday areas, compact completed fictional scenario records, and earlier completed verb bodies from the same issue and edition.
+Other editions, older issues, translations, and failed verb items are not added to this context.
+Comparison data stays private and does not change the five-day verb rotation or add planning calls.
 A VERBS page requires all ten assigned items in that edition.
 An incomplete VERBS edition does not remove another edition's complete page.
 No new paid review, research stage, model, or deployment step is introduced.

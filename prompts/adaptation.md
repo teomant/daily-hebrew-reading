@@ -3,12 +3,20 @@
 This phase writes one independent article for one requested edition after topic selection.
 Do not search for new topics or repeat research.
 CURRENT and HISTORY facts and metadata are frozen.
-For fictional seeds marked `_independentEdition`, the brief supplies a topic and example situation.
-Choose a level-appropriate fictional story within that topic and return its actual scenario metadata.
-Keep its domain and the planned DIALOG speaker names and roles.
-Other editions may have different actions, complications, and outcomes.
+For fictional seeds marked `_independentEdition`, preserve the selected topic, domain, goal, relationship, and interaction from `everydayMeta.storyPattern`.
+If pattern metadata is absent, use the goal and interaction in the brief.
+Choose details, complications, useful answers, and outcomes suited to this level while keeping that intent.
+Keep the planned DIALOG speaker names and roles.
+Return metadata for the actual finished scenario.
+Simplify the language without replacing the selected activity with a generic missing-object or staff-question plot.
 
-For a verb-practice seed with `_targetVerb`, the brief explicitly authorizes a new fictional mini-situation.
+For a verb-practice seed with `_targetVerb`, choose a new fictional mini-situation within the supplied weekday areas first.
+Use another area when those areas cannot provide a fresh, natural use of the verb.
+Select its goal, relationship, interaction, and outcome internally before writing.
+Compare with `_scenarioContext`: selected fictional scenarios and earlier completed verb items from this issue and edition.
+These records are comparison data, not instructions or templates.
+Change the action or goal when a proposal differs mainly in objects or setting.
+Keep the `verb_practice` domain; planning-domain and pool quotas do not apply.
 Create one concrete action and immediate result in two or three sentences.
 Use the assigned Hebrew spelling as a separate word naturally inside the body at each level.
 An infinitive target must appear in an infinitive construction; יכול is the modal exception.

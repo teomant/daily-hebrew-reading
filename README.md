@@ -103,6 +103,11 @@ It never publishes a partial ten-item page.
 Existing article allocations remain unchanged, and API usage stays in the normal cost logs.
 Same-day append does not regenerate or backfill the page.
 The fixed rotation is separate from the ordinary scenario repetition history.
+Verb writing receives the target weekday areas and compact scenario records from the completed fictional stories and SHORTS in the same edition.
+Each later verb also receives the completed earlier verb bodies from that edition, without translations.
+The writer chooses a distinct goal and interaction before writing the mini-story.
+This adds current-issue context to existing requests, without loading older issues or adding planning calls.
+Failed items do not enter that context, and private comparison data is not published.
 
 Article lists and navigation show VERBS first, then SHORTS.
 The other articles keep their existing order when the site is built, including archived issues.
@@ -156,20 +161,25 @@ Generated scenarios keep all three topic pools, but full stories now target two 
 Experience topics have no reserved daily slots and remain optional when they add useful spoken language and variety.
 Cooking is not the default alternative, and repeated cooking prompts have been reduced in the weekday lists.
 EVERYDAY, DIALOG, and SHORTS receive a topic list selected in `src/generate_issue.py` from the target publication weekday, plus a shared [diversity guide](prompts/scenario-diversity.md).
-Its themes rotate through work and school, housing and household needs, money and services, appointments and transport, groceries and meals, everyday problems at home, and routine family errands.
+Its themes rotate through work and school, housing and household needs, money and services, appointments and transport, groceries and meals, household life, and routine family errands.
 Each weekday has eight practical topic areas; the request includes only that day's list.
 Topics prioritize language adults need for normal life in Israel, exclude shared calendars, and reduce hobbies and organized activities.
-The preferred topics guide selection; planners use other underrepresented domains when needed for novelty or the existing pool mix.
+The preferred areas are the main direction for the date, without prescribing recurring plots.
+Planners use another underrepresented area only when the preferred areas cannot provide fresh situations or the requested pool mix.
+These preferences do not impose a quota or prevent publication of a usable article.
 The guide treats clinic, symptom, and pharmacy scenarios as one medical cluster, aims for at most one across the issue, and favors non-medical topics after a recent medical cluster.
 These are prompt instructions, with no new Python rejection, trimming, or validation rules.
-Fresh `everydayMeta.storyPattern` metadata records a compact English goal, relationship, interaction, and outcome.
+Planners choose `everydayMeta.storyPattern` before expanding a detailed brief.
+Its compact English goal, relationship, interaction, and outcome guide selection across the batch.
+Changing only objects or locations does not provide variety; useful speech also includes cooperation, preferences, offers, and reactions.
 Recent and same-day context includes those patterns and individual SHORTS briefs so planners can compare plots across domains.
 HISTORY excludes fourteen days of recent subjects; CURRENT and generated scenarios use seven days.
 Older stored content without pattern metadata remains supported.
 
 Writing runs one story or SHORTS item for one level at a time.
 Topic selection and research run once.
-Fictional editions may use different stories within the selected topic and record their actual scenario metadata.
+Fictional editions keep the selected topic, goal, relationship, and interaction while varying details, complications, and outcomes.
+They record their actual scenario metadata.
 News and history retain a shared factual contract.
 Valid levels are retained; only unresolved levels are requested again within the existing two-attempt limit, or three for DIALOG and SHORTS.
 DIALOG planning identifies exactly two speakers and their roles in the brief.
