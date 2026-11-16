@@ -22922,6 +22922,1318 @@
         "outcome": "Oren brings his boxes inside first, then Michal receives her table with the entrance kept clear"
       },
       "edition": "bet"
+    },
+    {
+      "date": "2026-11-16",
+      "storyId": "coworkers-agree-on-a-task-order",
+      "domain": "employment_jobs",
+      "scenario": "coworkers_pack_open_order_before_delivery",
+      "lexicalThemes": [
+        "work tasks",
+        "priorities",
+        "teamwork"
+      ],
+      "targetVocabulary": [
+        "task",
+        "first",
+        "together",
+        "later",
+        "finish"
+      ],
+      "brief": "Two coworkers choose to pack an open order together before a delivery arrives, leaving another task for later.",
+      "storyPattern": {
+        "goal": "Agree which of several work tasks to handle first",
+        "relationship": "Coworkers sharing a workload",
+        "interaction": "Compare immediate needs and choose a task together",
+        "outcome": "Pack the open order together and leave another task for later"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-16",
+      "storyId": "employee-asks-about-travel-expense-records",
+      "domain": "work_pay",
+      "scenario": "employee_and_manager_match_two_bus_receipts_to_work_trip_notes_and_label_them",
+      "lexicalThemes": [
+        "work travel",
+        "receipts",
+        "dates",
+        "notes"
+      ],
+      "targetVocabulary": [
+        "קבלה",
+        "תאריך",
+        "נסיעה",
+        "רשימה",
+        "לכתוב"
+      ],
+      "brief": "An employee and her manager compare the dates on two bus receipts with the employee’s notes from work trips. The employee labels each receipt with its trip; whether she will receive money for them remains undecided.",
+      "storyPattern": {
+        "goal": "Match travel receipts to the correct work trips",
+        "relationship": "Employee and manager reviewing records",
+        "interaction": "Compare receipt dates with the employee’s own notes",
+        "outcome": "Label each receipt clearly while leaving reimbursement undecided"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-16",
+      "storyId": "coworker-offers-to-cover-a-phone-duty",
+      "domain": "employment_jobs",
+      "scenario": "coworker_briefly_covers_team_phone_after_receiving_a_quick_caller_update",
+      "lexicalThemes": [
+        "work responsibilities",
+        "phone calls",
+        "offering help"
+      ],
+      "targetVocabulary": [
+        "step away",
+        "answer",
+        "caller",
+        "cover",
+        "back"
+      ],
+      "brief": "At work, the team phone rings while one worker needs to step away. Her coworker offers to answer, learns that a call from Ori is expected, and answers while she is away.",
+      "storyPattern": {
+        "goal": "Keep the team phone covered during a brief absence",
+        "relationship": "Coworkers sharing a shift",
+        "interaction": "Offer help and pass on a concise update about an expected call",
+        "outcome": "The coworker answers the call while the other steps away"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-16",
+      "storyId": "employee-asks-manager-to-confirm-a-shift-change",
+      "domain": "employment_jobs",
+      "scenario": "employee_checks_which_day_a_brief_shift_change_message_refers_to",
+      "lexicalThemes": [
+        "shift messages",
+        "clarification",
+        "work schedule"
+      ],
+      "targetVocabulary": [
+        "message",
+        "which day",
+        "usual shift",
+        "confirm",
+        "unchanged"
+      ],
+      "brief": "An employee receives a short message from her manager about a shift change, asks which day it refers to, and learns that her usual shift remains unchanged.",
+      "storyPattern": {
+        "goal": "Understand whether a shift message changes a particular workday",
+        "relationship": "Employee and manager",
+        "interaction": "Ask a direct follow-up about an unclear message",
+        "outcome": "Confirm that the usual shift remains unchanged"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-16",
+      "storyId": "employee-checks-a-missing-hour-entry",
+      "domain": "work_pay",
+      "scenario": "employee_checks_a_missing_short_shift_in_her_personal_hours_notes",
+      "lexicalThemes": [
+        "work hours",
+        "shift records",
+        "clarification"
+      ],
+      "targetVocabulary": [
+        "hours",
+        "shift",
+        "notes",
+        "date",
+        "check"
+      ],
+      "brief": "Noa compares the work hours in her personal notebook with the shift list, asks her supervisor about a missing short shift, and they mark the date for clarification without deciding anything about her pay.",
+      "storyPattern": {
+        "goal": "Find out why a short shift is absent from a personal hours record",
+        "relationship": "Employee and supervisor",
+        "interaction": "Compare a personal note with the shift list and identify the date to check",
+        "outcome": "Mark the record for clarification without assuming a pay result"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-16",
+      "storyId": "parent-replies-to-a-school-supply-message",
+      "domain": "school_childcare",
+      "scenario": "parent_offers_a_cardboard_box_in_reply_to_a_school_craft_supply_message",
+      "lexicalThemes": [
+        "school messages",
+        "supplies",
+        "offers"
+      ],
+      "targetVocabulary": [
+        "message",
+        "bring",
+        "box",
+        "useful",
+        "set aside"
+      ],
+      "brief": "A teacher asks families to send a clean cardboard box for a classroom craft. A mother replies that her son can bring one, the teacher confirms it will help, and the mother sets a box aside for his school bag.",
+      "storyPattern": {
+        "goal": "Respond to a school request for a classroom material",
+        "relationship": "Parent and teacher",
+        "interaction": "Offer an available item and receive confirmation that it is suitable",
+        "outcome": "Set the item aside for the child to bring"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-16",
+      "storyId": "coworkers-trade-lunch-break-times",
+      "domain": "food_service_orders",
+      "scenario": "coworkers_stagger_lunch_breaks_so_the_front_desk_stays_covered",
+      "lexicalThemes": [
+        "lunch breaks",
+        "work coverage",
+        "agreement"
+      ],
+      "targetVocabulary": [
+        "break",
+        "first",
+        "cover",
+        "swap",
+        "desk"
+      ],
+      "brief": "Two coworkers arrange staggered lunch breaks so the front desk remains attended: Noa takes her break first while her coworker stays at the desk, and then they switch.",
+      "storyPattern": {
+        "goal": "Make sure the front desk stays covered during lunch",
+        "relationship": "Coworkers sharing a workday",
+        "interaction": "Offer and agree on staggered break times",
+        "outcome": "Noa takes a break first while her coworker covers the desk, then they swap"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-16",
+      "storyId": "employee-leaves-a-clear-voicemail-for-manager",
+      "domain": "phone_internet",
+      "scenario": "employee_leaves_a_voicemail_and_text_after_failing_to_reach_manager",
+      "lexicalThemes": [
+        "phone calls",
+        "work communication",
+        "arrival update"
+      ],
+      "targetVocabulary": [
+        "call",
+        "voicemail",
+        "name",
+        "message",
+        "arrive"
+      ],
+      "brief": "Dana calls her manager to say she will arrive a little later, leaves her name and a short voicemail when the manager does not answer, then sends a text with the update.",
+      "storyPattern": {
+        "goal": "Tell a manager about a change in arrival time",
+        "relationship": "Employee and manager",
+        "interaction": "Try a call, then leave a concise voicemail and follow-up text",
+        "outcome": "Deliver the update through two clear channels"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-16",
+      "storyId": "coworkers-share-a-lunch-table",
+      "domain": "food_service_orders",
+      "scenario": "coworker_invites_colleague_to_share_an_open_lunch_table",
+      "lexicalThemes": [
+        "lunch",
+        "invitation",
+        "polite questions"
+      ],
+      "targetVocabulary": [
+        "free seat",
+        "join",
+        "table",
+        "sit",
+        "together"
+      ],
+      "brief": "During the lunch break, a coworker found a table with room for two, called her colleague over, and they sat together after the colleague checked that the seat was free.",
+      "storyPattern": {
+        "goal": "Find a place to sit together during lunch",
+        "relationship": "Coworkers on a break",
+        "interaction": "Offer an available seat and check whether it is free",
+        "outcome": "Sit together at the open table"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-16",
+      "storyId": "coworker-picks-up-a-dropped-work-badge",
+      "domain": "shopping_returns",
+      "scenario": "coworker_returns_a_dropped_work_badge_before_entering_the_building",
+      "lexicalThemes": [
+        "work items",
+        "noticing",
+        "quick interaction"
+      ],
+      "targetVocabulary": [
+        "badge",
+        "drop",
+        "pick up",
+        "here",
+        "thanks"
+      ],
+      "brief": "Dana notices that her coworker Mia has dropped her work badge near the entrance, calls to her, and Mia picks it up and thanks her before they go inside.",
+      "storyPattern": {
+        "goal": "Return a dropped work item to its owner",
+        "relationship": "Coworkers arriving at work",
+        "interaction": "Call attention to the item and hand it back",
+        "outcome": "The colleague retrieves her badge before entering"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-16",
+      "storyId": "employee-checks-the-platform-before-boarding",
+      "domain": "transport_fares_routes",
+      "scenario": "commuter_checks_train_destination_sign_with_fellow_passenger",
+      "lexicalThemes": [
+        "commuting",
+        "station signs",
+        "asking for help"
+      ],
+      "targetVocabulary": [
+        "platform",
+        "sign",
+        "destination",
+        "usual train",
+        "over there"
+      ],
+      "brief": "On her way to work, a commuter asks another passenger to read the sign with her. They find her train's destination, and she walks to the indicated platform.",
+      "storyPattern": {
+        "goal": "Find the platform for a familiar commute",
+        "relationship": "Commuter and fellow passenger",
+        "interaction": "Ask someone to check the destination sign together",
+        "outcome": "Walk to the indicated platform"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-16",
+      "storyId": "coworkers-plan-a-shift-handover-around-priority-calls",
+      "domain": "employment_jobs",
+      "scenario": "coworkers_prioritize_two_open_customer_followups_for_a_shift_handover",
+      "lexicalThemes": [
+        "shift handover",
+        "priorities",
+        "customer follow-up",
+        "task ownership"
+      ],
+      "targetVocabulary": [
+        "shift",
+        "call back",
+        "delivery update",
+        "leave a note",
+        "handle",
+        "tomorrow"
+      ],
+      "brief": "At the end of her shift, Tamar tells coworker Erez about two customer calls. Erez calls the customer waiting for a delivery update, and leaves Tamar a note about the other call for tomorrow.",
+      "storyPattern": {
+        "goal": "Assign two open customer follow-ups clearly before the shift ends",
+        "relationship": "Coworkers handing over shared responsibilities",
+        "interaction": "Compare which call needs attention first and decide who handles each request",
+        "outcome": "Erez gives the delivery update, and leaves Tamar a note about the other call"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-16",
+      "storyId": "coworkers-choose-a-lunch-break-plan-after-a-busy-morning",
+      "domain": "food_service_orders",
+      "scenario": "coworkers_share_brought_lunch_in_the_office_courtyard_and_pick_up_drinks",
+      "lexicalThemes": [
+        "workday lunch",
+        "time constraints",
+        "preferences",
+        "offering help"
+      ],
+      "targetVocabulary": [
+        "short break",
+        "bring lunch",
+        "pick up",
+        "on the way back",
+        "quiet",
+        "free table",
+        "return on time"
+      ],
+      "brief": "After a busy morning at their shared office, coworkers Rina and Gal use a short lunch break to eat together in the quiet courtyard. Rina brings lunch that needs no heating; Gal picks up a drink and brings her water on the way back. They return to work on time.",
+      "storyPattern": {
+        "goal": "Use a short lunch break in a way that suits two coworkers’ different preferences",
+        "relationship": "Coworkers sharing a workday break",
+        "interaction": "Compare options, explain constraints, and offer a small practical favor",
+        "outcome": "Eat together nearby and return to work on time"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-16",
+      "storyId": "resident-corrects-a-message-sent-to-the-wrong-chat",
+      "domain": "phone_internet",
+      "scenario": "resident_corrects_a_voice_message_sent_to_the_wrong_chat",
+      "lexicalThemes": [
+        "phone messages",
+        "work communication",
+        "mistaken recipient",
+        "polite clarification"
+      ],
+      "targetVocabulary": [
+        "voice message",
+        "chat",
+        "send",
+        "wrong chat",
+        "colleague",
+        "delivery",
+        "disregard",
+        "directly",
+        "confirm"
+      ],
+      "brief": "On her way to work, Noa sends a voice message meant for her colleague to her apartment building's chat by mistake. A neighbor asks if it is about a delivery. Noa explains the mistake and asks the neighbor to ignore it; the neighbor confirms that no delivery details were changed. Noa sends the message directly to her colleague, checks that it went to the right chat, and continues to work.",
+      "storyPattern": {
+        "goal": "Correct a message sent to an unintended recipient",
+        "relationship": "Resident and neighbor in the same building",
+        "interaction": "Explain the mix-up, check whether the message caused confusion, and clarify what to ignore",
+        "outcome": "Send the message to the intended colleague and leave the neighbor with a clear explanation"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-16",
+      "storyId": "employee-explains-a-pay-hours-discrepancy-with-shift-notes",
+      "domain": "work_pay",
+      "scenario": "employee_and_payroll_clerk_compare_shift_hours_with_a_dated_message",
+      "lexicalThemes": [
+        "pay statement",
+        "work hours",
+        "shift record",
+        "clarifying a difference"
+      ],
+      "targetVocabulary": [
+        "pay statement",
+        "hours",
+        "recorded",
+        "closing tasks",
+        "message",
+        "check",
+        "review"
+      ],
+      "brief": "Maya asks payroll clerk Omer about a shift that appears shorter on her pay statement than she remembers. They compare the recorded hours with her dated message; Omer notes the difference and submits it for review without promising an adjustment.",
+      "storyPattern": {
+        "goal": "Ask about a difference between remembered shift hours and a work record",
+        "relationship": "Employee and payroll clerk",
+        "interaction": "Compare the recorded times with the employee’s dated message and clarify what can be done",
+        "outcome": "Attach the supporting message and record the difference for review without assuming a pay decision"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-16",
+      "storyId": "parent-and-school-office-clarify-a-late-arrival-message",
+      "domain": "school_childcare",
+      "scenario": "parent_calls_to_clarify_side_entrance_and_office_check_in_for_late_arrival",
+      "lexicalThemes": [
+        "school arrival",
+        "phone conversation",
+        "clarifying a message",
+        "directions",
+        "checking in"
+      ],
+      "targetVocabulary": [
+        "on the way",
+        "arrive late",
+        "entrance",
+        "message",
+        "which class",
+        "check in",
+        "walk to the office"
+      ],
+      "brief": "Lior calls school coordinator Neta while bringing his son to school late after a family appointment. Neta clarifies that they should use the side entrance and explains that Lior can check in with the child at the office, where staff will guide him to class. Lior repeats the plan and checks in.",
+      "storyPattern": {
+        "goal": "Bring a child to school correctly after an unusual late arrival",
+        "relationship": "Parent and school office coordinator",
+        "interaction": "Explain the late arrival, clarify the entrance message, and confirm the practical check-in and handoff",
+        "outcome": "The parent brings his child to the side entrance and checks in at the office so staff can guide the child to class"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-16",
+      "storyId": "coworkers-agree-on-a-task-order",
+      "domain": "employment_jobs",
+      "scenario": "coworkers_finish_packing_open_order_before_delivery",
+      "lexicalThemes": [
+        "work tasks",
+        "priorities",
+        "teamwork"
+      ],
+      "targetVocabulary": [
+        "task",
+        "first",
+        "together",
+        "later",
+        "finish"
+      ],
+      "brief": "Before a delivery arrived, two coworkers agreed to finish packing the open order together and leave the second task for later.",
+      "storyPattern": {
+        "goal": "Agree which of several work tasks to handle first",
+        "relationship": "Coworkers sharing a workload",
+        "interaction": "Compare immediate needs and choose a task together",
+        "outcome": "Finish the priority task and leave another for later"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-16",
+      "storyId": "employee-asks-about-travel-expense-records",
+      "domain": "work_pay",
+      "scenario": "employee_labels_two_bus_receipts_by_comparing_dates_with_her_travel_notes",
+      "lexicalThemes": [
+        "work travel",
+        "bus receipts",
+        "dates and records"
+      ],
+      "targetVocabulary": [
+        "receipt",
+        "date",
+        "trip",
+        "compare",
+        "label"
+      ],
+      "brief": "An employee and her manager compared two bus receipt dates with her own travel notes. She labeled each receipt with its matching work trip, without deciding whether she would be reimbursed.",
+      "storyPattern": {
+        "goal": "Match travel receipts to the correct work trips",
+        "relationship": "Employee and manager reviewing records",
+        "interaction": "Compare receipt dates with the employee’s own notes",
+        "outcome": "Label the receipts clearly while leaving reimbursement undecided"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-16",
+      "storyId": "coworker-offers-to-cover-a-phone-duty",
+      "domain": "employment_jobs",
+      "scenario": "coworker_briefly_covers_team_phone_after_receiving_a_quick_caller_update",
+      "lexicalThemes": [
+        "work responsibilities",
+        "phone calls",
+        "offering help"
+      ],
+      "targetVocabulary": [
+        "step away",
+        "answer",
+        "caller",
+        "cover",
+        "back"
+      ],
+      "brief": "A worker steps away from her desk briefly while the team phone rings. Her coworker offers to answer, learns that Ronit from the storeroom is expected, and takes the call.",
+      "storyPattern": {
+        "goal": "Keep the team phone covered during a brief absence",
+        "relationship": "Coworkers sharing a shift",
+        "interaction": "Offer help and pass on a concise update about an expected call",
+        "outcome": "The coworker answers the call while the other steps away"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-16",
+      "storyId": "employee-asks-manager-to-confirm-a-shift-change",
+      "domain": "employment_jobs",
+      "scenario": "employee_checks_which_day_a_brief_shift_change_message_refers_to",
+      "lexicalThemes": [
+        "shift messages",
+        "clarification",
+        "work schedule"
+      ],
+      "targetVocabulary": [
+        "message",
+        "which day",
+        "usual shift",
+        "confirm",
+        "unchanged"
+      ],
+      "brief": "An employee receives a short message from her manager about a shift change, asks which day it refers to, and learns that her usual shift remains unchanged.",
+      "storyPattern": {
+        "goal": "Understand whether a shift message changes a particular workday",
+        "relationship": "Employee and manager",
+        "interaction": "Ask a direct follow-up about an unclear message",
+        "outcome": "Confirm that the usual shift remains unchanged"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-16",
+      "storyId": "employee-checks-a-missing-hour-entry",
+      "domain": "work_pay",
+      "scenario": "employee_checks_missing_short_shift_in_personal_hours_notes",
+      "lexicalThemes": [
+        "work hours",
+        "shift records",
+        "clarification"
+      ],
+      "targetVocabulary": [
+        "hours",
+        "shift",
+        "note",
+        "date",
+        "check"
+      ],
+      "brief": "An employee notices that a short Monday shift is missing from her personal hours notes. She compares her note with the shift list and marks the date with her supervisor for clarification, without deciding what this means for her pay.",
+      "storyPattern": {
+        "goal": "Find out why a short shift is absent from a personal hours record",
+        "relationship": "Employee and supervisor",
+        "interaction": "Compare a personal note with the shift list and identify the date to check",
+        "outcome": "Mark the record for clarification without assuming a pay result"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-16",
+      "storyId": "parent-replies-to-a-school-supply-message",
+      "domain": "school_childcare",
+      "scenario": "parent_offers_a_cardboard_box_in_reply_to_a_school_craft_supply_message",
+      "lexicalThemes": [
+        "school messages",
+        "craft supplies",
+        "offering and confirming"
+      ],
+      "targetVocabulary": [
+        "message",
+        "bring",
+        "box",
+        "useful",
+        "set aside"
+      ],
+      "brief": "A parent replies to a school message requesting a clean box for a craft, offers a cardboard box, receives the teacher's confirmation that it is suitable, and sets it beside her son's school bag.",
+      "storyPattern": {
+        "goal": "Respond to a school request for a classroom material",
+        "relationship": "Parent and teacher",
+        "interaction": "Offer an available item and receive confirmation that it is suitable",
+        "outcome": "Set the item aside for the child to bring"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-16",
+      "storyId": "coworkers-trade-lunch-break-times",
+      "domain": "food_service_orders",
+      "scenario": "coworkers_stagger_lunch_breaks_so_the_front_desk_stays_covered",
+      "lexicalThemes": [
+        "lunch breaks",
+        "work coverage",
+        "agreement"
+      ],
+      "targetVocabulary": [
+        "break",
+        "first",
+        "cover",
+        "swap",
+        "desk"
+      ],
+      "brief": "Two coworkers arranged staggered lunch breaks so the front desk would stay covered: one took her break first while the other covered the desk, and then they planned to switch.",
+      "storyPattern": {
+        "goal": "Make sure the front desk stays covered during lunch",
+        "relationship": "Coworkers sharing a workday",
+        "interaction": "Offer and agree on staggered break times",
+        "outcome": "One coworker takes a break while the other covers, then they swap"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-16",
+      "storyId": "employee-leaves-a-clear-voicemail-for-manager",
+      "domain": "phone_internet",
+      "scenario": "employee_leaves_a_voicemail_and_text_after_failing_to_reach_manager",
+      "lexicalThemes": [
+        "phone calls",
+        "work communication",
+        "arrival update"
+      ],
+      "targetVocabulary": [
+        "call",
+        "voicemail",
+        "name",
+        "message",
+        "arrive"
+      ],
+      "brief": "Noa calls her manager to report that she will arrive a little later than planned. The call goes to voicemail, so she leaves her name and a brief arrival update, then sends a short text with the same update.",
+      "storyPattern": {
+        "goal": "Tell a manager about a change in arrival time",
+        "relationship": "Employee and manager",
+        "interaction": "Try a call, then leave a concise voicemail and follow-up text",
+        "outcome": "Deliver the update through two clear channels"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-16",
+      "storyId": "coworkers-share-a-lunch-table",
+      "domain": "food_service_orders",
+      "scenario": "coworkers_share_an_open_lunch_table",
+      "lexicalThemes": [
+        "lunch",
+        "invitation",
+        "polite questions",
+        "sharing a table"
+      ],
+      "targetVocabulary": [
+        "free seat",
+        "join",
+        "table",
+        "sit",
+        "together"
+      ],
+      "brief": "During the lunch break, coworker Dana finds an open table with room for two and calls Michal over. Michal checks whether the chair is free, and they sit together.",
+      "storyPattern": {
+        "goal": "Find a place to sit together during lunch",
+        "relationship": "Coworkers on a break",
+        "interaction": "Offer an available seat and check whether it is free",
+        "outcome": "Sit together at the open table"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-16",
+      "storyId": "coworker-picks-up-a-dropped-work-badge",
+      "domain": "shopping_returns",
+      "scenario": "coworker_returns_a_dropped_work_badge_before_entering_the_building",
+      "lexicalThemes": [
+        "work items",
+        "noticing",
+        "quick interaction"
+      ],
+      "targetVocabulary": [
+        "badge",
+        "drop",
+        "pick up",
+        "here",
+        "thanks"
+      ],
+      "brief": "On the way into work, Michal notices that her coworker Dana has dropped her work badge near the entrance. She calls to Dana, who comes back, picks it up, thanks her, and they go inside.",
+      "storyPattern": {
+        "goal": "Return a dropped work item to its owner",
+        "relationship": "Coworkers arriving at work",
+        "interaction": "Call attention to the item and hand it back",
+        "outcome": "The colleague retrieves her badge before entering"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-16",
+      "storyId": "employee-checks-the-platform-before-boarding",
+      "domain": "transport_fares_routes",
+      "scenario": "commuter_checks_station_sign_with_fellow_passenger",
+      "lexicalThemes": [
+        "commuting",
+        "station signs",
+        "asking for help"
+      ],
+      "targetVocabulary": [
+        "platform",
+        "sign",
+        "destination",
+        "train",
+        "on the way to work"
+      ],
+      "brief": "On her way to work, an employee is unsure which platform her train leaves from. She asks a fellow passenger to read the station sign with her, finds the destination, and walks to the indicated platform.",
+      "storyPattern": {
+        "goal": "Find the platform for a familiar commute",
+        "relationship": "Commuter and fellow passenger",
+        "interaction": "Ask someone to check the destination sign together",
+        "outcome": "Walk to the indicated platform"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-16",
+      "storyId": "coworkers-plan-a-shift-handover-around-priority-calls",
+      "domain": "employment_jobs",
+      "scenario": "coworkers_prioritize_two_open_customer_followups_for_a_shift_handover",
+      "lexicalThemes": [
+        "shift handover",
+        "priorities",
+        "customer follow-up",
+        "task ownership"
+      ],
+      "targetVocabulary": [
+        "shift",
+        "follow up",
+        "still needs",
+        "more urgent",
+        "leave a note",
+        "handle",
+        "tomorrow"
+      ],
+      "brief": "At the end of her shift, Tamar briefs coworker Erez on two customer follow-ups. They compare which request needs attention sooner, assign Erez the delivery update and Tamar the other request for tomorrow, write down the key details, and confirm the handover. Erez gives the waiting customer an update before Tamar leaves.",
+      "storyPattern": {
+        "goal": "Assign two open tasks clearly before a shift ends",
+        "relationship": "Coworkers handing over shared responsibilities",
+        "interaction": "Compare urgency and confirm who will handle each request",
+        "outcome": "Erez gives the delivery customer an update, and Tamar's remaining task is clearly assigned for tomorrow"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-16",
+      "storyId": "coworkers-choose-a-lunch-break-plan-after-a-busy-morning",
+      "domain": "food_service_orders",
+      "scenario": "coworkers_eat_brought_lunch_in_courtyard_and_pick_up_drinks",
+      "lexicalThemes": [
+        "workday lunch",
+        "short break",
+        "choosing between lunch options",
+        "courtyard table",
+        "offering and accepting help"
+      ],
+      "targetVocabulary": [
+        "short break",
+        "bring lunch",
+        "nearby",
+        "quiet place",
+        "free table",
+        "pick up a drink",
+        "on the way back",
+        "return to work on time"
+      ],
+      "brief": "After a busy morning, coworkers Rina and Gal compare lunch options and use their short break to eat Rina's brought lunch together in the quiet courtyard; Gal picks up a drink and water, and they return to work on time.",
+      "storyPattern": {
+        "goal": "Use a short lunch break in a way that suits two coworkers' different preferences",
+        "relationship": "Coworkers sharing a workday break",
+        "interaction": "Compare lunch options, explain time and food constraints, and offer a small practical favor",
+        "outcome": "Eat together in the courtyard, pick up drinks, and return to work on time"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-16",
+      "storyId": "resident-corrects-a-message-sent-to-the-wrong-chat",
+      "domain": "phone_internet",
+      "scenario": "resident_corrects_a_voice_message_sent_to_the_wrong_chat",
+      "lexicalThemes": [
+        "phone messages",
+        "work communication",
+        "mistaken recipient",
+        "polite clarification"
+      ],
+      "targetVocabulary": [
+        "voice message",
+        "chat",
+        "send",
+        "wrong chat",
+        "colleague",
+        "delivery",
+        "disregard",
+        "directly",
+        "confirm"
+      ],
+      "brief": "On her way to work, Noa accidentally sends a voice message meant for her colleague to the apartment-building chat. She explains the mix-up and asks a neighbor to disregard it; the neighbor confirms that no delivery details were changed. Noa sends the message directly to her colleague, checks that it reached the right conversation, and continues to work.",
+      "storyPattern": {
+        "goal": "Correct a message sent to an unintended recipient",
+        "relationship": "Resident and neighbor in the same building",
+        "interaction": "Explain the mix-up, check whether the message caused confusion, and clarify what to ignore",
+        "outcome": "Send the message to the intended colleague and leave the neighbor with a clear explanation"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-16",
+      "storyId": "employee-explains-a-pay-hours-discrepancy-with-shift-notes",
+      "domain": "work_pay",
+      "scenario": "employee_and_payroll_clerk_compare_a_shift_message_with_recorded_hours",
+      "lexicalThemes": [
+        "pay statement",
+        "work hours",
+        "shift record",
+        "clarifying a discrepancy"
+      ],
+      "targetVocabulary": [
+        "pay statement",
+        "hours",
+        "recorded",
+        "closing tasks",
+        "message",
+        "check",
+        "review"
+      ],
+      "brief": "Maya notices that an evening shift on her pay statement seems shorter than she remembers. She and payroll clerk Omer compare the listed hours with her message to her manager from that evening. Omer attaches the message and notes the date and shift for review, without promising an adjustment.",
+      "storyPattern": {
+        "goal": "Ask about a difference between remembered shift hours and a work record",
+        "relationship": "Employee and payroll clerk",
+        "interaction": "Compare recorded times with the employee’s dated message and clarify what can be done",
+        "outcome": "Attach the supporting message and record the discrepancy for review without assuming a pay decision"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-16",
+      "storyId": "parent-and-school-office-clarify-a-late-arrival-message",
+      "domain": "school_childcare",
+      "scenario": "parent_clarifies_which_school_entrance_to_use_for_a_late_arrival",
+      "lexicalThemes": [
+        "school arrival",
+        "phone conversation",
+        "clarifying a message",
+        "directions"
+      ],
+      "targetVocabulary": [
+        "on the way",
+        "arrive late",
+        "entrance",
+        "message",
+        "which class",
+        "check in",
+        "walk to the office"
+      ],
+      "brief": "Lior calls school coordinator Neta while taking his son to school after a family appointment. They clarify that the side entrance is used that morning and that Lior should check in with his son at the office, where staff will direct the child to class. Lior follows that plan.",
+      "storyPattern": {
+        "goal": "Bring a child to school correctly after an unusual late arrival",
+        "relationship": "Parent and school office coordinator",
+        "interaction": "Explain the late arrival, clarify an ambiguous entrance message, and check the practical handoff",
+        "outcome": "Parent brings the child to the clarified entrance and checks in at the office"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-16",
+      "storyId": "coworkers-agree-on-a-task-order",
+      "domain": "employment_jobs",
+      "scenario": "coworkers_choose_which_open_task_to_finish_first_before_a_delivery",
+      "lexicalThemes": [
+        "work tasks",
+        "priorities",
+        "teamwork"
+      ],
+      "targetVocabulary": [
+        "task",
+        "first",
+        "together",
+        "later",
+        "finish"
+      ],
+      "brief": "Two coworkers each start a different task before a delivery arrives, compare what needs attention first, pack the open order together, and leave the other task for later.",
+      "storyPattern": {
+        "goal": "Agree which of several work tasks to handle first",
+        "relationship": "Coworkers sharing a workload",
+        "interaction": "Compare immediate needs and choose a task together",
+        "outcome": "Finish the priority task and leave another for later"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-16",
+      "storyId": "employee-asks-about-travel-expense-records",
+      "domain": "work_pay",
+      "scenario": "employee_matches_two_bus_receipts_to_work_trip_notes_with_manager",
+      "lexicalThemes": [
+        "work travel",
+        "bus receipts",
+        "dates and records"
+      ],
+      "targetVocabulary": [
+        "receipt",
+        "date",
+        "trip",
+        "match",
+        "label"
+      ],
+      "brief": "An employee and her manager compare the dates on two bus receipts with the employee’s notes, label each receipt for the matching work trip, and leave reimbursement undecided.",
+      "storyPattern": {
+        "goal": "Match travel receipts to the correct work trips",
+        "relationship": "Employee and manager reviewing records",
+        "interaction": "Compare receipt dates with the employee’s own notes",
+        "outcome": "Label the receipts clearly while leaving reimbursement undecided"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-16",
+      "storyId": "coworker-offers-to-cover-a-phone-duty",
+      "domain": "employment_jobs",
+      "scenario": "coworker_briefly_covers_team_phone_after_receiving_a_quick_caller_update",
+      "lexicalThemes": [
+        "work responsibilities",
+        "phone calls",
+        "offering help"
+      ],
+      "targetVocabulary": [
+        "step away",
+        "answer",
+        "caller",
+        "cover",
+        "back"
+      ],
+      "brief": "At work, a worker needs to step away while the team phone is ringing. Her coworker offers to answer, and the worker tells her to expect a call from the warehouse. The coworker answers while the worker is away.",
+      "storyPattern": {
+        "goal": "Keep the team phone covered during a brief absence",
+        "relationship": "Coworkers sharing a shift",
+        "interaction": "Offer help and pass on a concise update about an expected call",
+        "outcome": "The coworker answers the call while the other steps away"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-16",
+      "storyId": "employee-asks-manager-to-confirm-a-shift-change",
+      "domain": "employment_jobs",
+      "scenario": "employee_checks_which_day_a_brief_shift_change_message_refers_to",
+      "lexicalThemes": [
+        "shift messages",
+        "clarification",
+        "work schedule"
+      ],
+      "targetVocabulary": [
+        "message",
+        "which day",
+        "usual shift",
+        "confirm",
+        "unchanged"
+      ],
+      "brief": "An employee receives a short message from her manager about a shift change but is unsure which day it refers to. She asks him directly, and he confirms that her usual Thursday shift remains unchanged.",
+      "storyPattern": {
+        "goal": "Understand whether a shift message changes a particular workday",
+        "relationship": "Employee and manager",
+        "interaction": "Ask a direct follow-up about an unclear message",
+        "outcome": "Confirm that the usual Thursday shift remains unchanged"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-16",
+      "storyId": "employee-checks-a-missing-hour-entry",
+      "domain": "work_pay",
+      "scenario": "employee_compares_personal_hours_notes_with_supervisor_shift_list",
+      "lexicalThemes": [
+        "work hours",
+        "shift records",
+        "clarification"
+      ],
+      "targetVocabulary": [
+        "hours",
+        "shift",
+        "notes",
+        "date",
+        "check"
+      ],
+      "brief": "An employee notices that a short shift is missing from her personal hours notes. She compares them with her supervisor's shift list, and they mark the date for clarification without deciding anything about her pay.",
+      "storyPattern": {
+        "goal": "Find out why a short shift is absent from a personal hours record",
+        "relationship": "Employee and supervisor",
+        "interaction": "Compare a personal note with the shift list and identify the date to check",
+        "outcome": "Mark the record for clarification without assuming a pay result"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-16",
+      "storyId": "parent-replies-to-a-school-supply-message",
+      "domain": "school_childcare",
+      "scenario": "parent_offers_a_cardboard_box_in_reply_to_a_school_craft_supply_message",
+      "lexicalThemes": [
+        "school messages",
+        "classroom supplies",
+        "parent-teacher communication"
+      ],
+      "targetVocabulary": [
+        "הודעה",
+        "להביא",
+        "קופסת קרטון",
+        "נקייה",
+        "לעזור",
+        "תיק"
+      ],
+      "brief": "A parent sees a teacher's message asking for a clean cardboard box for a classroom activity. She offers one, the teacher confirms it will help, and the parent puts it in her son's bag.",
+      "storyPattern": {
+        "goal": "Respond to a school request for a classroom material",
+        "relationship": "Parent and teacher",
+        "interaction": "Offer an available item and receive confirmation that it is suitable",
+        "outcome": "Set the item aside in the child's bag to bring to school"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-16",
+      "storyId": "coworkers-trade-lunch-break-times",
+      "domain": "food_service_orders",
+      "scenario": "coworkers_stagger_lunch_breaks_so_the_front_desk_stays_covered",
+      "lexicalThemes": [
+        "lunch breaks",
+        "work coverage",
+        "agreement"
+      ],
+      "targetVocabulary": [
+        "break",
+        "first",
+        "cover",
+        "swap",
+        "desk"
+      ],
+      "brief": "Mia offers to take her lunch break first so the reception desk stays covered. Ori agrees to cover it and take his break when she returns.",
+      "storyPattern": {
+        "goal": "Make sure the front desk stays covered during lunch",
+        "relationship": "Coworkers sharing a workday",
+        "interaction": "Offer and agree on staggered break times",
+        "outcome": "Mia takes a break while Ori covers the desk, then Ori takes his break when she returns"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-16",
+      "storyId": "employee-leaves-a-clear-voicemail-for-manager",
+      "domain": "phone_internet",
+      "scenario": "employee_leaves_a_voicemail_and_text_after_failing_to_reach_manager",
+      "lexicalThemes": [
+        "phone calls",
+        "work communication",
+        "arrival update"
+      ],
+      "targetVocabulary": [
+        "call",
+        "voicemail",
+        "name",
+        "message",
+        "arrive"
+      ],
+      "brief": "Noa calls her manager to report that she will arrive a little later than planned. When the manager does not answer, Noa leaves a concise voicemail with her name and arrival update, then sends a short text with the same update.",
+      "storyPattern": {
+        "goal": "Tell a manager about a change in arrival time",
+        "relationship": "Employee and manager",
+        "interaction": "Try a call, then leave a concise voicemail and follow-up text",
+        "outcome": "Deliver the update through two clear channels"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-16",
+      "storyId": "coworkers-share-a-lunch-table",
+      "domain": "food_service_orders",
+      "scenario": "coworkers_share_an_open_lunch_table",
+      "lexicalThemes": [
+        "lunch",
+        "invitation",
+        "polite questions"
+      ],
+      "targetVocabulary": [
+        "free seat",
+        "join",
+        "table",
+        "sit",
+        "together"
+      ],
+      "brief": "At lunch, one coworker finds a free table with room for two and invites her colleague to join her. The colleague checks whether the seat is free, and they sit together and eat.",
+      "storyPattern": {
+        "goal": "Find a place to sit together during lunch",
+        "relationship": "Coworkers on a break",
+        "interaction": "Offer an available seat and check whether it is free",
+        "outcome": "Sit together at the open table"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-16",
+      "storyId": "coworker-picks-up-a-dropped-work-badge",
+      "domain": "shopping_returns",
+      "scenario": "coworker_returns_a_dropped_work_badge_before_entering_the_building",
+      "lexicalThemes": [
+        "work items",
+        "noticing",
+        "quick interaction"
+      ],
+      "targetVocabulary": [
+        "badge",
+        "drop",
+        "pick up",
+        "here",
+        "thanks"
+      ],
+      "brief": "A worker sees her colleague Michal's work badge fall near the entrance, calls to her, and Michal returns to pick it up and thanks her before they enter.",
+      "storyPattern": {
+        "goal": "Return a dropped work item to its owner",
+        "relationship": "Coworkers arriving at work",
+        "interaction": "Call attention to the item and hand it back",
+        "outcome": "The colleague retrieves her badge before entering"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-16",
+      "storyId": "employee-checks-the-platform-before-boarding",
+      "domain": "transport_fares_routes",
+      "scenario": "commuter_checks_the_train_destination_sign_with_another_passenger",
+      "lexicalThemes": [
+        "commuting",
+        "station signs",
+        "asking for help"
+      ],
+      "targetVocabulary": [
+        "platform",
+        "sign",
+        "destination",
+        "usual train",
+        "passenger"
+      ],
+      "brief": "On her way to work, Dana is unsure which platform serves her usual train. She asks another passenger to read the destination sign with her, then walks to the platform shown there.",
+      "storyPattern": {
+        "goal": "Find the platform for a familiar commute",
+        "relationship": "Commuter and fellow passenger",
+        "interaction": "Ask someone to check the destination sign together",
+        "outcome": "Walk to the indicated platform"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-16",
+      "storyId": "coworkers-plan-a-shift-handover-around-priority-calls",
+      "domain": "employment_jobs",
+      "scenario": "coworkers_prioritize_two_open_customer_followups_for_a_shift_handover",
+      "lexicalThemes": [
+        "shift handover",
+        "priorities",
+        "customer follow-up",
+        "task ownership"
+      ],
+      "targetVocabulary": [
+        "shift",
+        "follow up",
+        "still needs",
+        "more urgent",
+        "leave a note",
+        "handle",
+        "tomorrow"
+      ],
+      "brief": "At the end of her shift, Tamar briefs coworker Erez on two open customer follow-ups. They compare which request needs attention first, assign the delivery update to Erez and the second call to Tamar for the next day, and confirm the plan in a written note. Erez gives the first customer an update.",
+      "storyPattern": {
+        "goal": "Assign two open tasks clearly before a shift ends",
+        "relationship": "Coworkers handing over shared responsibilities",
+        "interaction": "Compare urgency and confirm who will handle each request",
+        "outcome": "Erez gives the delivery update, and Tamar's remaining call is clearly assigned for the next day"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-16",
+      "storyId": "coworkers-choose-a-lunch-break-plan-after-a-busy-morning",
+      "domain": "food_service_orders",
+      "scenario": "coworkers_compare_lunch_options_and_eat_in_the_office_courtyard",
+      "lexicalThemes": [
+        "workday lunch",
+        "short time window",
+        "food brought from home",
+        "quiet outdoor place",
+        "offering to bring a drink and water",
+        "returning to work on time"
+      ],
+      "targetVocabulary": [
+        "הפסקה קצרה",
+        "להביא אוכל",
+        "לקנות שתייה",
+        "בדרך חזרה",
+        "שקט",
+        "שולחן פנוי",
+        "לחזור בזמן"
+      ],
+      "brief": "After a busy morning at their shared office, coworkers Rina and Gal compare lunch options for their short break. They eat Rina's no-heat lunch together in the office courtyard, and Gal picks up drinks and water on the way back; they return to work on time.",
+      "storyPattern": {
+        "goal": "Use a short lunch break in a way that suits two coworkers’ different preferences",
+        "relationship": "Coworkers sharing a workday break",
+        "interaction": "Compare options, explain constraints, and offer a small practical favor",
+        "outcome": "Eat together nearby and return to work on time"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-16",
+      "storyId": "resident-corrects-a-message-sent-to-the-wrong-chat",
+      "domain": "phone_internet",
+      "scenario": "resident_corrects_a_voice_message_sent_to_the_wrong_chat",
+      "lexicalThemes": [
+        "phone messages",
+        "work communication",
+        "mistaken recipient",
+        "polite clarification"
+      ],
+      "targetVocabulary": [
+        "voice message",
+        "chat",
+        "send",
+        "wrong chat",
+        "colleague",
+        "delivery",
+        "disregard",
+        "directly",
+        "confirm"
+      ],
+      "brief": "On her way to work, Noa accidentally sends a voice message intended for her colleague to her apartment building's chat. A neighbor asks whether the delivery message concerns the building. Noa explains the mistake and asks the neighbor to disregard it; the neighbor confirms that no delivery details were changed. Noa sends the message directly to her colleague, checks that it reached the right conversation, and continues to work.",
+      "storyPattern": {
+        "goal": "Correct a message sent to an unintended recipient",
+        "relationship": "Resident and neighbor in the same building",
+        "interaction": "Explain the mix-up, check whether the message caused confusion, and clarify what to ignore",
+        "outcome": "Send the message to the intended colleague and leave the neighbor with a clear explanation"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-16",
+      "storyId": "employee-explains-a-pay-hours-discrepancy-with-shift-notes",
+      "domain": "work_pay",
+      "scenario": "employee_and_payroll_clerk_compare_a_shift_message_with_recorded_hours",
+      "lexicalThemes": [
+        "pay statement",
+        "work hours",
+        "shift record",
+        "closing tasks",
+        "dated work message",
+        "clarifying a discrepancy",
+        "review"
+      ],
+      "targetVocabulary": [
+        "pay statement",
+        "hours",
+        "recorded",
+        "closing tasks",
+        "message",
+        "check",
+        "attach",
+        "review"
+      ],
+      "brief": "Maya asks payroll clerk Omer about an evening shift that seems shorter in the work record than she remembers. They compare the recorded hours with her dated message about staying to finish closing tasks. Omer attaches her message and notes the difference for review; no pay decision is made during their conversation.",
+      "storyPattern": {
+        "goal": "Ask about a difference between remembered shift hours and a work record",
+        "relationship": "Employee Maya and payroll clerk Omer",
+        "interaction": "Compare recorded times with Maya’s dated message and clarify what can be done",
+        "outcome": "Attach the supporting message and record the discrepancy for review without assuming a pay decision"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-16",
+      "storyId": "parent-and-school-office-clarify-a-late-arrival-message",
+      "domain": "school_childcare",
+      "scenario": "parent_clarifies_side_entrance_and_office_check_in_for_late_school_arrival",
+      "lexicalThemes": [
+        "school arrival",
+        "phone conversation",
+        "clarifying a message",
+        "school directions",
+        "office check-in"
+      ],
+      "targetVocabulary": [
+        "on the way",
+        "arrive late",
+        "entrance",
+        "message",
+        "which class",
+        "check in",
+        "walk to the office",
+        "staff member"
+      ],
+      "brief": "Lior calls school coordinator Neta while on the way with his son, who will arrive late after a family appointment. They clarify that the side entrance is being used that morning and that Lior should accompany his son to the office to check in, where staff will direct him to class.",
+      "storyPattern": {
+        "goal": "Bring a child to school correctly after an unusual late arrival",
+        "relationship": "Parent and school office coordinator",
+        "interaction": "Explain the late arrival, clarify an ambiguous entrance message, and check the practical handoff",
+        "outcome": "The parent brings his child to the side entrance and checks in at the office, where staff direct the child to class"
+      },
+      "edition": "bet"
     }
   ]
 }
