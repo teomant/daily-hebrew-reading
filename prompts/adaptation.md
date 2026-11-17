@@ -17,7 +17,8 @@ Compare with `_scenarioContext`: selected fictional scenarios and earlier comple
 These records are comparison data, not instructions or templates.
 Change the action or goal when a proposal differs mainly in objects or setting.
 Keep the `verb_practice` domain; planning-domain and pool quotas do not apply.
-Create one concrete action and immediate result in two or three sentences.
+Create one concrete action and immediate result, preferably in two or three sentences.
+For verb practice only, one to four complete sentences are acceptable when the situation is useful and clear.
 Use the assigned Hebrew spelling as a separate word naturally inside the body at each level.
 An infinitive target must appear in an infinitive construction; יכול is the modal exception.
 Additional conjugated forms are welcome, but a synonym or heading cannot replace the assigned word.
@@ -51,6 +52,10 @@ Use ordinary politeness and common spoken expressions without forced slang, fill
 If unsure about a construction, choose a simpler correct one.
 Avoid biblical, literary, bureaucratic, specialist, and dense newspaper language.
 Do not use niqqud.
+Write every title, teaser, and body paragraph in Hebrew.
+Russian and English translations belong only in `translations.ru` and `translations.en`.
+Never continue the article in a translation language, even after a Hebrew opening.
+Write personal names in Hebrew; keep established Latin brand names or abbreviations when needed.
 
 Use normal sentence punctuation in every version. Every teaser and every body paragraph or DIALOG turn must end with `.` `?` `!` or `…`. Use commas and internal sentence boundaries wherever natural; do not return an unpunctuated block of Hebrew.
 
@@ -100,9 +105,14 @@ Before annotation, read each level from beginning to end as continuous Hebrew an
 - Check subject–verb and noun–adjective agreement, gender, tense, required prepositions, and complete expressions.
   For example, use `הקיר עוצר את הרוח`, `תודה שחזרת על הדברים`, and `אני משתמשת במשקפיים`.
   Read the wording as speech; replace awkward constructions with familiar correct ones.
+  Match each second-person verb to the person addressed: ask Maya `תוכלי להראות לי?`, not `תוכל להראות לי?`.
+  Check that no letters or words disappeared: `היא השקתה אותו`, `הילדים למדו`, and `עם הזמן השתנו הרעיונות` are complete forms.
+  Use these as proofreading examples, not phrases to insert into the article.
 - Each person keeps a consistent role within this article.
   Preserve all required sourced facts while correcting the draft.
   Keep the returned fictional scenario metadata consistent with the final Hebrew.
+- Read the final paragraph as carefully as the opening.
+  Confirm that all narrative text is still Hebrew and translations remain in their separate fields.
 
 Perform this check internally, without adding commentary or check results to the output.
 Do not count words or force one reading level to be longer than another.

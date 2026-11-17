@@ -1298,7 +1298,7 @@
                   }
                 },
                 {
-                  "text": ".. ",
+                  "text": ". ",
                   "type": "separator",
                   "translations": {
                     "ru": "",
@@ -1394,7 +1394,7 @@
                   }
                 },
                 {
-                  "text": ".. ",
+                  "text": ". ",
                   "type": "separator",
                   "translations": {
                     "ru": "",
@@ -1490,7 +1490,7 @@
                   }
                 },
                 {
-                  "text": "..",
+                  "text": ".",
                   "type": "separator",
                   "translations": {
                     "ru": "",
@@ -4717,7 +4717,7 @@
                 }
               },
               {
-                "text": "..",
+                "text": ".",
                 "type": "separator",
                 "translations": {
                   "ru": "..",
@@ -11997,11 +11997,11 @@
                   }
                 },
                 {
-                  "text": "ובילדים",
+                  "text": "והילדים",
                   "type": "word",
                   "translations": {
-                    "ru": "и с детьми",
-                    "en": "and with the children"
+                    "ru": "и дети",
+                    "en": "and the children"
                   }
                 },
                 {
@@ -13494,7 +13494,7 @@
                   }
                 },
                 {
-                  "text": "השקת",
+                  "text": "השקתה",
                   "type": "word",
                   "translations": {
                     "ru": "полила",
@@ -18544,7 +18544,7 @@
                 }
               },
               {
-                "text": "הטעות..",
+                "text": "הטעות.",
                 "type": "word",
                 "translations": {
                   "ru": "ошибку..",
@@ -20791,7 +20791,7 @@
                   }
                 },
                 {
-                  "text": "שלחתם",
+                  "text": "ששלחתם",
                   "type": "word",
                   "translations": {
                     "ru": "вы отправили",
@@ -21085,7 +21085,7 @@
                   }
                 },
                 {
-                  "text": "יכוונו",
+                  "text": "יכוון",
                   "type": "word",
                   "translations": {
                     "ru": "подскажут",
@@ -21281,7 +21281,7 @@
                   }
                 },
                 {
-                  "text": "יכוונו",
+                  "text": "יכוון",
                   "type": "word",
                   "translations": {
                     "ru": "проводят",
@@ -21653,7 +21653,7 @@
                 }
               },
               {
-                "text": "..",
+                "text": ".",
                 "type": "separator",
                 "translations": {
                   "ru": "",
@@ -22724,7 +22724,7 @@
                 }
               },
               {
-                "text": "..",
+                "text": ".",
                 "type": "separator",
                 "translations": {
                   "ru": "",
@@ -25767,11 +25767,11 @@
                   }
                 },
                 {
-                  "text": "ובילדים",
+                  "text": "והילדים",
                   "type": "word",
                   "translations": {
-                    "ru": "и с детьми",
-                    "en": "and with the children"
+                    "ru": "и дети",
+                    "en": "and the children"
                   }
                 },
                 {
@@ -26182,8 +26182,16 @@
                   "text": "עם",
                   "type": "word",
                   "translations": {
-                    "ru": "со временем",
-                    "en": "over time"
+                    "ru": "со",
+                    "en": "with"
+                  }
+                },
+                {
+                  "text": "הזמן",
+                  "type": "word",
+                  "translations": {
+                    "ru": "временем",
+                    "en": "time"
                   }
                 },
                 {
@@ -32963,7 +32971,7 @@
                   }
                 },
                 {
-                  "text": "שתוכל",
+                  "text": "שתוכלי",
                   "type": "word",
                   "translations": {
                     "ru": "которую ты сможешь",
@@ -35122,7 +35130,7 @@
                 }
               },
               {
-                "text": "..",
+                "text": ".",
                 "type": "separator",
                 "translations": {
                   "ru": "..",
@@ -38209,7 +38217,7 @@
                 }
               },
               {
-                "text": "..",
+                "text": ".",
                 "type": "separator",
                 "translations": {
                   "ru": "..",
@@ -38526,50 +38534,42 @@
                   }
                 },
                 {
-                  "text": "Уход",
+                  "text": "הטיפול",
                   "type": "word",
                   "translations": {
-                    "ru": "Уход",
-                    "en": "Care"
+                    "ru": "уход",
+                    "en": "care"
                   }
                 },
                 {
-                  "text": "и",
+                  "text": "והלימוד",
                   "type": "word",
                   "translations": {
-                    "ru": "и",
-                    "en": "and"
+                    "ru": "и обучение",
+                    "en": "and learning"
                   }
                 },
                 {
-                  "text": "обучение",
+                  "text": "היו",
                   "type": "word",
                   "translations": {
-                    "ru": "обучение",
-                    "en": "education"
+                    "ru": "были",
+                    "en": "were"
                   }
                 },
                 {
-                  "text": "делились",
+                  "text": "לפי",
                   "type": "word",
                   "translations": {
-                    "ru": "распределялись",
-                    "en": "were organized"
+                    "ru": "в соответствии с",
+                    "en": "according to"
                   }
                 },
                 {
-                  "text": "по",
+                  "text": "הגיל",
                   "type": "word",
                   "translations": {
-                    "ru": "по",
-                    "en": "by"
-                  }
-                },
-                {
-                  "text": "возрасту",
-                  "type": "word",
-                  "translations": {
-                    "ru": "возрасту",
+                    "ru": "возрастом",
                     "en": "age"
                   }
                 },
@@ -38584,39 +38584,31 @@
               ],
               [
                 {
-                  "text": "В",
+                  "text": "בגילים",
                   "type": "word",
                   "translations": {
-                    "ru": "В",
-                    "en": "In"
+                    "ru": "в возрастах",
+                    "en": "at ages"
                   }
                 },
                 {
-                  "text": "разные",
+                  "text": "שונים",
                   "type": "word",
                   "translations": {
-                    "ru": "разные",
+                    "ru": "разных",
                     "en": "different"
                   }
                 },
                 {
-                  "text": "периоды",
-                  "type": "word",
-                  "translations": {
-                    "ru": "периоды",
-                    "en": "stages"
-                  }
-                },
-                {
-                  "text": "дети",
+                  "text": "הילדים",
                   "type": "word",
                   "translations": {
                     "ru": "дети",
-                    "en": "children"
+                    "en": "the children"
                   }
                 },
                 {
-                  "text": "были",
+                  "text": "היו",
                   "type": "word",
                   "translations": {
                     "ru": "были",
@@ -38624,35 +38616,19 @@
                   }
                 },
                 {
-                  "text": "в",
+                  "text": "בבית",
                   "type": "word",
                   "translations": {
-                    "ru": "в",
-                    "en": "in"
+                    "ru": "в доме",
+                    "en": "in a house"
                   }
                 },
                 {
-                  "text": "доме",
+                  "text": "לתינוקות",
                   "type": "word",
                   "translations": {
-                    "ru": "доме",
-                    "en": "a house"
-                  }
-                },
-                {
-                  "text": "для",
-                  "type": "word",
-                  "translations": {
-                    "ru": "для",
-                    "en": "for"
-                  }
-                },
-                {
-                  "text": "младенцев",
-                  "type": "word",
-                  "translations": {
-                    "ru": "младенцев",
-                    "en": "infants"
+                    "ru": "для младенцев",
+                    "en": "for babies"
                   }
                 },
                 {
@@ -38664,51 +38640,35 @@
                   }
                 },
                 {
-                  "text": "в",
+                  "text": "בבית",
                   "type": "word",
                   "translations": {
-                    "ru": "в",
-                    "en": "in"
+                    "ru": "в доме",
+                    "en": "in a house"
                   }
                 },
                 {
-                  "text": "детском",
+                  "text": "ילדים",
                   "type": "word",
                   "translations": {
-                    "ru": "детском",
-                    "en": "children’s"
+                    "ru": "детей",
+                    "en": "for children"
                   }
                 },
                 {
-                  "text": "доме",
-                  "type": "word",
+                  "text": ",",
+                  "type": "separator",
                   "translations": {
-                    "ru": "доме",
-                    "en": "house"
+                    "ru": "",
+                    "en": ""
                   }
                 },
                 {
-                  "text": "и",
-                  "type": "word",
+                  "text": "ובבית הספר",
+                  "type": "expression",
                   "translations": {
-                    "ru": "и",
-                    "en": "and"
-                  }
-                },
-                {
-                  "text": "в",
-                  "type": "word",
-                  "translations": {
-                    "ru": "в",
-                    "en": "in"
-                  }
-                },
-                {
-                  "text": "школе",
-                  "type": "word",
-                  "translations": {
-                    "ru": "школе",
-                    "en": "school"
+                    "ru": "и в школе",
+                    "en": "and at school"
                   }
                 },
                 {
@@ -38720,87 +38680,63 @@
                   }
                 },
                 {
-                  "text": "Такой",
+                  "text": "כך",
                   "type": "word",
                   "translations": {
-                    "ru": "Такой",
-                    "en": "This"
+                    "ru": "так",
+                    "en": "this way"
                   }
                 },
                 {
-                  "text": "подход",
+                  "text": "נשים",
                   "type": "word",
                   "translations": {
-                    "ru": "подход",
-                    "en": "approach"
+                    "ru": "женщины",
+                    "en": "women"
                   }
                 },
                 {
-                  "text": "позволял",
+                  "text": "יכלו",
                   "type": "word",
                   "translations": {
-                    "ru": "позволял",
-                    "en": "made it possible"
+                    "ru": "могли",
+                    "en": "could"
                   }
                 },
                 {
-                  "text": "женщинам",
-                  "type": "word",
-                  "translations": {
-                    "ru": "женщинам",
-                    "en": "for women"
-                  }
-                },
-                {
-                  "text": "участвовать",
+                  "text": "להשתתף",
                   "type": "word",
                   "translations": {
                     "ru": "участвовать",
-                    "en": "to take part"
+                    "en": "take part"
                   }
                 },
                 {
-                  "text": "в",
+                  "text": "בעבודה",
                   "type": "word",
                   "translations": {
-                    "ru": "в",
-                    "en": "in"
+                    "ru": "в работе",
+                    "en": "in work"
                   }
                 },
                 {
-                  "text": "работе",
+                  "text": "ובחיי",
                   "type": "word",
                   "translations": {
-                    "ru": "работе",
-                    "en": "work"
+                    "ru": "и в жизни",
+                    "en": "and in the life of"
                   }
                 },
                 {
-                  "text": "и",
-                  "type": "word",
-                  "translations": {
-                    "ru": "и",
-                    "en": "and"
-                  }
-                },
-                {
-                  "text": "жизни",
-                  "type": "word",
-                  "translations": {
-                    "ru": "жизни",
-                    "en": "life"
-                  }
-                },
-                {
-                  "text": "общины",
+                  "text": "הקהילה",
                   "type": "word",
                   "translations": {
                     "ru": "общины",
-                    "en": "of the community"
+                    "en": "the community"
                   }
                 },
                 {
-                  "text": ",",
+                  "text": ".",
                   "type": "separator",
                   "translations": {
                     "ru": "",
@@ -38808,59 +38744,43 @@
                   }
                 },
                 {
-                  "text": "а",
+                  "text": "הטיפול",
                   "type": "word",
                   "translations": {
-                    "ru": "а",
-                    "en": "while"
-                  }
-                },
-                {
-                  "text": "забота",
-                  "type": "word",
-                  "translations": {
-                    "ru": "забота",
+                    "ru": "уход",
                     "en": "care"
                   }
                 },
                 {
-                  "text": "о",
+                  "text": "בילדים",
                   "type": "word",
                   "translations": {
-                    "ru": "о",
-                    "en": "for"
+                    "ru": "за детьми",
+                    "en": "for the children"
                   }
                 },
                 {
-                  "text": "детях",
+                  "text": "היה",
                   "type": "word",
                   "translations": {
-                    "ru": "детях",
-                    "en": "children"
+                    "ru": "был",
+                    "en": "was"
                   }
                 },
                 {
-                  "text": "становилась",
+                  "text": "משימה",
                   "type": "word",
                   "translations": {
-                    "ru": "становилась",
-                    "en": "became"
+                    "ru": "задачей",
+                    "en": "a task"
                   }
                 },
                 {
-                  "text": "общим",
+                  "text": "משותפת",
                   "type": "word",
                   "translations": {
-                    "ru": "общим",
+                    "ru": "общей",
                     "en": "shared"
-                  }
-                },
-                {
-                  "text": "делом",
-                  "type": "word",
-                  "translations": {
-                    "ru": "делом",
-                    "en": "responsibility"
                   }
                 },
                 {
@@ -38874,42 +38794,34 @@
               ],
               [
                 {
-                  "text": "Со",
-                  "type": "word",
+                  "text": "עם הזמן",
+                  "type": "expression",
                   "translations": {
-                    "ru": "Со",
-                    "en": "Over"
+                    "ru": "со временем",
+                    "en": "over time"
                   }
                 },
                 {
-                  "text": "временем",
+                  "text": "החיים",
                   "type": "word",
                   "translations": {
-                    "ru": "временем",
-                    "en": "time"
+                    "ru": "жизнь",
+                    "en": "life"
                   }
                 },
                 {
-                  "text": "этот",
+                  "text": "בקיבוץ",
                   "type": "word",
                   "translations": {
-                    "ru": "этот",
-                    "en": "this"
+                    "ru": "в кибуце",
+                    "en": "on the kibbutz"
                   }
                 },
                 {
-                  "text": "уклад",
+                  "text": "השתנו",
                   "type": "word",
                   "translations": {
-                    "ru": "уклад",
-                    "en": "system"
-                  }
-                },
-                {
-                  "text": "менялся",
-                  "type": "word",
-                  "translations": {
-                    "ru": "менялся",
+                    "ru": "изменилась",
                     "en": "changed"
                   }
                 },
@@ -38922,23 +38834,23 @@
                   }
                 },
                 {
-                  "text": "Дети",
+                  "text": "הילדים",
                   "type": "word",
                   "translations": {
-                    "ru": "Дети",
-                    "en": "Children"
+                    "ru": "дети",
+                    "en": "the children"
                   }
                 },
                 {
-                  "text": "стали",
+                  "text": "התחילו",
                   "type": "word",
                   "translations": {
-                    "ru": "стали",
-                    "en": "began"
+                    "ru": "начали",
+                    "en": "started"
                   }
                 },
                 {
-                  "text": "спать",
+                  "text": "לישון",
                   "type": "word",
                   "translations": {
                     "ru": "спать",
@@ -38946,7 +38858,7 @@
                   }
                 },
                 {
-                  "text": "дома",
+                  "text": "בבית",
                   "type": "word",
                   "translations": {
                     "ru": "дома",
@@ -38954,31 +38866,39 @@
                   }
                 },
                 {
-                  "text": ",",
-                  "type": "separator",
-                  "translations": {
-                    "ru": "",
-                    "en": ""
-                  }
-                },
-                {
-                  "text": "а",
+                  "text": "עם",
                   "type": "word",
                   "translations": {
-                    "ru": "а",
-                    "en": "and"
+                    "ru": "с",
+                    "en": "with"
                   }
                 },
                 {
-                  "text": "не",
+                  "text": "ההורים",
                   "type": "word",
                   "translations": {
-                    "ru": "не",
-                    "en": "not"
+                    "ru": "родителями",
+                    "en": "their parents"
                   }
                 },
                 {
-                  "text": "вместе",
+                  "text": "במקום",
+                  "type": "word",
+                  "translations": {
+                    "ru": "вместо того чтобы",
+                    "en": "instead of"
+                  }
+                },
+                {
+                  "text": "לישון",
+                  "type": "word",
+                  "translations": {
+                    "ru": "спать",
+                    "en": "sleeping"
+                  }
+                },
+                {
+                  "text": "יחד",
                   "type": "word",
                   "translations": {
                     "ru": "вместе",
@@ -38986,27 +38906,19 @@
                   }
                 },
                 {
-                  "text": "в",
+                  "text": "בבתי",
                   "type": "word",
                   "translations": {
-                    "ru": "в",
-                    "en": "in"
+                    "ru": "в домах",
+                    "en": "in houses for"
                   }
                 },
                 {
-                  "text": "детских",
+                  "text": "הילדים",
                   "type": "word",
                   "translations": {
-                    "ru": "детских",
-                    "en": "children’s"
-                  }
-                },
-                {
-                  "text": "домах",
-                  "type": "word",
-                  "translations": {
-                    "ru": "домах",
-                    "en": "houses"
+                    "ru": "детей",
+                    "en": "children"
                   }
                 },
                 {
@@ -39018,19 +38930,35 @@
                   }
                 },
                 {
-                  "text": "Обзор",
+                  "text": "סקירה",
                   "type": "word",
                   "translations": {
-                    "ru": "Обзор",
-                    "en": "A review"
+                    "ru": "обзор",
+                    "en": "a review"
                   }
                 },
                 {
-                  "text": "исследований",
+                  "text": "של",
+                  "type": "word",
+                  "translations": {
+                    "ru": "",
+                    "en": "of"
+                  }
+                },
+                {
+                  "text": "מחקרים",
                   "type": "word",
                   "translations": {
                     "ru": "исследований",
-                    "en": "of research"
+                    "en": "studies"
+                  }
+                },
+                {
+                  "text": "משנת",
+                  "type": "word",
+                  "translations": {
+                    "ru": "за год",
+                    "en": "from the year"
                   }
                 },
                 {
@@ -39042,23 +38970,15 @@
                   }
                 },
                 {
-                  "text": "года",
+                  "text": "ציינה",
                   "type": "word",
                   "translations": {
-                    "ru": "года",
-                    "en": "year"
-                  }
-                },
-                {
-                  "text": "отмечал",
-                  "type": "word",
-                  "translations": {
-                    "ru": "отмечал",
+                    "ru": "отметил",
                     "en": "noted"
                   }
                 },
                 {
-                  "text": "опасения",
+                  "text": "חששות",
                   "type": "word",
                   "translations": {
                     "ru": "опасения",
@@ -39066,31 +38986,31 @@
                   }
                 },
                 {
-                  "text": "по",
+                  "text": "לגבי",
                   "type": "word",
                   "translations": {
-                    "ru": "по",
+                    "ru": "относительно",
                     "en": "about"
                   }
                 },
                 {
-                  "text": "поводу",
+                  "text": "ההשפעה",
                   "type": "word",
                   "translations": {
-                    "ru": "поводу",
-                    "en": "the effects"
+                    "ru": "влияния",
+                    "en": "the effect"
                   }
                 },
                 {
-                  "text": "общего",
+                  "text": "של",
                   "type": "word",
                   "translations": {
-                    "ru": "общего",
-                    "en": "of communal"
+                    "ru": "",
+                    "en": "of"
                   }
                 },
                 {
-                  "text": "сна",
+                  "text": "השינה",
                   "type": "word",
                   "translations": {
                     "ru": "сна",
@@ -39098,7 +39018,15 @@
                   }
                 },
                 {
-                  "text": "на",
+                  "text": "המשותפת",
+                  "type": "word",
+                  "translations": {
+                    "ru": "совместного",
+                    "en": "together"
+                  }
+                },
+                {
+                  "text": "על",
                   "type": "word",
                   "translations": {
                     "ru": "на",
@@ -39106,7 +39034,15 @@
                   }
                 },
                 {
-                  "text": "эмоциональное",
+                  "text": "ההתפתחות",
+                  "type": "word",
+                  "translations": {
+                    "ru": "развитие",
+                    "en": "the development"
+                  }
+                },
+                {
+                  "text": "הרגשית",
                   "type": "word",
                   "translations": {
                     "ru": "эмоциональное",
@@ -39114,19 +39050,19 @@
                   }
                 },
                 {
-                  "text": "развитие",
+                  "text": "של",
                   "type": "word",
                   "translations": {
-                    "ru": "развитие",
-                    "en": "development"
+                    "ru": "",
+                    "en": "of"
                   }
                 },
                 {
-                  "text": "детей",
+                  "text": "הילדים",
                   "type": "word",
                   "translations": {
                     "ru": "детей",
-                    "en": "of children"
+                    "en": "the children"
                   }
                 },
                 {
@@ -39138,31 +39074,15 @@
                   }
                 },
                 {
-                  "text": "При",
+                  "text": "אבל",
                   "type": "word",
                   "translations": {
-                    "ru": "При",
-                    "en": "At the same time"
+                    "ru": "но",
+                    "en": "but"
                   }
                 },
                 {
-                  "text": "этом",
-                  "type": "word",
-                  "translations": {
-                    "ru": "этом",
-                    "en": "this"
-                  }
-                },
-                {
-                  "text": "качественный",
-                  "type": "word",
-                  "translations": {
-                    "ru": "качественный",
-                    "en": "high-quality"
-                  }
-                },
-                {
-                  "text": "уход",
+                  "text": "טיפול",
                   "type": "word",
                   "translations": {
                     "ru": "уход",
@@ -39170,31 +39090,31 @@
                   }
                 },
                 {
-                  "text": "со",
+                  "text": "טוב",
                   "type": "word",
                   "translations": {
-                    "ru": "со",
+                    "ru": "хороший",
+                    "en": "good"
+                  }
+                },
+                {
+                  "text": "של",
+                  "type": "word",
+                  "translations": {
+                    "ru": "",
                     "en": "by"
                   }
                 },
                 {
-                  "text": "стороны",
-                  "type": "word",
-                  "translations": {
-                    "ru": "стороны",
-                    "en": "the part"
-                  }
-                },
-                {
-                  "text": "нескольких",
+                  "text": "כמה",
                   "type": "word",
                   "translations": {
                     "ru": "нескольких",
-                    "en": "of several"
+                    "en": "several"
                   }
                 },
                 {
-                  "text": "взрослых",
+                  "text": "מבוגרים",
                   "type": "word",
                   "translations": {
                     "ru": "взрослых",
@@ -39202,15 +39122,15 @@
                   }
                 },
                 {
-                  "text": "не",
+                  "text": "לא",
                   "type": "word",
                   "translations": {
                     "ru": "не",
-                    "en": "did not"
+                    "en": "not"
                   }
                 },
                 {
-                  "text": "обязательно",
+                  "text": "בהכרח",
                   "type": "word",
                   "translations": {
                     "ru": "обязательно",
@@ -39218,31 +39138,31 @@
                   }
                 },
                 {
-                  "text": "мешал",
+                  "text": "פגע",
                   "type": "word",
                   "translations": {
-                    "ru": "мешал",
-                    "en": "prevent"
+                    "ru": "вредил",
+                    "en": "harmed"
                   }
                 },
                 {
-                  "text": "близким",
+                  "text": "בקשר",
                   "type": "word",
                   "translations": {
-                    "ru": "близким",
+                    "ru": "связи",
+                    "en": "the relationship"
+                  }
+                },
+                {
+                  "text": "הקרוב",
+                  "type": "word",
+                  "translations": {
+                    "ru": "близкой",
                     "en": "close"
                   }
                 },
                 {
-                  "text": "отношениям",
-                  "type": "word",
-                  "translations": {
-                    "ru": "отношениям",
-                    "en": "relationships"
-                  }
-                },
-                {
-                  "text": "между",
+                  "text": "בין",
                   "type": "word",
                   "translations": {
                     "ru": "между",
@@ -39250,27 +39170,19 @@
                   }
                 },
                 {
-                  "text": "детьми",
+                  "text": "הילדים",
                   "type": "word",
                   "translations": {
                     "ru": "детьми",
-                    "en": "children"
+                    "en": "the children"
                   }
                 },
                 {
-                  "text": "и",
+                  "text": "להורים",
                   "type": "word",
                   "translations": {
-                    "ru": "и",
-                    "en": "and"
-                  }
-                },
-                {
-                  "text": "родителями",
-                  "type": "word",
-                  "translations": {
-                    "ru": "родителями",
-                    "en": "parents"
+                    "ru": "и родителями",
+                    "en": "and their parents"
                   }
                 },
                 {

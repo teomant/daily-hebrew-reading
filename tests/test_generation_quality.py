@@ -9,7 +9,7 @@ from unittest.mock import Mock, patch
 from src.common import ROOT, read_json, units_text
 from src.generate_issue import (_adapt_story, _adaptation_content_errors, _compact_story_record,
     _existing_exclusions, _recent_history, _recent_issue_context, _shorts_page, _updated_history)
-from src.generation_quality import affected_groups, apply_repairs, segmentation_errors
+from src.generation_quality import affected_groups, apply_repairs, hebrew_field_errors, normalize_punctuation, segmentation_errors
 from src.validation import validate_issue
 from tests.test_generation import adaptation_payload, lexical_unit, valid_dialog_levels
 from datetime import date
@@ -49,6 +49,47 @@ class QualityTests(unittest.TestCase):
         self.assertEqual(segmentation_errors([lexical_unit('תל אביב', 'properNoun'), lexical_unit('.', 'separator')]), [])
         self.assertTrue(segmentation_errors([lexical_unit('תל אביב. באר שבע.', 'properNoun')]))
         self.assertTrue(segmentation_errors([lexical_unit('אחד שניים שלושה ארבעה חמישה', 'properNoun')]))
+
+    def test_cyrillic_in_hebrew_fields_retries_only_affected_level(self):
+        first = adaptation_payload(self.seed['id'], self.story['levels'])
+        first['levels']['bet']['paragraphs'][-1] = words('הילדים למדו. Со временем этот уклад менялся.')
+        second = adaptation_payload(self.seed['id'], {'bet': self.story['levels']['bet']})
+        call = Mock(side_effect=[{'adaptations': [first]}, {'adaptations': [second]}])
+        result = self.adapt(call)
+        self.assertEqual(result['levels']['alef'], first['levels']['alef'])
+        self.assertIn('Cyrillic text in Hebrew field', call.call_args_list[1].args[2])
+        self.assertEqual(call.call_args_list[1].args[3]['properties']['adaptations']['items']
+                         ['properties']['levels']['required'], ['bet'])
+        self.assertEqual(call.call_count, 2)
+
+    def test_foreign_text_cannot_use_dialogue_style_warning_fallback(self):
+        self.seed['type'] = 'dialog'
+        self.seed['everydayMeta']['dialogSpeakers'] = ['נועה', 'דני']
+        adaptation = adaptation_payload(self.seed['id'], valid_dialog_levels())
+        for value in adaptation['levels'].values():
+            value['paragraphs'][0] = words('נועה: Это русский текст.')
+        call = Mock(side_effect=lambda *a, **k: {'adaptations': [copy.deepcopy(adaptation)]})
+        self.assertIsNone(self.adapt(call))
+        self.assertEqual(call.call_count, 3)
+
+    def test_language_guard_checks_text_only_including_title_and_teaser(self):
+        value = copy.deepcopy(self.story['levels']['alef'])
+        value['title'] = words('WhatsApp בבית')
+        self.assertEqual(hebrew_field_errors(value, 'test'), [])
+        for field in ('title', 'teaser'):
+            broken = copy.deepcopy(value)
+            broken[field] = words('Русский текст')
+            self.assertTrue(hebrew_field_errors(broken, 'test'))
+
+    def test_repeated_punctuation_is_cleaned_without_changing_words_or_ellipses(self):
+        value = {'title': words('מנוחה'), 'teaser': words('אני נח..'),
+                 'paragraphs': [words('הוא יושב.. הוא נח?? הוא חושב... הוא קם…')],
+                 }
+        original_translations = copy.deepcopy(value['paragraphs'][0][0]['translations'])
+        normalize_punctuation([{'levels': {'alef': value}}])
+        self.assertEqual(units_text(value['teaser']), 'אני נח.')
+        self.assertEqual(units_text(value['paragraphs'][0]), 'הוא יושב. הוא נח? הוא חושב... הוא קם…')
+        self.assertEqual(value['paragraphs'][0][0]['translations'], original_translations)
 
     def test_repair_is_atomic_and_preserves_exact_text(self):
         self.story['levels']['alef']['teaser'] = [lexical_unit('אני הולך הביתה.')]

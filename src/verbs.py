@@ -52,7 +52,8 @@ def verb_seed(item: dict[str, Any], target_date: str) -> dict[str, Any]:
         "brief": (
             f"Create a fresh fictional everyday mini-situation for {target_date} centered on "
             f"the Hebrew verb {item['verb']} ({item['meaning']}). "
-            "Invent one concrete action and its immediate result in two or three sentences. "
+            "Invent one concrete action and its immediate result, preferably in two or three sentences. "
+            "One to four complete sentences are acceptable. "
             "Use the assigned spelling naturally in the body, not as a heading or vocabulary list."
         ),
         "everydayMeta": {
@@ -80,8 +81,12 @@ def verbs_page(
             return None
         return {**next(iter(pages.values())), "_editionStories": pages,
                 "levels": {level_id: page["levels"][level_id] for level_id, page in pages.items()}}
-    if len(items) != VERB_BATCH_SIZE or len(stories) != VERB_BATCH_SIZE:
+    by_id = {story.get("id"): story for story in stories}
+    pairs = [(item, by_id[f"verb-{item['rank']}-{target_date}"])
+             for item in items if f"verb-{item['rank']}-{target_date}" in by_id]
+    if not pairs:
         return None
+    items, stories = map(list, zip(*pairs))
 
     def units(words: list[tuple[str, str, str]]) -> list[dict[str, Any]]:
         return [{"text": he, "type": "word",
@@ -91,14 +96,14 @@ def verbs_page(
     page_id = f"common-verbs-{target_date}"
     return {
         "id": page_id, "slug": page_id, "type": "verbs", "category": "everyday",
-        "brief": "Ten fictional mini-stories practicing today's batch from the fifty common Hebrew verbs.",
+        "brief": "Fictional mini-stories practicing today's batch from the fifty common Hebrew verbs.",
         "everydayMeta": None, "sources": [], "image": None,
         "verbItems": copy.deepcopy(items),
         "levels": {
             level_id: {
                 "title": units([("50", "50", "50"), ("פעלים", "verbs", "глаголов"),
                                 ("נפוצים", "common", "распространённых")]),
-                "teaser": units([("עשרה", "ten", "десять"), ("פעלים", "verbs", "глаголов"),
+                "teaser": units([("פעלים", "verbs", "глаголы"),
                                  ("בסיפורים", "in stories", "в историях"),
                                  ("קצרים", "short", "коротких")])
                           + [{"text": ".", "type": "separator", "translations": {locale: "" for locale in locales}}],

@@ -78,6 +78,11 @@ Alef Plus connects familiar ideas, while Bet uses richer conversational language
 All levels favor natural spoken Hebrew, familiar verbs, direct requests, and replies that answer the preceding turn.
 Each level should tell the story once, without appending a rewritten draft or restarting the same events after the outcome.
 Before annotation, one final prose check covers repeated events, complete sentences, blank paragraphs, drafting fragments, grammar, and consistent roles within each article.
+New generation checks Hebrew titles, teasers, and paragraphs for Cyrillic leakage and retries only the affected edition within the existing limits.
+The check does not inspect translation fields or reject Latin brand names and abbreviations.
+It is a targeted script check, not a general language detector.
+Accidental repeated punctuation is normalized locally while ellipses remain intact.
+Grammar remains a prompt-guided quality goal, not a new publication gate.
 The [wording reference](prompts/frequent-hebrew.md) includes short calibration examples.
 Difficulty remains a writing judgment, without a numeric vocabulary gate.
 New dialogue structure and lexical segmentation receive local checks and bounded repairs.
@@ -85,7 +90,7 @@ Usable imperfect articles remain publishable with quality warnings, and archived
 
 ## Daily verb practice
 
-“50 most used verbs” adds one numbered page with ten independent mini-stories to each normal new issue.
+“50 most used verbs” targets one numbered page with ten independent mini-stories for each normal new issue.
 The stored [verb catalog](config/common-verbs.json) follows the default order of [HebrewPod101’s common-verb list](https://www.hebrewpod101.com/hebrew-vocabulary-lists/50-most-common-verbs).
 It is a study list, not a measured corpus ranking.
 Entries use unpointed infinitives, except the modal יכול.
@@ -95,11 +100,13 @@ The requested issue date controls the batch, including backdated runs.
 
 Each item gets one no-web writing request per configured level, with at most three content attempts and the existing bounded annotation repair.
 The body must naturally contain its assigned spelling at every level; extra conjugated forms are welcome.
-Each piece has two or three sentences and the normal Russian/English lexical translations.
+Each piece targets two or three sentences; one to four complete sentences are accepted.
+Each piece keeps the normal Russian/English lexical translations.
 Successful levels remain intact during retries.
-If a required item still fails core checks, generation omits only that edition's VERBS page.
-Other editions can publish their complete ten-item pages.
-It never publishes a partial ten-item page.
+If an item still fails core checks, generation skips only that item in the affected edition.
+Each edition publishes its surviving 1–10 items in daily-batch order, with matching verb records and body paragraphs.
+Only zero surviving items omit that edition's VERBS page.
+The assigned verb and per-item translation coverage remain required.
 Existing article allocations remain unchanged, and API usage stays in the normal cost logs.
 Same-day append does not regenerate or backfill the page.
 The fixed rotation is separate from the ordinary scenario repetition history.

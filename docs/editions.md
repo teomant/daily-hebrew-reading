@@ -47,8 +47,12 @@ SHORTS collects up to eleven successful items separately in each edition.
 VERBS writing receives the target weekday areas, compact completed fictional scenario records, and earlier completed verb bodies from the same issue and edition.
 Other editions, older issues, translations, and failed verb items are not added to this context.
 Comparison data stays private and does not change the five-day verb rotation or add planning calls.
-A VERBS page requires all ten assigned items in that edition.
-An incomplete VERBS edition does not remove another edition's complete page.
+A VERBS page publishes 1–10 successful assigned items in that edition.
+Failed items are skipped; only zero surviving items omit the page.
+The ordered `verbItems` subset matches the body paragraphs and retains the original catalog ranks.
+Visible item numbering remains consecutive within the page.
+Verb pieces target two or three sentences but accept one to four.
+Target usage and per-item translation coverage remain required.
 No new paid review, research stage, model, or deployment step is introduced.
 Usage logs include the edition in writing phases and retain cost estimates.
 

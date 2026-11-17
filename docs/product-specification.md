@@ -86,7 +86,8 @@ The brief binds each of the two active participants to a role and responsibility
 
 ### VERBS — 50 most used verbs
 
-One fully AI-generated page contains ten independent mini-stories, each assigned a different verb from `config/common-verbs.json`.
+One fully AI-generated page targets ten independent mini-stories, each assigned a different verb from `config/common-verbs.json`.
+Publish the surviving 1–10 items for each edition.
 The catalog records all fifty entries in the default order of [HebrewPod101’s common-verb list](https://www.hebrewpod101.com/hebrew-vocabulary-lists/50-most-common-verbs), accessed October 29, 2026.
 This is a common-verb study list, not a measured frequency ranking.
 Forms are normalized to unpointed infinitives, except the modal יכול.
@@ -98,20 +99,24 @@ The catalog must contain exactly fifty unique verbs with consecutive ranks and n
 Validate it before paid generation and during repository checks.
 
 Adapt each verb independently without web research or a separate planning call.
-Create a concrete fictional action and immediate result in two or three sentences per level.
+Create a concrete fictional action and immediate result, preferably in two or three sentences per level.
+Accept one to four complete sentences for VERBS only; SHORTS keeps its two-or-three-sentence contract.
 The assigned spelling must occur as a whole Hebrew word naturally in the body at every level.
 Additional conjugations are allowed; a heading or synonym does not satisfy the target.
 Keep successful levels during the existing three-attempt content retry loop.
 Use the existing one-request annotation repair and usage/cost logging.
 Each piece must independently meet the 75% translation-coverage contract in every language.
-If a required item fails core checks after retries, log the incomplete count and omit only this edition's page while retaining other complete editions and valid articles.
+If an item fails core checks after retries, skip only that item in its edition and log the surviving count.
+Publish a page when at least one item survives; omit it only when none survive.
+Keep successful items and other editions unchanged.
 Quality-only segmentation warnings do not discard usable text.
 
 The public type is `verbs` and the category is `everyday`.
-The page stores exactly ten ordered `verbItems` records with `rank`, `verb`, and `meaning`.
-Each level has exactly ten corresponding body paragraphs, plus its title and teaser.
-Public validation checks the date-derived rank sequence, unique targets, target usage, and translation coverage.
-Repository validation also checks records against the stored daily batch.
+The page stores 1–10 ordered `verbItems` records with `rank`, `verb`, and `meaning`.
+Each edition has one body paragraph per retained record, plus its title and a count-neutral teaser.
+Public validation checks strictly increasing ranks within the date-derived batch, unique targets, target usage, and translation coverage.
+Repository validation checks every edition’s records against the configured daily batch, including editions with different surviving subsets.
+Reuse consecutive visible item numbering; catalog ranks remain in metadata.
 The page has no scenario metadata, sources, or image.
 The source list attribution belongs to the catalog and documentation, not to invented stories.
 Do not add this fixed rotation to ordinary scenario deduplication history.
@@ -645,3 +650,15 @@ GitHub Actions uploads a seven-day recovery artifact after generation, including
 A manual run can supply `resume_run_id` with the original date and append count.
 Only runs made with the checkpoint implementation have recovery artifacts.
 See [the recovery procedure](editions.md#generation-recovery).
+
+### Hebrew output safeguards
+
+New adaptation titles, teasers, and body paragraphs must remain Hebrew.
+Russian and English translations belong only in their translation fields.
+A generation-only Cyrillic-script check triggers the existing bounded retries for the affected edition.
+Cyrillic text cannot be retained as a dialogue-style warning.
+This targeted check does not classify all languages and permits Latin names and abbreviations.
+Successful editions remain intact, and archived content remains readable.
+Local punctuation cleanup removes accidental doubled full stops and repeated question or exclamation marks, including adjacent separator units, while preserving ellipses.
+The existing prose check now emphasizes missing letters and words, second-person gender, and the final paragraph’s language.
+Grammar improvements do not add a new publication gate or an extra model review call.

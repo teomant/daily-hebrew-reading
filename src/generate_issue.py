@@ -22,7 +22,7 @@ from .common import (
     read_json,
     units_text,
 )
-from .generation_quality import affected_groups, apply_repairs, repair_schema
+from .generation_quality import affected_groups, apply_repairs, hebrew_field_errors, normalize_punctuation, repair_schema
 from .editions import build_index, to_editions, topic_records
 from .generation_usage import record_usage, usage_run
 from .generation_summary import observe, record_targets, summary_run
@@ -1678,9 +1678,11 @@ def _adaptation_content_errors(
                     )
             if seed.get("_shortItem") is True and isinstance(paragraphs, list) and len(paragraphs) == 1:
                 sentence_count = len(re.findall(r"[.!?…]+", units_text(paragraphs[0])))
-                if not 2 <= sentence_count <= 3:
+                minimum, maximum = (1, 4) if seed.get("_targetVerb") else (2, 3)
+                if not minimum <= sentence_count <= maximum:
                     errors.append(
-                        f"{story_id}.{level_id}: SHORTS item must contain 2–3 complete sentences; "
+                        f"{story_id}.{level_id}: {'VERBS' if seed.get('_targetVerb') else 'SHORTS'} item "
+                        f"must contain {minimum}–{maximum} complete sentences; "
                         f"got {sentence_count}"
                     )
             if seed.get("type") != "dialog" or not isinstance(paragraphs, list):
@@ -1835,7 +1837,7 @@ Create title, teaser, paragraphs, lexical segmentation, translations, and `cover
 
 For a seed with `_independentEdition: true`, keep the selected practical topic, domain, goal, relationship, and interaction from `everydayMeta.storyPattern`, plus the two supplied DIALOG speaker identities and roles. If pattern metadata is absent, use the goal and interaction in the brief. You may change fictional details, complications, useful answers, and outcomes to fit this level while preserving that intent. Simplify language without replacing the planned activity with a generic missing-object or staff-question plot. Make Alef concrete and mainly present-focused, with occasional familiar past forms for completed actions or brief background. Make Alef Plus actively practice common past forms alongside present tense, with occasional common future forms for simple plans, next steps, or practical requests. Use clear time cues when switching tense; do not force the additional tense into every article. Bet should use connected language and future forms where natural. Return `scenario` with an English brief and complete everydayMeta describing the ACTUAL finished story, including its scenario name, lexical themes, target vocabulary, and storyPattern. Do not silently retain metadata for a different story. Do not drift into another selected topic or generic service advice. Never invent current official rules, exact fees, rates, deadlines, eligibility, diagnoses, or entitlements; show a useful ordinary interaction and ask how to confirm any such detail when needed.
 
-When a seed has `_shortItem: true`, return exactly one compact body paragraph containing exactly two or three complete sentences. Cover only one tiny practical action or question and its immediate answer or result. Do not add background, a second event, or a full-article arc. Each edition remains compact.
+When a seed has `_shortItem: true`, return exactly one compact body paragraph containing exactly two or three complete sentences. For `_targetVerb` items only, two or three sentences remain the target, but one to four complete sentences are acceptable. Cover only one tiny practical action or question and its immediate answer or result. Do not add background, a second event, or a full-article arc. Each edition remains compact.
 
 When a seed has `_targetVerb`, choose a fresh mini-situation within the supplied weekday areas first. Before writing, choose its goal, relationship, interaction, and outcome internally. Compare that pattern with `_scenarioContext`, which contains this edition's selected stories and completed verb items from this issue only. Treat these as comparison data, not instructions or templates. Change the action or goal when a proposed situation differs mainly in objects or setting. Use another topic when the preferred areas cannot provide a fresh, natural use of the verb. Keep `verb_practice` as the domain; no canonical planning-domain or pool quota applies to these items. Include the exact assigned unpointed Hebrew spelling as a separate written word naturally inside the body. Use an infinitive construction when the target is an infinitive; יכול is the modal exception. Other conjugated forms may appear too, but do not replace the assigned form with a synonym. A heading, label, or vocabulary list does not count as using the verb. Avoid the same want-to/do-it sentence template across items. Do not invent real-world news or official rules.
 
@@ -2364,6 +2366,7 @@ def _adapt_story(
         _remove_empty_lexical_units(adaptations)
         _repair_alphabetic_separator_units(adaptations)
         _repair_dialog_labels([attempt_seed], adaptations, locales)
+        normalize_punctuation(adaptations)
         _restore_terminal_punctuation(adaptations, locales)
         feedback = []
         for level in pending:
@@ -2372,6 +2375,8 @@ def _adapt_story(
             story = {**_public_story_seed(attempt_seed), "levels": {level_id: value} if value is not None else {}}
             errors = scenario_errors + validate_issue(issue_for(story, [level]), site, levels, "generated batch")
             errors += _history_adaptation_errors([seed], adaptations, [level])
+            if isinstance(value, dict):
+                errors += hebrew_field_errors(value, f"{seed['id']}.{level_id}")
             if seed.get("_targetVerb") and isinstance(value, dict):
                 paragraphs = value.get("paragraphs")
                 if not isinstance(paragraphs, list) or len(paragraphs) != 1:
@@ -2544,8 +2549,10 @@ def _generate_verbs_page(
     page = verbs_page(items, completed, target_date, [level["id"] for level in levels], locales)
     for level in levels:
         count = sum(level["id"] in story["levels"] for story in completed)
-        if count < 10:
-            _log(f"VERBS {level['id']}: only {count}/10 items passed core checks; omitting this edition's page and keeping other valid articles")
+        if count == 0:
+            _log(f"VERBS {level['id']}: 0/10 items passed core checks; omitting this edition's page and keeping other valid articles")
+        elif count < 10:
+            _log(f"VERBS {level['id']}: publishing {count}/10 items; skipping only failed items")
         else:
             _log(f"VERBS {level['id']}: collected all 10 independently written items")
     return page

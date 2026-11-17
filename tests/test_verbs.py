@@ -43,7 +43,8 @@ class VerbTests(unittest.TestCase):
 
     def page(self):
         items = daily_verbs(ROOT, self.day)
-        stories = [{"levels": {level["id"]: level_text(item["verb"]) for level in self.levels}} for item in items]
+        stories = [{"id": f"verb-{item['rank']}-{self.day}",
+                    "levels": {level["id"]: level_text(item["verb"]) for level in self.levels}} for item in items]
         return verbs_page(items, stories, self.day, [level["id"] for level in self.levels], self.locales)
 
     def issue(self, page):
@@ -83,7 +84,7 @@ class VerbTests(unittest.TestCase):
         self.assertFalse(uses_target_verb(units('אני רוצה וללכת.'), 'ללכת'))
         self.assertTrue(uses_target_verb([{'text': 'לָלֶכֶת'}], 'ללכת'))
 
-    def test_page_validation_requires_all_ten_targets_and_body_translations(self):
+    def test_page_validation_requires_matching_targets_and_body_translations(self):
         page = self.page()
         self.assertEqual(validate_issue(self.issue(page), self.site, self.levels), [])
         for defect in ('missing', 'duplicate', 'target', 'translation', 'metadata'):
@@ -183,7 +184,10 @@ class VerbTests(unittest.TestCase):
                     result = _generate_verbs_page(ROOT, self.day, self.levels, self.locales,
                                                   self.site, self.locales, "", selected)
                 self.assertEqual(call.call_count, 32 if fail_first_bet else 30)
-                self.assertEqual(set(result["levels"]), {"alef", "alefPlus"} if fail_first_bet else set(level_ids))
+                self.assertEqual(set(result["levels"]), set(level_ids))
+                bet_page = result['_editionStories']['bet']
+                self.assertEqual(bet_page['verbItems'], items[1:] if fail_first_bet else items)
+                self.assertEqual(len(bet_page['levels']['bet']['paragraphs']), 9 if fail_first_bet else 10)
                 self.assertNotIn("_scenarioContext", json.dumps(result))
                 self.assertEqual(selected, original)
 
@@ -247,10 +251,44 @@ class VerbTests(unittest.TestCase):
                   patch('src.generate_issue.DIALOG_TARGET', 0), patch('src.generate_issue.SHORTS_TARGET', 1),
                   patch('src.generate_issue._call_openai', side_effect=respond), redirect_stdout(StringIO()) as log):
                 issue = generate(root, self.day, 0)
-            self.assertEqual([story['type'] for story in issue['stories']], ['shorts'])
+            self.assertEqual([story['type'] for story in issue['stories']], ['verbs', 'shorts'])
             self.assertEqual(sum(phase.startswith('VERBS item') for phase in calls), 36)
-            self.assertIn('only 9/10 items passed core checks', log.getvalue())
-            self.assertEqual(len(issue['stories'][0]['shortItems']), 1)
+            self.assertIn('publishing 9/10 items', log.getvalue())
+            self.assertEqual(len(issue['stories'][1]['shortItems']), 1)
+            self.assertEqual(len(issue['stories'][0]['verbItems']), 9)
+            self.assertEqual(validate_repository(root), [])
+
+    def test_partial_page_preserves_middle_gap_and_renders_survivors(self):
+        items = daily_verbs(ROOT, self.day)
+        kept = [items[0], items[4], items[-1]]
+        stories = [{'id': f"verb-{item['rank']}-{self.day}",
+                    'levels': {level['id']: level_text(item['verb']) for level in self.levels}}
+                   for item in reversed(kept)]
+        page = verbs_page(items, stories, self.day, [l['id'] for l in self.levels], self.locales)
+        self.assertEqual(page['verbItems'], kept)
+        self.assertEqual(validate_issue(self.issue(page), self.site, self.levels), [])
+        html = build_article(self.issue(page), 0, self.site, self.levels, load_locales())
+        self.assertEqual(html.count('class="short-item"'), 3)
+        self.assertNotIn('עשרה', units_text(page['levels']['alef']['teaser']))
+        for ranks in ([items[4], items[0]], [items[0], items[0]],
+                      [{**items[0], 'rank': 51}], [{**items[0], 'rank': True}]):
+            broken = copy.deepcopy(page)
+            broken['verbItems'] = ranks
+            self.assertTrue(validate_issue(self.issue(broken), self.site, self.levels))
+
+    def test_one_sentence_verb_is_kept_without_retry(self):
+        item = daily_verbs(ROOT, self.day)[0]
+        value = level_text(item['verb'])
+        value['paragraphs'] = [units(f"אני רוצה {item['verb']} עכשיו.")]
+        response = {'adaptations': [{'id': f"verb-{item['rank']}-{self.day}",
+                    'levels': {'alef': value}, 'coveredStoryBeatIds': {'alef': []}}]}
+        with patch.dict(os.environ, OPENAI_MODEL='test'), patch(
+            'src.generate_issue._call_openai', return_value=response,
+        ) as call, redirect_stdout(StringIO()):
+            result = _adapt_story(verb_seed(item, self.day), self.day, self.levels[:1],
+                                 self.locales, self.site, self.locales, '', 'VERBS test')
+        self.assertIsNotNone(result)
+        self.assertEqual(call.call_count, 1)
 
     def test_page_rendering_and_order(self):
         page = self.page()

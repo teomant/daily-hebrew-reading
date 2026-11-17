@@ -355,8 +355,8 @@ def validate_issue(
 
         verb_items = story.get("verbItems")
         if story_type == "verbs":
-            if not isinstance(verb_items, list) or len(verb_items) != VERB_BATCH_SIZE:
-                errors.append(f"{story_path}.verbItems: expected exactly 10 verb records")
+            if not isinstance(verb_items, list) or not 1 <= len(verb_items) <= VERB_BATCH_SIZE:
+                errors.append(f"{story_path}.verbItems: expected 1–10 verb records")
                 verb_items = []
             try:
                 first_rank = verb_batch_index(date) * VERB_BATCH_SIZE + 1
@@ -364,9 +364,12 @@ def validate_issue(
                 first_rank = None
                 errors.append(f"{story_path}.verbItems: requires a valid issue date")
             seen_verbs: set[str] = set()
+            previous_rank = 0
             for offset, item in enumerate(verb_items):
                 if (not isinstance(item, dict) or set(item) != {"rank", "verb", "meaning"}
-                        or first_rank is None or item.get("rank") != first_rank + offset
+                        or first_rank is None or type(item.get("rank")) is not int
+                        or not first_rank <= item["rank"] < first_rank + VERB_BATCH_SIZE
+                        or item["rank"] <= previous_rank
                         or not isinstance(item.get("verb"), str)
                         or not re.fullmatch(r"[א-ת]+", item["verb"])
                         or item["verb"] in seen_verbs
@@ -374,6 +377,8 @@ def validate_issue(
                     errors.append(f"{story_path}.verbItems[{offset}]: invalid, duplicate, or out-of-batch verb")
                 if isinstance(item, dict) and isinstance(item.get("verb"), str):
                     seen_verbs.add(item["verb"])
+                if isinstance(item, dict) and type(item.get("rank")) is int:
+                    previous_rank = item["rank"]
         elif verb_items is not None:
             errors.append(f"{story_path}.verbItems: only VERBS pages may contain verb records")
 
@@ -430,8 +435,8 @@ def validate_issue(
                 if story_type == "shorts" and isinstance(short_items, list) and len(paragraphs) != len(short_items):
                     errors.append(f"{level_path}.paragraphs: must match shortItems count")
                 if story_type == "verbs":
-                    if len(paragraphs) != VERB_BATCH_SIZE:
-                        errors.append(f"{level_path}.paragraphs: expected exactly 10 verb pieces")
+                    if len(paragraphs) != len(verb_items):
+                        errors.append(f"{level_path}.paragraphs: must match verbItems count")
                     for index, (paragraph, item) in enumerate(zip(paragraphs, verb_items)):
                         if isinstance(item, dict) and isinstance(item.get("verb"), str):
                             errors.extend(validate_verb_body(
@@ -519,11 +524,15 @@ def validate_repository(root: Path) -> list[str]:
         errors.extend(issue_errors)
         if issue_errors:
             continue
-        for story in topic_records(issue):
+        # Verb subsets can differ by edition, even when topic metadata is identical.
+        stored_stories = ([story for edition in issue["editions"].values() for story in edition["stories"]]
+                          if issue.get("schemaVersion") == 2 else issue.get("stories", []))
+        for story in stored_stories:
             if isinstance(story, dict) and story.get("type") == "verbs":
                 try:
-                    if story.get("verbItems") != daily_verbs(root, issue.get("date")):
-                        errors.append(f"{issue_file.name}.verbItems: must match the configured daily batch")
+                    batch = daily_verbs(root, issue.get("date"))
+                    if any(item not in batch for item in story.get("verbItems", [])):
+                        errors.append(f"{issue_file.name}.verbItems: must be an ordered subset of the configured daily batch")
                 except (OSError, KeyError, TypeError, ValueError):
                     pass  # Configuration and issue-date errors are reported above.
         if issue.get("date") != issue_file.stem:

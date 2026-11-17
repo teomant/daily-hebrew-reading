@@ -13,6 +13,53 @@ LABEL = re.compile(r"^[\u0590-\u05ff׳״'\" -]{1,30}:\s*")
 WORD = re.compile(r"[^\W_]+(?:[׳״'־-][^\W_]+)*", re.UNICODE)
 
 
+def hebrew_field_errors(level: dict[str, Any], path: str) -> list[str]:
+    """Catch Cyrillic leakage in new Hebrew text, without inspecting translations."""
+    groups = [("title", level.get("title")), ("teaser", level.get("teaser"))]
+    paragraphs = level.get("paragraphs")
+    if isinstance(paragraphs, list):
+        groups.extend((f"paragraphs[{i}]", units) for i, units in enumerate(paragraphs))
+    return [f"{path}.{field}: Cyrillic text in Hebrew field; rewrite this field in Hebrew"
+            for field, units in groups if isinstance(units, list)
+            and any(isinstance(unit, dict) and isinstance(unit.get("text"), str)
+                    and re.search(r"[\u0400-\u052f]", unit["text"]) for unit in units)]
+
+
+def normalize_punctuation(adaptations: list[dict[str, Any]]) -> None:
+    """Clean accidental repeated marks before annotation is frozen; keep ellipses."""
+    def clean(text: str) -> str:
+        text = re.sub(r"(?<!\.)\.{2}(?!\.)", ".", text)
+        text = re.sub(r"([?!])\1+", r"\1", text)
+        return re.sub(r"(?<!\.)\.([?!])|([?!])\.(?!\.)", lambda m: m[1] or m[2], text)
+
+    for adaptation in adaptations:
+        for level in adaptation.get("levels", {}).values():
+            if not isinstance(level, dict):
+                continue
+            paragraphs = level.get("paragraphs")
+            groups = [level.get("title"), level.get("teaser")]
+            if isinstance(paragraphs, list):
+                groups.extend(paragraphs)
+            for units in groups:
+                if not isinstance(units, list):
+                    continue
+                # Adjacent punctuation-only separators can form one accidental mark.
+                merged = []
+                for unit in units:
+                    if (isinstance(unit, dict) and unit.get("type") == "separator"
+                            and re.fullmatch(r"[.!?]+", str(unit.get("text", "")))
+                            and merged and isinstance(merged[-1], dict)
+                            and merged[-1].get("type") == "separator"
+                            and re.fullmatch(r"[.!?]+", str(merged[-1].get("text", "")))):
+                        merged[-1]["text"] += unit["text"]
+                    else:
+                        merged.append(unit)
+                units[:] = merged
+                for unit in units:
+                    if isinstance(unit, dict) and isinstance(unit.get("text"), str):
+                        unit["text"] = clean(unit["text"])
+
+
 def segmentation_errors(units: list[dict[str, Any]], *, title: bool = False, dialog: bool = False) -> list[str]:
     errors = []
     text = units_text(units)

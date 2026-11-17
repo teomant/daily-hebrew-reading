@@ -1,5 +1,29 @@
 # Implementation log
 
+## 2026-11-17
+
+- Recorded the owner's priority: retain usable imperfect articles.
+  Scope covers Cyrillic leakage, proofreading improvements, and partial VERBS pages.
+  Source selection, scenario completeness, and reading-level policies remain outside this change.
+- Added a generation-only Cyrillic check for Hebrew titles, teasers, and body paragraphs before accepting usable output.
+  Translation fields and Latin names remain allowed.
+  Affected editions use existing bounded retries; dialogue quality fallback cannot accept Cyrillic prose.
+  Added local repeated-punctuation cleanup and concrete gender, missing-word, and language-boundary proofreading guidance without another model call or grammar rejection gate.
+- VERBS now accepts one to four sentences while targeting two or three.
+  Page assembly matches successful items by ID and retains their original daily-batch order independently for each edition.
+  Public validation accepts 1–10 matching records and paragraphs, and repository validation checks every edition's subset against the catalog.
+  Zero surviving items omit only that edition's page.
+  Logs report partial counts, and the teaser no longer promises ten items.
+- Replaced Russian passages in the November 16 Bet kibbutz article with Hebrew and contextual RU/EN lexical translations, preserving their factual meaning.
+  Corrected the observed Hebrew forms and repeated punctuation in that issue and refreshed its index metadata.
+  Updated README, edition contracts, and product requirements.
+- Verification: 26 focused verb and generation-quality regression tests passed offline.
+  Repository validation completed before the static build produced its output.
+  The corrected issue passed a separate structural and Cyrillic check before commit.
+  The broader test run was interrupted and has no confirmed final result.
+  Completed one focused direct diff review and the whitespace check.
+  No paid generation or deployment was run.
+
 ## 2026-11-16
 
 - Replaced weekday plot examples with broad practical topic areas while preserving eight areas per day.
