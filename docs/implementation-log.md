@@ -2,6 +2,12 @@
 
 ## 2026-11-17
 
+- Fixed the remaining grouped-edition test fixture after CI reported one error among 148 tests.
+  Added production-shaped verb IDs and changed its expectation to retain both the ten-item Alef page and nine-item Bet page.
+  Verified the retained Bet metadata matches its surviving items.
+  All 14 focused edition/verb tests passed, and the direct diff review and whitespace check passed.
+  This follow-up changes tests only; product behavior is unchanged.
+
 - Recorded the owner's priority: retain usable imperfect articles.
   Scope covers Cyrillic leakage, proofreading improvements, and partial VERBS pages.
   Source selection, scenario completeness, and reading-level policies remain outside this change.

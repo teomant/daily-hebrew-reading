@@ -142,9 +142,15 @@ class EditionTests(unittest.TestCase):
         shorts = _shorts_page(pieces, "2026-11-12", ["alef", "bet"], ["en", "ru"])
         self.assertEqual(set(shorts["levels"]), {"alef"})
         self.assertEqual(len(shorts["levels"]["alef"]["paragraphs"]), 1)
-        ten = [{"levels": {"alef": content(), **({"bet": content()} if index < 9 else {})}} for index in range(10)]
-        page = verbs_page(daily_verbs(ROOT, "2026-11-12"), ten, "2026-11-12", ["alef", "bet"], ["en", "ru"])
-        self.assertEqual(set(page["levels"]), {"alef"})
+        items = daily_verbs(ROOT, "2026-11-12")
+        ten = [{"id": f"verb-{item['rank']}-2026-11-12",
+                "levels": {"alef": content(), **({"bet": content()} if index < 9 else {})}}
+               for index, item in enumerate(items)]
+        page = verbs_page(items, ten, "2026-11-12", ["alef", "bet"], ["en", "ru"])
+        self.assertEqual(set(page["levels"]), {"alef", "bet"})
+        self.assertEqual(len(page["levels"]["alef"]["paragraphs"]), 10)
+        self.assertEqual(len(page["levels"]["bet"]["paragraphs"]), 9)
+        self.assertEqual(page["_editionStories"]["bet"]["verbItems"], items[:9])
 
     def test_routes_and_payloads_stay_in_the_selected_edition(self):
         with tempfile.TemporaryDirectory() as directory:
