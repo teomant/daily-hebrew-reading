@@ -25568,6 +25568,1340 @@
         "outcome": "Erez moves the chairs, Yael takes out her bicycle, and they leave the meter cupboard accessible"
       },
       "edition": "bet"
+    },
+    {
+      "date": "2026-11-18",
+      "storyId": "bank-cash-withdrawal-denominations",
+      "domain": "banking_credit",
+      "scenario": "customer_requests_a_mix_of_small_and_large_notes_for_a_family_gathering",
+      "lexicalThemes": [
+        "cash",
+        "withdrawal",
+        "bank notes",
+        "counting"
+      ],
+      "targetVocabulary": [
+        "cash",
+        "withdraw",
+        "small notes",
+        "count",
+        "mix"
+      ],
+      "brief": "A customer withdraws cash at a bank for a small family gathering, asks for some smaller notes, receives a mix of note sizes, and counts the cash before leaving.",
+      "storyPattern": {
+        "goal": "Get cash in denominations suited to an immediate household need",
+        "relationship": "Customer and bank teller",
+        "interaction": "State a preference for smaller notes and check the cash received",
+        "outcome": "Leave with the requested mix of notes"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-18",
+      "storyId": "housemates-choose-a-bill-payment-method",
+      "domain": "bills_taxes",
+      "scenario": "roommates_check_and_pay_the_remainder_of_a_shared_household_bill",
+      "lexicalThemes": [
+        "household bills",
+        "shared expenses",
+        "payment",
+        "amounts"
+      ],
+      "targetVocabulary": [
+        "bill",
+        "already paid",
+        "remaining amount",
+        "pay",
+        "write down"
+      ],
+      "brief": "Two roommates compare their notes, see that Yael has already paid part of a household bill, agree that 200 shekels remain, and have one roommate pay that amount while the other records it.",
+      "storyPattern": {
+        "goal": "Avoid paying a shared bill twice after a partial payment",
+        "relationship": "Housemates sharing household expenses",
+        "interaction": "Compare payment notes and agree on what remains",
+        "outcome": "Pay the remaining amount and record it"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-18",
+      "storyId": "resident-prepares-proof-of-household-expenses",
+      "domain": "social_benefits",
+      "scenario": "resident_finds_and_labels_electricity_receipt_for_benefit_papers",
+      "lexicalThemes": [
+        "benefit paperwork",
+        "household expenses",
+        "receipts",
+        "documents"
+      ],
+      "targetVocabulary": [
+        "papers",
+        "receipt",
+        "expense",
+        "label",
+        "include"
+      ],
+      "brief": "A resident organizing benefit papers finds a receipt for the electricity bill, labels it clearly, and puts it with her papers while remaining unsure whether anything else is needed.",
+      "storyPattern": {
+        "goal": "Make one household expense easy to identify in benefit paperwork",
+        "relationship": "Resident handling her own paperwork",
+        "interaction": "Find the relevant receipt and label what it records",
+        "outcome": "Keep the labeled receipt with the paperwork while leaving other requirements open"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-18",
+      "storyId": "account-holder-reviews-a-small-bank-transfer",
+      "domain": "banking_credit",
+      "scenario": "customer_checks_a_transfer_amount_against_a_receipt_before_sending",
+      "lexicalThemes": [
+        "bank transfers",
+        "amounts",
+        "receipts",
+        "checking details"
+      ],
+      "targetVocabulary": [
+        "transfer",
+        "amount",
+        "receipt",
+        "check",
+        "send"
+      ],
+      "brief": "A woman needs to transfer money for a household purchase. She notices that the amount in the app differs from the amount on her note, checks the receipt, corrects her note, and sends the correct amount.",
+      "storyPattern": {
+        "goal": "Send the correct amount for a shared household purchase",
+        "relationship": "Customer settling a household expense",
+        "interaction": "Compare the amount in the app with a receipt and correct a personal note",
+        "outcome": "Send the amount that matches the receipt"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-18",
+      "storyId": "resident-asks-how-to-describe-a-change-in-benefit-paperwork",
+      "domain": "social_benefits",
+      "scenario": "resident_checks_a_brief_description_of_her_sister_moving_into_her_home",
+      "lexicalThemes": [
+        "benefits",
+        "household changes",
+        "descriptions",
+        "clarification"
+      ],
+      "targetVocabulary": [
+        "change",
+        "household",
+        "describe",
+        "sentence",
+        "clear"
+      ],
+      "brief": "A resident writing benefit paperwork describes a recent household change: her sister moved in last month. She asks a service worker whether the sentence is clear. The worker confirms that it is understandable without stating what documents are required.",
+      "storyPattern": {
+        "goal": "Describe a household change plainly in benefit paperwork",
+        "relationship": "Resident and service worker",
+        "interaction": "Offer a brief factual description and ask whether it is clear",
+        "outcome": "Keep the understandable wording without assuming further requirements"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-18",
+      "storyId": "resident-checks-an-appetite-for-a-recurring-charge",
+      "domain": "banking_credit",
+      "scenario": "account_holder_finds_and_records_the_date_of_a_known_recurring_payment",
+      "lexicalThemes": [
+        "bank accounts",
+        "recurring payments",
+        "dates",
+        "household spending"
+      ],
+      "targetVocabulary": [
+        "charge",
+        "date",
+        "account",
+        "recurring",
+        "write down"
+      ],
+      "brief": "A woman sees a small recurring charge in her bank account, checks the transaction details to find its date, and writes the date beside her household expenses.",
+      "storyPattern": {
+        "goal": "Record when a known recurring payment was made",
+        "relationship": "Account holder managing household spending",
+        "interaction": "Open a transaction detail and identify its date",
+        "outcome": "Add the date to a household expense note"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-18",
+      "storyId": "recipient-checks-a-parcel-collection-code",
+      "domain": "postal_parcels",
+      "scenario": "recipient_enlarges_a_collection_message_to_read_an_unclear_code",
+      "lexicalThemes": [
+        "parcels",
+        "collection codes",
+        "phone messages",
+        "reading details"
+      ],
+      "targetVocabulary": [
+        "parcel",
+        "code",
+        "message",
+        "read",
+        "enlarge"
+      ],
+      "brief": "A woman comes to collect a parcel. She enlarges the message on her phone, reads the unclear code aloud, and the clerk finds and hands her the parcel.",
+      "storyPattern": {
+        "goal": "Read a parcel collection code accurately",
+        "relationship": "Recipient and postal clerk",
+        "interaction": "Enlarge a message on the recipient's own phone and repeat the code",
+        "outcome": "The clerk locates and hands over the matching parcel"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-18",
+      "storyId": "shopper-corrects-a-self-checkout-produce-entry",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_corrects_produce_selection_at_self_checkout",
+      "lexicalThemes": [
+        "supermarket shopping",
+        "produce",
+        "self-checkout",
+        "correcting an entry"
+      ],
+      "targetVocabulary": [
+        "produce",
+        "screen",
+        "wrong",
+        "cancel",
+        "choose"
+      ],
+      "brief": "At a supermarket self-checkout, a shopper notices she selected tomatoes even though she put cucumbers in her bag. She cancels the selection, chooses cucumbers, and checks that the screen shows them.",
+      "storyPattern": {
+        "goal": "Make the self-checkout record match the produce in the bag",
+        "relationship": "Shopper acting independently at checkout",
+        "interaction": "Cancel an incorrect selection and choose the right item",
+        "outcome": "Confirm the screen shows the selected produce"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-18",
+      "storyId": "subscriber-compares-two-plan-options",
+      "domain": "phone_internet",
+      "scenario": "customer_compares_household_phone_plan_data_options_before_choosing",
+      "lexicalThemes": [
+        "phone plans",
+        "data options",
+        "preferences",
+        "household use"
+      ],
+      "targetVocabulary": [
+        "plan",
+        "data",
+        "difference",
+        "use",
+        "choose"
+      ],
+      "brief": "Dana reviews two data options on her household phone account, asks a representative to explain the difference, and chooses the option that fits how her household uses its phones.",
+      "storyPattern": {
+        "goal": "Choose a phone plan option that matches household use",
+        "relationship": "Customer and phone-service representative",
+        "interaction": "Ask for a plain-language comparison and state a preference",
+        "outcome": "Select the option that fits the household's stated needs"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-18",
+      "storyId": "shopper-asks-for-produce-priced-by-weight",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_requests_and_accepts_a_small_weighted_portion_of_mushrooms",
+      "lexicalThemes": [
+        "food shopping",
+        "amounts",
+        "weight",
+        "preferences"
+      ],
+      "targetVocabulary": [
+        "mushrooms",
+        "small amount",
+        "weigh",
+        "enough",
+        "take"
+      ],
+      "brief": "At a market, a shopper asks for a small amount of mushrooms. The seller weighs a portion, and the shopper accepts it as enough and takes it.",
+      "storyPattern": {
+        "goal": "Buy only the amount of a weighed food that is needed",
+        "relationship": "Shopper and market seller",
+        "interaction": "Ask for a small portion and respond to the weighed amount",
+        "outcome": "Accept a suitable portion and take it"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-18",
+      "storyId": "customer-checks-which-card-a-recurring-bill-uses",
+      "domain": "digital_accounts",
+      "scenario": "account_holder_selects_current_card_for_recurring_household_payment",
+      "lexicalThemes": [
+        "digital accounts",
+        "recurring payments",
+        "card labels",
+        "account settings"
+      ],
+      "targetVocabulary": [
+        "settings",
+        "card",
+        "old",
+        "current",
+        "select"
+      ],
+      "brief": "An account holder notices that a recurring household payment is linked to an old card. She checks the two card labels in her account settings, selects the current card for future payments, and sees the updated choice on screen.",
+      "storyPattern": {
+        "goal": "Direct future recurring payments to the intended card",
+        "relationship": "Account holder managing a household payment",
+        "interaction": "Compare card labels in account settings and select the current card",
+        "outcome": "See the selected card listed for future payments"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-18",
+      "storyId": "customer-sets-a-card-spending-limit-for-a-joint-account",
+      "domain": "banking_credit",
+      "scenario": "cardholder_changes_the_account_linked_to_future_card_purchases",
+      "lexicalThemes": [
+        "bank accounts and cards",
+        "personal versus shared spending",
+        "clarifying account settings",
+        "confirming a choice"
+      ],
+      "targetVocabulary": [
+        "joint account",
+        "personal account",
+        "card purchase",
+        "linked account",
+        "future transactions",
+        "confirm"
+      ],
+      "brief": "Tamar visits the bank to separate her future personal card purchases from her partner's joint household account. A clerk shows her the available accounts and explains that the change affects future purchases only. Tamar selects her personal account and later checks that a small card purchase appears there, while the joint account remains available for household expenses.",
+      "storyPattern": {
+        "goal": "Direct future card purchases to the intended account",
+        "relationship": "Account holder and bank clerk",
+        "interaction": "Explain a spending preference, review account choices, and clarify what the change affects",
+        "outcome": "Select the personal account and verify a later purchase appears there"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-18",
+      "storyId": "shopper-asks-for-a-specific-weight-of-olives",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_clarifies_and_adjusts_a_market_olive_purchase",
+      "lexicalThemes": [
+        "buying food by weight",
+        "quantities for a meal",
+        "clarifying liquid in a container",
+        "checking and adjusting an amount"
+      ],
+      "targetVocabulary": [
+        "זיתים",
+        "לשקול",
+        "נוזל",
+        "משקל",
+        "עוד קצת",
+        "מעט מדי"
+      ],
+      "brief": "At a neighborhood market, Rafi buys an amount of olives suitable for dinner for four. He clarifies that he wants the olives weighed with little brine, checks the portion, and takes the agreed amount home.",
+      "storyPattern": {
+        "goal": "Buy a suitable quantity of a weighed food item",
+        "relationship": "Shopper and market seller",
+        "interaction": "Clarify how the olives are weighed, check the portion, and adjust it",
+        "outcome": "Take home the agreed quantity for dinner"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-18",
+      "storyId": "resident-updates-a-delivery-preference-after-a-building-entry-change",
+      "domain": "delivery_customer_service",
+      "scenario": "Liat_corrects_delivery_instructions_for_a_blocked_building_entrance",
+      "lexicalThemes": [
+        "delivery instructions",
+        "building access",
+        "giving directions",
+        "correcting a detail"
+      ],
+      "targetVocabulary": [
+        "delivery details",
+        "main entrance",
+        "side gate",
+        "bell",
+        "apartment number",
+        "update",
+        "repeat back"
+      ],
+      "brief": "Liat updates the delivery instructions because repair work has blocked her building's usual entrance. She gives the delivery agent the side gate and bell details, corrects the apartment number, checks the updated details, and tells the doorman where to expect the parcel.",
+      "storyPattern": {
+        "goal": "Make delivery access instructions match a temporary change at home",
+        "relationship": "Parcel recipient and delivery-service agent",
+        "interaction": "Explain the access change, give an alternative location, and correct a detail in the agent's repeat-back",
+        "outcome": "Confirm accurate instructions and alert the doorman"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-18",
+      "storyId": "roommates-clarify-a-recurring-subscription-charge",
+      "domain": "digital_accounts",
+      "scenario": "roommates_identify_a_recurring_subscription_charge_and_update_their_shared_expense_record",
+      "lexicalThemes": [
+        "digital subscriptions",
+        "recurring charges",
+        "shared household expenses",
+        "clarifying account ownership",
+        "agreeing on a next step"
+      ],
+      "targetVocabulary": [
+        "subscription",
+        "recurring charge",
+        "household plan",
+        "individual add-on",
+        "billing description",
+        "keep it",
+        "shared expenses"
+      ],
+      "brief": "Roommates Noa and Gil notice a recurring charge for their household streaming subscription. Noa thought the subscription was paused, while Gil recalls using it recently and wants to keep it if they can identify the charge. Noa compares the billing description with her account screen, clarifies that it is the household plan rather than an individual add-on, and updates the shared expense note. They agree to keep the service for now.",
+      "storyPattern": {
+        "goal": "Identify a recurring digital-service charge and decide how to handle it",
+        "relationship": "Roommates sharing expenses, with one owning the account",
+        "interaction": "Compare a billing description with the account holder's screen, clarify a mistaken assumption, and state different preferences",
+        "outcome": "Keep the service for now and record the charge clearly in the shared expense note"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-18",
+      "storyId": "siblings-prepare-a-household-transfer-with-the-correct-recipient",
+      "domain": "bills_taxes",
+      "scenario": "siblings_confirm_recipient_details_and_send_household_repayment",
+      "lexicalThemes": [
+        "bank transfers",
+        "recipient account details",
+        "repaying a household purchase",
+        "checking an amount",
+        "confirming before sending"
+      ],
+      "targetVocabulary": [
+        "transfer money",
+        "recipient",
+        "account nickname",
+        "last digits",
+        "old account label",
+        "amount owed",
+        "check the details",
+        "send"
+      ],
+      "brief": "Dana asks her brother Amir to identify his current bank-account entry from a message on his own phone. She confirms the recipient details and repayment amount, sends the transfer herself, and Amir confirms he received it.",
+      "storyPattern": {
+        "goal": "Send a repayment to the correct recipient account",
+        "relationship": "Siblings settling a shared household purchase",
+        "interaction": "Dana checks the nickname and final digits from Amir's message, confirms the amount against their receipt, and reviews the details before sending",
+        "outcome": "Dana sends the transfer herself, and Amir confirms that he received it"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-18",
+      "storyId": "bank-cash-withdrawal-denominations",
+      "domain": "banking_credit",
+      "scenario": "withdrawing_cash_for_a_family_gathering_and_requesting_mixed_note_sizes",
+      "lexicalThemes": [
+        "cash",
+        "bank withdrawal",
+        "banknotes",
+        "counting"
+      ],
+      "targetVocabulary": [
+        "cash",
+        "withdraw",
+        "small notes",
+        "count",
+        "mix"
+      ],
+      "brief": "A customer withdraws cash at a bank for a family gathering, asks for some smaller notes, and counts the mix of notes received before leaving.",
+      "storyPattern": {
+        "goal": "Get cash in denominations suited to an immediate household need",
+        "relationship": "Customer and bank teller",
+        "interaction": "State a preference for smaller notes and check the cash received",
+        "outcome": "Leave with the requested mix of notes"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-18",
+      "storyId": "housemates-choose-a-bill-payment-method",
+      "domain": "bills_taxes",
+      "scenario": "housemates_check_a_partial_electricity_bill_payment_and_pay_the_remaining_amount",
+      "lexicalThemes": [
+        "household bills",
+        "shared expenses",
+        "payment",
+        "amounts",
+        "record keeping"
+      ],
+      "targetVocabulary": [
+        "bill",
+        "already paid",
+        "part",
+        "remaining amount",
+        "pay",
+        "write down",
+        "electricity"
+      ],
+      "brief": "Two housemates check a household electricity bill, discover that Dana has already paid part of it, agree on the remaining amount, and the narrator pays it while Dana records the payment.",
+      "storyPattern": {
+        "goal": "Avoid paying a shared household bill twice after a partial payment",
+        "relationship": "Two housemates sharing household expenses",
+        "interaction": "Compare the bill and payment notes, then agree on what remains",
+        "outcome": "The narrator pays the remaining amount and Dana records it"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-18",
+      "storyId": "resident-prepares-proof-of-household-expenses",
+      "domain": "social_benefits",
+      "scenario": "resident_finds_and_labels_an_electricity_receipt_for_benefit_papers",
+      "lexicalThemes": [
+        "benefit paperwork",
+        "household expenses",
+        "receipts",
+        "documents"
+      ],
+      "targetVocabulary": [
+        "papers",
+        "receipt",
+        "expense",
+        "label",
+        "include"
+      ],
+      "brief": "A resident finds a receipt for an electricity bill while preparing her benefit paperwork. She writes a short label on it and puts it with the papers, without assuming whether other documents are needed.",
+      "storyPattern": {
+        "goal": "Make one household expense easy to identify in benefit paperwork",
+        "relationship": "Resident handling her own paperwork",
+        "interaction": "Find the relevant receipt and label what it records",
+        "outcome": "Keep the labeled receipt with the paperwork while leaving other requirements open"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-18",
+      "storyId": "account-holder-reviews-a-small-bank-transfer",
+      "domain": "banking_credit",
+      "scenario": "customer_checks_a_transfer_amount_against_a_receipt_before_sending",
+      "lexicalThemes": [
+        "bank transfers",
+        "amounts",
+        "receipts",
+        "checking details"
+      ],
+      "targetVocabulary": [
+        "transfer",
+        "amount",
+        "receipt",
+        "check",
+        "send"
+      ],
+      "brief": "A customer planned to send money for a shared household purchase. She noticed that the amount in the app differed from her note, checked the receipt, corrected her note, and sent the amount shown on the receipt.",
+      "storyPattern": {
+        "goal": "Send the correct amount for a shared purchase",
+        "relationship": "Customer settling a household expense",
+        "interaction": "Compare the amount in the app with a receipt and correct a personal note",
+        "outcome": "Send the amount that matches the receipt"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-18",
+      "storyId": "resident-asks-how-to-describe-a-change-in-benefit-paperwork",
+      "domain": "social_benefits",
+      "scenario": "resident_checks_whether_a_brief_factual_description_of_a_household_change_is_clear",
+      "lexicalThemes": [
+        "benefits",
+        "household circumstances",
+        "descriptions",
+        "clarification"
+      ],
+      "targetVocabulary": [
+        "change",
+        "household",
+        "describe",
+        "sentence",
+        "clear"
+      ],
+      "brief": "A resident filling out benefit paperwork describes a change in her household and asks a service worker whether her short factual sentence is clear. The worker confirms that it is understandable without saying what documents may be required.",
+      "storyPattern": {
+        "goal": "Describe a household change plainly in benefit paperwork",
+        "relationship": "Resident and service worker",
+        "interaction": "Offer a brief factual description and ask whether it is clear",
+        "outcome": "Keep the understandable wording without assuming further requirements"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-18",
+      "storyId": "resident-checks-an-appetite-for-a-recurring-charge",
+      "domain": "banking_credit",
+      "scenario": "account_holder_finds_and_records_the_date_of_a_known_recurring_payment",
+      "lexicalThemes": [
+        "bank accounts",
+        "recurring payments",
+        "dates",
+        "household spending"
+      ],
+      "targetVocabulary": [
+        "charge",
+        "date",
+        "account",
+        "recurring",
+        "write down"
+      ],
+      "brief": "A resident sees a small recurring charge from a service she recognizes, checks its transaction details to find the latest payment date, and records that date beside the household expenses.",
+      "storyPattern": {
+        "goal": "Record when a known recurring payment was made",
+        "relationship": "Account holder managing household spending",
+        "interaction": "Open a transaction detail and identify its date",
+        "outcome": "Add the date to a household expense note"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-18",
+      "storyId": "recipient-checks-a-parcel-collection-code",
+      "domain": "postal_parcels",
+      "scenario": "recipient_enlarges_a_collection_message_to_read_an_unclear_code",
+      "lexicalThemes": [
+        "parcels",
+        "collection codes",
+        "phone messages",
+        "reading details"
+      ],
+      "targetVocabulary": [
+        "parcel",
+        "code",
+        "message",
+        "read",
+        "enlarge"
+      ],
+      "brief": "A recipient enlarges the collection message on her phone, reads the unclear code aloud, and the postal clerk finds and hands over the matching parcel.",
+      "storyPattern": {
+        "goal": "Read a parcel collection code accurately",
+        "relationship": "Recipient and postal clerk",
+        "interaction": "Enlarge a message on the recipient's own phone and repeat the code",
+        "outcome": "The clerk locates and hands over the matching parcel"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-18",
+      "storyId": "shopper-corrects-a-self-checkout-produce-entry",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_cancels_an_incorrect_produce_selection_at_self_checkout",
+      "lexicalThemes": [
+        "supermarket shopping",
+        "produce",
+        "self-checkout",
+        "correcting an entry"
+      ],
+      "targetVocabulary": [
+        "produce",
+        "screen",
+        "wrong",
+        "cancel",
+        "choose"
+      ],
+      "brief": "At the self-checkout, a shopper notices that she selected cucumbers instead of the tomatoes in her bag. She cancels the entry, selects tomatoes, and checks that the screen now matches her bag.",
+      "storyPattern": {
+        "goal": "Make the self-checkout record match the produce in the bag",
+        "relationship": "Shopper acting independently at checkout",
+        "interaction": "Cancel an incorrect selection and choose the right item",
+        "outcome": "Confirm the screen shows the selected produce"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-18",
+      "storyId": "subscriber-compares-two-plan-options",
+      "domain": "phone_internet",
+      "scenario": "customer_compares_household_phone_plan_data_options_before_choosing",
+      "lexicalThemes": [
+        "phone plans",
+        "data options",
+        "household preferences",
+        "phone use"
+      ],
+      "targetVocabulary": [
+        "plan",
+        "data",
+        "difference",
+        "use",
+        "choose"
+      ],
+      "brief": "A customer reviews her household phone account, asks a representative to explain two data options in plain language, and chooses the option that fits how her household uses its phones.",
+      "storyPattern": {
+        "goal": "Choose a phone plan option that matches household use",
+        "relationship": "Customer and phone-service representative",
+        "interaction": "Ask for a plain-language comparison and state a preference",
+        "outcome": "Select the option that fits the household's stated needs"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-18",
+      "storyId": "shopper-asks-for-produce-priced-by-weight",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_requests_and_accepts_a_small_weighted_portion_of_mushrooms",
+      "lexicalThemes": [
+        "food shopping",
+        "amounts",
+        "weight",
+        "preferences"
+      ],
+      "targetVocabulary": [
+        "mushrooms",
+        "small amount",
+        "weigh",
+        "enough",
+        "take"
+      ],
+      "brief": "At a market, a shopper asks the seller to weigh a small amount of mushrooms, says the portion is enough, and takes it.",
+      "storyPattern": {
+        "goal": "Buy only the amount of a weighed food that is needed",
+        "relationship": "Shopper and market seller",
+        "interaction": "Ask for a small portion and respond to the weighed amount",
+        "outcome": "Accept a suitable portion and take it"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-18",
+      "storyId": "customer-checks-which-card-a-recurring-bill-uses",
+      "domain": "digital_accounts",
+      "scenario": "account_holder_changes_the_card_selected_for_a_recurring_household_payment",
+      "lexicalThemes": [
+        "digital accounts",
+        "recurring payments",
+        "card labels",
+        "account settings"
+      ],
+      "targetVocabulary": [
+        "settings",
+        "card",
+        "old",
+        "current",
+        "select"
+      ],
+      "brief": "A woman checks which card is selected for a recurring household payment, switches it from the old card to her current card, and confirms the updated choice on screen.",
+      "storyPattern": {
+        "goal": "Direct future recurring payments to the intended card",
+        "relationship": "Account holder managing a household payment",
+        "interaction": "Compare card labels in account settings and select the current card",
+        "outcome": "See the selected card listed for future payments"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-18",
+      "storyId": "customer-sets-a-card-spending-limit-for-a-joint-account",
+      "domain": "banking_credit",
+      "scenario": "tamar_changes_linked_account_for_future_card_purchases",
+      "lexicalThemes": [
+        "bank accounts and cards",
+        "personal and shared spending",
+        "clarifying account settings",
+        "confirming a choice"
+      ],
+      "targetVocabulary": [
+        "joint account",
+        "personal account",
+        "card purchase",
+        "linked account",
+        "future purchases",
+        "confirm"
+      ],
+      "brief": "Tamar changed the account linked to future card purchases from her joint account to her personal account, after clarifying that past purchases would not change, and later verified a small purchase in the personal account.",
+      "storyPattern": {
+        "goal": "Direct future card purchases to the personal account she intends to use",
+        "relationship": "Account holder and bank clerk",
+        "interaction": "Explain her spending preference, review account choices, and clarify what the change affects",
+        "outcome": "Select the personal account and verify a later purchase appears there"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-18",
+      "storyId": "shopper-asks-for-a-specific-weight-of-olives",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_specifies_drained_weight_and_adjusts_a_market_purchase",
+      "lexicalThemes": [
+        "buying food by weight",
+        "quantities for a meal",
+        "clarifying what is included in the weight",
+        "checking and adjusting an amount"
+      ],
+      "targetVocabulary": [
+        "by weight",
+        "how much",
+        "drained",
+        "brine",
+        "scale",
+        "a little more",
+        "enough"
+      ],
+      "brief": "Yesterday, Rafi bought a suitable amount of olives for dinner for four at a neighborhood market. He clarified that he wanted drained olives with only a little brine, checked the amount with the seller, and took them home.",
+      "storyPattern": {
+        "goal": "Buy a suitable quantity of a weighed food item",
+        "relationship": "Shopper and market seller",
+        "interaction": "Describe the amount needed, clarify how the item is weighed, and adjust the portion after checking it",
+        "outcome": "Take home the agreed quantity for the meal"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-18",
+      "storyId": "resident-updates-a-delivery-preference-after-a-building-entry-change",
+      "domain": "delivery_customer_service",
+      "scenario": "recipient_updates_delivery_instructions_for_a_temporarily_unusable_building_entrance",
+      "lexicalThemes": [
+        "delivery instructions",
+        "building access",
+        "giving precise directions",
+        "catching and correcting a detail"
+      ],
+      "targetVocabulary": [
+        "delivery details",
+        "main entrance",
+        "side gate",
+        "bell",
+        "apartment number",
+        "update",
+        "repeat back"
+      ],
+      "brief": "After repair work blocked the building’s usual entrance, Liat updated her parcel delivery instructions to direct the worker to the side gate and its bell. She corrected the agent’s mistaken apartment number, checked the updated details, and told the doorman to expect the parcel at the side gate.",
+      "storyPattern": {
+        "goal": "Make delivery access instructions match a temporary change at home",
+        "relationship": "Parcel recipient and delivery-service agent",
+        "interaction": "Explain the access change, give an alternative location, and correct a detail in the agent's repeat-back",
+        "outcome": "Confirm accurate instructions and alert the doorman"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-18",
+      "storyId": "roommates-clarify-a-recurring-subscription-charge",
+      "domain": "digital_accounts",
+      "scenario": "roommates_identify_a_recurring_subscription_charge_and_update_the_shared_expense_note",
+      "lexicalThemes": [
+        "digital subscriptions",
+        "recurring charges",
+        "shared household expenses",
+        "account ownership",
+        "clarifying a billing description"
+      ],
+      "targetVocabulary": [
+        "subscription",
+        "recurring charge",
+        "household plan",
+        "individual add-on",
+        "billing description",
+        "shared expenses",
+        "keep it for now"
+      ],
+      "brief": "Roommates Noa and Gil notice a recurring streaming-subscription charge, compare its billing description with Noa’s account screen, clarify that it is the household plan rather than an individual add-on, and agree to keep it for now while Noa updates their shared expense note.",
+      "storyPattern": {
+        "goal": "Identify a recurring digital-service charge and decide how to handle it",
+        "relationship": "Roommates sharing expenses; Noa owns and manages the account, while Gil shares expenses",
+        "interaction": "Compare the billing description with Noa’s account screen, clarify a mistaken assumption, and share their preferences",
+        "outcome": "Keep the service for now and update the shared expense note to identify the household subscription"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-18",
+      "storyId": "siblings-prepare-a-household-transfer-with-the-correct-recipient",
+      "domain": "bills_taxes",
+      "scenario": "siblings_verify_recipient_and_receipt_before_household_repayment",
+      "lexicalThemes": [
+        "bank transfers",
+        "recipient details",
+        "repaying shared expenses",
+        "checking an amount",
+        "confirming before sending"
+      ],
+      "targetVocabulary": [
+        "transfer",
+        "recipient",
+        "account name",
+        "last digits",
+        "old label",
+        "amount owed",
+        "review the summary",
+        "send"
+      ],
+      "brief": "Dana repays her brother Amir for a shared household shelf purchase. They compare account details from Amir’s message, verify the amount against their receipt, and Dana sends the transfer herself after reviewing the summary. Amir confirms that it arrived.",
+      "storyPattern": {
+        "goal": "Send a repayment to the correct recipient account",
+        "relationship": "Siblings settling a shared household purchase",
+        "interaction": "Compare recipient details from the account holder's message, clarify an outdated label, and confirm the amount against a receipt",
+        "outcome": "Dana selects the matching recipient, reviews and sends the transfer herself, and Amir confirms receipt"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-18",
+      "storyId": "bank-cash-withdrawal-denominations",
+      "domain": "banking_credit",
+      "scenario": "customer_requests_a_mix_of_small_and_large_notes_for_a_cash_withdrawal",
+      "lexicalThemes": [
+        "cash",
+        "withdrawal",
+        "notes",
+        "counting"
+      ],
+      "targetVocabulary": [
+        "cash",
+        "withdraw",
+        "small notes",
+        "count",
+        "mix"
+      ],
+      "brief": "A customer withdraws cash at a bank for a small family gathering, asks for some smaller bills, receives a mix of large and small bills, and counts the cash before leaving.",
+      "storyPattern": {
+        "goal": "Get cash in denominations suited to an immediate household need",
+        "relationship": "Customer and bank teller",
+        "interaction": "State a preference for smaller notes and check the cash received",
+        "outcome": "Leave with the requested mix of notes"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-18",
+      "storyId": "housemates-choose-a-bill-payment-method",
+      "domain": "bills_taxes",
+      "scenario": "housemates_check_partial_electricity_bill_payment_and_pay_the_remaining_amount",
+      "lexicalThemes": [
+        "household bills",
+        "shared expenses",
+        "payment",
+        "amounts"
+      ],
+      "targetVocabulary": [
+        "bill",
+        "already paid",
+        "remaining amount",
+        "pay",
+        "write down"
+      ],
+      "brief": "Two housemates discover that Roni has already paid part of the electricity bill. They compare their messages, check the remaining amount, and Dan pays it while Roni records the payment.",
+      "storyPattern": {
+        "goal": "Avoid paying a shared bill twice after a partial payment",
+        "relationship": "Housemates sharing household expenses",
+        "interaction": "Compare payment notes and agree on what remains",
+        "outcome": "Dan pays the remaining amount and Roni records it"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-18",
+      "storyId": "resident-prepares-proof-of-household-expenses",
+      "domain": "social_benefits",
+      "scenario": "resident_finds_and_labels_an_electricity_receipt_for_benefit_papers",
+      "lexicalThemes": [
+        "benefit paperwork",
+        "household expenses",
+        "receipts",
+        "documents"
+      ],
+      "targetVocabulary": [
+        "papers",
+        "receipt",
+        "expense",
+        "label",
+        "include"
+      ],
+      "brief": "A resident organizing paperwork for a benefit application notices that one household expense is not clearly identified. She finds the electricity bill receipt, labels it, and puts it with the other papers while remaining unsure whether anything else is needed.",
+      "storyPattern": {
+        "goal": "Make one household expense easy to identify in benefit paperwork",
+        "relationship": "Resident handling her own paperwork",
+        "interaction": "Find the relevant receipt and label what it records",
+        "outcome": "Keep the labeled receipt with the paperwork while leaving other requirements open"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-18",
+      "storyId": "account-holder-reviews-a-small-bank-transfer",
+      "domain": "banking_credit",
+      "scenario": "customer_checks_a_transfer_amount_against_a_receipt_before_sending",
+      "lexicalThemes": [
+        "bank transfers",
+        "amounts",
+        "receipts",
+        "checking details"
+      ],
+      "targetVocabulary": [
+        "transfer",
+        "amount",
+        "receipt",
+        "check",
+        "send"
+      ],
+      "brief": "A customer notices that the amount in her banking app differs from the amount on her note before sending money for a shared household purchase. She checks the receipt, corrects her note, and sends the amount that matches the receipt.",
+      "storyPattern": {
+        "goal": "Send the correct amount for a shared purchase",
+        "relationship": "Customer settling a household expense",
+        "interaction": "Compare the amount in the app with a receipt and correct a personal note",
+        "outcome": "Send the amount that matches the receipt"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-18",
+      "storyId": "resident-asks-how-to-describe-a-change-in-benefit-paperwork",
+      "domain": "social_benefits",
+      "scenario": "resident_checks_whether_a_brief_factual_description_of_a_household_change_is_clear",
+      "lexicalThemes": [
+        "benefits",
+        "household circumstances",
+        "descriptions",
+        "clarification"
+      ],
+      "targetVocabulary": [
+        "change",
+        "household",
+        "describe",
+        "sentence",
+        "clear"
+      ],
+      "brief": "Yael fills out a benefit application and writes that her sister has been living with her since last week. She asks a service worker whether the factual sentence is clear. The worker confirms that the wording is understandable, without stating what documents are required.",
+      "storyPattern": {
+        "goal": "Describe a household change plainly in benefit paperwork",
+        "relationship": "Resident and service worker",
+        "interaction": "Offer a brief factual description and ask whether it is clear",
+        "outcome": "Keep the understandable wording without assuming further requirements"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-18",
+      "storyId": "resident-checks-an-appetite-for-a-recurring-charge",
+      "domain": "banking_credit",
+      "scenario": "account_holder_finds_and_records_the_date_of_a_known_recurring_payment",
+      "lexicalThemes": [
+        "bank accounts",
+        "recurring payments",
+        "dates",
+        "household spending"
+      ],
+      "targetVocabulary": [
+        "charge",
+        "date",
+        "account",
+        "recurring",
+        "write down"
+      ],
+      "brief": "A resident sees a small recurring charge in her bank account and recognizes the service name but not the latest payment date. She checks the transaction details in her own account and writes the date beside the household expense note.",
+      "storyPattern": {
+        "goal": "Record when a known recurring payment was made",
+        "relationship": "Account holder managing household spending",
+        "interaction": "Open a transaction detail and identify its date",
+        "outcome": "Add the date to a household expense note"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-18",
+      "storyId": "recipient-checks-a-parcel-collection-code",
+      "domain": "postal_parcels",
+      "scenario": "recipient_enlarges_a_collection_message_to_read_an_unclear_code",
+      "lexicalThemes": [
+        "parcels",
+        "collection codes",
+        "phone messages",
+        "reading details"
+      ],
+      "targetVocabulary": [
+        "parcel",
+        "code",
+        "message",
+        "read",
+        "enlarge"
+      ],
+      "brief": "At a parcel counter, a recipient enlarges the message on her phone to read an unclear collection code aloud. The clerk finds the matching parcel and hands it over.",
+      "storyPattern": {
+        "goal": "Read a parcel collection code accurately",
+        "relationship": "Recipient and postal clerk",
+        "interaction": "Enlarge a message on the recipient's own phone and repeat the code",
+        "outcome": "The clerk locates and hands over the matching parcel"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-18",
+      "storyId": "shopper-corrects-a-self-checkout-produce-entry",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_cancels_an_incorrect_produce_selection_at_self_checkout",
+      "lexicalThemes": [
+        "supermarket shopping",
+        "produce",
+        "self-checkout",
+        "correcting an entry"
+      ],
+      "targetVocabulary": [
+        "produce",
+        "screen",
+        "wrong",
+        "cancel",
+        "choose"
+      ],
+      "brief": "At a supermarket self-checkout, a shopper notices she selected the wrong produce on the screen. She cancels that entry, selects the correct produce, and checks that the screen matches what she put in her bag.",
+      "storyPattern": {
+        "goal": "Make the self-checkout record match the produce in the bag",
+        "relationship": "Shopper acting independently at checkout",
+        "interaction": "Cancel an incorrect selection and choose the right item",
+        "outcome": "Confirm the screen shows the selected produce"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-18",
+      "storyId": "subscriber-compares-two-plan-options",
+      "domain": "phone_internet",
+      "scenario": "customer_compares_household_data_options_and_selects_smaller_option",
+      "lexicalThemes": [
+        "phone plans",
+        "mobile data options",
+        "household phone use",
+        "preferences and choices"
+      ],
+      "targetVocabulary": [
+        "plan",
+        "data",
+        "difference",
+        "use",
+        "choose"
+      ],
+      "brief": "A customer sees two mobile data options on her household account, asks the representative to explain the difference, and chooses the smaller option because the household mostly uses Wi-Fi at home.",
+      "storyPattern": {
+        "goal": "Choose a phone plan option that matches household use",
+        "relationship": "Customer and phone-service representative",
+        "interaction": "Ask for a plain-language comparison and state a preference",
+        "outcome": "Select the smaller data option because the household mostly uses Wi-Fi at home"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-18",
+      "storyId": "shopper-asks-for-produce-priced-by-weight",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_requests_and_accepts_a_small_weighted_portion_of_mushrooms",
+      "lexicalThemes": [
+        "food shopping",
+        "amounts",
+        "weight",
+        "preferences"
+      ],
+      "targetVocabulary": [
+        "mushrooms",
+        "small amount",
+        "weigh",
+        "enough",
+        "take"
+      ],
+      "brief": "At a market, a shopper asks for only a few mushrooms rather than a full bag. The seller weighs a small portion, the shopper says it is enough, and takes it.",
+      "storyPattern": {
+        "goal": "Buy only the amount of a weighed food that is needed",
+        "relationship": "Shopper and market seller",
+        "interaction": "Ask for a small portion and respond to the weighed amount",
+        "outcome": "Accept a suitable portion and take it"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-18",
+      "storyId": "customer-checks-which-card-a-recurring-bill-uses",
+      "domain": "digital_accounts",
+      "scenario": "account_holder_updates_card_for_recurring_household_bill",
+      "lexicalThemes": [
+        "digital accounts",
+        "recurring payments",
+        "card labels",
+        "account settings"
+      ],
+      "targetVocabulary": [
+        "settings",
+        "card",
+        "old",
+        "current",
+        "select"
+      ],
+      "brief": "A customer checks the card labels for a recurring household bill in her account settings, selects her current card instead of the old one, and sees the updated choice on screen.",
+      "storyPattern": {
+        "goal": "Direct future recurring payments to the intended card",
+        "relationship": "Account holder managing a household payment",
+        "interaction": "Compare card labels in account settings and select the current card",
+        "outcome": "See the selected card listed for future payments"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-18",
+      "storyId": "customer-sets-a-card-spending-limit-for-a-joint-account",
+      "domain": "banking_credit",
+      "scenario": "cardholder_changes_the_account_linked_to_future_card_purchases",
+      "lexicalThemes": [
+        "bank accounts and cards",
+        "personal versus shared spending",
+        "clarifying account settings",
+        "confirming a choice"
+      ],
+      "targetVocabulary": [
+        "joint account",
+        "personal account",
+        "card purchase",
+        "linked account",
+        "future transactions",
+        "confirm"
+      ],
+      "brief": "Tamar visits her bank to link future card purchases to her personal account instead of the joint account she shares with her partner. The clerk explains which account choices are available and clarifies that the change affects future purchases only. Tamar confirms her choice and later checks that a small card purchase appears under her personal account.",
+      "storyPattern": {
+        "goal": "Direct future card purchases to the intended account",
+        "relationship": "Account holder and bank clerk",
+        "interaction": "Explain a spending preference, review account choices, and clarify what the change affects",
+        "outcome": "Select the personal account and verify a later purchase appears there"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-18",
+      "storyId": "shopper-asks-for-a-specific-weight-of-olives",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_specifies_drained_weight_and_adjusts_a_market_purchase",
+      "lexicalThemes": [
+        "buying food by weight",
+        "quantities for a meal",
+        "clarifying what is included in the weight",
+        "checking and adjusting an amount"
+      ],
+      "targetVocabulary": [
+        "by weight",
+        "how much",
+        "drained",
+        "brine",
+        "scale",
+        "a little more",
+        "enough"
+      ],
+      "brief": "At his neighborhood market, Rafi buys a suitable amount of olives for dinner with four people. He clarifies that he wants the olives weighed drained, with a little brine left in the container. After checking the scale, he asks for a little more and takes the agreed portion home.",
+      "storyPattern": {
+        "goal": "Buy a suitable quantity of a weighed food item",
+        "relationship": "Shopper and market seller",
+        "interaction": "Describe the amount needed, clarify how the item is weighed, and adjust the portion after checking it",
+        "outcome": "Take home the agreed quantity for the meal"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-18",
+      "storyId": "resident-updates-a-delivery-preference-after-a-building-entry-change",
+      "domain": "delivery_customer_service",
+      "scenario": "recipient_updates_delivery_instructions_for_a_temporarily_unusable_building_entrance",
+      "lexicalThemes": [
+        "delivery instructions",
+        "building access",
+        "giving precise directions",
+        "catching and correcting a detail"
+      ],
+      "targetVocabulary": [
+        "delivery details",
+        "main entrance",
+        "side gate",
+        "bell",
+        "apartment number",
+        "update",
+        "repeat back"
+      ],
+      "brief": "Liat updates the instructions for an upcoming parcel delivery because repair work has temporarily blocked her building's usual entrance. She gives the agent directions to the open side gate and its bell, corrects the apartment number in the agent's repeat-back, checks the revised details, and alerts the doorman.",
+      "storyPattern": {
+        "goal": "Make delivery access instructions match a temporary change at home",
+        "relationship": "Parcel recipient and delivery-service agent",
+        "interaction": "Explain the access change, give an alternative location, and correct a detail in the agent's repeat-back",
+        "outcome": "Confirm accurate instructions and alert the doorman"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-18",
+      "storyId": "roommates-clarify-a-recurring-subscription-charge",
+      "domain": "digital_accounts",
+      "scenario": "roommates_identify_a_recurring_subscription_charge_and_update_their_shared_expense_record",
+      "lexicalThemes": [
+        "digital subscriptions",
+        "recurring charges",
+        "shared household expenses",
+        "clarifying account ownership",
+        "agreeing on a next step"
+      ],
+      "targetVocabulary": [
+        "subscription",
+        "recurring charge",
+        "household plan",
+        "individual add-on",
+        "billing description",
+        "keep it",
+        "shared expenses"
+      ],
+      "brief": "Noa and her roommate Gil compare a recurring streaming charge with Noa's account screen. Noa explains that the charge is for their household plan, not an individual add-on. They decide to keep the service for now, and Noa updates their shared expense note with the service name.",
+      "storyPattern": {
+        "goal": "Identify a recurring digital-service charge and decide how to handle it",
+        "relationship": "Roommates sharing expenses, with one owning the account",
+        "interaction": "Compare a billing description with the account holder's screen, clarify a mistaken assumption, and state different preferences",
+        "outcome": "Keep the service for now and record the charge clearly in the shared expense note"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-18",
+      "storyId": "siblings-prepare-a-household-transfer-with-the-correct-recipient",
+      "domain": "bills_taxes",
+      "scenario": "siblings_confirm_recipient_and_amount_before_repayment_transfer",
+      "lexicalThemes": [
+        "bank transfers",
+        "recipient account details",
+        "repaying a household purchase",
+        "checking an amount against a receipt",
+        "confirming a transfer"
+      ],
+      "targetVocabulary": [
+        "להעביר כסף",
+        "מקבל",
+        "כינוי לחשבון",
+        "ספרות אחרונות",
+        "שם ישן",
+        "סכום החוב",
+        "לבדוק סיכום",
+        "לשלוח"
+      ],
+      "brief": "Dana checks recipient details and the repayment amount with her brother Amir, then sends the transfer herself and Amir confirms receiving it.",
+      "storyPattern": {
+        "goal": "Send a repayment to the correct recipient account",
+        "relationship": "Siblings settling a shared household purchase",
+        "interaction": "Compare recipient details from Amir's message, clarify the outdated account label, and confirm the amount against a receipt",
+        "outcome": "Dana selects the matching recipient, reviews and sends the transfer herself, and Amir confirms it arrived"
+      },
+      "edition": "bet"
     }
   ]
 }
