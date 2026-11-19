@@ -26902,6 +26902,1363 @@
         "outcome": "Dana selects the matching recipient, reviews and sends the transfer herself, and Amir confirms it arrived"
       },
       "edition": "bet"
+    },
+    {
+      "date": "2026-11-19",
+      "storyId": "resident-checks-appointment-location-before-arriving",
+      "domain": "health_appointments",
+      "scenario": "resident_calls_to_clarify_the_entrance_for_an_appointment",
+      "lexicalThemes": [
+        "appointments",
+        "entrances",
+        "confirmations",
+        "clarifying directions"
+      ],
+      "targetVocabulary": [
+        "תור",
+        "כניסה",
+        "אישור",
+        "באיזו כניסה"
+      ],
+      "brief": "A resident sees two entrances listed on her appointment confirmation, calls the office to ask which one to use, and writes down the receptionist's answer.",
+      "storyPattern": {
+        "goal": "Identify the correct entrance for an appointment",
+        "relationship": "Visitor and office receptionist",
+        "interaction": "Ask which of two listed entrances to use",
+        "outcome": "Write down the clarified entrance"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-19",
+      "storyId": "resident-leaves-an-uncertain-form-field-empty",
+      "domain": "government_documents",
+      "scenario": "resident_marks_an_unclear_phone_number_field_on_a_form_to_verify_before_submitting",
+      "lexicalThemes": [
+        "forms",
+        "phone numbers",
+        "uncertain details",
+        "checking records"
+      ],
+      "targetVocabulary": [
+        "form",
+        "field",
+        "former",
+        "current",
+        "leave blank"
+      ],
+      "brief": "Dana fills out a fictional form, is unsure whether a phone-number field asks for her old or current number, and leaves it blank while marking it to check at home before submitting the form.",
+      "storyPattern": {
+        "goal": "Avoid entering an uncertain personal detail on a form",
+        "relationship": "Resident acting independently",
+        "interaction": "Notice an unclear field and mark it for checking",
+        "outcome": "Leave it blank until verifying the detail"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-19",
+      "storyId": "traveler-asks-which-ticket-option-matches-her-trip",
+      "domain": "travel_documents",
+      "scenario": "traveler_distinguishes_a_single_leg_ticket_from_a_full_route_ticket",
+      "lexicalThemes": [
+        "travel tickets",
+        "journey legs",
+        "destinations",
+        "choices"
+      ],
+      "targetVocabulary": [
+        "ticket",
+        "one leg",
+        "full route",
+        "destination"
+      ],
+      "brief": "A traveler at a ticket counter needs a ticket only to Haifa, not for the whole route. The clerk shows two options on a screen, and she chooses the one for Haifa.",
+      "storyPattern": {
+        "goal": "Choose a ticket for only part of a journey",
+        "relationship": "Traveler and ticket clerk",
+        "interaction": "Explain the intended trip and compare the displayed options",
+        "outcome": "Select the option matching the stated destination"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-19",
+      "storyId": "worker-asks-where-to-submit-a-signed-form",
+      "domain": "employment_jobs",
+      "scenario": "worker_asks_coworker_where_to_submit_signed_form",
+      "lexicalThemes": [
+        "workplace forms",
+        "asking where to submit a form",
+        "labels",
+        "coworkers"
+      ],
+      "targetVocabulary": [
+        "טופס חתום",
+        "מגש",
+        "תיבת דואר",
+        "כתוב עליו"
+      ],
+      "brief": "A worker finishes signing a workplace form, asks a coworker whether it goes in the in-tray or the supervisor’s mailbox, and puts it in the labeled tray.",
+      "storyPattern": {
+        "goal": "Put a completed work form in the right place",
+        "relationship": "Coworkers sharing a workplace",
+        "interaction": "Ask which of two places receives the form; the coworker points out the labeled tray",
+        "outcome": "Place the signed form in the indicated tray"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-19",
+      "storyId": "resident-uses-a-different-municipal-service-counter",
+      "domain": "municipal_services",
+      "scenario": "resident_chooses_an_available_general_information_queue_for_a_simple_address_update",
+      "lexicalThemes": [
+        "service counters",
+        "queues",
+        "address details",
+        "availability"
+      ],
+      "targetVocabulary": [
+        "counter",
+        "queue",
+        "address update",
+        "available"
+      ],
+      "brief": "A resident needs to update her address. When the counter she needs is busy, she asks whether the nearby information desk can handle the request. The worker confirms that it can, and she joins that line.",
+      "storyPattern": {
+        "goal": "Find an available counter for a straightforward service request",
+        "relationship": "Resident and municipal worker",
+        "interaction": "Ask whether a nearby desk can handle the request while another counter is busy",
+        "outcome": "Join the line at the confirmed desk"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-19",
+      "storyId": "passenger-confirms-transfer-stop-with-driver",
+      "domain": "transport_fares_routes",
+      "scenario": "passenger_confirms_a_transfer_stop_with_the_bus_driver",
+      "lexicalThemes": [
+        "public transport",
+        "transfers",
+        "stops",
+        "destination questions"
+      ],
+      "targetVocabulary": [
+        "transfer",
+        "stop",
+        "route",
+        "get off"
+      ],
+      "brief": "A passenger tells the bus driver she needs to change to another route and asks whether the stop by the library is the right one. The driver confirms, and she gets off there with her transfer ticket ready.",
+      "storyPattern": {
+        "goal": "Use the correct stop for a route transfer",
+        "relationship": "Passenger and bus driver",
+        "interaction": "State the intended connection and confirm the relevant stop",
+        "outcome": "Get off at the stop identified for the transfer"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-19",
+      "storyId": "friends-agree-on-a-station-meeting-point",
+      "domain": "transport_fares_routes",
+      "scenario": "friends_choose_a_visible_station_landmark_as_a_meeting_point",
+      "lexicalThemes": [
+        "meeting points",
+        "station signs",
+        "describing what you see",
+        "agreeing"
+      ],
+      "targetVocabulary": [
+        "meet",
+        "information board",
+        "near",
+        "wait"
+      ],
+      "brief": "Yael and Ido arrive on different sides of a station, describe the signs they can see by phone, and agree to meet beside the information board. Ido walks there while Yael waits nearby.",
+      "storyPattern": {
+        "goal": "Find a clear meeting place inside a station",
+        "relationship": "Friends arriving separately",
+        "interaction": "Describe visible signs and propose a shared landmark",
+        "outcome": "Agree on the information board as the meeting point"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-19",
+      "storyId": "taxi-passenger-asks-for-the-quieter-route",
+      "domain": "driving_parking",
+      "scenario": "taxi_passenger_requests_quieter_street",
+      "lexicalThemes": [
+        "taxi journeys",
+        "route preferences",
+        "traffic",
+        "polite requests"
+      ],
+      "targetVocabulary": [
+        "מונית",
+        "רחוב ראשי",
+        "רחוב שקט",
+        "לבקש דרך שקטה"
+      ],
+      "brief": "A passenger riding in a taxi asks the driver to avoid the crowded main street and take a quieter street. The driver agrees and continues along it.",
+      "storyPattern": {
+        "goal": "Choose a less crowded route during a taxi ride",
+        "relationship": "Taxi passenger and driver",
+        "interaction": "The passenger asks for a quieter street and the driver agrees",
+        "outcome": "The driver continues along the quieter street"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-19",
+      "storyId": "traveler-chooses-a-snack-for-the-train",
+      "domain": "food_service_orders",
+      "scenario": "traveler_selects_a_portable_wrapped_snack_before_a_train_ride",
+      "lexicalThemes": [
+        "food during travel",
+        "portable snacks",
+        "preferences",
+        "ordering"
+      ],
+      "targetVocabulary": [
+        "snack",
+        "easy to carry",
+        "wrapped",
+        "paper bag"
+      ],
+      "brief": "A traveler on her way to a train asks for a small snack that is easy to carry. The counter worker shows her a wrapped pastry, puts her choice in a paper bag, and the traveler takes it along.",
+      "storyPattern": {
+        "goal": "Choose a portable snack before a journey",
+        "relationship": "Traveler and counter worker",
+        "interaction": "Describe a practical preference and choose from the options",
+        "outcome": "Take the selected snack in a paper bag"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-19",
+      "storyId": "customer-tests-a-travel-mug-lid-before-buying",
+      "domain": "shopping_returns",
+      "scenario": "customer_tests_a_travel_mug_lid_before_choosing_it",
+      "lexicalThemes": [
+        "shopping",
+        "travel items",
+        "testing an item",
+        "preferences"
+      ],
+      "targetVocabulary": [
+        "travel mug",
+        "lid",
+        "try",
+        "fasten"
+      ],
+      "brief": "A customer asks a shop worker if she can try closing a travel mug lid before buying it. She closes it easily and chooses the mug.",
+      "storyPattern": {
+        "goal": "Choose a travel mug with a lid she can operate comfortably",
+        "relationship": "Customer and shop worker",
+        "interaction": "Ask to test the lid and try it herself",
+        "outcome": "Choose the mug after confirming the lid is easy to fasten"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-19",
+      "storyId": "passenger-lets-an-earlier-number-go-first",
+      "domain": "transport_fares_routes",
+      "scenario": "passenger_yields_at_a_service_counter_to_a_woman_with_an_earlier_queue_number",
+      "lexicalThemes": [
+        "service counters",
+        "queue numbers",
+        "turn-taking",
+        "polite gestures"
+      ],
+      "targetVocabulary": [
+        "number",
+        "go ahead",
+        "before me",
+        "thank you"
+      ],
+      "brief": "At a transport-service counter, a passenger notices a woman has a lower queue number and gestures for her to go ahead. The woman thanks her, and the clerk serves her first.",
+      "storyPattern": {
+        "goal": "Respect the order of service at a counter",
+        "relationship": "Two travelers waiting in line",
+        "interaction": "Notice the earlier number and offer the other person the turn",
+        "outcome": "The earlier-numbered person is served first"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-19",
+      "storyId": "tenant-books-technician-window-for-water-meter-access",
+      "domain": "home_repairs_utilities",
+      "scenario": "tenant_schedules_pipe_inspection_and_prepares_access_to_kitchen_cupboard",
+      "lexicalThemes": [
+        "noisy water pipe",
+        "service availability",
+        "time windows",
+        "home access",
+        "preparing for a technician"
+      ],
+      "targetVocabulary": [
+        "technician",
+        "service desk",
+        "early time",
+        "around midday",
+        "available",
+        "cupboard",
+        "move boxes",
+        "confirm",
+        "prepare"
+      ],
+      "brief": "A tenant reports a noisy water pipe, arranges a technician visit closer to midday after declining an early slot, and asks her neighbor to move boxes so the kitchen cupboard is accessible.",
+      "storyPattern": {
+        "goal": "Arrange a home inspection at a workable time and make the needed area accessible",
+        "relationship": "Tenant and service scheduler",
+        "interaction": "Explain a time constraint, ask about a later opening, and clarify the technician's access to the kitchen cupboard",
+        "outcome": "Book the later visit time and ask a neighbor to move boxes so the cupboard is accessible"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-19",
+      "storyId": "resident-corrects-name-on-city-service-form",
+      "domain": "municipal_services",
+      "scenario": "resident_corrects_name_and_apartment_number_on_sidewalk_report_form",
+      "lexicalThemes": [
+        "service counter",
+        "personal details",
+        "spelling a name",
+        "address fields",
+        "checking a completed form"
+      ],
+      "targetVocabulary": [
+        "counter",
+        "form",
+        "family name",
+        "spell",
+        "address",
+        "apartment number",
+        "wrong",
+        "correct",
+        "review",
+        "copy"
+      ],
+      "brief": "A resident reports a broken sidewalk near her home at a municipal service desk, corrects her family name and apartment number on the form, checks the details, and receives a copy of the report.",
+      "storyPattern": {
+        "goal": "Ensure a public-service request is filed under accurate contact details",
+        "relationship": "Resident and municipal clerk",
+        "interaction": "Notice a misspelling, provide the correct name and apartment number, and review the clerk's repeat-back",
+        "outcome": "Confirm the corrected form and leave with a copy of the report"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-19",
+      "storyId": "commuter-chooses-transfer-route-after-stop-change",
+      "domain": "transport_fares_routes",
+      "scenario": "commuter_uses_temporary_bus_stop_to_make_a_cross_town_transfer",
+      "lexicalThemes": [
+        "bus diversion",
+        "temporary stops",
+        "transfer",
+        "asking for directions",
+        "updating a meeting plan"
+      ],
+      "targetVocabulary": [
+        "תחנה זמנית",
+        "מעבר",
+        "איפה התחנה",
+        "מעבר לכיכר",
+        "אוטובוס הבא",
+        "בדרך",
+        "מקום חדש",
+        "להגיע"
+      ],
+      "brief": "A commuter finds the temporary stop after her usual bus stop changes, transfers toward the central library, and updates her friend about the revised meeting point.",
+      "storyPattern": {
+        "goal": "Reach a destination by making a transfer after a route's usual stop changes",
+        "relationship": "Commuter and transit attendant",
+        "interaction": "Explain the destination and ask which nearby stop makes the transfer practical; check the attendant's directions against the visible sign",
+        "outcome": "Walk to the temporary stop, board the connecting bus, and update the friend about the revised meeting point"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-19",
+      "storyId": "traveler-and-clerk-adjust-train-ticket-connection",
+      "domain": "travel_day_trips",
+      "scenario": "traveler_selects_a_safer_connection_when_changing_train_departure",
+      "lexicalThemes": [
+        "ticket changes",
+        "departure choices",
+        "connections",
+        "platform changes",
+        "checking an itinerary"
+      ],
+      "targetVocabulary": [
+        "booking",
+        "departure",
+        "connection",
+        "same date",
+        "platform",
+        "enough time",
+        "another option",
+        "itinerary",
+        "change",
+        "confirm"
+      ],
+      "brief": "At a staffed travel counter, Maya asks Eitan to change her train departure so she can reach a family gathering earlier. They confirm the destination and date, compare a very early option with too little time to change platforms and a later option with a more manageable connection, then Eitan updates the booking and Maya checks the itinerary.",
+      "storyPattern": {
+        "goal": "Choose a revised train departure that makes a connection manageable",
+        "relationship": "Traveler and staffed travel-counter clerk",
+        "interaction": "Compare departure options, clarify destination and date, and react to the connection time before deciding",
+        "outcome": "Clerk updates the booking to the chosen departure, and traveler checks the itinerary"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-19",
+      "storyId": "passenger-and-driver-clarify-a-building-entrance",
+      "domain": "driving_parking",
+      "scenario": "taxi_passenger_clarifies_side_street_entrance_using_bakery_and_blue_gate",
+      "lexicalThemes": [
+        "taxi directions",
+        "street address",
+        "side-street entrance",
+        "bakery and gate landmarks",
+        "safe drop-off"
+      ],
+      "targetVocabulary": [
+        "street address",
+        "side street",
+        "entrance",
+        "corner",
+        "blue gate",
+        "bakery",
+        "landmark",
+        "correcting a wrong corner",
+        "stop here",
+        "arrive"
+      ],
+      "brief": "Taxi passenger Lior gives driver Rami a street address, then clarifies that the medical-clinic entrance is on a side street. Lior uses a bakery and blue gate as landmarks, corrects Rami's mistaken corner, and confirms the safe stop at the intended entrance.",
+      "storyPattern": {
+        "goal": "Reach the correct entrance when the street address points to the building's main road",
+        "relationship": "Taxi passenger and driver",
+        "interaction": "Passenger describes the side-street entrance using a bakery and blue gate, answers the driver's questions, and corrects a mistaken corner",
+        "outcome": "Driver stops safely beside the intended gate, and passenger confirms arrival"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-19",
+      "storyId": "resident-checks-appointment-location-before-arriving",
+      "domain": "health_appointments",
+      "scenario": "resident_clarifies_which_entrance_to_use_for_a_routine_appointment",
+      "lexicalThemes": [
+        "appointments",
+        "entrances",
+        "confirmations",
+        "clarifying directions"
+      ],
+      "targetVocabulary": [
+        "appointment",
+        "entrance",
+        "confirmation",
+        "which one"
+      ],
+      "brief": "Before leaving for her appointment, Michal sees that the confirmation lists two entrances. She calls the office, asks which entrance to use, gets a clear answer, and writes it on the confirmation.",
+      "storyPattern": {
+        "goal": "Identify the correct entrance for an appointment",
+        "relationship": "Visitor and office receptionist",
+        "interaction": "Ask which of two listed entrances to use",
+        "outcome": "Write down the clarified entrance"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-19",
+      "storyId": "resident-leaves-an-uncertain-form-field-empty",
+      "domain": "government_documents",
+      "scenario": "resident_marks_an_unclear_phone_number_field_on_a_form_to_verify_before_submitting",
+      "lexicalThemes": [
+        "forms",
+        "phone numbers",
+        "uncertain details",
+        "checking records"
+      ],
+      "targetVocabulary": [
+        "form",
+        "field",
+        "former",
+        "current",
+        "leave blank"
+      ],
+      "brief": "Michal fills out a fictional form, finds a field asking about a phone number but cannot tell whether it means her former or current number, and leaves it empty while circling it so she can check her records before submitting the form.",
+      "storyPattern": {
+        "goal": "Avoid entering an uncertain personal detail on a form",
+        "relationship": "Resident acting independently",
+        "interaction": "Notice an unclear field and mark it for checking",
+        "outcome": "Leave it blank until verifying the detail"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-19",
+      "storyId": "traveler-asks-which-ticket-option-matches-her-trip",
+      "domain": "travel_documents",
+      "scenario": "traveler_selects_a_ticket_for_one_leg_to_haifa",
+      "lexicalThemes": [
+        "travel tickets",
+        "journey legs",
+        "destinations",
+        "choices"
+      ],
+      "targetVocabulary": [
+        "כרטיס",
+        "חלק מהדרך",
+        "הדרך כולה",
+        "יעד",
+        "מסך"
+      ],
+      "brief": "At a travel counter, a traveler says she needs a ticket only as far as Haifa, not for the full journey. The clerk points out the matching option, and she checks the destination on the screen before choosing it.",
+      "storyPattern": {
+        "goal": "Choose a ticket for only part of a journey",
+        "relationship": "Traveler and ticket clerk",
+        "interaction": "Explain the intended trip and compare the displayed options",
+        "outcome": "Select the option matching the stated destination"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-19",
+      "storyId": "worker-asks-where-to-submit-a-signed-form",
+      "domain": "employment_jobs",
+      "scenario": "worker_finds_the_correct_inbox_for_a_signed_work_form",
+      "lexicalThemes": [
+        "workplace forms",
+        "where to submit",
+        "labels",
+        "asking a colleague"
+      ],
+      "targetVocabulary": [
+        "signed form",
+        "in-tray",
+        "mailbox",
+        "label"
+      ],
+      "brief": "A worker signs a workplace form, asks a coworker whether it goes in the tray or the supervisor’s mailbox, and puts it in the labeled tray.",
+      "storyPattern": {
+        "goal": "Put a completed work form in the right place",
+        "relationship": "Coworkers sharing a workplace",
+        "interaction": "Ask which of two labeled places receives the form",
+        "outcome": "Place it in the indicated tray"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-19",
+      "storyId": "resident-uses-a-different-municipal-service-counter",
+      "domain": "municipal_services",
+      "scenario": "resident_uses_information_desk_for_address_update",
+      "lexicalThemes": [
+        "service counters",
+        "queues",
+        "address details",
+        "availability"
+      ],
+      "targetVocabulary": [
+        "דלפק",
+        "תור",
+        "עדכון כתובת",
+        "עמוס"
+      ],
+      "brief": "Yesterday, a resident arrived at the municipal building to update her address. The address counter was busy, so she asked the worker at the information desk whether she could update it there. The worker confirmed that she could, and the resident joined that desk's queue.",
+      "storyPattern": {
+        "goal": "Find an available counter for a straightforward address update",
+        "relationship": "Resident and municipal worker",
+        "interaction": "Ask whether the nearby information desk can handle the address update while the usual counter is busy",
+        "outcome": "After the worker confirms it can, join the information desk queue"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-19",
+      "storyId": "passenger-confirms-transfer-stop-with-driver",
+      "domain": "transport_fares_routes",
+      "scenario": "passenger_confirms_a_transfer_stop_with_the_bus_driver",
+      "lexicalThemes": [
+        "public transport",
+        "transfers",
+        "stops",
+        "destination questions"
+      ],
+      "targetVocabulary": [
+        "transfer",
+        "stop",
+        "route",
+        "get off"
+      ],
+      "brief": "A passenger riding a bus wants to transfer to another route. She asks the driver whether the stop by the library is the correct stop, gets confirmation, and gets off there with her transfer ticket ready.",
+      "storyPattern": {
+        "goal": "Use the correct stop for a route transfer",
+        "relationship": "Passenger and bus driver",
+        "interaction": "State the intended connection and confirm the relevant stop",
+        "outcome": "Get off at the stop identified for the transfer"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-19",
+      "storyId": "friends-agree-on-a-station-meeting-point",
+      "domain": "transport_fares_routes",
+      "scenario": "friends_choose_a_visible_station_landmark_as_a_meeting_point",
+      "lexicalThemes": [
+        "meeting points",
+        "station signs",
+        "describing what you see",
+        "agreeing"
+      ],
+      "targetVocabulary": [
+        "meet",
+        "information board",
+        "near",
+        "wait"
+      ],
+      "brief": "Two friends arrived on different sides of a large station, described the signs they could see, and agreed to meet by the information board. One walked there while the other waited nearby.",
+      "storyPattern": {
+        "goal": "Find a clear meeting place inside a station",
+        "relationship": "Friends arriving separately",
+        "interaction": "Describe visible signs and propose a shared landmark",
+        "outcome": "Agree on the information board as the meeting point"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-19",
+      "storyId": "taxi-passenger-asks-for-the-quieter-route",
+      "domain": "driving_parking",
+      "scenario": "taxi_passenger_requests_quieter_route_from_busy_main_street",
+      "lexicalThemes": [
+        "taxi journeys",
+        "route preferences",
+        "traffic",
+        "polite requests"
+      ],
+      "targetVocabulary": [
+        "quieter road",
+        "main street",
+        "route",
+        "ask the driver"
+      ],
+      "brief": "Yesterday, a passenger rode in a taxi on a busy main street. She asked the driver to use a quieter road, and he turned onto a side street.",
+      "storyPattern": {
+        "goal": "Choose a less crowded route during a taxi ride",
+        "relationship": "Taxi passenger and driver",
+        "interaction": "State a route preference and receive acknowledgment",
+        "outcome": "Continue along the quieter road"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-19",
+      "storyId": "traveler-chooses-a-snack-for-the-train",
+      "domain": "food_service_orders",
+      "scenario": "traveler_selects_a_portable_wrapped_snack_before_a_train_ride",
+      "lexicalThemes": [
+        "food during travel",
+        "portable snacks",
+        "preferences",
+        "ordering"
+      ],
+      "targetVocabulary": [
+        "snack",
+        "easy to carry",
+        "wrapped",
+        "paper bag"
+      ],
+      "brief": "Before boarding a train, a traveler asks for a small snack that is easy to carry and chooses a wrapped pastry from the counter display. The worker puts it in a paper bag, and the traveler takes it along.",
+      "storyPattern": {
+        "goal": "Choose a portable snack before a journey",
+        "relationship": "Traveler and counter worker",
+        "interaction": "Describe a practical preference and choose from the options",
+        "outcome": "Take the selected snack in a paper bag"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-19",
+      "storyId": "customer-tests-a-travel-mug-lid-before-buying",
+      "domain": "shopping_returns",
+      "scenario": "customer_tests_a_travel_mug_lid_before_choosing_it",
+      "lexicalThemes": [
+        "shopping",
+        "travel items",
+        "testing an item",
+        "preferences"
+      ],
+      "targetVocabulary": [
+        "travel mug",
+        "lid",
+        "try",
+        "fasten"
+      ],
+      "brief": "A customer asks a shop worker to try closing a travel mug lid before buying it. She finds it easy to close and chooses the mug.",
+      "storyPattern": {
+        "goal": "Choose a travel mug with a lid she can operate comfortably",
+        "relationship": "Customer and shop worker",
+        "interaction": "Ask to test the lid and try it herself",
+        "outcome": "Choose the mug after confirming the lid is easy to fasten"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-19",
+      "storyId": "passenger-lets-an-earlier-number-go-first",
+      "domain": "transport_fares_routes",
+      "scenario": "passenger_yields_at_a_service_counter_to_someone_with_an_earlier_queue_number",
+      "lexicalThemes": [
+        "service counters",
+        "queue numbers",
+        "turn-taking",
+        "polite gestures"
+      ],
+      "targetVocabulary": [
+        "number",
+        "go ahead",
+        "before me",
+        "thank you"
+      ],
+      "brief": "A passenger waiting at a transport-service counter sees that another traveler has an earlier queue number, lets her go ahead, and the clerk serves her first.",
+      "storyPattern": {
+        "goal": "Respect the order of service at a counter",
+        "relationship": "Two travelers waiting in line",
+        "interaction": "Notice the earlier number and offer the other person the turn",
+        "outcome": "The earlier-numbered person is served first"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-19",
+      "storyId": "tenant-books-technician-window-for-water-meter-access",
+      "domain": "home_repairs_utilities",
+      "scenario": "tenant_schedules_noisy_kitchen_pipe_inspection_and_clears_cupboard",
+      "lexicalThemes": [
+        "noisy water pipe",
+        "service availability",
+        "work schedule",
+        "technician visit",
+        "access to kitchen cupboard"
+      ],
+      "targetVocabulary": [
+        "pipe",
+        "service desk",
+        "technician",
+        "around midday",
+        "later time",
+        "visit",
+        "cupboard",
+        "sink",
+        "move boxes",
+        "confirm"
+      ],
+      "brief": "A tenant's kitchen pipe makes noise, so she contacts the service desk and arranges a technician visit around midday, when she can let someone in. After clarifying that the technician needs access to the cupboard under the sink, she asks a neighbor in the building to move a few boxes and clears the cupboard before confirming the visit time.",
+      "storyPattern": {
+        "goal": "Arrange a home inspection at a workable time and make the needed area accessible",
+        "relationship": "Tenant and service scheduler",
+        "interaction": "Explain a time constraint, compare an offered slot with a later opening, and clarify what area the technician needs to reach",
+        "outcome": "Confirm the later visit time and clear access to the cupboard"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-19",
+      "storyId": "resident-corrects-name-on-city-service-form",
+      "domain": "municipal_services",
+      "scenario": "Resident corrects her name and apartment number on a sidewalk report form",
+      "lexicalThemes": [
+        "municipal service counter",
+        "personal details",
+        "spelling a name",
+        "address fields",
+        "checking a completed form"
+      ],
+      "targetVocabulary": [
+        "request",
+        "damaged sidewalk",
+        "family name",
+        "identification",
+        "address",
+        "apartment number",
+        "wrong",
+        "correct",
+        "review",
+        "copy"
+      ],
+      "brief": "A resident submits a municipal request about a damaged sidewalk and corrects her family name and apartment number on the form before confirming it and taking a copy.",
+      "storyPattern": {
+        "goal": "Ensure a public-service request is filed under accurate contact details",
+        "relationship": "Resident and municipal clerk",
+        "interaction": "Notice a misspelling, provide the correct name and apartment number, and review the clerk's repeat-back",
+        "outcome": "Confirm the corrected form and leave with a copy of the report"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-19",
+      "storyId": "commuter-chooses-transfer-route-after-stop-change",
+      "domain": "transport_fares_routes",
+      "scenario": "commuter_checks_sign_and_uses_temporary_stop_for_library_transfer",
+      "lexicalThemes": [
+        "bus route changes",
+        "temporary stops",
+        "transfers",
+        "asking for directions",
+        "updating a friend"
+      ],
+      "targetVocabulary": [
+        "תחנה זמנית",
+        "החלפה",
+        "מעבר לכיכר",
+        "שלט",
+        "אוטובוס הבא",
+        "בדרך",
+        "מקום הפגישה"
+      ],
+      "brief": "A commuter travelling to meet a friend finds her usual bus stop closed after a route change. She asks a transit attendant where to board and how to transfer toward the central library, checks the sign, walks to the temporary stop, boards the connecting bus, and updates her friend.",
+      "storyPattern": {
+        "goal": "Reach a destination by making a transfer after a route's usual stop changes",
+        "relationship": "Commuter and transit attendant",
+        "interaction": "Explain the destination and ask which nearby stop makes the transfer practical; clarify the attendant's directions against visible signs",
+        "outcome": "Walk to the temporary stop, board the connecting bus, and update the friend about the revised arrival"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-19",
+      "storyId": "traveler-and-clerk-adjust-train-ticket-connection",
+      "domain": "travel_day_trips",
+      "scenario": "traveler_selects_a_safer_connection_when_changing_train_departure",
+      "lexicalThemes": [
+        "ticket changes",
+        "departure choices",
+        "connections",
+        "platform changes",
+        "checking an itinerary"
+      ],
+      "targetVocabulary": [
+        "booking",
+        "departure",
+        "connection",
+        "same date",
+        "platform",
+        "enough time",
+        "another option",
+        "itinerary",
+        "change",
+        "confirm"
+      ],
+      "brief": "Maya asks travel-counter clerk Eitan to move her train trip to an earlier departure for a family gathering. They confirm the same destination and travel date, compare two departure options, and find that the earliest train leaves too little time to change platforms comfortably. Maya chooses another departure that still gets her there earlier than planned. Eitan updates the booking, and Maya checks the new itinerary.",
+      "storyPattern": {
+        "goal": "Choose a revised train departure that makes a connection manageable",
+        "relationship": "Traveler and staffed travel-counter clerk",
+        "interaction": "Compare departure options, clarify destination and date, and react to the connection time before deciding",
+        "outcome": "Clerk updates the booking to the chosen departure, and traveler checks the itinerary"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-19",
+      "storyId": "passenger-and-driver-clarify-a-building-entrance",
+      "domain": "driving_parking",
+      "scenario": "taxi_passenger_clarifies_side_street_entrance_using_two_landmarks",
+      "lexicalThemes": [
+        "taxi directions",
+        "entrance location",
+        "landmarks",
+        "clarifying a destination",
+        "safe drop-off"
+      ],
+      "targetVocabulary": [
+        "street address",
+        "side street",
+        "entrance",
+        "corner",
+        "gate",
+        "bakery",
+        "landmark",
+        "not that corner",
+        "stop here",
+        "arrive"
+      ],
+      "brief": "Taxi passenger Lior gives driver Rami a street address, then clarifies that the medical-office building entrance is on a side street. Lior uses a bakery and blue gate as landmarks, corrects Rami's mistaken corner, and confirms the safe stop by the intended entrance.",
+      "storyPattern": {
+        "goal": "Reach the correct entrance when the address alone points to the wrong side of a building",
+        "relationship": "Taxi passenger and driver",
+        "interaction": "Describe the side-street entrance, answer the driver's location questions, and correct a mistaken landmark",
+        "outcome": "Driver stops by the intended gate, and passenger confirms the destination"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-19",
+      "storyId": "resident-checks-appointment-location-before-arriving",
+      "domain": "health_appointments",
+      "scenario": "resident_clarifies_which_entrance_to_use_for_a_routine_appointment",
+      "lexicalThemes": [
+        "appointments",
+        "entrances",
+        "confirmations",
+        "clarifying directions"
+      ],
+      "targetVocabulary": [
+        "appointment",
+        "entrance",
+        "confirmation",
+        "which one"
+      ],
+      "brief": "Before leaving for an appointment, the resident notices that the confirmation lists two entrances, calls the office to ask which one to use, and writes down the receptionist's answer.",
+      "storyPattern": {
+        "goal": "Identify the correct entrance for an appointment",
+        "relationship": "Visitor and office receptionist",
+        "interaction": "Ask which of two listed entrances to use",
+        "outcome": "Write down the clarified entrance"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-19",
+      "storyId": "resident-leaves-an-uncertain-form-field-empty",
+      "domain": "government_documents",
+      "scenario": "resident_marks_unclear_phone_number_field_and_checks_records_before_submission",
+      "lexicalThemes": [
+        "forms",
+        "phone numbers",
+        "uncertain details",
+        "checking records"
+      ],
+      "targetVocabulary": [
+        "form",
+        "field",
+        "former",
+        "current",
+        "leave blank"
+      ],
+      "brief": "A resident filling out a fictional government form is unsure whether a field asks for her former or current phone number. She leaves it blank, circles it, and plans to check her records before submitting the form.",
+      "storyPattern": {
+        "goal": "Avoid entering an uncertain personal detail on a form",
+        "relationship": "Resident acting independently",
+        "interaction": "Notice an unclear field and mark it for checking",
+        "outcome": "Leave it blank until verifying the detail"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-19",
+      "storyId": "worker-asks-where-to-submit-a-signed-form",
+      "domain": "employment_jobs",
+      "scenario": "worker_finds_the_correct_inbox_for_a_signed_work_form",
+      "lexicalThemes": [
+        "workplace forms",
+        "where to submit",
+        "labels",
+        "asking a colleague"
+      ],
+      "targetVocabulary": [
+        "signed form",
+        "in-tray",
+        "mailbox",
+        "label"
+      ],
+      "brief": "A worker finishes and signs a workplace form, asks a coworker whether it belongs in the in-tray or the supervisor’s mailbox, then puts it in the labeled tray the coworker indicates.",
+      "storyPattern": {
+        "goal": "Put a completed work form in the right place",
+        "relationship": "Coworkers sharing a workplace",
+        "interaction": "Ask which of two labeled places receives the form",
+        "outcome": "Place it in the indicated tray"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-19",
+      "storyId": "resident-uses-a-different-municipal-service-counter",
+      "domain": "municipal_services",
+      "scenario": "resident_chooses_an_available_general_information_queue_for_a_simple_address_update",
+      "lexicalThemes": [
+        "service counters",
+        "queues",
+        "address details",
+        "availability"
+      ],
+      "targetVocabulary": [
+        "counter",
+        "queue",
+        "address update",
+        "available"
+      ],
+      "brief": "A resident finds the address-update counter busy, checks with a municipal worker that the nearby information desk can handle the simple request, and joins its queue.",
+      "storyPattern": {
+        "goal": "Find an available counter for a straightforward service request",
+        "relationship": "Resident and municipal worker",
+        "interaction": "Ask whether a nearby desk can handle the request while another counter is busy",
+        "outcome": "Join the line at the confirmed desk"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-19",
+      "storyId": "passenger-confirms-transfer-stop-with-driver",
+      "domain": "transport_fares_routes",
+      "scenario": "passenger_confirms_a_transfer_stop_with_the_bus_driver",
+      "lexicalThemes": [
+        "public transport",
+        "transfers",
+        "stops",
+        "destination questions"
+      ],
+      "targetVocabulary": [
+        "transfer",
+        "stop",
+        "route",
+        "get off"
+      ],
+      "brief": "A passenger asks the bus driver whether the stop by the library is the right stop for changing to another route. The driver confirms, and she gets off there with her transfer ticket ready.",
+      "storyPattern": {
+        "goal": "Use the correct stop for a route transfer",
+        "relationship": "Passenger and bus driver",
+        "interaction": "State the intended connection and confirm the relevant stop",
+        "outcome": "Get off at the stop identified for the transfer"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-19",
+      "storyId": "friends-agree-on-a-station-meeting-point",
+      "domain": "transport_fares_routes",
+      "scenario": "friends_choose_a_visible_station_landmark_as_a_meeting_point",
+      "lexicalThemes": [
+        "meeting points",
+        "station signs",
+        "describing what you see",
+        "agreeing"
+      ],
+      "targetVocabulary": [
+        "meet",
+        "information board",
+        "near",
+        "wait"
+      ],
+      "brief": "Two friends arrive at different sides of a large station, describe the signs they can see, and agree to meet beside the information board. Roni walks there while Tamar waits nearby.",
+      "storyPattern": {
+        "goal": "Find a clear meeting place inside a station",
+        "relationship": "Friends arriving separately",
+        "interaction": "Describe visible signs and propose a shared landmark",
+        "outcome": "Agree on the information board as the meeting point"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-19",
+      "storyId": "taxi-passenger-asks-for-the-quieter-route",
+      "domain": "driving_parking",
+      "scenario": "taxi_passenger_requests_a_quieter_road",
+      "lexicalThemes": [
+        "taxi journeys",
+        "route preferences",
+        "traffic",
+        "polite requests"
+      ],
+      "targetVocabulary": [
+        "דרך שקטה יותר",
+        "הרחוב הראשי",
+        "רחוב צדדי",
+        "לבקש מהנהג"
+      ],
+      "brief": "A woman riding in a taxi asks the driver to take a quieter road because the main street is crowded. The driver agrees and turns onto a side street, and they continue along it.",
+      "storyPattern": {
+        "goal": "Choose a less crowded route during a taxi ride",
+        "relationship": "A female taxi passenger and the driver",
+        "interaction": "The passenger states a preference for a quieter road, and the driver acknowledges it",
+        "outcome": "The driver turns onto a quieter side street, and they continue along it"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-19",
+      "storyId": "traveler-chooses-a-snack-for-the-train",
+      "domain": "food_service_orders",
+      "scenario": "traveler_selects_a_portable_wrapped_snack_before_a_train_ride",
+      "lexicalThemes": [
+        "food during travel",
+        "portable snacks",
+        "preferences",
+        "ordering"
+      ],
+      "targetVocabulary": [
+        "snack",
+        "easy to carry",
+        "wrapped pastry",
+        "paper bag"
+      ],
+      "brief": "Before boarding a train, a traveler asks a counter worker for a small snack that is easy to carry. The worker points out wrapped pastries on the counter, the traveler chooses one, and the worker puts it in a paper bag for the journey.",
+      "storyPattern": {
+        "goal": "Choose a portable snack before a journey",
+        "relationship": "Traveler and counter worker",
+        "interaction": "Describe a practical preference and choose from the options",
+        "outcome": "Take the selected snack in a paper bag"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-19",
+      "storyId": "customer-tests-a-travel-mug-lid-before-buying",
+      "domain": "shopping_returns",
+      "scenario": "customer_tests_a_travel_mug_lid_before_choosing_it",
+      "lexicalThemes": [
+        "shopping",
+        "travel items",
+        "testing an item",
+        "preferences"
+      ],
+      "targetVocabulary": [
+        "travel mug",
+        "lid",
+        "try",
+        "fasten"
+      ],
+      "brief": "A customer asks a shop worker if she can try closing the lid of a travel mug. She tests it, finds it easy to fasten, and chooses the mug.",
+      "storyPattern": {
+        "goal": "Choose a travel mug with a lid she can operate comfortably",
+        "relationship": "Customer and shop worker",
+        "interaction": "Ask to test the lid and try it herself",
+        "outcome": "Choose the mug after confirming the lid is easy to fasten"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-19",
+      "storyId": "passenger-lets-an-earlier-number-go-first",
+      "domain": "transport_fares_routes",
+      "scenario": "passenger_yields_at_a_service_counter_to_someone_with_an_earlier_queue_number",
+      "lexicalThemes": [
+        "service counters",
+        "queue numbers",
+        "turn-taking",
+        "polite gestures"
+      ],
+      "targetVocabulary": [
+        "number",
+        "go ahead",
+        "before me",
+        "thank you"
+      ],
+      "brief": "At a transport-service counter, a passenger notices that another person has a lower queue number and gestures for her to go ahead. The other passenger thanks her, and the clerk serves her first.",
+      "storyPattern": {
+        "goal": "Respect the order of service at a counter",
+        "relationship": "Two travelers waiting in line",
+        "interaction": "Notice the earlier number and offer the other person the turn",
+        "outcome": "The earlier-numbered person is served first"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-19",
+      "storyId": "cyclist-checks-if-a-bike-shop-can-look-at-a-loose-handlebar",
+      "domain": "driving_parking",
+      "scenario": "cyclist_gets_a_loose_bike_handlebar_checked_during_a_quick_shop_visit",
+      "lexicalThemes": [
+        "bicycle repair",
+        "availability",
+        "describing a problem",
+        "testing a result"
+      ],
+      "targetVocabulary": [
+        "handlebar",
+        "loose",
+        "check",
+        "tighten",
+        "steady"
+      ],
+      "brief": "A cyclist visits a bike shop before riding home and asks a mechanic to check a loose handlebar. She holds the bicycle while he tightens it, then tests it and finds it steady.",
+      "storyPattern": {
+        "goal": "Get a loose bicycle handlebar checked before riding home",
+        "relationship": "Cyclist and bike mechanic",
+        "interaction": "Ask whether the mechanic can look at it now, then help hold the bicycle during the adjustment",
+        "outcome": "Test the handlebar and confirm that it feels steady"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-19",
+      "storyId": "tenant-books-technician-window-for-water-meter-access",
+      "domain": "home_repairs_utilities",
+      "scenario": "tenant_schedules_pipe_inspection_and_prepares_access_to_kitchen_cupboard",
+      "lexicalThemes": [
+        "service availability",
+        "time windows",
+        "home access",
+        "explaining work schedule",
+        "preparing for a technician"
+      ],
+      "targetVocabulary": [
+        "technician",
+        "service visit",
+        "appointment window",
+        "around midday",
+        "available",
+        "access",
+        "cupboard",
+        "move boxes",
+        "confirm",
+        "prepare"
+      ],
+      "brief": "A tenant who works from home arranges a later technician visit to inspect a noisy water pipe, then asks her housemate to clear boxes from the kitchen cupboard so the technician can reach the pipe.",
+      "storyPattern": {
+        "goal": "Arrange a home inspection at a workable time and make the needed area accessible",
+        "relationship": "Tenant and service scheduler, with the tenant asking her housemate for help",
+        "interaction": "Explain a time constraint, compare an offered early slot with a later opening, and clarify what area the technician needs to reach",
+        "outcome": "Confirm the later visit time and clear access to the cupboard"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-19",
+      "storyId": "resident-corrects-name-on-city-service-form",
+      "domain": "municipal_services",
+      "scenario": "resident_corrects_name_and_apartment_number_on_sidewalk_report_form",
+      "lexicalThemes": [
+        "municipal service counter",
+        "personal details",
+        "spelling a family name",
+        "apartment address",
+        "reviewing a completed form and copy"
+      ],
+      "targetVocabulary": [
+        "service center",
+        "request",
+        "damaged sidewalk",
+        "family name",
+        "identity card",
+        "spell",
+        "address",
+        "apartment number",
+        "wrong",
+        "correct",
+        "review",
+        "confirm",
+        "copy"
+      ],
+      "brief": "A resident submits a municipal request about a damaged sidewalk, corrects her misspelled family name and apartment number, checks the completed details, and receives a copy of the filed report.",
+      "storyPattern": {
+        "goal": "Ensure a public-service request is filed under accurate contact details",
+        "relationship": "Resident and municipal clerk",
+        "interaction": "The resident notices a misspelling, gives the correct family name and apartment number, and reviews the clerk's repeat-back",
+        "outcome": "The resident confirms the corrected form and leaves with a copy of the report"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-19",
+      "storyId": "commuter-chooses-transfer-route-after-stop-change",
+      "domain": "transport_fares_routes",
+      "scenario": "commuter_uses_temporary_bus_stop_to_make_a_cross_town_transfer",
+      "lexicalThemes": [
+        "bus diversion",
+        "transfer options",
+        "asking for directions",
+        "temporary stops",
+        "updating a meeting plan"
+      ],
+      "targetVocabulary": [
+        "diversion",
+        "temporary stop",
+        "transfer",
+        "which stop",
+        "across the square",
+        "connecting bus",
+        "route",
+        "on the way",
+        "meeting point",
+        "arrive"
+      ],
+      "brief": "Mia is travelling across town to meet a friend near the central library when her planned bus no longer serves its usual stop. She asks a transit attendant where to board and explains that she needs to transfer toward the library. The attendant directs her to a temporary stop across the square and says the transfer is easier there than at the next stop. Mia checks the sign, boards the connecting bus, texts her friend that she is on her way, and arrives at the revised meeting point without waiting at the closed stop.",
+      "storyPattern": {
+        "goal": "Reach a destination by making a transfer after a route's usual stop changes",
+        "relationship": "Commuter and transit attendant",
+        "interaction": "Explain the destination and ask which nearby stop makes the transfer practical; clarify the attendant's directions against visible signs",
+        "outcome": "Walk to the temporary stop, board the connecting bus, and update the friend about the revised arrival"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-19",
+      "storyId": "traveler-and-clerk-adjust-train-ticket-connection",
+      "domain": "travel_day_trips",
+      "scenario": "traveler_selects_a_safer_connection_when_changing_train_departure",
+      "lexicalThemes": [
+        "ticket changes",
+        "departure choices",
+        "connections",
+        "platform changes",
+        "checking an itinerary"
+      ],
+      "targetVocabulary": [
+        "booking",
+        "departure",
+        "connection",
+        "same date",
+        "platform",
+        "enough time",
+        "another option",
+        "itinerary",
+        "change",
+        "confirm"
+      ],
+      "brief": "Maya visits the staffed travel counter to move her train departure earlier for a family gathering. She confirms the same destination and date, learns that the earliest option leaves too little time to change platforms comfortably, and chooses a later departure that still gets her there earlier than planned. Eitan updates the booking, and Maya checks the itinerary.",
+      "storyPattern": {
+        "goal": "Choose a revised train departure that makes a connection manageable",
+        "relationship": "Traveler and staffed travel-counter clerk",
+        "interaction": "Compare departure options, clarify destination and date, and react to the connection time before deciding",
+        "outcome": "Clerk updates the booking to the chosen departure, and traveler checks the itinerary"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-19",
+      "storyId": "passenger-and-driver-clarify-a-building-entrance",
+      "domain": "driving_parking",
+      "scenario": "taxi_passenger_clarifies_side_street_entrance_using_two_landmarks",
+      "lexicalThemes": [
+        "taxi directions",
+        "entrance location",
+        "street address",
+        "side street",
+        "corner and bakery landmarks",
+        "blue gate",
+        "safe drop-off"
+      ],
+      "targetVocabulary": [
+        "street address",
+        "side street",
+        "entrance",
+        "corner",
+        "gate",
+        "bakery",
+        "landmark",
+        "not that corner",
+        "stop here",
+        "arrive"
+      ],
+      "brief": "Lior gives taxi driver Rami the building's street address, then explains that the medical-office entrance is on a side street. Rami asks where to stop; Lior clarifies the bakery landmark, corrects him about the corner, and identifies the blue gate. Rami turns onto the side street and stops safely beside it, and Lior confirms this is the right entrance.",
+      "storyPattern": {
+        "goal": "Reach the correct entrance when the address alone points to the wrong side of a building",
+        "relationship": "Taxi passenger and driver",
+        "interaction": "Describe the side-street entrance, answer the driver's location questions, and correct a mistaken landmark",
+        "outcome": "Driver stops safely beside the intended gate, and passenger confirms the destination"
+      },
+      "edition": "bet"
     }
   ]
 }
