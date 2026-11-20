@@ -28259,6 +28259,1305 @@
         "outcome": "Driver stops safely beside the intended gate, and passenger confirms the destination"
       },
       "edition": "bet"
+    },
+    {
+      "date": "2026-11-20",
+      "storyId": "shopper-plans-a-grocery-basket-with-a-fixed-budget",
+      "domain": "banking_credit",
+      "scenario": "shopper_adjusts_grocery_choices_to_stay_within_a_personal_spending_limit",
+      "lexicalThemes": [
+        "grocery budget",
+        "basket",
+        "cost",
+        "put back",
+        "meal ingredients"
+      ],
+      "targetVocabulary": [
+        "budget",
+        "basket",
+        "cost",
+        "put back",
+        "ingredients"
+      ],
+      "brief": "At the supermarket, Lina checks how much money she has for groceries. Her basket costs more than she planned, so she puts a snack back and keeps the ingredients for tonight’s meal.",
+      "storyPattern": {
+        "goal": "Keep a grocery purchase within a personal spending limit",
+        "relationship": "Shopper managing her own household spending",
+        "interaction": "Compare the basket with the available budget and choose what to remove",
+        "outcome": "Put back an extra snack and keep the planned meal ingredients"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-20",
+      "storyId": "roommates-mark-a-grocery-purchase-for-their-shared-expenses",
+      "domain": "bills_taxes",
+      "scenario": "roommates_distinguish_shared_dinner_items_from_personal_grocery_purchases",
+      "lexicalThemes": [
+        "grocery receipt",
+        "shared dinner",
+        "personal purchases",
+        "mark items"
+      ],
+      "targetVocabulary": [
+        "receipt",
+        "shared",
+        "personal",
+        "mark",
+        "items"
+      ],
+      "brief": "Two roommates review a grocery receipt, mark only the items for their shared dinner, and leave personal purchases unmarked.",
+      "storyPattern": {
+        "goal": "Separate shared meal costs from personal grocery purchases",
+        "relationship": "Roommates sharing food and household expenses",
+        "interaction": "Review a grocery receipt together and mark only the items for the shared dinner",
+        "outcome": "The shared items are clearly marked while personal purchases remain separate"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-20",
+      "storyId": "coworkers-clarify-which-lunch-order-is-for-the-team",
+      "domain": "employment_jobs",
+      "scenario": "coworker_identifies_and_places_labeled_team_lunch_bag",
+      "lexicalThemes": [
+        "work lunch",
+        "food bags",
+        "note",
+        "team meeting",
+        "meeting room"
+      ],
+      "targetVocabulary": [
+        "lunch",
+        "bag",
+        "note",
+        "team",
+        "meeting room"
+      ],
+      "brief": "At lunchtime, a coworker asks which of two food bags is for the team meeting. Her coworker points out the note marked for the team, and she puts that bag by the meeting room.",
+      "storyPattern": {
+        "goal": "Get the correct food order to a team meeting",
+        "relationship": "Coworkers coordinating a shared work task",
+        "interaction": "Ask which lunch bag is for the meeting and use its note to identify it",
+        "outcome": "Set the labeled order by the meeting room"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-20",
+      "storyId": "housemates-agree-on-a-shelf-for-shared-pantry-food",
+      "domain": "housing_landlord",
+      "scenario": "housemates_make_space_for_shared_pantry_staples",
+      "lexicalThemes": [
+        "shared pantry",
+        "groceries",
+        "shelf",
+        "staples",
+        "making space"
+      ],
+      "targetVocabulary": [
+        "pantry",
+        "shared",
+        "shelf",
+        "staples",
+        "move"
+      ],
+      "brief": "Two housemates find their shared pantry shelf crowded. One suggests keeping the shared rice and oil together on the lower shelf; the other agrees, and they move them there.",
+      "storyPattern": {
+        "goal": "Make shared groceries easy to find in a crowded pantry",
+        "relationship": "Housemates sharing kitchen storage",
+        "interaction": "Suggest a shelf for shared staples and agree on where they belong",
+        "outcome": "Move the shared rice and oil onto the agreed lower shelf"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-20",
+      "storyId": "worker-asks-manager-to-set-aside-a-lunch-break",
+      "domain": "work_pay",
+      "scenario": "worker_coordinates_short_meal_break_after_work_handoff",
+      "lexicalThemes": [
+        "lunch break",
+        "manager",
+        "work handoff",
+        "packed lunch",
+        "staff fridge"
+      ],
+      "targetVocabulary": [
+        "break",
+        "eat",
+        "after",
+        "packed lunch",
+        "fridge"
+      ],
+      "brief": "A worker asks her manager when she can take a short meal break because she has not eaten. The manager says she can go after handing work off to the next worker, so she puts her packed lunch in the staff fridge until then.",
+      "storyPattern": {
+        "goal": "Find a practical time to eat during a busy shift",
+        "relationship": "Worker and manager coordinating a shift",
+        "interaction": "The worker explains she needs a meal break, and they agree she can go after handing work off to the next worker",
+        "outcome": "The worker keeps her packed lunch in the staff fridge until the agreed break"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-20",
+      "storyId": "shopper-chooses-a-cheaper-alternative-to-her-usual-yogurt",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_compares_price_and_package_size_when_usual_yogurt_is_unavailable",
+      "lexicalThemes": [
+        "product availability",
+        "yogurt",
+        "package size",
+        "price",
+        "alternative"
+      ],
+      "targetVocabulary": [
+        "usual",
+        "unavailable",
+        "package",
+        "price",
+        "alternative"
+      ],
+      "brief": "A shopper cannot find her usual yogurt, so she compares the package size and price of another plain variety and chooses one that suits her needs.",
+      "storyPattern": {
+        "goal": "Find a suitable substitute for an unavailable grocery item",
+        "relationship": "Shopper making an independent choice",
+        "interaction": "Compare another plain variety by package size and price",
+        "outcome": "Choose the alternative that meets her needs"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-20",
+      "storyId": "shopper-checks-the-price-per-package-before-choosing",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_compares_lentil_package_prices_and_checks_home_storage",
+      "lexicalThemes": [
+        "lentil prices",
+        "price per kilogram",
+        "package size",
+        "home storage",
+        "choosing"
+      ],
+      "targetVocabulary": [
+        "price per kilogram",
+        "large bag",
+        "small bags",
+        "store at home",
+        "choose"
+      ],
+      "brief": "At the supermarket, I compare a large bag of lentils with two small bags. The price per kilogram is lower for the large bag, and I have room to store it at home, so I choose it.",
+      "storyPattern": {
+        "goal": "Choose a suitable lentil package after comparing prices per kilogram",
+        "relationship": "Shopper acting independently",
+        "interaction": "Compare the price per kilogram and consider available storage space at home",
+        "outcome": "Choose the larger bag because its price per kilogram is lower and it fits at home"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-20",
+      "storyId": "shopper-checks-a-sauce-label-for-a-food-preference",
+      "domain": "supermarket_queues",
+      "scenario": "friends_check_a_sauce_ingredient_list_before_buying",
+      "lexicalThemes": [
+        "food label",
+        "ingredients",
+        "mild flavor",
+        "chili",
+        "shopping preference"
+      ],
+      "targetVocabulary": [
+        "רוטב",
+        "עדין",
+        "רשימת המרכיבים",
+        "צ'ילי",
+        "מחזירה למדף"
+      ],
+      "brief": "At a supermarket, a shopper looking for mild sauce asks her friend to hold a jar while she reads its ingredients. She spots chili and puts the jar back.",
+      "storyPattern": {
+        "goal": "Check whether a packaged food suits a flavor preference",
+        "relationship": "Friends shopping together",
+        "interaction": "Ask a friend to steady a jar while reading its ingredient list",
+        "outcome": "Put the sauce back after spotting chili"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-20",
+      "storyId": "friends-adjust-a-takeaway-order-before-paying",
+      "domain": "food_service_orders",
+      "scenario": "friends_change_a_takeaway_portion_size_before_completing_the_order",
+      "lexicalThemes": [
+        "takeaway",
+        "portion size",
+        "sharing food",
+        "changing an order",
+        "payment"
+      ],
+      "targetVocabulary": [
+        "portion",
+        "large",
+        "small",
+        "share",
+        "change"
+      ],
+      "brief": "Dana and Omer order takeaway together. They notice that they selected two large portions, although they want one portion to share. Dana asks for a smaller portion, and the counter worker changes the order before they pay.",
+      "storyPattern": {
+        "goal": "Order an amount of takeaway food that suits a shared meal",
+        "relationship": "Friends ordering dinner together",
+        "interaction": "Notice an oversized portion and request a smaller one before paying",
+        "outcome": "The counter worker updates the order to the smaller portion"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-20",
+      "storyId": "customer-asks-the-deli-to-slice-only-part-of-a-cheese-piece",
+      "domain": "food_service_orders",
+      "scenario": "customer_requests_a_small_amount_of_cheese_sliced_thinly",
+      "lexicalThemes": [
+        "deli purchase",
+        "quantity",
+        "thin slices",
+        "preference",
+        "confirmation"
+      ],
+      "targetVocabulary": [
+        "small piece",
+        "thin",
+        "slice",
+        "enough",
+        "please"
+      ],
+      "brief": "At a deli counter, a customer asks for a small piece of cheese sliced thinly. The deli worker slices a little cheese, and the customer confirms that it is enough.",
+      "storyPattern": {
+        "goal": "Buy a suitable amount of deli food in a preferred form",
+        "relationship": "Customer and deli worker",
+        "interaction": "State the desired quantity and ask for thin slices",
+        "outcome": "Receive the small sliced portion and confirm it is enough"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-20",
+      "storyId": "housemates-store-leftover-soup-in-a-small-container",
+      "domain": "food_cooking",
+      "scenario": "housemates_choose_a_suitable_container_for_leftover_soup",
+      "lexicalThemes": [
+        "meal preparation",
+        "leftovers",
+        "container size",
+        "food storage",
+        "fridge"
+      ],
+      "targetVocabulary": [
+        "leftover",
+        "container",
+        "smaller",
+        "pour",
+        "fridge"
+      ],
+      "brief": "After dinner, Noa notices that the large container is not suitable for the leftover soup and suggests a small one. The housemates pour the soup into it and put it in the fridge.",
+      "storyPattern": {
+        "goal": "Store leftover food in a container that fits",
+        "relationship": "Housemates sharing meal cleanup",
+        "interaction": "Noa notices that the first container is not suitable and suggests a smaller one",
+        "outcome": "Pour the soup into the smaller container and put it in the fridge"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-20",
+      "storyId": "shopper-compares-soup-ingredients-and-selects-a-different-brand",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_compares_soup_mix_labels_to_avoid_a_specific_ingredient",
+      "lexicalThemes": [
+        "food labels and ingredients",
+        "preferences and dietary choices",
+        "comparing products",
+        "meal planning"
+      ],
+      "targetVocabulary": [
+        "ingredient",
+        "label",
+        "contains",
+        "without",
+        "usual",
+        "alternative",
+        "compare",
+        "choose",
+        "vegetables",
+        "meal"
+      ],
+      "brief": "Yael shops for dinner, asks a grocery worker to compare soup-mix ingredient lists after the first alternative contains the ingredient she avoids, checks a different variety herself, chooses it, and plans to make soup with vegetables she has at home.",
+      "storyPattern": {
+        "goal": "Choose a packaged food that fits a stated ingredient preference",
+        "relationship": "Shopper and grocery worker",
+        "interaction": "Compare ingredient lists after the first alternative proves unsuitable",
+        "outcome": "Select a suitable product and adapt a meal around it"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-20",
+      "storyId": "home-cooks-adjust-a-sauce-after-tasting-it",
+      "domain": "food_cooking",
+      "scenario": "partners_adjust_tomato_sauce_with_grated_carrot_after_tasting",
+      "lexicalThemes": [
+        "cooking together",
+        "taste and preferences",
+        "suggestions and decisions",
+        "food storage"
+      ],
+      "targetVocabulary": [
+        "sauce",
+        "taste",
+        "sharp",
+        "add",
+        "grated carrot",
+        "pasta",
+        "stir",
+        "leftovers",
+        "container",
+        "next day"
+      ],
+      "brief": "On Friday evening, Tamar makes tomato sauce for dinner while her partner Eyal prepares the rest of the meal. After tasting the sauce, Tamar says it is sharper than she expected and asks whether to add sugar. Eyal suggests grated carrot they already have; they add a little, taste again, and decide the sauce tastes right. They mix it with the pasta and put the remaining sauce in a small container for the next day.",
+      "storyPattern": {
+        "goal": "Make a shared meal taste right using ingredients already available",
+        "relationship": "Partners preparing dinner together",
+        "interaction": "Taste, express a preference, and suggest a practical adjustment",
+        "outcome": "Serve the balanced meal and store the remainder for later"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-20",
+      "storyId": "friends-decide-how-to-handle-a-missing-takeaway-side-dish",
+      "domain": "food_service_orders",
+      "scenario": "friends_make_a_quick_salad_to_complete_their_takeaway_dinner",
+      "lexicalThemes": [
+        "takeaway order details",
+        "checking what is missing",
+        "sharing a meal",
+        "making a practical choice"
+      ],
+      "targetVocabulary": [
+        "takeaway",
+        "order",
+        "bag",
+        "missing",
+        "salad",
+        "cucumbers",
+        "herbs",
+        "at home",
+        "prepare",
+        "ready"
+      ],
+      "brief": "At home, Noa and Gil notice that the salad expected with their shared takeaway order is missing. They decide not to return to the restaurant and make a quick salad from cucumbers and herbs they have at home while Noa sets out the food.",
+      "storyPattern": {
+        "goal": "Complete a shared takeaway meal when an expected side is absent",
+        "relationship": "Friends sharing dinner at home",
+        "interaction": "Check the order together, then compare returning to the restaurant with using available ingredients",
+        "outcome": "Choose a homemade salad and serve dinner without making another trip"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-20",
+      "storyId": "employee-and-manager-agree-on-a-shift-cover-arrangement",
+      "domain": "employment_jobs",
+      "scenario": "employee_and_manager_agree_on_coverage_for_an_early_departure",
+      "lexicalThemes": [
+        "work schedule and availability",
+        "explaining a personal constraint",
+        "prioritizing tasks",
+        "agreeing on responsibilities"
+      ],
+      "targetVocabulary": [
+        "leave early",
+        "shift",
+        "cover",
+        "priority",
+        "finish",
+        "handoff",
+        "status note",
+        "agree"
+      ],
+      "brief": "Employee Yael asks manager Amir to leave early for a family meal. They agree that Yael will finish the customer report and leave a short status note, while Amir takes the afternoon follow-up call and updates the customer.",
+      "storyPattern": {
+        "goal": "Arrange an early departure without leaving an urgent team responsibility unassigned",
+        "relationship": "Employee and manager coordinating a work shift",
+        "interaction": "Explain a time constraint, clarify the day's priority, and negotiate who will take over the later handoff",
+        "outcome": "Yael finishes the report and leaves a clear note; Amir takes the customer call and updates the customer"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-20",
+      "storyId": "shopper-plans-a-grocery-basket-with-a-fixed-budget",
+      "domain": "banking_credit",
+      "scenario": "shopper_adjusts_grocery_choices_to_stay_within_a_personal_spending_limit",
+      "lexicalThemes": [
+        "grocery budget",
+        "basket",
+        "cost",
+        "put back",
+        "meal ingredients"
+      ],
+      "targetVocabulary": [
+        "budget",
+        "basket",
+        "cost",
+        "put back",
+        "ingredients"
+      ],
+      "brief": "At the supermarket, Lina checks her grocery budget, sees that her basket costs more than planned, puts back an extra snack, and keeps the ingredients for tonight’s meal.",
+      "storyPattern": {
+        "goal": "Keep a grocery purchase within a personal spending limit",
+        "relationship": "Shopper managing her own household spending",
+        "interaction": "Compare the basket with the available budget and choose what to remove",
+        "outcome": "Put back an extra item and keep the planned meal ingredients"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-20",
+      "storyId": "roommates-mark-a-grocery-purchase-for-their-shared-expenses",
+      "domain": "bills_taxes",
+      "scenario": "roommates_distinguish_shared_dinner_items_from_personal_grocery_purchases",
+      "lexicalThemes": [
+        "grocery receipt",
+        "shared dinner",
+        "personal purchases",
+        "marking items"
+      ],
+      "targetVocabulary": [
+        "receipt",
+        "shared",
+        "personal",
+        "mark",
+        "items"
+      ],
+      "brief": "Two roommates review a grocery receipt together, identify the items bought for their shared dinner, and mark only those items while leaving personal purchases unmarked.",
+      "storyPattern": {
+        "goal": "Separate shared meal costs from personal grocery purchases",
+        "relationship": "Roommates sharing food and household expenses",
+        "interaction": "Review a grocery receipt together and mark only the items for the shared dinner",
+        "outcome": "The shared items are clearly marked while personal purchases remain separate"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-20",
+      "storyId": "coworkers-clarify-which-lunch-order-is-for-the-team",
+      "domain": "employment_jobs",
+      "scenario": "coworker_uses_a_bag_note_to_identify_the_team_lunch_order",
+      "lexicalThemes": [
+        "work lunch",
+        "order",
+        "bag",
+        "note",
+        "meeting room"
+      ],
+      "targetVocabulary": [
+        "lunch",
+        "order",
+        "bag",
+        "note",
+        "meeting"
+      ],
+      "brief": "At lunchtime at work, one coworker asks which of two food bags is for the team meeting. The other points to the note on the correct bag, and she sets it by the meeting room.",
+      "storyPattern": {
+        "goal": "Get the correct food order to a team meeting",
+        "relationship": "Coworkers coordinating a shared work task",
+        "interaction": "Ask which lunch bag is for the meeting and use its note to identify it",
+        "outcome": "Set the labeled order by the meeting room"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-20",
+      "storyId": "housemates-agree-on-a-shelf-for-shared-pantry-food",
+      "domain": "housing_landlord",
+      "scenario": "housemates_make_space_for_shared_pantry_staples",
+      "lexicalThemes": [
+        "shared pantry",
+        "groceries",
+        "shelf",
+        "staples",
+        "making space"
+      ],
+      "targetVocabulary": [
+        "pantry",
+        "shared",
+        "shelf",
+        "staples",
+        "move"
+      ],
+      "brief": "Two housemates make room in a crowded pantry by agreeing to keep shared groceries together on the lower shelf. They move the rice and oil there.",
+      "storyPattern": {
+        "goal": "Make shared groceries easy to find in a crowded pantry",
+        "relationship": "Housemates sharing kitchen storage",
+        "interaction": "Suggest a shelf for shared staples and agree on where they belong",
+        "outcome": "Move the shared rice and oil onto the agreed shelf"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-20",
+      "storyId": "worker-asks-manager-to-set-aside-a-lunch-break",
+      "domain": "work_pay",
+      "scenario": "worker_coordinates_a_short_meal_break_after_a_work_handoff",
+      "lexicalThemes": [
+        "lunch break",
+        "manager",
+        "handoff",
+        "packed lunch",
+        "staff fridge"
+      ],
+      "targetVocabulary": [
+        "break",
+        "eat",
+        "after",
+        "packed lunch",
+        "fridge"
+      ],
+      "brief": "During a busy shift, a worker who has not eaten asks her manager when she can take a short meal break. The manager says she can go after the next handoff, and the worker puts her packed lunch in the staff fridge until then.",
+      "storyPattern": {
+        "goal": "Find a practical time to eat during a busy shift",
+        "relationship": "Worker and manager coordinating a shift",
+        "interaction": "Explain the need for a meal break and agree on a time after a handoff",
+        "outcome": "Keep the packed lunch in the staff fridge until the agreed break"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-20",
+      "storyId": "shopper-chooses-a-cheaper-alternative-to-her-usual-yogurt",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_compares_price_and_package_size_when_usual_yogurt_is_unavailable",
+      "lexicalThemes": [
+        "product availability",
+        "yogurt",
+        "package size",
+        "price",
+        "alternative"
+      ],
+      "targetVocabulary": [
+        "usual",
+        "unavailable",
+        "package",
+        "price",
+        "alternative"
+      ],
+      "brief": "At the supermarket, a shopper could not find her usual yogurt. She compared a different plain yogurt by package size and price, then chose it because it suited her needs.",
+      "storyPattern": {
+        "goal": "Find a suitable substitute for an unavailable grocery item",
+        "relationship": "Shopper making an independent choice",
+        "interaction": "Compare another plain variety by package size and price",
+        "outcome": "Choose the alternative that meets her needs"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-20",
+      "storyId": "shopper-checks-the-price-per-package-before-choosing",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_compares_lentil_unit_prices_and_checks_cupboard_space",
+      "lexicalThemes": [
+        "lentil prices",
+        "price per kilogram",
+        "package size",
+        "cupboard storage",
+        "choosing a package"
+      ],
+      "targetVocabulary": [
+        "price per kilogram",
+        "large bag",
+        "small bags",
+        "cupboard",
+        "choose"
+      ],
+      "brief": "A shopper compared the price per kilogram of lentils in small and large bags, checked that she had room to store the larger bag at home, and chose it.",
+      "storyPattern": {
+        "goal": "Choose the best-fitting package after comparing unit prices",
+        "relationship": "Shopper acting independently",
+        "interaction": "Compare package prices and consider available storage space",
+        "outcome": "Choose the larger bag that fits at home"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-20",
+      "storyId": "shopper-checks-a-sauce-label-for-a-food-preference",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_reads_a_sauce_ingredient_label_before_deciding_not_to_buy",
+      "lexicalThemes": [
+        "food label",
+        "ingredients",
+        "mild flavor",
+        "chili",
+        "preference"
+      ],
+      "targetVocabulary": [
+        "label",
+        "ingredients",
+        "mild",
+        "chili",
+        "put back"
+      ],
+      "brief": "A shopper turns a jar of sauce to read the ingredients, asks her friend Liat to hold it steady, spots chili in the list, and returns it to the shelf because she wants a mild sauce.",
+      "storyPattern": {
+        "goal": "Check whether a packaged food suits a flavor preference",
+        "relationship": "Friends shopping together",
+        "interaction": "Ask a friend to steady a jar while reading its ingredient list",
+        "outcome": "Put the sauce back after spotting chili"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-20",
+      "storyId": "friends-adjust-a-takeaway-order-before-paying",
+      "domain": "food_service_orders",
+      "scenario": "friends_change_a_takeaway_portion_size_before_completing_the_order",
+      "lexicalThemes": [
+        "takeaway",
+        "portion size",
+        "sharing a meal",
+        "changing an order",
+        "payment"
+      ],
+      "targetVocabulary": [
+        "מנה",
+        "גדול",
+        "קטן",
+        "לחלוק",
+        "לשנות"
+      ],
+      "brief": "Two friends order takeaway, realize they chose two large portions when they meant to share one, and ask the counter worker to change the order to a smaller portion before paying.",
+      "storyPattern": {
+        "goal": "Order an amount of takeaway food that suits a shared meal",
+        "relationship": "Friends ordering dinner together",
+        "interaction": "Notice an oversized portion and request a smaller one before paying",
+        "outcome": "The counter worker updates the order to a smaller portion"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-20",
+      "storyId": "customer-asks-the-deli-to-slice-only-part-of-a-cheese-piece",
+      "domain": "food_service_orders",
+      "scenario": "customer_requests_a_small_amount_of_cheese_sliced_thinly",
+      "lexicalThemes": [
+        "deli purchase",
+        "quantity",
+        "thin slices",
+        "preference",
+        "confirmation"
+      ],
+      "targetVocabulary": [
+        "small piece",
+        "thin",
+        "slice",
+        "enough",
+        "please"
+      ],
+      "brief": "A customer buys a small piece of cheese at a deli and asks for it to be sliced thinly. The deli worker prepares it, and she confirms that the amount is enough.",
+      "storyPattern": {
+        "goal": "Buy a suitable amount of deli food in a preferred form",
+        "relationship": "Customer and deli worker",
+        "interaction": "State the desired quantity and ask for thin slices",
+        "outcome": "Receive the small sliced portion and confirm it is enough"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-20",
+      "storyId": "housemates-store-leftover-soup-in-a-small-container",
+      "domain": "food_cooking",
+      "scenario": "housemates_choose_a_suitable_container_for_leftover_soup",
+      "lexicalThemes": [
+        "meal preparation",
+        "leftovers",
+        "container size",
+        "food storage",
+        "fridge"
+      ],
+      "targetVocabulary": [
+        "leftover",
+        "container",
+        "smaller",
+        "pour",
+        "fridge"
+      ],
+      "brief": "After dinner, two housemates find that the leftover soup will not fit in the large container they first chose. One brings a smaller container, and they pour in the soup and put it in the fridge.",
+      "storyPattern": {
+        "goal": "Store leftover food in a container that fits",
+        "relationship": "Housemates sharing meal cleanup",
+        "interaction": "Notice the first container is too large and suggest a smaller one",
+        "outcome": "Put the soup into the smaller container and refrigerate it"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-20",
+      "storyId": "shopper-compares-soup-ingredients-and-selects-a-different-brand",
+      "domain": "supermarket_queues",
+      "scenario": "Yael compares soup-mix labels and chooses another mix for dinner",
+      "lexicalThemes": [
+        "food labels and ingredients",
+        "preferences and dietary choices",
+        "comparing products",
+        "meal planning"
+      ],
+      "targetVocabulary": [
+        "ingredient",
+        "label",
+        "contains",
+        "without",
+        "usual",
+        "alternative",
+        "compare",
+        "choose",
+        "vegetables",
+        "meal"
+      ],
+      "brief": "Yesterday, Yael compared packaged soup mix labels with a grocery worker, avoided an ingredient, chose a different mix, and decided to make soup with vegetables she already had at home.",
+      "storyPattern": {
+        "goal": "Choose a packaged food that fits a stated ingredient preference",
+        "relationship": "Shopper and grocery worker",
+        "interaction": "Compare ingredient lists after the first alternative proves unsuitable",
+        "outcome": "Yael checks the label, selects a suitable product, and adapts dinner to use vegetables at home"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-20",
+      "storyId": "home-cooks-adjust-a-sauce-after-tasting-it",
+      "domain": "food_cooking",
+      "scenario": "partners_adjust_tomato_sauce_with_grated_carrot",
+      "lexicalThemes": [
+        "cooking together",
+        "taste and preferences",
+        "suggestions and decisions",
+        "food storage"
+      ],
+      "targetVocabulary": [
+        "sauce",
+        "taste",
+        "tart",
+        "add",
+        "grated carrot",
+        "pasta",
+        "stir",
+        "leftovers",
+        "container",
+        "next day"
+      ],
+      "brief": "On Friday evening, Tamar and Eyal prepare dinner together. After tasting the tomato sauce, Tamar finds it sharper than expected and asks about adding sugar. Eyal suggests grated carrot they already have; they add a little, taste again, mix the balanced sauce into the pasta, and save the remainder in a small container for the next day.",
+      "storyPattern": {
+        "goal": "Make a shared meal taste right using ingredients already available",
+        "relationship": "Partners preparing dinner together",
+        "interaction": "Taste, express a preference, and suggest a practical adjustment",
+        "outcome": "Serve the balanced meal and store the remainder for later"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-20",
+      "storyId": "friends-decide-how-to-handle-a-missing-takeaway-side-dish",
+      "domain": "food_service_orders",
+      "scenario": "friends_replace_an_absent_takeaway_side_with_a_quick_home_alternative",
+      "lexicalThemes": [
+        "takeaway order details",
+        "checking what is missing",
+        "sharing a meal",
+        "making a practical choice"
+      ],
+      "targetVocabulary": [
+        "takeaway",
+        "order",
+        "bag",
+        "missing",
+        "side dish",
+        "salad",
+        "at home",
+        "instead",
+        "prepare",
+        "ready"
+      ],
+      "brief": "At home after collecting a shared takeaway order, Noa and Gil find that the ordered salad is absent. They check the confirmation and the bag, then choose to make a quick salad from cucumbers and herbs instead of returning to the restaurant. Gil prepares it while Noa sets out dinner.",
+      "storyPattern": {
+        "goal": "Complete a shared takeaway meal when an expected side is absent",
+        "relationship": "Friends sharing dinner at home",
+        "interaction": "Check the order together, explain what is missing, and compare returning with using available ingredients",
+        "outcome": "Choose a homemade side and serve dinner without making another trip"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-20",
+      "storyId": "employee-and-manager-agree-on-a-shift-cover-arrangement",
+      "domain": "employment_jobs",
+      "scenario": "employee_and_manager_agree_on_early_departure_and_customer_handoff",
+      "lexicalThemes": [
+        "work schedule and availability",
+        "explaining a family commitment",
+        "prioritizing a report",
+        "sharing a customer handoff"
+      ],
+      "targetVocabulary": [
+        "leave early",
+        "customer report",
+        "finish",
+        "customer call",
+        "status note",
+        "team",
+        "agree"
+      ],
+      "brief": "Yael needs to leave work early for a family matter. She and her manager Amir agree that she will finish the customer report and leave a short status note, while Amir takes the later customer call.",
+      "storyPattern": {
+        "goal": "Arrange Yael's early departure without leaving an urgent team task unassigned",
+        "relationship": "Employee Yael and manager Amir coordinating work",
+        "interaction": "Yael explains her time constraint; they clarify the priority task and agree who will take the later customer call",
+        "outcome": "Yael finishes the report and leaves a short note; Amir takes the call"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-20",
+      "storyId": "shopper-plans-a-grocery-basket-with-a-fixed-budget",
+      "domain": "banking_credit",
+      "scenario": "shopper_adjusts_grocery_choices_to_stay_within_a_personal_spending_limit",
+      "lexicalThemes": [
+        "grocery budget",
+        "basket",
+        "cost",
+        "putting back an item",
+        "meal ingredients"
+      ],
+      "targetVocabulary": [
+        "תקציב",
+        "סל",
+        "עולה",
+        "להחזיר",
+        "מצרכים"
+      ],
+      "brief": "At the supermarket, Lina checks her available grocery budget and sees that the items in her basket cost more than she planned. She puts back an extra snack and keeps the ingredients for tonight’s meal.",
+      "storyPattern": {
+        "goal": "Keep a grocery purchase within a personal spending limit",
+        "relationship": "Lina manages her own household spending",
+        "interaction": "She compares the cost of her basket with her available budget and chooses an item to remove",
+        "outcome": "She puts back an extra snack and keeps the ingredients for tonight's meal"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-20",
+      "storyId": "roommates-mark-a-grocery-purchase-for-their-shared-expenses",
+      "domain": "bills_taxes",
+      "scenario": "roommates_distinguish_shared_dinner_items_from_personal_grocery_purchases",
+      "lexicalThemes": [
+        "grocery receipt",
+        "shared dinner",
+        "personal purchases",
+        "mark items"
+      ],
+      "targetVocabulary": [
+        "receipt",
+        "shared",
+        "personal",
+        "mark",
+        "items"
+      ],
+      "brief": "Two roommates review their grocery receipt together, mark only the items they bought for their shared dinner, and leave their personal purchases unmarked.",
+      "storyPattern": {
+        "goal": "Separate shared meal costs from personal grocery purchases",
+        "relationship": "Roommates sharing food and household expenses",
+        "interaction": "Review a grocery receipt together and mark only the items for the shared dinner",
+        "outcome": "The shared items are clearly marked while personal purchases remain separate"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-20",
+      "storyId": "coworkers-clarify-which-lunch-order-is-for-the-team",
+      "domain": "employment_jobs",
+      "scenario": "coworker_identifies_and_places_labeled_team_lunch_order",
+      "lexicalThemes": [
+        "work lunch",
+        "lunch order",
+        "food bags",
+        "notes",
+        "meeting room"
+      ],
+      "targetVocabulary": [
+        "lunch",
+        "order",
+        "bag",
+        "note",
+        "meeting"
+      ],
+      "brief": "At work, a coworker sees two lunch bags on the counter and asks Noa which one is for the team meeting. Noa points to the note on the right bag, and the coworker sets that order by the meeting room so the team can find it.",
+      "storyPattern": {
+        "goal": "Get the correct food order to a team meeting",
+        "relationship": "Coworkers coordinating a shared work task",
+        "interaction": "Ask which lunch bag is for the meeting and use its note to identify it",
+        "outcome": "Set the labeled order by the meeting room so the team can find it"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-20",
+      "storyId": "housemates-agree-on-a-shelf-for-shared-pantry-food",
+      "domain": "housing_landlord",
+      "scenario": "housemates_make_space_for_shared_pantry_staples",
+      "lexicalThemes": [
+        "shared pantry",
+        "groceries",
+        "shelf",
+        "staples",
+        "making space"
+      ],
+      "targetVocabulary": [
+        "pantry",
+        "shared",
+        "shelf",
+        "staples",
+        "move"
+      ],
+      "brief": "Two housemates find their shared pantry shelf crowded, agree to keep shared staples on the lower shelf, and move the rice and oil there so they are easy to find.",
+      "storyPattern": {
+        "goal": "Make shared groceries easy to find in a crowded pantry",
+        "relationship": "Housemates sharing kitchen storage",
+        "interaction": "Suggest a shelf for shared staples and agree on where they belong",
+        "outcome": "Move the shared rice and oil onto the agreed shelf"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-20",
+      "storyId": "worker-asks-manager-to-set-aside-a-lunch-break",
+      "domain": "work_pay",
+      "scenario": "worker_coordinates_a_short_meal_break_after_a_work_handoff",
+      "lexicalThemes": [
+        "lunch break",
+        "manager",
+        "handoff",
+        "packed lunch",
+        "staff fridge"
+      ],
+      "targetVocabulary": [
+        "break",
+        "eat",
+        "after",
+        "packed lunch",
+        "fridge"
+      ],
+      "brief": "During a busy shift, a worker asks her manager when she can take a short meal break. The manager says she can go after the next handoff, and the worker puts her packed lunch in the staff fridge until then.",
+      "storyPattern": {
+        "goal": "Find a practical time to eat during a busy shift",
+        "relationship": "Worker and manager coordinating a shift",
+        "interaction": "Explain the need for a meal break and agree on a time after a handoff",
+        "outcome": "Keep the packed lunch in the staff fridge until the agreed break"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-20",
+      "storyId": "shopper-chooses-a-cheaper-alternative-to-her-usual-yogurt",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_compares_price_and_package_size_when_usual_yogurt_is_unavailable",
+      "lexicalThemes": [
+        "product availability",
+        "yogurt",
+        "package size",
+        "price",
+        "alternative"
+      ],
+      "targetVocabulary": [
+        "usual",
+        "unavailable",
+        "package",
+        "price",
+        "alternative"
+      ],
+      "brief": "A shopper cannot find her usual yogurt, so she compares the package size and price of a nearby plain variety and chooses it because it suits her.",
+      "storyPattern": {
+        "goal": "Find a suitable substitute for an unavailable grocery item",
+        "relationship": "Shopper making an independent choice",
+        "interaction": "Compare another plain variety by package size and price",
+        "outcome": "Choose the alternative that meets her needs"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-20",
+      "storyId": "shopper-checks-the-price-per-package-before-choosing",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_compares_lentil_package_prices_and_checks_storage_before_choosing",
+      "lexicalThemes": [
+        "food prices",
+        "price per kilogram",
+        "package size",
+        "home storage",
+        "shopping choice"
+      ],
+      "targetVocabulary": [
+        "price per kilogram",
+        "two small bags",
+        "large bag",
+        "store at home",
+        "choose"
+      ],
+      "brief": "A shopper compares the price per kilogram of two small bags of lentils with that of one large bag, checks that she can store the larger bag at home, and chooses it.",
+      "storyPattern": {
+        "goal": "Choose a suitable lentil package after comparing the price per kilogram",
+        "relationship": "Shopper acting independently",
+        "interaction": "Compare the unit prices and consider available storage space at home",
+        "outcome": "Choose the larger bag because its price per kilogram is lower and it fits at home"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-20",
+      "storyId": "shopper-checks-a-sauce-label-for-a-food-preference",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_reads_a_sauce_ingredient_label_before_deciding_not_to_buy",
+      "lexicalThemes": [
+        "food label",
+        "ingredients",
+        "mild flavor",
+        "chili",
+        "preference"
+      ],
+      "targetVocabulary": [
+        "label",
+        "ingredients",
+        "mild",
+        "chili",
+        "put back"
+      ],
+      "brief": "At a supermarket, Dana wants a mild sauce. She asks her friend to hold the jar steady while she reads its ingredient list, spots chili, and puts it back.",
+      "storyPattern": {
+        "goal": "Check whether a packaged food suits a flavor preference",
+        "relationship": "Friends shopping together",
+        "interaction": "Ask a friend to steady a jar while reading its ingredient list",
+        "outcome": "Put the sauce back after spotting chili"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-20",
+      "storyId": "friends-adjust-a-takeaway-order-before-paying",
+      "domain": "food_service_orders",
+      "scenario": "friends_change_a_takeaway_portion_size_before_completing_the_order",
+      "lexicalThemes": [
+        "takeaway",
+        "portion size",
+        "shared meal",
+        "changing an order",
+        "payment"
+      ],
+      "targetVocabulary": [
+        "portion",
+        "large",
+        "small",
+        "share",
+        "change"
+      ],
+      "brief": "Two friends order takeaway for dinner and realize they selected two large portions when they intend to share one. Before paying, one asks to change one portion to a small size, and the counter worker updates the order.",
+      "storyPattern": {
+        "goal": "Order an amount of takeaway food that suits a shared meal",
+        "relationship": "Friends ordering dinner together",
+        "interaction": "Notice an oversized portion and request a smaller one before paying",
+        "outcome": "The counter worker updates the order to the smaller portion"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-20",
+      "storyId": "customer-asks-the-deli-to-slice-only-part-of-a-cheese-piece",
+      "domain": "food_service_orders",
+      "scenario": "customer_requests_a_small_amount_of_cheese_sliced_thinly",
+      "lexicalThemes": [
+        "deli purchase",
+        "quantity",
+        "thin slices",
+        "preference",
+        "confirmation"
+      ],
+      "targetVocabulary": [
+        "small piece",
+        "thin",
+        "slice",
+        "enough",
+        "please"
+      ],
+      "brief": "At a deli counter, a customer asks for a small piece of cheese sliced thinly. The worker slices a small amount, and the customer confirms that it is enough.",
+      "storyPattern": {
+        "goal": "Buy a suitable amount of deli food in a preferred form",
+        "relationship": "Customer and deli worker",
+        "interaction": "State the desired quantity and ask for thin slices",
+        "outcome": "Receive the small sliced portion and confirm it is enough"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-20",
+      "storyId": "housemates-store-leftover-soup-in-a-small-container",
+      "domain": "food_cooking",
+      "scenario": "housemates_choose_a_suitable_container_for_leftover_soup",
+      "lexicalThemes": [
+        "meal preparation",
+        "leftovers",
+        "container size",
+        "food storage",
+        "fridge"
+      ],
+      "targetVocabulary": [
+        "leftover",
+        "container",
+        "smaller",
+        "pour",
+        "fridge"
+      ],
+      "brief": "After dinner, housemates find that the leftover soup does not fit in the large container they first chose. Dana suggests a smaller container, and they pour in the soup and put it in the fridge.",
+      "storyPattern": {
+        "goal": "Store leftover food in a container that fits",
+        "relationship": "Housemates sharing meal cleanup",
+        "interaction": "Notice the first container is unsuitable and suggest a smaller one",
+        "outcome": "Pour the soup into the smaller container and refrigerate it"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-20",
+      "storyId": "shopper-compares-soup-ingredients-and-selects-a-different-brand",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_compares_soup_mix_labels_to_avoid_a_specific_ingredient",
+      "lexicalThemes": [
+        "food labels and ingredients",
+        "preferences and dietary choices",
+        "comparing products",
+        "meal planning"
+      ],
+      "targetVocabulary": [
+        "ingredient",
+        "label",
+        "contains",
+        "without",
+        "usual",
+        "alternative",
+        "compare",
+        "choose",
+        "vegetables",
+        "meal"
+      ],
+      "brief": "Yael shops for dinner, notices that her usual packaged soup mix contains an ingredient she prefers to avoid, and asks a grocery worker to compare two alternatives. The first also contains it; she checks the label on a different variety with a shorter ingredient list, chooses it, and plans to make soup with vegetables she already has at home.",
+      "storyPattern": {
+        "goal": "Choose a packaged food that fits a stated ingredient preference",
+        "relationship": "Shopper and grocery worker",
+        "interaction": "Compare ingredient lists after the first alternative proves unsuitable",
+        "outcome": "Select a suitable product and adapt a meal around it"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-20",
+      "storyId": "home-cooks-adjust-a-sauce-after-tasting-it",
+      "domain": "food_cooking",
+      "scenario": "partners_balance_tart_tomato_sauce_with_grated_carrot",
+      "lexicalThemes": [
+        "cooking together",
+        "taste and preferences",
+        "suggestions and decisions",
+        "food storage"
+      ],
+      "targetVocabulary": [
+        "sauce",
+        "taste",
+        "tart",
+        "add",
+        "grated carrot",
+        "pasta",
+        "stir",
+        "leftovers",
+        "container",
+        "next day"
+      ],
+      "brief": "On Friday evening, Tamar and her partner Eyal prepare dinner together. Tamar makes tomato sauce, tastes it, and says it is sharper than expected. Eyal suggests adding grated carrot they already have instead of sugar. They add a little, taste again, decide the sauce is balanced, stir it through the pasta, and store the remaining sauce in a small container for the next day.",
+      "storyPattern": {
+        "goal": "Make a shared meal taste right using ingredients already available",
+        "relationship": "Partners preparing dinner together",
+        "interaction": "Taste, express a preference, and suggest a practical adjustment",
+        "outcome": "Serve the balanced meal and store the remainder for later"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-20",
+      "storyId": "friends-decide-how-to-handle-a-missing-takeaway-side-dish",
+      "domain": "food_service_orders",
+      "scenario": "friends_replace_missing_takeaway_salad_with_quick_home_side",
+      "lexicalThemes": [
+        "takeaway order details",
+        "checking the bag and confirmation",
+        "sharing dinner",
+        "making a quick salad at home"
+      ],
+      "targetVocabulary": [
+        "takeaway",
+        "order",
+        "bag",
+        "missing",
+        "salad",
+        "cucumbers",
+        "herbs",
+        "at home",
+        "instead",
+        "prepare",
+        "ready"
+      ],
+      "brief": "At home after picking up a shared takeaway dinner, Noa and Gil notice the ordered salad is missing. They decide not to return and use cucumbers and herbs to make a quick substitute while Noa sets out the food.",
+      "storyPattern": {
+        "goal": "Complete a shared takeaway meal when the expected salad is absent",
+        "relationship": "Friends sharing dinner at home",
+        "interaction": "Check the order together and consider returning or using ingredients already at home",
+        "outcome": "Choose a homemade salad and serve dinner without making another trip"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-20",
+      "storyId": "employee-and-manager-agree-on-a-shift-cover-arrangement",
+      "domain": "employment_jobs",
+      "scenario": "employee_and_manager_agree_on_coverage_for_an_early_departure",
+      "lexicalThemes": [
+        "work schedule and availability",
+        "explaining a personal constraint",
+        "prioritizing tasks",
+        "agreeing on responsibilities"
+      ],
+      "targetVocabulary": [
+        "leave early",
+        "shift",
+        "cover",
+        "priority",
+        "finish",
+        "handoff",
+        "status note",
+        "agree"
+      ],
+      "brief": "Yael asks her manager Amir to leave early for a family meal. They confirm that she will finish the customer proposal and leave a concise status note, while Amir takes responsibility for the later customer handoff.",
+      "storyPattern": {
+        "goal": "Arrange an early departure without leaving an urgent team responsibility unassigned",
+        "relationship": "Employee Yael and manager Amir coordinating a work shift",
+        "interaction": "Yael explains her time constraint, clarifies the priority, and agrees who will take the later customer handoff",
+        "outcome": "Yael finishes the priority proposal and leaves a clear note; Amir takes responsibility for the customer handoff"
+      },
+      "edition": "bet"
     }
   ]
 }
