@@ -30941,6 +30941,1322 @@
         "outcome": "They order the smoky dish with sauce on the side and a vegetable plate to share"
       },
       "edition": "bet"
+    },
+    {
+      "date": "2026-11-22",
+      "storyId": "new-worker-asks-to-see-a-task-demonstrated",
+      "domain": "employment_jobs",
+      "scenario": "new_employee_learns_to_arrange_a_small_display_by_watching_coworker",
+      "lexicalThemes": [
+        "starting work",
+        "demonstrating a task",
+        "learning by doing"
+      ],
+      "targetVocabulary": [
+        "show me",
+        "once",
+        "arrange a shelf",
+        "on my own"
+      ],
+      "brief": "On her first day at work, a new employee asks her coworker Noa to show her once how to arrange a small shelf display, then arranges it herself.",
+      "storyPattern": {
+        "goal": "Learn how to arrange a small display by watching it demonstrated",
+        "relationship": "New worker and experienced coworker",
+        "interaction": "The new worker asks for one demonstration and then repeats the task independently",
+        "outcome": "The new worker arranges the display without further help"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-22",
+      "storyId": "coworkers-clarify-which-task-can-wait",
+      "domain": "employment_jobs",
+      "scenario": "coworkers_choose_which_task_to_finish_before_lunch",
+      "lexicalThemes": [
+        "work priorities",
+        "time limits",
+        "agreement"
+      ],
+      "targetVocabulary": [
+        "שתי משימות",
+        "לפני ארוחת צהריים",
+        "לסיים",
+        "איזו משימה קודם",
+        "דוגמה ללקוח",
+        "לשים בצד",
+        "להסכים"
+      ],
+      "brief": "A worker has two tasks and can finish only one before lunch. She asks her coworker which should come first. They agree that she will prepare the customer sample and set the other task aside.",
+      "storyPattern": {
+        "goal": "Choose one task to complete within a limited time",
+        "relationship": "Coworkers sharing a shift",
+        "interaction": "State a time constraint and agree which task takes priority",
+        "outcome": "Start preparing the customer sample and set the other task aside"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-22",
+      "storyId": "resident-prepares-an-extra-copy-of-an-identity-document",
+      "domain": "government_documents",
+      "scenario": "resident_notices_a_cropped_copy_of_an_identity_document_and_makes_a_complete_copy",
+      "lexicalThemes": [
+        "appointment preparation",
+        "copies",
+        "checking a document"
+      ],
+      "targetVocabulary": [
+        "copy",
+        "original",
+        "edge",
+        "complete",
+        "keep together"
+      ],
+      "brief": "Before her appointment, a resident notices that her identity-document copy is cut off at the edge. She makes a complete new copy and keeps it with the original.",
+      "storyPattern": {
+        "goal": "Prepare a complete copy of a document for an appointment",
+        "relationship": "Resident preparing her own papers",
+        "interaction": "Notice the cropped page and make a clearer copy",
+        "outcome": "Keep the complete copy with the original"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-22",
+      "storyId": "tenant-asks-before-using-a-removable-door-hook",
+      "domain": "housing_landlord",
+      "scenario": "tenant_asks_landlord_to_use_a_removable_hook_on_closet_door",
+      "lexicalThemes": [
+        "rental home",
+        "asking permission",
+        "small household choice"
+      ],
+      "targetVocabulary": [
+        "removable hook",
+        "drill",
+        "closet door",
+        "ask permission",
+        "agree"
+      ],
+      "brief": "A tenant wants to hang a coat without drilling, asks the landlord if she can use a removable hook, gets his agreement, and puts it on the inside of the closet door.",
+      "storyPattern": {
+        "goal": "Hang a coat without making a permanent change",
+        "relationship": "Tenant and landlord",
+        "interaction": "Explain the preferred no-drill option and ask before using it",
+        "outcome": "Get agreement and attach the removable hook"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-22",
+      "storyId": "resident-changes-a-service-visit-to-a-later-time",
+      "domain": "home_repairs_utilities",
+      "scenario": "resident_declines_an_offered_service_visit_time_and_agrees_on_a_later_one",
+      "lexicalThemes": [
+        "service appointment",
+        "scheduling",
+        "polite refusal"
+      ],
+      "targetVocabulary": [
+        "that time",
+        "won't suit me",
+        "later",
+        "be home",
+        "agree"
+      ],
+      "brief": "Michal receives a call offering a home service visit at three o’clock, when she is at work. She asks for a later time, and they agree on a time when she can be home.",
+      "storyPattern": {
+        "goal": "Arrange a service visit at a time the resident can attend",
+        "relationship": "Resident and service scheduler",
+        "interaction": "Decline an offered time and discuss a later alternative",
+        "outcome": "Agree on a time when the resident can be home"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-22",
+      "storyId": "resident-asks-which-bin-takes-a-large-box",
+      "domain": "municipal_services",
+      "scenario": "resident_checks_where_to_place_a_large_cardboard_box_for_recycling",
+      "lexicalThemes": [
+        "local errands",
+        "recycling",
+        "asking for directions"
+      ],
+      "targetVocabulary": [
+        "cardboard",
+        "large box",
+        "where should I put",
+        "marked area",
+        "recycling"
+      ],
+      "brief": "A resident has a large cardboard box from a household delivery and asks a nearby municipal worker where to leave it. The worker points out the marked recycling area, and the resident leaves the box there.",
+      "storyPattern": {
+        "goal": "Leave a bulky recyclable item in the right place",
+        "relationship": "Resident and municipal worker",
+        "interaction": "Describe the item and ask where it belongs",
+        "outcome": "Locate the marked recycling area and leave the box there"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-22",
+      "storyId": "parent-and-child-choose-what-to-pack-for-school",
+      "domain": "school_childcare",
+      "scenario": "mother_and_daughter_choose_a_small_toy_for_the_school_bag",
+      "lexicalThemes": [
+        "school routine",
+        "family discussion",
+        "making room"
+      ],
+      "targetVocabulary": [
+        "school bag",
+        "books",
+        "large toy",
+        "small toy",
+        "fit"
+      ],
+      "brief": "A mother and her daughter prepare a school bag. The daughter wants to pack a large toy, but her mother points out that there is not much room for books. They choose a small toy, and the books fit in the bag.",
+      "storyPattern": {
+        "goal": "Pack a school bag that has room for necessary books",
+        "relationship": "Parent and child preparing for school",
+        "interaction": "Explain the space constraint and choose a smaller item together",
+        "outcome": "Pack the smaller toy and fit the books"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-22",
+      "storyId": "recipient-arranges-to-collect-a-parcel-after-work",
+      "domain": "postal_parcels",
+      "scenario": "sister_agrees_to_collect_parcel_after_work",
+      "lexicalThemes": [
+        "mail and parcels",
+        "work commitments",
+        "sharing an errand"
+      ],
+      "targetVocabulary": [
+        "parcel notice",
+        "collect",
+        "this morning",
+        "this afternoon",
+        "can you"
+      ],
+      "brief": "A woman sees a parcel notice on her way to work and asks her sister, who is at home, to collect the parcel later that afternoon. Her sister agrees.",
+      "storyPattern": {
+        "goal": "Arrange for a parcel to be collected despite a work commitment",
+        "relationship": "Recipient and household member",
+        "interaction": "Explain the timing problem and ask for help with the errand",
+        "outcome": "Agree that the household member will collect it later"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-22",
+      "storyId": "shopper-chooses-a-shirt-for-a-work-uniform",
+      "domain": "shopping_returns",
+      "scenario": "comparing_two_shirt_sleeves_to_choose_one_for_work",
+      "lexicalThemes": [
+        "clothes",
+        "work needs",
+        "stating a preference"
+      ],
+      "targetVocabulary": [
+        "sleeves",
+        "roll up",
+        "choose",
+        "leave on the rack"
+      ],
+      "brief": "A shopper independently compares the sleeves on two shirts for work, chooses the one that rolls up easily, and leaves the other on the rack.",
+      "storyPattern": {
+        "goal": "Choose a work shirt that suits a practical clothing preference",
+        "relationship": "Shopper acting independently",
+        "interaction": "Compare two cuffs by trying how easily each sleeve rolls",
+        "outcome": "Choose the shirt with the more convenient sleeves and leave the other on the rack"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-22",
+      "storyId": "subscriber-asks-how-to-check-home-internet-usage",
+      "domain": "phone_internet",
+      "scenario": "subscriber_calls_provider_and_opens_household_connected_device_list",
+      "lexicalThemes": [
+        "phone and internet",
+        "household needs",
+        "checking a setting"
+      ],
+      "targetVocabulary": [
+        "שיחת וידאו",
+        "ספק",
+        "מכשירים מחוברים",
+        "איפה רואים",
+        "לפתוח את הרשימה"
+      ],
+      "brief": "A subscriber's home video call keeps stopping, so she calls the provider to ask where she can see which devices are connected to the household internet. The representative explains, and she opens the device list in her account.",
+      "storyPattern": {
+        "goal": "See which devices are connected to the household internet",
+        "relationship": "Subscriber and provider representative",
+        "interaction": "Describe the connection issue and ask where to view connected devices",
+        "outcome": "Open the device list in the account"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-22",
+      "storyId": "coworker-offers-to-swap-a-work-shift",
+      "domain": "employment_jobs",
+      "scenario": "coworkers_agree_to_exchange_two_shifts_to_accommodate_a_family_commitment",
+      "lexicalThemes": [
+        "work schedule",
+        "family responsibilities",
+        "offer and agreement"
+      ],
+      "targetVocabulary": [
+        "family event",
+        "exchange shifts",
+        "Thursday",
+        "Saturday",
+        "work instead"
+      ],
+      "brief": "A worker has a family event on Thursday and asks her coworker Omer to exchange shifts. He agrees to work Thursday, and she will work his Saturday shift.",
+      "storyPattern": {
+        "goal": "Adjust a work shift to accommodate a family commitment",
+        "relationship": "Coworkers who can exchange shifts",
+        "interaction": "Explain the scheduling need and propose a reciprocal swap",
+        "outcome": "Omer works Thursday and she works his Saturday shift"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-22",
+      "storyId": "new-employee-practices-a-stock-check",
+      "domain": "employment_jobs",
+      "scenario": "new_employee_learns_to_record_opened_stock_separately_during_inventory",
+      "lexicalThemes": [
+        "starting a new job",
+        "stock and inventory",
+        "asking for clarification",
+        "recording an exception"
+      ],
+      "targetVocabulary": [
+        "stock check",
+        "count",
+        "opened package",
+        "shelf",
+        "label",
+        "product list",
+        "record",
+        "flag"
+      ],
+      "brief": "During her first week at a small shop, Maya learns from her coworker Lior how to count shelf products, record opened packages separately, and flag a box with an unclear label for the manager.",
+      "storyPattern": {
+        "goal": "Learn a practical work procedure and complete an assigned task accurately",
+        "relationship": "New employee and experienced coworker",
+        "interaction": "Ask what belongs in the count, then clarify how to handle an item with an unreadable label",
+        "outcome": "Record the clear items and flag the unclear one for the supervisor"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-22",
+      "storyId": "shopper-exchanges-shoes-that-pinch",
+      "domain": "shopping_returns",
+      "scenario": "shopper_exchanges_narrow_shoes_for_a_pair_that_fits_without_slipping",
+      "lexicalThemes": [
+        "clothing and footwear",
+        "fit and comfort",
+        "explaining a preference",
+        "exchange at a shop"
+      ],
+      "targetVocabulary": [
+        "shoes",
+        "pinch",
+        "toes",
+        "narrow",
+        "wide",
+        "heel",
+        "try on",
+        "exchange",
+        "receipt"
+      ],
+      "brief": "Roni brings back shoes that pinch near her toes and explains that the length fits but the front is too narrow. She and the shop worker try another model; Roni walks in it, finds it comfortable and secure at the heel, and exchanges the original shoes for it.",
+      "storyPattern": {
+        "goal": "Replace an uncomfortable purchase with an option that fits a specific need",
+        "relationship": "Shopper and shop worker",
+        "interaction": "Describe the fit problem and weigh a wider style against the risk of heel slippage",
+        "outcome": "Try a different model, test it by walking, and exchange the original pair"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-22",
+      "storyId": "parent-and-child-adjust-after-school-pickup",
+      "domain": "school_childcare",
+      "scenario": "mother_arranges_for_her_listed_sister_to_collect_her_daughter_after_a_work_meeting_runs_late",
+      "lexicalThemes": [
+        "after-school care",
+        "family responsibilities",
+        "explaining a schedule change",
+        "confirming a handoff"
+      ],
+      "targetVocabulary": [
+        "after-school program",
+        "pick up",
+        "coordinator",
+        "approved contact",
+        "meeting",
+        "run late",
+        "confirm",
+        "collect"
+      ],
+      "brief": "A mother in Haifa learns that her work meeting is running late on a day she must collect her daughter from an after-school program. She calls the coordinator, who confirms that her sister is on the approved list. The mother calls her sister with the pickup time; the sister agrees, and the coordinator is informed. The sister collects the child as planned.",
+      "storyPattern": {
+        "goal": "Arrange a dependable change to a child’s pickup plan when work runs late",
+        "relationship": "A mother, her daughter, the after-school coordinator, and the mother's sister",
+        "interaction": "The mother explains the timing problem; the coordinator checks that the sister is listed; the mother confirms the pickup time with her sister",
+        "outcome": "The sister agrees to collect the child, the coordinator is informed, and the child is collected as planned"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-22",
+      "storyId": "resident-prepares-documents-for-a-rental-registration-visit",
+      "domain": "government_documents",
+      "scenario": "resident_checks_move_related_documents_with_clerk_and_replaces_cut_off_copy",
+      "lexicalThemes": [
+        "preparing documents",
+        "address change",
+        "asking what is missing",
+        "clarifying a written record"
+      ],
+      "targetVocabulary": [
+        "identification",
+        "rental agreement",
+        "utility statement",
+        "photocopy",
+        "address",
+        "apartment number",
+        "file",
+        "clarify"
+      ],
+      "brief": "Michal visits a public-service office to update her address after moving. The clerk reviews her identification and rental agreement, points out the page with the new address, and helps her replace a photocopy that cuts off the apartment number. She leaves with the file organized and a note about the utility statement she still needs to clarify.",
+      "storyPattern": {
+        "goal": "Prepare a document file for an address-related visit and identify any remaining question",
+        "relationship": "Resident seeking help and public-service clerk reviewing her file",
+        "interaction": "Review the documents brought, clarify which part shows the new address, and notice that a copy is incomplete",
+        "outcome": "Replace the incomplete copy, organize the file, and leave with a specific item to clarify"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-22",
+      "storyId": "sender-and-postal-clerk-correct-a-return-address",
+      "domain": "postal_parcels",
+      "scenario": "sender_and_postal_clerk_complete_and_verify_both_addresses_on_a_parcel_label",
+      "lexicalThemes": [
+        "mailing a parcel",
+        "address details",
+        "asking for clarification",
+        "checking information aloud"
+      ],
+      "targetVocabulary": [
+        "parcel",
+        "sender",
+        "return address",
+        "destination",
+        "building number",
+        "apartment number",
+        "label",
+        "read back"
+      ],
+      "brief": "Dana and postal clerk Yossi check the destination and return addresses on a parcel label. Dana supplies a missing apartment number, verifies both addresses, and hands over the parcel.",
+      "storyPattern": {
+        "goal": "Make sure a parcel label contains clear destination and return details",
+        "relationship": "Parcel sender and postal clerk",
+        "interaction": "Ask where the return address belongs, notice a missing apartment number, and verify the clerk’s read-back",
+        "outcome": "Print and check a corrected label before the sender hands over the parcel"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-22",
+      "storyId": "new-worker-asks-to-see-a-task-demonstrated",
+      "domain": "employment_jobs",
+      "scenario": "new_employee_learns_to_arrange_a_small_display",
+      "lexicalThemes": [
+        "starting work",
+        "asking for a demonstration",
+        "learning a task"
+      ],
+      "targetVocabulary": [
+        "show me",
+        "once",
+        "step",
+        "arrange",
+        "on my own"
+      ],
+      "brief": "On her first day at work, a new employee asks her coworker Noa to demonstrate how to arrange a small display once. After watching the steps, she arranges it herself.",
+      "storyPattern": {
+        "goal": "Learn how to arrange a small display by watching it demonstrated",
+        "relationship": "New worker and experienced coworker",
+        "interaction": "Ask the coworker to demonstrate the task once, then repeat the steps independently",
+        "outcome": "Complete the display without further help"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-22",
+      "storyId": "coworkers-clarify-which-task-can-wait",
+      "domain": "employment_jobs",
+      "scenario": "coworkers_choose_between_two_individual_tasks_after_one_worker_states_a_time_limit",
+      "lexicalThemes": [
+        "work priorities",
+        "time limits",
+        "agreement"
+      ],
+      "targetVocabulary": [
+        "which first",
+        "before lunch",
+        "finish",
+        "set aside",
+        "agree"
+      ],
+      "brief": "At work, a woman told her coworker she had two tasks but could finish only one before lunch. They agreed to start with the customer sample, and she set the other task aside.",
+      "storyPattern": {
+        "goal": "Choose one task to complete within a limited time",
+        "relationship": "Coworkers sharing a shift",
+        "interaction": "State a time constraint and agree which task takes priority",
+        "outcome": "Start the agreed task and set the other aside"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-22",
+      "storyId": "resident-prepares-an-extra-copy-of-an-identity-document",
+      "domain": "government_documents",
+      "scenario": "resident_notices_a_cropped_copy_of_an_identity_document_and_makes_a_complete_copy",
+      "lexicalThemes": [
+        "appointment preparation",
+        "copies",
+        "checking a document"
+      ],
+      "targetVocabulary": [
+        "copy",
+        "original",
+        "page",
+        "complete",
+        "keep together"
+      ],
+      "brief": "While preparing her papers for an appointment, a resident noticed that part of the page was missing from her identity document copy. She made a new copy showing the whole page and kept it with the original.",
+      "storyPattern": {
+        "goal": "Prepare a complete copy of a document for an appointment",
+        "relationship": "Resident preparing her own papers",
+        "interaction": "Notice that part of the page is missing from the copy and make a clearer one",
+        "outcome": "Keep the complete copy with the original"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-22",
+      "storyId": "tenant-asks-before-using-a-removable-door-hook",
+      "domain": "housing_landlord",
+      "scenario": "tenant_checks_with_landlord_before_attaching_a_removable_hook_to_a_closet_door",
+      "lexicalThemes": [
+        "rental home",
+        "asking permission",
+        "small household choice"
+      ],
+      "targetVocabulary": [
+        "removable",
+        "hook",
+        "drill",
+        "closet door",
+        "is it all right"
+      ],
+      "brief": "A tenant wanted to hang a coat without drilling into the wall. She asked her landlord if she could use a removable hook on the inside of the closet door. He agreed, and she put the hook there.",
+      "storyPattern": {
+        "goal": "Hang a coat without making a permanent change",
+        "relationship": "Tenant and landlord",
+        "interaction": "Explain the preferred no-drill option and ask before using it",
+        "outcome": "Get agreement and attach the removable hook"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-22",
+      "storyId": "resident-changes-a-service-visit-to-a-later-time",
+      "domain": "home_repairs_utilities",
+      "scenario": "resident_changes_a_home_service_visit_to_a_later_time",
+      "lexicalThemes": [
+        "service visit",
+        "scheduling",
+        "polite refusal"
+      ],
+      "targetVocabulary": [
+        "that time",
+        "not suitable for me",
+        "later",
+        "be at home",
+        "agree"
+      ],
+      "brief": "A resident receives a call offering a home service visit at a time when she will be at work. She declines that time and agrees to a later one when she can be home.",
+      "storyPattern": {
+        "goal": "Arrange a service visit at a time the resident can attend",
+        "relationship": "Resident and service scheduler",
+        "interaction": "Decline an offered time and agree on a later alternative",
+        "outcome": "Agree on a time when the resident can be home"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-22",
+      "storyId": "resident-asks-which-bin-takes-a-large-box",
+      "domain": "municipal_services",
+      "scenario": "resident_asks_worker_where_to_leave_delivery_box",
+      "lexicalThemes": [
+        "local errands",
+        "recycling",
+        "asking for directions",
+        "household delivery"
+      ],
+      "targetVocabulary": [
+        "cardboard",
+        "large box",
+        "where should I put",
+        "marked area",
+        "recycling"
+      ],
+      "brief": "A resident received a household delivery and asked a nearby municipal worker where to leave the large cardboard box. The worker pointed out the marked recycling area, where she left it.",
+      "storyPattern": {
+        "goal": "Leave a bulky recyclable item in the right place",
+        "relationship": "Resident and municipal worker",
+        "interaction": "Describe the item and ask where it belongs",
+        "outcome": "Locate the marked recycling area and leave the box there"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-22",
+      "storyId": "parent-and-child-choose-what-to-pack-for-school",
+      "domain": "school_childcare",
+      "scenario": "parent_and_child_choose_a_small_doll_to_leave_room_for_school_books",
+      "lexicalThemes": [
+        "school routine",
+        "family discussion",
+        "making room"
+      ],
+      "targetVocabulary": [
+        "school bag",
+        "books",
+        "large doll",
+        "small doll",
+        "room",
+        "fit"
+      ],
+      "brief": "Yesterday morning, Maya wanted to put a large doll in her school bag. Her father explained that there was little room and the books needed to fit. They chose a small doll, and the books fit in the bag.",
+      "storyPattern": {
+        "goal": "Pack a school bag with room for the necessary books",
+        "relationship": "A father and daughter getting ready for school",
+        "interaction": "The father explains the space limit and they choose a smaller toy together",
+        "outcome": "They pack a small doll and the books fit in the bag"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-22",
+      "storyId": "recipient-arranges-to-collect-a-parcel-after-work",
+      "domain": "postal_parcels",
+      "scenario": "recipient_and_brother_agree_he_will_collect_a_parcel_in_the_afternoon",
+      "lexicalThemes": [
+        "mail and parcels",
+        "work commitments",
+        "sharing an errand"
+      ],
+      "targetVocabulary": [
+        "הודעה על חבילה",
+        "לאסוף",
+        "בבוקר",
+        "אחר הצהריים",
+        "יכול"
+      ],
+      "brief": "After seeing a parcel notice on her way to work, the recipient cannot collect the parcel in the morning. She asks her brother, who is at home, to collect it in the afternoon, and he agrees.",
+      "storyPattern": {
+        "goal": "Arrange for a parcel to be collected despite a work commitment",
+        "relationship": "Recipient and her brother, a household member",
+        "interaction": "Explain the timing problem and ask for help with the errand",
+        "outcome": "Agree that her brother will collect it later"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-22",
+      "storyId": "shopper-chooses-a-shirt-for-a-work-uniform",
+      "domain": "shopping_returns",
+      "scenario": "shopper_compares_two_work_shirts_by_rolling_up_the_sleeves",
+      "lexicalThemes": [
+        "clothes",
+        "work needs",
+        "stating a preference"
+      ],
+      "targetVocabulary": [
+        "שרוולים",
+        "קצה",
+        "להפשיל",
+        "נוח",
+        "לבחור"
+      ],
+      "brief": "A shopper compares the cuffs of two shirts for work, checks how easily she can roll up each sleeve, and chooses the one that feels more convenient.",
+      "storyPattern": {
+        "goal": "Choose a work shirt that suits a practical clothing preference",
+        "relationship": "Shopper acting independently",
+        "interaction": "Compare two cuffs by trying how easily each sleeve rolls",
+        "outcome": "Choose the shirt with the more convenient sleeves"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-22",
+      "storyId": "subscriber-asks-how-to-check-home-internet-usage",
+      "domain": "phone_internet",
+      "scenario": "subscriber_calls_provider_and_opens_connected_device_list",
+      "lexicalThemes": [
+        "phone and internet",
+        "household video calls",
+        "checking a setting"
+      ],
+      "targetVocabulary": [
+        "video call",
+        "pausing",
+        "connected devices",
+        "where can I see",
+        "open the list"
+      ],
+      "brief": "A subscriber's home video call kept pausing. The subscriber called the internet provider, asked where to view connected devices, and opened the device list in the account after the representative explained where to find it.",
+      "storyPattern": {
+        "goal": "See which devices are connected to the household internet",
+        "relationship": "Subscriber and provider representative",
+        "interaction": "Describe the connection issue and ask where to view connected devices",
+        "outcome": "Open the device list in the account"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-22",
+      "storyId": "coworker-offers-to-swap-a-work-shift",
+      "domain": "employment_jobs",
+      "scenario": "coworkers_agree_to_exchange_two_shifts_to_accommodate_a_family_commitment",
+      "lexicalThemes": [
+        "work schedule",
+        "family responsibilities",
+        "offer and agreement"
+      ],
+      "targetVocabulary": [
+        "family commitment",
+        "trade shifts",
+        "Thursday",
+        "Saturday",
+        "instead"
+      ],
+      "brief": "A worker explains that she has a family commitment on Thursday and asks her coworker to exchange shifts. He agrees to work Thursday, and she agrees to take his Saturday shift.",
+      "storyPattern": {
+        "goal": "Adjust a work shift to accommodate a family commitment",
+        "relationship": "Coworkers who can exchange shifts",
+        "interaction": "Explain the scheduling need and propose a reciprocal swap",
+        "outcome": "Agree on which shift each person will work"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-22",
+      "storyId": "new-employee-practices-a-stock-check",
+      "domain": "employment_jobs",
+      "scenario": "new_employee_records_stock_and_flags_unclear_box",
+      "lexicalThemes": [
+        "starting a new job",
+        "stock counting",
+        "opened packages",
+        "asking for clarification",
+        "recording an unclear item"
+      ],
+      "targetVocabulary": [
+        "בדיקת מלאי",
+        "לספור",
+        "חבילות פתוחות",
+        "מדף",
+        "תווית",
+        "רשימת מוצרים",
+        "לרשום",
+        "לסמן"
+      ],
+      "brief": "During her first week at a small shop, Maya learns how to count stock, record opened packages separately, and flag a box with an unclear label for the manager.",
+      "storyPattern": {
+        "goal": "Learn a practical work procedure and complete an assigned stock check accurately",
+        "relationship": "New employee and experienced coworker",
+        "interaction": "Maya asks what to include in the count and how to identify a box with an unclear label; Lior explains the procedure and shows her the product list",
+        "outcome": "Maya records the clear items, flags the unclear box for the manager, and counts the remaining items"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-22",
+      "storyId": "shopper-exchanges-shoes-that-pinch",
+      "domain": "shopping_returns",
+      "scenario": "shopper_exchanges_narrow_shoes_for_a_pair_that_fits_without_slipping",
+      "lexicalThemes": [
+        "clothing and footwear",
+        "fit and comfort",
+        "explaining a preference",
+        "exchange at a shop"
+      ],
+      "targetVocabulary": [
+        "shoes",
+        "pinch",
+        "toes",
+        "narrow",
+        "wide",
+        "heel",
+        "try on",
+        "exchange",
+        "receipt"
+      ],
+      "brief": "Roni exchanges new shoes that pinch near the toes for a different model that feels comfortable and secure without slipping at the heel.",
+      "storyPattern": {
+        "goal": "Replace an uncomfortable purchase with an option that fits a specific need",
+        "relationship": "Shopper and shop worker",
+        "interaction": "Describe the fit problem and weigh a wider style against the risk of heel slippage",
+        "outcome": "Try a different model, test it by walking, and exchange the original pair"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-22",
+      "storyId": "parent-and-child-adjust-after-school-pickup",
+      "domain": "school_childcare",
+      "scenario": "mother_arranges_for_listed_sister_to_collect_child_after_work_meeting_runs_late",
+      "lexicalThemes": [
+        "after-school care",
+        "family responsibilities",
+        "explaining a schedule change",
+        "confirming a pickup"
+      ],
+      "targetVocabulary": [
+        "after-school program",
+        "pick up",
+        "coordinator",
+        "approved contact",
+        "meeting",
+        "run late",
+        "confirm",
+        "collect"
+      ],
+      "brief": "In Haifa, a mother's work meeting ran late, so she arranged for her sister Yael, who was listed as an approved contact, to collect her daughter from the after-school program. She confirmed the pickup time with Yael and informed the coordinator; Yael collected the child as planned.",
+      "storyPattern": {
+        "goal": "Arrange a dependable change to a child’s pickup plan when work runs late",
+        "relationship": "A mother, her daughter, the after-school coordinator, and the mother's sister Yael",
+        "interaction": "Explain that a work meeting is running late, check that the sister is listed as an approved contact, and confirm the pickup time with her",
+        "outcome": "The sister agrees to collect the child, the coordinator is informed, and the child is collected as planned"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-22",
+      "storyId": "resident-prepares-documents-for-a-rental-registration-visit",
+      "domain": "government_documents",
+      "scenario": "resident_checks_move_related_documents_with_clerk_and_replaces_cut_off_copy",
+      "lexicalThemes": [
+        "preparing documents",
+        "address change",
+        "asking what is missing",
+        "clarifying a written record"
+      ],
+      "targetVocabulary": [
+        "identification",
+        "rental agreement",
+        "utility statement",
+        "photocopy",
+        "address",
+        "apartment number",
+        "file",
+        "clarify"
+      ],
+      "brief": "Michal visits a public-service office to update her address after moving. The clerk checks the documents she brought, shows her where the new address appears in the rental contract, and notes that she still needs to clarify whether a recent electricity bill is needed for this file. They spot that a photocopy cuts off the apartment number, so she makes a complete copy at the office. The clerk adds it to the file, gives her a note about the remaining question, and she leaves with her papers organized.",
+      "storyPattern": {
+        "goal": "Prepare a document file for an address-related visit and identify any remaining question",
+        "relationship": "Resident seeking help and public-service clerk reviewing her file",
+        "interaction": "Review the documents brought, clarify which part shows the new address, and notice that a copy is incomplete",
+        "outcome": "Replace the incomplete copy, organize the file, and leave with a specific item to clarify"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-22",
+      "storyId": "sender-and-postal-clerk-correct-a-return-address",
+      "domain": "postal_parcels",
+      "scenario": "sender_and_postal_clerk_complete_and_verify_both_addresses_on_a_parcel_label",
+      "lexicalThemes": [
+        "mailing a parcel",
+        "address details",
+        "asking for clarification",
+        "checking information aloud"
+      ],
+      "targetVocabulary": [
+        "parcel",
+        "sender",
+        "return address",
+        "destination",
+        "building number",
+        "apartment number",
+        "label",
+        "read back"
+      ],
+      "brief": "Dana and postal clerk Yossi verify the destination and return addresses on a small parcel label. Dana notices the apartment number is missing, supplies it, checks the corrected label, and hands over the parcel.",
+      "storyPattern": {
+        "goal": "Make sure a parcel label contains clear destination and return details",
+        "relationship": "Parcel sender and postal clerk",
+        "interaction": "Ask where the return address belongs, notice a missing apartment number, and verify the clerk’s read-back",
+        "outcome": "Print and check a corrected label before the sender hands over the parcel"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-22",
+      "storyId": "new-worker-asks-to-see-a-task-demonstrated",
+      "domain": "employment_jobs",
+      "scenario": "new_employee_learns_to_arrange_a_display_table_by_watching_coworker_dana_once",
+      "lexicalThemes": [
+        "starting work",
+        "demonstrating a task",
+        "learning by doing"
+      ],
+      "targetVocabulary": [
+        "show me",
+        "once",
+        "step",
+        "try",
+        "on my own"
+      ],
+      "brief": "On her first day at work, a new employee asks her experienced coworker Dana to demonstrate how to arrange a small display table. After watching once, she arranges it herself.",
+      "storyPattern": {
+        "goal": "Learn how to arrange a display by watching a demonstration",
+        "relationship": "New worker and experienced coworker",
+        "interaction": "Ask Dana to demonstrate the task once, then repeat it independently",
+        "outcome": "Arrange the display on her own without further help"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-22",
+      "storyId": "coworkers-clarify-which-task-can-wait",
+      "domain": "employment_jobs",
+      "scenario": "coworkers_choose_between_two_individual_tasks_after_one_worker_states_a_time_limit",
+      "lexicalThemes": [
+        "work priorities",
+        "time limits",
+        "agreement"
+      ],
+      "targetVocabulary": [
+        "which first",
+        "before lunch",
+        "finish",
+        "set aside",
+        "agree"
+      ],
+      "brief": "A worker has two tasks but can finish only one before lunch. She and her coworker agree to prioritize the customer sample, so she sets the other task aside and starts preparing the sample.",
+      "storyPattern": {
+        "goal": "Choose one task to complete within a limited time",
+        "relationship": "Coworkers sharing a shift",
+        "interaction": "State a time constraint and agree which task takes priority",
+        "outcome": "Start the agreed task and set the other aside"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-22",
+      "storyId": "resident-prepares-an-extra-copy-of-an-identity-document",
+      "domain": "government_documents",
+      "scenario": "resident_makes_a_complete_copy_of_an_identity_document_for_an_appointment",
+      "lexicalThemes": [
+        "preparing for an appointment",
+        "checking a document copy",
+        "keeping papers together"
+      ],
+      "targetVocabulary": [
+        "copy",
+        "original",
+        "edge",
+        "complete page",
+        "keep together"
+      ],
+      "brief": "While preparing for an appointment, a resident notices that the copy of her identity document is cropped at the edge. She makes a complete new copy and keeps it with the original.",
+      "storyPattern": {
+        "goal": "Prepare a complete copy of a document for an appointment",
+        "relationship": "A resident preparing her own papers",
+        "interaction": "She notices the cropped page and makes a clearer copy",
+        "outcome": "She keeps the complete copy with the original"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-22",
+      "storyId": "tenant-asks-before-using-a-removable-door-hook",
+      "domain": "housing_landlord",
+      "scenario": "tenant_checks_with_landlord_before_attaching_a_removable_hook_to_a_closet_door",
+      "lexicalThemes": [
+        "rental home",
+        "asking permission",
+        "small household choice"
+      ],
+      "targetVocabulary": [
+        "removable",
+        "hook",
+        "drill",
+        "closet door",
+        "is it all right"
+      ],
+      "brief": "A tenant wanted to hang a coat without making a permanent change. She asked her landlord whether she could use a removable hook instead of drilling into the wall. The landlord agreed, and the tenant put the hook on the inside of the closet door.",
+      "storyPattern": {
+        "goal": "Hang a coat without making a permanent change",
+        "relationship": "Tenant and landlord",
+        "interaction": "Explain the preferred no-drill option and ask before using it",
+        "outcome": "Get agreement and attach the removable hook"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-22",
+      "storyId": "resident-changes-a-service-visit-to-a-later-time",
+      "domain": "home_repairs_utilities",
+      "scenario": "resident_declines_an_offered_service_visit_time_and_agrees_on_a_later_one",
+      "lexicalThemes": [
+        "service appointment",
+        "scheduling",
+        "polite refusal"
+      ],
+      "targetVocabulary": [
+        "that time",
+        "won't suit me",
+        "later",
+        "be home",
+        "agree"
+      ],
+      "brief": "A service scheduler calls Roni and offers a morning home visit. Since she will be at work, she declines that time and agrees with the scheduler on an afternoon visit when she can be home.",
+      "storyPattern": {
+        "goal": "Arrange a service visit at a time the resident can attend",
+        "relationship": "Resident and service scheduler",
+        "interaction": "Decline an offered time and discuss a later alternative",
+        "outcome": "Agree on a time when the resident can be home"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-22",
+      "storyId": "resident-asks-which-bin-takes-a-large-box",
+      "domain": "municipal_services",
+      "scenario": "resident_checks_where_to_place_a_large_cardboard_box_for_recycling",
+      "lexicalThemes": [
+        "local errands",
+        "recycling",
+        "asking for directions"
+      ],
+      "targetVocabulary": [
+        "cardboard",
+        "large box",
+        "where should I put",
+        "marked area",
+        "recycling"
+      ],
+      "brief": "A resident has a large cardboard box from a household delivery and is unsure where to leave it. She asks a nearby municipal worker, who points out the marked recycling area.",
+      "storyPattern": {
+        "goal": "Leave a bulky recyclable item in the right place",
+        "relationship": "Resident and municipal worker",
+        "interaction": "Describe the item and ask where it belongs",
+        "outcome": "Locate the marked recycling area"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-22",
+      "storyId": "parent-and-child-choose-what-to-pack-for-school",
+      "domain": "school_childcare",
+      "scenario": "mother_and_daughter_choose_a_small_doll_to_leave_room_for_school_books",
+      "lexicalThemes": [
+        "school routine",
+        "family discussion",
+        "making room"
+      ],
+      "targetVocabulary": [
+        "school bag",
+        "books",
+        "large doll",
+        "small doll",
+        "fit"
+      ],
+      "brief": "In the morning, Noa wants to take a large doll to school, but there is not much room in her bag for her books. Her mother suggests a small doll instead, and Noa agrees; the books fit in the bag.",
+      "storyPattern": {
+        "goal": "Pack a school bag that has room for necessary books",
+        "relationship": "Mother and daughter preparing for school",
+        "interaction": "The mother explains the space constraint and suggests choosing a smaller toy; they agree together",
+        "outcome": "They pack the small doll, and the books fit in the bag"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-22",
+      "storyId": "recipient-arranges-to-collect-a-parcel-after-work",
+      "domain": "postal_parcels",
+      "scenario": "recipient_and_brother_agree_he_will_collect_a_parcel_in_the_afternoon",
+      "lexicalThemes": [
+        "mail and parcels",
+        "work commitments",
+        "sharing an errand"
+      ],
+      "targetVocabulary": [
+        "parcel notice",
+        "collect",
+        "this morning",
+        "this afternoon",
+        "can you"
+      ],
+      "brief": "A woman sees a parcel notice before leaving for work and asks her brother, who is at home, to collect the parcel later that afternoon. He agrees.",
+      "storyPattern": {
+        "goal": "Arrange for a parcel to be collected despite a work commitment",
+        "relationship": "Recipient and household member (her brother)",
+        "interaction": "Explain the timing problem and ask for help with the errand",
+        "outcome": "Agree that her brother will collect the parcel later"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-22",
+      "storyId": "shopper-chooses-a-shirt-for-a-work-uniform",
+      "domain": "shopping_returns",
+      "scenario": "shopper_compares_shirt_cuffs_to_choose_one_with_sleeves_that_roll_easily",
+      "lexicalThemes": [
+        "clothes",
+        "work needs",
+        "stating a preference"
+      ],
+      "targetVocabulary": [
+        "sleeves",
+        "cuff",
+        "roll up",
+        "comfortable",
+        "choose"
+      ],
+      "brief": "A shopper compares the sleeve ends on two shirts for work, chooses the one whose sleeves are easier to roll up, and leaves the other on the hanger.",
+      "storyPattern": {
+        "goal": "Choose a work shirt that suits a practical clothing preference",
+        "relationship": "Shopper acting independently",
+        "interaction": "Compare two cuffs by trying how easily each sleeve rolls",
+        "outcome": "Choose the shirt with the more convenient sleeves"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-22",
+      "storyId": "subscriber-asks-how-to-check-home-internet-usage",
+      "domain": "phone_internet",
+      "scenario": "subscriber_calls_provider_to_open_home_internet_device_list",
+      "lexicalThemes": [
+        "phone and internet",
+        "household needs",
+        "checking a setting"
+      ],
+      "targetVocabulary": [
+        "connection",
+        "pausing",
+        "connected devices",
+        "where can I see",
+        "open the list"
+      ],
+      "brief": "A subscriber's household video call keeps pausing. They call the internet provider, ask how to check which devices are connected to the home network, and open the list in their account.",
+      "storyPattern": {
+        "goal": "See which devices are connected to the household internet",
+        "relationship": "Subscriber and provider representative",
+        "interaction": "Describe the connection issue and ask where to view connected devices",
+        "outcome": "Open the device list in the account"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-22",
+      "storyId": "coworker-offers-to-swap-a-work-shift",
+      "domain": "employment_jobs",
+      "scenario": "coworkers_agree_to_exchange_two_shifts_to_accommodate_a_family_commitment",
+      "lexicalThemes": [
+        "work schedule",
+        "family responsibilities",
+        "offering and agreeing to exchange shifts"
+      ],
+      "targetVocabulary": [
+        "אירוע משפחתי",
+        "להחליף משמרות",
+        "יום חמישי",
+        "יום שבת",
+        "במקומי",
+        "במקומו"
+      ],
+      "brief": "A worker has a family commitment on Thursday and asks her coworker Omer to exchange shifts. He agrees to work Thursday, and she will work his Saturday shift.",
+      "storyPattern": {
+        "goal": "Adjust a work shift to accommodate a family commitment",
+        "relationship": "Coworkers who can exchange shifts",
+        "interaction": "Explain the scheduling need and propose a reciprocal swap",
+        "outcome": "Omer agrees to work Thursday, and the worker agrees to take his Saturday shift"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-22",
+      "storyId": "new-employee-practices-a-stock-check",
+      "domain": "employment_jobs",
+      "scenario": "new_employee_learns_to_record_opened_stock_separately_during_inventory",
+      "lexicalThemes": [
+        "starting a new job",
+        "stock and inventory",
+        "asking for clarification",
+        "recording an exception"
+      ],
+      "targetVocabulary": [
+        "stock check",
+        "count",
+        "opened package",
+        "shelf",
+        "label",
+        "product list",
+        "record",
+        "flag"
+      ],
+      "brief": "During Maya's first week at a small shop, she helps coworker Lior check the stock. He explains how to count opened packages separately, shows her the product list to check a smudged label, and Maya records the clear items while flagging the unclear box for the supervisor.",
+      "storyPattern": {
+        "goal": "Learn a practical work procedure and complete an assigned task accurately",
+        "relationship": "New employee and experienced coworker",
+        "interaction": "Ask what belongs in the count, then clarify how to handle an item with an unreadable label",
+        "outcome": "Record the clear items and flag the unclear one for the supervisor"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-22",
+      "storyId": "shopper-exchanges-shoes-that-pinch",
+      "domain": "shopping_returns",
+      "scenario": "shopper_exchanges_narrow_shoes_for_a_pair_that_fits_without_slipping",
+      "lexicalThemes": [
+        "clothing and footwear",
+        "fit and comfort",
+        "explaining a preference",
+        "exchange at a shop"
+      ],
+      "targetVocabulary": [
+        "shoes",
+        "pinch",
+        "toes",
+        "narrow",
+        "wide",
+        "heel",
+        "try on",
+        "exchange",
+        "receipt"
+      ],
+      "brief": "Roni returns shoes that pinch near the toes, explains that she needs a wider fit without heel slippage, tests another style by walking in the shop, and exchanges the original pair.",
+      "storyPattern": {
+        "goal": "Replace an uncomfortable purchase with an option that fits a specific need",
+        "relationship": "Shopper and shop worker",
+        "interaction": "Describe the fit problem and weigh a wider style against the risk of heel slippage",
+        "outcome": "Try a different model, test it by walking, and exchange the original pair"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-22",
+      "storyId": "parent-and-child-adjust-after-school-pickup",
+      "domain": "school_childcare",
+      "scenario": "mother_arranges_for_sister_to_collect_child_after_work_meeting_runs_late",
+      "lexicalThemes": [
+        "after-school care",
+        "family responsibilities",
+        "work schedule changes",
+        "confirming a pickup handoff"
+      ],
+      "targetVocabulary": [
+        "צהרון",
+        "לאסוף",
+        "רכזת",
+        "אשת קשר מורשית",
+        "פגישת עבודה",
+        "התארכה",
+        "להתקשר",
+        "לעדכן"
+      ],
+      "brief": "In Haifa, a mother's work meeting runs late on a day she is due to collect her daughter from after-school care. She asks the coordinator whether her sister can collect the child; the coordinator checks that the sister is listed as an approved contact. The mother calls her sister with the pickup time, gets her agreement, and informs the coordinator. The sister collects the child as planned.",
+      "storyPattern": {
+        "goal": "Arrange a dependable change to a child's pickup plan when work runs late",
+        "relationship": "A mother, her daughter, the after-school coordinator, and the mother's sister",
+        "interaction": "The mother explains the delay and asks about her sister collecting the child; the coordinator verifies the sister is listed, and the mother confirms the time with her sister",
+        "outcome": "The sister agrees to collect the child, the coordinator is informed, and the pickup happens as planned"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-22",
+      "storyId": "resident-prepares-documents-for-a-rental-registration-visit",
+      "domain": "government_documents",
+      "scenario": "resident_checks_move_related_documents_with_clerk_and_replaces_cut_off_copy",
+      "lexicalThemes": [
+        "preparing documents",
+        "address change",
+        "asking what is missing",
+        "clarifying a written record",
+        "making a complete photocopy"
+      ],
+      "targetVocabulary": [
+        "identification",
+        "rental agreement",
+        "electricity bill",
+        "photocopy",
+        "address",
+        "apartment number",
+        "file",
+        "clarify"
+      ],
+      "brief": "Michal visits a public-service office after moving apartments to update her address record. Uri reviews her identification and rental agreement, points out the page showing the new address, and helps her replace a photocopy that cuts off the apartment number. Uri adds the complete copy to her file and gives her a note to clarify whether a recent electricity bill is needed.",
+      "storyPattern": {
+        "goal": "Prepare a document file for an address-related visit and identify any remaining question",
+        "relationship": "Resident seeking help and public-service clerk reviewing her file",
+        "interaction": "Review the documents brought, clarify which part shows the new address, and notice that a copy is incomplete",
+        "outcome": "Replace the incomplete copy, organize the file, and leave with a specific item to clarify"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-22",
+      "storyId": "sender-and-postal-clerk-correct-a-return-address",
+      "domain": "postal_parcels",
+      "scenario": "sender_and_postal_clerk_correct_and_verify_both_addresses_on_a_parcel_label",
+      "lexicalThemes": [
+        "mailing a parcel",
+        "destination and return addresses",
+        "asking where information belongs",
+        "reading back and checking details"
+      ],
+      "targetVocabulary": [
+        "parcel",
+        "sender",
+        "return address",
+        "destination",
+        "building number",
+        "apartment number",
+        "label",
+        "read back"
+      ],
+      "brief": "Dana mails a small parcel from a post office in Be’er Sheva. She asks clerk Yossi where the return address belongs on the label, notices the apartment number is missing from the destination address, supplies it, and checks Yossi’s read-back and the legibility of both addresses. Yossi prints a corrected label, and Dana attaches it and hands over the parcel.",
+      "storyPattern": {
+        "goal": "Make sure a parcel label contains clear destination and return details",
+        "relationship": "Parcel sender Dana and postal clerk Yossi",
+        "interaction": "Dana asks where the return address belongs, supplies the missing apartment number, and checks Yossi’s read-back",
+        "outcome": "Yossi prints a corrected label; Dana checks both addresses, attaches the label, and hands over the parcel"
+      },
+      "edition": "bet"
     }
   ]
 }
