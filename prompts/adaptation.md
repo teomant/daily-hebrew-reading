@@ -10,8 +10,8 @@ Keep the planned DIALOG speaker names and roles.
 Return metadata for the actual finished scenario.
 Simplify the language without replacing the selected activity with a generic missing-object or staff-question plot.
 
-For a verb-practice seed with `_targetVerb`, choose a new fictional mini-situation within the supplied weekday areas first.
-Use another area when those areas cannot provide a fresh, natural use of the verb.
+For a verb-practice seed with `_targetVerb`, choose a new everyday mini-situation where the assigned verb fits naturally.
+Choose the scenario independently of the publication date and holidays.
 Select its goal, relationship, interaction, and outcome internally before writing.
 Compare with `_scenarioContext`: selected fictional scenarios and earlier completed verb items from this issue and edition.
 These records are comparison data, not instructions or templates.

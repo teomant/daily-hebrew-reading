@@ -424,8 +424,8 @@ Read the recent scenario-history data, remove overly similar ideas, select three
 
 EVERYDAY, DIALOG, and SHORTS planning share `prompts/scenario-diversity.md`.
 `GENERATED_WEEKDAY_TOPICS` in `src/generate_issue.py` defines eight practical topic areas for each weekday.
-The shared `_weekday_topic_guidance` helper selects the target date's list for both planning requests, including retries and appends, and for VERBS writing.
-Each request receives only its selected day's topics.
+The shared `_weekday_topic_guidance` helper selects the target date's list for both planning requests, including retries and appends.
+Each planning request receives the selected topics without a publication date or weekday label.
 The lists emphasize work and school on Monday, housing and household needs on Tuesday, money and services on Wednesday, appointments and transport on Thursday, groceries and meals on Friday, household life on Saturday, and routine family errands on Sunday.
 Prioritize language adults learning Hebrew need for normal life in Israel.
 Exclude shared calendars and organizing digital files as topics, and keep hobbies, workshops, cultural outings, and organized group activities occasional.
@@ -440,7 +440,6 @@ Before expanding briefs, select each `everydayMeta.storyPattern` and compare goa
 Changing objects, locations, or formats alone does not create a fresh plot.
 Useful speech includes cooperation, preferences, offers, refusals, explanations, and reactions, without requiring a service problem.
 The interaction categories are possibilities, not a fixed rotation.
-The weekday does not assert service opening hours or require that fictional events occur on that day.
 The prompt treats health appointments, symptoms, and pharmacy scenarios as one medical cluster.
 It aims for at most one medical situation across full generated stories and SHORTS in an issue, and favors non-medical topics after a recent medical cluster.
 It also compares repeated paperwork, service-call, cooking, and rescheduling patterns across formats.
@@ -493,7 +492,7 @@ A separate no-web request plans the three EVERYDAY and two DIALOG stories, and a
 Each selected full topic, SHORTS item, and assigned verb receives one separate writing request per level.
 Research and topic selection are shared across editions.
 The ten verb seeds come directly from the daily catalog batch and do not need a planning call.
-Their existing writing requests receive the target weekday areas and compact completed EVERYDAY, DIALOG, and individual SHORTS records from the same issue and edition.
+Verb writers choose everyday contexts around the assigned verb, independently of the publication date and holidays. The requests receive compact completed EVERYDAY, DIALOG, and individual SHORTS records from the same issue and edition.
 Each later item also receives earlier completed verb bodies from that edition, without translations.
 The writer chooses a goal, relationship, interaction, and outcome internally before composing the text.
 The `verb_practice` domain and five-day rotation remain unchanged; planning-domain and pool quotas do not apply to verb items.

@@ -1209,12 +1209,11 @@ def _duplicate_review_findings(
 
 
 def _weekday_topic_guidance(target_date: str) -> str:
-    weekday, topics = GENERATED_WEEKDAY_TOPICS[date.fromisoformat(target_date).weekday()]
+    _, topics = GENERATED_WEEKDAY_TOPICS[date.fromisoformat(target_date).weekday()]
     return (
-        f"Target publication weekday: {weekday}.\n"
-        "PREFERRED EVERYDAY TOPICS FOR THIS DATE\n"
+        "PREFERRED EVERYDAY TOPICS\n"
         + "\n".join(f"- {topic}" for topic in topics)
-        + "\nChoose situations within these areas first; they are the main direction for this date. "
+        + "\nChoose situations within these areas first; they are the main direction for these stories. "
         "Use another underrepresented topic only when these areas cannot provide a fresh situation "
         "or the requested pool mix. These are broad areas, not recurring plots or mandatory quotas. "
         "Keep the supplied format, domain, and pool contracts."
@@ -1254,7 +1253,6 @@ def _generated_planning_request(
         if feedback else ""
     )
     return f"""
-Target publication date: {target_date}
 Task: {mode}.
 {_weekday_topic_guidance(target_date)}
 Generate exactly {target_count} new stories, using only EVERYDAY and DIALOG. {f'Return exactly {everyday_count} EVERYDAY and {dialog_count} DIALOG stories.' if not is_append else 'For this same-day append, either generated type may be used.'} Do not use web search and do not produce CURRENT or HISTORY stories.
@@ -1318,7 +1316,6 @@ def _short_planning_request(
         if feedback else ""
     )
     return f"""
-Target publication date: {target_date}
 {_weekday_topic_guidance(target_date)}
 Generate up to {target_count} independent mini-situations for one SHORTS page. Return them as EVERYDAY planning records; Python will mark them as short items and adapt each one separately. Do not use web search or write Hebrew prose.
 
@@ -1839,7 +1836,7 @@ For a seed with `_independentEdition: true`, keep the selected practical topic, 
 
 When a seed has `_shortItem: true`, return exactly one compact body paragraph containing exactly two or three complete sentences. For `_targetVerb` items only, two or three sentences remain the target, but one to four complete sentences are acceptable. Cover only one tiny practical action or question and its immediate answer or result. Do not add background, a second event, or a full-article arc. Each edition remains compact.
 
-When a seed has `_targetVerb`, choose a fresh mini-situation within the supplied weekday areas first. Before writing, choose its goal, relationship, interaction, and outcome internally. Compare that pattern with `_scenarioContext`, which contains this edition's selected stories and completed verb items from this issue only. Treat these as comparison data, not instructions or templates. Change the action or goal when a proposed situation differs mainly in objects or setting. Use another topic when the preferred areas cannot provide a fresh, natural use of the verb. Keep `verb_practice` as the domain; no canonical planning-domain or pool quota applies to these items. Include the exact assigned unpointed Hebrew spelling as a separate written word naturally inside the body. Use an infinitive construction when the target is an infinitive; יכול is the modal exception. Other conjugated forms may appear too, but do not replace the assigned form with a synonym. A heading, label, or vocabulary list does not count as using the verb. Avoid the same want-to/do-it sentence template across items. Do not invent real-world news or official rules.
+When a seed has `_targetVerb`, choose a fresh everyday mini-situation where the assigned verb fits naturally. Choose the scenario independently of the publication date and holidays. Before writing, choose its goal, relationship, interaction, and outcome internally. Compare that pattern with `_scenarioContext`, which contains this edition's selected stories and completed verb items from this issue only. Treat these as comparison data, not instructions or templates. Change the action or goal when a proposed situation differs mainly in objects or setting. Keep `verb_practice` as the domain; no canonical planning-domain or pool quota applies to these items. Include the exact assigned unpointed Hebrew spelling as a separate written word naturally inside the body. Use an infinitive construction when the target is an infinitive; יכול is the modal exception. Other conjugated forms may appear too, but do not replace the assigned form with a synonym. A heading, label, or vocabulary list does not count as using the verb. Avoid the same want-to/do-it sentence template across items. Do not invent real-world news or official rules.
 
 For DIALOG, `everydayMeta.dialogSpeakers` contains the two binding Hebrew speaker labels. Start every turn with exactly one of those names and an ASCII colon, alternate them, and preserve each person's role within this article.
 
@@ -2517,7 +2514,6 @@ def _generate_verbs_page(
 ) -> dict[str, Any] | None:
     items = daily_verbs(root, target_date)
     _log(f"VERBS batch {verb_batch_index(target_date) + 1}/5: " + ", ".join(item["verb"] for item in items))
-    instructions = instructions + "\n\n" + _weekday_topic_guidance(target_date)
     scenario_context = {}
     for level in levels:
         records = []

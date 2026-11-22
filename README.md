@@ -110,7 +110,7 @@ The assigned verb and per-item translation coverage remain required.
 Existing article allocations remain unchanged, and API usage stays in the normal cost logs.
 Same-day append does not regenerate or backfill the page.
 The fixed rotation is separate from the ordinary scenario repetition history.
-Verb writing receives the target weekday areas and compact scenario records from the completed fictional stories and SHORTS in the same edition.
+Verb writing chooses everyday contexts around each assigned verb and receives compact scenario records from the completed fictional stories and SHORTS in the same edition.
 Each later verb also receives the completed earlier verb bodies from that edition, without translations.
 The writer chooses a distinct goal and interaction before writing the mini-story.
 This adds current-issue context to existing requests, without loading older issues or adding planning calls.
@@ -169,7 +169,7 @@ Experience topics have no reserved daily slots and remain optional when they add
 Cooking is not the default alternative, and repeated cooking prompts have been reduced in the weekday lists.
 EVERYDAY, DIALOG, and SHORTS receive a topic list selected in `src/generate_issue.py` from the target publication weekday, plus a shared [diversity guide](prompts/scenario-diversity.md).
 Its themes rotate through work and school, housing and household needs, money and services, appointments and transport, groceries and meals, household life, and routine family errands.
-Each weekday has eight practical topic areas; the request includes only that day's list.
+Each weekday has eight practical topic areas; the request includes the selected list without the publication date or weekday label.
 Topics prioritize language adults need for normal life in Israel, exclude shared calendars, and reduce hobbies and organized activities.
 The preferred areas are the main direction for the date, without prescribing recurring plots.
 Planners use another underrepresented area only when the preferred areas cannot provide fresh situations or the requested pool mix.

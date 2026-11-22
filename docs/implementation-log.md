@@ -1,5 +1,10 @@
 # Implementation log
 
+## 2026-11-22
+
+- Keep weekday-based topic selection for EVERYDAY, DIALOG, and SHORTS in Python. Planning prompts receive the selected topics without the publication date or weekday label.
+- Remove daily topic guidance from VERBS. Choose a fresh situation around the assigned verb and keep same-edition comparison context.
+
 ## 2026-11-17
 
 - Fixed the remaining grouped-edition test fixture after CI reported one error among 148 tests.

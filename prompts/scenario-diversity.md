@@ -1,12 +1,11 @@
 # Shared generated-scenario diversity guide
 
 Apply this guide to EVERYDAY, DIALOG, and individual SHORTS together.
-Use the selected weekday topic list as the main direction, including on retries and same-day appends.
+Use the supplied topic list as the main direction, including on retries and same-day appends.
 Choose fresh situations within those areas first.
 Use another underrepresented allowed area only when the preferred areas repeat supplied material or cannot cover the requested pool mix.
 Keep the canonical domains, pool targets, format contracts, and recent-scenario exclusions.
 The areas are not recurring plots, mandatory quotas, or reasons to reduce a batch or discard a usable article.
-The publication weekday does not assert service opening hours or require fictional events to occur on that day.
 
 Before drafting detailed briefs, choose each scenario's goal, relationship, interaction, and outcome in `everydayMeta.storyPattern`.
 Describe these in compact English phrases without names, places, or replaceable objects.

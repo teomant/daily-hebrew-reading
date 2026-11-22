@@ -44,7 +44,7 @@ Past archived records without an edition remain valid and continue to inform top
 Keep the existing bounded content retries and annotation repair for each article.
 If writing fails for one edition, retain successful articles in other editions.
 SHORTS collects up to eleven successful items separately in each edition.
-VERBS writing receives the target weekday areas, compact completed fictional scenario records, and earlier completed verb bodies from the same issue and edition.
+VERBS writing chooses scenarios around each assigned verb and receives compact completed fictional scenario records, and earlier completed verb bodies from the same issue and edition.
 Other editions, older issues, translations, and failed verb items are not added to this context.
 Comparison data stays private and does not change the five-day verb rotation or add planning calls.
 A VERBS page publishes 1–10 successful assigned items in that edition.

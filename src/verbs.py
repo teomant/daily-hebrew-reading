@@ -50,7 +50,7 @@ def verb_seed(item: dict[str, Any], target_date: str) -> dict[str, Any]:
     return {
         "id": story_id, "slug": story_id, "type": "everyday", "category": "everyday",
         "brief": (
-            f"Create a fresh fictional everyday mini-situation for {target_date} centered on "
+            "Create a fresh fictional everyday mini-situation centered on "
             f"the Hebrew verb {item['verb']} ({item['meaning']}). "
             "Invent one concrete action and its immediate result, preferably in two or three sentences. "
             "One to four complete sentences are acceptable. "

@@ -129,7 +129,7 @@ class VerbTests(unittest.TestCase):
         self.assertIsNone(result)
         self.assertEqual(call.call_count, 90)  # Ten items, three editions, three bounded attempts.
 
-    def test_writing_uses_weekday_and_only_completed_same_edition_scenarios(self):
+    def test_writing_uses_same_edition_scenarios_without_daily_topics(self):
         items = daily_verbs(ROOT, self.day)
         level_ids = [level["id"] for level in self.levels]
         selected = []
@@ -155,11 +155,12 @@ class VerbTests(unittest.TestCase):
 
                 def respond(model, instructions, request, schema, **kwargs):
                     self.assertFalse(kwargs["use_web_search"])
-                    self.assertIn("Target publication weekday: Thursday.", instructions)
-                    self.assertNotIn("Target publication weekday: Friday.", instructions)
+                    self.assertNotIn("PREFERRED EVERYDAY TOPICS", instructions)
+                    self.assertNotIn("Target publication weekday:", instructions)
                     seeds, _ = json.JSONDecoder().raw_decode(
                         request.split("Selected topics and binding sourced research:\n", 1)[1].lstrip())
                     seed = seeds[0]
+                    self.assertNotIn(self.day, seed["brief"])
                     level_id, = schema["properties"]["adaptations"]["items"]["properties"]["levels"]["required"]
                     self.assertNotIn("_scenarioContextByLevel", seed)
                     context = seed["_scenarioContext"]
