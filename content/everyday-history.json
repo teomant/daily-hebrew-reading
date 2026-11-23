@@ -32257,6 +32257,1320 @@
         "outcome": "Yossi prints a corrected label; Dana checks both addresses, attaches the label, and hands over the parcel"
       },
       "edition": "bet"
+    },
+    {
+      "date": "2026-11-23",
+      "storyId": "coworkers-label-a-shared-charger",
+      "domain": "employment_jobs",
+      "scenario": "coworkers_identify_and_label_the_shared_tablet_charger",
+      "lexicalThemes": [
+        "work supplies",
+        "shared equipment",
+        "identifying objects"
+      ],
+      "targetVocabulary": [
+        "charger",
+        "drawer",
+        "label",
+        "tablet"
+      ],
+      "brief": "At work, Dana and Amir compare two similar chargers, check which connector fits the team tablet, label the matching charger, and return it to the shared drawer.",
+      "storyPattern": {
+        "goal": "Identify and mark shared equipment so coworkers can find it",
+        "relationship": "Coworkers sharing workplace supplies",
+        "interaction": "Compare similar items and mark the one that fits the team device",
+        "outcome": "Label the matching charger and return it to the shared drawer"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-23",
+      "storyId": "worker-offers-a-clear-task-update",
+      "domain": "employment_jobs",
+      "scenario": "worker_prepares_customer_forms_and_sends_coworker_a_status_update",
+      "lexicalThemes": [
+        "work updates",
+        "completed tasks",
+        "short messages"
+      ],
+      "targetVocabulary": [
+        "forms",
+        "ready",
+        "message",
+        "place"
+      ],
+      "brief": "A worker prepares customer forms, puts them in the agreed place, and sends her coworker a short update that they are ready.",
+      "storyPattern": {
+        "goal": "Let a coworker know that shared work materials are ready",
+        "relationship": "Coworkers sharing a small responsibility",
+        "interaction": "Finish the assigned preparation and send a concise status message",
+        "outcome": "The forms are set out and the coworker receives the update"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-23",
+      "storyId": "coworkers-agree-on-a-supply-replacement",
+      "domain": "employment_jobs",
+      "scenario": "coworkers_replace_a_dried_out_shared_marker_to_finish_a_team_note",
+      "lexicalThemes": [
+        "shared supplies",
+        "noticing a problem",
+        "offering help"
+      ],
+      "targetVocabulary": [
+        "marker",
+        "dry",
+        "spare",
+        "note"
+      ],
+      "brief": "A worker is writing a note for her team when the shared marker dries out. Her coworker Michal brings a spare marker, and they finish the note together.",
+      "storyPattern": {
+        "goal": "Finish a brief team note despite a failed shared supply",
+        "relationship": "Coworkers using common workplace materials",
+        "interaction": "The worker points out the unusable marker, and her coworker brings a replacement",
+        "outcome": "They use the spare marker to complete the note"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-23",
+      "storyId": "employee-asks-about-a-work-expense-entry",
+      "domain": "work_pay",
+      "scenario": "employee_records_a_taxi_receipt_with_an_uncertain_trip_description",
+      "lexicalThemes": [
+        "work expenses",
+        "receipts",
+        "describing a trip"
+      ],
+      "targetVocabulary": [
+        "receipt",
+        "taxi",
+        "visit",
+        "notes"
+      ],
+      "brief": "An employee shows her manager a work taxi receipt, explains that she cannot remember which visit it belongs to but remembers traveling to a clinic, and asks what to write in the notes. They record only the remembered destination without making any decision about reimbursement.",
+      "storyPattern": {
+        "goal": "Record a work-trip receipt accurately despite incomplete memory",
+        "relationship": "Employee and manager reviewing an expense note",
+        "interaction": "Explain what is remembered and agree on a factual description",
+        "outcome": "Write down the remembered destination without assuming reimbursement"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-23",
+      "storyId": "resident-checks-a-name-spelling-on-a-form",
+      "domain": "government_documents",
+      "scenario": "resident_verifies_a_street_name_spelling_before_completing_a_form",
+      "lexicalThemes": [
+        "forms",
+        "addresses",
+        "checking details"
+      ],
+      "targetVocabulary": [
+        "street name",
+        "spell",
+        "line",
+        "letter"
+      ],
+      "brief": "A resident filling out her own form is unsure how to spell a street name from memory. She leaves the line blank, checks the spelling in a letter she has with her, and completes the line.",
+      "storyPattern": {
+        "goal": "Enter an address accurately on a form",
+        "relationship": "Resident preparing her own paperwork",
+        "interaction": "Pause at an uncertain detail and compare it with a document she has",
+        "outcome": "Complete the line using the spelling on the letter"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-23",
+      "storyId": "parent-sends-a-school-absence-message",
+      "domain": "school_childcare",
+      "scenario": "parent_notifies_teacher_of_a_childs_one_day_absence",
+      "lexicalThemes": [
+        "school attendance",
+        "messages",
+        "absence"
+      ],
+      "targetVocabulary": [
+        "absent",
+        "today",
+        "teacher",
+        "folder"
+      ],
+      "brief": "A mother tells her child's teacher that her child is staying home from school today. The teacher acknowledges the message, and the mother puts the school folder aside.",
+      "storyPattern": {
+        "goal": "Tell a teacher that a child will not attend school that day",
+        "relationship": "Parent and teacher",
+        "interaction": "Send a brief attendance update and receive acknowledgment",
+        "outcome": "The teacher confirms receipt of the message"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-23",
+      "storyId": "caller-asks-a-coworker-to-repeat-a-number",
+      "domain": "phone_internet",
+      "scenario": "coworker_repeats_a_room_number_during_a_phone_call",
+      "lexicalThemes": [
+        "phone conversations",
+        "asking for repetition",
+        "numbers"
+      ],
+      "targetVocabulary": [
+        "call",
+        "repeat",
+        "slowly",
+        "number"
+      ],
+      "brief": "Neta speaks by phone with a coworker, asks them to repeat the unclear last digit of a room number slowly, then writes down the number after hearing it clearly.",
+      "storyPattern": {
+        "goal": "Hear and record a room number correctly",
+        "relationship": "Coworkers speaking by phone",
+        "interaction": "Ask the coworker to repeat an unclear final digit",
+        "outcome": "Hear the number clearly and write it down"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-23",
+      "storyId": "friend-replies-to-a-short-message",
+      "domain": "phone_internet",
+      "scenario": "friends_confirm_an_after_work_meeting_by_text",
+      "lexicalThemes": [
+        "texts",
+        "plans",
+        "confirmation"
+      ],
+      "targetVocabulary": [
+        "message",
+        "after work",
+        "meet",
+        "confirm"
+      ],
+      "brief": "On her break, Rina messages a friend to ask if they can still meet after work. Her friend says she can, and Rina confirms the meeting.",
+      "storyPattern": {
+        "goal": "Confirm a simple plan with a friend",
+        "relationship": "Friends coordinating briefly by message",
+        "interaction": "Ask whether the plan still works and reply with a clear confirmation",
+        "outcome": "Both friends confirm the meeting"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-23",
+      "storyId": "customer-returns-an-unused-notebook",
+      "domain": "shopping_returns",
+      "scenario": "customer_exchanges_an_unused_notebook_for_a_smaller_size",
+      "lexicalThemes": [
+        "returns",
+        "explaining a preference",
+        "size"
+      ],
+      "targetVocabulary": [
+        "notebook",
+        "unused",
+        "smaller",
+        "exchange"
+      ],
+      "brief": "Noa returns an unused notebook that is too large for her bag. The shop clerk exchanges it for a smaller notebook that fits.",
+      "storyPattern": {
+        "goal": "Replace an unused purchase with a more suitable size",
+        "relationship": "Customer and shop clerk",
+        "interaction": "Explain the mismatch and choose a smaller alternative",
+        "outcome": "Exchange the notebook for one that fits the bag"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-23",
+      "storyId": "passenger-offers-a-seat-to-a-parent",
+      "domain": "transport_fares_routes",
+      "scenario": "A passenger offers her bus seat to a mother holding a sleeping child.",
+      "lexicalThemes": [
+        "public transport",
+        "offering help",
+        "accepting an offer"
+      ],
+      "targetVocabulary": [
+        "seat",
+        "bus",
+        "offer",
+        "accept"
+      ],
+      "brief": "On a bus, a passenger sees a mother standing with a sleeping child in her arms. She offers her seat, the mother accepts and sits down, and the passenger moves to another open seat nearby.",
+      "storyPattern": {
+        "goal": "Make a bus seat available to someone who needs it more.",
+        "relationship": "Two passengers sharing public transport.",
+        "interaction": "One passenger offers her seat, and the mother accepts.",
+        "outcome": "The mother sits down, and the passenger moves to an open place nearby."
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-23",
+      "storyId": "neighbors-agree-to-quiet-a-door",
+      "domain": "neighbors_building",
+      "scenario": "neighbors_cooperate_to_close_a_shared_building_door_quietly",
+      "lexicalThemes": [
+        "neighbors",
+        "offering help",
+        "shared spaces"
+      ],
+      "targetVocabulary": [
+        "door",
+        "hold",
+        "quietly",
+        "groceries"
+      ],
+      "brief": "One neighbor hears the shared building door slam while the other carries groceries. She holds the door, and they close it gently together.",
+      "storyPattern": {
+        "goal": "Close a shared door without letting it slam",
+        "relationship": "Neighbors in the same building",
+        "interaction": "One neighbor holds the door while the other brings in groceries, and they close it together",
+        "outcome": "The door closes gently while the resident carries the groceries inside"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-23",
+      "storyId": "job-applicant-explains-limited-weekday-availability",
+      "domain": "employment_jobs",
+      "scenario": "applicant_explains_variable_evening_availability_in_cafe_interview",
+      "lexicalThemes": [
+        "job interviews",
+        "work experience",
+        "availability",
+        "part-time work",
+        "follow-up"
+      ],
+      "targetVocabulary": [
+        "interview",
+        "experience",
+        "available",
+        "evening shift",
+        "weekday",
+        "weekend",
+        "reliable",
+        "schedule",
+        "follow up"
+      ],
+      "brief": "At a neighborhood café, a job candidate explains her customer-service experience and limited evening availability. Because her classes end at different times, she cannot promise an early start. She and the café owner agree to meet again to discuss a possible evening schedule; no job offer is made.",
+      "storyPattern": {
+        "goal": "Explain relevant experience and limits on availability during a job interview",
+        "relationship": "Job applicant and prospective café employer",
+        "interaction": "Describe experience, answer questions about days and hours, and clarify why early starts are difficult",
+        "outcome": "Agree to discuss a possible evening schedule at a follow-up meeting without implying a job offer"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-23",
+      "storyId": "employee-asks-how-a-training-shift-appears-on-pay-record",
+      "domain": "work_pay",
+      "scenario": "new_employee_checks_orientation_label_on_work_record",
+      "lexicalThemes": [
+        "work records",
+        "first shifts",
+        "payroll questions",
+        "job duties",
+        "clarifying labels"
+      ],
+      "targetVocabulary": [
+        "work record",
+        "orientation",
+        "shift",
+        "hours",
+        "shadow",
+        "payroll coordinator",
+        "entry",
+        "match",
+        "clarify"
+      ],
+      "brief": "A new employee sees that her first workday is labeled חפיפה (orientation) on her work record. She explains that she shadowed an experienced coworker and then helped customers. The payroll coordinator explains that the label describes the type of shift, not what the pay will be, and shows her the listed hours and date. The employee checks them against her notes and writes down the coordinator’s name in case she remembers another detail.",
+      "storyPattern": {
+        "goal": "Understand an unfamiliar label on a work record without assuming what it means for pay",
+        "relationship": "New employee asking a payroll coordinator about her own record",
+        "interaction": "Describe the work performed, ask what the label means, and check the listed date and hours",
+        "outcome": "Understand the label and know whom to contact with any remaining factual question"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-23",
+      "storyId": "caller-clarifies-a-missed-call-about-a-family-plan",
+      "domain": "phone_internet",
+      "scenario": "sisters_clarify_missed_call_and_divide_family_station_pickup",
+      "lexicalThemes": [
+        "returning calls",
+        "explaining missed calls",
+        "family coordination",
+        "clarifying a misunderstanding",
+        "making a practical plan"
+      ],
+      "targetVocabulary": [
+        "missed call",
+        "call back",
+        "couldn't answer",
+        "what time",
+        "I thought you meant",
+        "pick up",
+        "station",
+        "instead",
+        "confirm"
+      ],
+      "brief": "During a work break, Liat returns her sister's missed call. They clarify that their father needs a ride from the train station on Friday evening, not a ride to their usual Saturday lunch. Since Liat will still be at work when the train arrives, her sister will pick him up, and Liat will meet him at home later. The sisters agree on the key handoff and send a message with the plan.",
+      "storyPattern": {
+        "goal": "Clarify the purpose of a missed call and divide a family errand around work commitments",
+        "relationship": "Sisters coordinating a parent's visit",
+        "interaction": "Return the call, correct an assumption about the plan, and compare each person's availability",
+        "outcome": "One sister handles the station pickup and the other meets their father at home; they confirm the key handoff"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-23",
+      "storyId": "shopper-and-clerk-find-a-practical-replacement-for-a-damaged-container",
+      "domain": "shopping_returns",
+      "scenario": "shopper_exchanges_food_container_after_testing_lid_closure",
+      "lexicalThemes": [
+        "describing a product problem",
+        "asking about exchange options",
+        "comparing sizes",
+        "testing a replacement",
+        "making a choice"
+      ],
+      "targetVocabulary": [
+        "lid",
+        "doesn’t close properly",
+        "exchange",
+        "same size",
+        "smaller",
+        "try it",
+        "stay shut",
+        "carry to work",
+        "replacement"
+      ],
+      "brief": "Maya brings a food container with a lid that will not stay shut to the shop. Erez checks it and offers two alternatives. Maya tests the similar-sized container, chooses it, and exchanges the original.",
+      "storyPattern": {
+        "goal": "Find a usable replacement for a household item whose closure fails",
+        "relationship": "Shopper and shop clerk",
+        "interaction": "Show the defect, compare available alternatives, and test a replacement before choosing",
+        "outcome": "Exchange the original for a similar-sized container whose lid closes securely"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-23",
+      "storyId": "coworkers-coordinate-a-temporary-loading-space",
+      "domain": "driving_parking",
+      "scenario": "coworkers_move_a_parked_car_briefly_to_unload_shared_work_supplies",
+      "lexicalThemes": [
+        "work supplies",
+        "temporary parking",
+        "unloading",
+        "clarifying duration",
+        "offering and agreeing"
+      ],
+      "targetVocabulary": [
+        "loading area",
+        "shared supplies",
+        "move the car",
+        "for a few minutes",
+        "visitor parking",
+        "unload",
+        "entrance",
+        "keep clear"
+      ],
+      "brief": "Two coworkers coordinate moving a car briefly so Dana can unload shared office supplies, then leave the loading area clear for the next delivery.",
+      "storyPattern": {
+        "goal": "Make brief access to a loading area possible for a shared work task",
+        "relationship": "Coworkers at the same workplace",
+        "interaction": "Explain the immediate need, clarify how long the space is needed, and agree on a practical parking alternative",
+        "outcome": "Move the parked car, unload the supplies, and leave the loading area available"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-23",
+      "storyId": "coworkers-label-a-shared-charger",
+      "domain": "employment_jobs",
+      "scenario": "coworkers_identify_and_label_the_shared_tablet_charger",
+      "lexicalThemes": [
+        "work supplies",
+        "shared equipment",
+        "identifying objects"
+      ],
+      "targetVocabulary": [
+        "charger",
+        "drawer",
+        "label",
+        "tablet"
+      ],
+      "brief": "At work, Dana and Amir compare two similar chargers, identify the one that fits the team tablet, label it, and return it to the shared drawer.",
+      "storyPattern": {
+        "goal": "Identify and mark shared equipment so coworkers can find it",
+        "relationship": "Coworkers sharing workplace supplies",
+        "interaction": "Compare similar items and mark the one that fits the team device",
+        "outcome": "Label the matching charger and return it to the shared drawer"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-23",
+      "storyId": "worker-offers-a-clear-task-update",
+      "domain": "employment_jobs",
+      "scenario": "worker_prepares_customer_forms_and_sends_coworker_a_status_update",
+      "lexicalThemes": [
+        "work updates",
+        "completed tasks",
+        "short messages"
+      ],
+      "targetVocabulary": [
+        "טפסים",
+        "מוכנים",
+        "הודעה",
+        "מקום"
+      ],
+      "brief": "A worker prepares customer forms before her coworker returns from a call, leaves the forms in their agreed place, and sends her a short update that they are ready.",
+      "storyPattern": {
+        "goal": "Let a coworker know that shared work materials are ready",
+        "relationship": "Coworkers sharing a small responsibility",
+        "interaction": "Finish the assigned preparation, put the forms in the agreed place, and send a concise status message",
+        "outcome": "The forms are in place and the coworker receives the update that they are ready"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-23",
+      "storyId": "coworkers-agree-on-a-supply-replacement",
+      "domain": "employment_jobs",
+      "scenario": "coworkers_replace_a_dried_out_shared_marker_to_finish_a_team_note",
+      "lexicalThemes": [
+        "shared supplies",
+        "noticing a problem",
+        "offering help",
+        "writing a team note"
+      ],
+      "targetVocabulary": [
+        "טוש",
+        "התייבש",
+        "נוסף",
+        "פתק",
+        "צוות"
+      ],
+      "brief": "At work, a woman starts writing a short note for the team, but the shared marker has dried out. Her coworker brings a spare marker, and they finish the note.",
+      "storyPattern": {
+        "goal": "Finish a brief team note despite a failed shared supply",
+        "relationship": "Coworkers using common workplace materials",
+        "interaction": "One coworker notices the shared marker has dried out, and the other brings a replacement",
+        "outcome": "They use the spare marker to finish the note"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-23",
+      "storyId": "resident-checks-a-name-spelling-on-a-form",
+      "domain": "government_documents",
+      "scenario": "resident_checks_street_name_on_letter_before_completing_form",
+      "lexicalThemes": [
+        "forms",
+        "addresses",
+        "checking details"
+      ],
+      "targetVocabulary": [
+        "street name",
+        "spell",
+        "line",
+        "letter"
+      ],
+      "brief": "While filling out a form, a resident reaches the street-name line and is unsure how to spell it. She leaves the line unfinished, checks a letter she has with her, and writes the name using the spelling in the letter.",
+      "storyPattern": {
+        "goal": "Enter an address accurately on a form",
+        "relationship": "Resident preparing her own paperwork",
+        "interaction": "Pause at an uncertain detail and compare it with a document she has",
+        "outcome": "Complete the line using the spelling on the letter"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-23",
+      "storyId": "parent-sends-a-school-absence-message",
+      "domain": "school_childcare",
+      "scenario": "mother_sends_teacher_a_same_day_absence_message",
+      "lexicalThemes": [
+        "school attendance",
+        "messages",
+        "absence"
+      ],
+      "targetVocabulary": [
+        "absent",
+        "today",
+        "teacher",
+        "folder"
+      ],
+      "brief": "A mother tells her child's teacher that he will stay home from school today. The teacher confirms she received the message, and the mother sets the school folder aside.",
+      "storyPattern": {
+        "goal": "Tell a teacher that a child will not attend school that day",
+        "relationship": "Parent and teacher",
+        "interaction": "Send a brief attendance update and receive acknowledgment",
+        "outcome": "The teacher confirms receipt of the message"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-23",
+      "storyId": "caller-asks-a-coworker-to-repeat-a-number",
+      "domain": "phone_internet",
+      "scenario": "coworker_repeats_a_room_number_during_a_phone_call",
+      "lexicalThemes": [
+        "phone conversations",
+        "asking for repetition",
+        "numbers"
+      ],
+      "targetVocabulary": [
+        "call",
+        "repeat",
+        "slowly",
+        "number"
+      ],
+      "brief": "Neta calls a male coworker to get a room number. She cannot hear the last digit, asks him to repeat it slowly, and writes down the number once she hears it clearly.",
+      "storyPattern": {
+        "goal": "Hear and record a room number correctly",
+        "relationship": "Coworkers speaking by phone",
+        "interaction": "Ask the coworker to repeat an unclear final digit slowly",
+        "outcome": "Write down the number after hearing it clearly"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-23",
+      "storyId": "friend-replies-to-a-short-message",
+      "domain": "phone_internet",
+      "scenario": "friends_confirm_an_after_work_meeting_by_text",
+      "lexicalThemes": [
+        "texts",
+        "plans",
+        "confirmation"
+      ],
+      "targetVocabulary": [
+        "הודעה",
+        "אחרי העבודה",
+        "להיפגש",
+        "לאשר"
+      ],
+      "brief": "During her break, Rina messages her friend Noa to ask whether they can still meet after work. Noa says she can, and Rina confirms that they will meet.",
+      "storyPattern": {
+        "goal": "Confirm a simple plan with a friend",
+        "relationship": "Friends coordinating briefly by message",
+        "interaction": "Ask whether the plan still works and reply with a clear confirmation",
+        "outcome": "Both friends confirm the meeting"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-23",
+      "storyId": "customer-returns-an-unused-notebook",
+      "domain": "shopping_returns",
+      "scenario": "customer_exchanges_an_unused_notebook_for_a_smaller_size",
+      "lexicalThemes": [
+        "returns",
+        "explaining a preference",
+        "size"
+      ],
+      "targetVocabulary": [
+        "notebook",
+        "unused",
+        "smaller",
+        "exchange"
+      ],
+      "brief": "A customer returned an unused notebook that was too large for her bag and exchanged it for a smaller one.",
+      "storyPattern": {
+        "goal": "Replace an unused purchase with a more suitable size",
+        "relationship": "Customer and shop clerk",
+        "interaction": "Explain the mismatch and choose a smaller alternative",
+        "outcome": "Exchange the notebook for one that fits the bag"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-23",
+      "storyId": "passenger-offers-a-seat-to-a-parent",
+      "domain": "transport_fares_routes",
+      "scenario": "passenger_offers_her_seat_to_a_father_holding_a_sleeping_child",
+      "lexicalThemes": [
+        "public transport",
+        "offering help",
+        "accepting an offer"
+      ],
+      "targetVocabulary": [
+        "seat",
+        "bus",
+        "offer",
+        "accept"
+      ],
+      "brief": "On a bus, a passenger notices a father standing with a sleeping child and offers him her seat. He accepts, and she moves to an open place nearby.",
+      "storyPattern": {
+        "goal": "Make a bus seat available to someone who needs it more",
+        "relationship": "Two passengers sharing public transport",
+        "interaction": "Offer a seat and respond to the other passenger’s acceptance",
+        "outcome": "The father sits down and the passenger takes another open place nearby"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-23",
+      "storyId": "neighbors-agree-to-quiet-a-door",
+      "domain": "neighbors_building",
+      "scenario": "neighbors_cooperate_to_close_a_shared_building_door_quietly",
+      "lexicalThemes": [
+        "neighbors",
+        "offering help",
+        "shared spaces"
+      ],
+      "targetVocabulary": [
+        "door",
+        "hold",
+        "quietly",
+        "groceries"
+      ],
+      "brief": "Yesterday, a neighbor came into the building carrying grocery bags. When the shared door nearly slammed, the other neighbor held it so she could close it gently and carry the bags inside.",
+      "storyPattern": {
+        "goal": "Close a shared door without letting it slam",
+        "relationship": "Neighbors in the same building",
+        "interaction": "One neighbor holds the door while the other carries groceries inside",
+        "outcome": "The neighbor closes the door gently and brings the groceries inside"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-23",
+      "storyId": "coworkers-prepare-a-workstation-for-the-next-shift",
+      "domain": "employment_jobs",
+      "scenario": "coworkers_clear_empty_boxes_from_a_shared_counter_at_shift_end",
+      "lexicalThemes": [
+        "workplace",
+        "shift handover",
+        "shared responsibilities",
+        "tidying"
+      ],
+      "targetVocabulary": [
+        "end of the shift",
+        "shared counter",
+        "empty boxes",
+        "clear",
+        "ready for the next shift"
+      ],
+      "brief": "At the end of their shift, Dana and her coworker clear empty boxes from their shared counter so it is ready for the next shift.",
+      "storyPattern": {
+        "goal": "Leave a shared work area ready for the next shift",
+        "relationship": "Coworkers finishing a shift together",
+        "interaction": "Dana notices empty boxes and asks Omer to help clear the shared counter",
+        "outcome": "They clear the counter, leaving it ready for the next shift"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-23",
+      "storyId": "job-applicant-explains-limited-weekday-availability",
+      "domain": "employment_jobs",
+      "scenario": "applicant_explains_variable_evening_availability_in_cafe_interview",
+      "lexicalThemes": [
+        "job interviews",
+        "work experience",
+        "availability",
+        "part-time work",
+        "follow-up"
+      ],
+      "targetVocabulary": [
+        "interview",
+        "experience",
+        "available",
+        "evening shift",
+        "weekday",
+        "weekend",
+        "reliable",
+        "schedule",
+        "follow up"
+      ],
+      "brief": "Dana interviews for a part-time job at a neighborhood café, describes her customer-service experience and varying class schedule, and agrees with the owner to meet again to discuss possible evening shifts without assuming she has been hired.",
+      "storyPattern": {
+        "goal": "Explain relevant experience and limits on availability during a job interview",
+        "relationship": "Job applicant and prospective café employer",
+        "interaction": "Describe experience, answer questions about days and hours, and clarify why early starts are difficult",
+        "outcome": "Agree to discuss a possible evening schedule at a follow-up meeting without implying a job offer"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-23",
+      "storyId": "employee-asks-how-a-training-shift-appears-on-pay-record",
+      "domain": "work_pay",
+      "scenario": "new_employee_checks_orientation_label_and_shift_hours",
+      "lexicalThemes": [
+        "work records",
+        "first shifts",
+        "payroll questions",
+        "job duties",
+        "clarifying labels"
+      ],
+      "targetVocabulary": [
+        "pay record",
+        "orientation",
+        "shift",
+        "hours",
+        "shadow",
+        "payroll coordinator",
+        "entry",
+        "match",
+        "clarify"
+      ],
+      "brief": "A new employee checks why her first work-record entry is labeled as an orientation shift. The payroll coordinator explains that the label describes the kind of shift, not a pay decision, and shows where the hours appear. The employee confirms the date and hours against her notes and writes down who to contact if she remembers another detail.",
+      "storyPattern": {
+        "goal": "Understand an unfamiliar label on a work record without assuming what it means for pay",
+        "relationship": "A new employee asking a payroll coordinator about her own record",
+        "interaction": "Describe the work she performed, ask what the label means, and check the listed date and hours",
+        "outcome": "Understand the label and know whom to contact with any remaining factual question"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-23",
+      "storyId": "caller-clarifies-a-missed-call-about-a-family-plan",
+      "domain": "phone_internet",
+      "scenario": "sisters_clarify_missed_call_and_divide_family_station_pickup",
+      "lexicalThemes": [
+        "returning calls",
+        "explaining missed calls",
+        "family coordination",
+        "clarifying a misunderstanding",
+        "making a practical plan"
+      ],
+      "targetVocabulary": [
+        "missed call",
+        "call back",
+        "couldn’t answer",
+        "what time",
+        "I thought you meant",
+        "pick up",
+        "station",
+        "instead",
+        "confirm"
+      ],
+      "brief": "During a work break, Liat returns her sister’s missed call. They clear up a misunderstanding about their father’s visit: her sister will pick him up from the station on Friday, and Liat will meet him at home after work. They agree that the sister will take the key and send a message with the plan.",
+      "storyPattern": {
+        "goal": "Clarify the purpose of a missed call and divide a family errand around work commitments",
+        "relationship": "Sisters coordinating a parent’s visit",
+        "interaction": "Return the call, correct an assumption about the plan, and compare each person’s availability",
+        "outcome": "One sister handles the station pickup and the other meets their father at home; they confirm the key handoff"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-23",
+      "storyId": "shopper-and-clerk-find-a-practical-replacement-for-a-damaged-container",
+      "domain": "shopping_returns",
+      "scenario": "shopper_exchanges_food_container_after_testing_lid_closure",
+      "lexicalThemes": [
+        "describing a product problem",
+        "asking about exchange options",
+        "comparing sizes",
+        "testing a replacement",
+        "making a choice"
+      ],
+      "targetVocabulary": [
+        "lid",
+        "doesn’t close properly",
+        "exchange",
+        "same size",
+        "smaller",
+        "try it",
+        "stay shut",
+        "carry to work",
+        "replacement"
+      ],
+      "brief": "Maya brings a food-storage container with a lid that will not stay shut to clerk Erez. They inspect the defect, compare a similar-sized and a smaller option, and test the smaller lid. Maya chooses and tests the similar-sized replacement, then exchanges the original for it.",
+      "storyPattern": {
+        "goal": "Find a usable replacement for a household item whose closure fails",
+        "relationship": "Shopper and shop clerk",
+        "interaction": "Show the defect, compare available alternatives, and test a replacement before choosing",
+        "outcome": "Exchange the original for a similar-sized container whose lid closes securely"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-23",
+      "storyId": "coworkers-coordinate-a-temporary-loading-space",
+      "domain": "driving_parking",
+      "scenario": "coworkers_move_a_parked_car_briefly_to_unload_shared_work_supplies",
+      "lexicalThemes": [
+        "work supplies",
+        "temporary parking",
+        "unloading",
+        "clarifying duration",
+        "offering and agreeing"
+      ],
+      "targetVocabulary": [
+        "loading area",
+        "shared supplies",
+        "move the car",
+        "for a few minutes",
+        "visitor parking",
+        "unload",
+        "entrance",
+        "keep clear"
+      ],
+      "brief": "Coworkers Dana and Erez coordinate a short move of Erez's car so Dana can unload shared office supplies, then leave the loading area available for the next delivery.",
+      "storyPattern": {
+        "goal": "Make brief access to a loading area possible for a shared work task",
+        "relationship": "Coworkers at the same workplace",
+        "interaction": "Dana explains the immediate need, clarifies that she needs the space for only a few minutes, and agrees with Erez on a practical parking alternative",
+        "outcome": "Erez moves his car to visitor parking, Dana unloads the supplies, and they agree to leave the loading area available for the next delivery"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-23",
+      "storyId": "coworkers-label-a-shared-charger",
+      "domain": "employment_jobs",
+      "scenario": "coworkers_identify_and_label_the_shared_tablet_charger",
+      "lexicalThemes": [
+        "work supplies",
+        "shared equipment",
+        "identifying objects"
+      ],
+      "targetVocabulary": [
+        "charger",
+        "drawer",
+        "label",
+        "tablet"
+      ],
+      "brief": "At work, Dana and Amir compare two similar chargers, check which connector fits the team tablet, label the matching charger, and return it to the shared drawer.",
+      "storyPattern": {
+        "goal": "Identify and mark shared equipment so coworkers can find it",
+        "relationship": "Coworkers sharing workplace supplies",
+        "interaction": "Compare similar chargers and check which connector fits the team tablet",
+        "outcome": "Label the matching charger and return it to the shared drawer"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-23",
+      "storyId": "worker-offers-a-clear-task-update",
+      "domain": "employment_jobs",
+      "scenario": "worker_finishes_shared_paperwork_and_sends_a_brief_status_update",
+      "lexicalThemes": [
+        "work updates",
+        "completed tasks",
+        "short messages"
+      ],
+      "targetVocabulary": [
+        "forms",
+        "ready",
+        "message",
+        "place"
+      ],
+      "brief": "A worker finishes preparing customer forms before her coworker Dana returns from a call. She puts the forms in the agreed place and sends Dana a short message that they are ready.",
+      "storyPattern": {
+        "goal": "Let a coworker know that shared work materials are ready",
+        "relationship": "Coworkers sharing a small responsibility",
+        "interaction": "Finish the assigned preparation and send a concise status message",
+        "outcome": "The forms are set out in the agreed place and the coworker receives the update"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-23",
+      "storyId": "coworkers-agree-on-a-supply-replacement",
+      "domain": "employment_jobs",
+      "scenario": "coworkers_replace_a_dried_out_shared_marker_to_finish_a_team_note",
+      "lexicalThemes": [
+        "shared work supplies",
+        "noticing a problem",
+        "offering and accepting help"
+      ],
+      "targetVocabulary": [
+        "טוש",
+        "התייבש",
+        "נוסף",
+        "פתק"
+      ],
+      "brief": "A worker writing a short note for her team finds that the shared marker has dried out. She tells her coworker, who brings a spare marker, and together they use it to finish the note.",
+      "storyPattern": {
+        "goal": "Finish a brief team note despite a dried-out shared marker",
+        "relationship": "Coworkers using common workplace materials",
+        "interaction": "The worker points out that the marker has dried out, and her coworker brings a replacement",
+        "outcome": "They use the spare marker to complete the note"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-23",
+      "storyId": "resident-checks-a-name-spelling-on-a-form",
+      "domain": "government_documents",
+      "scenario": "resident_verifies_a_street_name_spelling_before_completing_a_form",
+      "lexicalThemes": [
+        "forms",
+        "addresses",
+        "checking details"
+      ],
+      "targetVocabulary": [
+        "street name",
+        "spell",
+        "line",
+        "letter"
+      ],
+      "brief": "A resident filling out her own form is unsure how to spell a street name from memory. She leaves the line unfinished, checks the spelling against a letter in her bag, and completes the address line using the spelling on the letter.",
+      "storyPattern": {
+        "goal": "Enter an address accurately on a form",
+        "relationship": "Resident preparing her own paperwork",
+        "interaction": "Pause at an uncertain detail and compare it with a document she has",
+        "outcome": "Complete the line using the spelling on the letter"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-23",
+      "storyId": "parent-sends-a-school-absence-message",
+      "domain": "school_childcare",
+      "scenario": "mother_notifies_homeroom_teacher_of_noas_one_day_absence",
+      "lexicalThemes": [
+        "school attendance",
+        "messages",
+        "absence",
+        "school supplies"
+      ],
+      "targetVocabulary": [
+        "absent",
+        "today",
+        "homeroom teacher",
+        "message",
+        "school folder"
+      ],
+      "brief": "A mother messages Noa's homeroom teacher to say that Noa will stay home from school that day. The teacher replies that she received the message, and the mother puts Noa's school folder aside.",
+      "storyPattern": {
+        "goal": "Tell a teacher that a child will not attend school that day",
+        "relationship": "Mother and her child's homeroom teacher",
+        "interaction": "The mother sends a brief attendance update and the teacher acknowledges receipt",
+        "outcome": "The teacher confirms that she received the message, and the mother puts the child's school folder aside"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-23",
+      "storyId": "caller-asks-a-coworker-to-repeat-a-number",
+      "domain": "phone_internet",
+      "scenario": "coworker_repeats_a_room_number_during_a_phone_call",
+      "lexicalThemes": [
+        "phone conversations",
+        "asking for repetition",
+        "numbers"
+      ],
+      "targetVocabulary": [
+        "call",
+        "repeat",
+        "slowly",
+        "number"
+      ],
+      "brief": "During a phone call with a coworker, Neta cannot hear the last digit of a room number. She asks the coworker to repeat it slowly and writes down the corrected number.",
+      "storyPattern": {
+        "goal": "Hear and record a room number correctly",
+        "relationship": "Coworkers speaking by phone",
+        "interaction": "Ask the caller to repeat an unclear final digit",
+        "outcome": "Write down the number after hearing it clearly"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-23",
+      "storyId": "friend-replies-to-a-short-message",
+      "domain": "phone_internet",
+      "scenario": "friends_confirm_an_after_work_meeting_by_text",
+      "lexicalThemes": [
+        "texts",
+        "plans",
+        "confirmation"
+      ],
+      "targetVocabulary": [
+        "message",
+        "after work",
+        "meet",
+        "confirm"
+      ],
+      "brief": "During her break, Rina messages a friend to ask whether they are still meeting after work. Her friend says the plan works for her, and Rina confirms the meeting.",
+      "storyPattern": {
+        "goal": "Confirm a simple plan with a friend",
+        "relationship": "Friends coordinating briefly by message",
+        "interaction": "Ask whether the plan still works and reply with a clear confirmation",
+        "outcome": "Both friends confirm the meeting"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-23",
+      "storyId": "customer-returns-an-unused-notebook",
+      "domain": "shopping_returns",
+      "scenario": "customer_exchanges_unused_notebook_for_smaller_size",
+      "lexicalThemes": [
+        "returns",
+        "explaining a preference",
+        "notebook size",
+        "exchanging an item"
+      ],
+      "targetVocabulary": [
+        "מחברת",
+        "לא כתבתי בה",
+        "קטנה יותר",
+        "להחליף",
+        "החזרתי"
+      ],
+      "brief": "A customer returns an unused notebook that is too large for her bag and exchanges it for a smaller notebook that fits.",
+      "storyPattern": {
+        "goal": "Replace an unused purchase with a more suitable size",
+        "relationship": "Customer and shop clerk",
+        "interaction": "Explain that the notebook is too large and choose a smaller alternative",
+        "outcome": "Exchange the unused notebook for one that fits the customer’s bag"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-23",
+      "storyId": "passenger-offers-a-seat-to-a-parent",
+      "domain": "transport_fares_routes",
+      "scenario": "Passenger offers her bus seat to a parent with a sleeping child",
+      "lexicalThemes": [
+        "public transport",
+        "offering help",
+        "accepting an offer"
+      ],
+      "targetVocabulary": [
+        "seat",
+        "bus",
+        "offer",
+        "accept"
+      ],
+      "brief": "On a bus, a passenger sees a parent standing with a sleeping child, offers her seat, and then moves to another open place nearby after the parent accepts.",
+      "storyPattern": {
+        "goal": "Make a bus seat available to someone who needs it more",
+        "relationship": "Two passengers sharing public transport",
+        "interaction": "Offer a seat and respond to the other passenger’s acceptance",
+        "outcome": "The parent sits down and the passenger takes another open place nearby"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-23",
+      "storyId": "neighbors-agree-to-quiet-a-door",
+      "domain": "neighbors_building",
+      "scenario": "neighbors_cooperate_to_close_a_shared_building_door_quietly",
+      "lexicalThemes": [
+        "neighbors",
+        "offering help",
+        "shared spaces"
+      ],
+      "targetVocabulary": [
+        "door",
+        "hold",
+        "quietly",
+        "groceries"
+      ],
+      "brief": "A resident carrying grocery bags reaches the shared building door. His neighbor holds it open while he carries the bags inside, and they close it gently together.",
+      "storyPattern": {
+        "goal": "Close a shared door without letting it slam",
+        "relationship": "Neighbors in the same building",
+        "interaction": "The neighbor offers to hold the door while the resident brings groceries inside, and they close it gently together",
+        "outcome": "The resident carries the groceries inside and the shared door closes gently"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-23",
+      "storyId": "coworkers-prepare-a-workstation-for-the-next-shift",
+      "domain": "employment_jobs",
+      "scenario": "coworkers_clear_empty_boxes_from_a_shared_counter_at_shift_end",
+      "lexicalThemes": [
+        "workplace",
+        "shift handover",
+        "shared responsibilities",
+        "tidying"
+      ],
+      "targetVocabulary": [
+        "end of the shift",
+        "shared counter",
+        "empty boxes",
+        "clear",
+        "ready for the next shift"
+      ],
+      "brief": "At the end of their shift, Dana notices that the shared counter is full of empty boxes. She asks her coworker Uri to help clear them, and together they leave the counter ready for the next shift.",
+      "storyPattern": {
+        "goal": "Leave a shared work area ready for the next shift",
+        "relationship": "Coworkers finishing a shift together",
+        "interaction": "Dana notices clutter and asks Uri to help clear it",
+        "outcome": "They clear the counter and leave it ready for incoming coworkers"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-23",
+      "storyId": "job-applicant-explains-limited-weekday-availability",
+      "domain": "employment_jobs",
+      "scenario": "cafe_interview_about_variable_class_times_and_evening_availability",
+      "lexicalThemes": [
+        "job interviews",
+        "customer-service experience",
+        "class schedule",
+        "weekday evening availability",
+        "follow-up meeting"
+      ],
+      "targetVocabulary": [
+        "ראיון",
+        "ניסיון",
+        "לקוחות",
+        "זמינות",
+        "ערבים",
+        "אמצע השבוע",
+        "סוף השבוע",
+        "סידור עבודה",
+        "להתחייב",
+        "להיפגש שוב"
+      ],
+      "brief": "At a neighborhood café, a candidate with customer-service experience explains that her class times vary and that she can reliably work some weekday evenings, but cannot promise a fixed early start. The owner asks about days and occasional weekend work. They agree to meet again to discuss a possible evening schedule; no job offer is made.",
+      "storyPattern": {
+        "goal": "Explain relevant experience and limits on availability during a job interview",
+        "relationship": "Job applicant and prospective café employer",
+        "interaction": "Describe experience, answer questions about days and hours, and clarify why early starts are difficult",
+        "outcome": "Agree to discuss a possible evening schedule at a follow-up meeting without implying a job offer"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-23",
+      "storyId": "employee-asks-how-a-training-shift-appears-on-pay-record",
+      "domain": "work_pay",
+      "scenario": "new_employee_clarifies_orientation_label_on_work_record",
+      "lexicalThemes": [
+        "work records",
+        "first shifts",
+        "payroll questions",
+        "job duties",
+        "clarifying labels"
+      ],
+      "targetVocabulary": [
+        "pay record",
+        "orientation",
+        "shift",
+        "hours",
+        "shadow",
+        "payroll coordinator",
+        "entry",
+        "match",
+        "clarify"
+      ],
+      "brief": "A new employee sees that her first shift is labeled “orientation” in her work-hours record. She explains that she shadowed a coworker and helped customers, and the payroll coordinator clarifies that the label describes the shift type, not a payment decision. The employee checks the date and hours against her notes and writes down the coordinator’s name in case she remembers another detail.",
+      "storyPattern": {
+        "goal": "Understand an unfamiliar label on a work record without assuming what it means for pay",
+        "relationship": "New employee asking a payroll coordinator about her own record",
+        "interaction": "Describe the work performed, ask what the label means, and check the listed date and hours",
+        "outcome": "Understand the label and know whom to contact with any remaining factual question"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-23",
+      "storyId": "caller-clarifies-a-missed-call-about-a-family-plan",
+      "domain": "phone_internet",
+      "scenario": "sisters_clarify_missed_call_and_divide_father_station_pickup",
+      "lexicalThemes": [
+        "returning missed calls",
+        "explaining why a call was missed",
+        "clarifying family plans",
+        "coordinating a station pickup around work",
+        "confirming a key handoff"
+      ],
+      "targetVocabulary": [
+        "missed call",
+        "call back",
+        "couldn't answer",
+        "what time",
+        "I thought you meant",
+        "pick up",
+        "station",
+        "instead",
+        "key",
+        "confirm"
+      ],
+      "brief": "During a work break, Liat calls her sister back after a missed call. They clarify that their father is arriving by train on Friday evening, not coming for their usual Saturday lunch. Because Liat will still be at work, her sister will pick him up at the station and bring Liat the key; Liat will meet him at home later. They agree to send a short message with the plan.",
+      "storyPattern": {
+        "goal": "Clarify the purpose of a missed call and divide the family errand around work commitments",
+        "relationship": "Two sisters coordinating their father's visit",
+        "interaction": "One sister returns the call; they correct a misunderstanding about the visit and compare availability",
+        "outcome": "One sister picks their father up at the station and brings the key; the other meets him at home later, and they agree to send the plan in a message"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-23",
+      "storyId": "shopper-and-clerk-find-a-practical-replacement-for-a-damaged-container",
+      "domain": "shopping_returns",
+      "scenario": "shopper_exchanges_food_container_after_testing_lid_closure",
+      "lexicalThemes": [
+        "describing a product problem",
+        "asking about exchange options",
+        "comparing sizes",
+        "testing a replacement",
+        "making a choice"
+      ],
+      "targetVocabulary": [
+        "lid",
+        "doesn't close properly",
+        "exchange",
+        "same size",
+        "smaller",
+        "try it",
+        "stay shut",
+        "carry to work",
+        "replacement"
+      ],
+      "brief": "Maya shows shop clerk Erez that the lid on her recently purchased food-storage container lifts at one corner and does not stay shut. Erez tests it, offers a similar-sized container and a smaller one, and demonstrates the smaller container's lid. Maya decides it is too small for her lunch, tests the similar-sized replacement herself, then exchanges the original for it.",
+      "storyPattern": {
+        "goal": "Find a usable replacement for a household item whose closure fails",
+        "relationship": "Shopper and shop clerk",
+        "interaction": "Show the defect, compare available alternatives, and test a replacement before choosing",
+        "outcome": "Exchange the original for a similar-sized container whose lid closes securely"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-23",
+      "storyId": "coworkers-coordinate-a-temporary-loading-space",
+      "domain": "driving_parking",
+      "scenario": "coworkers_move_a_parked_car_briefly_to_unload_shared_work_supplies",
+      "lexicalThemes": [
+        "work supplies",
+        "temporary parking",
+        "unloading",
+        "clarifying duration",
+        "offering and agreeing"
+      ],
+      "targetVocabulary": [
+        "loading area",
+        "shared supplies",
+        "move the car",
+        "for a few minutes",
+        "visitor parking",
+        "unload",
+        "entrance",
+        "keep clear"
+      ],
+      "brief": "At their small office, Dana asks coworker Erez to move his car briefly so she can unload a box of shared work supplies. He first thinks she needs the loading area for the afternoon; she clarifies that she needs only a few minutes and suggests nearby visitor parking. Erez agrees, checks that she can reach the entrance with the box, moves his car, and they leave the loading area clear for the next delivery.",
+      "storyPattern": {
+        "goal": "Make brief access to a loading area possible for a shared work task",
+        "relationship": "Coworkers at the same workplace",
+        "interaction": "Explain the immediate need, clarify how long the space is needed, and agree on a practical parking alternative",
+        "outcome": "Move the parked car, unload the supplies, and leave the loading area available"
+      },
+      "edition": "bet"
     }
   ]
 }
