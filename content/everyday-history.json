@@ -33571,6 +33571,1326 @@
         "outcome": "Move the parked car, unload the supplies, and leave the loading area available"
       },
       "edition": "bet"
+    },
+    {
+      "date": "2026-11-24",
+      "storyId": "tenant-asks-about-a-second-bedroom",
+      "domain": "housing_landlord",
+      "scenario": "prospective_tenant_and_landlord_measure_small_bedroom_wall_for_desk",
+      "lexicalThemes": [
+        "rental viewing",
+        "room size",
+        "furniture fit"
+      ],
+      "targetVocabulary": [
+        "bedroom",
+        "desk",
+        "measure",
+        "fit"
+      ],
+      "brief": "A prospective tenant viewing an apartment checks with the female landlord whether a small bedroom can fit a bed and a desk. They measure the wall together and confirm that a narrow desk fits beside the bed.",
+      "storyPattern": {
+        "goal": "Check whether a room can serve two practical purposes",
+        "relationship": "Prospective tenant and landlord",
+        "interaction": "Describe the furniture need and measure the available wall together",
+        "outcome": "Confirm that a narrow desk fits beside the bed"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-24",
+      "storyId": "resident-tightens-a-loose-chair-leg",
+      "domain": "home_repairs_utilities",
+      "scenario": "resident_tightens_loose_screw_on_wobbly_dining_chair",
+      "lexicalThemes": [
+        "household repair",
+        "tools",
+        "testing stability"
+      ],
+      "targetVocabulary": [
+        "chair",
+        "wobble",
+        "screwdriver",
+        "tighten"
+      ],
+      "brief": "A resident notices that a dining chair wobbles, turns it over, tightens a loose screw with a screwdriver, and tests the chair. It stands steady.",
+      "storyPattern": {
+        "goal": "Make a wobbly household chair steady",
+        "relationship": "Resident acting independently",
+        "interaction": "Turn the chair over, identify a loose screw, and tighten it",
+        "outcome": "Test the chair and find it steady"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-24",
+      "storyId": "resident-checks-a-rent-receipt",
+      "domain": "bills_taxes",
+      "scenario": "Tenant asks landlady for rent receipt naming the covered month",
+      "lexicalThemes": [
+        "rent payment",
+        "receipt",
+        "payment period",
+        "confirmation"
+      ],
+      "targetVocabulary": [
+        "rent",
+        "receipt",
+        "month",
+        "confirmation"
+      ],
+      "brief": "A tenant pays rent, notices that the confirmation does not say which month the payment covers, and asks her landlady for a receipt naming the month. The landlady sends the requested receipt.",
+      "storyPattern": {
+        "goal": "Get a clear record of which rental period a payment covers",
+        "relationship": "Tenant and landlady",
+        "interaction": "Point out the missing detail and request a receipt that names the month",
+        "outcome": "Receive a receipt identifying the payment period"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-24",
+      "storyId": "worker-asks-for-a-pay-slip-copy",
+      "domain": "work_pay",
+      "scenario": "employee_requests_a_replacement_copy_of_a_missing_payslip",
+      "lexicalThemes": [
+        "pay records",
+        "workplace request",
+        "digital file"
+      ],
+      "targetVocabulary": [
+        "תלוש שכר",
+        "עותק",
+        "לשלוח",
+        "לשמור"
+      ],
+      "brief": "An employee cannot find the payslip she saved. She asks the payroll assistant to send another copy, receives the file, and saves it on her phone.",
+      "storyPattern": {
+        "goal": "Replace a missing personal pay record",
+        "relationship": "Employee and payroll assistant",
+        "interaction": "Explain that the saved payslip is missing and ask for another copy",
+        "outcome": "Receive and save a replacement file"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-24",
+      "storyId": "resident-asks-about-a-large-item-pickup",
+      "domain": "municipal_services",
+      "scenario": "resident_asks_municipal_worker_for_contact_about_armchair_collection",
+      "lexicalThemes": [
+        "bulky household item",
+        "municipal service",
+        "checking details"
+      ],
+      "targetVocabulary": [
+        "כורסה",
+        "פינוי",
+        "מספר שירות",
+        "לבדוק"
+      ],
+      "brief": "A resident with an old armchair asks a municipal worker where to check whether it can be collected. The worker points her to a service number on a notice, and she writes it down without assuming when collection is available.",
+      "storyPattern": {
+        "goal": "Find a way to verify how to handle a bulky household item",
+        "relationship": "Resident and municipal worker",
+        "interaction": "Describe the item and ask where to check collection arrangements",
+        "outcome": "Write down the relevant service contact while leaving availability unconfirmed"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-24",
+      "storyId": "neighbors-share-a-wall-protection-mat",
+      "domain": "neighbors_building",
+      "scenario": "neighbors_protect_a_shared_hallway_wall_while_carrying_a_bookcase",
+      "lexicalThemes": [
+        "neighborly cooperation",
+        "shared hallway",
+        "moving furniture"
+      ],
+      "targetVocabulary": [
+        "hallway",
+        "bookcase",
+        "blanket",
+        "hold"
+      ],
+      "brief": "A neighbor sees Dani carrying a narrow bookcase through the shared hallway. She holds a folded blanket against the wall while he guides the bookcase past the corner, and they get through without scraping the paint.",
+      "storyPattern": {
+        "goal": "Move furniture through a shared passage without scuffing the wall",
+        "relationship": "Neighbors sharing a building",
+        "interaction": "Offer a protective blanket and guide the furniture together",
+        "outcome": "Carry the bookcase past the corner without scraping the paint"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-24",
+      "storyId": "shopper-tests-a-laundry-basket-handle",
+      "domain": "shopping_returns",
+      "scenario": "shopper_compares_two_laundry_baskets_by_lifting_their_handles",
+      "lexicalThemes": [
+        "household purchase",
+        "laundry",
+        "comfort"
+      ],
+      "targetVocabulary": [
+        "סל כביסה (laundry basket)",
+        "ידית (handle)",
+        "מרימה (lifts)",
+        "נוח (comfortable)"
+      ],
+      "brief": "At a household-goods shop, a shopper lifts two laundry baskets by their handles and chooses the lighter one because its grip feels comfortable in her hand.",
+      "storyPattern": {
+        "goal": "Choose a laundry basket that is comfortable to carry",
+        "relationship": "Shopper acting independently",
+        "interaction": "Lift and compare two baskets by their handles",
+        "outcome": "Choose the lighter basket because its grip feels comfortable in her hand"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-24",
+      "storyId": "resident-coordinates-a-delivery-at-the-door",
+      "domain": "delivery_customer_service",
+      "scenario": "resident_directs_a_doorstep_delivery_inside_the_entry_while_busy_in_the_kitchen",
+      "lexicalThemes": [
+        "home delivery",
+        "giving directions",
+        "household task"
+      ],
+      "targetVocabulary": [
+        "delivery",
+        "package",
+        "entrance",
+        "leave"
+      ],
+      "brief": "A resident washing dishes asks the delivery worker to leave a small package just inside the entrance, then brings it to the kitchen after finishing at the sink.",
+      "storyPattern": {
+        "goal": "Receive a small delivery without interrupting an immediate household task",
+        "relationship": "Resident and delivery worker",
+        "interaction": "Request a specific safe placement just inside the entrance",
+        "outcome": "Bring the package into the kitchen after finishing at the sink"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-24",
+      "storyId": "housemates-clear-a-drying-rack",
+      "domain": "neighbors_building",
+      "scenario": "Housemates fold dry towels together to make room for a damp shirt on their shared drying rack.",
+      "lexicalThemes": [
+        "shared household space",
+        "laundry",
+        "cooperation"
+      ],
+      "targetVocabulary": [
+        "מתקן הייבוש",
+        "מגבות",
+        "לקפל",
+        "מקום"
+      ],
+      "brief": "Two housemates fold dry towels together to clear space on their shared drying rack for a damp shirt.",
+      "storyPattern": {
+        "goal": "Make room for a damp garment on a shared drying rack",
+        "relationship": "Housemates sharing laundry space",
+        "interaction": "Ask to move dry items and agree to fold them together",
+        "outcome": "Clear space for the damp shirt"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-24",
+      "storyId": "tenant-asks-to-use-a-shared-storage-room",
+      "domain": "housing_landlord",
+      "scenario": "tenant_checks_with_building_caretaker_before_placing_a_suitcase_in_shared_storage",
+      "lexicalThemes": [
+        "rental housing",
+        "shared storage",
+        "asking permission"
+      ],
+      "targetVocabulary": [
+        "suitcase",
+        "storage room",
+        "temporarily",
+        "block"
+      ],
+      "brief": "A tenant asks the building caretaker for temporary space for a folded suitcase that does not fit in her apartment closet. He shows her an available place in the shared storage room, and she puts the suitcase there without blocking the door.",
+      "storyPattern": {
+        "goal": "Find temporary space for a household item that does not fit at home",
+        "relationship": "Tenant and building caretaker",
+        "interaction": "Explain the space need and ask before using a shared area",
+        "outcome": "Place the suitcase in an indicated spot without blocking access"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-24",
+      "storyId": "neighbor-returns-a-misdelivered-household-item",
+      "domain": "neighbors_building",
+      "scenario": "resident_brings_misdelivered_parcel_to_named_neighbor",
+      "lexicalThemes": [
+        "building neighbors",
+        "parcel",
+        "apartment number",
+        "correcting a delivery mix-up"
+      ],
+      "targetVocabulary": [
+        "חבילה",
+        "מדבקה",
+        "מספר דירה",
+        "להביא"
+      ],
+      "brief": "A neighbor finds a small parcel by her door with another apartment number on the label. She brings it to the neighbor named on the parcel, who thanks her and takes it inside.",
+      "storyPattern": {
+        "goal": "Get a misdelivered household parcel to its intended neighbor",
+        "relationship": "Neighbors in the same building",
+        "interaction": "Check the apartment number and bring the parcel to the named resident",
+        "outcome": "The intended recipient thanks the neighbor and takes the parcel inside"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-24",
+      "storyId": "tenant-and-landlord-rethink-a-cramped-entryway",
+      "domain": "housing_landlord",
+      "scenario": "tenant_and_landlord_choose_low_removable_entryway_storage_after_measuring",
+      "lexicalThemes": [
+        "rental apartment needs",
+        "entryway storage",
+        "measuring space",
+        "explaining a preference",
+        "agreeing on a practical compromise"
+      ],
+      "targetVocabulary": [
+        "entryway",
+        "passage",
+        "shoe rack",
+        "cabinet",
+        "measure",
+        "narrow",
+        "removable",
+        "wall",
+        "block",
+        "fit"
+      ],
+      "brief": "Dana and her landlord measure the narrow apartment entryway, see that a tall shoe cabinet would block the door, and choose a low removable wall-mounted rack so shoes and bags have a place without blocking the entrance.",
+      "storyPattern": {
+        "goal": "Make a cramped home entrance functional without obstructing access",
+        "relationship": "Tenant and landlord",
+        "interaction": "Measure the available space, reject an impractical suggestion, and agree on a less intrusive alternative",
+        "outcome": "Install a compact removable storage solution while keeping the doorway clear"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-24",
+      "storyId": "resident-repairs-a-loose-drawer-runner",
+      "domain": "home_repairs_utilities",
+      "scenario": "resident_and_neighbor_realign_a_slipped_kitchen_drawer_runner",
+      "lexicalThemes": [
+        "household maintenance",
+        "describing a drawer problem",
+        "neighborly repair help",
+        "testing a repair"
+      ],
+      "targetVocabulary": [
+        "drawer",
+        "runner",
+        "screwdriver",
+        "tilt",
+        "catch",
+        "tighten",
+        "hold steady"
+      ],
+      "brief": "A resident and her neighbor inspect and realign a slipped kitchen drawer runner, then test the drawer and return the utensils.",
+      "storyPattern": {
+        "goal": "Restore a household drawer that tilts and catches",
+        "relationship": "Resident and nearby neighbor with basic repair skills",
+        "interaction": "Inspect the fitting together, identify a slipped runner, and cooperate on a small adjustment",
+        "outcome": "Test the drawer and return its contents after it slides properly"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-24",
+      "storyId": "resident-chooses-a-suitably-sized-storage-shelf",
+      "domain": "shopping_returns",
+      "scenario": "shopper_selects_narrow_adjustable_shelf_for_a_laundry_nook",
+      "lexicalThemes": [
+        "household storage purchase",
+        "describing space constraints",
+        "asking for a suitable alternative",
+        "checking fit and function",
+        "making a choice"
+      ],
+      "targetVocabulary": [
+        "laundry nook",
+        "shelf",
+        "washing machine",
+        "cabinet door",
+        "handle",
+        "measurements",
+        "narrower",
+        "adjustable",
+        "uneven tile",
+        "fit"
+      ],
+      "brief": "A resident chooses a narrow, adjustable shelf for the laundry nook after checking that it fits beside the washing machine, stands on the uneven floor, and leaves the cabinet door clear.",
+      "storyPattern": {
+        "goal": "Choose household storage that fits a constrained utility space and preserves access",
+        "relationship": "Shopper and home-goods clerk",
+        "interaction": "Explain the space and access needs, reject an option that obstructs a cabinet, and compare a narrower adjustable alternative",
+        "outcome": "Choose a shelf that fits beside the appliance without blocking the cabinet"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-24",
+      "storyId": "neighbors-coordinate-a-shared-laundry-room-cleanup",
+      "domain": "neighbors_building",
+      "scenario": "neighbors_dry_a_wet_shared_laundry_room_floor_before_use",
+      "lexicalThemes": [
+        "shared building facilities",
+        "raising a safety concern politely",
+        "explaining a household task",
+        "cooperation with a neighbor",
+        "agreeing on a next step"
+      ],
+      "targetVocabulary": [
+        "shared laundry room",
+        "wet floor",
+        "slip",
+        "basket",
+        "cloth",
+        "wipe",
+        "drain",
+        "dry",
+        "ready",
+        "take turns"
+      ],
+      "brief": "Noa and Amir, neighbors who share a building laundry room, explain that the floor is wet after Amir cleaned the machine filter. They use the room's cleaning cloth to dry the floor together, check that the drain is clear, and agree to leave the cloth hanging to dry before Noa starts her wash.",
+      "storyPattern": {
+        "goal": "Make a shared laundry space safe and usable after cleaning",
+        "relationship": "Neighbors sharing a building laundry room",
+        "interaction": "Explain the wet floor, respond to a concern, and cooperate on drying and checking the area",
+        "outcome": "Use the room safely and leave the cleaning cloth to dry"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-24",
+      "storyId": "neighbors-coordinate-a-bulky-delivery-in-the-lobby",
+      "domain": "delivery_customer_service",
+      "scenario": "neighbors_coordinate_a_large_flat_packed_delivery_through_a_shared_lobby",
+      "lexicalThemes": [
+        "home deliveries",
+        "shared building space",
+        "furniture and access",
+        "coordination with a neighbor"
+      ],
+      "targetVocabulary": [
+        "delivery",
+        "flat-packed",
+        "lobby",
+        "stroller",
+        "mailboxes",
+        "fire door",
+        "move aside",
+        "pass through",
+        "bring upstairs",
+        "clear path"
+      ],
+      "brief": "Noa and her neighbor Gil arrange for a long, narrow wardrobe package to be carried directly upstairs, temporarily moving the lobby bench so it can pass without blocking shared access. The delivery team brings it upstairs, and the lobby is left clear.",
+      "storyPattern": {
+        "goal": "Receive a bulky household delivery without obstructing a shared entrance",
+        "relationship": "Neighbors coordinating around one resident’s delivery",
+        "interaction": "Describe the access constraint, consider a temporary rearrangement, and agree on who will direct the movers and restore the space",
+        "outcome": "Bring the package directly upstairs and leave the shared lobby clear"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-24",
+      "storyId": "tenant-asks-about-a-second-bedroom",
+      "domain": "housing_landlord",
+      "scenario": "prospective_tenant_and_landlord_measure_a_small_bedroom_wall_to_check_desk_fit",
+      "lexicalThemes": [
+        "rental viewing",
+        "room size",
+        "furniture fit"
+      ],
+      "targetVocabulary": [
+        "bedroom",
+        "desk",
+        "measure",
+        "fit"
+      ],
+      "brief": "A prospective tenant viewing an apartment asks the landlord whether the small room can fit a bed and a desk. They measure the wall together and confirm that a narrow desk fits beside the bed.",
+      "storyPattern": {
+        "goal": "Check whether a room can serve two practical purposes",
+        "relationship": "Prospective tenant and landlord",
+        "interaction": "Describe the furniture need and measure the available wall together",
+        "outcome": "Confirm that a narrow desk fits beside the bed"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-24",
+      "storyId": "resident-tightens-a-loose-chair-leg",
+      "domain": "home_repairs_utilities",
+      "scenario": "resident_inspects_and_tightens_a_loose_screw_on_a_wobbly_dining_chair",
+      "lexicalThemes": [
+        "household repair",
+        "tools",
+        "testing stability"
+      ],
+      "targetVocabulary": [
+        "chair",
+        "wobble",
+        "screwdriver",
+        "tighten"
+      ],
+      "brief": "A resident notices that a dining chair wobbles, turns it over, tightens a loose screw with a screwdriver, and tests that the chair stands steady.",
+      "storyPattern": {
+        "goal": "Make a wobbly household chair steady",
+        "relationship": "Resident acting independently",
+        "interaction": "Turn the chair over, identify a loose screw, and tighten it",
+        "outcome": "Test the chair and find it steady"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-24",
+      "storyId": "resident-checks-a-rent-receipt",
+      "domain": "bills_taxes",
+      "scenario": "tenant_requests_a_month_specific_receipt_after_rent_payment_confirmation_lacks_the_period",
+      "lexicalThemes": [
+        "rent payment",
+        "receipt",
+        "payment period",
+        "payment confirmation"
+      ],
+      "targetVocabulary": [
+        "שכר דירה",
+        "קבלה",
+        "חודש",
+        "אישור",
+        "תשלום"
+      ],
+      "brief": "A tenant pays rent and notices that the confirmation does not say which month the payment covers. She writes to her landlady to request a receipt naming the month, and receives one with that detail.",
+      "storyPattern": {
+        "goal": "Get a clear record of which rental period a payment covers",
+        "relationship": "Tenant and landlady",
+        "interaction": "Point out the missing detail and request a receipt that names the month",
+        "outcome": "Receive a receipt identifying the payment period"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-24",
+      "storyId": "worker-asks-for-a-pay-slip-copy",
+      "domain": "work_pay",
+      "scenario": "employee_requests_a_replacement_copy_of_a_missing_payslip",
+      "lexicalThemes": [
+        "pay records",
+        "workplace request",
+        "digital file"
+      ],
+      "targetVocabulary": [
+        "payslip",
+        "copy",
+        "send",
+        "save"
+      ],
+      "brief": "An employee cannot find the payslip she downloaded, so she asks the payroll assistant to send another copy. The assistant sends the file, and the employee saves it on her phone.",
+      "storyPattern": {
+        "goal": "Replace a missing personal pay record",
+        "relationship": "Employee and payroll assistant",
+        "interaction": "Explain that the downloaded payslip is missing and ask for another copy",
+        "outcome": "Receive and save a replacement file"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-24",
+      "storyId": "resident-asks-about-a-large-item-pickup",
+      "domain": "municipal_services",
+      "scenario": "resident_seeks_contact_to_check_collection_of_an_old_armchair",
+      "lexicalThemes": [
+        "bulky household item",
+        "municipal service",
+        "checking collection details"
+      ],
+      "targetVocabulary": [
+        "armchair",
+        "collection",
+        "contact number",
+        "check"
+      ],
+      "brief": "A resident asks a municipal worker where she can check whether an old armchair from her building can be collected. The worker shows her the service contact on a notice, and she writes down the number without learning when collection is available.",
+      "storyPattern": {
+        "goal": "Find a way to verify how to handle a bulky household item",
+        "relationship": "Resident and municipal worker",
+        "interaction": "Describe the old armchair and ask where to check collection arrangements",
+        "outcome": "Write down the relevant service contact while leaving collection availability unconfirmed"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-24",
+      "storyId": "neighbors-share-a-wall-protection-mat",
+      "domain": "neighbors_building",
+      "scenario": "neighbors_protect_a_shared_hallway_wall_while_carrying_a_bookcase",
+      "lexicalThemes": [
+        "neighborly cooperation",
+        "shared hallway",
+        "moving furniture"
+      ],
+      "targetVocabulary": [
+        "hallway",
+        "bookcase",
+        "blanket",
+        "hold"
+      ],
+      "brief": "Yesterday, a neighbor was moving a narrow bookcase through the shared hallway. I held a folded blanket against the wall while we guided the bookcase around the corner without scratching the paint.",
+      "storyPattern": {
+        "goal": "Move furniture through a shared passage without scuffing the wall",
+        "relationship": "Neighbors sharing a building",
+        "interaction": "Offer a protective blanket and guide the furniture together",
+        "outcome": "Carry the bookcase past the corner without scraping the paint"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-24",
+      "storyId": "shopper-tests-a-laundry-basket-handle",
+      "domain": "shopping_returns",
+      "scenario": "shopper_compares_laundry_basket_handles_and_chooses_a_comfortable_grip",
+      "lexicalThemes": [
+        "household purchase",
+        "laundry",
+        "comfort"
+      ],
+      "targetVocabulary": [
+        "basket",
+        "handle",
+        "lift",
+        "comfortable"
+      ],
+      "brief": "At a household-goods shop, a shopper lifts two laundry baskets and compares their handles. She chooses the lighter basket because its grip feels comfortable in her hand.",
+      "storyPattern": {
+        "goal": "Choose a laundry basket that is comfortable to carry",
+        "relationship": "Shopper acting independently",
+        "interaction": "Lift and compare two baskets by their handles",
+        "outcome": "Choose the lighter basket because its grip feels comfortable"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-24",
+      "storyId": "resident-coordinates-a-delivery-at-the-door",
+      "domain": "delivery_customer_service",
+      "scenario": "resident_directs_a_doorstep_delivery_inside_the_entry_while_busy_in_the_kitchen",
+      "lexicalThemes": [
+        "home delivery",
+        "giving directions",
+        "household task"
+      ],
+      "targetVocabulary": [
+        "delivery",
+        "package",
+        "entrance",
+        "leave"
+      ],
+      "brief": "While washing dishes, a resident hears the delivery worker at the door and asks him to leave a small package just inside the entrance. After finishing at the sink, she brings it into the kitchen.",
+      "storyPattern": {
+        "goal": "Receive a small delivery without interrupting an immediate household task",
+        "relationship": "Resident and delivery worker",
+        "interaction": "Request a specific safe placement just inside the entrance",
+        "outcome": "Bring the package into the kitchen after finishing at the sink"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-24",
+      "storyId": "housemates-clear-a-drying-rack",
+      "domain": "neighbors_building",
+      "scenario": "housemates_fold_dry_towels_to_make_room_for_a_wet_shirt_on_the_shared_drying_rack",
+      "lexicalThemes": [
+        "shared household space",
+        "laundry",
+        "cooperation"
+      ],
+      "targetVocabulary": [
+        "drying rack",
+        "towel",
+        "fold",
+        "make room"
+      ],
+      "brief": "Housemates fold dry towels together to clear space on their shared drying rack for a damp shirt.",
+      "storyPattern": {
+        "goal": "Make room for a damp garment on a shared drying rack",
+        "relationship": "Housemates sharing laundry space",
+        "interaction": "Ask to move dry items and agree to fold them together",
+        "outcome": "Clear space for the damp shirt"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-24",
+      "storyId": "tenant-asks-to-use-a-shared-storage-room",
+      "domain": "housing_landlord",
+      "scenario": "tenant_checks_with_building_caretaker_before_placing_a_suitcase_in_shared_storage",
+      "lexicalThemes": [
+        "rental housing",
+        "shared storage",
+        "asking permission"
+      ],
+      "targetVocabulary": [
+        "suitcase",
+        "storage room",
+        "temporarily",
+        "block"
+      ],
+      "brief": "A tenant asks the building caretaker to use an available spot in the shared storage room temporarily for her folded suitcase, then places it there without blocking the doorway.",
+      "storyPattern": {
+        "goal": "Find temporary space for a household item that does not fit at home",
+        "relationship": "Tenant and building caretaker",
+        "interaction": "Explain the space need and ask before using a shared area",
+        "outcome": "Place the suitcase in an indicated spot without blocking access"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-24",
+      "storyId": "neighbor-returns-a-misdelivered-household-item",
+      "domain": "neighbors_building",
+      "scenario": "resident_delivers_a_small_misaddressed_parcel_to_the_correct_neighbor",
+      "lexicalThemes": [
+        "building neighbors",
+        "parcel",
+        "label and apartment number",
+        "correcting a delivery mix-up"
+      ],
+      "targetVocabulary": [
+        "חבילה",
+        "מדבקה",
+        "מספר דירה",
+        "להביא"
+      ],
+      "brief": "This morning, a resident found a small parcel by her door. The label showed a different apartment number, so she brought it to the neighbor who lived there. The neighbor thanked her and took the parcel inside.",
+      "storyPattern": {
+        "goal": "Get a misdelivered household parcel to its intended neighbor",
+        "relationship": "Neighbors in the same building",
+        "interaction": "Check the apartment number on the label and bring the parcel to the named resident",
+        "outcome": "The intended recipient thanks the neighbor and takes the parcel inside"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-24",
+      "storyId": "tenant-and-landlord-rethink-a-cramped-entryway",
+      "domain": "housing_landlord",
+      "scenario": "tenant_and_landlord_choose_low_removable_entryway_storage_after_measuring",
+      "lexicalThemes": [
+        "rental apartment needs",
+        "entryway storage",
+        "measuring space",
+        "explaining a preference",
+        "agreeing on a practical compromise"
+      ],
+      "targetVocabulary": [
+        "entryway",
+        "passage",
+        "shoe rack",
+        "cabinet",
+        "measure",
+        "narrow",
+        "removable",
+        "wall",
+        "block",
+        "fit"
+      ],
+      "brief": "After moving into a rented apartment, Dana and her landlord measured the narrow entryway, rejected a tall cabinet that would block the door, and agreed on a low removable shoe rack that kept the entrance clear.",
+      "storyPattern": {
+        "goal": "Make a cramped home entrance functional without obstructing access",
+        "relationship": "Tenant and landlord",
+        "interaction": "Measure the available space, reject an impractical suggestion, and agree on a less intrusive alternative",
+        "outcome": "Install a compact removable storage solution while keeping the doorway clear"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-24",
+      "storyId": "resident-repairs-a-loose-drawer-runner",
+      "domain": "home_repairs_utilities",
+      "scenario": "resident_and_neighbor_realign_a_slipped_kitchen_drawer_runner",
+      "lexicalThemes": [
+        "household maintenance",
+        "describing a mechanical problem",
+        "asking a neighbor for practical help",
+        "checking before adjusting",
+        "testing a repair"
+      ],
+      "targetVocabulary": [
+        "drawer",
+        "runner",
+        "track",
+        "tilt",
+        "catch",
+        "screwdriver",
+        "align",
+        "tighten",
+        "hold steady",
+        "slide smoothly"
+      ],
+      "brief": "Yesterday, a resident found that her kitchen drawer tilted and caught because one intact runner had slipped partly out of its track. Her neighbor helped inspect and reposition it while the resident held the drawer steady. They tested the drawer, then returned the kitchen utensils after it slid smoothly.",
+      "storyPattern": {
+        "goal": "Restore a household drawer that tilts and catches",
+        "relationship": "Resident and nearby neighbor with basic repair skills",
+        "interaction": "Inspect the fitting together, distinguish a slipped runner from a damaged one, and cooperate on a small adjustment",
+        "outcome": "Test the drawer and return its contents after it slides properly"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-24",
+      "storyId": "resident-chooses-a-suitably-sized-storage-shelf",
+      "domain": "shopping_returns",
+      "scenario": "shopper_selects_narrow_adjustable_shelf_for_a_laundry_nook",
+      "lexicalThemes": [
+        "household storage purchase",
+        "describing space constraints",
+        "asking for a suitable alternative",
+        "checking fit and function",
+        "making a choice"
+      ],
+      "targetVocabulary": [
+        "laundry nook",
+        "shelf",
+        "washing machine",
+        "cabinet door",
+        "handle",
+        "measurements",
+        "narrower",
+        "adjustable",
+        "uneven floor",
+        "fit"
+      ],
+      "brief": "Noa compares shelf dimensions with a home-goods clerk, rejects a wide shelf that would block the cabinet handle, and chooses a narrower adjustable shelf that fits beside the washing machine and stands on the uneven floor without blocking the cabinet.",
+      "storyPattern": {
+        "goal": "Choose household storage that fits a constrained laundry space and preserves access to the cabinet",
+        "relationship": "Shopper and home-goods clerk",
+        "interaction": "Explain the space and access needs, reject an option that would obstruct the cabinet, and compare a narrower alternative",
+        "outcome": "Choose and set up a shelf beside the washing machine without blocking the cabinet"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-24",
+      "storyId": "neighbors-coordinate-a-shared-laundry-room-cleanup",
+      "domain": "neighbors_building",
+      "scenario": "neighbors_dry_a_wet_shared_laundry_room_floor_before_use",
+      "lexicalThemes": [
+        "shared building facilities",
+        "raising a safety concern politely",
+        "explaining a household task",
+        "cooperation with a neighbor",
+        "agreeing on a next step"
+      ],
+      "targetVocabulary": [
+        "shared laundry room",
+        "wet floor",
+        "slip",
+        "basket",
+        "cloth",
+        "wipe",
+        "drain",
+        "dry",
+        "ready",
+        "take turns"
+      ],
+      "brief": "Neighbors Noa and Amir explain why the shared laundry room floor is wet, dry it together, check that the drain area is clear, and leave the cloth hanging while Noa starts her laundry.",
+      "storyPattern": {
+        "goal": "Make a shared laundry space safe and usable after cleaning",
+        "relationship": "Neighbors sharing a building laundry room",
+        "interaction": "Explain the wet floor, respond to a concern, and cooperate on drying and checking the area",
+        "outcome": "Use the room safely and leave the cleaning cloth to dry"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-24",
+      "storyId": "neighbors-coordinate-a-bulky-delivery-in-the-lobby",
+      "domain": "delivery_customer_service",
+      "scenario": "neighbors_coordinate_a_wardrobe_delivery_through_the_shared_lobby",
+      "lexicalThemes": [
+        "home deliveries",
+        "shared building space",
+        "furniture and access",
+        "coordination with a neighbor"
+      ],
+      "targetVocabulary": [
+        "delivery",
+        "wardrobe",
+        "lobby",
+        "stroller",
+        "mailboxes",
+        "fire door",
+        "bench",
+        "clear passage",
+        "bring upstairs",
+        "coordinate with a neighbor"
+      ],
+      "brief": "Noa and her neighbor Gil coordinate the delivery of a long, narrow wardrobe through their shared lobby. They check the route, move the bench to the opposite wall, and agree that Noa will direct the movers to bring the wardrobe straight upstairs while Gil helps restore the lobby afterward.",
+      "storyPattern": {
+        "goal": "Receive a bulky household delivery without obstructing a shared entrance",
+        "relationship": "Neighbors coordinating around one resident’s delivery",
+        "interaction": "Explain the access problem, consider moving the bench, check the route, and agree who will direct the movers and restore the shared space",
+        "outcome": "Bring the wardrobe directly upstairs and leave the shared lobby clear"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-24",
+      "storyId": "tenant-asks-about-a-second-bedroom",
+      "domain": "housing_landlord",
+      "scenario": "prospective_tenant_and_landlord_check_whether_a_small_bedroom_can_fit_a_desk",
+      "lexicalThemes": [
+        "rental viewing",
+        "room size",
+        "furniture fit"
+      ],
+      "targetVocabulary": [
+        "bedroom",
+        "desk",
+        "measure",
+        "fit"
+      ],
+      "brief": "During a rental apartment viewing, a prospective tenant asks whether the small room can hold both a bed and a desk. She and the landlord measure the wall and confirm that a narrow desk will fit beside the bed.",
+      "storyPattern": {
+        "goal": "Check whether a room can serve two practical purposes",
+        "relationship": "Prospective tenant and landlord",
+        "interaction": "Describe the furniture need and measure the available wall together",
+        "outcome": "Confirm that a narrow desk fits beside the bed"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-24",
+      "storyId": "resident-checks-a-rent-receipt",
+      "domain": "bills_taxes",
+      "scenario": "tenant_requests_a_month_specific_receipt_after_rent_payment_confirmation_lacks_the_period",
+      "lexicalThemes": [
+        "rent payment",
+        "receipt",
+        "payment period"
+      ],
+      "targetVocabulary": [
+        "rent",
+        "receipt",
+        "month",
+        "confirmation"
+      ],
+      "brief": "After paying rent for May, the tenant notices that the payment confirmation does not name the month. She messages her landlord to request a receipt identifying the period, and he sends her one.",
+      "storyPattern": {
+        "goal": "Get a clear record of which rental period a payment covers",
+        "relationship": "Tenant and landlord",
+        "interaction": "Point out the missing detail and request a receipt that names the month",
+        "outcome": "Receive a receipt identifying the payment period"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-24",
+      "storyId": "worker-asks-for-a-pay-slip-copy",
+      "domain": "work_pay",
+      "scenario": "employee_requests_a_replacement_copy_of_a_missing_payslip",
+      "lexicalThemes": [
+        "pay records",
+        "workplace request",
+        "digital file"
+      ],
+      "targetVocabulary": [
+        "payslip",
+        "copy",
+        "send",
+        "save"
+      ],
+      "brief": "An employee cannot find a downloaded payslip, asks the payroll assistant to send another copy, and saves the replacement file on her phone.",
+      "storyPattern": {
+        "goal": "Replace a missing personal pay record",
+        "relationship": "Employee and payroll assistant",
+        "interaction": "Explain that the downloaded payslip is missing and ask for another copy",
+        "outcome": "Receive and save a replacement file"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-24",
+      "storyId": "resident-asks-about-a-large-item-pickup",
+      "domain": "municipal_services",
+      "scenario": "resident_seeks_the_right_contact_to_check_collection_of_an_old_armchair",
+      "lexicalThemes": [
+        "bulky household item",
+        "municipal service",
+        "checking details"
+      ],
+      "targetVocabulary": [
+        "armchair",
+        "collection",
+        "contact",
+        "check"
+      ],
+      "brief": "A resident has an old armchair in her apartment building and wants to find out whether it can be collected. A municipal worker points her to the service contact on a notice; she writes down the number without learning when collection is available.",
+      "storyPattern": {
+        "goal": "Find a way to verify how to handle a bulky household item",
+        "relationship": "Resident and municipal worker",
+        "interaction": "Describe the item and ask where to check collection arrangements",
+        "outcome": "Write down the relevant service contact while leaving availability unconfirmed"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-24",
+      "storyId": "neighbors-share-a-wall-protection-mat",
+      "domain": "neighbors_building",
+      "scenario": "neighbors_protect_a_shared_hallway_wall_while_carrying_a_bookcase",
+      "lexicalThemes": [
+        "neighborly cooperation",
+        "shared hallway",
+        "moving furniture"
+      ],
+      "targetVocabulary": [
+        "hallway",
+        "bookcase",
+        "blanket",
+        "hold"
+      ],
+      "brief": "A neighbor carries a narrow bookcase through the shared hallway. The other neighbor holds a folded blanket against the wall and helps guide the bookcase around the corner without scraping the paint.",
+      "storyPattern": {
+        "goal": "Move furniture through a shared passage without scuffing the wall",
+        "relationship": "Neighbors sharing a building",
+        "interaction": "Offer a protective blanket and guide the furniture together",
+        "outcome": "Carry the bookcase past the corner without scraping the paint"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-24",
+      "storyId": "shopper-tests-a-laundry-basket-handle",
+      "domain": "shopping_returns",
+      "scenario": "shopper_compares_laundry_basket_handles_and_chooses_a_comfortable_grip",
+      "lexicalThemes": [
+        "household purchase",
+        "laundry",
+        "comfort"
+      ],
+      "targetVocabulary": [
+        "basket",
+        "handle",
+        "lift",
+        "comfortable"
+      ],
+      "brief": "At a household-goods shop, a shopper lifts two laundry baskets by their handles to compare them, then chooses the lighter basket because its handle feels more comfortable in her hand.",
+      "storyPattern": {
+        "goal": "Choose a laundry basket that is comfortable to carry",
+        "relationship": "Shopper acting independently",
+        "interaction": "Lift and compare two baskets by their handles",
+        "outcome": "Choose the lighter basket because its grip feels more comfortable"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-24",
+      "storyId": "resident-coordinates-a-delivery-at-the-door",
+      "domain": "delivery_customer_service",
+      "scenario": "resident_directs_a_small_delivery_inside_the_entrance_while_washing_dishes",
+      "lexicalThemes": [
+        "home delivery",
+        "giving directions",
+        "washing dishes"
+      ],
+      "targetVocabulary": [
+        "delivery worker",
+        "package",
+        "entrance",
+        "leave",
+        "sink"
+      ],
+      "brief": "A resident hears the delivery worker at the door while she is washing dishes. She asks him to leave a small package just inside the entrance, then brings it into the kitchen after finishing at the sink.",
+      "storyPattern": {
+        "goal": "Receive a small delivery without interrupting an immediate household task",
+        "relationship": "Resident and delivery worker",
+        "interaction": "Request that the worker leave the package just inside the entrance, beside the wall",
+        "outcome": "After finishing at the sink, bring the package into the kitchen"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-24",
+      "storyId": "housemates-clear-a-drying-rack",
+      "domain": "neighbors_building",
+      "scenario": "housemates_fold_dry_towels_to_make_room_for_a_wet_shirt_on_the_shared_drying_rack",
+      "lexicalThemes": [
+        "shared household space",
+        "laundry",
+        "cooperation"
+      ],
+      "targetVocabulary": [
+        "drying rack",
+        "towel",
+        "fold",
+        "make room"
+      ],
+      "brief": "Housemates make room for a damp shirt on their shared drying rack by agreeing to fold the dry towels together.",
+      "storyPattern": {
+        "goal": "Make room for a damp garment on a shared drying rack",
+        "relationship": "Housemates sharing laundry space",
+        "interaction": "Ask to move dry items and agree to fold them together",
+        "outcome": "Clear space for the damp shirt"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-24",
+      "storyId": "tenant-asks-to-use-a-shared-storage-room",
+      "domain": "housing_landlord",
+      "scenario": "tenant_checks_with_building_caretaker_before_placing_a_suitcase_in_shared_storage",
+      "lexicalThemes": [
+        "rental housing",
+        "shared storage",
+        "asking permission"
+      ],
+      "targetVocabulary": [
+        "suitcase",
+        "storage room",
+        "temporarily",
+        "block"
+      ],
+      "brief": "A tenant's folded suitcase does not fit in her apartment closet. She asks the building caretaker before placing it temporarily in an empty spot in the shared storage room, making sure not to block the passageway.",
+      "storyPattern": {
+        "goal": "Find temporary space for a household item that does not fit at home",
+        "relationship": "Tenant and building caretaker",
+        "interaction": "Explain the space need and ask before using a shared area",
+        "outcome": "Place the suitcase in an indicated spot without blocking access"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-24",
+      "storyId": "neighbor-returns-a-misdelivered-household-item",
+      "domain": "neighbors_building",
+      "scenario": "resident_delivers_a_small_misaddressed_parcel_to_the_correct_neighbor",
+      "lexicalThemes": [
+        "building neighbors",
+        "parcel",
+        "correcting a mix-up"
+      ],
+      "targetVocabulary": [
+        "parcel",
+        "label",
+        "apartment number",
+        "bring"
+      ],
+      "brief": "A neighbor finds a small household parcel by her door with another apartment number on its label. She brings it to the neighbor named on the label, who takes it inside.",
+      "storyPattern": {
+        "goal": "Get a misdelivered household parcel to its intended neighbor",
+        "relationship": "Neighbors in the same building",
+        "interaction": "Check the apartment number and bring the parcel to the named resident",
+        "outcome": "The intended recipient takes the parcel inside"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-24",
+      "storyId": "shopper-chooses-a-cleaning-brush-for-a-narrow-gap",
+      "domain": "shopping_returns",
+      "scenario": "shopper_tests_a_slim_cleaning_brush_in_a_narrow_kitchen_gap_before_buying",
+      "lexicalThemes": [
+        "household cleaning",
+        "shopping",
+        "fit and size"
+      ],
+      "targetVocabulary": [
+        "cleaning brush",
+        "narrow space",
+        "fit",
+        "choose"
+      ],
+      "brief": "A shopper needs a brush for the narrow space behind her kitchen tap. At a store, she tests a slim brush against a similar gap in the display, confirms it fits, and chooses it.",
+      "storyPattern": {
+        "goal": "Choose a cleaning tool that reaches a narrow household space",
+        "relationship": "Shopper acting independently",
+        "interaction": "Test a slim tool against the space that needs cleaning",
+        "outcome": "Choose the brush after confirming it fits"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-24",
+      "storyId": "tenant-and-landlord-rethink-a-cramped-entryway",
+      "domain": "housing_landlord",
+      "scenario": "tenant_and_landlord_measure_entryway_and_choose_removable_low_rack",
+      "lexicalThemes": [
+        "rental apartment needs",
+        "entryway storage",
+        "measuring space",
+        "explaining a preference",
+        "agreeing on a practical compromise"
+      ],
+      "targetVocabulary": [
+        "entryway",
+        "passage",
+        "shoe rack",
+        "cabinet",
+        "measure",
+        "narrow",
+        "removable",
+        "wall",
+        "block",
+        "fit"
+      ],
+      "brief": "Dana and her landlord measured the narrow apartment entryway, saw that a tall shoe cabinet would block the door, and installed a low removable wall rack instead.",
+      "storyPattern": {
+        "goal": "Make a cramped home entrance functional without obstructing access",
+        "relationship": "Tenant and landlord",
+        "interaction": "Measure the available space, reject an impractical suggestion, and agree on a less intrusive alternative",
+        "outcome": "Install a compact removable storage solution while keeping the doorway clear"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-24",
+      "storyId": "resident-repairs-a-loose-drawer-runner",
+      "domain": "home_repairs_utilities",
+      "scenario": "resident_and_neighbor_realign_a_slipped_kitchen_drawer_runner",
+      "lexicalThemes": [
+        "household maintenance",
+        "describing a mechanical problem",
+        "asking a neighbor for practical help",
+        "checking before adjusting",
+        "testing a repair"
+      ],
+      "targetVocabulary": [
+        "drawer",
+        "runner",
+        "track",
+        "tilt",
+        "catch",
+        "screwdriver",
+        "align",
+        "tighten",
+        "hold steady",
+        "slide smoothly"
+      ],
+      "brief": "A resident finds that a kitchen drawer tilts and sticks because one runner has slipped out of its track. A neighbor helps confirm that the runner is intact, realign and tighten it, and test the drawer before the resident returns the cutlery.",
+      "storyPattern": {
+        "goal": "Restore a household drawer that tilts and catches",
+        "relationship": "Resident and nearby neighbor with basic repair skills",
+        "interaction": "Inspect the fitting together, distinguish a slipped runner from a damaged one, and cooperate on a small adjustment",
+        "outcome": "Test the drawer and return its contents after it slides properly"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-24",
+      "storyId": "resident-chooses-a-suitably-sized-storage-shelf",
+      "domain": "shopping_returns",
+      "scenario": "shopper_selects_narrow_adjustable_shelf_for_a_laundry_nook",
+      "lexicalThemes": [
+        "household storage purchase",
+        "describing space constraints",
+        "asking for a suitable alternative",
+        "checking fit and function",
+        "making a choice"
+      ],
+      "targetVocabulary": [
+        "laundry nook",
+        "shelf",
+        "washing machine",
+        "cabinet door",
+        "handle",
+        "measurements",
+        "narrower",
+        "adjustable",
+        "uneven tile",
+        "fit"
+      ],
+      "brief": "A resident chooses and installs a narrow, height-adjustable shelf for her laundry nook after checking that it fits beside the washing machine, leaves the cabinet accessible, and stands steadily on uneven tiles.",
+      "storyPattern": {
+        "goal": "Choose household storage that fits a constrained utility space and preserves access",
+        "relationship": "Shopper and home-goods clerk",
+        "interaction": "Explain the space and access needs, reject an option that obstructs a cabinet, and compare a narrower adjustable alternative",
+        "outcome": "Choose a shelf that fits beside the appliance without blocking the cabinet"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-24",
+      "storyId": "neighbors-coordinate-a-shared-laundry-room-cleanup",
+      "domain": "neighbors_building",
+      "scenario": "neighbors_dry_a_wet_shared_laundry_room_floor_before_use",
+      "lexicalThemes": [
+        "shared building facilities",
+        "raising a safety concern politely",
+        "explaining a household task",
+        "cooperation with a neighbor",
+        "agreeing on a next step"
+      ],
+      "targetVocabulary": [
+        "shared laundry room",
+        "wet floor",
+        "slip",
+        "basket",
+        "cloth",
+        "wipe",
+        "drain",
+        "dry",
+        "ready",
+        "take turns"
+      ],
+      "brief": "Neighbors Noa and Amir find the shared laundry-room floor wet after Amir cleans the machine filter. Noa raises the risk of slipping while carrying her basket. They identify the room's cleaning cloth, dry the floor together, check the drain area, and leave the cloth hanging after Noa starts her wash.",
+      "storyPattern": {
+        "goal": "Make a shared laundry space safe and usable after cleaning",
+        "relationship": "Neighbors sharing a building laundry room",
+        "interaction": "Explain the wet floor, respond to a concern, and cooperate on drying and checking the area",
+        "outcome": "Use the room safely and leave the cleaning cloth to dry"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-24",
+      "storyId": "neighbors-coordinate-a-bulky-delivery-in-the-lobby",
+      "domain": "delivery_customer_service",
+      "scenario": "neighbors_coordinate_a_flat_packed_wardrobe_delivery_through_the_shared_lobby",
+      "lexicalThemes": [
+        "home deliveries",
+        "shared building space",
+        "furniture and access",
+        "neighbor coordination"
+      ],
+      "targetVocabulary": [
+        "משלוח",
+        "אריזה",
+        "ארון",
+        "לובי",
+        "תיבות דואר",
+        "עגלה",
+        "דלת אש",
+        "ספסל",
+        "להזיז",
+        "להעלות לדירה",
+        "מעבר פנוי"
+      ],
+      "brief": "Noa and her neighbor Gil coordinate the delivery of Noa’s long, narrow flat-packed wardrobe through their shared lobby. They shift the bench after checking the turn, direct the movers to take the wardrobe upstairs, and restore the clear lobby afterward.",
+      "storyPattern": {
+        "goal": "Receive a bulky household delivery without obstructing the shared entrance",
+        "relationship": "Neighbors coordinating around Noa’s furniture delivery",
+        "interaction": "Noa explains the package and asks about carrying it directly upstairs; Gil describes the access problem, and they check the turn and agree on moving the bench temporarily",
+        "outcome": "The movers take the wardrobe directly upstairs, Gil helps restore the bench, and the shared lobby is clear"
+      },
+      "edition": "bet"
     }
   ]
 }
