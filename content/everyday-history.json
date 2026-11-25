@@ -34891,6 +34891,1305 @@
         "outcome": "The movers take the wardrobe directly upstairs, Gil helps restore the bench, and the shared lobby is clear"
       },
       "edition": "bet"
+    },
+    {
+      "date": "2026-11-25",
+      "storyId": "account-holder-chooses-which-card-to-use",
+      "domain": "banking_credit",
+      "scenario": "customer_distinguishes_two_similar_cards_and_chooses_the_personal_card_for_a_purchase",
+      "lexicalThemes": [
+        "bank cards",
+        "checking details",
+        "personal spending"
+      ],
+      "targetVocabulary": [
+        "card",
+        "wallet",
+        "label",
+        "purchase",
+        "personal"
+      ],
+      "brief": "At the checkout, a customer checks the labels on two similar cards in her wallet, chooses the one marked for personal spending, and pays with it.",
+      "storyPattern": {
+        "goal": "Choose the intended card for an ordinary purchase",
+        "relationship": "Customer and cashier",
+        "interaction": "Pause to compare two similar cards and state which one she wants to use",
+        "outcome": "Pay with the card marked for personal spending"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-25",
+      "storyId": "resident-sets-aside-money-for-a-household-bill",
+      "domain": "bills_taxes",
+      "scenario": "housemates_put_money_for_electricity_bill_in_labeled_envelope",
+      "lexicalThemes": [
+        "household bills",
+        "setting money aside",
+        "shared expenses"
+      ],
+      "targetVocabulary": [
+        "חשבון",
+        "מעטפה",
+        "כסף",
+        "לשים בצד",
+        "הוצאות"
+      ],
+      "brief": "Two housemates see an electricity bill on the table. One puts money in an envelope labeled for the bill, and the other agrees they will not use that money for other expenses.",
+      "storyPattern": {
+        "goal": "Keep money intended for a household bill separate from other spending",
+        "relationship": "Housemates sharing household expenses",
+        "interaction": "Label an envelope and explain what the reserved money is for",
+        "outcome": "Both housemates leave the bill money untouched"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-25",
+      "storyId": "tenant-explains-a-noisy-window-to-the-landlord",
+      "domain": "housing_landlord",
+      "scenario": "tenant_shows_landlord_rattling_bedroom_window_and_tests_it_after_latch_adjustment",
+      "lexicalThemes": [
+        "renting",
+        "describing a household issue",
+        "demonstrating a problem"
+      ],
+      "targetVocabulary": [
+        "window",
+        "rattle",
+        "wind",
+        "latch",
+        "quieter"
+      ],
+      "brief": "A tenant shows her landlord that the bedroom window rattles in the wind. He tightens the loose latch, and she closes the window to check that it is quieter.",
+      "storyPattern": {
+        "goal": "Stop a bedroom window from rattling",
+        "relationship": "Tenant and landlord",
+        "interaction": "Describe and demonstrate the noise before a small adjustment",
+        "outcome": "Test the window and find it quieter"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-25",
+      "storyId": "resident-reports-a-dark-streetlight",
+      "domain": "municipal_services",
+      "scenario": "resident_reports_out_streetlight_and_names_the_corner",
+      "lexicalThemes": [
+        "municipal service",
+        "street locations",
+        "reporting a problem"
+      ],
+      "targetVocabulary": [
+        "streetlight",
+        "not working",
+        "corner",
+        "street names",
+        "report"
+      ],
+      "brief": "A resident calls the municipal service desk to report a streetlight that is not working and gives the street names when the worker asks which corner it is on. The worker records the location.",
+      "storyPattern": {
+        "goal": "Report a streetlight that is not working",
+        "relationship": "Resident and municipal service worker",
+        "interaction": "The resident reports the problem, and the worker asks which corner; she gives the street names",
+        "outcome": "The worker records the streetlight's location"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-25",
+      "storyId": "coworkers-clarify-who-will-call-a-customer",
+      "domain": "employment_jobs",
+      "scenario": "coworkers_clarify_and_assign_customer_callback",
+      "lexicalThemes": [
+        "work communication",
+        "clarifying responsibility",
+        "customer calls",
+        "writing a reminder"
+      ],
+      "targetVocabulary": [
+        "מתקשר",
+        "לקוחה",
+        "אתקשר",
+        "כותב",
+        "פתק"
+      ],
+      "brief": "Dana asks Ron which coworker will call the customer back. Ron takes responsibility for the call and writes the customer's name on a note.",
+      "storyPattern": {
+        "goal": "Make sure a customer receives a promised call back",
+        "relationship": "Coworkers sharing a customer task",
+        "interaction": "Check who is responsible and agree on one person to make the call",
+        "outcome": "Ron takes responsibility and writes the customer's name on a note"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-25",
+      "storyId": "shopper-asks-for-a-weighed-portion-of-apples",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_buys_three_apples_by_weight_instead_of_a_full_bag",
+      "lexicalThemes": [
+        "produce shopping",
+        "quantity",
+        "weighing"
+      ],
+      "targetVocabulary": [
+        "apples",
+        "three",
+        "weigh",
+        "amount",
+        "basket"
+      ],
+      "brief": "At the produce counter, a shopper asks for three apples instead of a full bag. The seller weighs them, she says the amount is right, and she puts the apples in her basket.",
+      "storyPattern": {
+        "goal": "Buy only a few pieces of weighed produce",
+        "relationship": "Shopper and produce seller",
+        "interaction": "State a small quantity and respond to the amount weighed",
+        "outcome": "Accept the portion and put it in the basket"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-25",
+      "storyId": "shopper-checks-a-jacket-pocket-before-buying",
+      "domain": "shopping_returns",
+      "scenario": "shopper_tests_whether_a_jacket_pocket_fits_her_phone_before_buying",
+      "lexicalThemes": [
+        "clothing shopping",
+        "fit and function",
+        "preferences"
+      ],
+      "targetVocabulary": [
+        "jacket",
+        "inside pocket",
+        "phone",
+        "fit",
+        "buy"
+      ],
+      "brief": "A shopper likes a jacket, tests whether her phone fits in its inside pocket, and buys it when it does.",
+      "storyPattern": {
+        "goal": "Check that a clothing item meets a practical need before buying",
+        "relationship": "Shopper acting independently",
+        "interaction": "Test the pocket with her phone rather than relying on appearance",
+        "outcome": "Choose the jacket after confirming the phone fits"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-25",
+      "storyId": "recipient-asks-the-delivery-worker-to-call-from-the-gate",
+      "domain": "delivery_customer_service",
+      "scenario": "recipient_meets_delivery_worker_at_gate_after_asking_for_a_call",
+      "lexicalThemes": [
+        "delivery",
+        "building entrance",
+        "simple coordination"
+      ],
+      "targetVocabulary": [
+        "delivery worker",
+        "gate",
+        "call",
+        "come down",
+        "meet"
+      ],
+      "brief": "A woman hears the delivery worker by the gate but cannot open the building entrance from her apartment. She asks him to call her, then comes down to meet him at the gate.",
+      "storyPattern": {
+        "goal": "Receive a delivery when the recipient cannot access the entrance from inside",
+        "relationship": "Recipient and delivery worker",
+        "interaction": "The recipient explains the access difficulty and asks the worker to call from the gate",
+        "outcome": "The worker calls and the recipient comes down to meet him at the gate"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-25",
+      "storyId": "user-chooses-a-new-account-password",
+      "domain": "digital_accounts",
+      "scenario": "user_replaces_a_too_short_password_with_a_longer_phrase_to_access_account",
+      "lexicalThemes": [
+        "digital account access",
+        "passwords",
+        "trying again"
+      ],
+      "targetVocabulary": [
+        "account",
+        "password",
+        "too short",
+        "longer",
+        "sign in"
+      ],
+      "brief": "While updating her online account, the user sees that her chosen password is too short. She enters a longer password, the form accepts it, and she signs in.",
+      "storyPattern": {
+        "goal": "Set a password the account form accepts",
+        "relationship": "User managing her own online account",
+        "interaction": "Notice the form’s message and replace the rejected password with a longer one",
+        "outcome": "The new password is accepted and the user signs in"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-25",
+      "storyId": "passenger-asks-driver-to-stop-near-the-crosswalk",
+      "domain": "driving_parking",
+      "scenario": "Taxi passenger requests a safe curbside stop just past a crosswalk",
+      "lexicalThemes": [
+        "taxi ride",
+        "landmarks",
+        "polite requests"
+      ],
+      "targetVocabulary": [
+        "entrance",
+        "past",
+        "crosswalk",
+        "curb",
+        "stop"
+      ],
+      "brief": "A taxi passenger tells the driver that the entrance she needs is just past the crosswalk and asks him to stop safely by the curb nearby. She can see the entrance after he stops.",
+      "storyPattern": {
+        "goal": "Get dropped off near a visible entrance",
+        "relationship": "Taxi passenger and driver",
+        "interaction": "Describe a nearby landmark and request a curbside stop",
+        "outcome": "The driver stops safely and the passenger confirms the entrance is in view"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-25",
+      "storyId": "diner-asks-for-the-dressing-on-the-side",
+      "domain": "food_service_orders",
+      "scenario": "diner_requests_salad_dressing_separately_to_choose_how_much_to_add",
+      "lexicalThemes": [
+        "ordering food",
+        "preferences",
+        "small adjustments"
+      ],
+      "targetVocabulary": [
+        "salad",
+        "dressing",
+        "on the side",
+        "a little",
+        "small cup"
+      ],
+      "brief": "A woman orders a salad and asks for a little dressing on the side. The server brings it in a small cup.",
+      "storyPattern": {
+        "goal": "Control how much dressing goes on a meal",
+        "relationship": "Diner and server",
+        "interaction": "State a preference while ordering and receive the dressing separately",
+        "outcome": "Get the dressing in a small cup and add as much as desired"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-25",
+      "storyId": "bank-customer-deposits-cash-at-branch",
+      "domain": "banking_credit",
+      "scenario": "customer_confirms_own_account_before_depositing_cash_at_branch",
+      "lexicalThemes": [
+        "cash deposits",
+        "bank accounts",
+        "account details",
+        "printed confirmations",
+        "checking information"
+      ],
+      "targetVocabulary": [
+        "cash",
+        "deposit",
+        "account",
+        "account number",
+        "bank card",
+        "confirmation"
+      ],
+      "brief": "Dana sells an old desk and deposits the cash into her own bank account. At the branch, she asks for a printed confirmation, notices an old account name on the screen, checks the account number against her bank card, completes the deposit, and checks the confirmation.",
+      "storyPattern": {
+        "goal": "Deposit cash into the intended personal account",
+        "relationship": "Account holder and bank teller",
+        "interaction": "Explain the intended deposit, ask for a printed confirmation, clarify an outdated account label, and verify the account details",
+        "outcome": "Complete the deposit to the confirmed account and check the confirmation"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-25",
+      "storyId": "employee-clarifies-a-shift-entry",
+      "domain": "work_pay",
+      "scenario": "employee_and_supervisor_reconcile_a_missing_shift_record_using_handover_notes",
+      "lexicalThemes": [
+        "work hours",
+        "shift records",
+        "explaining a discrepancy",
+        "checking notes",
+        "confirming details"
+      ],
+      "targetVocabulary": [
+        "shift",
+        "work-hours record",
+        "missing entry",
+        "start time",
+        "finish time",
+        "handover sheet",
+        "confirm"
+      ],
+      "brief": "An employee notices a missing evening shift in her work-hours record, compares it with her paper notes, and asks her supervisor to check the handover sheet. She confirms the recorded times, and the supervisor corrects the entry.",
+      "storyPattern": {
+        "goal": "Correct a missing work-hours entry using a reliable workplace record",
+        "relationship": "Employee and supervisor reviewing the employee's own hours",
+        "interaction": "Explain the discrepancy, compare personal notes with the shift handover record, and confirm the times",
+        "outcome": "Supervisor corrects the entry and the employee verifies it in her record"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-25",
+      "storyId": "recipient-resolves-a-parcel-delivery-question",
+      "domain": "delivery_customer_service",
+      "scenario": "recipient_finds_parcel_with_building_guard",
+      "lexicalThemes": [
+        "delivery notices",
+        "parcel location",
+        "clarifying a message",
+        "building staff",
+        "confirming receipt"
+      ],
+      "targetVocabulary": [
+        "delivery notice",
+        "parcel",
+        "guard",
+        "shelf",
+        "sign for",
+        "receive"
+      ],
+      "brief": "A resident reads an unclear delivery notice, calls the delivery service, learns that the parcel is with the building guard, retrieves it, and confirms receipt.",
+      "storyPattern": {
+        "goal": "Find out where a delivered parcel was left and retrieve it",
+        "relationship": "Parcel recipient coordinating with a delivery representative and building guard",
+        "interaction": "Explain the unclear notice, learn the recorded drop-off location, and ask the guard to check",
+        "outcome": "Retrieve the parcel from the guard and confirm receipt"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-25",
+      "storyId": "digital-account-recovery-email-update",
+      "domain": "digital_accounts",
+      "scenario": "account_holder_updates_recovery_email_after_verification_codes_go_to_old_address",
+      "lexicalThemes": [
+        "account access",
+        "verification codes",
+        "recovery contact details",
+        "clarifying account fields",
+        "signing in"
+      ],
+      "targetVocabulary": [
+        "verification code",
+        "recovery email",
+        "username",
+        "access",
+        "update",
+        "sign in"
+      ],
+      "brief": "Avi contacts support because the sign-in code goes to an old email. Liat helps him keep his username, update the email used for codes, and confirm that he can sign in with the new address receiving the code.",
+      "storyPattern": {
+        "goal": "Restore account access by directing verification codes to an accessible email",
+        "relationship": "Account holder and digital-service support representative",
+        "interaction": "Explain the failed verification, distinguish the recovery address from the username, and confirm the updated contact",
+        "outcome": "Receive a code at the new address, sign in, and verify the recovery details"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-25",
+      "storyId": "neighbors-coordinate-a-dog-sitting-handoff",
+      "domain": "pets_veterinary",
+      "scenario": "neighbors_agree_on_practical_dog_care_during_an_overnight_trip",
+      "lexicalThemes": [
+        "pet care",
+        "feeding instructions",
+        "walking routines",
+        "safety preferences",
+        "neighborly coordination"
+      ],
+      "targetVocabulary": [
+        "feed",
+        "walk",
+        "leash",
+        "portion",
+        "quieter route",
+        "while I’m away"
+      ],
+      "brief": "Maya is going away overnight for work and asks her neighbor Oren to feed and walk her dog. They clarify the prepared food and usual routine, discuss the fraying leash and the dog pulling near a busy street, and agree to use the spare leash and quieter park route. Maya leaves the food and spare leash by the entrance; Oren will message after the evening walk.",
+      "storyPattern": {
+        "goal": "Arrange dependable overnight care for a pet while away",
+        "relationship": "Pet owner Maya and nearby neighbor Oren, who agrees to help",
+        "interaction": "Maya explains the dog's food and routine; Oren asks about the fraying leash and whether the dog pulls near the busy street, and they choose the quieter park route",
+        "outcome": "Maya places the prepared food and spare leash by the entrance, Oren agrees to use them and message after the evening walk"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-25",
+      "storyId": "account-holder-chooses-which-card-to-use",
+      "domain": "banking_credit",
+      "scenario": "customer_compares_two_similar_cards_and_pays_with_the_one_marked_for_personal_spending",
+      "lexicalThemes": [
+        "bank cards",
+        "checking details",
+        "personal spending"
+      ],
+      "targetVocabulary": [
+        "card",
+        "wallet",
+        "label",
+        "purchase",
+        "personal"
+      ],
+      "brief": "At a shop, a customer asks the cashier to wait while she checks the labels on two similar cards, then pays for her purchase with the card marked for personal spending.",
+      "storyPattern": {
+        "goal": "Choose the intended card for an ordinary purchase",
+        "relationship": "Customer and cashier",
+        "interaction": "The customer asks the cashier to wait while she checks two similar cards and says which one she wants to use",
+        "outcome": "She pays with the card marked for personal spending"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-25",
+      "storyId": "resident-sets-aside-money-for-a-household-bill",
+      "domain": "bills_taxes",
+      "scenario": "housemates_label_an_envelope_for_a_household_bill",
+      "lexicalThemes": [
+        "household bills",
+        "setting money aside",
+        "shared expenses",
+        "envelopes"
+      ],
+      "targetVocabulary": [
+        "חשבון",
+        "מעטפה",
+        "כסף",
+        "הוצאות",
+        "שותפה"
+      ],
+      "brief": "Two housemates set aside cash for a household bill by labeling an envelope, and agree not to use that money for other expenses.",
+      "storyPattern": {
+        "goal": "Keep money intended for a household bill separate from other spending",
+        "relationship": "Housemates sharing household expenses",
+        "interaction": "Label an envelope and explain what the reserved money is for",
+        "outcome": "Both housemates leave the bill money untouched"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-25",
+      "storyId": "tenant-explains-a-noisy-window-to-the-landlord",
+      "domain": "housing_landlord",
+      "scenario": "tenant_shows_landlord_rattling_window_and_tests_adjusted_latch",
+      "lexicalThemes": [
+        "renting",
+        "describing a household issue",
+        "demonstrating a problem"
+      ],
+      "targetVocabulary": [
+        "window",
+        "rattle",
+        "wind",
+        "latch",
+        "quieter"
+      ],
+      "brief": "A tenant showed her landlord that the bedroom window rattled in the wind. He tightened its loose latch, and she closed the window to check that the noise was quieter.",
+      "storyPattern": {
+        "goal": "Stop a bedroom window from rattling",
+        "relationship": "Tenant and landlord",
+        "interaction": "Describe and demonstrate the noise before a small adjustment",
+        "outcome": "Test the window and find it quieter"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-25",
+      "storyId": "resident-reports-a-dark-streetlight",
+      "domain": "municipal_services",
+      "scenario": "resident_reports_out_streetlight_and_clarifies_intersection",
+      "lexicalThemes": [
+        "municipal service",
+        "street locations",
+        "reporting a problem"
+      ],
+      "targetVocabulary": [
+        "streetlight",
+        "not working",
+        "corner",
+        "street names",
+        "report a problem"
+      ],
+      "brief": "A resident noticed that the streetlight near her building was not working. She called the municipal service desk, clarified the corner using the street names, and the worker recorded the location.",
+      "storyPattern": {
+        "goal": "Report a streetlight that is not working",
+        "relationship": "Resident and municipal service worker",
+        "interaction": "The resident describes the problem and clarifies its location when asked",
+        "outcome": "The worker records the streetlight's location"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-25",
+      "storyId": "coworkers-clarify-who-will-call-a-customer",
+      "domain": "employment_jobs",
+      "scenario": "coworkers_clarify_and_assign_customer_callback",
+      "lexicalThemes": [
+        "work communication",
+        "clarifying responsibility",
+        "customer calls"
+      ],
+      "targetVocabulary": [
+        "call back",
+        "customer",
+        "should I",
+        "agree",
+        "note"
+      ],
+      "brief": "Two coworkers thought the other would call a customer back. They clarified who would call, agreed that the narrator would do it, and he wrote the customer's name on a note.",
+      "storyPattern": {
+        "goal": "Make sure a customer receives a promised call back",
+        "relationship": "Coworkers sharing a customer task",
+        "interaction": "Check who is responsible and agree on one person to make the call",
+        "outcome": "The narrator takes responsibility and notes the customer's name"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-25",
+      "storyId": "shopper-asks-for-a-weighed-portion-of-apples",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_buys_three_apples_by_weight_instead_of_a_full_bag",
+      "lexicalThemes": [
+        "produce shopping",
+        "quantity",
+        "weighing"
+      ],
+      "targetVocabulary": [
+        "apples",
+        "three",
+        "weigh",
+        "amount",
+        "basket"
+      ],
+      "brief": "Yesterday, a shopper asked the produce seller for only three apples. The seller weighed them, the shopper accepted the amount, and she put the apples in her basket.",
+      "storyPattern": {
+        "goal": "Buy only a few pieces of weighed produce",
+        "relationship": "Shopper and produce seller",
+        "interaction": "State a small quantity and respond to the amount weighed",
+        "outcome": "Accept the portion and put it in the basket"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-25",
+      "storyId": "shopper-checks-a-jacket-pocket-before-buying",
+      "domain": "shopping_returns",
+      "scenario": "shopper_tests_whether_a_jacket_pocket_fits_her_phone_before_buying",
+      "lexicalThemes": [
+        "clothing shopping",
+        "fit and function",
+        "preferences"
+      ],
+      "targetVocabulary": [
+        "מעיל",
+        "כיס פנימי",
+        "טלפון",
+        "להיכנס",
+        "לקנות"
+      ],
+      "brief": "A shopper found a jacket she liked, tested whether her phone fit in its inside pocket, and decided to buy it after confirming that it fit.",
+      "storyPattern": {
+        "goal": "Check that a clothing item meets a practical need before buying",
+        "relationship": "Shopper acting independently",
+        "interaction": "Test the pocket with her phone rather than relying on appearance",
+        "outcome": "Choose the jacket after confirming the phone fits"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-25",
+      "storyId": "recipient-asks-the-delivery-worker-to-call-from-the-gate",
+      "domain": "delivery_customer_service",
+      "scenario": "recipient_meets_delivery_worker_at_gate_after_hearing_him_outside",
+      "lexicalThemes": [
+        "delivery",
+        "building entrance",
+        "simple coordination"
+      ],
+      "targetVocabulary": [
+        "שליח",
+        "שער",
+        "להתקשר",
+        "לרדת",
+        "לפגוש"
+      ],
+      "brief": "A recipient hears the delivery worker outside but cannot reach the building entrance from her apartment. She asks him to call her from the gate, then comes down to meet him there.",
+      "storyPattern": {
+        "goal": "Receive a delivery when the recipient cannot reach the entrance from inside the building",
+        "relationship": "Recipient and delivery worker",
+        "interaction": "The recipient explains that she cannot reach the entrance from her apartment and asks the worker to call her from the gate",
+        "outcome": "The worker calls, and the recipient comes down to meet him at the gate"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-25",
+      "storyId": "user-chooses-a-new-account-password",
+      "domain": "digital_accounts",
+      "scenario": "user_replaces_a_too_short_password_with_a_longer_phrase_to_access_account",
+      "lexicalThemes": [
+        "digital account access",
+        "passwords",
+        "trying again"
+      ],
+      "targetVocabulary": [
+        "account",
+        "password",
+        "too short",
+        "longer",
+        "sign in"
+      ],
+      "brief": "A user updates her own online account. The form rejects her first password because it is too short, so she enters a longer phrase, which the form accepts, and signs in with it.",
+      "storyPattern": {
+        "goal": "Set a password the account form accepts",
+        "relationship": "User managing her own online account",
+        "interaction": "Notice the form’s message and replace the rejected password with a longer one",
+        "outcome": "The new password is accepted and the user signs in"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-25",
+      "storyId": "passenger-asks-driver-to-stop-near-the-crosswalk",
+      "domain": "driving_parking",
+      "scenario": "taxi_passenger_identifies_a_safe_stopping_point_near_a_crosswalk",
+      "lexicalThemes": [
+        "taxi ride",
+        "landmarks",
+        "polite requests"
+      ],
+      "targetVocabulary": [
+        "entrance",
+        "past",
+        "crosswalk",
+        "curb",
+        "stop"
+      ],
+      "brief": "A passenger tells her taxi driver that the entrance she needs is just past the crosswalk and asks him to stop by the curb. He stops in a safe place, and she confirms that she can see the entrance.",
+      "storyPattern": {
+        "goal": "Get dropped off near a visible entrance",
+        "relationship": "Taxi passenger and driver",
+        "interaction": "Describe a nearby landmark and request a curbside stop",
+        "outcome": "The driver stops safely, and the passenger confirms that the entrance is in view"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-25",
+      "storyId": "diner-asks-for-the-dressing-on-the-side",
+      "domain": "food_service_orders",
+      "scenario": "diner_orders_salad_and_requests_dressing_in_a_small_cup_on_the_side",
+      "lexicalThemes": [
+        "ordering food",
+        "preferences",
+        "small adjustments"
+      ],
+      "targetVocabulary": [
+        "סלט",
+        "רוטב",
+        "בצד",
+        "קצת",
+        "כוס קטנה"
+      ],
+      "brief": "A diner ordered a salad and asked for the dressing on the side so she could choose how much to add. The server agreed and brought it in a small cup; she added only a little.",
+      "storyPattern": {
+        "goal": "Control how much dressing goes on a meal",
+        "relationship": "Diner and server",
+        "interaction": "State a preference while ordering and receive acknowledgment",
+        "outcome": "Get the dressing separately and add as much as desired"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-25",
+      "storyId": "bank-customer-deposits-cash-at-branch",
+      "domain": "banking_credit",
+      "scenario": "customer_confirms_own_account_before_depositing_cash_at_branch",
+      "lexicalThemes": [
+        "cash deposits",
+        "bank accounts",
+        "account details",
+        "confirmations",
+        "checking information"
+      ],
+      "targetVocabulary": [
+        "cash",
+        "deposit",
+        "account",
+        "account number",
+        "bank card",
+        "confirmation"
+      ],
+      "brief": "After selling a used desk, Noa brings the cash to her bank branch to deposit it into her own account. The teller explains what the printed confirmation shows and asks her to check the account on the screen. She spots an old account name, confirms the account number against her bank card, completes the deposit, and checks the confirmation.",
+      "storyPattern": {
+        "goal": "Deposit cash into the intended personal account",
+        "relationship": "Account holder and bank teller",
+        "interaction": "Explain the intended deposit, clarify an outdated account label, and verify the account details",
+        "outcome": "Complete the deposit to the confirmed account and check the confirmation"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-25",
+      "storyId": "employee-clarifies-a-shift-entry",
+      "domain": "work_pay",
+      "scenario": "employee_and_supervisor_reconcile_a_missing_shift_record_using_handover_notes",
+      "lexicalThemes": [
+        "work hours",
+        "shift records",
+        "explaining a discrepancy",
+        "checking notes",
+        "confirming details"
+      ],
+      "targetVocabulary": [
+        "shift",
+        "work-hours record",
+        "missing entry",
+        "start time",
+        "finish time",
+        "handover sheet",
+        "confirm"
+      ],
+      "brief": "An employee notices that an evening shift is missing from her work-hours record. She compares her paper notes with her supervisor's shift handover sheet, confirms the recorded start and finish times, and checks that the supervisor corrected the record.",
+      "storyPattern": {
+        "goal": "Correct a missing work-hours entry using a reliable workplace record",
+        "relationship": "Employee and supervisor reviewing the employee's own hours",
+        "interaction": "Explain the discrepancy, compare personal notes with the shift handover record, and confirm the times",
+        "outcome": "The supervisor corrects the entry, and the employee verifies that the date and hours appear in her record"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-25",
+      "storyId": "recipient-resolves-a-parcel-delivery-question",
+      "domain": "delivery_customer_service",
+      "scenario": "recipient_finds_parcel_with_building_guard",
+      "lexicalThemes": [
+        "delivery notices",
+        "parcel location",
+        "clarifying a message",
+        "building staff",
+        "confirming receipt"
+      ],
+      "targetVocabulary": [
+        "delivery notice",
+        "parcel",
+        "guard",
+        "entrance",
+        "sign for",
+        "receive"
+      ],
+      "brief": "A resident receives an unclear parcel delivery notice, contacts the delivery service to clarify that the parcel is with the building guard, retrieves it from the guard, and confirms receipt.",
+      "storyPattern": {
+        "goal": "Find out where a delivered parcel was left and retrieve it",
+        "relationship": "Parcel recipient coordinating with a delivery representative and building guard",
+        "interaction": "Describe an unclear notice, clarify the recorded drop-off location, and ask the guard to check",
+        "outcome": "Retrieve the parcel from the guard and confirm receipt"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-25",
+      "storyId": "digital-account-recovery-email-update",
+      "domain": "digital_accounts",
+      "scenario": "account_holder_updates_recovery_email_after_verification_codes_go_to_old_address",
+      "lexicalThemes": [
+        "account access",
+        "verification codes",
+        "recovery contact details",
+        "clarifying account fields",
+        "signing in"
+      ],
+      "targetVocabulary": [
+        "verification code",
+        "recovery email",
+        "username",
+        "access",
+        "update",
+        "sign in"
+      ],
+      "brief": "Avi contacts support after a sign-in verification code goes to an email address he no longer uses. Liat helps him update the account’s recovery email without changing his username. Avi receives the next code at the new address, signs in, and checks the recovery details.",
+      "storyPattern": {
+        "goal": "Restore account access by directing verification codes to an accessible email",
+        "relationship": "Account holder and digital-service support representative",
+        "interaction": "Explain the failed verification, distinguish the recovery address from the username, and confirm the updated contact",
+        "outcome": "Receive a code at the new address, sign in, and verify the recovery details"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-25",
+      "storyId": "neighbors-coordinate-a-dog-sitting-handoff",
+      "domain": "pets_veterinary",
+      "scenario": "neighbors_agree_on_practical_dog_care_during_an_overnight_trip",
+      "lexicalThemes": [
+        "pet care",
+        "feeding instructions",
+        "walking routines",
+        "safety preferences",
+        "neighborly coordination"
+      ],
+      "targetVocabulary": [
+        "feed",
+        "walk",
+        "leash",
+        "portion",
+        "quieter route",
+        "while I’m away"
+      ],
+      "brief": "Maya is leaving for an overnight work trip and asks her neighbor Oren to feed and walk her dog. They clarify the dog's food and routine, discuss its fraying leash and tendency to pull near a busy street, and agree on a spare leash and a quieter park route. Maya puts the prepared food and spare leash by the entrance before she leaves, and Oren agrees to message her after the evening walk.",
+      "storyPattern": {
+        "goal": "Arrange dependable overnight care for a pet while away",
+        "relationship": "Pet owner and nearby neighbor who agrees to help",
+        "interaction": "Clarify the pet’s routine and respond to a concern about the usual equipment and walking route",
+        "outcome": "Prepare the food and spare leash together and agree on a clear care plan"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-25",
+      "storyId": "account-holder-chooses-which-card-to-use",
+      "domain": "banking_credit",
+      "scenario": "customer_compares_two_similar_cards_and_pays_with_the_personal_spending_card",
+      "lexicalThemes": [
+        "bank cards",
+        "checking labels",
+        "personal spending"
+      ],
+      "targetVocabulary": [
+        "כרטיסים",
+        "ארנק",
+        "סימונים",
+        "קנייה",
+        "אישי"
+      ],
+      "brief": "At the checkout, a customer notices that two cards in her wallet look alike. She asks the cashier to wait while she checks their labels, then pays with the card marked for personal spending.",
+      "storyPattern": {
+        "goal": "Choose the intended card for an ordinary purchase",
+        "relationship": "Customer and cashier",
+        "interaction": "Pause to compare two similar cards and say which one she wants to use",
+        "outcome": "Pay with the card marked for personal spending"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-25",
+      "storyId": "resident-sets-aside-money-for-a-household-bill",
+      "domain": "bills_taxes",
+      "scenario": "housemates_put_money_for_a_household_bill_in_a_labeled_envelope",
+      "lexicalThemes": [
+        "household bills",
+        "setting money aside",
+        "shared expenses"
+      ],
+      "targetVocabulary": [
+        "bill",
+        "envelope",
+        "set aside",
+        "money",
+        "expenses"
+      ],
+      "brief": "A woman sees a household bill on the table, puts money in an envelope marked for the household bill, and her male housemate agrees not to use that money for other expenses.",
+      "storyPattern": {
+        "goal": "Keep money intended for a household bill separate from other spending",
+        "relationship": "Housemates sharing household expenses",
+        "interaction": "Label an envelope and explain what the reserved money is for",
+        "outcome": "Both housemates leave the bill money untouched"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-25",
+      "storyId": "tenant-explains-a-noisy-window-to-the-landlord",
+      "domain": "housing_landlord",
+      "scenario": "tenant_reports_rattling_bedroom_window_and_tests_tightened_latch",
+      "lexicalThemes": [
+        "renting",
+        "describing a household issue",
+        "demonstrating a window noise"
+      ],
+      "targetVocabulary": [
+        "window",
+        "rattle",
+        "wind",
+        "latch",
+        "quieter"
+      ],
+      "brief": "A tenant tells her landlord that the bedroom window rattles when it is windy. The landlord tightens the loose latch, and the tenant closes the window to check that it is quieter.",
+      "storyPattern": {
+        "goal": "Stop a bedroom window from rattling",
+        "relationship": "Tenant and landlord",
+        "interaction": "Describe and demonstrate the noise before a small adjustment",
+        "outcome": "Test the window and find it quieter"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-25",
+      "storyId": "resident-reports-a-dark-streetlight",
+      "domain": "municipal_services",
+      "scenario": "resident_reports_out_streetlight_and_gives_corner",
+      "lexicalThemes": [
+        "municipal service",
+        "street locations",
+        "reporting a problem"
+      ],
+      "targetVocabulary": [
+        "streetlight",
+        "out",
+        "corner",
+        "street names",
+        "report"
+      ],
+      "brief": "A resident calls the municipal service desk to report that a streetlight near her building is out. The worker asks which corner she means, and she gives the street names so the location can be recorded clearly.",
+      "storyPattern": {
+        "goal": "Report a streetlight that is not working",
+        "relationship": "Resident and municipal service worker",
+        "interaction": "Describe the problem and clarify its location when asked",
+        "outcome": "The worker records the location of the streetlight"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-25",
+      "storyId": "coworkers-clarify-who-will-call-a-customer",
+      "domain": "employment_jobs",
+      "scenario": "coworkers_clarify_and_assign_customer_callback",
+      "lexicalThemes": [
+        "work communication",
+        "clarifying responsibility",
+        "customer calls",
+        "taking a note"
+      ],
+      "targetVocabulary": [
+        "call back",
+        "customer",
+        "should I",
+        "agree",
+        "note"
+      ],
+      "brief": "At work, Dana asks Ori whether he is calling their customer back or whether she should. They had each assumed the other would call, so Ori agrees to make the call and writes the customer's name on a note.",
+      "storyPattern": {
+        "goal": "Make sure a customer receives a promised call back",
+        "relationship": "Coworkers sharing a customer task",
+        "interaction": "Dana checks who is responsible, and Ori agrees to make the call",
+        "outcome": "Ori takes responsibility and writes the customer's name on a note"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-25",
+      "storyId": "shopper-asks-for-a-weighed-portion-of-apples",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_buys_three_apples_by_weight_instead_of_a_full_bag",
+      "lexicalThemes": [
+        "produce shopping",
+        "quantity",
+        "weighing"
+      ],
+      "targetVocabulary": [
+        "apples",
+        "three",
+        "weigh",
+        "amount",
+        "basket"
+      ],
+      "brief": "At the produce counter, a shopper asks for three apples rather than a full bag. The seller weighs them, she says the amount is right, and she puts them in her basket.",
+      "storyPattern": {
+        "goal": "Buy only a few pieces of weighed produce",
+        "relationship": "Shopper and produce seller",
+        "interaction": "State a small quantity and respond to the amount weighed",
+        "outcome": "Accept the portion and put it in the basket"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-25",
+      "storyId": "shopper-checks-a-jacket-pocket-before-buying",
+      "domain": "shopping_returns",
+      "scenario": "shopper_tests_whether_a_jacket_pocket_fits_her_phone_before_buying",
+      "lexicalThemes": [
+        "clothing shopping",
+        "fit and function",
+        "preferences"
+      ],
+      "targetVocabulary": [
+        "jacket",
+        "inside pocket",
+        "phone",
+        "fit",
+        "buy"
+      ],
+      "brief": "Noa tries on a jacket in a store, tests whether her phone fits in its inside pocket, and decides to buy the jacket after confirming that it fits.",
+      "storyPattern": {
+        "goal": "Check that a clothing item meets a practical need before buying",
+        "relationship": "Shopper acting independently",
+        "interaction": "Test the pocket with her phone rather than relying on appearance",
+        "outcome": "Choose the jacket after confirming the phone fits"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-25",
+      "storyId": "recipient-asks-the-delivery-worker-to-call-from-the-gate",
+      "domain": "delivery_customer_service",
+      "scenario": "recipient_meets_delivery_worker_at_building_gate",
+      "lexicalThemes": [
+        "delivery",
+        "building entrance",
+        "simple coordination"
+      ],
+      "targetVocabulary": [
+        "delivery worker",
+        "gate",
+        "call",
+        "come down",
+        "meet"
+      ],
+      "brief": "Maya cannot reach the building entrance from her apartment, so she asks the delivery worker to call her from the gate and meets him outside.",
+      "storyPattern": {
+        "goal": "Receive a delivery when the recipient cannot access the entrance from inside",
+        "relationship": "Recipient and delivery worker",
+        "interaction": "Explain the access difficulty and ask the worker to call from the gate",
+        "outcome": "The worker calls and the recipient comes down to meet him outside"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-25",
+      "storyId": "user-chooses-a-new-account-password",
+      "domain": "digital_accounts",
+      "scenario": "user_replaces_a_too_short_password_with_a_longer_phrase_to_access_account",
+      "lexicalThemes": [
+        "digital account access",
+        "passwords",
+        "trying again"
+      ],
+      "targetVocabulary": [
+        "account",
+        "password",
+        "too short",
+        "longer",
+        "sign in"
+      ],
+      "brief": "A user updating her own online account replaces a password the form says is too short with a longer phrase. The form accepts it, and she signs in with the new password.",
+      "storyPattern": {
+        "goal": "Set a password the account form accepts",
+        "relationship": "User managing her own online account",
+        "interaction": "Notice the form’s message and replace the rejected password with a longer one",
+        "outcome": "The new password is accepted and the user signs in"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-25",
+      "storyId": "passenger-asks-driver-to-stop-near-the-crosswalk",
+      "domain": "driving_parking",
+      "scenario": "taxi_passenger_requests_safe_curbside_stop_past_crosswalk",
+      "lexicalThemes": [
+        "taxi ride",
+        "landmarks",
+        "polite requests"
+      ],
+      "targetVocabulary": [
+        "entrance",
+        "past",
+        "crosswalk",
+        "curb",
+        "stop"
+      ],
+      "brief": "A taxi passenger points out that the entrance she needs is just past the crosswalk and asks the driver to stop by the curb. The driver stops safely, and she confirms she can see the entrance.",
+      "storyPattern": {
+        "goal": "Get dropped off near a visible entrance",
+        "relationship": "Taxi passenger and driver",
+        "interaction": "Describe a nearby landmark and request a curbside stop",
+        "outcome": "Stop safely and confirm the entrance is in view"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-25",
+      "storyId": "diner-asks-for-the-dressing-on-the-side",
+      "domain": "food_service_orders",
+      "scenario": "diner_requests_salad_dressing_separately_to_choose_how_much_to_add",
+      "lexicalThemes": [
+        "ordering food",
+        "preferences",
+        "small adjustments"
+      ],
+      "targetVocabulary": [
+        "salad",
+        "dressing",
+        "on the side",
+        "a little",
+        "small cup"
+      ],
+      "brief": "At a café, a diner orders a salad and asks for the dressing on the side so she can add only a little. The server agrees and brings the dressing in a small cup beside the salad.",
+      "storyPattern": {
+        "goal": "Control how much dressing goes on a meal",
+        "relationship": "Diner and server",
+        "interaction": "State a preference while ordering and receive acknowledgment",
+        "outcome": "Get the dressing separately and add as much as desired"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-25",
+      "storyId": "bank-customer-deposits-cash-at-branch",
+      "domain": "banking_credit",
+      "scenario": "woman_confirms_her_account_before_depositing_cash",
+      "lexicalThemes": [
+        "cash deposits",
+        "bank accounts",
+        "account details",
+        "bank cards",
+        "deposit confirmations"
+      ],
+      "targetVocabulary": [
+        "מזומן",
+        "להפקיד",
+        "חשבון",
+        "מספר החשבון",
+        "כרטיס בנק",
+        "אישור"
+      ],
+      "brief": "After selling an old desk, a woman brings the cash to her bank branch. She asks to deposit it into her own account and requests a printed confirmation. When the screen shows an old account nickname, she asks the teller to confirm the account number, checks it against her bank card, completes the deposit, and verifies the confirmation.",
+      "storyPattern": {
+        "goal": "Deposit cash into the intended personal account",
+        "relationship": "Account holder and bank teller",
+        "interaction": "Explain the intended deposit, clarify an outdated account label, and verify the account details",
+        "outcome": "Complete the deposit to the confirmed account and check the confirmation"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-25",
+      "storyId": "employee-clarifies-a-shift-entry",
+      "domain": "work_pay",
+      "scenario": "employee_and_supervisor_reconcile_a_missing_shift_record_using_handover_notes",
+      "lexicalThemes": [
+        "work hours",
+        "shift records",
+        "explaining a discrepancy",
+        "checking notes",
+        "confirming details"
+      ],
+      "targetVocabulary": [
+        "shift",
+        "work-hours record",
+        "missing entry",
+        "start time",
+        "finish time",
+        "handover sheet",
+        "confirm"
+      ],
+      "brief": "Noa notices a missing evening shift in her work-hours record, compares her notes with the shift handover sheet with her manager, confirms the recorded times, and checks that the manager corrected the entry.",
+      "storyPattern": {
+        "goal": "Correct a missing work-hours entry using a reliable workplace record",
+        "relationship": "Employee and supervisor reviewing the employee's own hours",
+        "interaction": "Explain the discrepancy, compare personal notes with the shift handover record, and confirm the times",
+        "outcome": "The manager corrects the entry and the employee verifies it in her record"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-25",
+      "storyId": "recipient-resolves-a-parcel-delivery-question",
+      "domain": "delivery_customer_service",
+      "scenario": "recipient_confirms_and_retrieves_parcel_from_building_guard",
+      "lexicalThemes": [
+        "delivery notices",
+        "parcel location",
+        "clarifying a message",
+        "building staff",
+        "confirming receipt"
+      ],
+      "targetVocabulary": [
+        "delivery notice",
+        "parcel",
+        "guard desk",
+        "collection point",
+        "sign for",
+        "receive"
+      ],
+      "brief": "A resident receives an unclear parcel delivery notice, contacts the delivery service to confirm that the parcel was left with the building guard, retrieves it from the guard, and confirms receipt.",
+      "storyPattern": {
+        "goal": "Find out where a delivered parcel was left and retrieve it",
+        "relationship": "Parcel recipient coordinating with a delivery representative and building guard",
+        "interaction": "Describe an unclear notice, clarify the recorded drop-off location, and ask the guard to check",
+        "outcome": "Retrieve the parcel from the guard and confirm receipt"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-25",
+      "storyId": "digital-account-recovery-email-update",
+      "domain": "digital_accounts",
+      "scenario": "account_holder_updates_recovery_email_after_verification_codes_go_to_old_address",
+      "lexicalThemes": [
+        "account access",
+        "verification codes",
+        "recovery contact details",
+        "clarifying account fields",
+        "signing in"
+      ],
+      "targetVocabulary": [
+        "verification code",
+        "recovery email",
+        "username",
+        "access",
+        "update",
+        "sign in"
+      ],
+      "brief": "Avi contacts Liat, a digital-service support representative, because verification codes are still going to an old email address. Liat explains how to update the recovery email without changing the username; Avi receives a code at his new address, signs in, and confirms the recovery details.",
+      "storyPattern": {
+        "goal": "Restore account access by directing verification codes to an accessible email",
+        "relationship": "Account holder and digital-service support representative",
+        "interaction": "Explain the failed verification, distinguish the recovery address from the username, and confirm the updated contact",
+        "outcome": "Receive a code at the new address, sign in, and verify the recovery details"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-25",
+      "storyId": "neighbors-coordinate-a-dog-sitting-handoff",
+      "domain": "pets_veterinary",
+      "scenario": "neighbors_agree_on_practical_dog_care_during_an_overnight_trip",
+      "lexicalThemes": [
+        "pet care",
+        "feeding instructions",
+        "walking routines",
+        "safety preferences",
+        "neighborly coordination"
+      ],
+      "targetVocabulary": [
+        "feed",
+        "walk",
+        "leash",
+        "portion",
+        "quieter route",
+        "while I’m away"
+      ],
+      "brief": "Maya asks her neighbor Oren to care for her dog during an overnight work trip. They clarify the dog's food and routine, discuss the fraying leash and busy street, agree on the spare leash and quieter park route, and prepare the items by the entrance.",
+      "storyPattern": {
+        "goal": "Arrange dependable overnight care for a pet while away",
+        "relationship": "Pet owner and nearby neighbor who agrees to help",
+        "interaction": "Clarify the pet’s routine and respond to a concern about the usual equipment and walking route",
+        "outcome": "Prepare the food and spare leash together and agree on a clear care plan"
+      },
+      "edition": "bet"
     }
   ]
 }
