@@ -36190,6 +36190,1317 @@
         "outcome": "Prepare the food and spare leash together and agree on a clear care plan"
       },
       "edition": "bet"
+    },
+    {
+      "date": "2026-11-26",
+      "storyId": "resident-asks-clerk-to-repeat-a-street-name",
+      "domain": "government_documents",
+      "scenario": "Resident asks a clerk to repeat an office street name slowly and writes it down",
+      "lexicalThemes": [
+        "public-service counters",
+        "street names",
+        "asking for repetition",
+        "writing information down"
+      ],
+      "targetVocabulary": [
+        "רחוב",
+        "שוב",
+        "לאט",
+        "לכתוב"
+      ],
+      "brief": "At a public-service counter, a resident does not hear the street name for a nearby office. She asks the clerk to repeat it slowly, then writes it down.",
+      "storyPattern": {
+        "goal": "Record the location of an office accurately",
+        "relationship": "Resident and public-service clerk",
+        "interaction": "Ask for a street name to be repeated slowly",
+        "outcome": "Write down the location clearly"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-26",
+      "storyId": "traveler-asks-which-platform-number-is-on-her-ticket",
+      "domain": "travel_documents",
+      "scenario": "traveler_matches_departure_platform_number_to_ticket",
+      "lexicalThemes": [
+        "train tickets",
+        "platform numbers",
+        "reading a booking",
+        "following signs"
+      ],
+      "targetVocabulary": [
+        "ticket",
+        "platform",
+        "number",
+        "sign"
+      ],
+      "brief": "At the station, a traveler sees two platform numbers in her booking and asks a staff member which number is listed on her ticket as the departure platform. The staff member points to that number, and she follows its sign.",
+      "storyPattern": {
+        "goal": "Identify the platform listed for a booked journey",
+        "relationship": "Traveler and station staff member",
+        "interaction": "Compare the platform numbers on a ticket and station display",
+        "outcome": "Follow the sign for the platform shown on the ticket"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-26",
+      "storyId": "resident-joins-the-shorter-municipal-queue",
+      "domain": "municipal_services",
+      "scenario": "resident_identifies_the_general_questions_queue_by_asking_another_visitor",
+      "lexicalThemes": [
+        "service counters",
+        "queues",
+        "identifying a line",
+        "joining a queue"
+      ],
+      "targetVocabulary": [
+        "queue",
+        "line",
+        "general questions",
+        "join"
+      ],
+      "brief": "At a municipal building, a resident sees two queues and asks a person waiting which line is for general questions. The person points to the shorter line, and the resident joins it.",
+      "storyPattern": {
+        "goal": "Find the queue for a general question",
+        "relationship": "Resident and another visitor",
+        "interaction": "Ask a person waiting which line is appropriate",
+        "outcome": "Join the indicated queue"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-26",
+      "storyId": "applicant-clarifies-which-documents-to-bring-to-an-interview",
+      "domain": "employment_jobs",
+      "scenario": "applicant_asks_about_resume_format_before_job_interview",
+      "lexicalThemes": [
+        "job interviews",
+        "documents",
+        "preferences",
+        "preparing to bring something"
+      ],
+      "targetVocabulary": [
+        "ריאיון עבודה",
+        "קורות חיים",
+        "מודפסים",
+        "עותק בטלפון"
+      ],
+      "brief": "Before her job interview, an applicant messages the prospective employer to ask whether to bring a printed résumé or a copy on her phone. The employer says either is fine, so she prints a page and puts it in her bag.",
+      "storyPattern": {
+        "goal": "Prepare the right résumé format for an interview",
+        "relationship": "Job applicant and prospective employer",
+        "interaction": "Ask whether a printed or digital résumé is preferred",
+        "outcome": "Print a résumé page and put it in her interview bag"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-26",
+      "storyId": "housemates-compare-their-shares-of-a-water-bill",
+      "domain": "bills_taxes",
+      "scenario": "housemates_pause_a_bill_split_to_check_their_shared_arrangement",
+      "lexicalThemes": [
+        "household bills",
+        "sharing costs",
+        "explaining uncertainty",
+        "agreeing to check"
+      ],
+      "targetVocabulary": [
+        "bill",
+        "divide",
+        "away",
+        "check together"
+      ],
+      "brief": "Two housemates receive a water bill. Because one was away for part of the month, they are unsure how to divide the cost. They agree to check their usual arrangement together before sending any money.",
+      "storyPattern": {
+        "goal": "Agree how to divide a shared household bill",
+        "relationship": "Housemates sharing expenses",
+        "interaction": "Point out a circumstance that makes the usual split unclear",
+        "outcome": "Pause payment and agree to review their arrangement together"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-26",
+      "storyId": "passenger-asks-another-rider-to-let-her-off-at-the-next-stop",
+      "domain": "transport_fares_routes",
+      "scenario": "passenger_requests_space_to_reach_the_bus_door_before_her_stop",
+      "lexicalThemes": [
+        "bus rides",
+        "making room",
+        "polite requests",
+        "getting off"
+      ],
+      "targetVocabulary": [
+        "next stop",
+        "door",
+        "make room",
+        "step aside"
+      ],
+      "brief": "A passenger standing near the bus doors asks another rider to make room so she can get off at the next stop. The rider steps aside, and she reaches the door before the bus stops.",
+      "storyPattern": {
+        "goal": "Reach the bus door in time to get off",
+        "relationship": "Two passengers sharing a bus",
+        "interaction": "Ask another rider to make room",
+        "outcome": "Move to the door before the stop"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-26",
+      "storyId": "customer-lets-the-person-with-one-item-go-ahead",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_offers_ahead_in_line_to_someone_with_one_item",
+      "lexicalThemes": [
+        "checkout queues",
+        "offering a turn",
+        "few items",
+        "polite responses"
+      ],
+      "targetVocabulary": [
+        "one item",
+        "go ahead",
+        "queue",
+        "checkout"
+      ],
+      "brief": "At a supermarket checkout queue, one shopper offers the woman behind her, who has only one item, a chance to go first. The woman accepts and moves to the checkout.",
+      "storyPattern": {
+        "goal": "Help someone with a very small purchase finish sooner",
+        "relationship": "Two shoppers waiting in line",
+        "interaction": "Offer the person behind a chance to go first",
+        "outcome": "The other shopper moves to the checkout"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-26",
+      "storyId": "taxi-passenger-asks-driver-to-wait-while-she-checks-the-address",
+      "domain": "driving_parking",
+      "scenario": "taxi_passenger_checks_a_message_to_recall_the_building_number",
+      "lexicalThemes": [
+        "taxi rides",
+        "addresses",
+        "asking for a moment",
+        "checking a message"
+      ],
+      "targetVocabulary": [
+        "wait a moment",
+        "building number",
+        "message",
+        "read aloud"
+      ],
+      "brief": "A taxi passenger cannot remember the building number. She asks the driver to wait briefly, checks the address in a saved message, and reads the number aloud.",
+      "storyPattern": {
+        "goal": "Give the driver the correct building number",
+        "relationship": "Taxi passenger and driver",
+        "interaction": "Ask for a brief pause and check a saved message",
+        "outcome": "Read the confirmed number aloud"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-26",
+      "storyId": "customer-asks-for-a-drink-with-no-ice",
+      "domain": "food_service_orders",
+      "scenario": "customer_orders_a_cold_drink_without_ice_at_a_cafe",
+      "lexicalThemes": [
+        "ordering drinks",
+        "preferences",
+        "repeat-back",
+        "confirming an order"
+      ],
+      "targetVocabulary": [
+        "משקה קר",
+        "בלי קרח",
+        "הבקשה",
+        "לאשר את ההזמנה"
+      ],
+      "brief": "At a café, a customer orders a cold drink without ice. The worker repeats the preference, and the customer confirms.",
+      "storyPattern": {
+        "goal": "Order a drink prepared to a simple preference",
+        "relationship": "Customer and café worker",
+        "interaction": "Ask for a cold drink without ice and confirm the repeated order",
+        "outcome": "The preference is understood before preparation"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-26",
+      "storyId": "traveler-asks-a-cafe-worker-to-fill-her-water-bottle",
+      "domain": "food_service_orders",
+      "scenario": "traveler_uses_a_cafe_water_station_to_refill_a_bottle",
+      "lexicalThemes": [
+        "food and drink during travel",
+        "asking permission",
+        "finding a water station",
+        "refilling a bottle"
+      ],
+      "targetVocabulary": [
+        "empty bottle",
+        "fill",
+        "water station",
+        "point to"
+      ],
+      "brief": "While waiting for a train, Noa asks a café worker where she can fill her empty water bottle. The worker points to the water station, and Noa fills it there.",
+      "storyPattern": {
+        "goal": "Refill a bottle while waiting for a journey",
+        "relationship": "Traveler and café worker",
+        "interaction": "Ask where she can fill her bottle",
+        "outcome": "Use the indicated water station"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-26",
+      "storyId": "traveler-chooses-a-seat-near-the-carriage-door",
+      "domain": "transport_fares_routes",
+      "scenario": "traveler_selects_an_open_train_seat_near_the_door_and_keeps_the_aisle_clear",
+      "lexicalThemes": [
+        "train travel",
+        "choosing a seat",
+        "carrying luggage",
+        "shared space"
+      ],
+      "targetVocabulary": [
+        "empty seat",
+        "near the door",
+        "bag",
+        "aisle"
+      ],
+      "brief": "A traveler with a large bag chooses an empty train seat near the carriage door and places her bag beside her feet, leaving the aisle clear.",
+      "storyPattern": {
+        "goal": "Sit somewhere convenient while managing a large bag",
+        "relationship": "Traveler sharing a train carriage with other passengers",
+        "interaction": "Choose an available seat near the door and place luggage thoughtfully",
+        "outcome": "Sit down with the bag beside her feet and the aisle clear"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-26",
+      "storyId": "resident-corrects-a-misread-family-name-at-a-service-counter",
+      "domain": "government_documents",
+      "scenario": "resident_corrects_a_misread_family_name_and_adds_missing_apartment_number_at_a_service_counter",
+      "lexicalThemes": [
+        "names and spelling",
+        "personal details",
+        "service counters",
+        "checking a completed form"
+      ],
+      "targetVocabulary": [
+        "family name",
+        "spell",
+        "address",
+        "apartment number",
+        "missing",
+        "correct",
+        "check",
+        "confirmation"
+      ],
+      "brief": "Miriam visits a public-service counter, corrects a misheard family name, gives her missing apartment number, checks the entry, and takes a printed confirmation.",
+      "storyPattern": {
+        "goal": "Make sure personal details are recorded accurately during an in-person service interaction",
+        "relationship": "Resident and public-service clerk",
+        "interaction": "Correct a misheard name, supply a missing contact detail, and verify the clerk's repeat-back",
+        "outcome": "Confirm the corrected entry and leave with a printed record"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-26",
+      "storyId": "worker-clarifies-a-shift-swap-after-a-transport-disruption",
+      "domain": "work_pay",
+      "scenario": "coworkers_adjust_shift_handoff_after_a_commuters_route_disruption",
+      "lexicalThemes": [
+        "work shifts",
+        "explaining a delay",
+        "availability",
+        "sharing responsibilities"
+      ],
+      "targetVocabulary": [
+        "shift",
+        "route",
+        "disruption",
+        "arrive",
+        "cover",
+        "take over",
+        "a little earlier",
+        "handoff"
+      ],
+      "brief": "Dana's usual bus route is disrupted, so she may be late for her morning shift. Her coworker cannot cover the whole shift but can arrive a little early and do the first tasks. They agree that Dana will take over the later tasks when she arrives, tell their supervisor together, and Dana gets there in time.",
+      "storyPattern": {
+        "goal": "Coordinate shift coverage when a commute disruption affects arrival time",
+        "relationship": "Coworkers sharing a shift",
+        "interaction": "Explain the travel problem, discuss what each person can cover, and clarify the handoff",
+        "outcome": "Agree on a partial coverage plan and communicate it to the supervisor"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-26",
+      "storyId": "commuter-follows-a-platform-change-to-catch-a-connecting-bus",
+      "domain": "transport_fares_routes",
+      "scenario": "commuter_confirms_a_changed_departure_platform_before_boarding_a_connection",
+      "lexicalThemes": [
+        "station orientation",
+        "platform changes",
+        "destinations",
+        "clarifying directions"
+      ],
+      "targetVocabulary": [
+        "platform",
+        "departure",
+        "connection",
+        "same destination",
+        "far side",
+        "passage",
+        "sign",
+        "board"
+      ],
+      "brief": "Noa arrives at a bus station for a connecting bus and sees that its platform has changed. She checks the sign, asks an attendant if the far-side platform is right, and confirms the differently named route before boarding and continuing her journey.",
+      "storyPattern": {
+        "goal": "Find the correct boarding point after a departure platform changes",
+        "relationship": "Commuter and station attendant",
+        "interaction": "Compare a displayed change with station signs and clarify which connecting service to use",
+        "outcome": "Reach the correct platform, board the connection, and continue the journey"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-26",
+      "storyId": "friends-coordinate-a-pickup-point-outside-a-busy-event-venue",
+      "domain": "arts_events",
+      "scenario": "friends_meet_by_benches_at_side_exit_after_event",
+      "lexicalThemes": [
+        "event exits",
+        "meeting points",
+        "crowds",
+        "visible landmarks"
+      ],
+      "targetVocabulary": [
+        "entrance",
+        "crowded",
+        "sidewalk",
+        "side exit",
+        "benches",
+        "sign",
+        "I can see you"
+      ],
+      "brief": "After an event, Noa waits outside while Gil leaves separately. They avoid the crowded main entrance and meet beside the benches at the side exit, then leave together.",
+      "storyPattern": {
+        "goal": "Locate one another after an event when the main entrance is too crowded",
+        "relationship": "Friends attending the same event and leaving separately",
+        "interaction": "Describe surroundings, correct an initial assumption about the entrance, and agree on a visible alternative",
+        "outcome": "Meet at the quieter side exit by the benches and leave together"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-26",
+      "storyId": "customer-and-clerk-compare-two-ways-to-collect-a-large-order",
+      "domain": "shopping_returns",
+      "scenario": "customer_splits_collection_of_ready_order_after_finding_one_box_too_large_to_carry",
+      "lexicalThemes": [
+        "collecting an order",
+        "size and weight",
+        "available time",
+        "choosing between options"
+      ],
+      "targetVocabulary": [
+        "order",
+        "ready",
+        "bulky",
+        "carry",
+        "hold",
+        "loading area",
+        "come back",
+        "set aside"
+      ],
+      "brief": "Tamar arrives to collect a ready shop order, finds one box too large to carry, and compares taking smaller items now with returning for the box. Erez explains the brief loading window, labels the box, and sets it aside for later pickup.",
+      "storyPattern": {
+        "goal": "Collect a purchase in manageable parts when one item is unexpectedly bulky",
+        "relationship": "Customer Tamar and shop clerk Erez",
+        "interaction": "Clarify the box size and short loading window, compare collection options, and decide what to take now",
+        "outcome": "Tamar takes the smaller items and plans to return with help; Erez labels and sets aside the large box"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-26",
+      "storyId": "resident-asks-clerk-to-repeat-a-street-name",
+      "domain": "government_documents",
+      "scenario": "resident_requests_a_slow_repeat_of_an_office_street_name_at_a_public_service_counter",
+      "lexicalThemes": [
+        "public-service counters",
+        "street names",
+        "asking for repetition",
+        "writing information down"
+      ],
+      "targetVocabulary": [
+        "street",
+        "again",
+        "slowly",
+        "write down"
+      ],
+      "brief": "At a public-service counter, a resident does not hear the street name of a nearby office. She asks the clerk to repeat it slowly and writes it down so she can find the office.",
+      "storyPattern": {
+        "goal": "Record the location of an office accurately",
+        "relationship": "Resident and public-service clerk",
+        "interaction": "Ask for a street name to be repeated slowly",
+        "outcome": "Write down the location clearly"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-26",
+      "storyId": "traveler-asks-which-platform-number-is-on-her-ticket",
+      "domain": "travel_documents",
+      "scenario": "traveler_matches_a_departure_platform_number_to_her_ticket",
+      "lexicalThemes": [
+        "train tickets",
+        "platform numbers",
+        "reading a booking",
+        "following signs"
+      ],
+      "targetVocabulary": [
+        "ticket",
+        "platform",
+        "number",
+        "sign"
+      ],
+      "brief": "At the station, a traveler sees two platform numbers on her booking and asks a staff member which one is listed as her departure platform. He points to the number on the ticket, and she follows that sign.",
+      "storyPattern": {
+        "goal": "Identify the platform listed for a booked journey",
+        "relationship": "Traveler and station staff member",
+        "interaction": "Compare the platform numbers on a ticket and station display",
+        "outcome": "Follow the sign for the platform shown on the ticket"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-26",
+      "storyId": "resident-joins-the-shorter-municipal-queue",
+      "domain": "municipal_services",
+      "scenario": "resident_asks_another_visitor_to_identify_the_general_questions_queue_and_joins_it",
+      "lexicalThemes": [
+        "service counters",
+        "queues",
+        "identifying a line",
+        "joining a queue"
+      ],
+      "targetVocabulary": [
+        "תור",
+        "שאלות כלליות",
+        "להצטרף"
+      ],
+      "brief": "At a municipal building, a resident sees two queues, asks another visitor which one is for general questions, and joins the shorter queue after the visitor points it out.",
+      "storyPattern": {
+        "goal": "Find the queue for a general question",
+        "relationship": "Resident and another visitor",
+        "interaction": "Ask a person waiting which line is appropriate",
+        "outcome": "Join the indicated shorter queue"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-26",
+      "storyId": "applicant-clarifies-which-documents-to-bring-to-an-interview",
+      "domain": "employment_jobs",
+      "scenario": "applicant_checks_resume_format_before_interview_and_packs_printed_copy",
+      "lexicalThemes": [
+        "job interviews",
+        "résumés",
+        "asking about preferences",
+        "preparing documents"
+      ],
+      "targetVocabulary": [
+        "ריאיון עבודה",
+        "קורות חיים",
+        "מודפסים",
+        "עותק דיגיטלי",
+        "מעסיק"
+      ],
+      "brief": "Before a job interview, an applicant asks the prospective employer whether to bring a printed or digital résumé. The employer says either is fine, so she prints a copy and puts it in her bag.",
+      "storyPattern": {
+        "goal": "Prepare the right résumé format for an interview",
+        "relationship": "Job applicant and prospective employer",
+        "interaction": "Ask whether a printed or digital résumé is preferred",
+        "outcome": "Choose a format and put it in the interview bag"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-26",
+      "storyId": "housemates-compare-their-shares-of-a-water-bill",
+      "domain": "bills_taxes",
+      "scenario": "housemates_pause_payment_to_review_their_usual_water_bill_split",
+      "lexicalThemes": [
+        "household bills",
+        "sharing costs",
+        "explaining uncertainty",
+        "agreeing to check"
+      ],
+      "targetVocabulary": [
+        "חשבון מים",
+        "לחלק",
+        "מחוץ לבית",
+        "לבדוק יחד"
+      ],
+      "brief": "Two housemates receive a water bill. One was away for part of the month, so they pause payment and agree to check their usual way of splitting the bill together.",
+      "storyPattern": {
+        "goal": "Agree how to divide a shared household bill",
+        "relationship": "Housemates sharing expenses",
+        "interaction": "One housemate points out that being away for part of the month makes the usual split unclear",
+        "outcome": "They pause payment and agree to review their usual arrangement together"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-26",
+      "storyId": "passenger-asks-another-rider-to-let-her-off-at-the-next-stop",
+      "domain": "transport_fares_routes",
+      "scenario": "passenger_requests_space_to_reach_the_bus_door_before_her_stop",
+      "lexicalThemes": [
+        "bus rides",
+        "making room",
+        "polite requests",
+        "getting off"
+      ],
+      "targetVocabulary": [
+        "next stop",
+        "door",
+        "make room",
+        "step aside"
+      ],
+      "brief": "A passenger on a crowded bus asks another passenger to make room so she can reach the door before the next stop. The other passenger steps aside, and she reaches the door before the bus stops.",
+      "storyPattern": {
+        "goal": "Reach the bus door in time to get off",
+        "relationship": "Two passengers sharing a bus",
+        "interaction": "Ask another rider to make room",
+        "outcome": "Move to the door before the stop"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-26",
+      "storyId": "customer-lets-the-person-with-one-item-go-ahead",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_offers_ahead_in_line_to_someone_with_one_item",
+      "lexicalThemes": [
+        "checkout queues",
+        "offering a turn",
+        "few items",
+        "polite responses"
+      ],
+      "targetVocabulary": [
+        "one item",
+        "go ahead",
+        "queue",
+        "checkout"
+      ],
+      "brief": "At a supermarket checkout, a woman notices that the man behind her has only one item. She offers to let him go first, and he moves to the checkout.",
+      "storyPattern": {
+        "goal": "Help someone with a very small purchase finish sooner",
+        "relationship": "Two shoppers waiting in line",
+        "interaction": "Offer the person behind a chance to go first",
+        "outcome": "The other shopper moves to the checkout"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-26",
+      "storyId": "taxi-passenger-asks-driver-to-wait-while-she-checks-the-address",
+      "domain": "driving_parking",
+      "scenario": "taxi_passenger_checks_a_message_to_recall_the_building_number",
+      "lexicalThemes": [
+        "taxi rides",
+        "addresses",
+        "asking for a moment",
+        "checking a message"
+      ],
+      "targetVocabulary": [
+        "wait a moment",
+        "building number",
+        "message",
+        "read aloud"
+      ],
+      "brief": "A taxi passenger forgets the building number, asks the driver to wait briefly, checks a saved message, and reads the number aloud.",
+      "storyPattern": {
+        "goal": "Give the driver the correct building number",
+        "relationship": "Taxi passenger and driver",
+        "interaction": "Ask for a brief pause and check a saved message",
+        "outcome": "Read the confirmed number aloud"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-26",
+      "storyId": "customer-asks-for-a-drink-with-no-ice",
+      "domain": "food_service_orders",
+      "scenario": "customer_orders_a_cold_drink_without_ice",
+      "lexicalThemes": [
+        "ordering drinks",
+        "preferences",
+        "repeat-back",
+        "confirming an order"
+      ],
+      "targetVocabulary": [
+        "cold drink",
+        "without ice",
+        "order",
+        "confirm"
+      ],
+      "brief": "At a café counter, a customer orders a cold drink without ice. The worker repeats the preference, the customer confirms, and the worker prepares the drink.",
+      "storyPattern": {
+        "goal": "Order a drink prepared to a simple preference",
+        "relationship": "Customer and café worker",
+        "interaction": "Ask for a cold drink without ice and confirm the repeated order",
+        "outcome": "The preference is understood before preparation"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-26",
+      "storyId": "traveler-asks-a-cafe-worker-to-fill-her-water-bottle",
+      "domain": "food_service_orders",
+      "scenario": "traveler_refills_empty_bottle_at_cafe_water_station",
+      "lexicalThemes": [
+        "food and drink during travel",
+        "asking where to fill a bottle",
+        "finding a water station",
+        "refilling a bottle"
+      ],
+      "targetVocabulary": [
+        "רכבת",
+        "בקבוק ריק",
+        "למלא",
+        "מתקן מים",
+        "להראות"
+      ],
+      "brief": "While waiting for a train, a traveler asks a café worker where she can fill her empty water bottle. The worker points to the water station, and the traveler fills it there.",
+      "storyPattern": {
+        "goal": "Refill a bottle while waiting for a journey",
+        "relationship": "Traveler and café worker",
+        "interaction": "Ask where she can fill her bottle",
+        "outcome": "Use the indicated water station"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-26",
+      "storyId": "traveler-chooses-a-seat-near-the-carriage-door",
+      "domain": "transport_fares_routes",
+      "scenario": "traveler_selects_an_open_train_seat_near_the_door_and_keeps_the_aisle_clear",
+      "lexicalThemes": [
+        "train travel",
+        "choosing a seat",
+        "carrying luggage",
+        "shared space"
+      ],
+      "targetVocabulary": [
+        "empty seat",
+        "near the door",
+        "bag",
+        "aisle"
+      ],
+      "brief": "A traveler with a large bag takes an empty seat near the train carriage door and places the bag beside her feet, keeping the aisle clear.",
+      "storyPattern": {
+        "goal": "Sit somewhere convenient while managing a large bag",
+        "relationship": "Traveler sharing a train carriage with other passengers",
+        "interaction": "Choose an available seat near the door and place luggage thoughtfully",
+        "outcome": "Sit down with the bag beside her feet and the aisle clear"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-26",
+      "storyId": "resident-corrects-a-misread-family-name-at-a-service-counter",
+      "domain": "government_documents",
+      "scenario": "resident_corrects_a_misread_family_name_and_adds_missing_apartment_number_at_a_service_counter",
+      "lexicalThemes": [
+        "names and spelling",
+        "personal details",
+        "service counters",
+        "checking a completed form"
+      ],
+      "targetVocabulary": [
+        "family name",
+        "spell",
+        "address",
+        "apartment number",
+        "missing",
+        "correct",
+        "check",
+        "confirmation"
+      ],
+      "brief": "At a public-service counter, Tamar corrects a misheard family name, supplies her missing apartment number, checks the updated form, and leaves with a printed confirmation.",
+      "storyPattern": {
+        "goal": "Make sure personal details are recorded accurately during an in-person service interaction",
+        "relationship": "Resident and public-service clerk",
+        "interaction": "Correct a misheard name, supply a missing contact detail, and verify the clerk's repeat-back",
+        "outcome": "Confirm the corrected entry and leave with a printed record"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-26",
+      "storyId": "worker-clarifies-a-shift-swap-after-a-transport-disruption",
+      "domain": "work_pay",
+      "scenario": "coworkers_adjust_shift_handoff_after_a_commuters_route_disruption",
+      "lexicalThemes": [
+        "work shifts",
+        "explaining a delay",
+        "availability",
+        "sharing responsibilities"
+      ],
+      "targetVocabulary": [
+        "shift",
+        "route",
+        "disruption",
+        "arrive",
+        "cover",
+        "take over",
+        "a little earlier",
+        "handoff"
+      ],
+      "brief": "After her usual bus route changes and she may not reach work at the start of her shift, a worker explains the problem to her colleague. He cannot cover the whole opening shift but can arrive earlier to handle the first tasks. They agree that she will take over the next tasks when she arrives, tell their manager, and she gets there in time.",
+      "storyPattern": {
+        "goal": "Coordinate shift coverage when a commute disruption affects arrival time",
+        "relationship": "Coworkers sharing a shift",
+        "interaction": "Explain the travel problem, discuss what each person can cover, and clarify the handoff",
+        "outcome": "Agree on a partial coverage plan and communicate it to the supervisor"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-26",
+      "storyId": "commuter-follows-a-platform-change-to-catch-a-connecting-bus",
+      "domain": "transport_fares_routes",
+      "scenario": "commuter_confirms_a_changed_departure_platform_before_boarding_a_connection",
+      "lexicalThemes": [
+        "station orientation",
+        "platform changes",
+        "destinations",
+        "clarifying directions"
+      ],
+      "targetVocabulary": [
+        "platform",
+        "departure",
+        "connection",
+        "same destination",
+        "far side",
+        "passage",
+        "sign",
+        "board"
+      ],
+      "brief": "A commuter sees that her connecting bus has moved to another platform, checks the station signs with an attendant, clarifies that the differently named route is the correct connection, and boards.",
+      "storyPattern": {
+        "goal": "Find the correct boarding point after a departure platform changes",
+        "relationship": "Commuter and station attendant",
+        "interaction": "Compare a displayed change with station signs and clarify which connecting service to use",
+        "outcome": "Reach the correct platform, board the connection, and continue the journey"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-26",
+      "storyId": "friends-coordinate-a-pickup-point-outside-a-busy-event-venue",
+      "domain": "arts_events",
+      "scenario": "friends_meet_by_a_sign_at_the_quieter_side_exit_after_a_crowded_event",
+      "lexicalThemes": [
+        "event exits",
+        "meeting points",
+        "crowds",
+        "visible landmarks"
+      ],
+      "targetVocabulary": [
+        "entrance",
+        "exit",
+        "crowded",
+        "sidewalk",
+        "bench",
+        "sign",
+        "nearby",
+        "I can see you"
+      ],
+      "brief": "Friends Noa and Gil leave a crowded event at different times. Noa describes the crowd blocking the main entrance sidewalk, and they agree to meet by a sign at the quieter side exit near the benches. They spot one another and leave together.",
+      "storyPattern": {
+        "goal": "Locate one another after an event when the main entrance is too crowded",
+        "relationship": "Friends attending the same event and leaving separately",
+        "interaction": "Describe surroundings, correct an initial assumption about the entrance, and settle on a visible alternative",
+        "outcome": "Meet at the quieter side exit and leave together"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-26",
+      "storyId": "customer-and-clerk-compare-two-ways-to-collect-a-large-order",
+      "domain": "shopping_returns",
+      "scenario": "customer_splits_collection_of_ready_order_after_finding_box_too_large_to_carry",
+      "lexicalThemes": [
+        "collecting an order",
+        "size and weight",
+        "available time",
+        "choosing between options"
+      ],
+      "targetVocabulary": [
+        "order",
+        "ready",
+        "bulky",
+        "carry",
+        "hold",
+        "loading area",
+        "come back",
+        "set aside"
+      ],
+      "brief": "Tamar collects the smaller items in her ready shop order and plans to return with help for the bulky box, after Erez explains the brief loading-area window and sets the box aside.",
+      "storyPattern": {
+        "goal": "Collect a purchase in manageable parts when one item is unexpectedly bulky",
+        "relationship": "Customer Tamar and shop clerk Erez",
+        "interaction": "Clarify the bulky box and brief loading window, compare collection options, and decide what to take now",
+        "outcome": "Tamar takes the smaller items and plans to return with help; Erez labels and sets aside the bulky box"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-26",
+      "storyId": "resident-asks-clerk-to-repeat-a-street-name",
+      "domain": "government_documents",
+      "scenario": "resident_requests_a_slow_repeat_of_an_office_street_name_at_a_public_service_counter",
+      "lexicalThemes": [
+        "public-service counters",
+        "street names",
+        "asking for repetition",
+        "writing information down"
+      ],
+      "targetVocabulary": [
+        "רחוב",
+        "שוב",
+        "לאט",
+        "לכתוב"
+      ],
+      "brief": "A resident at a public-service counter asks the clerk to repeat a nearby office's street name slowly, then writes down the location.",
+      "storyPattern": {
+        "goal": "Record the location of an office accurately",
+        "relationship": "Resident and public-service clerk",
+        "interaction": "Ask for a street name to be repeated slowly",
+        "outcome": "Write down the location clearly"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-26",
+      "storyId": "traveler-asks-which-platform-number-is-on-her-ticket",
+      "domain": "travel_documents",
+      "scenario": "traveler_matches_a_departure_platform_number_to_her_ticket",
+      "lexicalThemes": [
+        "train tickets",
+        "platform numbers",
+        "reading a booking",
+        "following signs"
+      ],
+      "targetVocabulary": [
+        "ticket",
+        "platform",
+        "number",
+        "sign"
+      ],
+      "brief": "At a station, a traveler notices two platform numbers in her booking and asks a staff member which number is printed as her departure platform. The staff member points to the number on her ticket, and she follows that platform's sign.",
+      "storyPattern": {
+        "goal": "Identify the platform listed for a booked journey",
+        "relationship": "Traveler and station staff member",
+        "interaction": "Compare the platform numbers on a ticket and station display",
+        "outcome": "Follow the sign for the platform shown on the ticket"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-26",
+      "storyId": "resident-joins-the-shorter-municipal-queue",
+      "domain": "municipal_services",
+      "scenario": "resident_identifies_the_general_questions_queue_by_asking_another_visitor",
+      "lexicalThemes": [
+        "municipal building",
+        "service queues",
+        "asking which line is right",
+        "joining a queue"
+      ],
+      "targetVocabulary": [
+        "תור",
+        "שאלה כללית",
+        "להצטרף",
+        "להצביע"
+      ],
+      "brief": "At a municipal building, a resident sees two queues and asks a person waiting which line is for a general question. The person points to the shorter line, and the resident joins it.",
+      "storyPattern": {
+        "goal": "Find the queue for a general question",
+        "relationship": "Resident and another visitor",
+        "interaction": "Ask a person waiting which line is appropriate",
+        "outcome": "Join the indicated queue"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-26",
+      "storyId": "applicant-clarifies-which-documents-to-bring-to-an-interview",
+      "domain": "employment_jobs",
+      "scenario": "job_applicant_checks_resume_format_before_interview",
+      "lexicalThemes": [
+        "job interviews",
+        "résumés and documents",
+        "preferences",
+        "preparing to bring something"
+      ],
+      "targetVocabulary": [
+        "ראיון עבודה",
+        "קורות חיים",
+        "מודפסים",
+        "עותק דיגיטלי",
+        "מעסיק",
+        "תיק"
+      ],
+      "brief": "Before a job interview, Mia messages the prospective employer to ask whether to bring a printed résumé or a digital copy. He says either is fine, so she prints a copy and puts it in her bag.",
+      "storyPattern": {
+        "goal": "Prepare the right résumé format for an interview",
+        "relationship": "Job applicant and prospective employer",
+        "interaction": "Ask whether a printed or digital résumé is preferred",
+        "outcome": "Choose a format, print a copy, and put it in the interview bag"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-26",
+      "storyId": "housemates-compare-their-shares-of-a-water-bill",
+      "domain": "bills_taxes",
+      "scenario": "housemates_pause_a_bill_split_to_check_their_shared_arrangement",
+      "lexicalThemes": [
+        "household bills",
+        "sharing costs",
+        "explaining uncertainty",
+        "agreeing to check"
+      ],
+      "targetVocabulary": [
+        "חשבון מים",
+        "לחלק",
+        "מחוץ לבית",
+        "לבדוק ביחד"
+      ],
+      "brief": "Two housemates see the apartment's water bill and are unsure how to split it because one was away for part of the month. They agree to pause payment and review their usual arrangement together.",
+      "storyPattern": {
+        "goal": "Agree how to divide a shared household bill",
+        "relationship": "Housemates sharing expenses",
+        "interaction": "Point out a circumstance that makes the usual split unclear",
+        "outcome": "Pause payment and agree to review their arrangement together"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-26",
+      "storyId": "passenger-asks-another-rider-to-let-her-off-at-the-next-stop",
+      "domain": "transport_fares_routes",
+      "scenario": "passenger_requests_space_to_reach_the_bus_door_before_her_stop",
+      "lexicalThemes": [
+        "bus rides",
+        "making room",
+        "polite requests",
+        "getting off"
+      ],
+      "targetVocabulary": [
+        "next stop",
+        "door",
+        "make room",
+        "step aside"
+      ],
+      "brief": "On a crowded bus, a woman politely asks the passenger beside her to make room so she can reach the door before her stop. He moves aside, and she reaches the door before the bus stops.",
+      "storyPattern": {
+        "goal": "Reach the bus door in time to get off",
+        "relationship": "Two passengers sharing a bus",
+        "interaction": "Ask another rider to make room",
+        "outcome": "Move to the door before the stop"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-26",
+      "storyId": "customer-lets-the-person-with-one-item-go-ahead",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_offers_ahead_in_line_to_someone_with_one_item",
+      "lexicalThemes": [
+        "checkout queues",
+        "offering a turn",
+        "few items",
+        "polite responses"
+      ],
+      "targetVocabulary": [
+        "one item",
+        "go ahead",
+        "queue",
+        "checkout"
+      ],
+      "brief": "In a supermarket queue, Michal notices that the woman behind her has only one item. Michal offers to let her go first, and the woman steps up to the checkout.",
+      "storyPattern": {
+        "goal": "Help someone with a very small purchase finish sooner",
+        "relationship": "Two shoppers waiting in line",
+        "interaction": "Offer the person behind a chance to go first",
+        "outcome": "The other shopper moves to the checkout"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-26",
+      "storyId": "taxi-passenger-asks-driver-to-wait-while-she-checks-the-address",
+      "domain": "driving_parking",
+      "scenario": "taxi_passenger_checks_a_message_to_recall_the_building_number",
+      "lexicalThemes": [
+        "taxi rides",
+        "addresses",
+        "asking for a moment",
+        "checking a message"
+      ],
+      "targetVocabulary": [
+        "wait a moment",
+        "building number",
+        "message",
+        "read aloud"
+      ],
+      "brief": "A passenger in a taxi cannot remember the building number. She asks the driver to wait briefly, checks a message containing the address, and reads the number aloud.",
+      "storyPattern": {
+        "goal": "Give the driver the correct building number",
+        "relationship": "Taxi passenger and driver",
+        "interaction": "Ask for a brief pause and check a saved message",
+        "outcome": "Read the confirmed number aloud"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-26",
+      "storyId": "customer-asks-for-a-drink-with-no-ice",
+      "domain": "food_service_orders",
+      "scenario": "customer_orders_cold_juice_without_ice",
+      "lexicalThemes": [
+        "ordering drinks",
+        "preferences",
+        "repeat-back",
+        "confirming an order"
+      ],
+      "targetVocabulary": [
+        "cold drink",
+        "juice",
+        "without ice",
+        "order",
+        "confirm"
+      ],
+      "brief": "A customer orders cold juice at a café and asks for it without ice. The worker repeats the preference, and the customer confirms before the drink is prepared.",
+      "storyPattern": {
+        "goal": "Order a drink prepared to a simple preference",
+        "relationship": "Customer and café worker",
+        "interaction": "Ask for cold juice without ice and confirm the worker's repeated order",
+        "outcome": "The preference is understood before preparation"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-26",
+      "storyId": "traveler-asks-a-cafe-worker-to-fill-her-water-bottle",
+      "domain": "food_service_orders",
+      "scenario": "traveler_uses_a_cafe_water_station_to_refill_a_bottle",
+      "lexicalThemes": [
+        "food and drink during travel",
+        "asking where to fill a bottle",
+        "finding a water station",
+        "refilling a bottle"
+      ],
+      "targetVocabulary": [
+        "empty bottle",
+        "fill",
+        "water station",
+        "point to"
+      ],
+      "brief": "While waiting for a train, Noa asks a café worker where she can fill her empty water bottle. The worker points out the water station, and Noa fills the bottle there.",
+      "storyPattern": {
+        "goal": "Refill a bottle while waiting for a journey",
+        "relationship": "Traveler and café worker",
+        "interaction": "Ask where she can fill her bottle",
+        "outcome": "Use the indicated water station"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-26",
+      "storyId": "traveler-chooses-a-seat-near-the-carriage-door",
+      "domain": "transport_fares_routes",
+      "scenario": "traveler_selects_an_open_train_seat_near_the_door_and_keeps_the_aisle_clear",
+      "lexicalThemes": [
+        "train travel",
+        "choosing a seat",
+        "carrying luggage",
+        "shared space"
+      ],
+      "targetVocabulary": [
+        "empty seat",
+        "near the door",
+        "large bag",
+        "aisle"
+      ],
+      "brief": "A traveler with a large bag chooses an empty seat near the train carriage door, then places the bag beside her feet so the aisle stays clear.",
+      "storyPattern": {
+        "goal": "Sit somewhere convenient while managing a large bag",
+        "relationship": "A traveler sharing a train carriage with other passengers",
+        "interaction": "Choose an available seat near the door and place luggage thoughtfully",
+        "outcome": "Sit down with the bag beside her feet and the aisle clear"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-26",
+      "storyId": "resident-corrects-a-misread-family-name-at-a-service-counter",
+      "domain": "government_documents",
+      "scenario": "resident_corrects_a_misread_family_name_and_adds_missing_apartment_number_at_a_service_counter",
+      "lexicalThemes": [
+        "names and spelling",
+        "personal details",
+        "service counters",
+        "checking a completed form"
+      ],
+      "targetVocabulary": [
+        "family name",
+        "spell",
+        "address",
+        "apartment number",
+        "missing",
+        "correct",
+        "check",
+        "confirmation"
+      ],
+      "brief": "At a public-service counter, a resident corrects a similar-sounding family name, supplies the missing apartment number, checks the entry, and takes a corrected printed confirmation.",
+      "storyPattern": {
+        "goal": "Make sure personal details are recorded accurately during an in-person service interaction",
+        "relationship": "Resident and public-service clerk",
+        "interaction": "Correct a misheard name, supply a missing contact detail, and verify the clerk's repeat-back",
+        "outcome": "Confirm the corrected entry and leave with a printed record"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-26",
+      "storyId": "worker-clarifies-a-shift-swap-after-a-transport-disruption",
+      "domain": "work_pay",
+      "scenario": "coworkers_adjust_shift_handoff_after_a_commuters_route_disruption",
+      "lexicalThemes": [
+        "work shifts",
+        "explaining a delay",
+        "availability",
+        "sharing responsibilities"
+      ],
+      "targetVocabulary": [
+        "shift",
+        "route",
+        "disruption",
+        "arrive",
+        "cover",
+        "take over",
+        "a little earlier",
+        "handoff"
+      ],
+      "brief": "When a disruption on her usual bus route threatened her arrival time, Dana coordinated with her coworker Yael. Yael could not cover the whole opening shift, but agreed to arrive a little earlier and handle the first orders; Dana arrived later, took over the next tasks, and they informed their supervisor together.",
+      "storyPattern": {
+        "goal": "Coordinate shift coverage when a commute disruption affects arrival time",
+        "relationship": "Coworkers sharing a shift",
+        "interaction": "Explain the travel problem, discuss what each person can cover, and clarify the handoff",
+        "outcome": "Agree on a partial coverage plan and communicate it to the supervisor"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-26",
+      "storyId": "commuter-follows-a-platform-change-to-catch-a-connecting-bus",
+      "domain": "transport_fares_routes",
+      "scenario": "commuter_confirms_a_changed_departure_platform_before_boarding_a_connection",
+      "lexicalThemes": [
+        "station orientation",
+        "platform changes",
+        "destinations",
+        "clarifying directions"
+      ],
+      "targetVocabulary": [
+        "platform",
+        "departure",
+        "connection",
+        "same destination",
+        "far side",
+        "passage",
+        "sign",
+        "board"
+      ],
+      "brief": "A commuter notices that the departure platform for her connecting bus has changed. She asks a station attendant whether the new platform serves the same destination, follows directions through the pedestrian passage, checks a sign naming another route, and confirms that it is the correct connection before boarding and continuing her journey.",
+      "storyPattern": {
+        "goal": "Find the correct boarding point after a departure platform changes",
+        "relationship": "Commuter and station attendant",
+        "interaction": "Compare a displayed change with station signs and clarify which connecting service to use",
+        "outcome": "Reach the correct platform, board the connection, and continue the journey"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-26",
+      "storyId": "friends-coordinate-a-pickup-point-outside-a-busy-event-venue",
+      "domain": "arts_events",
+      "scenario": "friends_meet_by_the_sign_at_a_quieter_side_exit_after_a_crowded_event",
+      "lexicalThemes": [
+        "event exits",
+        "meeting points",
+        "crowds",
+        "visible landmarks"
+      ],
+      "targetVocabulary": [
+        "entrance",
+        "side exit",
+        "crowded",
+        "sidewalk",
+        "bench",
+        "sign",
+        "nearby",
+        "I can see you"
+      ],
+      "brief": "After a crowded event, Noa waits outside while Gil heads to the main entrance. They describe the crowd and nearby landmarks, agree to meet by the sign at the quieter side exit beside the benches, and leave together.",
+      "storyPattern": {
+        "goal": "Locate one another after an event when the main entrance is too crowded",
+        "relationship": "Friends attending the same event and leaving separately",
+        "interaction": "Describe surroundings, correct an initial assumption about the entrance, and settle on a visible alternative",
+        "outcome": "Meet at the quieter side exit and leave together"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-26",
+      "storyId": "customer-and-clerk-compare-two-ways-to-collect-a-large-order",
+      "domain": "shopping_returns",
+      "scenario": "customer_splits_collection_of_ready_order_after_finding_one_box_too_large_to_carry",
+      "lexicalThemes": [
+        "collecting an order",
+        "size and weight",
+        "available loading time",
+        "comparing pickup options"
+      ],
+      "targetVocabulary": [
+        "order",
+        "ready",
+        "bulky",
+        "carry",
+        "hold",
+        "loading area",
+        "come back",
+        "set aside"
+      ],
+      "brief": "Customer Tamar arrives to collect a ready order of bulky household items. She takes the smaller items she can carry and plans to return with help for the large box; clerk Erez labels and sets the box aside after explaining that the loading area is available only briefly.",
+      "storyPattern": {
+        "goal": "Collect a purchase in manageable parts when one item is unexpectedly bulky",
+        "relationship": "Customer Tamar and shop clerk Erez",
+        "interaction": "Clarify which box is too large, explain the short loading window, compare taking everything now with returning for the large box, and decide what to take now",
+        "outcome": "Tamar takes the manageable items and plans to return with help; Erez labels and sets aside the bulky item for later pickup"
+      },
+      "edition": "bet"
     }
   ]
 }
