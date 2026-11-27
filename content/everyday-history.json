@@ -37501,6 +37501,1284 @@
         "outcome": "Tamar takes the manageable items and plans to return with help; Erez labels and sets aside the bulky item for later pickup"
       },
       "edition": "bet"
+    },
+    {
+      "date": "2026-11-27",
+      "storyId": "resident-asks-about-a-water-bill-reading",
+      "domain": "bills_taxes",
+      "scenario": "resident_questions_a_water_bill_reading_after_comparing_it_with_her_own_note",
+      "lexicalThemes": [
+        "household bills",
+        "meter readings",
+        "checking a detail"
+      ],
+      "targetVocabulary": [
+        "water bill",
+        "meter reading",
+        "compare",
+        "check"
+      ],
+      "brief": "A resident compares the water-meter number on her bill with her own note, asks the billing office how to verify the difference, and keeps both records together while awaiting confirmation.",
+      "storyPattern": {
+        "goal": "Clarify a water-bill reading without assuming it is wrong",
+        "relationship": "Resident checking a household bill",
+        "interaction": "Compare the bill entry with a personal note and ask how to verify the difference",
+        "outcome": "Keep both records together while the reading remains unconfirmed"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-27",
+      "storyId": "shopper-switches-to-a-different-size-of-olive-oil",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_chooses_a_smaller_available_oil_bottle_instead_of_buying_an_unneeded_large_size",
+      "lexicalThemes": [
+        "grocery availability",
+        "package sizes",
+        "preferences"
+      ],
+      "targetVocabulary": [
+        "bottle",
+        "size",
+        "usual",
+        "choose"
+      ],
+      "brief": "At the supermarket, a shopper looks for her usual bottle of olive oil but finds only a larger size. Since it is more than she needs, she chooses a smaller bottle of a different kind.",
+      "storyPattern": {
+        "goal": "Buy a useful amount of cooking oil when the usual package is unavailable",
+        "relationship": "Shopper making an independent grocery choice",
+        "interaction": "Notice the available size and compare it with what she needs",
+        "outcome": "Choose a smaller alternative rather than buying too much"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-27",
+      "storyId": "resident-checks-which-copy-of-a-form-to-send",
+      "domain": "government_documents",
+      "scenario": "resident_checks_and_prepares_two_form_copies_for_mailing",
+      "lexicalThemes": [
+        "forms",
+        "copies",
+        "signatures",
+        "mailing"
+      ],
+      "targetVocabulary": [
+        "עותק (copy)",
+        "חתום (signed)",
+        "לא חתום (unsigned)",
+        "מעטפה (envelope)"
+      ],
+      "brief": "A resident checks two copies of a completed form, keeps the one with her signature, and puts the unsigned copy in an envelope to mail.",
+      "storyPattern": {
+        "goal": "Keep the correct copy of a form for personal records",
+        "relationship": "Resident organizing her own paperwork",
+        "interaction": "Compare two copies and distinguish the signed page from the unsigned page",
+        "outcome": "Keep the signed copy and prepare the other for mailing"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-27",
+      "storyId": "friends-choose-a-side-for-their-takeaway",
+      "domain": "food_service_orders",
+      "scenario": "friends_order_takeaway_and_share_rice_and_salad",
+      "lexicalThemes": [
+        "takeaway orders",
+        "shared meals",
+        "preferences"
+      ],
+      "targetVocabulary": [
+        "side dish",
+        "rice",
+        "salad",
+        "share"
+      ],
+      "brief": "Two friends order takeaway together. One wants rice and the other wants salad, so they order both sides and share them.",
+      "storyPattern": {
+        "goal": "Choose sides that suit different preferences in a shared meal",
+        "relationship": "Friends ordering dinner together",
+        "interaction": "State different preferences and suggest sharing two options",
+        "outcome": "Order both sides and divide them between the diners"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-27",
+      "storyId": "employee-asks-for-a-copy-of-a-signed-work-agreement",
+      "domain": "work_pay",
+      "scenario": "employee_requests_a_complete_copy_of_a_work_agreement_after_losing_the_signed_page",
+      "lexicalThemes": [
+        "work documents",
+        "copies",
+        "requests"
+      ],
+      "targetVocabulary": [
+        "agreement",
+        "signed",
+        "page",
+        "copy"
+      ],
+      "brief": "An employee notices that her copy of the work agreement is missing the page with both signatures. She asks the office assistant for a complete copy and receives the page by email.",
+      "storyPattern": {
+        "goal": "Keep a complete copy of a signed work agreement",
+        "relationship": "Employee and office assistant",
+        "interaction": "Explain which page is missing and request a complete copy",
+        "outcome": "Receive the missing page by email"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-27",
+      "storyId": "shopper-asks-for-bread-without-a-topping",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_chooses_seedless_rolls_from_another_bakery_tray",
+      "lexicalThemes": [
+        "bakery purchases",
+        "food preferences",
+        "alternatives"
+      ],
+      "targetVocabulary": [
+        "rolls",
+        "seeds",
+        "plain",
+        "tray"
+      ],
+      "brief": "At a bakery, a shopper sees seeds on the rolls and asks the baker for rolls without seeds. The baker shows her a different tray, and she chooses those rolls.",
+      "storyPattern": {
+        "goal": "Find bread that matches a simple food preference",
+        "relationship": "Shopper and bakery worker",
+        "interaction": "Describe the preference and ask whether a suitable option is available",
+        "outcome": "Choose the plain rolls from another tray"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-27",
+      "storyId": "tenant-reports-a-dripping-kitchen-tap",
+      "domain": "housing_landlord",
+      "scenario": "tenant_shows_landlord_a_dripping_kitchen_tap_and_tests_a_handle_adjustment",
+      "lexicalThemes": [
+        "rental housing",
+        "small repairs",
+        "describing a problem"
+      ],
+      "targetVocabulary": [
+        "tap",
+        "drip",
+        "handle",
+        "tighten"
+      ],
+      "brief": "A tenant shows the landlord that the kitchen tap drips even when the handle is turned off. The landlord tightens the handle, and the tenant checks that the dripping has stopped.",
+      "storyPattern": {
+        "goal": "Stop a kitchen tap from dripping",
+        "relationship": "Tenant and landlord",
+        "interaction": "Demonstrate the drip and try a small adjustment to the handle",
+        "outcome": "Check that the dripping has stopped"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-27",
+      "storyId": "shopper-asks-which-apples-are-sweeter",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_selects_sweeter_apples_for_fruit_salad",
+      "lexicalThemes": [
+        "produce",
+        "flavor",
+        "cooking plans"
+      ],
+      "targetVocabulary": [
+        "תפוחים",
+        "מתוק",
+        "טארט",
+        "זן"
+      ],
+      "brief": "At a produce stand, a shopper explains that she wants apples for fruit salad rather than a tart. The seller points out a sweeter variety, and she chooses a few apples of that kind.",
+      "storyPattern": {
+        "goal": "Choose fruit suited to a particular dish",
+        "relationship": "Shopper and produce seller",
+        "interaction": "Explain the intended use and ask for a fitting variety",
+        "outcome": "Choose a few sweeter apples"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-27",
+      "storyId": "resident-asks-how-to-label-a-recycling-bin",
+      "domain": "municipal_services",
+      "scenario": "resident_uses_a_bin_label_to_identify_where_to_put_an_empty_glass_jar",
+      "lexicalThemes": [
+        "recycling",
+        "household waste",
+        "labels"
+      ],
+      "targetVocabulary": [
+        "bin",
+        "glass",
+        "label",
+        "jar"
+      ],
+      "brief": "A resident sees two similar bins in her building's recycling area and asks a municipal worker which one is for glass. He points to its label, and she puts her empty jar in that bin.",
+      "storyPattern": {
+        "goal": "Put a recyclable container in the correctly marked bin",
+        "relationship": "Resident and municipal worker",
+        "interaction": "Ask about two similar bins and use the label to identify the glass bin",
+        "outcome": "Place the empty jar in the indicated bin"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-27",
+      "storyId": "housemates-choose-what-to-make-with-leftover-vegetables",
+      "domain": "food_cooking",
+      "scenario": "housemates_use_leftover_vegetables_in_a_shared_omelet",
+      "lexicalThemes": [
+        "meal preparation",
+        "leftovers",
+        "shared tasks"
+      ],
+      "targetVocabulary": [
+        "leftovers",
+        "vegetables",
+        "chop",
+        "omelet"
+      ],
+      "brief": "Two housemates find a few vegetables left in the fridge, agree to make an omelet, chop the vegetables together, and add them to the pan.",
+      "storyPattern": {
+        "goal": "Use a few remaining ingredients in a simple shared meal",
+        "relationship": "Housemates sharing kitchen tasks",
+        "interaction": "Suggest a practical meal and prepare the available vegetables together",
+        "outcome": "Add the chopped vegetables to an omelet"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-27",
+      "storyId": "shopper-chooses-a-smaller-pack-of-pita",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_selects_a_smaller_pita_pack_to_match_the_household_meal",
+      "lexicalThemes": [
+        "grocery planning",
+        "package sizes",
+        "avoiding waste"
+      ],
+      "targetVocabulary": [
+        "pita",
+        "pack",
+        "smaller",
+        "enough"
+      ],
+      "brief": "A shopper buys pita for dinner, sees that the large pack is more than her household needs, and takes a smaller pack instead, leaving the large one on the shelf.",
+      "storyPattern": {
+        "goal": "Buy a package size that suits an immediate meal",
+        "relationship": "Shopper making an independent choice",
+        "interaction": "Notice that the larger package exceeds what the household needs and choose another size",
+        "outcome": "Take the smaller pack and leave the larger one"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-27",
+      "storyId": "shopper-selects-ripe-tomatoes-for-a-weeknight-meal",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_selects_tomatoes_at_different_stages_of_ripeness_for_two_meals",
+      "lexicalThemes": [
+        "produce quality",
+        "ripeness and freshness",
+        "asking for an alternative",
+        "meal planning"
+      ],
+      "targetVocabulary": [
+        "ripe",
+        "firm",
+        "soft",
+        "fresh",
+        "crate",
+        "tonight",
+        "later in the week",
+        "a few"
+      ],
+      "brief": "Dana shops for tomatoes for dinner and for later in the week. She compares soft tomatoes with firmer, less-ripe ones, chooses a mix, and uses the soft ones first at home.",
+      "storyPattern": {
+        "goal": "Choose produce suited to both immediate use and later storage",
+        "relationship": "Shopper and produce worker",
+        "interaction": "Describe how soon the food will be used and compare the available produce",
+        "outcome": "Choose a mix and use the softer produce first"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-27",
+      "storyId": "resident-clarifies-a-card-charge-with-bank-staff",
+      "domain": "banking_credit",
+      "scenario": "account_holder_matches_an_unfamiliar_card_charge_to_a_store_receipt",
+      "lexicalThemes": [
+        "bank activity",
+        "card purchase",
+        "explaining uncertainty",
+        "comparing a receipt"
+      ],
+      "targetVocabulary": [
+        "charge",
+        "purchase",
+        "receipt",
+        "date",
+        "amount",
+        "entry",
+        "I recognize",
+        "I am not sure"
+      ],
+      "brief": "Ruth notices a card charge under an unfamiliar shop name. At a bank branch, she and a clerk compare its date and amount with her receipt, recognize the purchase, and she keeps a note with the receipt.",
+      "storyPattern": {
+        "goal": "Identify an unfamiliar card entry using a personal purchase record",
+        "relationship": "Account holder and bank clerk",
+        "interaction": "Explain the uncertainty and compare the entry with a receipt",
+        "outcome": "Recognize the purchase by matching its date and amount and keep a note"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-27",
+      "storyId": "patient-prepares-a-clear-question-for-a-routine-appointment",
+      "domain": "health_appointments",
+      "scenario": "patient_prioritizes_a_question_before_a_routine_clinic_visit",
+      "lexicalThemes": [
+        "appointment preparation",
+        "describing a concern",
+        "prioritizing questions",
+        "clarifying the appointment purpose"
+      ],
+      "targetVocabulary": [
+        "appointment",
+        "question",
+        "concern",
+        "notes",
+        "first",
+        "also",
+        "I want to ask",
+        "at the beginning"
+      ],
+      "brief": "Before a routine clinic appointment, a woman writes several questions on a sheet and tells the receptionist she has another important question. The receptionist clarifies that the appointment is for the issue listed and suggests she raise the extra question at the start of the visit. The patient chooses that question to ask first and takes her notes with her.",
+      "storyPattern": {
+        "goal": "Make sure an important question is raised during a routine appointment",
+        "relationship": "Patient preparing for a clinic visit and receptionist helping clarify the appointment",
+        "interaction": "Explain that she has another question and clarify how to bring it up",
+        "outcome": "Prioritize the question and arrive with notes to raise it directly"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-27",
+      "storyId": "neighbors-coordinate-a-safe-car-loading-stop",
+      "domain": "driving_parking",
+      "scenario": "neighbors_coordinate_loading_groceries_without_blocking_a_shared_driveway",
+      "lexicalThemes": [
+        "loading a car",
+        "explaining a brief stop",
+        "offering help",
+        "keeping shared access clear"
+      ],
+      "targetVocabulary": [
+        "load",
+        "trunk",
+        "back seat",
+        "cart",
+        "for a moment",
+        "move the car",
+        "clear",
+        "thanks"
+      ],
+      "brief": "Dana and her neighbor Oren coordinate loading grocery bags and a small cart into Dana's car without blocking their shared driveway. Oren holds the cart while Dana puts the bags on the back seat, then she moves the car to an open space and they confirm the driveway is clear.",
+      "storyPattern": {
+        "goal": "Load household purchases while keeping a shared access way open",
+        "relationship": "Neighbors coordinating around one resident's car",
+        "interaction": "Clarify the short loading stop, cooperate when the trunk is difficult to access, and agree to keep the driveway clear",
+        "outcome": "Load the groceries and move the car to an open space"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-27",
+      "storyId": "friends-adjust-a-day-trip-plan-around-the-weather",
+      "domain": "travel_day_trips",
+      "scenario": "friends_choose_shorter_day_trip_route_and_pack_lunch",
+      "lexicalThemes": [
+        "day-trip planning",
+        "weather and clouds",
+        "comparing walking routes",
+        "viewpoint",
+        "packing food and water"
+      ],
+      "targetVocabulary": [
+        "דרך",
+        "קצרה",
+        "ארוכה",
+        "עננים",
+        "גשם",
+        "נוף",
+        "כריכים",
+        "מים"
+      ],
+      "brief": "Friends Yael and Amir compare a longer and shorter walking route for a day trip. With clouds in the sky, they choose the shorter route after confirming it still passes the viewpoint they want to see. Yael brings their sandwiches, Amir brings water, and they set out together, planning to eat at the viewpoint if the weather feels comfortable.",
+      "storyPattern": {
+        "goal": "Choose a day-trip route that balances seeing the viewpoint with avoiding a long walk far from shelter if it rains",
+        "relationship": "Friends planning and taking a short outing together",
+        "interaction": "Yael and Amir explain their preferences, compare the short and long routes, and confirm that the short route passes the viewpoint",
+        "outcome": "They choose the shorter route, divide the sandwiches and water, and set out together with a plan to eat at the viewpoint if conditions are comfortable"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-27",
+      "storyId": "resident-asks-about-a-water-bill-reading",
+      "domain": "bills_taxes",
+      "scenario": "resident_calls_about_a_different_water_meter_reading_and_keeps_her_note_with_the_bill",
+      "lexicalThemes": [
+        "household bills",
+        "meter readings",
+        "checking a detail"
+      ],
+      "targetVocabulary": [
+        "חשבון מים",
+        "קריאת מונה",
+        "מספר",
+        "לבדוק"
+      ],
+      "brief": "A resident receives a water bill and notices that its meter reading differs from the number in her own note. She calls the office to ask how to check the entry, then keeps her note beside the bill while the question remains open.",
+      "storyPattern": {
+        "goal": "Clarify a water-bill reading without assuming it is wrong",
+        "relationship": "Resident checking a household bill",
+        "interaction": "Compare the bill entry with a personal note and ask how to verify the difference",
+        "outcome": "Keep both records together while the reading remains unconfirmed"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-27",
+      "storyId": "shopper-switches-to-a-different-size-of-olive-oil",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_chooses_a_smaller_available_oil_bottle_instead_of_buying_an_unneeded_large_size",
+      "lexicalThemes": [
+        "grocery availability",
+        "package sizes",
+        "preferences"
+      ],
+      "targetVocabulary": [
+        "bottle",
+        "size",
+        "usual",
+        "choose"
+      ],
+      "brief": "A shopper finds only a larger-than-usual bottle of olive oil, decides she does not need that much, and chooses a smaller bottle of another variety.",
+      "storyPattern": {
+        "goal": "Buy a useful amount of cooking oil when the usual package is unavailable",
+        "relationship": "Shopper making an independent grocery choice",
+        "interaction": "Notice the available size and compare it with what she needs",
+        "outcome": "Choose a smaller alternative rather than buying too much"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-27",
+      "storyId": "resident-checks-which-copy-of-a-form-to-send",
+      "domain": "government_documents",
+      "scenario": "resident_compares_two_form_copies_and_prepares_the_unsigned_copy_for_mailing",
+      "lexicalThemes": [
+        "forms",
+        "copies",
+        "signatures",
+        "envelopes"
+      ],
+      "targetVocabulary": [
+        "טופס",
+        "עותק",
+        "חתימה",
+        "מעטפה"
+      ],
+      "brief": "A resident fills out a form, compares two copies, keeps the copy she signed, and puts the unsigned copy in an envelope to send.",
+      "storyPattern": {
+        "goal": "Keep the correct copy of a form for personal records",
+        "relationship": "Resident organizing her own paperwork",
+        "interaction": "Compare two copies and distinguish the signed page from the unsigned page",
+        "outcome": "Keep the signed copy and prepare the other for mailing"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-27",
+      "storyId": "friends-choose-a-side-for-their-takeaway",
+      "domain": "food_service_orders",
+      "scenario": "friends_order_and_share_rice_and_salad",
+      "lexicalThemes": [
+        "takeaway orders",
+        "shared meals",
+        "preferences"
+      ],
+      "targetVocabulary": [
+        "side dish",
+        "rice",
+        "salad",
+        "share"
+      ],
+      "brief": "Two friends order takeaway for dinner. One wants rice and the other prefers salad, so they order both sides and share them.",
+      "storyPattern": {
+        "goal": "Choose sides that suit different preferences in a shared meal",
+        "relationship": "Friends ordering dinner together",
+        "interaction": "State different preferences and suggest sharing two options",
+        "outcome": "Order both sides and divide them between the diners"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-27",
+      "storyId": "employee-asks-for-a-copy-of-a-signed-work-agreement",
+      "domain": "work_pay",
+      "scenario": "employee_requests_missing_signed_page_of_work_agreement",
+      "lexicalThemes": [
+        "work documents",
+        "copies",
+        "requests"
+      ],
+      "targetVocabulary": [
+        "agreement",
+        "signed",
+        "page",
+        "copy"
+      ],
+      "brief": "An employee has a copy of her work agreement but is missing the page with both signatures. She asks the office assistant to send the page, and receives it by email.",
+      "storyPattern": {
+        "goal": "Keep a complete copy of a signed work agreement",
+        "relationship": "Employee and office assistant",
+        "interaction": "Explain which page is missing and request a complete copy",
+        "outcome": "Receive the missing page by email"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-27",
+      "storyId": "shopper-asks-for-bread-without-a-topping",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_selects_plain_bakery_rolls_after_noticing_seeds_on_the_displayed_rolls",
+      "lexicalThemes": [
+        "bakery purchases",
+        "food preferences",
+        "alternatives"
+      ],
+      "targetVocabulary": [
+        "rolls",
+        "seeds",
+        "plain",
+        "tray"
+      ],
+      "brief": "In the morning, a shopper sees seeds on the rolls at a bakery, asks the seller whether there are rolls without seeds, and chooses plain rolls from another tray.",
+      "storyPattern": {
+        "goal": "Find bread that matches a simple food preference",
+        "relationship": "Shopper and bakery worker",
+        "interaction": "Describe the preference and ask whether a suitable option is available",
+        "outcome": "Choose the plain rolls from another tray"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-27",
+      "storyId": "tenant-reports-a-dripping-kitchen-tap",
+      "domain": "housing_landlord",
+      "scenario": "tenant_shows_landlord_a_dripping_kitchen_tap_and_tests_a_handle_adjustment",
+      "lexicalThemes": [
+        "rental housing",
+        "small repairs",
+        "describing a problem"
+      ],
+      "targetVocabulary": [
+        "tap",
+        "drip",
+        "handle",
+        "tighten"
+      ],
+      "brief": "A tenant showed the landlord that the kitchen tap dripped even when its handle was closed. The landlord tightened the handle, and they checked together that the dripping stopped.",
+      "storyPattern": {
+        "goal": "Stop a kitchen tap from dripping",
+        "relationship": "Tenant and landlord",
+        "interaction": "Demonstrate the drip and try a small adjustment to the handle",
+        "outcome": "Check that the dripping has stopped"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-27",
+      "storyId": "shopper-asks-which-apples-are-sweeter",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_selects_a_sweeter_apple_variety_for_a_fruit_salad",
+      "lexicalThemes": [
+        "produce",
+        "flavor",
+        "cooking plans"
+      ],
+      "targetVocabulary": [
+        "apples",
+        "sweet",
+        "tart",
+        "variety"
+      ],
+      "brief": "At a fruit stand, a shopper explains that she needs apples for fruit salad rather than a cake. The seller suggests a sweeter variety, and she chooses a few apples of that variety.",
+      "storyPattern": {
+        "goal": "Choose fruit suited to a particular dish",
+        "relationship": "Shopper and produce seller",
+        "interaction": "Explain the intended use and ask for a fitting variety",
+        "outcome": "Choose a few sweeter apples"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-27",
+      "storyId": "resident-asks-how-to-label-a-recycling-bin",
+      "domain": "municipal_services",
+      "scenario": "resident_asks_worker_to_identify_the_glass_bin_by_its_label",
+      "lexicalThemes": [
+        "recycling",
+        "household waste",
+        "labels"
+      ],
+      "targetVocabulary": [
+        "bin",
+        "glass",
+        "label",
+        "jar"
+      ],
+      "brief": "A resident is unsure which of two similar bins is for glass, asks a municipal worker, and puts her empty jar in the bin indicated by its label.",
+      "storyPattern": {
+        "goal": "Put a recyclable container in the correctly marked bin",
+        "relationship": "Resident and municipal worker",
+        "interaction": "Ask about two similar bins and use the label to identify the glass bin",
+        "outcome": "Place the empty jar in the indicated bin"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-27",
+      "storyId": "housemates-choose-what-to-make-with-leftover-vegetables",
+      "domain": "food_cooking",
+      "scenario": "housemates_make_an_omelet_with_leftover_fridge_vegetables",
+      "lexicalThemes": [
+        "meal preparation",
+        "leftovers",
+        "shared kitchen tasks"
+      ],
+      "targetVocabulary": [
+        "leftovers",
+        "vegetables",
+        "chop",
+        "omelet"
+      ],
+      "brief": "Two housemates use vegetables left in the fridge to make a shared omelet. Noa suggests the meal, one housemate chops the vegetables while Noa heats a pan, and they add the vegetables to the eggs and eat together.",
+      "storyPattern": {
+        "goal": "Use a few remaining ingredients in a simple shared meal",
+        "relationship": "Housemates sharing kitchen tasks",
+        "interaction": "Suggest a practical meal and prepare the available vegetables together",
+        "outcome": "Add the chopped vegetables to an omelet and eat together"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-27",
+      "storyId": "shopper-chooses-a-smaller-pack-of-pita",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_selects_a_smaller_pita_pack_to_match_the_household_meal",
+      "lexicalThemes": [
+        "grocery planning",
+        "package sizes",
+        "avoiding waste"
+      ],
+      "targetVocabulary": [
+        "pita",
+        "pack",
+        "smaller",
+        "enough"
+      ],
+      "brief": "A shopper buying pita for dinner notices the large pack has more than her household needs, so she takes a smaller pack and leaves the large one on the shelf.",
+      "storyPattern": {
+        "goal": "Buy a package size that suits an immediate meal",
+        "relationship": "Shopper making an independent choice",
+        "interaction": "Notice that the larger package exceeds what the household needs and choose another size",
+        "outcome": "Take the smaller pack and leave the larger one"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-27",
+      "storyId": "shopper-selects-ripe-tomatoes-for-a-weeknight-meal",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_selects_tomatoes_at_different_stages_of_ripeness_for_two_meals",
+      "lexicalThemes": [
+        "produce quality",
+        "ripeness and freshness",
+        "asking for an alternative",
+        "meal planning"
+      ],
+      "targetVocabulary": [
+        "ripe",
+        "firm",
+        "soft",
+        "fresh",
+        "crate",
+        "tonight",
+        "later in the week",
+        "a few"
+      ],
+      "brief": "A shopper chooses softer tomatoes for dinner tonight and firmer, less-ripe tomatoes to keep for a meal later in the week. At home, she uses the softer tomatoes first and sets the firmer ones aside.",
+      "storyPattern": {
+        "goal": "Choose produce suited to both immediate use and later storage",
+        "relationship": "Shopper and produce worker",
+        "interaction": "Describe how soon the food will be used and compare the available produce",
+        "outcome": "Choose a mix and use the softer produce first"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-27",
+      "storyId": "resident-clarifies-a-card-charge-with-bank-staff",
+      "domain": "banking_credit",
+      "scenario": "woman_matches_an_unfamiliar_card_charge_to_a_receipt_at_a_bank_branch",
+      "lexicalThemes": [
+        "bank activity",
+        "card purchase",
+        "explaining uncertainty",
+        "comparing a receipt"
+      ],
+      "targetVocabulary": [
+        "חיוב",
+        "קנייה",
+        "קבלה",
+        "תאריך",
+        "סכום",
+        "רשומה",
+        "להכיר",
+        "לא להיות בטוחה"
+      ],
+      "brief": "A woman sees a card charge under an unfamiliar shop name, then compares the charge with her receipt at a bank branch and notes what the purchase was.",
+      "storyPattern": {
+        "goal": "Identify an unfamiliar card entry using a personal purchase record",
+        "relationship": "Account holder and bank clerk",
+        "interaction": "Explain the uncertainty and compare the entry with a receipt",
+        "outcome": "Recognize the purchase by matching its date and amount and keep a note"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-27",
+      "storyId": "patient-prepares-a-clear-question-for-a-routine-appointment",
+      "domain": "health_appointments",
+      "scenario": "patient_writes_down_questions_and_prioritizes_one_before_a_routine_clinic_visit",
+      "lexicalThemes": [
+        "appointment preparation",
+        "describing a concern",
+        "prioritizing questions",
+        "clarifying the appointment purpose"
+      ],
+      "targetVocabulary": [
+        "appointment",
+        "question",
+        "concern",
+        "notes",
+        "first",
+        "also",
+        "I want to ask",
+        "at the beginning"
+      ],
+      "brief": "Before a routine clinic appointment, a woman writes down several unrelated questions because she may not remember them all. She tells the receptionist she has another important question. The receptionist explains that the appointment is for the issue already listed and suggests telling the clinician at the start that she has another question. The woman chooses which question to ask first and brings her notes so she can raise it directly.",
+      "storyPattern": {
+        "goal": "Make sure an important question is raised during a routine appointment",
+        "relationship": "Patient preparing for a clinic visit and receptionist helping clarify the appointment",
+        "interaction": "Explain that she has another question and clarify how to bring it up",
+        "outcome": "Prioritize the question and arrive with notes to raise it directly"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-27",
+      "storyId": "neighbors-coordinate-a-safe-car-loading-stop",
+      "domain": "driving_parking",
+      "scenario": "neighbors_coordinate_loading_groceries_without_blocking_a_shared_driveway",
+      "lexicalThemes": [
+        "loading a car",
+        "explaining a brief stop",
+        "offering help",
+        "keeping shared access clear"
+      ],
+      "targetVocabulary": [
+        "load",
+        "trunk",
+        "back seat",
+        "cart",
+        "for a moment",
+        "move the car",
+        "clear",
+        "thanks"
+      ],
+      "brief": "Dana and Oren, neighbors, coordinate loading groceries into Dana's car without blocking their shared driveway. Oren holds the cart while Dana moves the bags to the back seat, then Dana moves the car to an open space and Oren returns the cart.",
+      "storyPattern": {
+        "goal": "Load household purchases while keeping a shared access way open",
+        "relationship": "Neighbors coordinating around one resident's car",
+        "interaction": "Clarify the short loading stop, cooperate when the trunk is difficult to access, and agree to keep the driveway clear",
+        "outcome": "Load the groceries and move the car to an open space"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-27",
+      "storyId": "friends-adjust-a-day-trip-plan-around-the-weather",
+      "domain": "travel_day_trips",
+      "scenario": "friends_choose_shorter_viewpoint_route_as_clouds_gather",
+      "lexicalThemes": [
+        "day-trip planning",
+        "weather and route choices",
+        "comparing paths",
+        "packing sandwiches and water"
+      ],
+      "targetVocabulary": [
+        "דרך",
+        "ארוכה",
+        "קצרה",
+        "עננים",
+        "תצפית",
+        "כריכים",
+        "מים"
+      ],
+      "brief": "Friends Yael and Amir compare a longer route with a shorter route after noticing clouds, confirm that the shorter route still passes the viewpoint, divide up sandwiches and water, and set out together with lunch at the viewpoint as a possibility if the weather is comfortable.",
+      "storyPattern": {
+        "goal": "Choose a day-trip route that balances a desired stop with changing conditions",
+        "relationship": "Friends planning and taking a short outing together",
+        "interaction": "Explain different preferences, compare route options, and clarify what the shorter path includes",
+        "outcome": "Choose the shorter route, divide the food and water, and set out together, with lunch at the viewpoint if conditions are comfortable"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-27",
+      "storyId": "resident-asks-about-a-water-bill-reading",
+      "domain": "bills_taxes",
+      "scenario": "resident_checks_a_water_bill_reading_against_a_personal_note",
+      "lexicalThemes": [
+        "household bills",
+        "water-meter readings",
+        "checking a discrepancy"
+      ],
+      "targetVocabulary": [
+        "water bill",
+        "meter reading",
+        "compare",
+        "check"
+      ],
+      "brief": "A resident notices a different water-meter reading on her bill, asks the billing office how to verify it, and keeps her note beside the bill while the check remains unresolved.",
+      "storyPattern": {
+        "goal": "Clarify a water-bill reading without assuming it is wrong",
+        "relationship": "Resident checking a household bill",
+        "interaction": "Compare the bill entry with a personal note and ask how to verify the difference",
+        "outcome": "Keep both records together while the reading remains unconfirmed"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-27",
+      "storyId": "shopper-switches-to-a-different-size-of-olive-oil",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_chooses_a_smaller_available_oil_bottle_instead_of_buying_an_unneeded_large_size",
+      "lexicalThemes": [
+        "grocery availability",
+        "package sizes",
+        "preferences"
+      ],
+      "targetVocabulary": [
+        "bottle",
+        "size",
+        "usual",
+        "choose"
+      ],
+      "brief": "At the supermarket, a shopper cannot find her usual bottle of olive oil and chooses a smaller bottle of another variety instead of buying a larger amount than she needs.",
+      "storyPattern": {
+        "goal": "Buy a useful amount of cooking oil when the usual package is unavailable",
+        "relationship": "Shopper making an independent grocery choice",
+        "interaction": "Notice the available size and compare it with what she needs",
+        "outcome": "Choose a smaller alternative rather than buying too much"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-27",
+      "storyId": "resident-checks-which-copy-of-a-form-to-send",
+      "domain": "government_documents",
+      "scenario": "resident_compares_two_form_copies_before_mailing_one",
+      "lexicalThemes": [
+        "forms",
+        "copies",
+        "signatures",
+        "mailing"
+      ],
+      "targetVocabulary": [
+        "עותק",
+        "חתום",
+        "לא חתום",
+        "מעטפה"
+      ],
+      "brief": "A resident checks two copies of a completed form, keeps the signed copy for herself, and puts the unsigned copy in an envelope to mail.",
+      "storyPattern": {
+        "goal": "Keep the correct copy of a form for personal records",
+        "relationship": "Resident organizing her own paperwork",
+        "interaction": "Compare two copies and distinguish the signed page from the unsigned page",
+        "outcome": "Keep the signed copy and prepare the other for mailing"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-27",
+      "storyId": "friends-choose-a-side-for-their-takeaway",
+      "domain": "food_service_orders",
+      "scenario": "friends_resolve_different_side_dish_preferences_by_sharing_two_sides",
+      "lexicalThemes": [
+        "takeaway orders",
+        "shared meals",
+        "preferences"
+      ],
+      "targetVocabulary": [
+        "side dish",
+        "rice",
+        "salad",
+        "share"
+      ],
+      "brief": "Two friends ordering dinner for delivery have different preferences for a side dish. They order rice and salad and divide both between them.",
+      "storyPattern": {
+        "goal": "Choose sides that suit different preferences in a shared meal",
+        "relationship": "Friends ordering dinner together",
+        "interaction": "State different preferences and suggest sharing two options",
+        "outcome": "Order both sides and divide them between the diners"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-27",
+      "storyId": "employee-asks-for-a-copy-of-a-signed-work-agreement",
+      "domain": "work_pay",
+      "scenario": "employee_requests_a_complete_copy_of_a_work_agreement_after_losing_the_signed_page",
+      "lexicalThemes": [
+        "work documents",
+        "copies",
+        "requests"
+      ],
+      "targetVocabulary": [
+        "agreement",
+        "signed",
+        "page",
+        "copy"
+      ],
+      "brief": "An employee has a copy of her work agreement but cannot find the page signed by both parties. She asks the office assistant for a complete copy and receives the missing page by email.",
+      "storyPattern": {
+        "goal": "Keep a complete copy of a signed work agreement",
+        "relationship": "Employee and office assistant",
+        "interaction": "Explain which page is missing and request a complete copy",
+        "outcome": "Receive the missing page by email"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-27",
+      "storyId": "shopper-asks-for-bread-without-a-topping",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_chooses_plain_rolls_from_another_tray_after_asking_the_baker_about_seeds",
+      "lexicalThemes": [
+        "bakery purchases",
+        "food preferences",
+        "alternatives"
+      ],
+      "targetVocabulary": [
+        "לחמניות",
+        "זרעים",
+        "בלי זרעים",
+        "מגש"
+      ],
+      "brief": "A shopper at a bakery notices seeds on the rolls she first considered, asks the baker whether there are rolls without seeds, and chooses plain rolls from another tray.",
+      "storyPattern": {
+        "goal": "Find bread that matches a simple food preference",
+        "relationship": "Shopper and bakery worker",
+        "interaction": "Describe the preference and ask whether a suitable option is available",
+        "outcome": "Choose the plain rolls from another tray"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-27",
+      "storyId": "tenant-reports-a-dripping-kitchen-tap",
+      "domain": "housing_landlord",
+      "scenario": "tenant_shows_landlord_a_dripping_kitchen_tap_and_tests_a_handle_adjustment",
+      "lexicalThemes": [
+        "rental housing",
+        "small repairs",
+        "describing a problem"
+      ],
+      "targetVocabulary": [
+        "tap",
+        "drip",
+        "handle",
+        "tighten"
+      ],
+      "brief": "A tenant shows the landlord that the kitchen tap drips even when turned off. The landlord tightens the handle, and the tenant checks that the dripping has stopped.",
+      "storyPattern": {
+        "goal": "Stop a kitchen tap from dripping",
+        "relationship": "Tenant and landlord",
+        "interaction": "Demonstrate the drip and try a small adjustment to the handle",
+        "outcome": "Check that the dripping has stopped"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-27",
+      "storyId": "shopper-asks-which-apples-are-sweeter",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_selects_a_sweeter_apple_variety_for_a_fruit_salad",
+      "lexicalThemes": [
+        "produce",
+        "flavor",
+        "cooking plans"
+      ],
+      "targetVocabulary": [
+        "apples",
+        "sweet",
+        "tart",
+        "variety"
+      ],
+      "brief": "At a fruit stand, a shopper explains that she needs apples for a fruit salad rather than a tart. The seller suggests a sweeter variety, and she chooses a few apples of that kind.",
+      "storyPattern": {
+        "goal": "Choose fruit suited to a particular dish",
+        "relationship": "Shopper and produce seller",
+        "interaction": "Explain the intended use and ask for a fitting variety",
+        "outcome": "Choose a few sweeter apples"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-27",
+      "storyId": "resident-asks-how-to-label-a-recycling-bin",
+      "domain": "municipal_services",
+      "scenario": "resident_uses_a_bin_label_to_identify_where_to_put_an_empty_glass_jar",
+      "lexicalThemes": [
+        "recycling",
+        "household waste",
+        "labels"
+      ],
+      "targetVocabulary": [
+        "bin",
+        "glass",
+        "label",
+        "jar"
+      ],
+      "brief": "A resident sees two similar bins in her building's recycling area and is unsure which is for glass. She asks a municipal worker, who points out the label on the correct bin, and she puts her empty jar there.",
+      "storyPattern": {
+        "goal": "Put a recyclable container in the correctly marked bin",
+        "relationship": "Resident and municipal worker",
+        "interaction": "Ask about two similar bins and use the label to identify the glass bin",
+        "outcome": "Place the empty jar in the indicated bin"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-27",
+      "storyId": "housemates-choose-what-to-make-with-leftover-vegetables",
+      "domain": "food_cooking",
+      "scenario": "housemates_use_leftover_vegetables_in_a_shared_omelet",
+      "lexicalThemes": [
+        "meal preparation",
+        "leftovers",
+        "shared tasks"
+      ],
+      "targetVocabulary": [
+        "leftovers",
+        "vegetables",
+        "chop",
+        "omelet"
+      ],
+      "brief": "Two housemates find a few vegetables left in the fridge, chop them together, and add them to an omelet in the pan.",
+      "storyPattern": {
+        "goal": "Use a few remaining ingredients in a simple shared meal",
+        "relationship": "Housemates sharing kitchen tasks",
+        "interaction": "Suggest a practical meal and prepare the available vegetables together",
+        "outcome": "Add the chopped vegetables to an omelet"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-27",
+      "storyId": "shopper-chooses-a-smaller-pack-of-pita",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_selects_a_smaller_pita_pack_to_match_the_household_meal",
+      "lexicalThemes": [
+        "grocery planning",
+        "package sizes",
+        "avoiding waste"
+      ],
+      "targetVocabulary": [
+        "pita",
+        "pack",
+        "smaller",
+        "enough"
+      ],
+      "brief": "At the supermarket, a shopper notices that the large pack of pita contains more than her household will eat for dinner. She takes a smaller pack and leaves the larger one on the shelf.",
+      "storyPattern": {
+        "goal": "Buy a package size that suits an immediate meal",
+        "relationship": "Shopper making an independent choice",
+        "interaction": "Notice that the larger package exceeds what the household needs and choose another size",
+        "outcome": "Take the smaller pack and leave the larger one"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-27",
+      "storyId": "shopper-selects-ripe-tomatoes-for-a-weeknight-meal",
+      "domain": "supermarket_queues",
+      "scenario": "shopper_selects_tomatoes_at_different_stages_of_ripeness_for_two_meals",
+      "lexicalThemes": [
+        "produce quality",
+        "ripeness and freshness",
+        "asking for an alternative",
+        "meal planning"
+      ],
+      "targetVocabulary": [
+        "ripe",
+        "firm",
+        "soft",
+        "fresh",
+        "crate",
+        "tonight",
+        "later in the week",
+        "a few"
+      ],
+      "brief": "A shopper buys a mix of soft and firmer tomatoes for dinner tonight and another meal later in the week, using the softer ones first.",
+      "storyPattern": {
+        "goal": "Choose produce suited to both immediate use and later storage",
+        "relationship": "Shopper and produce worker",
+        "interaction": "Describe how soon the food will be used and compare the available produce",
+        "outcome": "Choose a mix and use the softer produce first"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-27",
+      "storyId": "resident-clarifies-a-card-charge-with-bank-staff",
+      "domain": "banking_credit",
+      "scenario": "account_holder_matches_an_unfamiliar_card_charge_to_a_store_receipt",
+      "lexicalThemes": [
+        "bank activity",
+        "card purchase",
+        "explaining uncertainty",
+        "comparing a receipt"
+      ],
+      "targetVocabulary": [
+        "חיוב",
+        "קנייה",
+        "קבלה",
+        "תאריך",
+        "סכום",
+        "תנועה בחשבון",
+        "לזהות",
+        "לא להיות בטוחה"
+      ],
+      "brief": "A woman sees a card charge under a shop name she does not recognize. At a bank branch, she and a clerk compare the charge date and amount with her receipt and find that they match, though the storefront used a different name. She notes the purchase beside the receipt and leaves knowing what the charge refers to.",
+      "storyPattern": {
+        "goal": "Identify an unfamiliar card entry using a personal purchase record",
+        "relationship": "Account holder and bank clerk",
+        "interaction": "Explain the uncertainty and compare the entry with a receipt",
+        "outcome": "Recognize the purchase by matching its date and amount and keep a note"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-27",
+      "storyId": "patient-prepares-a-clear-question-for-a-routine-appointment",
+      "domain": "health_appointments",
+      "scenario": "patient_prioritizes_a_question_before_a_routine_clinic_visit",
+      "lexicalThemes": [
+        "appointment preparation",
+        "describing a concern",
+        "prioritizing questions",
+        "clarifying the appointment purpose"
+      ],
+      "targetVocabulary": [
+        "appointment",
+        "question",
+        "concern",
+        "notes",
+        "first",
+        "also",
+        "I want to ask",
+        "at the beginning"
+      ],
+      "brief": "Before a routine clinic appointment, Michal writes down several unrelated questions, calls the receptionist to clarify that the appointment is for the issue already listed, and decides to raise her most important additional question at the start of the visit.",
+      "storyPattern": {
+        "goal": "Make sure an important question is raised during a routine appointment",
+        "relationship": "Patient preparing for a clinic visit and receptionist helping clarify the appointment",
+        "interaction": "Explain that she has another question and clarify how to bring it up",
+        "outcome": "Prioritize the question and arrive with notes to raise it directly"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-27",
+      "storyId": "neighbors-coordinate-a-safe-car-loading-stop",
+      "domain": "driving_parking",
+      "scenario": "neighbors_coordinate_loading_groceries_without_blocking_a_shared_driveway",
+      "lexicalThemes": [
+        "loading a car",
+        "explaining a brief stop",
+        "offering help",
+        "keeping shared access clear"
+      ],
+      "targetVocabulary": [
+        "מעמיסה",
+        "תא המטען",
+        "המושב האחורי",
+        "עגלה",
+        "לרגע",
+        "מזיזה את הרכב",
+        "פנוי",
+        "תודה"
+      ],
+      "brief": "Dana is loading grocery bags and a folding cart into her car beside her building. Oren, her neighbor, checks that she is only stopping briefly and offers to hold the cart while she moves the bags to the back seat because another car makes the trunk hard to open. They keep the shared driveway clear; Dana moves her car to an open space, and Oren returns the cart.",
+      "storyPattern": {
+        "goal": "Load household purchases while keeping a shared access way open",
+        "relationship": "Neighbors coordinating around one resident's car",
+        "interaction": "Clarify the short loading stop, cooperate when the trunk is difficult to access, and agree to keep the driveway clear",
+        "outcome": "Load the groceries and move the car to an open space"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-27",
+      "storyId": "friends-adjust-a-day-trip-plan-around-the-weather",
+      "domain": "travel_day_trips",
+      "scenario": "friends_choose_a_shorter_hiking_route_after_comparing_weather_and_shared_priorities",
+      "lexicalThemes": [
+        "day-trip planning",
+        "expressing a preference",
+        "comparing routes",
+        "packing food and water"
+      ],
+      "targetVocabulary": [
+        "route",
+        "path",
+        "shorter",
+        "longer",
+        "clouds",
+        "viewpoint",
+        "sandwiches",
+        "water"
+      ],
+      "brief": "Friends Yael and Amir compare a short and a long walking route as clouds gather, confirm that the shorter path still reaches their shared viewpoint, divide the sandwiches and water, and set out together.",
+      "storyPattern": {
+        "goal": "Choose a day-trip route that balances a desired stop with changing conditions",
+        "relationship": "Friends planning and taking a short outing together",
+        "interaction": "Explain different preferences, compare route options, and clarify what the shorter path includes",
+        "outcome": "Choose the shorter route, divide the food and water, and set out together"
+      },
+      "edition": "bet"
     }
   ]
 }
