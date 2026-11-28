@@ -38779,6 +38779,1284 @@
         "outcome": "Choose the shorter route, divide the food and water, and set out together"
       },
       "edition": "bet"
+    },
+    {
+      "date": "2026-11-28",
+      "storyId": "resident-clears-a-sink-strainer",
+      "domain": "home_repairs_utilities",
+      "scenario": "resident_clears_food_scraps_from_a_slow_draining_kitchen_sink_strainer",
+      "lexicalThemes": [
+        "kitchen upkeep",
+        "water flow",
+        "small household task"
+      ],
+      "targetVocabulary": [
+        "sink",
+        "strainer",
+        "drain",
+        "scraps",
+        "clear"
+      ],
+      "brief": "A resident notices that water is draining slowly from her kitchen sink, removes the strainer, clears the collected food scraps, and runs the tap to see the water drain freely.",
+      "storyPattern": {
+        "goal": "Restore normal drainage by clearing a removable sink strainer",
+        "relationship": "Resident caring for her own home",
+        "interaction": "Notice slow drainage, remove the strainer, and clear the collected scraps",
+        "outcome": "Run the tap and see the water drain freely"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-28",
+      "storyId": "tenant-asks-to-use-a-window-blind",
+      "domain": "housing_landlord",
+      "scenario": "tenant_gets_landlord_agreement_to_hang_a_removable_fabric_blind_for_sunlight",
+      "lexicalThemes": [
+        "rental home",
+        "light and shade",
+        "permission"
+      ],
+      "targetVocabulary": [
+        "blind",
+        "window",
+        "sun",
+        "desk",
+        "hang"
+      ],
+      "brief": "A tenant asks her landlord if she may hang a simple fabric blind inside the bedroom window because afternoon sun falls directly on her desk. He agrees, and she hangs it without changing the window.",
+      "storyPattern": {
+        "goal": "Reduce direct sunlight on a home workspace",
+        "relationship": "Tenant and landlord",
+        "interaction": "Explain a practical preference and ask before making a small, reversible change",
+        "outcome": "Get agreement and hang a simple fabric blind"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-28",
+      "storyId": "housemates-check-an-electricity-bill-period",
+      "domain": "bills_taxes",
+      "scenario": "Housemates call the billing office to clarify unfamiliar dates on an electricity bill and write the dates down for comparison.",
+      "lexicalThemes": [
+        "household bills",
+        "dates and periods",
+        "clarifying information"
+      ],
+      "targetVocabulary": [
+        "bill",
+        "dates",
+        "period",
+        "statement",
+        "compare"
+      ],
+      "brief": "Two housemates see unfamiliar dates on their electricity bill, call the billing office to ask which days the bill covers, and write the dates down to compare with their own notes.",
+      "storyPattern": {
+        "goal": "Understand which dates a household bill covers",
+        "relationship": "Housemates sharing household expenses",
+        "interaction": "Ask the billing office to clarify the statement period and record the dates",
+        "outcome": "Keep the dates for comparison without assuming what period the bill covers"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-28",
+      "storyId": "resident-reports-a-loose-courtyard-gate-latch",
+      "domain": "municipal_services",
+      "scenario": "resident_shows_building_caretaker_and_tests_a_courtyard_gate_latch",
+      "lexicalThemes": [
+        "shared outdoor space",
+        "building upkeep",
+        "demonstrating a problem"
+      ],
+      "targetVocabulary": [
+        "courtyard",
+        "gate",
+        "latch",
+        "pull",
+        "stay shut"
+      ],
+      "brief": "A resident shows the building caretaker that the shared courtyard gate only catches when pulled firmly. The caretaker checks and tightens the latch, and the resident closes the gate to make sure it stays shut.",
+      "storyPattern": {
+        "goal": "Make a shared courtyard gate stay shut reliably",
+        "relationship": "Resident and building caretaker",
+        "interaction": "Describe and demonstrate the latch problem, then test a small adjustment",
+        "outcome": "The gate closes and stays shut"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-28",
+      "storyId": "resident-moves-a-desk-lamp-to-a-different-outlet",
+      "domain": "home_repairs_utilities",
+      "scenario": "resident_repositions_a_desk_lamp_to_an_outlet_within_reach_of_its_cord",
+      "lexicalThemes": [
+        "home lighting",
+        "electrical outlet",
+        "practical adjustment"
+      ],
+      "targetVocabulary": [
+        "lamp",
+        "cord",
+        "outlet",
+        "plug in",
+        "switch on"
+      ],
+      "brief": "A resident notices that the desk lamp cord cannot reach the usual outlet. She moves the lamp to a nearby outlet, switches it on, and lights the desk without stretching the cord.",
+      "storyPattern": {
+        "goal": "Place a desk lamp where it can reach an outlet without stretching its cord",
+        "relationship": "Resident acting independently at home",
+        "interaction": "Notice the cord does not reach and move the lamp to a usable outlet",
+        "outcome": "Switch on the lamp and light the desk safely"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-28",
+      "storyId": "housemate-lends-a-spare-fan",
+      "domain": "neighbors_building",
+      "scenario": "housemates_agree_to_move_a_shared_fan_temporarily_to_a_warm_bedroom",
+      "lexicalThemes": [
+        "sharing household items",
+        "comfort at home",
+        "simple request and agreement"
+      ],
+      "targetVocabulary": [
+        "borrow",
+        "fan",
+        "living room",
+        "bedroom",
+        "desk"
+      ],
+      "brief": "A woman working in a warm bedroom asks her housemate to borrow the small fan from the living room. Her housemate agrees, and she places the fan beside her desk.",
+      "storyPattern": {
+        "goal": "Use a shared fan in the warmer room for a while",
+        "relationship": "Housemates sharing household equipment",
+        "interaction": "Explain the need and ask to move the fan temporarily",
+        "outcome": "Receive agreement and set the fan beside the desk"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-28",
+      "storyId": "resident-changes-the-home-wifi-network-name-on-a-tablet",
+      "domain": "phone_internet",
+      "scenario": "resident_distinguishes_two_similar_home_wifi_names_using_the_router_label",
+      "lexicalThemes": [
+        "home internet",
+        "connected devices",
+        "identifying a network"
+      ],
+      "targetVocabulary": [
+        "Wi-Fi",
+        "network",
+        "tablet",
+        "router",
+        "connect"
+      ],
+      "brief": "Mia sees two similarly named Wi-Fi networks on her tablet. She asks her housemate Ron which one is theirs. Ron points to the network name on the router label, and Mia connects to that network.",
+      "storyPattern": {
+        "goal": "Connect a tablet to the intended home network",
+        "relationship": "Housemates sharing a home connection",
+        "interaction": "Ask about similar network names and compare them with the router label",
+        "outcome": "Select the identified home network and connect"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-28",
+      "storyId": "cat-owner-sets-out-a-water-bowl-in-the-shade",
+      "domain": "pets_veterinary",
+      "scenario": "cat_owner_moves_a_warm_water_bowl_from_sunlight_to_a_shaded_kitchen_corner",
+      "lexicalThemes": [
+        "pet care",
+        "water bowl",
+        "home routine"
+      ],
+      "targetVocabulary": [
+        "cat",
+        "water bowl",
+        "sunny",
+        "shade",
+        "drink"
+      ],
+      "brief": "A cat owner notices that the water bowl beside the sunny window feels warm and moves it to a shaded corner of the kitchen. The cat drinks from the bowl there.",
+      "storyPattern": {
+        "goal": "Make the cat's drinking water more comfortable at home",
+        "relationship": "Pet owner caring for a cat",
+        "interaction": "Notice the bowl is in direct sunlight and move it to a shaded spot",
+        "outcome": "The cat drinks from the relocated bowl"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-28",
+      "storyId": "diner-asks-for-a-small-plate-to-share",
+      "domain": "food_service_orders",
+      "scenario": "two_friends_share_a_side_dish_with_an_extra_small_plate",
+      "lexicalThemes": [
+        "restaurant meal",
+        "sharing food",
+        "polite request"
+      ],
+      "targetVocabulary": [
+        "צלחת נוספת",
+        "קטנה",
+        "לחלק",
+        "תוספת",
+        "בבקשה"
+      ],
+      "brief": "At a restaurant, a woman and her friend order one side dish. She asks the waiter for an extra small plate, and they divide the side dish between them.",
+      "storyPattern": {
+        "goal": "Share one side dish comfortably between two diners",
+        "relationship": "Two friends eating together and a waiter",
+        "interaction": "Ask for an extra small plate and receive it",
+        "outcome": "Divide the side dish between the two plates"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-28",
+      "storyId": "resident-puts-a-connected-speaker-on-mute",
+      "domain": "digital_accounts",
+      "scenario": "resident_mutes_connected_speaker_during_phone_call",
+      "lexicalThemes": [
+        "connected home devices",
+        "sound and volume",
+        "quick device action"
+      ],
+      "targetVocabulary": [
+        "רמקול",
+        "מוזיקה",
+        "השתקה",
+        "טלפון",
+        "שקט"
+      ],
+      "brief": "A resident is on a phone call when music starts playing from her connected speaker. She presses mute, the room becomes quiet, and she continues the call.",
+      "storyPattern": {
+        "goal": "Quiet an unwanted sound during a phone call",
+        "relationship": "Resident managing her own connected device",
+        "interaction": "Notice music interrupting the call and use the mute control",
+        "outcome": "The room becomes quiet and the call continues"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-28",
+      "storyId": "resident-asks-a-neighbor-to-water-a-balcony-herb-pot-once",
+      "domain": "pets_veterinary",
+      "scenario": "resident_asks_neighbor_to_water_one_dry_balcony_mint_pot_once",
+      "lexicalThemes": [
+        "neighborly help",
+        "balcony plants",
+        "a specific small favor"
+      ],
+      "targetVocabulary": [
+        "neighbor",
+        "mint pot",
+        "balcony",
+        "soil",
+        "water"
+      ],
+      "brief": "Before leaving for the day, a resident asks her neighbor to water the dry soil in her mint pot on the balcony once. The neighbor agrees to pour a little water into it.",
+      "storyPattern": {
+        "goal": "Get a single dry herb pot watered while away for the day",
+        "relationship": "Neighbors in the same building",
+        "interaction": "Make a specific small request and receive agreement",
+        "outcome": "The neighbor agrees to pour a little water into the identified pot"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-28",
+      "storyId": "resident-adjusts-a-water-heater-timer",
+      "domain": "home_repairs_utilities",
+      "scenario": "housemates_restore_water_heater_timer_after_cleaning",
+      "lexicalThemes": [
+        "home utilities",
+        "switches and timers",
+        "explaining a change",
+        "testing an appliance"
+      ],
+      "targetVocabulary": [
+        "דוד מים",
+        "טיימר",
+        "מתג",
+        "זמן",
+        "מים חמים",
+        "לכוון"
+      ],
+      "brief": "In the evening, Yael and her housemate find the water cold because the water heater timer was changed during cleaning. They compare the current short setting with their usual longer setting, reset it, wait for warm water, and write down the setting for next time.",
+      "storyPattern": {
+        "goal": "Restore the household water heater timer setting that changed during cleaning",
+        "relationship": "Housemates sharing household equipment",
+        "interaction": "Check the switch and timer together, compare the current setting with their usual longer setting, and reset it",
+        "outcome": "Wait until the water is warm and write down the preferred setting for next time"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-28",
+      "storyId": "tenant-plans-a-kitchen-cabinet-replacement",
+      "domain": "housing_landlord",
+      "scenario": "tenant_and_landlord_replace_only_a_swollen_kitchen_cabinet_shelf",
+      "lexicalThemes": [
+        "rental home upkeep",
+        "describing damage",
+        "explaining what still works",
+        "agreeing on a repair"
+      ],
+      "targetVocabulary": [
+        "shelf",
+        "cabinet",
+        "swollen",
+        "measure",
+        "replace",
+        "receipt"
+      ],
+      "brief": "A tenant tells her landlord that a swollen kitchen-cabinet shelf no longer holds plates level, while the cabinet itself still works. They measure the shelf and agree that she will buy a cut-to-size replacement board, keep the receipt, and install it. The plates sit level again.",
+      "storyPattern": {
+        "goal": "Resolve a minor rental-home repair without replacing a usable fixture",
+        "relationship": "Tenant and landlord discussing a practical repair",
+        "interaction": "Describe the damaged shelf, clarify that the cabinet still works, and agree on a limited replacement",
+        "outcome": "The tenant buys and installs a correctly sized board, and the plates sit level again"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-28",
+      "storyId": "cat-owner-moves-a-window-perch-away-from-a-draft",
+      "domain": "pets_veterinary",
+      "scenario": "cat_owner_and_neighbor_adjust_curtain_and_perch_for_comfort",
+      "lexicalThemes": [
+        "pet routines",
+        "home comfort",
+        "noticing a change",
+        "trying a practical adjustment"
+      ],
+      "targetVocabulary": [
+        "cat",
+        "perch",
+        "bed",
+        "window",
+        "draft",
+        "curtain"
+      ],
+      "brief": "On a cool evening, a cat owner notices that her cat has stopped using its usual perch. She moves the bed nearby, then works with her neighbor to close a gap in the curtain and move the perch farther from the window. The cat settles there, and the owner leaves the bed there for cold evenings.",
+      "storyPattern": {
+        "goal": "Help a pet return to a familiar resting place when the surroundings change",
+        "relationship": "Pet owner and helpful neighbor",
+        "interaction": "Notice the pet's changed behavior, try a new spot, and investigate a nearby source of discomfort",
+        "outcome": "Adjust the curtain and perch so the cat settles comfortably"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-28",
+      "storyId": "siblings-set-up-a-guest-wifi-connection",
+      "domain": "phone_internet",
+      "scenario": "siblings_connect_a_visitors_tablet_to_the_home_guest_network",
+      "lexicalThemes": [
+        "home internet",
+        "connected devices",
+        "clarifying access",
+        "helping a visitor"
+      ],
+      "targetVocabulary": [
+        "guest network",
+        "password",
+        "tablet",
+        "connect",
+        "network name",
+        "online photos"
+      ],
+      "brief": "Noa visits her brother Amir and wants to show him family photos online. Amir offers the guest Wi-Fi network instead of his private network, explains what it can access, and helps Noa switch her tablet from an old saved network name. The photos open, and Amir leaves guest access available for her next visit.",
+      "storyPattern": {
+        "goal": "Give a visitor useful internet access without sharing a private home connection",
+        "relationship": "Siblings sharing a home visit",
+        "interaction": "Explain the distinction between guest access and the private network, then troubleshoot a remembered network name",
+        "outcome": "Connect the visitor's tablet to guest Wi-Fi and confirm the needed content opens"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-28",
+      "storyId": "friends-clarify-which-leftovers-to-pack",
+      "domain": "food_service_orders",
+      "scenario": "friends_check_leftovers_and_pack_their_pita_at_a_neighborhood_restaurant",
+      "lexicalThemes": [
+        "restaurant meals",
+        "checking an order",
+        "clarifying which food belongs to whom",
+        "packing leftovers"
+      ],
+      "targetVocabulary": [
+        "leftovers",
+        "container",
+        "basket",
+        "small dish",
+        "dips",
+        "belongs to"
+      ],
+      "brief": "Dana and Gil are at a neighborhood restaurant. They check which leftover food belongs to their meal, then pack their pita and leave the dips that were mistakenly brought from the neighboring table.",
+      "storyPattern": {
+        "goal": "Take home the correct leftover food after noticing items from another table",
+        "relationship": "Dana and Gil are friends dining together, with Gil also acting as the server",
+        "interaction": "Dana asks which food belongs to their order, and Gil clarifies the pita and mistakenly delivered dips",
+        "outcome": "Gil packs their pita, returns the dips meant for the neighboring table, and Dana checks the container"
+      },
+      "edition": "alef"
+    },
+    {
+      "date": "2026-11-28",
+      "storyId": "resident-clears-a-sink-strainer",
+      "domain": "home_repairs_utilities",
+      "scenario": "resident_clears_food_scraps_from_a_slow_draining_kitchen_sink_strainer",
+      "lexicalThemes": [
+        "kitchen upkeep",
+        "water flow",
+        "small household task"
+      ],
+      "targetVocabulary": [
+        "sink",
+        "strainer",
+        "drain",
+        "scraps",
+        "clear"
+      ],
+      "brief": "A resident notices the kitchen sink draining slowly, clears food scraps from its removable strainer, and checks that water drains freely.",
+      "storyPattern": {
+        "goal": "Restore normal drainage by clearing a removable sink strainer",
+        "relationship": "Resident caring for her own home",
+        "interaction": "Notice slow drainage, remove the strainer, and clear the collected scraps",
+        "outcome": "Run the tap and see the water drain freely"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-28",
+      "storyId": "tenant-asks-to-use-a-window-blind",
+      "domain": "housing_landlord",
+      "scenario": "tenant_gets_landlord_agreement_to_hang_a_removable_fabric_blind_for_sunlight",
+      "lexicalThemes": [
+        "rental home",
+        "light and shade",
+        "permission"
+      ],
+      "targetVocabulary": [
+        "blind",
+        "window",
+        "sun",
+        "desk",
+        "hang"
+      ],
+      "brief": "A tenant notices that afternoon sun shines directly on her bedroom desk. She asks her landlady for permission to hang a simple fabric blind inside the window without changing it. The landlady agrees, and the tenant hangs the blind.",
+      "storyPattern": {
+        "goal": "Reduce direct sunlight on a home workspace",
+        "relationship": "Tenant and landlord",
+        "interaction": "Explain a practical preference and ask before making a small, reversible change",
+        "outcome": "Get agreement and hang a simple fabric blind"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-28",
+      "storyId": "housemates-check-an-electricity-bill-period",
+      "domain": "bills_taxes",
+      "scenario": "Housemates clarify the dates covered by an electricity bill and set it aside for comparison",
+      "lexicalThemes": [
+        "household bills",
+        "dates and periods",
+        "clarifying information"
+      ],
+      "targetVocabulary": [
+        "חשבון חשמל",
+        "תאריכים",
+        "תקופה",
+        "משרד",
+        "להשוות"
+      ],
+      "brief": "Two housemates received an electricity bill with dates they did not recognize. They called the billing office to ask which period the bill covered, wrote down the dates, and set the bill aside to compare with their own records.",
+      "storyPattern": {
+        "goal": "Understand which dates a household bill covers",
+        "relationship": "Housemates sharing household expenses",
+        "interaction": "Ask the billing office to clarify the statement period and record the dates",
+        "outcome": "Keep the dates for comparison without assuming what period the bill covers"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-28",
+      "storyId": "resident-reports-a-loose-courtyard-gate-latch",
+      "domain": "municipal_services",
+      "scenario": "resident_shows_building_caretaker_a_shared_courtyard_gate_latch_that_fails_to_catch",
+      "lexicalThemes": [
+        "shared outdoor space",
+        "building upkeep",
+        "demonstrating a problem"
+      ],
+      "targetVocabulary": [
+        "courtyard",
+        "gate",
+        "latch",
+        "pull",
+        "stay shut"
+      ],
+      "brief": "A resident tells the building caretaker that the shared courtyard gate does not catch unless pulled firmly. The caretaker tests and tightens the latch, then the resident closes the gate to make sure it stays shut.",
+      "storyPattern": {
+        "goal": "Make a shared courtyard gate stay shut reliably",
+        "relationship": "Resident and building caretaker",
+        "interaction": "Describe and demonstrate the latch problem, then test a small adjustment",
+        "outcome": "The gate closes and stays shut"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-28",
+      "storyId": "resident-moves-a-desk-lamp-to-a-different-outlet",
+      "domain": "home_repairs_utilities",
+      "scenario": "resident_moves_desk_lamp_to_nearby_outlet",
+      "lexicalThemes": [
+        "home lighting",
+        "electrical outlet",
+        "practical adjustment"
+      ],
+      "targetVocabulary": [
+        "מנורה",
+        "כבל",
+        "שקע",
+        "לחבר",
+        "להדליק"
+      ],
+      "brief": "At home, a resident notices that her desk lamp's cord does not reach the outlet beside the desk. She moves the lamp to another outlet within reach, plugs it in, and switches it on so it lights the desk without a stretched cord.",
+      "storyPattern": {
+        "goal": "Place a desk lamp where it can reach an outlet without stretching its cord",
+        "relationship": "Resident acting independently at home",
+        "interaction": "Notice the cord does not reach and move the lamp to a usable outlet",
+        "outcome": "Switch on the lamp and light the desk without stretching the cord"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-28",
+      "storyId": "housemate-lends-a-spare-fan",
+      "domain": "neighbors_building",
+      "scenario": "housemates_agree_to_move_a_shared_fan_temporarily_to_a_warm_bedroom",
+      "lexicalThemes": [
+        "sharing household items",
+        "comfort at home",
+        "simple request and agreement"
+      ],
+      "targetVocabulary": [
+        "borrow",
+        "fan",
+        "living room",
+        "bedroom",
+        "desk"
+      ],
+      "brief": "A housemate asks her roommate to borrow the small fan from the living room for a while because her bedroom is warm. The roommate agrees, and she places the fan beside her desk.",
+      "storyPattern": {
+        "goal": "Use a shared fan in the warmer room for a while",
+        "relationship": "Housemates sharing household equipment",
+        "interaction": "Explain the need and ask to move the fan temporarily",
+        "outcome": "Receive agreement and set the fan beside the desk"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-28",
+      "storyId": "resident-changes-the-home-wifi-network-name-on-a-tablet",
+      "domain": "phone_internet",
+      "scenario": "resident_distinguishes_similar_home_wifi_names_with_router_label_and_connects_tablet",
+      "lexicalThemes": [
+        "home internet",
+        "connected devices",
+        "identifying a network"
+      ],
+      "targetVocabulary": [
+        "Wi-Fi",
+        "network",
+        "tablet",
+        "router",
+        "connect"
+      ],
+      "brief": "A resident sees two similar Wi-Fi network names on her tablet, asks her housemate which one is theirs, checks the name on the router label, and connects to that network.",
+      "storyPattern": {
+        "goal": "Connect a tablet to the intended home network",
+        "relationship": "Housemates sharing a home connection",
+        "interaction": "Ask about similar network names and compare them with the router label",
+        "outcome": "Select the identified home network and connect"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-28",
+      "storyId": "cat-owner-sets-out-a-water-bowl-in-the-shade",
+      "domain": "pets_veterinary",
+      "scenario": "cat_owner_moves_a_warm_water_bowl_from_sunlight_to_a_shaded_kitchen_corner",
+      "lexicalThemes": [
+        "pet care",
+        "water bowl",
+        "home routine"
+      ],
+      "targetVocabulary": [
+        "cat",
+        "water bowl",
+        "sunny window",
+        "shade",
+        "drink"
+      ],
+      "brief": "In the morning, a cat owner notices that the water bowl by a sunny window is warm. They move it to a shady corner of the kitchen, and the cat drinks from it.",
+      "storyPattern": {
+        "goal": "Make the cat's drinking water more comfortable at home",
+        "relationship": "Pet owner caring for a cat",
+        "interaction": "Notice the bowl is in direct sunlight and move it to a shaded spot",
+        "outcome": "The cat drinks from the relocated bowl"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-28",
+      "storyId": "diner-asks-for-a-small-plate-to-share",
+      "domain": "food_service_orders",
+      "scenario": "two_friends_share_a_side_dish_with_an_extra_small_plate",
+      "lexicalThemes": [
+        "restaurant meal",
+        "sharing food",
+        "polite request"
+      ],
+      "targetVocabulary": [
+        "extra plate",
+        "small",
+        "share",
+        "side dish",
+        "divide"
+      ],
+      "brief": "At a restaurant, two friends order a side dish to share. One asks the waitress for an extra small plate, receives it, and they divide the side dish between their plates.",
+      "storyPattern": {
+        "goal": "Share one side dish comfortably between two diners",
+        "relationship": "Friends eating together and a waitress",
+        "interaction": "One friend asks the waitress for an extra small plate and receives it",
+        "outcome": "The friends divide the side dish between two plates"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-28",
+      "storyId": "resident-puts-a-connected-speaker-on-mute",
+      "domain": "digital_accounts",
+      "scenario": "resident_mutes_connected_speaker_during_phone_call",
+      "lexicalThemes": [
+        "connected home devices",
+        "sound and volume",
+        "quick device action"
+      ],
+      "targetVocabulary": [
+        "רמקול",
+        "מוזיקה",
+        "השתקה",
+        "שיחת טלפון",
+        "שקט"
+      ],
+      "brief": "During a phone call, a resident's connected speaker starts playing music. She presses its mute button, the room becomes quiet, and she continues the call.",
+      "storyPattern": {
+        "goal": "Quiet an unwanted sound during a phone call",
+        "relationship": "Resident managing her own connected device",
+        "interaction": "Notice music interrupting the call and use the mute control",
+        "outcome": "The room becomes quiet and the call continues"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-28",
+      "storyId": "resident-asks-a-neighbor-to-water-a-balcony-herb-pot-once",
+      "domain": "pets_veterinary",
+      "scenario": "resident_asks_neighbor_to_water_one_dry_balcony_herb_pot_once",
+      "lexicalThemes": [
+        "neighborly help",
+        "balcony plants",
+        "specific small favor"
+      ],
+      "targetVocabulary": [
+        "neighbor",
+        "herb pot",
+        "balcony",
+        "soil",
+        "water"
+      ],
+      "brief": "Before leaving for the day, a resident asks her neighbor to water one dry herb pot on the balcony. The neighbor agrees and pours a little water into it.",
+      "storyPattern": {
+        "goal": "Get a single dry herb pot watered while away for the day",
+        "relationship": "Neighbors in the same building",
+        "interaction": "Make a specific small request and receive agreement",
+        "outcome": "The neighbor waters the identified pot"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-28",
+      "storyId": "resident-adjusts-a-water-heater-timer",
+      "domain": "home_repairs_utilities",
+      "scenario": "housemates_restore_a_water_heater_timer_setting_after_cleaning",
+      "lexicalThemes": [
+        "home utilities",
+        "switches and timers",
+        "explaining a change",
+        "testing an appliance"
+      ],
+      "targetVocabulary": [
+        "water heater",
+        "timer",
+        "switch",
+        "setting",
+        "warm water",
+        "reset"
+      ],
+      "brief": "Yael and her housemate find the water heater timer set to a short period after cleaning. They compare it with their usual setting, reset it, wait for the water to warm, and write down the setting for next time.",
+      "storyPattern": {
+        "goal": "Restore a household appliance setting that was changed unintentionally",
+        "relationship": "Housemates sharing household equipment",
+        "interaction": "Compare the current timer setting with the setting they usually use and reset it together",
+        "outcome": "Test that the water warms and note the preferred setting for next time"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-28",
+      "storyId": "tenant-plans-a-kitchen-cabinet-replacement",
+      "domain": "housing_landlord",
+      "scenario": "tenant_and_landlord_agree_on_replacing_only_a_swollen_cabinet_shelf",
+      "lexicalThemes": [
+        "rental home upkeep",
+        "describing damage",
+        "explaining what still works",
+        "agreeing on a repair"
+      ],
+      "targetVocabulary": [
+        "shelf",
+        "cabinet",
+        "swollen",
+        "measure",
+        "replace",
+        "receipt"
+      ],
+      "brief": "A tenant notices that a kitchen cabinet shelf has swollen and tells her landlord that the rest of the cabinet still works. They measure the shelf, agree that she will buy a cut-to-size board and keep the receipt, and she installs it so the dishes stand level again.",
+      "storyPattern": {
+        "goal": "Resolve a minor rental-home repair without replacing a usable fixture",
+        "relationship": "Tenant and landlord discussing a practical repair",
+        "interaction": "Describe the damaged part, clarify that the rest still works, and compare repair options",
+        "outcome": "Agree on a limited replacement and restore safe, level storage"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-28",
+      "storyId": "cat-owner-moves-a-window-perch-away-from-a-draft",
+      "domain": "pets_veterinary",
+      "scenario": "cat_owner_and_neighbor_adjust_curtain_and_move_cat_bed_from_draft",
+      "lexicalThemes": [
+        "pet routines",
+        "home comfort",
+        "noticing a change",
+        "trying a practical adjustment"
+      ],
+      "targetVocabulary": [
+        "cat",
+        "bed",
+        "window",
+        "cold draft",
+        "curtain",
+        "shelf"
+      ],
+      "brief": "On a cold evening, a cat owner notices that her cat has stopped using its usual spot by the window. After moving the cat's bed to a nearby shelf without success, she and her neighbor find a gap in the curtain, adjust it, and move the bed a little farther from the window. The cat settles there again, and the owner plans to leave the bed there on cold evenings.",
+      "storyPattern": {
+        "goal": "Help a pet return to a familiar resting place when the surroundings change",
+        "relationship": "Pet owner and helpful neighbor",
+        "interaction": "Notice the pet's changed behavior, try a new spot, and investigate a nearby source of discomfort",
+        "outcome": "Adjust the curtain and move the bed farther from the window so the cat settles comfortably"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-28",
+      "storyId": "siblings-set-up-a-guest-wifi-connection",
+      "domain": "phone_internet",
+      "scenario": "siblings_connect_visitors_tablet_to_guest_wifi_and_open_family_photos",
+      "lexicalThemes": [
+        "home internet",
+        "connected devices",
+        "clarifying access",
+        "helping a visiting sibling"
+      ],
+      "targetVocabulary": [
+        "רשת אורחים",
+        "סיסמה",
+        "טאבלט",
+        "להתחבר",
+        "שם רשת",
+        "תמונות ברשת"
+      ],
+      "brief": "During a visit, Noa uses Amir's guest Wi-Fi to open family photos on her tablet. Amir explains that guest access provides internet access but not access to devices in his home. They replace the tablet's remembered old network with the guest network, and the photos load. Amir leaves the guest connection available for Noa's next visit.",
+      "storyPattern": {
+        "goal": "Give a visiting sibling useful internet access without sharing the private home network",
+        "relationship": "Siblings sharing a home visit",
+        "interaction": "Explain guest access versus the private network, then help replace the tablet's remembered network name with the guest network",
+        "outcome": "Connect the tablet to guest Wi-Fi, confirm the family photos open, and leave guest access available for the next visit"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-28",
+      "storyId": "friends-clarify-which-leftovers-to-pack",
+      "domain": "food_service_orders",
+      "scenario": "restaurant_friends_identify_their_food_before_packing_leftovers",
+      "lexicalThemes": [
+        "restaurant meals",
+        "checking an order",
+        "clarifying ownership",
+        "packing leftovers"
+      ],
+      "targetVocabulary": [
+        "leftovers",
+        "container",
+        "basket",
+        "shared plate",
+        "dips",
+        "belongs to"
+      ],
+      "brief": "At a neighborhood restaurant, friends Dana and Gil ask for a container for leftover food. Gil, who is also serving them, checks which items belong to their order: the pita in the basket is theirs, while a small dish of dips was mistakenly served to them from the neighboring table's shared plate. They take the pita, leave the dips for Gil to return, and check the container before leaving.",
+      "storyPattern": {
+        "goal": "Take home the correct leftover food after noticing items from another table",
+        "relationship": "Two friends dining together, with Gil also serving them",
+        "interaction": "Dana points out uncertainty about which food belongs to their order; Gil checks and clarifies the ownership",
+        "outcome": "Gil packs the pita from their order, returns the mistakenly delivered dips, and Dana and Gil check the container"
+      },
+      "edition": "alefPlus"
+    },
+    {
+      "date": "2026-11-28",
+      "storyId": "resident-clears-a-sink-strainer",
+      "domain": "home_repairs_utilities",
+      "scenario": "resident_clears_food_scraps_from_a_slow_draining_kitchen_sink_strainer",
+      "lexicalThemes": [
+        "kitchen upkeep",
+        "water flow",
+        "small household task"
+      ],
+      "targetVocabulary": [
+        "sink",
+        "strainer",
+        "drain",
+        "scraps",
+        "clear"
+      ],
+      "brief": "A resident notices that water is draining slowly from her kitchen sink, removes the strainer, clears the food scraps caught in it, and runs the tap to check that the water drains freely.",
+      "storyPattern": {
+        "goal": "Restore normal drainage by clearing a removable sink strainer",
+        "relationship": "Resident caring for her own home",
+        "interaction": "Notice slow drainage, remove the strainer, and clear the collected scraps",
+        "outcome": "Run the tap and see the water drain freely"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-28",
+      "storyId": "tenant-asks-to-use-a-window-blind",
+      "domain": "housing_landlord",
+      "scenario": "tenant_gets_landlord_agreement_to_hang_a_removable_fabric_blind_for_sunlight",
+      "lexicalThemes": [
+        "rental home",
+        "light and shade",
+        "permission"
+      ],
+      "targetVocabulary": [
+        "blind",
+        "window",
+        "sun",
+        "desk",
+        "hang"
+      ],
+      "brief": "A tenant notices afternoon sunlight falling directly on her desk and asks her landlord for permission to hang a simple fabric blind inside the bedroom window. He agrees, and she hangs it without changing the window.",
+      "storyPattern": {
+        "goal": "Reduce direct sunlight on a home workspace",
+        "relationship": "Tenant and landlord",
+        "interaction": "Explain a practical preference and ask before making a small, reversible change",
+        "outcome": "Get agreement and hang a simple fabric blind"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-28",
+      "storyId": "housemates-check-an-electricity-bill-period",
+      "domain": "bills_taxes",
+      "scenario": "Housemates clarify the dates on an electricity bill and record them for comparison",
+      "lexicalThemes": [
+        "household bills",
+        "dates and periods",
+        "clarifying information"
+      ],
+      "targetVocabulary": [
+        "חשבון החשמל",
+        "תאריכים",
+        "תקופה",
+        "משרד החיובים",
+        "להשוות"
+      ],
+      "brief": "Two housemates notice unfamiliar dates on an electricity bill, call the billing office to clarify the period, write down the dates, and set the bill aside until they can compare them with their records.",
+      "storyPattern": {
+        "goal": "Understand which dates a household bill covers",
+        "relationship": "Housemates sharing household expenses",
+        "interaction": "Ask the billing office to clarify the statement period and record the dates",
+        "outcome": "Keep the dates for comparison without assuming what period the bill covers"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-28",
+      "storyId": "resident-reports-a-loose-courtyard-gate-latch",
+      "domain": "municipal_services",
+      "scenario": "resident_and_caretaker_test_a_adjusted_courtyard_gate_latch",
+      "lexicalThemes": [
+        "shared outdoor space",
+        "building upkeep",
+        "demonstrating and testing a small repair"
+      ],
+      "targetVocabulary": [
+        "courtyard",
+        "gate",
+        "latch",
+        "tighten",
+        "stay shut"
+      ],
+      "brief": "A resident shows the building caretaker that the shared courtyard gate does not latch. The caretaker checks it and tightens the latch slightly; the resident closes the gate to test it, and it stays shut without being pulled hard.",
+      "storyPattern": {
+        "goal": "Make a shared courtyard gate stay shut reliably",
+        "relationship": "Resident and building caretaker",
+        "interaction": "The resident describes and demonstrates the latch problem; the caretaker tests and adjusts it, and the resident tests the gate",
+        "outcome": "The gate closes and stays shut without a hard pull"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-28",
+      "storyId": "resident-moves-a-desk-lamp-to-a-different-outlet",
+      "domain": "home_repairs_utilities",
+      "scenario": "resident_moves_desk_lamp_to_closer_outlet",
+      "lexicalThemes": [
+        "home lighting",
+        "electrical outlet",
+        "practical adjustment"
+      ],
+      "targetVocabulary": [
+        "מנורה",
+        "כבל",
+        "שקע",
+        "לחבר",
+        "להדליק"
+      ],
+      "brief": "At home, a resident notices that her desk lamp's cord is stretched because it does not reach the usual outlet. She moves the lamp to a closer outlet, plugs it in, and switches it on so the desk is lit without stretching the cord.",
+      "storyPattern": {
+        "goal": "Place a desk lamp where it can reach an outlet without stretching its cord",
+        "relationship": "Resident acting independently at home",
+        "interaction": "Notice the cord does not reach and move the lamp to a usable outlet",
+        "outcome": "Switch on the lamp and light the desk without stretching the cord"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-28",
+      "storyId": "housemate-lends-a-spare-fan",
+      "domain": "neighbors_building",
+      "scenario": "housemates_agree_to_move_a_shared_fan_temporarily_to_a_warm_bedroom",
+      "lexicalThemes": [
+        "sharing household items",
+        "comfort at home",
+        "simple request and agreement"
+      ],
+      "targetVocabulary": [
+        "borrow",
+        "fan",
+        "living room",
+        "bedroom",
+        "desk"
+      ],
+      "brief": "While working in a warm bedroom, a housemate asks to borrow the small fan from the living room. Her roommate agrees, and she places the fan beside her desk.",
+      "storyPattern": {
+        "goal": "Use a shared fan in the warmer room for a while",
+        "relationship": "Housemates sharing household equipment",
+        "interaction": "Explain the need and ask to move the fan temporarily",
+        "outcome": "Receive agreement and set the fan beside the desk"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-28",
+      "storyId": "resident-changes-the-home-wifi-network-name-on-a-tablet",
+      "domain": "phone_internet",
+      "scenario": "resident_distinguishes_two_similar_home_wifi_names_using_the_router_label",
+      "lexicalThemes": [
+        "home internet",
+        "connected devices",
+        "identifying a network"
+      ],
+      "targetVocabulary": [
+        "Wi-Fi",
+        "network",
+        "tablet",
+        "router",
+        "connect"
+      ],
+      "brief": "A resident notices two similar Wi-Fi network names on her tablet. She asks her housemate which network belongs to their home, compares the name with the label on the router, and connects the tablet to the identified network.",
+      "storyPattern": {
+        "goal": "Connect a tablet to the intended home network",
+        "relationship": "Housemates sharing a home connection",
+        "interaction": "Ask about similar network names and compare them with the router label",
+        "outcome": "Select the identified home network and connect"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-28",
+      "storyId": "cat-owner-sets-out-a-water-bowl-in-the-shade",
+      "domain": "pets_veterinary",
+      "scenario": "cat_owner_moves_a_warm_water_bowl_from_sunlight_to_a_shaded_kitchen_corner",
+      "lexicalThemes": [
+        "pet care",
+        "water bowl",
+        "home routine"
+      ],
+      "targetVocabulary": [
+        "cat",
+        "water bowl",
+        "sunny",
+        "shade",
+        "drink"
+      ],
+      "brief": "A cat owner notices that the water bowl beside the sunny window feels warm, moves it to a shaded corner of the kitchen, and the cat drinks from it there.",
+      "storyPattern": {
+        "goal": "Make the cat's drinking water more comfortable at home",
+        "relationship": "Pet owner caring for a cat",
+        "interaction": "Notice the bowl is in direct sunlight and move it to a shaded spot",
+        "outcome": "The cat drinks from the relocated bowl"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-28",
+      "storyId": "diner-asks-for-a-small-plate-to-share",
+      "domain": "food_service_orders",
+      "scenario": "friends_share_a_side_dish_with_an_extra_small_plate",
+      "lexicalThemes": [
+        "restaurant meal",
+        "sharing food",
+        "polite request"
+      ],
+      "targetVocabulary": [
+        "צלחת קטנה נוספת",
+        "תוספת",
+        "לחלוק",
+        "לחלק"
+      ],
+      "brief": "Two friends order one side dish at a restaurant. One asks the waitress for an extra small plate, and they divide the potatoes between their plates.",
+      "storyPattern": {
+        "goal": "Share one side dish comfortably between two diners",
+        "relationship": "Friends eating together and a waitress",
+        "interaction": "Ask for an extra small plate and receive it",
+        "outcome": "Divide the side dish between the two plates"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-28",
+      "storyId": "resident-puts-a-connected-speaker-on-mute",
+      "domain": "digital_accounts",
+      "scenario": "resident_mutes_a_connected_home_speaker_when_music_interrupts_a_phone_call",
+      "lexicalThemes": [
+        "connected home devices",
+        "sound and volume",
+        "quick device action"
+      ],
+      "targetVocabulary": [
+        "speaker",
+        "music",
+        "mute",
+        "phone call",
+        "quiet"
+      ],
+      "brief": "During a phone call, a resident's connected speaker starts playing music. She taps the speaker's mute control, the room becomes quiet, and she continues the call.",
+      "storyPattern": {
+        "goal": "Quiet an unwanted sound during a phone call",
+        "relationship": "Resident managing her own connected device",
+        "interaction": "She notices music interrupting the call and uses the speaker's mute control",
+        "outcome": "The room becomes quiet, and she continues the call"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-28",
+      "storyId": "resident-asks-a-neighbor-to-water-a-balcony-herb-pot-once",
+      "domain": "pets_veterinary",
+      "scenario": "resident_asks_neighbor_to_water_one_dry_balcony_herb_pot_once",
+      "lexicalThemes": [
+        "neighborly help",
+        "balcony plants",
+        "specific small favor"
+      ],
+      "targetVocabulary": [
+        "neighbor",
+        "herb pot",
+        "balcony",
+        "soil",
+        "water"
+      ],
+      "brief": "Before leaving for the day, a resident notices the soil in a balcony herb pot is dry and asks her neighbor to water that pot once. The neighbor agrees and pours a little water into it.",
+      "storyPattern": {
+        "goal": "Get a single dry herb pot watered while away for the day",
+        "relationship": "Neighbors in the same building",
+        "interaction": "Make a specific small request and receive agreement",
+        "outcome": "The neighbor waters the identified pot"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-28",
+      "storyId": "resident-adjusts-a-water-heater-timer",
+      "domain": "home_repairs_utilities",
+      "scenario": "housemates_restore_a_water_heater_timer_setting_after_cleaning",
+      "lexicalThemes": [
+        "home utilities",
+        "switches and timers",
+        "explaining a change",
+        "testing an appliance"
+      ],
+      "targetVocabulary": [
+        "water heater",
+        "timer",
+        "switch",
+        "setting",
+        "warm water",
+        "reset"
+      ],
+      "brief": "Yael and her housemate find that the water-heater timer was changed during cleaning. They compare its short setting with their usual longer one, reset it, wait for warm water, and write down the setting for next time.",
+      "storyPattern": {
+        "goal": "Restore a household appliance setting that was changed unintentionally",
+        "relationship": "Housemates sharing household equipment",
+        "interaction": "Compare the current timer setting with the setting they usually use and reset it together",
+        "outcome": "Test that the water warms and note the preferred setting for next time"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-28",
+      "storyId": "tenant-plans-a-kitchen-cabinet-replacement",
+      "domain": "housing_landlord",
+      "scenario": "tenant_and_landlord_agree_on_replacing_only_a_swollen_cabinet_shelf",
+      "lexicalThemes": [
+        "rental home upkeep",
+        "describing damage",
+        "explaining what still works",
+        "agreeing on a repair"
+      ],
+      "targetVocabulary": [
+        "shelf",
+        "cabinet",
+        "swollen",
+        "measure",
+        "replace",
+        "receipt"
+      ],
+      "brief": "A tenant notices that a kitchen-cabinet shelf has swollen and no longer holds dishes level. She moves the dishes to another cupboard and explains to her landlady that the cabinet itself still works. They measure the shelf and agree that the tenant will buy a cut-to-size replacement board, keep the receipt, and install it. The dishes then sit level again.",
+      "storyPattern": {
+        "goal": "Resolve a minor rental-home repair without replacing a usable fixture",
+        "relationship": "Tenant and landlady discussing a practical repair",
+        "interaction": "Describe the damaged shelf, clarify that the rest of the cabinet still works, and compare repair options",
+        "outcome": "Agree on a limited replacement and restore level storage for the dishes"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-28",
+      "storyId": "cat-owner-moves-a-window-perch-away-from-a-draft",
+      "domain": "pets_veterinary",
+      "scenario": "Michal_and_neighbor_adjust_a_curtain_and_move_a_cat_perch_away_from_a_draft",
+      "lexicalThemes": [
+        "pet routines",
+        "home comfort",
+        "noticing a change",
+        "trying a practical adjustment"
+      ],
+      "targetVocabulary": [
+        "cat",
+        "perch",
+        "bed",
+        "window",
+        "draft",
+        "curtain"
+      ],
+      "brief": "On a cool evening, Michal notices that a draft from the window has made her cat stop using its usual perch. After the cat returns to the window despite a moved bed, Michal and her neighbor adjust the curtain and move the perch farther from the window; the cat settles there, and Michal plans to leave its bed there on cold evenings.",
+      "storyPattern": {
+        "goal": "Help a pet return to a familiar resting place when the surroundings change",
+        "relationship": "Pet owner and helpful neighbor",
+        "interaction": "Notice the pet's changed behavior, try a new spot, and investigate a nearby source of discomfort",
+        "outcome": "Adjust the curtain and perch so the cat settles comfortably"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-28",
+      "storyId": "siblings-set-up-a-guest-wifi-connection",
+      "domain": "phone_internet",
+      "scenario": "siblings_connect_a_visitors_tablet_to_the_home_guest_network",
+      "lexicalThemes": [
+        "home internet",
+        "connected devices",
+        "clarifying access",
+        "helping a visitor"
+      ],
+      "targetVocabulary": [
+        "guest network",
+        "password",
+        "tablet",
+        "connect",
+        "network name",
+        "online photos"
+      ],
+      "brief": "Noa visits her brother Amir and wants to show him family photos on her tablet. Amir gives her the guest-network password instead of sharing the password for his private network. He explains that guest access provides ordinary internet access but does not connect to devices inside his home. Noa notices that her tablet is still trying to use an old saved network, and Amir helps her select the guest network. The photos open, and Amir leaves the guest network available for her next visit.",
+      "storyPattern": {
+        "goal": "Give a visitor useful internet access without sharing a private home connection",
+        "relationship": "Siblings sharing a home visit",
+        "interaction": "Explain the distinction between guest access and the private network, then troubleshoot a remembered network name",
+        "outcome": "Connect the visitor's tablet to guest Wi-Fi and confirm the needed content opens"
+      },
+      "edition": "bet"
+    },
+    {
+      "date": "2026-11-28",
+      "storyId": "friends-clarify-which-leftovers-to-pack",
+      "domain": "food_service_orders",
+      "scenario": "restaurant_guest_clarifies_leftovers_with_server_before_packing",
+      "lexicalThemes": [
+        "restaurant meals",
+        "checking an order",
+        "clarifying ownership",
+        "packing leftovers"
+      ],
+      "targetVocabulary": [
+        "leftovers",
+        "container",
+        "basket",
+        "pita",
+        "dips",
+        "belongs to",
+        "return"
+      ],
+      "brief": "At a neighborhood restaurant, Dana asks Gil, who is serving her, which leftover items belong to her order. Gil confirms that the pita in the basket is theirs and that the dips were mistakenly served from the neighboring table. Dana asks him to return the dips and pack the pita; she checks the container before leaving.",
+      "storyPattern": {
+        "goal": "Take home the correct leftover food after noticing items from another table",
+        "relationship": "Dana is a restaurant guest and Gil is the server helping her",
+        "interaction": "Dana points out uncertainty about which food belongs to her order, and Gil clarifies the items",
+        "outcome": "Gil packs their leftover pita and returns the mistakenly delivered dips; Dana checks the container before leaving"
+      },
+      "edition": "bet"
     }
   ]
 }
